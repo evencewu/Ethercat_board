@@ -1,0 +1,1004 @@
+ARM GAS  /tmp/cc1LNz7Z.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"esc_hw.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Drivers/ESC/AX58100/esc_hw.c"
+  20              		.section	.text.esc_address,"ax",%progbits
+  21              		.align	1
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	esc_address:
+  27              	.LVL0:
+  28              	.LFB130:
+   1:Drivers/ESC/AX58100/esc_hw.c **** /*
+   2:Drivers/ESC/AX58100/esc_hw.c ****  * Licensed under the GNU General Public License version 2 with exceptions. See
+   3:Drivers/ESC/AX58100/esc_hw.c ****  * LICENSE file in the project root for full license information
+   4:Drivers/ESC/AX58100/esc_hw.c ****  */
+   5:Drivers/ESC/AX58100/esc_hw.c **** 
+   6:Drivers/ESC/AX58100/esc_hw.c **** /** \file
+   7:Drivers/ESC/AX58100/esc_hw.c ****  * \brief
+   8:Drivers/ESC/AX58100/esc_hw.c ****  * ESC hardware layer functions.
+   9:Drivers/ESC/AX58100/esc_hw.c ****  *
+  10:Drivers/ESC/AX58100/esc_hw.c ****  * Function to read and write commands to the ESC. Used to read/write ESC
+  11:Drivers/ESC/AX58100/esc_hw.c ****  * registers and memory.
+  12:Drivers/ESC/AX58100/esc_hw.c ****  */
+  13:Drivers/ESC/AX58100/esc_hw.c **** 
+  14:Drivers/ESC/AX58100/esc_hw.c **** #include <string.h>
+  15:Drivers/ESC/AX58100/esc_hw.c **** #include "esc.h"
+  16:Drivers/ESC/AX58100/esc_hw.c **** 
+  17:Drivers/ESC/AX58100/esc_hw.c **** #include "main.h"
+  18:Drivers/ESC/AX58100/esc_hw.c **** 
+  19:Drivers/ESC/AX58100/esc_hw.c **** #define MAX_READ_SIZE 128
+  20:Drivers/ESC/AX58100/esc_hw.c **** 
+  21:Drivers/ESC/AX58100/esc_hw.c **** #define ESC_CMD_READ 0x02
+  22:Drivers/ESC/AX58100/esc_hw.c **** #define ESC_CMD_READWS 0x03
+  23:Drivers/ESC/AX58100/esc_hw.c **** #define ESC_CMD_WRITE 0x04
+  24:Drivers/ESC/AX58100/esc_hw.c **** #define ESC_CMD_NOP 0x00
+  25:Drivers/ESC/AX58100/esc_hw.c **** #define ESC_TERM 0xff
+  26:Drivers/ESC/AX58100/esc_hw.c **** #define ESC_NEXT 0x00
+  27:Drivers/ESC/AX58100/esc_hw.c **** 
+  28:Drivers/ESC/AX58100/esc_hw.c **** #define ESCREG_PDI_CONTROL 0x0140
+  29:Drivers/ESC/AX58100/esc_hw.c **** #define ESCREG_ESC_CONFIG 0x0141
+  30:Drivers/ESC/AX58100/esc_hw.c **** #define DC_SYNC_OUT 0x04
+ARM GAS  /tmp/cc1LNz7Z.s 			page 2
+
+
+  31:Drivers/ESC/AX58100/esc_hw.c **** #define ESCREG_CYCLIC_UNIT_CONTROL 0x0980
+  32:Drivers/ESC/AX58100/esc_hw.c **** #define SYNC_OUT_UNIT_CONTROL_MASK 0x01
+  33:Drivers/ESC/AX58100/esc_hw.c **** #define SYNC_OUT_ECAT_CONTROL 0x00
+  34:Drivers/ESC/AX58100/esc_hw.c **** #define SYNC_OUT_PDI_CONTROL 0x01
+  35:Drivers/ESC/AX58100/esc_hw.c **** #define ESCREG_SYNC0_CYCLE_TIME 0x09A0
+  36:Drivers/ESC/AX58100/esc_hw.c **** #define ESCREG_SYNC_START_TIME 0x0990
+  37:Drivers/ESC/AX58100/esc_hw.c **** // measured with 21MHz SPI PDI
+  38:Drivers/ESC/AX58100/esc_hw.c **** #define SYNC_START_OFFSET 2342840
+  39:Drivers/ESC/AX58100/esc_hw.c **** 
+  40:Drivers/ESC/AX58100/esc_hw.c **** static uint8_t read_termination[MAX_READ_SIZE] = {0};
+  41:Drivers/ESC/AX58100/esc_hw.c **** 
+  42:Drivers/ESC/AX58100/esc_hw.c **** #define GPIO_ECAT_RESET 1 /* specific function to hold ESC reset on startup \
+  43:Drivers/ESC/AX58100/esc_hw.c ****                            * when emulating EEPROM                          \
+  44:Drivers/ESC/AX58100/esc_hw.c ****                            */
+  45:Drivers/ESC/AX58100/esc_hw.c **** 
+  46:Drivers/ESC/AX58100/esc_hw.c **** extern SPI_HandleTypeDef hspi2;
+  47:Drivers/ESC/AX58100/esc_hw.c **** 
+  48:Drivers/ESC/AX58100/esc_hw.c **** static void esc_address(uint16_t address, uint8_t command)
+  49:Drivers/ESC/AX58100/esc_hw.c **** {
+  29              		.loc 1 49 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 49 1 is_stmt 0 view .LVU1
+  34 0000 30B5     		push	{r4, r5, lr}
+  35              		.cfi_def_cfa_offset 12
+  36              		.cfi_offset 4, -12
+  37              		.cfi_offset 5, -8
+  38              		.cfi_offset 14, -4
+  39 0002 83B0     		sub	sp, sp, #12
+  40              		.cfi_def_cfa_offset 24
+  50:Drivers/ESC/AX58100/esc_hw.c ****     /* Device is selected already.
+  51:Drivers/ESC/AX58100/esc_hw.c ****      * We use 2 bytes addressing.
+  52:Drivers/ESC/AX58100/esc_hw.c ****      */
+  53:Drivers/ESC/AX58100/esc_hw.c ****     uint8_t data[2];
+  41              		.loc 1 53 5 is_stmt 1 view .LVU2
+  54:Drivers/ESC/AX58100/esc_hw.c **** 
+  55:Drivers/ESC/AX58100/esc_hw.c ****     /* address 12:5 */
+  56:Drivers/ESC/AX58100/esc_hw.c ****     data[0] = (address >> 5);
+  42              		.loc 1 56 5 view .LVU3
+  43              		.loc 1 56 13 is_stmt 0 view .LVU4
+  44 0004 4309     		lsrs	r3, r0, #5
+  45 0006 8DF80430 		strb	r3, [sp, #4]
+  57:Drivers/ESC/AX58100/esc_hw.c ****     /* address 4:0 and cmd 2:0 */
+  58:Drivers/ESC/AX58100/esc_hw.c ****     data[1] = ((address & 0x1F) << 3) | command;
+  46              		.loc 1 58 5 is_stmt 1 view .LVU5
+  47              		.loc 1 58 39 is_stmt 0 view .LVU6
+  48 000a 41EAC001 		orr	r1, r1, r0, lsl #3
+  49              	.LVL1:
+  50              		.loc 1 58 13 view .LVU7
+  51 000e 8DF80510 		strb	r1, [sp, #5]
+  59:Drivers/ESC/AX58100/esc_hw.c **** 
+  60:Drivers/ESC/AX58100/esc_hw.c ****     /* Write (and read AL interrupt register) */
+  61:Drivers/ESC/AX58100/esc_hw.c ****     HAL_SPI_Transmit(&hspi2, data, sizeof(data), 100);
+  52              		.loc 1 61 5 is_stmt 1 view .LVU8
+  53 0012 0B4D     		ldr	r5, .L3
+  54 0014 6423     		movs	r3, #100
+ARM GAS  /tmp/cc1LNz7Z.s 			page 3
+
+
+  55 0016 0222     		movs	r2, #2
+  56 0018 01A9     		add	r1, sp, #4
+  57 001a 2846     		mov	r0, r5
+  58              	.LVL2:
+  59              		.loc 1 61 5 is_stmt 0 view .LVU9
+  60 001c FFF7FEFF 		bl	HAL_SPI_Transmit
+  61              	.LVL3:
+  62:Drivers/ESC/AX58100/esc_hw.c ****     HAL_SPI_Receive(&hspi2, (uint8_t *)&ESCvar.ALevent, sizeof(data), 100);
+  62              		.loc 1 62 5 is_stmt 1 view .LVU10
+  63 0020 084C     		ldr	r4, .L3+4
+  64 0022 6423     		movs	r3, #100
+  65 0024 0222     		movs	r2, #2
+  66 0026 2146     		mov	r1, r4
+  67 0028 2846     		mov	r0, r5
+  68 002a FFF7FEFF 		bl	HAL_SPI_Receive
+  69              	.LVL4:
+  63:Drivers/ESC/AX58100/esc_hw.c **** 
+  64:Drivers/ESC/AX58100/esc_hw.c ****     ESCvar.ALevent = etohs(ESCvar.ALevent);
+  70              		.loc 1 64 5 view .LVU11
+  71              		.loc 1 64 22 is_stmt 0 view .LVU12
+  72 002e 2146     		mov	r1, r4
+  73 0030 31F8DC39 		ldrh	r3, [r1], #-220
+  74 0034 9BB2     		uxth	r3, r3
+  75              		.loc 1 64 20 view .LVU13
+  76 0036 A1F8DC30 		strh	r3, [r1, #220]	@ movhi
+  65:Drivers/ESC/AX58100/esc_hw.c **** }
+  77              		.loc 1 65 1 view .LVU14
+  78 003a 03B0     		add	sp, sp, #12
+  79              		.cfi_def_cfa_offset 12
+  80              		@ sp needed
+  81 003c 30BD     		pop	{r4, r5, pc}
+  82              	.L4:
+  83 003e 00BF     		.align	2
+  84              	.L3:
+  85 0040 00000000 		.word	hspi2
+  86 0044 DC000000 		.word	ESCvar+220
+  87              		.cfi_endproc
+  88              	.LFE130:
+  90              		.section	.text.ESC_read,"ax",%progbits
+  91              		.align	1
+  92              		.global	ESC_read
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  97              	ESC_read:
+  98              	.LVL5:
+  99              	.LFB131:
+  66:Drivers/ESC/AX58100/esc_hw.c **** 
+  67:Drivers/ESC/AX58100/esc_hw.c **** /** ESC read function used by the Slave stack.
+  68:Drivers/ESC/AX58100/esc_hw.c ****  *
+  69:Drivers/ESC/AX58100/esc_hw.c ****  * @param[in]   address     = address of ESC register to read
+  70:Drivers/ESC/AX58100/esc_hw.c ****  * @param[out]  buf         = pointer to buffer to read in
+  71:Drivers/ESC/AX58100/esc_hw.c ****  * @param[in]   len         = number of bytes to read
+  72:Drivers/ESC/AX58100/esc_hw.c ****  */
+  73:Drivers/ESC/AX58100/esc_hw.c **** void ESC_read(uint16_t address, void *buf, uint16_t len)
+  74:Drivers/ESC/AX58100/esc_hw.c **** {
+ 100              		.loc 1 74 1 is_stmt 1 view -0
+ARM GAS  /tmp/cc1LNz7Z.s 			page 4
+
+
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+  75:Drivers/ESC/AX58100/esc_hw.c ****     if (len > MAX_READ_SIZE)
+ 104              		.loc 1 75 5 view .LVU16
+ 105              		.loc 1 75 8 is_stmt 0 view .LVU17
+ 106 0000 802A     		cmp	r2, #128
+ 107 0002 00D9     		bls	.L11
+ 108 0004 7047     		bx	lr
+ 109              	.L11:
+  74:Drivers/ESC/AX58100/esc_hw.c ****     if (len > MAX_READ_SIZE)
+ 110              		.loc 1 74 1 view .LVU18
+ 111 0006 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 112              		.cfi_def_cfa_offset 24
+ 113              		.cfi_offset 3, -24
+ 114              		.cfi_offset 4, -20
+ 115              		.cfi_offset 5, -16
+ 116              		.cfi_offset 6, -12
+ 117              		.cfi_offset 7, -8
+ 118              		.cfi_offset 14, -4
+ 119 0008 0646     		mov	r6, r0
+ 120 000a 0D46     		mov	r5, r1
+ 121 000c 1446     		mov	r4, r2
+  76:Drivers/ESC/AX58100/esc_hw.c ****     {
+  77:Drivers/ESC/AX58100/esc_hw.c ****         return;
+  78:Drivers/ESC/AX58100/esc_hw.c ****     }
+  79:Drivers/ESC/AX58100/esc_hw.c **** 
+  80:Drivers/ESC/AX58100/esc_hw.c ****     /* Select device. */
+  81:Drivers/ESC/AX58100/esc_hw.c ****     // spi_select (et1100);
+  82:Drivers/ESC/AX58100/esc_hw.c ****     HAL_GPIO_WritePin(SPI2_NSS_GPIO_Port, SPI2_NSS_Pin, GPIO_PIN_RESET);
+ 122              		.loc 1 82 5 is_stmt 1 view .LVU19
+ 123 000e 114F     		ldr	r7, .L12
+ 124 0010 0022     		movs	r2, #0
+ 125              	.LVL6:
+ 126              		.loc 1 82 5 is_stmt 0 view .LVU20
+ 127 0012 4FF48071 		mov	r1, #256
+ 128              	.LVL7:
+ 129              		.loc 1 82 5 view .LVU21
+ 130 0016 3846     		mov	r0, r7
+ 131              	.LVL8:
+ 132              		.loc 1 82 5 view .LVU22
+ 133 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 134              	.LVL9:
+  83:Drivers/ESC/AX58100/esc_hw.c ****     // PB8 LOW
+  84:Drivers/ESC/AX58100/esc_hw.c **** 
+  85:Drivers/ESC/AX58100/esc_hw.c ****     /* Write address and command to device. */
+  86:Drivers/ESC/AX58100/esc_hw.c ****     esc_address(address, ESC_CMD_READ);
+ 135              		.loc 1 86 5 is_stmt 1 view .LVU23
+ 136 001c 0221     		movs	r1, #2
+ 137 001e 3046     		mov	r0, r6
+ 138 0020 FFF7FEFF 		bl	esc_address
+ 139              	.LVL10:
+  87:Drivers/ESC/AX58100/esc_hw.c **** 
+  88:Drivers/ESC/AX58100/esc_hw.c ****     /* Here we want to read data and keep MOSI low (0x00) during
+  89:Drivers/ESC/AX58100/esc_hw.c ****      * all bytes except the last one where we want to pull it high (0xFF).
+  90:Drivers/ESC/AX58100/esc_hw.c ****      * Read (and write termination bytes).
+  91:Drivers/ESC/AX58100/esc_hw.c ****      */
+ARM GAS  /tmp/cc1LNz7Z.s 			page 5
+
+
+  92:Drivers/ESC/AX58100/esc_hw.c ****     HAL_SPI_Transmit(&hspi2, read_termination + (MAX_READ_SIZE - len), len, 100);
+ 140              		.loc 1 92 5 view .LVU24
+ 141              		.loc 1 92 64 is_stmt 0 view .LVU25
+ 142 0024 C4F18001 		rsb	r1, r4, #128
+ 143              		.loc 1 92 5 view .LVU26
+ 144 0028 0B4E     		ldr	r6, .L12+4
+ 145 002a 6423     		movs	r3, #100
+ 146 002c 2246     		mov	r2, r4
+ 147 002e 0B48     		ldr	r0, .L12+8
+ 148 0030 0144     		add	r1, r1, r0
+ 149 0032 3046     		mov	r0, r6
+ 150 0034 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 151              	.LVL11:
+  93:Drivers/ESC/AX58100/esc_hw.c ****     HAL_SPI_Receive(&hspi2, buf, len, 100);
+ 152              		.loc 1 93 5 is_stmt 1 view .LVU27
+ 153 0038 6423     		movs	r3, #100
+ 154 003a 2246     		mov	r2, r4
+ 155 003c 2946     		mov	r1, r5
+ 156 003e 3046     		mov	r0, r6
+ 157 0040 FFF7FEFF 		bl	HAL_SPI_Receive
+ 158              	.LVL12:
+  94:Drivers/ESC/AX58100/esc_hw.c **** 
+  95:Drivers/ESC/AX58100/esc_hw.c ****     /* Un-select device. */
+  96:Drivers/ESC/AX58100/esc_hw.c ****     // spi_unselect(et1100);
+  97:Drivers/ESC/AX58100/esc_hw.c ****     HAL_GPIO_WritePin(SPI2_NSS_GPIO_Port, SPI2_NSS_Pin, GPIO_PIN_SET);
+ 159              		.loc 1 97 5 view .LVU28
+ 160 0044 0122     		movs	r2, #1
+ 161 0046 4FF48071 		mov	r1, #256
+ 162 004a 3846     		mov	r0, r7
+ 163 004c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 164              	.LVL13:
+  98:Drivers/ESC/AX58100/esc_hw.c ****     // PB8 HIGH
+  99:Drivers/ESC/AX58100/esc_hw.c **** }
+ 165              		.loc 1 99 1 is_stmt 0 view .LVU29
+ 166 0050 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 167              	.LVL14:
+ 168              	.L13:
+ 169              		.loc 1 99 1 view .LVU30
+ 170 0052 00BF     		.align	2
+ 171              	.L12:
+ 172 0054 00040240 		.word	1073873920
+ 173 0058 00000000 		.word	hspi2
+ 174 005c 00000000 		.word	read_termination
+ 175              		.cfi_endproc
+ 176              	.LFE131:
+ 178              		.section	.text.ESC_write,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	ESC_write
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 185              	ESC_write:
+ 186              	.LVL15:
+ 187              	.LFB132:
+ 100:Drivers/ESC/AX58100/esc_hw.c **** 
+ 101:Drivers/ESC/AX58100/esc_hw.c **** /** ESC write function used by the Slave stack.
+ 102:Drivers/ESC/AX58100/esc_hw.c ****  *
+ARM GAS  /tmp/cc1LNz7Z.s 			page 6
+
+
+ 103:Drivers/ESC/AX58100/esc_hw.c ****  * @param[in]   address     = address of ESC register to write
+ 104:Drivers/ESC/AX58100/esc_hw.c ****  * @param[out]  buf         = pointer to buffer to write from
+ 105:Drivers/ESC/AX58100/esc_hw.c ****  * @param[in]   len         = number of bytes to write
+ 106:Drivers/ESC/AX58100/esc_hw.c ****  */
+ 107:Drivers/ESC/AX58100/esc_hw.c **** void ESC_write(uint16_t address, void *buf, uint16_t len)
+ 108:Drivers/ESC/AX58100/esc_hw.c **** {
+ 188              		.loc 1 108 1 is_stmt 1 view -0
+ 189              		.cfi_startproc
+ 190              		@ args = 0, pretend = 0, frame = 0
+ 191              		@ frame_needed = 0, uses_anonymous_args = 0
+ 192              		.loc 1 108 1 is_stmt 0 view .LVU32
+ 193 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 194              		.cfi_def_cfa_offset 24
+ 195              		.cfi_offset 3, -24
+ 196              		.cfi_offset 4, -20
+ 197              		.cfi_offset 5, -16
+ 198              		.cfi_offset 6, -12
+ 199              		.cfi_offset 7, -8
+ 200              		.cfi_offset 14, -4
+ 201 0002 0646     		mov	r6, r0
+ 202 0004 0C46     		mov	r4, r1
+ 203 0006 1546     		mov	r5, r2
+ 109:Drivers/ESC/AX58100/esc_hw.c ****     /* Select device. */
+ 110:Drivers/ESC/AX58100/esc_hw.c ****     // spi_select (et1100);
+ 111:Drivers/ESC/AX58100/esc_hw.c ****     HAL_GPIO_WritePin(SPI2_NSS_GPIO_Port, SPI2_NSS_Pin, GPIO_PIN_RESET);
+ 204              		.loc 1 111 5 is_stmt 1 view .LVU33
+ 205 0008 0B4F     		ldr	r7, .L16
+ 206 000a 0022     		movs	r2, #0
+ 207              	.LVL16:
+ 208              		.loc 1 111 5 is_stmt 0 view .LVU34
+ 209 000c 4FF48071 		mov	r1, #256
+ 210              	.LVL17:
+ 211              		.loc 1 111 5 view .LVU35
+ 212 0010 3846     		mov	r0, r7
+ 213              	.LVL18:
+ 214              		.loc 1 111 5 view .LVU36
+ 215 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 216              	.LVL19:
+ 112:Drivers/ESC/AX58100/esc_hw.c ****     // PB8 LOW
+ 113:Drivers/ESC/AX58100/esc_hw.c **** 
+ 114:Drivers/ESC/AX58100/esc_hw.c ****     /* Write address and command to device. */
+ 115:Drivers/ESC/AX58100/esc_hw.c ****     esc_address(address, ESC_CMD_WRITE);
+ 217              		.loc 1 115 5 is_stmt 1 view .LVU37
+ 218 0016 0421     		movs	r1, #4
+ 219 0018 3046     		mov	r0, r6
+ 220 001a FFF7FEFF 		bl	esc_address
+ 221              	.LVL20:
+ 116:Drivers/ESC/AX58100/esc_hw.c ****     /* Write data. */
+ 117:Drivers/ESC/AX58100/esc_hw.c ****     HAL_SPI_Transmit(&hspi2, buf, len, 100);
+ 222              		.loc 1 117 5 view .LVU38
+ 223 001e 6423     		movs	r3, #100
+ 224 0020 2A46     		mov	r2, r5
+ 225 0022 2146     		mov	r1, r4
+ 226 0024 0548     		ldr	r0, .L16+4
+ 227 0026 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 228              	.LVL21:
+ 118:Drivers/ESC/AX58100/esc_hw.c ****     /* Un-select device. */
+ARM GAS  /tmp/cc1LNz7Z.s 			page 7
+
+
+ 119:Drivers/ESC/AX58100/esc_hw.c ****     // spi_unselect(et1100);
+ 120:Drivers/ESC/AX58100/esc_hw.c ****     HAL_GPIO_WritePin(SPI2_NSS_GPIO_Port, SPI2_NSS_Pin, GPIO_PIN_SET);
+ 229              		.loc 1 120 5 view .LVU39
+ 230 002a 0122     		movs	r2, #1
+ 231 002c 4FF48071 		mov	r1, #256
+ 232 0030 3846     		mov	r0, r7
+ 233 0032 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 234              	.LVL22:
+ 121:Drivers/ESC/AX58100/esc_hw.c ****     // PB8 HIGH
+ 122:Drivers/ESC/AX58100/esc_hw.c **** }
+ 235              		.loc 1 122 1 is_stmt 0 view .LVU40
+ 236 0036 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 237              	.LVL23:
+ 238              	.L17:
+ 239              		.loc 1 122 1 view .LVU41
+ 240              		.align	2
+ 241              	.L16:
+ 242 0038 00040240 		.word	1073873920
+ 243 003c 00000000 		.word	hspi2
+ 244              		.cfi_endproc
+ 245              	.LFE132:
+ 247              		.section	.text.ESC_reset,"ax",%progbits
+ 248              		.align	1
+ 249              		.global	ESC_reset
+ 250              		.syntax unified
+ 251              		.thumb
+ 252              		.thumb_func
+ 254              	ESC_reset:
+ 255              	.LFB134:
+ 123:Drivers/ESC/AX58100/esc_hw.c **** 
+ 124:Drivers/ESC/AX58100/esc_hw.c **** static void task_delay(uint32_t time_us)
+ 125:Drivers/ESC/AX58100/esc_hw.c **** {
+ 126:Drivers/ESC/AX58100/esc_hw.c **** #define DELAY_1_uS 168 // todo tweak to used clock speed
+ 127:Drivers/ESC/AX58100/esc_hw.c ****     uint32_t delay_ticks = DELAY_1_uS * time_us;
+ 128:Drivers/ESC/AX58100/esc_hw.c **** 
+ 129:Drivers/ESC/AX58100/esc_hw.c ****     for (int32_t i = 0; i < delay_ticks; ++i)
+ 130:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 131:Drivers/ESC/AX58100/esc_hw.c ****         // do nothing
+ 132:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 133:Drivers/ESC/AX58100/esc_hw.c **** }
+ 134:Drivers/ESC/AX58100/esc_hw.c **** 
+ 135:Drivers/ESC/AX58100/esc_hw.c **** void ESC_reset(void)
+ 136:Drivers/ESC/AX58100/esc_hw.c **** {
+ 256              		.loc 1 136 1 is_stmt 1 view -0
+ 257              		.cfi_startproc
+ 258              		@ args = 0, pretend = 0, frame = 8
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260 0000 00B5     		push	{lr}
+ 261              		.cfi_def_cfa_offset 4
+ 262              		.cfi_offset 14, -4
+ 263 0002 83B0     		sub	sp, sp, #12
+ 264              		.cfi_def_cfa_offset 16
+ 137:Drivers/ESC/AX58100/esc_hw.c ****     volatile uint32_t timeout;
+ 265              		.loc 1 137 5 view .LVU43
+ 138:Drivers/ESC/AX58100/esc_hw.c **** 
+ 139:Drivers/ESC/AX58100/esc_hw.c ****     DPRINT("esc_reset_started\n");
+ 266              		.loc 1 139 34 view .LVU44
+ARM GAS  /tmp/cc1LNz7Z.s 			page 8
+
+
+ 140:Drivers/ESC/AX58100/esc_hw.c **** 
+ 141:Drivers/ESC/AX58100/esc_hw.c ****     //rst_low();
+ 142:Drivers/ESC/AX58100/esc_hw.c ****     task_delay(1000);
+ 267              		.loc 1 142 5 view .LVU45
+ 143:Drivers/ESC/AX58100/esc_hw.c **** 
+ 144:Drivers/ESC/AX58100/esc_hw.c ****     //rst_check_start();
+ 145:Drivers/ESC/AX58100/esc_hw.c **** 
+ 146:Drivers/ESC/AX58100/esc_hw.c ****     while (timeout < 10000000)
+ 268              		.loc 1 146 5 view .LVU46
+ 269              		.loc 1 146 11 is_stmt 0 view .LVU47
+ 270 0004 02E0     		b	.L19
+ 271              	.L23:
+ 147:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 148:Drivers/ESC/AX58100/esc_hw.c ****         /* ECAT releases resetpin, typically takes 40 us
+ 149:Drivers/ESC/AX58100/esc_hw.c ****            Reset to operational PDI is max 70 ms */
+ 150:Drivers/ESC/AX58100/esc_hw.c ****         if (is_esc_reset())
+ 151:Drivers/ESC/AX58100/esc_hw.c ****         {
+ 152:Drivers/ESC/AX58100/esc_hw.c ****             //rst_high();
+ 153:Drivers/ESC/AX58100/esc_hw.c ****             break; // OK
+ 154:Drivers/ESC/AX58100/esc_hw.c ****         }
+ 155:Drivers/ESC/AX58100/esc_hw.c ****         timeout++;
+ 272              		.loc 1 155 9 is_stmt 1 view .LVU48
+ 273              		.loc 1 155 16 is_stmt 0 view .LVU49
+ 274 0006 019B     		ldr	r3, [sp, #4]
+ 275 0008 0133     		adds	r3, r3, #1
+ 276 000a 0193     		str	r3, [sp, #4]
+ 156:Drivers/ESC/AX58100/esc_hw.c ****         task_delay(30);
+ 277              		.loc 1 156 9 is_stmt 1 view .LVU50
+ 278              	.L19:
+ 146:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 279              		.loc 1 146 20 view .LVU51
+ 280 000c 019A     		ldr	r2, [sp, #4]
+ 281 000e 054B     		ldr	r3, .L24
+ 282 0010 9A42     		cmp	r2, r3
+ 283 0012 03D2     		bcs	.L18
+ 150:Drivers/ESC/AX58100/esc_hw.c ****         {
+ 284              		.loc 1 150 9 view .LVU52
+ 285              	.LBB2:
+ 150:Drivers/ESC/AX58100/esc_hw.c ****         {
+ 286              		.loc 1 150 13 is_stmt 0 view .LVU53
+ 287 0014 FFF7FEFF 		bl	is_esc_reset
+ 288              	.LVL24:
+ 150:Drivers/ESC/AX58100/esc_hw.c ****         {
+ 289              		.loc 1 150 12 view .LVU54
+ 290 0018 0028     		cmp	r0, #0
+ 291 001a F4D0     		beq	.L23
+ 292              	.L18:
+ 293              	.LBE2:
+ 157:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 158:Drivers/ESC/AX58100/esc_hw.c ****     DPRINT("esc_reset_ended\n");
+ 159:Drivers/ESC/AX58100/esc_hw.c **** }
+ 294              		.loc 1 159 1 view .LVU55
+ 295 001c 03B0     		add	sp, sp, #12
+ 296              		.cfi_def_cfa_offset 4
+ 297              		@ sp needed
+ 298 001e 5DF804FB 		ldr	pc, [sp], #4
+ 299              	.L25:
+ARM GAS  /tmp/cc1LNz7Z.s 			page 9
+
+
+ 300 0022 00BF     		.align	2
+ 301              	.L24:
+ 302 0024 80969800 		.word	10000000
+ 303              		.cfi_endproc
+ 304              	.LFE134:
+ 306              		.section	.text.ESC_init,"ax",%progbits
+ 307              		.align	1
+ 308              		.global	ESC_init
+ 309              		.syntax unified
+ 310              		.thumb
+ 311              		.thumb_func
+ 313              	ESC_init:
+ 314              	.LVL25:
+ 315              	.LFB135:
+ 160:Drivers/ESC/AX58100/esc_hw.c **** 
+ 161:Drivers/ESC/AX58100/esc_hw.c **** void ESC_init(const esc_cfg_t *config)
+ 162:Drivers/ESC/AX58100/esc_hw.c **** {
+ 316              		.loc 1 162 1 is_stmt 1 view -0
+ 317              		.cfi_startproc
+ 318              		@ args = 0, pretend = 0, frame = 0
+ 319              		@ frame_needed = 0, uses_anonymous_args = 0
+ 320              		@ link register save eliminated.
+ 163:Drivers/ESC/AX58100/esc_hw.c ****     //rst_setup();
+ 164:Drivers/ESC/AX58100/esc_hw.c ****     //rst_high();
+ 165:Drivers/ESC/AX58100/esc_hw.c ****     read_termination[MAX_READ_SIZE - 1] = 0xFF;
+ 321              		.loc 1 165 5 view .LVU57
+ 322              		.loc 1 165 41 is_stmt 0 view .LVU58
+ 323 0000 024B     		ldr	r3, .L27
+ 324 0002 FF22     		movs	r2, #255
+ 325 0004 83F87F20 		strb	r2, [r3, #127]
+ 166:Drivers/ESC/AX58100/esc_hw.c **** 
+ 167:Drivers/ESC/AX58100/esc_hw.c ****     // uint8_t device_symbol = 0;
+ 168:Drivers/ESC/AX58100/esc_hw.c ****     // while (device_symbol == 0)
+ 169:Drivers/ESC/AX58100/esc_hw.c ****     // {
+ 170:Drivers/ESC/AX58100/esc_hw.c ****     //    ESC_read(, (void *)&device_symbol, sizeof(uint8_t));
+ 171:Drivers/ESC/AX58100/esc_hw.c ****     //    if ((device_symbol != 0) || (device_symbol != 0xFF))
+ 172:Drivers/ESC/AX58100/esc_hw.c ****     //    {
+ 173:Drivers/ESC/AX58100/esc_hw.c ****     //       DPRINT("ESC init successful");
+ 174:Drivers/ESC/AX58100/esc_hw.c ****     //    }
+ 175:Drivers/ESC/AX58100/esc_hw.c ****     // }
+ 176:Drivers/ESC/AX58100/esc_hw.c ****     // task_delay(1000); // allow ESC to load EEPROM, or if EEP_DONE can be read
+ 177:Drivers/ESC/AX58100/esc_hw.c ****     // then wait while EEP_DONE is low.
+ 178:Drivers/ESC/AX58100/esc_hw.c **** }
+ 326              		.loc 1 178 1 view .LVU59
+ 327 0008 7047     		bx	lr
+ 328              	.L28:
+ 329 000a 00BF     		.align	2
+ 330              	.L27:
+ 331 000c 00000000 		.word	read_termination
+ 332              		.cfi_endproc
+ 333              	.LFE135:
+ 335              		.section	.text.ESC_interrupt_enable,"ax",%progbits
+ 336              		.align	1
+ 337              		.global	ESC_interrupt_enable
+ 338              		.syntax unified
+ 339              		.thumb
+ 340              		.thumb_func
+ARM GAS  /tmp/cc1LNz7Z.s 			page 10
+
+
+ 342              	ESC_interrupt_enable:
+ 343              	.LVL26:
+ 344              	.LFB136:
+ 179:Drivers/ESC/AX58100/esc_hw.c **** 
+ 180:Drivers/ESC/AX58100/esc_hw.c **** /** ESC interrupt enable function by the Slave stack in IRQ mode.
+ 181:Drivers/ESC/AX58100/esc_hw.c ****  *
+ 182:Drivers/ESC/AX58100/esc_hw.c ****  * @param[in]   mask     = of interrupts to enable
+ 183:Drivers/ESC/AX58100/esc_hw.c ****  */
+ 184:Drivers/ESC/AX58100/esc_hw.c **** void ESC_interrupt_enable(uint32_t mask)
+ 185:Drivers/ESC/AX58100/esc_hw.c **** {
+ 345              		.loc 1 185 1 is_stmt 1 view -0
+ 346              		.cfi_startproc
+ 347              		@ args = 0, pretend = 0, frame = 0
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349              		.loc 1 185 1 is_stmt 0 view .LVU61
+ 350 0000 10B5     		push	{r4, lr}
+ 351              		.cfi_def_cfa_offset 8
+ 352              		.cfi_offset 4, -8
+ 353              		.cfi_offset 14, -4
+ 354 0002 0446     		mov	r4, r0
+ 186:Drivers/ESC/AX58100/esc_hw.c ****     // PDI interrupt
+ 187:Drivers/ESC/AX58100/esc_hw.c **** 
+ 188:Drivers/ESC/AX58100/esc_hw.c ****     if (ESCREG_ALEVENT_DC_SYNC0 & mask)
+ 355              		.loc 1 188 5 is_stmt 1 view .LVU62
+ 356              		.loc 1 188 8 is_stmt 0 view .LVU63
+ 357 0004 10F0040F 		tst	r0, #4
+ 358 0008 01D0     		beq	.L30
+ 189:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 190:Drivers/ESC/AX58100/esc_hw.c ****         mask &= ~ESCREG_ALEVENT_DC_SYNC0;
+ 359              		.loc 1 190 9 is_stmt 1 view .LVU64
+ 360              		.loc 1 190 14 is_stmt 0 view .LVU65
+ 361 000a 20F00404 		bic	r4, r0, #4
+ 362              	.LVL27:
+ 363              	.L30:
+ 191:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 192:Drivers/ESC/AX58100/esc_hw.c ****     if (ESCREG_ALEVENT_DC_SYNC1 & mask)
+ 364              		.loc 1 192 5 is_stmt 1 view .LVU66
+ 193:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 194:Drivers/ESC/AX58100/esc_hw.c ****         //    mask &= ~ESCREG_ALEVENT_DC_SYNC1;
+ 195:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 365              		.loc 1 195 5 view .LVU67
+ 196:Drivers/ESC/AX58100/esc_hw.c ****     if (ESCREG_ALEVENT_DC_LATCH & mask)
+ 366              		.loc 1 196 5 view .LVU68
+ 197:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 198:Drivers/ESC/AX58100/esc_hw.c ****         // mask &= ~ESCREG_ALEVENT_DC_LATCH;
+ 199:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 367              		.loc 1 199 5 view .LVU69
+ 200:Drivers/ESC/AX58100/esc_hw.c **** 
+ 201:Drivers/ESC/AX58100/esc_hw.c ****     ESC_ALeventmaskwrite(ESC_ALeventmaskread() | mask);
+ 368              		.loc 1 201 5 view .LVU70
+ 369              		.loc 1 201 26 is_stmt 0 view .LVU71
+ 370 000e FFF7FEFF 		bl	ESC_ALeventmaskread
+ 371              	.LVL28:
+ 372              		.loc 1 201 5 view .LVU72
+ 373 0012 2043     		orrs	r0, r0, r4
+ 374 0014 FFF7FEFF 		bl	ESC_ALeventmaskwrite
+ 375              	.LVL29:
+ARM GAS  /tmp/cc1LNz7Z.s 			page 11
+
+
+ 202:Drivers/ESC/AX58100/esc_hw.c **** }
+ 376              		.loc 1 202 1 view .LVU73
+ 377 0018 10BD     		pop	{r4, pc}
+ 378              		.loc 1 202 1 view .LVU74
+ 379              		.cfi_endproc
+ 380              	.LFE136:
+ 382              		.section	.text.ESC_interrupt_disable,"ax",%progbits
+ 383              		.align	1
+ 384              		.global	ESC_interrupt_disable
+ 385              		.syntax unified
+ 386              		.thumb
+ 387              		.thumb_func
+ 389              	ESC_interrupt_disable:
+ 390              	.LVL30:
+ 391              	.LFB137:
+ 203:Drivers/ESC/AX58100/esc_hw.c **** 
+ 204:Drivers/ESC/AX58100/esc_hw.c **** /** ESC interrupt disable function by the Slave stack in IRQ mode.
+ 205:Drivers/ESC/AX58100/esc_hw.c ****  *
+ 206:Drivers/ESC/AX58100/esc_hw.c ****  * @param[in]   mask     = interrupts to disable
+ 207:Drivers/ESC/AX58100/esc_hw.c ****  */
+ 208:Drivers/ESC/AX58100/esc_hw.c **** void ESC_interrupt_disable(uint32_t mask)
+ 209:Drivers/ESC/AX58100/esc_hw.c **** {
+ 392              		.loc 1 209 1 is_stmt 1 view -0
+ 393              		.cfi_startproc
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396              		.loc 1 209 1 is_stmt 0 view .LVU76
+ 397 0000 10B5     		push	{r4, lr}
+ 398              		.cfi_def_cfa_offset 8
+ 399              		.cfi_offset 4, -8
+ 400              		.cfi_offset 14, -4
+ 401 0002 0446     		mov	r4, r0
+ 210:Drivers/ESC/AX58100/esc_hw.c ****     HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
+ 402              		.loc 1 210 5 is_stmt 1 view .LVU77
+ 403 0004 1720     		movs	r0, #23
+ 404              	.LVL31:
+ 405              		.loc 1 210 5 is_stmt 0 view .LVU78
+ 406 0006 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 407              	.LVL32:
+ 211:Drivers/ESC/AX58100/esc_hw.c ****     if (ESCREG_ALEVENT_DC_SYNC0 & mask)
+ 408              		.loc 1 211 5 is_stmt 1 view .LVU79
+ 409              		.loc 1 211 8 is_stmt 0 view .LVU80
+ 410 000a 14F0040F 		tst	r4, #4
+ 411 000e 06D1     		bne	.L35
+ 412              	.L33:
+ 212:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 213:Drivers/ESC/AX58100/esc_hw.c ****         HAL_NVIC_DisableIRQ(EXTI0_IRQn);
+ 214:Drivers/ESC/AX58100/esc_hw.c ****         mask &= ~ESCREG_ALEVENT_DC_SYNC0;
+ 215:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 216:Drivers/ESC/AX58100/esc_hw.c ****     if (ESCREG_ALEVENT_DC_SYNC1 & mask)
+ 413              		.loc 1 216 5 is_stmt 1 view .LVU81
+ 217:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 218:Drivers/ESC/AX58100/esc_hw.c ****         //    mask &= ~ESCREG_ALEVENT_DC_SYNC1;
+ 219:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 414              		.loc 1 219 5 view .LVU82
+ 220:Drivers/ESC/AX58100/esc_hw.c ****     if (ESCREG_ALEVENT_DC_LATCH & mask)
+ 415              		.loc 1 220 5 view .LVU83
+ARM GAS  /tmp/cc1LNz7Z.s 			page 12
+
+
+ 221:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 222:Drivers/ESC/AX58100/esc_hw.c ****         //    mask &= ~ESCREG_ALEVENT_DC_LATCH;
+ 223:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 416              		.loc 1 223 5 view .LVU84
+ 224:Drivers/ESC/AX58100/esc_hw.c **** 
+ 225:Drivers/ESC/AX58100/esc_hw.c ****     ESC_ALeventmaskwrite(~mask & ESC_ALeventmaskread());
+ 417              		.loc 1 225 5 view .LVU85
+ 418              		.loc 1 225 26 is_stmt 0 view .LVU86
+ 419 0010 E443     		mvns	r4, r4
+ 420              	.LVL33:
+ 421              		.loc 1 225 34 view .LVU87
+ 422 0012 FFF7FEFF 		bl	ESC_ALeventmaskread
+ 423              	.LVL34:
+ 424              		.loc 1 225 5 view .LVU88
+ 425 0016 2040     		ands	r0, r0, r4
+ 426 0018 FFF7FEFF 		bl	ESC_ALeventmaskwrite
+ 427              	.LVL35:
+ 226:Drivers/ESC/AX58100/esc_hw.c **** }
+ 428              		.loc 1 226 1 view .LVU89
+ 429 001c 10BD     		pop	{r4, pc}
+ 430              	.LVL36:
+ 431              	.L35:
+ 213:Drivers/ESC/AX58100/esc_hw.c ****         mask &= ~ESCREG_ALEVENT_DC_SYNC0;
+ 432              		.loc 1 213 9 is_stmt 1 view .LVU90
+ 433 001e 0620     		movs	r0, #6
+ 434 0020 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 435              	.LVL37:
+ 214:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 436              		.loc 1 214 9 view .LVU91
+ 214:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 437              		.loc 1 214 14 is_stmt 0 view .LVU92
+ 438 0024 24F00404 		bic	r4, r4, #4
+ 439              	.LVL38:
+ 214:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 440              		.loc 1 214 14 view .LVU93
+ 441 0028 F2E7     		b	.L33
+ 442              		.cfi_endproc
+ 443              	.LFE137:
+ 445              		.section	.text.ESC_enable_DC,"ax",%progbits
+ 446              		.align	1
+ 447              		.global	ESC_enable_DC
+ 448              		.syntax unified
+ 449              		.thumb
+ 450              		.thumb_func
+ 452              	ESC_enable_DC:
+ 453              	.LFB138:
+ 227:Drivers/ESC/AX58100/esc_hw.c **** 
+ 228:Drivers/ESC/AX58100/esc_hw.c **** /** ESC enable Distributed Clocks (DC)
+ 229:Drivers/ESC/AX58100/esc_hw.c ****  *
+ 230:Drivers/ESC/AX58100/esc_hw.c ****  * @return  SYNC0 cycle time
+ 231:Drivers/ESC/AX58100/esc_hw.c ****  */
+ 232:Drivers/ESC/AX58100/esc_hw.c **** uint32_t ESC_enable_DC()
+ 233:Drivers/ESC/AX58100/esc_hw.c **** {
+ 454              		.loc 1 233 1 is_stmt 1 view -0
+ 455              		.cfi_startproc
+ 456              		@ args = 0, pretend = 0, frame = 16
+ 457              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc1LNz7Z.s 			page 13
+
+
+ 458 0000 10B5     		push	{r4, lr}
+ 459              		.cfi_def_cfa_offset 8
+ 460              		.cfi_offset 4, -8
+ 461              		.cfi_offset 14, -4
+ 462 0002 84B0     		sub	sp, sp, #16
+ 463              		.cfi_def_cfa_offset 24
+ 234:Drivers/ESC/AX58100/esc_hw.c ****     uint8_t data = 0x00;
+ 464              		.loc 1 234 5 view .LVU95
+ 465              		.loc 1 234 13 is_stmt 0 view .LVU96
+ 466 0004 0023     		movs	r3, #0
+ 467 0006 8DF80F30 		strb	r3, [sp, #15]
+ 235:Drivers/ESC/AX58100/esc_hw.c **** 
+ 236:Drivers/ESC/AX58100/esc_hw.c ****     // check DC Sync Out bit: 0x140:10
+ 237:Drivers/ESC/AX58100/esc_hw.c ****     ESC_read(ESCREG_ESC_CONFIG, &data, sizeof(data));
+ 468              		.loc 1 237 5 is_stmt 1 view .LVU97
+ 469 000a 0122     		movs	r2, #1
+ 470 000c 0DF10F01 		add	r1, sp, #15
+ 471 0010 40F24110 		movw	r0, #321
+ 472 0014 FFF7FEFF 		bl	ESC_read
+ 473              	.LVL39:
+ 238:Drivers/ESC/AX58100/esc_hw.c ****     if (!(data & DC_SYNC_OUT))
+ 474              		.loc 1 238 5 view .LVU98
+ 475              		.loc 1 238 16 is_stmt 0 view .LVU99
+ 476 0018 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 477              		.loc 1 238 8 view .LVU100
+ 478 001c 13F0040F 		tst	r3, #4
+ 479 0020 02D1     		bne	.L43
+ 239:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 240:Drivers/ESC/AX58100/esc_hw.c ****         return 0; // DC sync is not enabled in ESI
+ 480              		.loc 1 240 16 view .LVU101
+ 481 0022 0020     		movs	r0, #0
+ 482              	.L36:
+ 241:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 242:Drivers/ESC/AX58100/esc_hw.c **** 
+ 243:Drivers/ESC/AX58100/esc_hw.c ****     // read set SYNC0 Cycle Time from 0x09A0
+ 244:Drivers/ESC/AX58100/esc_hw.c ****     uint32_t setsync0cycleTime = 0;
+ 245:Drivers/ESC/AX58100/esc_hw.c ****     ESC_read(ESCREG_SYNC0_CYCLE_TIME, &setsync0cycleTime, sizeof(uint32_t));
+ 246:Drivers/ESC/AX58100/esc_hw.c ****     setsync0cycleTime = etohl(setsync0cycleTime);
+ 247:Drivers/ESC/AX58100/esc_hw.c **** 
+ 248:Drivers/ESC/AX58100/esc_hw.c ****     // check Sync Unit assign 0x0980:0 ( 0 for ECAT, 1 for PDI )
+ 249:Drivers/ESC/AX58100/esc_hw.c ****     ESC_read(ESCREG_CYCLIC_UNIT_CONTROL, &data, sizeof(data));
+ 250:Drivers/ESC/AX58100/esc_hw.c ****     if (data == SYNC_OUT_PDI_CONTROL)
+ 251:Drivers/ESC/AX58100/esc_hw.c ****     {
+ 252:Drivers/ESC/AX58100/esc_hw.c ****         // Sync Unit assigned to PDI, configuration needs to be finished by slave
+ 253:Drivers/ESC/AX58100/esc_hw.c **** 
+ 254:Drivers/ESC/AX58100/esc_hw.c ****         // set sync start time: read system time, add offset for writing start time and activation
+ 255:Drivers/ESC/AX58100/esc_hw.c ****         ESC_read(ESCREG_LOCALTIME, (void *)&ESCvar.Time, sizeof(ESCvar.Time));
+ 256:Drivers/ESC/AX58100/esc_hw.c ****         ESCvar.Time = etohl(ESCvar.Time);
+ 257:Drivers/ESC/AX58100/esc_hw.c ****         uint32_t startTime = ESCvar.Time + SYNC_START_OFFSET;
+ 258:Drivers/ESC/AX58100/esc_hw.c **** 
+ 259:Drivers/ESC/AX58100/esc_hw.c ****         ESC_write(ESCREG_SYNC_START_TIME, &startTime, sizeof(startTime));
+ 260:Drivers/ESC/AX58100/esc_hw.c **** 
+ 261:Drivers/ESC/AX58100/esc_hw.c ****         // activate cyclic operation and SYNC0
+ 262:Drivers/ESC/AX58100/esc_hw.c ****         ESC_read(ESCREG_SYNC_ACT, &data, sizeof(data));
+ 263:Drivers/ESC/AX58100/esc_hw.c ****         data = data | ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN;
+ 264:Drivers/ESC/AX58100/esc_hw.c ****         ESC_write(ESCREG_SYNC_ACT, &data, sizeof(data));
+ 265:Drivers/ESC/AX58100/esc_hw.c ****         data = 0x00;
+ARM GAS  /tmp/cc1LNz7Z.s 			page 14
+
+
+ 266:Drivers/ESC/AX58100/esc_hw.c ****         while (!(data & (ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN)))
+ 267:Drivers/ESC/AX58100/esc_hw.c ****         {
+ 268:Drivers/ESC/AX58100/esc_hw.c ****             ESC_read(ESCREG_SYNC_ACT, &data, sizeof(data));
+ 269:Drivers/ESC/AX58100/esc_hw.c ****         }
+ 270:Drivers/ESC/AX58100/esc_hw.c ****     }
+ 271:Drivers/ESC/AX58100/esc_hw.c **** 
+ 272:Drivers/ESC/AX58100/esc_hw.c ****     return setsync0cycleTime;
+ 273:Drivers/ESC/AX58100/esc_hw.c **** }...
+ 483              		.loc 1 273 1 view .LVU102
+ 484 0024 04B0     		add	sp, sp, #16
+ 485              		.cfi_remember_state
+ 486              		.cfi_def_cfa_offset 8
+ 487              		@ sp needed
+ 488 0026 10BD     		pop	{r4, pc}
+ 489              	.L43:
+ 490              		.cfi_restore_state
+ 244:Drivers/ESC/AX58100/esc_hw.c ****     uint32_t setsync0cycleTime = 0;
+ 491              		.loc 1 244 5 is_stmt 1 view .LVU103
+ 244:Drivers/ESC/AX58100/esc_hw.c ****     uint32_t setsync0cycleTime = 0;
+ 492              		.loc 1 244 14 is_stmt 0 view .LVU104
+ 493 0028 0023     		movs	r3, #0
+ 494 002a 0293     		str	r3, [sp, #8]
+ 245:Drivers/ESC/AX58100/esc_hw.c ****     ESC_read(ESCREG_SYNC0_CYCLE_TIME, &setsync0cycleTime, sizeof(uint32_t));
+ 495              		.loc 1 245 5 is_stmt 1 view .LVU105
+ 496 002c 0422     		movs	r2, #4
+ 497 002e 02A9     		add	r1, sp, #8
+ 498 0030 4FF41A60 		mov	r0, #2464
+ 499 0034 FFF7FEFF 		bl	ESC_read
+ 500              	.LVL40:
+ 246:Drivers/ESC/AX58100/esc_hw.c ****     setsync0cycleTime = etohl(setsync0cycleTime);
+ 501              		.loc 1 246 5 view .LVU106
+ 249:Drivers/ESC/AX58100/esc_hw.c ****     ESC_read(ESCREG_CYCLIC_UNIT_CONTROL, &data, sizeof(data));
+ 502              		.loc 1 249 5 view .LVU107
+ 503 0038 0122     		movs	r2, #1
+ 504 003a 0DF10F01 		add	r1, sp, #15
+ 505 003e 4FF41860 		mov	r0, #2432
+ 506 0042 FFF7FEFF 		bl	ESC_read
+ 507              	.LVL41:
+ 250:Drivers/ESC/AX58100/esc_hw.c ****     if (data == SYNC_OUT_PDI_CONTROL)
+ 508              		.loc 1 250 5 view .LVU108
+ 250:Drivers/ESC/AX58100/esc_hw.c ****     if (data == SYNC_OUT_PDI_CONTROL)
+ 509              		.loc 1 250 14 is_stmt 0 view .LVU109
+ 510 0046 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 250:Drivers/ESC/AX58100/esc_hw.c ****     if (data == SYNC_OUT_PDI_CONTROL)
+ 511              		.loc 1 250 8 view .LVU110
+ 512 004a 012B     		cmp	r3, #1
+ 513 004c 01D0     		beq	.L44
+ 514              	.L38:
+ 272:Drivers/ESC/AX58100/esc_hw.c ****     return setsync0cycleTime;
+ 515              		.loc 1 272 5 is_stmt 1 view .LVU111
+ 272:Drivers/ESC/AX58100/esc_hw.c ****     return setsync0cycleTime;
+ 516              		.loc 1 272 12 is_stmt 0 view .LVU112
+ 517 004e 0298     		ldr	r0, [sp, #8]
+ 518 0050 E8E7     		b	.L36
+ 519              	.L44:
+ 520              	.LBB3:
+ 255:Drivers/ESC/AX58100/esc_hw.c ****         ESC_read(ESCREG_LOCALTIME, (void *)&ESCvar.Time, sizeof(ESCvar.Time));
+ARM GAS  /tmp/cc1LNz7Z.s 			page 15
+
+
+ 521              		.loc 1 255 9 is_stmt 1 view .LVU113
+ 522 0052 1E4C     		ldr	r4, .L45
+ 523 0054 0422     		movs	r2, #4
+ 524 0056 2146     		mov	r1, r4
+ 525 0058 4FF41160 		mov	r0, #2320
+ 526 005c FFF7FEFF 		bl	ESC_read
+ 527              	.LVL42:
+ 256:Drivers/ESC/AX58100/esc_hw.c ****         ESCvar.Time = etohl(ESCvar.Time);
+ 528              		.loc 1 256 9 view .LVU114
+ 256:Drivers/ESC/AX58100/esc_hw.c ****         ESCvar.Time = etohl(ESCvar.Time);
+ 529              		.loc 1 256 23 is_stmt 0 view .LVU115
+ 530 0060 2146     		mov	r1, r4
+ 531 0062 51F8D839 		ldr	r3, [r1], #-216
+ 256:Drivers/ESC/AX58100/esc_hw.c ****         ESCvar.Time = etohl(ESCvar.Time);
+ 532              		.loc 1 256 21 view .LVU116
+ 533 0066 C1F8D830 		str	r3, [r1, #216]
+ 257:Drivers/ESC/AX58100/esc_hw.c ****         uint32_t startTime = ESCvar.Time + SYNC_START_OFFSET;
+ 534              		.loc 1 257 9 is_stmt 1 view .LVU117
+ 257:Drivers/ESC/AX58100/esc_hw.c ****         uint32_t startTime = ESCvar.Time + SYNC_START_OFFSET;
+ 535              		.loc 1 257 36 is_stmt 0 view .LVU118
+ 536 006a D1F8D820 		ldr	r2, [r1, #216]
+ 257:Drivers/ESC/AX58100/esc_hw.c ****         uint32_t startTime = ESCvar.Time + SYNC_START_OFFSET;
+ 537              		.loc 1 257 42 view .LVU119
+ 538 006e 184B     		ldr	r3, .L45+4
+ 539 0070 1344     		add	r3, r3, r2
+ 257:Drivers/ESC/AX58100/esc_hw.c ****         uint32_t startTime = ESCvar.Time + SYNC_START_OFFSET;
+ 540              		.loc 1 257 18 view .LVU120
+ 541 0072 0193     		str	r3, [sp, #4]
+ 259:Drivers/ESC/AX58100/esc_hw.c ****         ESC_write(ESCREG_SYNC_START_TIME, &startTime, sizeof(startTime));
+ 542              		.loc 1 259 9 is_stmt 1 view .LVU121
+ 543 0074 0422     		movs	r2, #4
+ 544 0076 0DEB0201 		add	r1, sp, r2
+ 545 007a 4FF41960 		mov	r0, #2448
+ 546 007e FFF7FEFF 		bl	ESC_write
+ 547              	.LVL43:
+ 262:Drivers/ESC/AX58100/esc_hw.c ****         ESC_read(ESCREG_SYNC_ACT, &data, sizeof(data));
+ 548              		.loc 1 262 9 view .LVU122
+ 549 0082 0122     		movs	r2, #1
+ 550 0084 0DF10F01 		add	r1, sp, #15
+ 551 0088 40F68110 		movw	r0, #2433
+ 552 008c FFF7FEFF 		bl	ESC_read
+ 553              	.LVL44:
+ 263:Drivers/ESC/AX58100/esc_hw.c ****         data = data | ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN;
+ 554              		.loc 1 263 9 view .LVU123
+ 263:Drivers/ESC/AX58100/esc_hw.c ****         data = data | ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN;
+ 555              		.loc 1 263 14 is_stmt 0 view .LVU124
+ 556 0090 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 557 0094 43F00303 		orr	r3, r3, #3
+ 558 0098 8DF80F30 		strb	r3, [sp, #15]
+ 264:Drivers/ESC/AX58100/esc_hw.c ****         ESC_write(ESCREG_SYNC_ACT, &data, sizeof(data));
+ 559              		.loc 1 264 9 is_stmt 1 view .LVU125
+ 560 009c 0122     		movs	r2, #1
+ 561 009e 0DF10F01 		add	r1, sp, #15
+ 562 00a2 40F68110 		movw	r0, #2433
+ 563 00a6 FFF7FEFF 		bl	ESC_write
+ 564              	.LVL45:
+ 265:Drivers/ESC/AX58100/esc_hw.c ****         data = 0x00;
+ARM GAS  /tmp/cc1LNz7Z.s 			page 16
+
+
+ 565              		.loc 1 265 9 view .LVU126
+ 265:Drivers/ESC/AX58100/esc_hw.c ****         data = 0x00;
+ 566              		.loc 1 265 14 is_stmt 0 view .LVU127
+ 567 00aa 0023     		movs	r3, #0
+ 568 00ac 8DF80F30 		strb	r3, [sp, #15]
+ 266:Drivers/ESC/AX58100/esc_hw.c ****         while (!(data & (ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN)))
+ 569              		.loc 1 266 9 is_stmt 1 view .LVU128
+ 266:Drivers/ESC/AX58100/esc_hw.c ****         while (!(data & (ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN)))
+ 570              		.loc 1 266 15 is_stmt 0 view .LVU129
+ 571 00b0 06E0     		b	.L39
+ 572              	.L40:
+ 268:Drivers/ESC/AX58100/esc_hw.c ****             ESC_read(ESCREG_SYNC_ACT, &data, sizeof(data));
+ 573              		.loc 1 268 13 is_stmt 1 view .LVU130
+ 574 00b2 0122     		movs	r2, #1
+ 575 00b4 0DF10F01 		add	r1, sp, #15
+ 576 00b8 40F68110 		movw	r0, #2433
+ 577 00bc FFF7FEFF 		bl	ESC_read
+ 578              	.LVL46:
+ 579              	.L39:
+ 266:Drivers/ESC/AX58100/esc_hw.c ****         while (!(data & (ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN)))
+ 580              		.loc 1 266 16 view .LVU131
+ 266:Drivers/ESC/AX58100/esc_hw.c ****         while (!(data & (ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN)))
+ 581              		.loc 1 266 23 is_stmt 0 view .LVU132
+ 582 00c0 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 266:Drivers/ESC/AX58100/esc_hw.c ****         while (!(data & (ESCREG_SYNC_ACT_ACTIVATED | ESCREG_SYNC_SYNC0_EN)))
+ 583              		.loc 1 266 16 view .LVU133
+ 584 00c4 13F0030F 		tst	r3, #3
+ 585 00c8 F3D0     		beq	.L40
+ 586 00ca C0E7     		b	.L38
+ 587              	.L46:
+ 588              		.align	2
+ 589              	.L45:
+ 590 00cc D8000000 		.word	ESCvar+216
+ 591 00d0 B8BF2300 		.word	2342840
+ 592              	.LBE3:
+ 593              		.cfi_endproc
+ 594              	.LFE138:
+ 596              		.section	.bss.read_termination,"aw",%nobits
+ 597              		.align	2
+ 600              	read_termination:
+ 601 0000 00000000 		.space	128
+ 601      00000000 
+ 601      00000000 
+ 601      00000000 
+ 601      00000000 
+ 602              		.text
+ 603              	.Letext0:
+ 604              		.file 2 "/home/evence/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-no
+ 605              		.file 3 "/home/evence/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-no
+ 606              		.file 4 "/home/evence/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-no
+ 607              		.file 5 "Drivers/SOES/Inc/esc.h"
+ 608              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 609              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 610              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 611              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 612              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 613              		.file 11 "Core/Inc/main.h"
+ARM GAS  /tmp/cc1LNz7Z.s 			page 17
+
+
+ 614              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ARM GAS  /tmp/cc1LNz7Z.s 			page 18
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 esc_hw.c
+     /tmp/cc1LNz7Z.s:21     .text.esc_address:0000000000000000 $t
+     /tmp/cc1LNz7Z.s:26     .text.esc_address:0000000000000000 esc_address
+     /tmp/cc1LNz7Z.s:85     .text.esc_address:0000000000000040 $d
+     /tmp/cc1LNz7Z.s:91     .text.ESC_read:0000000000000000 $t
+     /tmp/cc1LNz7Z.s:97     .text.ESC_read:0000000000000000 ESC_read
+     /tmp/cc1LNz7Z.s:172    .text.ESC_read:0000000000000054 $d
+     /tmp/cc1LNz7Z.s:600    .bss.read_termination:0000000000000000 read_termination
+     /tmp/cc1LNz7Z.s:179    .text.ESC_write:0000000000000000 $t
+     /tmp/cc1LNz7Z.s:185    .text.ESC_write:0000000000000000 ESC_write
+     /tmp/cc1LNz7Z.s:242    .text.ESC_write:0000000000000038 $d
+     /tmp/cc1LNz7Z.s:248    .text.ESC_reset:0000000000000000 $t
+     /tmp/cc1LNz7Z.s:254    .text.ESC_reset:0000000000000000 ESC_reset
+     /tmp/cc1LNz7Z.s:302    .text.ESC_reset:0000000000000024 $d
+     /tmp/cc1LNz7Z.s:307    .text.ESC_init:0000000000000000 $t
+     /tmp/cc1LNz7Z.s:313    .text.ESC_init:0000000000000000 ESC_init
+     /tmp/cc1LNz7Z.s:331    .text.ESC_init:000000000000000c $d
+     /tmp/cc1LNz7Z.s:336    .text.ESC_interrupt_enable:0000000000000000 $t
+     /tmp/cc1LNz7Z.s:342    .text.ESC_interrupt_enable:0000000000000000 ESC_interrupt_enable
+     /tmp/cc1LNz7Z.s:383    .text.ESC_interrupt_disable:0000000000000000 $t
+     /tmp/cc1LNz7Z.s:389    .text.ESC_interrupt_disable:0000000000000000 ESC_interrupt_disable
+     /tmp/cc1LNz7Z.s:446    .text.ESC_enable_DC:0000000000000000 $t
+     /tmp/cc1LNz7Z.s:452    .text.ESC_enable_DC:0000000000000000 ESC_enable_DC
+     /tmp/cc1LNz7Z.s:590    .text.ESC_enable_DC:00000000000000cc $d
+     /tmp/cc1LNz7Z.s:597    .bss.read_termination:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_SPI_Transmit
+HAL_SPI_Receive
+hspi2
+ESCvar
+HAL_GPIO_WritePin
+is_esc_reset
+ESC_ALeventmaskread
+ESC_ALeventmaskwrite
+HAL_NVIC_DisableIRQ
