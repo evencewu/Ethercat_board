@@ -25,6 +25,10 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
+ Drivers/SOES/Inc/esc.h Drivers/SOES/Inc/cc.h Drivers/SOES/Inc/esc_coe.h \
+ Drivers/SOES/Inc/options.h Drivers/soes-esi/Inc/ecat_options.h \
+ Drivers/SOES/Inc/ecat_slv.h Drivers/SOES/Inc/esc.h Core/Inc/ecatapp.h \
+ Core/Inc/pdo_override.h Drivers/soes-esi/Inc/utypes.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  Core/Inc/FreeRTOSConfig.h \
@@ -65,6 +69,16 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+Drivers/SOES/Inc/esc.h:
+Drivers/SOES/Inc/cc.h:
+Drivers/SOES/Inc/esc_coe.h:
+Drivers/SOES/Inc/options.h:
+Drivers/soes-esi/Inc/ecat_options.h:
+Drivers/SOES/Inc/ecat_slv.h:
+Drivers/SOES/Inc/esc.h:
+Core/Inc/ecatapp.h:
+Core/Inc/pdo_override.h:
+Drivers/soes-esi/Inc/utypes.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:

@@ -1,0 +1,276 @@
+ARM GAS  /tmp/ccRz1glR.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ecatapp.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ecatapp,"ax",%progbits
+  20              		.align	1
+  21              		.global	ecatapp
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	ecatapp:
+  27              	.LFB1:
+  28              		.file 1 "Core/Src/ecatapp.c"
+   1:Core/Src/ecatapp.c **** #include "esc.h"
+   2:Core/Src/ecatapp.c **** #include "ecat_slv.h"
+   3:Core/Src/ecatapp.c **** #include "utypes.h"
+   4:Core/Src/ecatapp.c **** 
+   5:Core/Src/ecatapp.c **** #include "pdo_override.h"
+   6:Core/Src/ecatapp.c **** #include "ecatapp.h"
+   7:Core/Src/ecatapp.c **** 
+   8:Core/Src/ecatapp.c **** 
+   9:Core/Src/ecatapp.c **** /* CANopen Object Dictionary */
+  10:Core/Src/ecatapp.c **** 
+  11:Core/Src/ecatapp.c **** /* Application hook declaration */
+  12:Core/Src/ecatapp.c **** void ecatapp(void);
+  13:Core/Src/ecatapp.c **** 
+  14:Core/Src/ecatapp.c **** /* SOES configuration */
+  15:Core/Src/ecatapp.c **** /*
+  16:Core/Src/ecatapp.c **** static esc_cfg_t config = { 
+  17:Core/Src/ecatapp.c ****     .user_arg = "ax58100",
+  18:Core/Src/ecatapp.c ****     .use_interrupt = 1,
+  19:Core/Src/ecatapp.c ****     .watchdog_cnt = INT32_MAX,
+  20:Core/Src/ecatapp.c ****     .set_defaults_hook = NULL,
+  21:Core/Src/ecatapp.c ****     .pre_state_change_hook = NULL,
+  22:Core/Src/ecatapp.c ****     .post_state_change_hook = NULL,
+  23:Core/Src/ecatapp.c ****     .application_hook = ecatapp,
+  24:Core/Src/ecatapp.c ****     .safeoutput_override = NULL,
+  25:Core/Src/ecatapp.c ****     .pre_object_download_hook = NULL,
+  26:Core/Src/ecatapp.c ****     .post_object_download_hook = NULL,
+  27:Core/Src/ecatapp.c ****     .rxpdo_override = rxpdo_override,
+  28:Core/Src/ecatapp.c ****     .txpdo_override = txpdo_override,
+  29:Core/Src/ecatapp.c ****     .esc_hw_interrupt_enable = ESC_interrupt_enable,
+  30:Core/Src/ecatapp.c ****     .esc_hw_interrupt_disable = ESC_interrupt_disable,
+ARM GAS  /tmp/ccRz1glR.s 			page 2
+
+
+  31:Core/Src/ecatapp.c ****     .esc_hw_eep_handler = NULL,
+  32:Core/Src/ecatapp.c ****     .esc_check_dc_handler = NULL,
+  33:Core/Src/ecatapp.c **** };
+  34:Core/Src/ecatapp.c **** */
+  35:Core/Src/ecatapp.c **** static esc_cfg_t config = { 
+  36:Core/Src/ecatapp.c ****     .user_arg = "ax58100",
+  37:Core/Src/ecatapp.c ****     .use_interrupt = 1,
+  38:Core/Src/ecatapp.c ****     .watchdog_cnt = INT32_MAX,
+  39:Core/Src/ecatapp.c ****     .set_defaults_hook = NULL,
+  40:Core/Src/ecatapp.c ****     .pre_state_change_hook = NULL,
+  41:Core/Src/ecatapp.c ****     .post_state_change_hook = NULL,
+  42:Core/Src/ecatapp.c ****     .application_hook = ecatapp,
+  43:Core/Src/ecatapp.c ****     .safeoutput_override = NULL,
+  44:Core/Src/ecatapp.c ****     .pre_object_download_hook = NULL,
+  45:Core/Src/ecatapp.c ****     .post_object_download_hook = NULL,
+  46:Core/Src/ecatapp.c ****     .rxpdo_override = NULL,
+  47:Core/Src/ecatapp.c ****     .txpdo_override = NULL,
+  48:Core/Src/ecatapp.c ****     .esc_hw_interrupt_enable = ESC_interrupt_enable,
+  49:Core/Src/ecatapp.c ****     .esc_hw_interrupt_disable = ESC_interrupt_disable,
+  50:Core/Src/ecatapp.c ****     .esc_hw_eep_handler = NULL,
+  51:Core/Src/ecatapp.c ****     .esc_check_dc_handler = NULL,
+  52:Core/Src/ecatapp.c **** };
+  53:Core/Src/ecatapp.c **** 
+  54:Core/Src/ecatapp.c **** /*这个结构体是用来配置EtherCAT（以太网通信）的用户参数的。它包含了以�
+  55:Core/Src/ecatapp.c **** 
+  56:Core/Src/ecatapp.c **** - `user_arg`：用户自定义参数，可以在回调函数中使用。
+  57:Core/Src/ecatapp.c **** - `use_interrupt`：是否使用中断来处理EtherCAT通信。
+  58:Core/Src/ecatapp.c **** - `watchdog_cnt`：看门狗计数器，用于监控EtherCAT通信的超时情况。
+  59:Core/Src/ecatapp.c **** - `skip_default_initialization`：是否跳过默认初始化。
+  60:Core/Src/ecatapp.c **** - `set_defaults_hook`：设置默认值的回调函数。
+  61:Core/Src/ecatapp.c **** - `pre_state_change_hook`：状态改变前的回调函数。
+  62:Core/Src/ecatapp.c **** - `post_state_change_hook`：状态改变后的回调函数。
+  63:Core/Src/ecatapp.c **** - `application_hook`：应用程序的回调函数。
+  64:Core/Src/ecatapp.c **** - `safeoutput_override`：安全输出的回调函数。
+  65:Core/Src/ecatapp.c **** - `pre_object_download_hook`：对象下载前的回调函数。
+  66:Core/Src/ecatapp.c **** - `post_object_download_hook`：对象下载后的回调函数。
+  67:Core/Src/ecatapp.c **** - `pre_object_upload_hook`：对象上传前的回调函数。
+  68:Core/Src/ecatapp.c **** - `post_object_upload_hook`：对象上传后的回调函数。
+  69:Core/Src/ecatapp.c **** - `rxpdo_override`：接收PDO（Process Data Object）的回调函数。
+  70:Core/Src/ecatapp.c **** - `txpdo_override`：发送PDO的回调函数。
+  71:Core/Src/ecatapp.c **** - `esc_hw_interrupt_enable`：使能硬件中断的回调函数。
+  72:Core/Src/ecatapp.c **** - `esc_hw_interrupt_disable`：禁用硬件中断的回调函数。
+  73:Core/Src/ecatapp.c **** - `esc_hw_eep_handler`：EEP（EtherCAT EEPROM）处理的回调函数。
+  74:Core/Src/ecatapp.c **** - `esc_check_dc_handler`：检查直流（DC）的回调函数。
+  75:Core/Src/ecatapp.c **** 
+  76:Core/Src/ecatapp.c **** 用户可以根据自己的需求配置这些回调函数，以实现对EtherCAT通信的控制和�
+  77:Core/Src/ecatapp.c **** 
+  78:Core/Src/ecatapp.c **** void ecatapp_init(void) {
+  79:Core/Src/ecatapp.c ****     ecat_slv_init(&config);
+  80:Core/Src/ecatapp.c **** 	//init_override();
+  81:Core/Src/ecatapp.c **** }
+  82:Core/Src/ecatapp.c **** 
+  83:Core/Src/ecatapp.c **** void ecatapp()
+  84:Core/Src/ecatapp.c **** {
+  29              		.loc 1 84 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccRz1glR.s 			page 3
+
+
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  85:Core/Src/ecatapp.c **** 
+  86:Core/Src/ecatapp.c **** }
+  34              		.loc 1 86 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE1:
+  39              		.section	.text.ecatapp_init,"ax",%progbits
+  40              		.align	1
+  41              		.global	ecatapp_init
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	ecatapp_init:
+  47              	.LFB0:
+  78:Core/Src/ecatapp.c ****     ecat_slv_init(&config);
+  48              		.loc 1 78 25 view -0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52 0000 08B5     		push	{r3, lr}
+  53              		.cfi_def_cfa_offset 8
+  54              		.cfi_offset 3, -8
+  55              		.cfi_offset 14, -4
+  79:Core/Src/ecatapp.c **** 	//init_override();
+  56              		.loc 1 79 5 view .LVU3
+  57 0002 0248     		ldr	r0, .L4
+  58 0004 FFF7FEFF 		bl	ecat_slv_init
+  59              	.LVL0:
+  81:Core/Src/ecatapp.c **** 
+  60              		.loc 1 81 1 is_stmt 0 view .LVU4
+  61 0008 08BD     		pop	{r3, pc}
+  62              	.L5:
+  63 000a 00BF     		.align	2
+  64              	.L4:
+  65 000c 00000000 		.word	.LANCHOR0
+  66              		.cfi_endproc
+  67              	.LFE0:
+  69              		.section	.text.cb_get_inputs,"ax",%progbits
+  70              		.align	1
+  71              		.global	cb_get_inputs
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  76              	cb_get_inputs:
+  77              	.LFB2:
+  87:Core/Src/ecatapp.c **** 
+  88:Core/Src/ecatapp.c **** void cb_get_inputs()
+  89:Core/Src/ecatapp.c **** {
+  78              		.loc 1 89 1 is_stmt 1 view -0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  90:Core/Src/ecatapp.c ****     /* SOES reqires this function but nothing to do here in CiA402 app */
+  91:Core/Src/ecatapp.c **** }
+ARM GAS  /tmp/ccRz1glR.s 			page 4
+
+
+  83              		.loc 1 91 1 view .LVU6
+  84 0000 7047     		bx	lr
+  85              		.cfi_endproc
+  86              	.LFE2:
+  88              		.section	.text.cb_set_outputs,"ax",%progbits
+  89              		.align	1
+  90              		.global	cb_set_outputs
+  91              		.syntax unified
+  92              		.thumb
+  93              		.thumb_func
+  95              	cb_set_outputs:
+  96              	.LFB3:
+  92:Core/Src/ecatapp.c **** 
+  93:Core/Src/ecatapp.c **** 
+  94:Core/Src/ecatapp.c **** void cb_set_outputs()
+  95:Core/Src/ecatapp.c **** {
+  97              		.loc 1 95 1 view -0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+  96:Core/Src/ecatapp.c ****     /* SOES reqires this function but nothing to do here in CiA402 app */
+  97:Core/Src/ecatapp.c **** }
+ 102              		.loc 1 97 1 view .LVU8
+ 103 0000 7047     		bx	lr
+ 104              		.cfi_endproc
+ 105              	.LFE3:
+ 107              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 108              		.align	2
+ 109              	.LC0:
+ 110 0000 61783538 		.ascii	"ax58100\000"
+ 110      31303000 
+ 111              		.section	.bss.pdi_dma_transmission,"aw",%nobits
+ 114              	pdi_dma_transmission:
+ 115 0000 00       		.space	1
+ 116              		.section	.data.config,"aw"
+ 117              		.align	2
+ 118              		.set	.LANCHOR0,. + 0
+ 121              	config:
+ 122 0000 00000000 		.word	.LC0
+ 123 0004 01000000 		.word	1
+ 124 0008 FFFFFF7F 		.word	2147483647
+ 125 000c 00000000 		.space	4
+ 126 0010 00000000 		.word	0
+ 127 0014 00000000 		.word	0
+ 128 0018 00000000 		.word	0
+ 129 001c 00000000 		.word	ecatapp
+ 130 0020 00000000 		.word	0
+ 131 0024 00000000 		.word	0
+ 132 0028 00000000 		.word	0
+ 133 002c 00000000 		.space	8
+ 133      00000000 
+ 134 0034 00000000 		.word	0
+ 135 0038 00000000 		.word	0
+ 136 003c 00000000 		.word	ESC_interrupt_enable
+ 137 0040 00000000 		.word	ESC_interrupt_disable
+ 138 0044 00000000 		.word	0
+ARM GAS  /tmp/ccRz1glR.s 			page 5
+
+
+ 139 0048 00000000 		.word	0
+ 140              		.text
+ 141              	.Letext0:
+ 142              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 143              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 144              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 145              		.file 5 "Drivers/SOES/Inc/esc.h"
+ 146              		.file 6 "Core/Inc/pdo_override.h"
+ 147              		.file 7 "Drivers/SOES/Inc/ecat_slv.h"
+ARM GAS  /tmp/ccRz1glR.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 ecatapp.c
+     /tmp/ccRz1glR.s:20     .text.ecatapp:0000000000000000 $t
+     /tmp/ccRz1glR.s:26     .text.ecatapp:0000000000000000 ecatapp
+     /tmp/ccRz1glR.s:40     .text.ecatapp_init:0000000000000000 $t
+     /tmp/ccRz1glR.s:46     .text.ecatapp_init:0000000000000000 ecatapp_init
+     /tmp/ccRz1glR.s:65     .text.ecatapp_init:000000000000000c $d
+     /tmp/ccRz1glR.s:70     .text.cb_get_inputs:0000000000000000 $t
+     /tmp/ccRz1glR.s:76     .text.cb_get_inputs:0000000000000000 cb_get_inputs
+     /tmp/ccRz1glR.s:89     .text.cb_set_outputs:0000000000000000 $t
+     /tmp/ccRz1glR.s:95     .text.cb_set_outputs:0000000000000000 cb_set_outputs
+     /tmp/ccRz1glR.s:108    .rodata.str1.4:0000000000000000 $d
+     /tmp/ccRz1glR.s:114    .bss.pdi_dma_transmission:0000000000000000 pdi_dma_transmission
+     /tmp/ccRz1glR.s:115    .bss.pdi_dma_transmission:0000000000000000 $d
+     /tmp/ccRz1glR.s:117    .data.config:0000000000000000 $d
+     /tmp/ccRz1glR.s:121    .data.config:0000000000000000 config
+
+UNDEFINED SYMBOLS
+ecat_slv_init
+ESC_interrupt_enable
+ESC_interrupt_disable

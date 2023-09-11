@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccNTgaNy.s 			page 1
+ARM GAS  /tmp/ccinQZ47.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -19,16 +19,16 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.file 1 "Core/Src/stm32f4xx_hal_timebase_tim.c"
-  20              		.section	.text.HAL_InitTick,"ax",%progbits
-  21              		.align	1
-  22              		.global	HAL_InitTick
-  23              		.syntax unified
-  24              		.thumb
-  25              		.thumb_func
-  27              	HAL_InitTick:
-  28              	.LVL0:
-  29              	.LFB130:
+  19              		.section	.text.HAL_InitTick,"ax",%progbits
+  20              		.align	1
+  21              		.global	HAL_InitTick
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	HAL_InitTick:
+  27              	.LVL0:
+  28              	.LFB130:
+  29              		.file 1 "Core/Src/stm32f4xx_hal_timebase_tim.c"
    1:Core/Src/stm32f4xx_hal_timebase_tim.c **** /* USER CODE BEGIN Header */
    2:Core/Src/stm32f4xx_hal_timebase_tim.c **** /**
    3:Core/Src/stm32f4xx_hal_timebase_tim.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
   27:Core/Src/stm32f4xx_hal_timebase_tim.c **** /* Private variables ---------------------------------------------------------*/
   28:Core/Src/stm32f4xx_hal_timebase_tim.c **** TIM_HandleTypeDef        htim6;
   29:Core/Src/stm32f4xx_hal_timebase_tim.c **** /* Private function prototypes -----------------------------------------------*/
-ARM GAS  /tmp/ccNTgaNy.s 			page 2
+ARM GAS  /tmp/ccinQZ47.s 			page 2
 
 
   30:Core/Src/stm32f4xx_hal_timebase_tim.c **** /* Private functions ---------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
   62 001a 0193     		str	r3, [sp, #4]
   63              		.loc 1 51 3 view .LVU11
   64 001c 019B     		ldr	r3, [sp, #4]
-ARM GAS  /tmp/ccNTgaNy.s 			page 3
+ARM GAS  /tmp/ccinQZ47.s 			page 3
 
 
   65              	.LBE2:
@@ -165,8 +165,8 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
   69:Core/Src/stm32f4xx_hal_timebase_tim.c ****   uwPrescalerValue = (uint32_t) ((uwTimclock / 1000000U) - 1U);
   89              		.loc 1 69 3 is_stmt 1 view .LVU22
   90              		.loc 1 69 46 is_stmt 0 view .LVU23
-  91 0030 184A     		ldr	r2, .L9+4
-  92 0032 A2FB0323 		umull	r2, r3, r2, r3
+  91 0030 1848     		ldr	r0, .L9+4
+  92 0032 A0FB0323 		umull	r2, r3, r0, r3
   93              	.LVL7:
   94              		.loc 1 69 46 view .LVU24
   95 0036 9B0C     		lsrs	r3, r3, #18
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
   72:Core/Src/stm32f4xx_hal_timebase_tim.c ****   htim6.Instance = TIM6;
   99              		.loc 1 72 3 is_stmt 1 view .LVU26
  100              		.loc 1 72 18 is_stmt 0 view .LVU27
-ARM GAS  /tmp/ccNTgaNy.s 			page 4
+ARM GAS  /tmp/ccinQZ47.s 			page 4
 
 
  101 003a 1748     		ldr	r0, .L9+8
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
   95:Core/Src/stm32f4xx_hal_timebase_tim.c ****         HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
   96:Core/Src/stm32f4xx_hal_timebase_tim.c ****       /* Configure the SysTick IRQ priority */
   97:Core/Src/stm32f4xx_hal_timebase_tim.c ****       if (TickPriority < (1UL << __NVIC_PRIO_BITS))
-ARM GAS  /tmp/ccNTgaNy.s 			page 5
+ARM GAS  /tmp/ccinQZ47.s 			page 5
 
 
   98:Core/Src/stm32f4xx_hal_timebase_tim.c ****       {
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
  163              		.loc 1 92 8 is_stmt 0 view .LVU53
  164 006c 0546     		mov	r5, r0
  165 006e 0028     		cmp	r0, #0
-ARM GAS  /tmp/ccNTgaNy.s 			page 6
+ARM GAS  /tmp/ccinQZ47.s 			page 6
 
 
  166 0070 F2D1     		bne	.L4
@@ -340,7 +340,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
  194              	.L9:
  195 0090 00380240 		.word	1073887232
  196 0094 83DE1B43 		.word	1125899907
- 197 0098 00000000 		.word	htim6
+ 197 0098 00000000 		.word	.LANCHOR0
  198 009c 00100040 		.word	1073745920
  199 00a0 00000000 		.word	uwTickPrio
  200              		.cfi_endproc
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
  115:Core/Src/stm32f4xx_hal_timebase_tim.c ****   * @brief  Suspend Tick increment.
  116:Core/Src/stm32f4xx_hal_timebase_tim.c ****   * @note   Disable the tick increment by disabling TIM6 update interrupt.
  117:Core/Src/stm32f4xx_hal_timebase_tim.c ****   * @param  None
-ARM GAS  /tmp/ccNTgaNy.s 			page 7
+ARM GAS  /tmp/ccinQZ47.s 			page 7
 
 
  118:Core/Src/stm32f4xx_hal_timebase_tim.c ****   * @retval None
@@ -384,7 +384,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
  225              	.L13:
  226 000e 00BF     		.align	2
  227              	.L12:
- 228 0010 00000000 		.word	htim6
+ 228 0010 00000000 		.word	.LANCHOR0
  229              		.cfi_endproc
  230              	.LFE131:
  232              		.section	.text.HAL_ResumeTick,"ax",%progbits
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
  250 0006 43F00103 		orr	r3, r3, #1
  251 000a D360     		str	r3, [r2, #12]
  136:Core/Src/stm32f4xx_hal_timebase_tim.c **** }
-ARM GAS  /tmp/ccNTgaNy.s 			page 8
+ARM GAS  /tmp/ccinQZ47.s 			page 8
 
 
  252              		.loc 1 136 1 is_stmt 0 view .LVU67
@@ -426,45 +426,46 @@ ARM GAS  /tmp/ccNTgaNy.s 			page 1
  254              	.L16:
  255 000e 00BF     		.align	2
  256              	.L15:
- 257 0010 00000000 		.word	htim6
+ 257 0010 00000000 		.word	.LANCHOR0
  258              		.cfi_endproc
  259              	.LFE132:
  261              		.global	htim6
  262              		.section	.bss.htim6,"aw",%nobits
  263              		.align	2
- 266              	htim6:
- 267 0000 00000000 		.space	72
- 267      00000000 
- 267      00000000 
- 267      00000000 
- 267      00000000 
- 268              		.text
- 269              	.Letext0:
- 270              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 271              		.file 3 "/home/evence/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-no
- 272              		.file 4 "/home/evence/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-no
- 273              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 274              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
- 275              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 276              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 277              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 278              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
-ARM GAS  /tmp/ccNTgaNy.s 			page 9
+ 264              		.set	.LANCHOR0,. + 0
+ 267              	htim6:
+ 268 0000 00000000 		.space	72
+ 268      00000000 
+ 268      00000000 
+ 268      00000000 
+ 268      00000000 
+ 269              		.text
+ 270              	.Letext0:
+ 271              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 272              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 273              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 274              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 275              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ 276              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 277              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 278              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 279              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ARM GAS  /tmp/ccinQZ47.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_hal_timebase_tim.c
-     /tmp/ccNTgaNy.s:21     .text.HAL_InitTick:0000000000000000 $t
-     /tmp/ccNTgaNy.s:27     .text.HAL_InitTick:0000000000000000 HAL_InitTick
-     /tmp/ccNTgaNy.s:195    .text.HAL_InitTick:0000000000000090 $d
-     /tmp/ccNTgaNy.s:266    .bss.htim6:0000000000000000 htim6
-     /tmp/ccNTgaNy.s:204    .text.HAL_SuspendTick:0000000000000000 $t
-     /tmp/ccNTgaNy.s:210    .text.HAL_SuspendTick:0000000000000000 HAL_SuspendTick
-     /tmp/ccNTgaNy.s:228    .text.HAL_SuspendTick:0000000000000010 $d
-     /tmp/ccNTgaNy.s:233    .text.HAL_ResumeTick:0000000000000000 $t
-     /tmp/ccNTgaNy.s:239    .text.HAL_ResumeTick:0000000000000000 HAL_ResumeTick
-     /tmp/ccNTgaNy.s:257    .text.HAL_ResumeTick:0000000000000010 $d
-     /tmp/ccNTgaNy.s:263    .bss.htim6:0000000000000000 $d
+     /tmp/ccinQZ47.s:20     .text.HAL_InitTick:0000000000000000 $t
+     /tmp/ccinQZ47.s:26     .text.HAL_InitTick:0000000000000000 HAL_InitTick
+     /tmp/ccinQZ47.s:195    .text.HAL_InitTick:0000000000000090 $d
+     /tmp/ccinQZ47.s:204    .text.HAL_SuspendTick:0000000000000000 $t
+     /tmp/ccinQZ47.s:210    .text.HAL_SuspendTick:0000000000000000 HAL_SuspendTick
+     /tmp/ccinQZ47.s:228    .text.HAL_SuspendTick:0000000000000010 $d
+     /tmp/ccinQZ47.s:233    .text.HAL_ResumeTick:0000000000000000 $t
+     /tmp/ccinQZ47.s:239    .text.HAL_ResumeTick:0000000000000000 HAL_ResumeTick
+     /tmp/ccinQZ47.s:257    .text.HAL_ResumeTick:0000000000000010 $d
+     /tmp/ccinQZ47.s:267    .bss.htim6:0000000000000000 htim6
+     /tmp/ccinQZ47.s:263    .bss.htim6:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_RCC_GetClockConfig

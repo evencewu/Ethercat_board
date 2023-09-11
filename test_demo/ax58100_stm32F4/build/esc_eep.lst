@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccj0hRSc.s 			page 1
+ARM GAS  /tmp/cc1yHDxD.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -19,15 +19,15 @@ ARM GAS  /tmp/ccj0hRSc.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.file 1 "Drivers/SOES/Src/esc_eep.c"
-  20              		.section	.text.EEP_process,"ax",%progbits
-  21              		.align	1
-  22              		.global	EEP_process
-  23              		.syntax unified
-  24              		.thumb
-  25              		.thumb_func
-  27              	EEP_process:
-  28              	.LFB0:
+  19              		.section	.text.EEP_process,"ax",%progbits
+  20              		.align	1
+  21              		.global	EEP_process
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	EEP_process:
+  27              	.LFB0:
+  28              		.file 1 "Drivers/SOES/Src/esc_eep.c"
    1:Drivers/SOES/Src/esc_eep.c **** /*
    2:Drivers/SOES/Src/esc_eep.c ****  * Licensed under the GNU General Public License version 2 with exceptions. See
    3:Drivers/SOES/Src/esc_eep.c ****  * LICENSE file in the project root for full license information
@@ -58,18 +58,18 @@ ARM GAS  /tmp/ccj0hRSc.s 			page 1
   24:Drivers/SOES/Src/esc_eep.c ****    eep_stat_t stat;
   33              		.loc 1 24 4 view .LVU1
   25:Drivers/SOES/Src/esc_eep.c **** 
-ARM GAS  /tmp/ccj0hRSc.s 			page 2
+ARM GAS  /tmp/cc1yHDxD.s 			page 2
 
 
   26:Drivers/SOES/Src/esc_eep.c ****    /* check for eeprom event */
   27:Drivers/SOES/Src/esc_eep.c ****    if ((ESCvar.ALevent & ESCREG_ALEVENT_EEP) == 0) {
   34              		.loc 1 27 4 view .LVU2
   35              		.loc 1 27 15 is_stmt 0 view .LVU3
-  36 0000 3A4B     		ldr	r3, .L14
+  36 0000 3A4B     		ldr	r3, .L13
   37 0002 B3F8DC30 		ldrh	r3, [r3, #220]
   38              		.loc 1 27 7 view .LVU4
   39 0006 13F0200F 		tst	r3, #32
-  40 000a 6ED0     		beq	.L12
+  40 000a 6ED0     		beq	.L11
   23:Drivers/SOES/Src/esc_eep.c ****    eep_stat_t stat;
   41              		.loc 1 23 1 view .LVU5
   42 000c 10B5     		push	{r4, lr}
@@ -112,13 +112,13 @@ ARM GAS  /tmp/ccj0hRSc.s 			page 1
   50              		.loc 1 56 13 is_stmt 1 view .LVU6
   51              		.loc 1 56 17 is_stmt 0 view .LVU7
   52 0012 0822     		movs	r2, #8
-  53 0014 3649     		ldr	r1, .L14+4
+  53 0014 3649     		ldr	r1, .L13+4
   54 0016 4000     		lsls	r0, r0, #1
   55 0018 FFF7FEFF 		bl	EEP_read
   56              	.LVL0:
   57              		.loc 1 56 16 view .LVU8
   58 001c 0028     		cmp	r0, #0
-ARM GAS  /tmp/ccj0hRSc.s 			page 3
+ARM GAS  /tmp/cc1yHDxD.s 			page 3
 
 
   59 001e 3DD0     		beq	.L8
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccj0hRSc.s 			page 1
   38:Drivers/SOES/Src/esc_eep.c ****         return;
   86              		.loc 1 38 7 is_stmt 1 view .LVU19
   38:Drivers/SOES/Src/esc_eep.c ****         return;
-ARM GAS  /tmp/ccj0hRSc.s 			page 4
+ARM GAS  /tmp/cc1yHDxD.s 			page 4
 
 
   87              		.loc 1 38 10 is_stmt 0 view .LVU20
@@ -236,9 +236,9 @@ ARM GAS  /tmp/ccj0hRSc.s 			page 1
   59:Drivers/SOES/Src/esc_eep.c ****             }
  128              		.loc 1 59 16 is_stmt 1 view .LVU32
  129 009c 0822     		movs	r2, #8
- 130 009e 1449     		ldr	r1, .L14+4
+ 130 009e 1449     		ldr	r1, .L13+4
  131 00a0 4FF4A160 		mov	r0, #1288
-ARM GAS  /tmp/ccj0hRSc.s 			page 5
+ARM GAS  /tmp/cc1yHDxD.s 			page 5
 
 
  132 00a4 FFF7FEFF 		bl	ESC_write
@@ -247,7 +247,7 @@ ARM GAS  /tmp/ccj0hRSc.s 			page 1
  135              	.L6:
   65:Drivers/SOES/Src/esc_eep.c ****             if (EEP_write (stat.addr * sizeof(uint16_t), eep_buf, EEP_WRITE_SIZE) != 0) {
  136              		.loc 1 65 13 view .LVU33
- 137 00aa 114C     		ldr	r4, .L14+4
+ 137 00aa 114C     		ldr	r4, .L13+4
  138 00ac 0222     		movs	r2, #2
  139 00ae 2146     		mov	r1, r4
  140 00b0 4FF4A160 		mov	r0, #1288
@@ -294,45 +294,46 @@ ARM GAS  /tmp/ccj0hRSc.s 			page 1
  171              		.cfi_def_cfa_offset 8
  172              		@ sp needed
  173 00e8 10BD     		pop	{r4, pc}
- 174              	.L12:
+ 174              	.L11:
  175              		.cfi_def_cfa_offset 0
  176              		.cfi_restore 4
  177              		.cfi_restore 14
-ARM GAS  /tmp/ccj0hRSc.s 			page 6
+ARM GAS  /tmp/cc1yHDxD.s 			page 6
 
 
  178 00ea 7047     		bx	lr
- 179              	.L15:
+ 179              	.L14:
  180              		.align	2
- 181              	.L14:
+ 181              	.L13:
  182 00ec 00000000 		.word	ESCvar
- 183 00f0 00000000 		.word	eep_buf
+ 183 00f0 00000000 		.word	.LANCHOR0
  184              		.cfi_endproc
  185              	.LFE0:
  187              		.section	.bss.eep_buf,"aw",%nobits
  188              		.align	2
- 191              	eep_buf:
- 192 0000 00000000 		.space	8
- 192      00000000 
- 193              		.text
- 194              	.Letext0:
- 195              		.file 2 "/home/evence/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-no
- 196              		.file 3 "/home/evence/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-no
- 197              		.file 4 "/home/evence/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-no
- 198              		.file 5 "Drivers/SOES/Inc/esc.h"
- 199              		.file 6 "Drivers/SOES/Inc/esc_eep.h"
-ARM GAS  /tmp/ccj0hRSc.s 			page 7
+ 189              		.set	.LANCHOR0,. + 0
+ 192              	eep_buf:
+ 193 0000 00000000 		.space	8
+ 193      00000000 
+ 194              		.text
+ 195              	.Letext0:
+ 196              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 197              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 198              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 199              		.file 5 "Drivers/SOES/Inc/esc.h"
+ 200              		.file 6 "Drivers/SOES/Inc/esc_eep.h"
+ARM GAS  /tmp/cc1yHDxD.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 esc_eep.c
-     /tmp/ccj0hRSc.s:21     .text.EEP_process:0000000000000000 $t
-     /tmp/ccj0hRSc.s:27     .text.EEP_process:0000000000000000 EEP_process
-     /tmp/ccj0hRSc.s:122    .text.EEP_process:000000000000008c $d
-     /tmp/ccj0hRSc.s:126    .text.EEP_process:000000000000009c $t
-     /tmp/ccj0hRSc.s:182    .text.EEP_process:00000000000000ec $d
-     /tmp/ccj0hRSc.s:191    .bss.eep_buf:0000000000000000 eep_buf
-     /tmp/ccj0hRSc.s:188    .bss.eep_buf:0000000000000000 $d
+     /tmp/cc1yHDxD.s:20     .text.EEP_process:0000000000000000 $t
+     /tmp/cc1yHDxD.s:26     .text.EEP_process:0000000000000000 EEP_process
+     /tmp/cc1yHDxD.s:122    .text.EEP_process:000000000000008c $d
+     /tmp/cc1yHDxD.s:126    .text.EEP_process:000000000000009c $t
+     /tmp/cc1yHDxD.s:182    .text.EEP_process:00000000000000ec $d
+     /tmp/cc1yHDxD.s:188    .bss.eep_buf:0000000000000000 $d
+     /tmp/cc1yHDxD.s:192    .bss.eep_buf:0000000000000000 eep_buf
 
 UNDEFINED SYMBOLS
 EEP_read

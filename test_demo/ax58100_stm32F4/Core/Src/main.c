@@ -22,7 +22,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+ _Rbuffer Rb;
+ _Wbuffer Wb;
+ _Cbuffer Cb;
+ uint32_t encoder_scale;
+ uint32_t encoder_scale_mirror;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -37,11 +41,35 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+void ecatapp_loop()
+{
+    // stack in mixed mode
+    if (sync0_irq_flag) {
+        ESC_updateALevent();        
+        DIG_process (DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
+        sync0_irq_flag = 0;
+    }
+    if (pdi_irq_flag) {
+        ESC_updateALevent();
+        if (ESCvar.dcsync) {
+            DIG_process (DIG_PROCESS_OUTPUTS_FLAG);    
+        } else {
+            DIG_process (DIG_PROCESS_OUTPUTS_FLAG | DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
+        }
+        pdi_irq_flag = 0;
+    } else {
+        // ecat_slv_worker(ESCREG_ALEVENT_CONTROL | ESCREG_ALEVENT_SMCHANGE
+        //                 | ESCREG_ALEVENT_SM0 | ESCREG_ALEVENT_SM1);
+        ecat_slv_poll();
+        DIG_process(DIG_PROCESS_WD_FLAG);
+    }
+}
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi2;
+DMA_HandleTypeDef hdma_spi2_rx;
+DMA_HandleTypeDef hdma_spi2_tx;
 
 /* Definitions for ledTask */
 osThreadId_t ledTaskHandle;
@@ -57,6 +85,7 @@ const osThreadAttr_t ledTask_attributes = {
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_SPI2_Init(void);
 void LedTask(void *argument);
 
@@ -97,6 +126,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
@@ -232,6 +262,25 @@ static void MX_SPI2_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
+  /* DMA1_Stream4_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -285,7 +334,14 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+//test
+void ledtest(void)
+{
+  HAL_GPIO_WritePin(LED0_GPIO_Port,LED0_Pin,GPIO_PIN_SET);
+  osDelay(100);
+  HAL_GPIO_WritePin(LED0_GPIO_Port,LED0_Pin,GPIO_PIN_RESET);
+  osDelay(100);
+}
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_LedTask */
@@ -298,13 +354,19 @@ static void MX_GPIO_Init(void)
 void LedTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
+   ecatapp_init();
+  
+  
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    //ledtest();
+    ecatapp_loop();
   }
   /* USER CODE END 5 */
 }
+
+
 
 /**
   * @brief  Period elapsed callback in non blocking mode
