@@ -28,7 +28,7 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/SOES/Inc/esc.h Drivers/SOES/Inc/cc.h Drivers/SOES/Inc/esc_coe.h \
  Drivers/SOES/Inc/options.h Drivers/soes-esi/Inc/ecat_options.h \
  Drivers/SOES/Inc/ecat_slv.h Drivers/SOES/Inc/esc.h Core/Inc/ecatapp.h \
- Core/Inc/pdo_override.h Drivers/soes-esi/Inc/utypes.h \
+ Core/Inc/pdo_override.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  Core/Inc/FreeRTOSConfig.h \
@@ -78,7 +78,6 @@ Drivers/SOES/Inc/ecat_slv.h:
 Drivers/SOES/Inc/esc.h:
 Core/Inc/ecatapp.h:
 Core/Inc/pdo_override.h:
-Drivers/soes-esi/Inc/utypes.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:

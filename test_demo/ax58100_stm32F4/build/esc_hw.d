@@ -29,7 +29,7 @@ build/esc_hw.o: Drivers/ESC/AX58100/esc_hw.c Drivers/SOES/Inc/esc.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  Drivers/SOES/Inc/ecat_slv.h Drivers/SOES/Inc/esc.h Core/Inc/ecatapp.h \
- Core/Inc/pdo_override.h Drivers/soes-esi/Inc/utypes.h
+ Core/Inc/pdo_override.h
 Drivers/SOES/Inc/esc.h:
 Drivers/SOES/Inc/cc.h:
 Drivers/SOES/Inc/esc_coe.h:
@@ -69,4 +69,3 @@ Drivers/SOES/Inc/ecat_slv.h:
 Drivers/SOES/Inc/esc.h:
 Core/Inc/ecatapp.h:
 Core/Inc/pdo_override.h:
-Drivers/soes-esi/Inc/utypes.h:

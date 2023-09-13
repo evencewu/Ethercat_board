@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccpADs8h.s 			page 1
+ARM GAS  /tmp/ccqVs6OL.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
   28:Drivers/SOES/Src/esc_coe.c ****    (byte & 0xe0)
   29:Drivers/SOES/Src/esc_coe.c **** #define SDO_COMPLETE_ACCESS(byte) \
   30:Drivers/SOES/Src/esc_coe.c ****    ((byte & COE_COMPLETEACCESS) == COE_COMPLETEACCESS)
-ARM GAS  /tmp/ccpADs8h.s 			page 2
+ARM GAS  /tmp/ccqVs6OL.s 			page 2
 
 
   31:Drivers/SOES/Src/esc_coe.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
   85:Drivers/SOES/Src/esc_coe.c ****    while (SDOobjects[n].index < index)
   86:Drivers/SOES/Src/esc_coe.c ****    {
   87:Drivers/SOES/Src/esc_coe.c ****       n++;
-ARM GAS  /tmp/ccpADs8h.s 			page 3
+ARM GAS  /tmp/ccqVs6OL.s 			page 3
 
 
   88:Drivers/SOES/Src/esc_coe.c ****    }
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  142:Drivers/SOES/Src/esc_coe.c ****    {
  143:Drivers/SOES/Src/esc_coe.c ****       for (sic = 1; sic <= si; sic++)
  144:Drivers/SOES/Src/esc_coe.c ****       {
-ARM GAS  /tmp/ccpADs8h.s 			page 4
+ARM GAS  /tmp/ccqVs6OL.s 			page 4
 
 
  145:Drivers/SOES/Src/esc_coe.c ****          hobj = OBJ_VALUE_FETCH (hobj, objd1c1x[sic]);
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  199:Drivers/SOES/Src/esc_coe.c ****                         *nmappings = -1;
  200:Drivers/SOES/Src/esc_coe.c ****                         return 0;
  201:Drivers/SOES/Src/esc_coe.c ****                      }
-ARM GAS  /tmp/ccpADs8h.s 			page 5
+ARM GAS  /tmp/ccqVs6OL.s 			page 5
 
 
  202:Drivers/SOES/Src/esc_coe.c ****                   }
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  256:Drivers/SOES/Src/esc_coe.c ****       coeres->mbxheader.mbxtype = MBXCOE;
  257:Drivers/SOES/Src/esc_coe.c ****       coeres->coeheader.numberservice =
  258:Drivers/SOES/Src/esc_coe.c ****          htoes ((0 & 0x01f) | (COE_SDOREQUEST << 12));
-ARM GAS  /tmp/ccpADs8h.s 			page 6
+ARM GAS  /tmp/ccqVs6OL.s 			page 6
 
 
  259:Drivers/SOES/Src/esc_coe.c ****       coeres->index = htoes (index);
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  313:Drivers/SOES/Src/esc_coe.c ****          MBXout = ESC_claimbuffer ();
  314:Drivers/SOES/Src/esc_coe.c ****          if (MBXout)
  315:Drivers/SOES/Src/esc_coe.c ****          {
-ARM GAS  /tmp/ccpADs8h.s 			page 7
+ARM GAS  /tmp/ccqVs6OL.s 			page 7
 
 
  316:Drivers/SOES/Src/esc_coe.c ****             coeres = (_COEsdo *) &MBX[MBXout * ESC_MBXSIZE];
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  370:Drivers/SOES/Src/esc_coe.c ****             {
  371:Drivers/SOES/Src/esc_coe.c ****                /* normal response i.e. length>4 bytes */
  372:Drivers/SOES/Src/esc_coe.c ****                abort = ESC_upload_pre_objecthandler (index, subindex,
-ARM GAS  /tmp/ccpADs8h.s 			page 8
+ARM GAS  /tmp/ccqVs6OL.s 			page 8
 
 
  373:Drivers/SOES/Src/esc_coe.c ****                      (objd + nsub)->data, (size_t *)&size, (objd + nsub)->flags);
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  427:Drivers/SOES/Src/esc_coe.c ****    }
  428:Drivers/SOES/Src/esc_coe.c ****    MBXcontrol[0].state = MBXstate_idle;
  429:Drivers/SOES/Src/esc_coe.c ****    ESCvar.xoe = 0;
-ARM GAS  /tmp/ccpADs8h.s 			page 9
+ARM GAS  /tmp/ccqVs6OL.s 			page 9
 
 
  430:Drivers/SOES/Src/esc_coe.c **** }
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  484:Drivers/SOES/Src/esc_coe.c ****       uint8_t state = ESCvar.ALstatus & 0x0f;
  485:Drivers/SOES/Src/esc_coe.c **** 
  486:Drivers/SOES/Src/esc_coe.c ****       if ((bitlen % 8) == 0)
-ARM GAS  /tmp/ccpADs8h.s 			page 10
+ARM GAS  /tmp/ccqVs6OL.s 			page 10
 
 
  487:Drivers/SOES/Src/esc_coe.c ****       {
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  541:Drivers/SOES/Src/esc_coe.c ****       {
  542:Drivers/SOES/Src/esc_coe.c ****          break;
  543:Drivers/SOES/Src/esc_coe.c ****       }
-ARM GAS  /tmp/ccpADs8h.s 			page 11
+ARM GAS  /tmp/ccqVs6OL.s 			page 11
 
 
  544:Drivers/SOES/Src/esc_coe.c ****    }
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
   66              		.loc 1 560 21 view .LVU15
   67 0030 C372     		strb	r3, [r0, #11]
  561:Drivers/SOES/Src/esc_coe.c **** }
-ARM GAS  /tmp/ccpADs8h.s 			page 12
+ARM GAS  /tmp/ccqVs6OL.s 			page 12
 
 
   68              		.loc 1 561 1 view .LVU16
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  604:Drivers/SOES/Src/esc_coe.c ****    {
  605:Drivers/SOES/Src/esc_coe.c ****       /* 'size' is in this case actually an abort code */
  606:Drivers/SOES/Src/esc_coe.c ****       set_state_idle (MBXout, index, subindex, size);
-ARM GAS  /tmp/ccpADs8h.s 			page 13
+ARM GAS  /tmp/ccqVs6OL.s 			page 13
 
 
  607:Drivers/SOES/Src/esc_coe.c ****       return;
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  661:Drivers/SOES/Src/esc_coe.c ****       memcpy((&(coeres->size)) + 1, ESCvar.mbxdata, size);
  662:Drivers/SOES/Src/esc_coe.c ****    }
  663:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 14
+ARM GAS  /tmp/ccqVs6OL.s 			page 14
 
 
  664:Drivers/SOES/Src/esc_coe.c ****    if (ESCvar.segmented == 0)
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  718:Drivers/SOES/Src/esc_coe.c ****             coeres->mbxheader.length = htoes (COE_SEGMENTHEADERSIZE + size);
  719:Drivers/SOES/Src/esc_coe.c ****          }
  720:Drivers/SOES/Src/esc_coe.c ****          else
-ARM GAS  /tmp/ccpADs8h.s 			page 15
+ARM GAS  /tmp/ccqVs6OL.s 			page 15
 
 
  721:Drivers/SOES/Src/esc_coe.c ****          {
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  775:Drivers/SOES/Src/esc_coe.c ****          {
  776:Drivers/SOES/Src/esc_coe.c ****             /* expedited? */
  777:Drivers/SOES/Src/esc_coe.c ****             if (coesdo->command & COE_EXPEDITED_INDICATOR)
-ARM GAS  /tmp/ccpADs8h.s 			page 16
+ARM GAS  /tmp/ccqVs6OL.s 			page 16
 
 
  778:Drivers/SOES/Src/esc_coe.c ****             {
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  832:Drivers/SOES/Src/esc_coe.c ****                }
  833:Drivers/SOES/Src/esc_coe.c ****                else
  834:Drivers/SOES/Src/esc_coe.c ****                {
-ARM GAS  /tmp/ccpADs8h.s 			page 17
+ARM GAS  /tmp/ccqVs6OL.s 			page 17
 
 
  835:Drivers/SOES/Src/esc_coe.c ****                   ESCvar.segmented = 0;
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  889:Drivers/SOES/Src/esc_coe.c ****    ESCvar.xoe = 0;
  890:Drivers/SOES/Src/esc_coe.c **** }
  891:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 18
+ARM GAS  /tmp/ccqVs6OL.s 			page 18
 
 
  892:Drivers/SOES/Src/esc_coe.c **** /** Function for handling incoming requested SDO Download with Complete Access,
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  946:Drivers/SOES/Src/esc_coe.c ****       if (abortcode != 0)
  947:Drivers/SOES/Src/esc_coe.c ****       {
  948:Drivers/SOES/Src/esc_coe.c ****          set_state_idle (0, index, subindex, abortcode);
-ARM GAS  /tmp/ccpADs8h.s 			page 19
+ARM GAS  /tmp/ccqVs6OL.s 			page 19
 
 
  949:Drivers/SOES/Src/esc_coe.c ****          return;
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1003:Drivers/SOES/Src/esc_coe.c **** 
 1004:Drivers/SOES/Src/esc_coe.c ****       if (coesdo->command & COE_COMMAND_LASTSEGMENTBIT)
 1005:Drivers/SOES/Src/esc_coe.c ****       {
-ARM GAS  /tmp/ccpADs8h.s 			page 20
+ARM GAS  /tmp/ccqVs6OL.s 			page 20
 
 
 1006:Drivers/SOES/Src/esc_coe.c ****          /* last segment */
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1060:Drivers/SOES/Src/esc_coe.c **** 
 1061:Drivers/SOES/Src/esc_coe.c **** /** Function for handling incoming requested SDO Get OD List, validating the
 1062:Drivers/SOES/Src/esc_coe.c ****  * request and sending an response. On error an SDO Info Error will be sent.
-ARM GAS  /tmp/ccpADs8h.s 			page 21
+ARM GAS  /tmp/ccqVs6OL.s 			page 21
 
 
 1063:Drivers/SOES/Src/esc_coe.c ****  */
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1117:Drivers/SOES/Src/esc_coe.c ****          p++;
 1118:Drivers/SOES/Src/esc_coe.c ****          *p = 0;
 1119:Drivers/SOES/Src/esc_coe.c ****          coel->mbxheader.length = htoes (0x08 + (5 << 1));
-ARM GAS  /tmp/ccpADs8h.s 			page 22
+ARM GAS  /tmp/ccqVs6OL.s 			page 22
 
 
 1120:Drivers/SOES/Src/esc_coe.c ****       }
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1174:Drivers/SOES/Src/esc_coe.c ****       s = (ESCvar.frags - ESCvar.fragsleft) * (ODLISTSIZE >> 1);
 1175:Drivers/SOES/Src/esc_coe.c ****       if (ESCvar.fragsleft > 1)
 1176:Drivers/SOES/Src/esc_coe.c ****       {
-ARM GAS  /tmp/ccpADs8h.s 			page 23
+ARM GAS  /tmp/ccqVs6OL.s 			page 23
 
 
 1177:Drivers/SOES/Src/esc_coe.c ****          coel->infoheader.incomplete = 1;
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1231:Drivers/SOES/Src/esc_coe.c ****          coel->infoheader.fragmentsleft = htoes (0);
 1232:Drivers/SOES/Src/esc_coe.c ****          coel->index = htoes (index);
 1233:Drivers/SOES/Src/esc_coe.c ****          if (SDOobjects[nidx].objtype == OTYPE_VAR)
-ARM GAS  /tmp/ccpADs8h.s 			page 24
+ARM GAS  /tmp/ccqVs6OL.s 			page 24
 
 
 1234:Drivers/SOES/Src/esc_coe.c ****          {
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1288:Drivers/SOES/Src/esc_coe.c ****    uint8_t n = 0;
 1289:Drivers/SOES/Src/esc_coe.c ****    _COEentdesc *coer, *coel;
 1290:Drivers/SOES/Src/esc_coe.c ****    coer = (_COEentdesc *) &MBX[0];
-ARM GAS  /tmp/ccpADs8h.s 			page 25
+ARM GAS  /tmp/ccqVs6OL.s 			page 25
 
 
 1291:Drivers/SOES/Src/esc_coe.c ****    index = etohs (coer->index);
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1345:Drivers/SOES/Src/esc_coe.c **** /** Main CoE function checking the status on current mailbox buffers carrying
 1346:Drivers/SOES/Src/esc_coe.c ****  * data, distributing the mailboxes to appropriate CoE functions.
 1347:Drivers/SOES/Src/esc_coe.c ****  * On Error an MBX_error or SDO Abort will be sent depending on error cause.
-ARM GAS  /tmp/ccpADs8h.s 			page 26
+ARM GAS  /tmp/ccqVs6OL.s 			page 26
 
 
 1348:Drivers/SOES/Src/esc_coe.c ****  */
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1402:Drivers/SOES/Src/esc_coe.c ****          {
 1403:Drivers/SOES/Src/esc_coe.c ****             /* SDO upload segment request */
 1404:Drivers/SOES/Src/esc_coe.c ****             SDO_uploadsegment ();
-ARM GAS  /tmp/ccpADs8h.s 			page 27
+ARM GAS  /tmp/ccqVs6OL.s 			page 27
 
 
 1405:Drivers/SOES/Src/esc_coe.c ****          }
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1459:Drivers/SOES/Src/esc_coe.c ****                         SDO_abort (0, etohs (coesdo->index), coesdo->subindex, ABORT_UNSUPPORTED);
 1460:Drivers/SOES/Src/esc_coe.c ****                      }
 1461:Drivers/SOES/Src/esc_coe.c ****                      MBXcontrol[0].state = MBXstate_idle;
-ARM GAS  /tmp/ccpADs8h.s 			page 28
+ARM GAS  /tmp/ccqVs6OL.s 			page 28
 
 
 1462:Drivers/SOES/Src/esc_coe.c ****                      ESCvar.xoe = 0;
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  113              	.LVL7:
 1485:Drivers/SOES/Src/esc_coe.c ****    const uint64_t mask = (length == 64) ? UINT64_MAX : (1ULL << length) - 1;
  114              		.loc 1 1485 4 is_stmt 1 view .LVU25
-ARM GAS  /tmp/ccpADs8h.s 			page 29
+ARM GAS  /tmp/ccqVs6OL.s 			page 29
 
 
  115              		.loc 1 1485 54 is_stmt 0 view .LVU26
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  158              		.loc 1 1496 7 is_stmt 1 view .LVU39
  159              		.loc 1 1496 18 is_stmt 0 view .LVU40
  160 006e 0134     		adds	r4, r4, #1
-ARM GAS  /tmp/ccpADs8h.s 			page 30
+ARM GAS  /tmp/ccqVs6OL.s 			page 30
 
 
  161              	.LVL12:
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  208              		.loc 1 1483 14 view .LVU57
  209 00a6 01F13F04 		add	r4, r1, #63
  210 00aa AEE7     		b	.L4
-ARM GAS  /tmp/ccpADs8h.s 			page 31
+ARM GAS  /tmp/ccqVs6OL.s 			page 31
 
 
  211              	.LVL24:
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  250              		.cfi_offset 10, -12
  251              		.cfi_offset 11, -8
  252              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccpADs8h.s 			page 32
+ARM GAS  /tmp/ccqVs6OL.s 			page 32
 
 
  253 0004 83B0     		sub	sp, sp, #12
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  303 0064 0196     		str	r6, [sp, #4]
 1521:Drivers/SOES/Src/esc_coe.c ****    uint64_t v0 = value << bit_offset;
  304              		.loc 1 1521 4 is_stmt 1 discriminator 4 view .LVU75
-ARM GAS  /tmp/ccpADs8h.s 			page 33
+ARM GAS  /tmp/ccqVs6OL.s 			page 33
 
 
  305              		.loc 1 1521 13 is_stmt 0 discriminator 4 view .LVU76
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  349              	.LVL35:
  350              		.loc 1 1531 22 view .LVU90
  351 00c6 C1F12001 		rsb	r1, r1, #32
-ARM GAS  /tmp/ccpADs8h.s 			page 34
+ARM GAS  /tmp/ccqVs6OL.s 			page 34
 
 
  352              	.LVL36:
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  401              		.loc 1 1536 31 is_stmt 0 view .LVU105
  402 010c 40F83E40 		str	r4, [r0, lr, lsl #3]
  403              	.LVL47:
-ARM GAS  /tmp/ccpADs8h.s 			page 35
+ARM GAS  /tmp/ccqVs6OL.s 			page 35
 
 
  404              		.loc 1 1536 31 view .LVU106
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1555:Drivers/SOES/Src/esc_coe.c ****    {
 1556:Drivers/SOES/Src/esc_coe.c ****    case DTYPE_BIT1:
 1557:Drivers/SOES/Src/esc_coe.c ****    case DTYPE_BIT2:
-ARM GAS  /tmp/ccpADs8h.s 			page 36
+ARM GAS  /tmp/ccqVs6OL.s 			page 36
 
 
 1558:Drivers/SOES/Src/esc_coe.c ****    case DTYPE_BIT3:
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  444              		@ link register save eliminated.
 1608:Drivers/SOES/Src/esc_coe.c ****    switch(obj->datatype)
  445              		.loc 1 1608 4 view .LVU112
-ARM GAS  /tmp/ccpADs8h.s 			page 37
+ARM GAS  /tmp/ccqVs6OL.s 			page 37
 
 
  446              		.loc 1 1608 14 is_stmt 0 view .LVU113
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  500 003a 22       		.byte	(.L22-.L21)/2
  501 003b 1C       		.byte	(.L20-.L21)/2
  502 003c 1C       		.byte	(.L20-.L21)/2
-ARM GAS  /tmp/ccpADs8h.s 			page 38
+ARM GAS  /tmp/ccqVs6OL.s 			page 38
 
 
  503 003d 1C       		.byte	(.L20-.L21)/2
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  530              		.loc 1 1635 30 view .LVU125
  531 0052 1A60     		str	r2, [r3]
 1636:Drivers/SOES/Src/esc_coe.c ****       break;
-ARM GAS  /tmp/ccpADs8h.s 			page 39
+ARM GAS  /tmp/ccqVs6OL.s 			page 39
 
 
  532              		.loc 1 1636 7 is_stmt 1 view .LVU126
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1164:Drivers/SOES/Src/esc_coe.c **** 
  571              		.loc 1 1164 4 view .LVU136
 1166:Drivers/SOES/Src/esc_coe.c ****    if (MBXout)
-ARM GAS  /tmp/ccpADs8h.s 			page 40
+ARM GAS  /tmp/ccqVs6OL.s 			page 40
 
 
  572              		.loc 1 1166 4 view .LVU137
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1174:Drivers/SOES/Src/esc_coe.c ****       if (ESCvar.fragsleft > 1)
  612              		.loc 1 1174 7 is_stmt 1 view .LVU152
 1174:Drivers/SOES/Src/esc_coe.c ****       if (ESCvar.fragsleft > 1)
-ARM GAS  /tmp/ccpADs8h.s 			page 41
+ARM GAS  /tmp/ccqVs6OL.s 			page 41
 
 
  613              		.loc 1 1174 18 is_stmt 0 view .LVU153
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  652              		.loc 1 1188 23 is_stmt 0 view .LVU168
  653 0070 0138     		subs	r0, r0, #1
  654 0072 80B2     		uxth	r0, r0
-ARM GAS  /tmp/ccpADs8h.s 			page 42
+ARM GAS  /tmp/ccqVs6OL.s 			page 42
 
 
  655 0074 174B     		ldr	r3, .L32
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1185:Drivers/SOES/Src/esc_coe.c ****       }
  692              		.loc 1 1185 12 is_stmt 0 view .LVU186
  693 009e B3F89420 		ldrh	r2, [r3, #148]
-ARM GAS  /tmp/ccpADs8h.s 			page 43
+ARM GAS  /tmp/ccqVs6OL.s 			page 43
 
 
  694              	.LVL60:
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  732              		.loc 1 1199 32 is_stmt 0 view .LVU202
  733 00c8 044B     		ldr	r3, .L32+8
  734 00ca 0322     		movs	r2, #3
-ARM GAS  /tmp/ccpADs8h.s 			page 44
+ARM GAS  /tmp/ccqVs6OL.s 			page 44
 
 
  735              	.LVL66:
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  782 0004 FFF7FEFF 		bl	ESC_claimbuffer
  783              	.LVL69:
 1039:Drivers/SOES/Src/esc_coe.c ****    {
-ARM GAS  /tmp/ccpADs8h.s 			page 45
+ARM GAS  /tmp/ccqVs6OL.s 			page 45
 
 
  784              		.loc 1 1039 4 is_stmt 1 view .LVU212
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  823              		.loc 1 1048 7 is_stmt 1 view .LVU227
 1048:Drivers/SOES/Src/esc_coe.c ****       coeres->infoheader.reserved = 0x00;
  824              		.loc 1 1048 37 is_stmt 0 view .LVU228
-ARM GAS  /tmp/ccpADs8h.s 			page 46
+ARM GAS  /tmp/ccqVs6OL.s 			page 46
 
 
  825 0048 5FFA8EFE 		uxtb	lr, lr
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  862              	.L37:
  863 0070 00000000 		.word	ESCvar
  864 0074 00000000 		.word	MBX
-ARM GAS  /tmp/ccpADs8h.s 			page 47
+ARM GAS  /tmp/ccqVs6OL.s 			page 47
 
 
  865 0078 00000000 		.word	MBXcontrol
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  908              		.loc 1 1075 14 view .LVU258
  909 000a A4B2     		uxth	r4, r4
  910              	.LVL78:
-ARM GAS  /tmp/ccpADs8h.s 			page 48
+ARM GAS  /tmp/ccqVs6OL.s 			page 48
 
 
  911              	.L40:
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1082:Drivers/SOES/Src/esc_coe.c ****    {
  951              		.loc 1 1082 4 view .LVU273
 1082:Drivers/SOES/Src/esc_coe.c ****    {
-ARM GAS  /tmp/ccpADs8h.s 			page 49
+ARM GAS  /tmp/ccqVs6OL.s 			page 49
 
 
  952              		.loc 1 1082 8 is_stmt 0 view .LVU274
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  993              		.loc 1 1093 7 is_stmt 1 view .LVU287
 1093:Drivers/SOES/Src/esc_coe.c ****       coel->coeheader.numberservice =
  994              		.loc 1 1093 31 is_stmt 0 view .LVU288
-ARM GAS  /tmp/ccpADs8h.s 			page 50
+ARM GAS  /tmp/ccqVs6OL.s 			page 50
 
 
  995 0070 5379     		ldrb	r3, [r2, #5]	@ zero_extendqisi2
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1033              		.loc 1 1104 10 is_stmt 1 view .LVU304
 1104:Drivers/SOES/Src/esc_coe.c ****          ESCvar.xoe = 0;
  1034              		.loc 1 1104 30 is_stmt 0 view .LVU305
-ARM GAS  /tmp/ccpADs8h.s 			page 51
+ARM GAS  /tmp/ccqVs6OL.s 			page 51
 
 
  1035 00a4 3449     		ldr	r1, .L52+16
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1069              		.loc 1 1115 10 is_stmt 1 view .LVU325
  1070              	.LVL89:
 1116:Drivers/SOES/Src/esc_coe.c ****          p++;
-ARM GAS  /tmp/ccpADs8h.s 			page 52
+ARM GAS  /tmp/ccqVs6OL.s 			page 52
 
 
  1071              		.loc 1 1116 10 view .LVU326
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1110 00ee 1FD9     		bls	.L46
 1126:Drivers/SOES/Src/esc_coe.c ****             ESCvar.xoe = MBXCOE + MBXODL;
  1111              		.loc 1 1126 13 is_stmt 1 view .LVU342
-ARM GAS  /tmp/ccpADs8h.s 			page 53
+ARM GAS  /tmp/ccqVs6OL.s 			page 53
 
 
 1126:Drivers/SOES/Src/esc_coe.c ****             ESCvar.xoe = MBXCOE + MBXODL;
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1149              		.loc 1 1141 10 is_stmt 1 view .LVU359
 1141:Drivers/SOES/Src/esc_coe.c **** 
  1150              		.loc 1 1141 22 is_stmt 0 view .LVU360
-ARM GAS  /tmp/ccpADs8h.s 			page 54
+ARM GAS  /tmp/ccqVs6OL.s 			page 54
 
 
  1151 011e 0121     		movs	r1, #1
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1147:Drivers/SOES/Src/esc_coe.c ****             p++;
  1190              		.loc 1 1147 13 is_stmt 1 discriminator 3 view .LVU376
 1147:Drivers/SOES/Src/esc_coe.c ****             p++;
-ARM GAS  /tmp/ccpADs8h.s 			page 55
+ARM GAS  /tmp/ccqVs6OL.s 			page 55
 
 
  1191              		.loc 1 1147 18 is_stmt 0 discriminator 3 view .LVU377
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1235              		.syntax unified
  1236              		.thumb
  1237              		.thumb_func
-ARM GAS  /tmp/ccpADs8h.s 			page 56
+ARM GAS  /tmp/ccqVs6OL.s 			page 56
 
 
  1239              	SDO_abort:
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  255:Drivers/SOES/Src/esc_coe.c ****       coeres->mbxheader.mbxtype = MBXCOE;
  1280              		.loc 1 255 32 is_stmt 0 view .LVU402
  1281 001c 0022     		movs	r2, #0
-ARM GAS  /tmp/ccpADs8h.s 			page 57
+ARM GAS  /tmp/ccqVs6OL.s 			page 57
 
 
  1282 001e 0A21     		movs	r1, #10
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  251:Drivers/SOES/Src/esc_coe.c ****    if (MBXout)
  1320              		.loc 1 251 16 is_stmt 0 view .LVU419
  1321 0056 FFF7FEFF 		bl	ESC_claimbuffer
-ARM GAS  /tmp/ccpADs8h.s 			page 58
+ARM GAS  /tmp/ccqVs6OL.s 			page 58
 
 
  1322              	.LVL111:
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1368 000c 82F88A30 		strb	r3, [r2, #138]
  279:Drivers/SOES/Src/esc_coe.c **** 
  1369              		.loc 1 279 1 view .LVU430
-ARM GAS  /tmp/ccpADs8h.s 			page 59
+ARM GAS  /tmp/ccqVs6OL.s 			page 59
 
 
  1370 0010 08BD     		pop	{r3, pc}
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1419              		.section	.text.SDO_uploadsegment,"ax",%progbits
  1420              		.align	1
  1421              		.syntax unified
-ARM GAS  /tmp/ccpADs8h.s 			page 60
+ARM GAS  /tmp/ccqVs6OL.s 			page 60
 
 
  1422              		.thumb
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1464              		.loc 1 743 15 is_stmt 0 view .LVU451
  1465 0012 3E4A     		ldr	r2, .L79+4
  1466 0014 82F88A30 		strb	r3, [r2, #138]
-ARM GAS  /tmp/ccpADs8h.s 			page 61
+ARM GAS  /tmp/ccqVs6OL.s 			page 61
 
 
  1467              	.L69:
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1506              		.loc 1 698 7 is_stmt 1 view .LVU466
  1507 003e E37A     		ldrb	r3, [r4, #11]	@ zero_extendqisi2
  1508 0040 0093     		str	r3, [sp]
-ARM GAS  /tmp/ccpADs8h.s 			page 62
+ARM GAS  /tmp/ccqVs6OL.s 			page 62
 
 
  1509 0042 B4F80930 		ldrh	r3, [r4, #9]	@ unaligned
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  726:Drivers/SOES/Src/esc_coe.c ****             size);        /* copy to mailbox */
  1548              		.loc 1 726 35 is_stmt 0 view .LVU482
  1549 0072 264C     		ldr	r4, .L79+4
-ARM GAS  /tmp/ccpADs8h.s 			page 63
+ARM GAS  /tmp/ccqVs6OL.s 			page 63
 
 
  1550 0074 D4F89000 		ldr	r0, [r4, #144]
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  716:Drivers/SOES/Src/esc_coe.c ****          {
  1589              		.loc 1 716 13 is_stmt 0 view .LVU498
  1590 00b0 062D     		cmp	r5, #6
-ARM GAS  /tmp/ccpADs8h.s 			page 64
+ARM GAS  /tmp/ccqVs6OL.s 			page 64
 
 
  1591 00b2 06D9     		bls	.L73
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  735:Drivers/SOES/Src/esc_coe.c ****             return;
  1632              		.loc 1 735 13 is_stmt 1 view .LVU512
  1633 00f6 0649     		ldr	r1, .L79+8
-ARM GAS  /tmp/ccpADs8h.s 			page 65
+ARM GAS  /tmp/ccqVs6OL.s 			page 65
 
 
  1634 00f8 CA7A     		ldrb	r2, [r1, #11]	@ zero_extendqisi2
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1684 000e 4388     		ldrh	r3, [r0, #2]	@ unaligned
  1685              	.LVL141:
  469:Drivers/SOES/Src/esc_coe.c ****        (objd->datatype == DTYPE_UNICODE_STRING))
-ARM GAS  /tmp/ccpADs8h.s 			page 66
+ARM GAS  /tmp/ccqVs6OL.s 			page 66
 
 
  1686              		.loc 1 469 49 view .LVU519
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  510:Drivers/SOES/Src/esc_coe.c ****             {
  1729              		.loc 1 510 22 discriminator 3 view .LVU531
  1730 0044 13F0100F 		tst	r3, #16
-ARM GAS  /tmp/ccpADs8h.s 			page 67
+ARM GAS  /tmp/ccqVs6OL.s 			page 67
 
 
  1731 0048 01D0     		beq	.L95
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1771              		.loc 1 520 42 view .LVU545
  1772 0078 C0B2     		uxtb	r0, r0
  520:Drivers/SOES/Src/esc_coe.c ****          if (READ_ACCESS(access, state))
-ARM GAS  /tmp/ccpADs8h.s 			page 68
+ARM GAS  /tmp/ccqVs6OL.s 			page 68
 
 
  1773              		.loc 1 520 18 view .LVU546
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1814              	.LVL155:
  1815              	.L87:
  532:Drivers/SOES/Src/esc_coe.c ****          }
-ARM GAS  /tmp/ccpADs8h.s 			page 69
+ARM GAS  /tmp/ccqVs6OL.s 			page 69
 
 
  1816              		.loc 1 532 39 view .LVU560
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1855 00d6 50DC     		bgt	.L81
  1856              	.LBB10:
  479:Drivers/SOES/Src/esc_coe.c ****       void *ul_source = ((objd + nsub)->data != NULL) ?
-ARM GAS  /tmp/ccpADs8h.s 			page 70
+ARM GAS  /tmp/ccqVs6OL.s 			page 70
 
 
  1857              		.loc 1 479 7 is_stmt 1 view .LVU576
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1895              		.loc 1 488 10 is_stmt 1 view .LVU592
  488:Drivers/SOES/Src/esc_coe.c ****          {
  1896              		.loc 1 488 13 is_stmt 0 view .LVU593
-ARM GAS  /tmp/ccpADs8h.s 			page 71
+ARM GAS  /tmp/ccqVs6OL.s 			page 71
 
 
  1897 0102 BCF1000F 		cmp	ip, #0
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  506:Drivers/SOES/Src/esc_coe.c ****                }
  1937              		.loc 1 506 19 is_stmt 1 view .LVU608
  506:Drivers/SOES/Src/esc_coe.c ****                }
-ARM GAS  /tmp/ccpADs8h.s 			page 72
+ARM GAS  /tmp/ccqVs6OL.s 			page 72
 
 
  1938              		.loc 1 506 35 is_stmt 0 view .LVU609
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  1978 0162 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
  528:Drivers/SOES/Src/esc_coe.c ****          }
  1979              		.loc 1 528 42 view .LVU624
-ARM GAS  /tmp/ccpADs8h.s 			page 73
+ARM GAS  /tmp/ccqVs6OL.s 			page 73
 
 
  1980 0164 1040     		ands	r0, r0, r2
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2029              		.cfi_offset 6, -8
  2030              		.cfi_offset 14, -4
  2031 0002 84B0     		sub	sp, sp, #16
-ARM GAS  /tmp/ccpADs8h.s 			page 74
+ARM GAS  /tmp/ccqVs6OL.s 			page 74
 
 
  2032              		.cfi_def_cfa_offset 32
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2070              	.LVL185:
  998:Drivers/SOES/Src/esc_coe.c **** 
  2071              		.loc 1 998 7 is_stmt 1 view .LVU648
-ARM GAS  /tmp/ccpADs8h.s 			page 75
+ARM GAS  /tmp/ccqVs6OL.s 			page 75
 
 
  2072 0026 0023     		movs	r3, #0
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2112 005c 0322     		movs	r2, #3
  2113 005e 9A55     		strb	r2, [r3, r6]
  2114              	.LVL191:
-ARM GAS  /tmp/ccpADs8h.s 			page 76
+ARM GAS  /tmp/ccqVs6OL.s 			page 76
 
 
  2115              	.L111:
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2157              		.loc 1 1010 27 is_stmt 0 view .LVU674
  2158 0086 B3F89E20 		ldrh	r2, [r3, #158]
  2159 008a 93F89C10 		ldrb	r1, [r3, #156]	@ zero_extendqisi2
-ARM GAS  /tmp/ccpADs8h.s 			page 77
+ARM GAS  /tmp/ccqVs6OL.s 			page 77
 
 
  2160 008e B3F89A00 		ldrh	r0, [r3, #154]
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2206              		.loc 1 1549 1 view -0
  2207              		.cfi_startproc
  2208              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccpADs8h.s 			page 78
+ARM GAS  /tmp/ccqVs6OL.s 			page 78
 
 
  2209              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2258 002e 2C       		.byte	(.L122-.L124)/2
  2259 002f 2C       		.byte	(.L122-.L124)/2
  2260 0030 2C       		.byte	(.L122-.L124)/2
-ARM GAS  /tmp/ccpADs8h.s 			page 79
+ARM GAS  /tmp/ccqVs6OL.s 			page 79
 
 
  2261 0031 2C       		.byte	(.L122-.L124)/2
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2305 0052 0021     		movs	r1, #0
  2306              	.LVL206:
 1575:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 80
+ARM GAS  /tmp/ccqVs6OL.s 			page 80
 
 
  2307              		.loc 1 1575 7 is_stmt 1 view .LVU696
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2349 0074 00000000 		.word	.LC0
  2350 0078 00000000 		.word	.LANCHOR0
  2351 007c 04000000 		.word	.LC1
-ARM GAS  /tmp/ccpADs8h.s 			page 81
+ARM GAS  /tmp/ccqVs6OL.s 			page 81
 
 
  2352              		.cfi_endproc
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2395 001c 3EF82320 		ldrh	r2, [lr, r3, lsl #2]	@ unaligned
   61:Drivers/SOES/Src/esc_coe.c ****    {
  2396              		.loc 1 61 61 discriminator 1 view .LVU722
-ARM GAS  /tmp/ccpADs8h.s 			page 82
+ARM GAS  /tmp/ccqVs6OL.s 			page 82
 
 
  2397 0020 8BB2     		uxth	r3, r1
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2436              		.loc 1 63 14 is_stmt 0 view .LVU737
  2437 0044 08B2     		sxth	r0, r1
  2438              	.LVL226:
-ARM GAS  /tmp/ccpADs8h.s 			page 83
+ARM GAS  /tmp/ccqVs6OL.s 			page 83
 
 
   63:Drivers/SOES/Src/esc_coe.c ****    }
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
   84:Drivers/SOES/Src/esc_coe.c ****    while (SDOobjects[n].index < index)
  2485              		.loc 1 84 12 is_stmt 0 view .LVU748
  2486 0002 0020     		movs	r0, #0
-ARM GAS  /tmp/ccpADs8h.s 			page 84
+ARM GAS  /tmp/ccqVs6OL.s 			page 84
 
 
  2487              	.LVL233:
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2532              	complete_access_get_variables:
  2533              	.LVL239:
  2534              	.LFB7:
-ARM GAS  /tmp/ccpADs8h.s 			page 85
+ARM GAS  /tmp/ccqVs6OL.s 			page 85
 
 
  435:Drivers/SOES/Src/esc_coe.c ****    *index = etohs (coesdo->index);
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  446:Drivers/SOES/Src/esc_coe.c ****    {
  2574              		.loc 1 446 7 is_stmt 0 view .LVU775
  2575 001e 0028     		cmp	r0, #0
-ARM GAS  /tmp/ccpADs8h.s 			page 86
+ARM GAS  /tmp/ccqVs6OL.s 			page 86
 
 
  2576 0020 0ADB     		blt	.L156
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2620              		.section	.text.SDO_upload_complete_access,"ax",%progbits
  2621              		.align	1
  2622              		.syntax unified
-ARM GAS  /tmp/ccpADs8h.s 			page 87
+ARM GAS  /tmp/ccqVs6OL.s 			page 87
 
 
  2623              		.thumb
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2667              	.LVL250:
  583:Drivers/SOES/Src/esc_coe.c ****    {
  2668              		.loc 1 583 4 is_stmt 1 view .LVU798
-ARM GAS  /tmp/ccpADs8h.s 			page 88
+ARM GAS  /tmp/ccqVs6OL.s 			page 88
 
 
  583:Drivers/SOES/Src/esc_coe.c ****    {
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2709              	.LVL254:
  601:Drivers/SOES/Src/esc_coe.c **** 
  2710              		.loc 1 601 4 is_stmt 1 discriminator 4 view .LVU813
-ARM GAS  /tmp/ccpADs8h.s 			page 89
+ARM GAS  /tmp/ccqVs6OL.s 			page 89
 
 
  601:Drivers/SOES/Src/esc_coe.c **** 
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2752              	.LVL256:
  625:Drivers/SOES/Src/esc_coe.c **** 
  2753              		.loc 1 625 4 is_stmt 0 view .LVU827
-ARM GAS  /tmp/ccpADs8h.s 			page 90
+ARM GAS  /tmp/ccqVs6OL.s 			page 90
 
 
  2754 00b6 FFF7FEFF 		bl	complete_access_subindex_loop
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2792 00f2 4449     		ldr	r1, .L183+12
  2793 00f4 896E     		ldr	r1, [r1, #104]
  2794 00f6 881F     		subs	r0, r1, #6
-ARM GAS  /tmp/ccpADs8h.s 			page 91
+ARM GAS  /tmp/ccqVs6OL.s 			page 91
 
 
  645:Drivers/SOES/Src/esc_coe.c ****       {
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2831 012c 09F11000 		add	r0, r9, #16
  2832 0130 FFF7FEFF 		bl	memcpy
  2833              	.LVL260:
-ARM GAS  /tmp/ccpADs8h.s 			page 92
+ARM GAS  /tmp/ccqVs6OL.s 			page 92
 
 
  2834              	.L170:
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2875 016e 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
  2876 0172 BDF81610 		ldrh	r1, [sp, #22]
  2877 0176 0020     		movs	r0, #0
-ARM GAS  /tmp/ccpADs8h.s 			page 93
+ARM GAS  /tmp/ccqVs6OL.s 			page 93
 
 
  2878              	.LVL265:
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2922 01aa 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
  2923 01ae BDF81610 		ldrh	r1, [sp, #22]
  2924 01b2 2846     		mov	r0, r5
-ARM GAS  /tmp/ccpADs8h.s 			page 94
+ARM GAS  /tmp/ccqVs6OL.s 			page 94
 
 
  2925 01b4 FFF7FEFF 		bl	set_state_idle
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  2968 01f4 C2E7     		b	.L161
  2969              	.L184:
  2970 01f6 00BF     		.align	2
-ARM GAS  /tmp/ccpADs8h.s 			page 95
+ARM GAS  /tmp/ccqVs6OL.s 			page 95
 
 
  2971              	.L183:
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3018 001a 0028     		cmp	r0, #0
  3019 001c 56D1     		bne	.L197
  910:Drivers/SOES/Src/esc_coe.c ****    uint32_t size_value = coesdo->size; 
-ARM GAS  /tmp/ccpADs8h.s 			page 96
+ARM GAS  /tmp/ccqVs6OL.s 			page 96
 
 
  3020              		.loc 1 910 4 is_stmt 1 view .LVU905
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3058 004c 0193     		str	r3, [sp, #4]
  3059 004e 0122     		movs	r2, #1
  3060 0050 0092     		str	r2, [sp]
-ARM GAS  /tmp/ccpADs8h.s 			page 97
+ARM GAS  /tmp/ccqVs6OL.s 			page 97
 
 
  3061 0052 BDF91020 		ldrsh	r2, [sp, #16]
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3102 008e BDF91020 		ldrsh	r2, [sp, #16]
  3103 0092 BDF91210 		ldrsh	r1, [sp, #18]
  3104 0096 2846     		mov	r0, r5
-ARM GAS  /tmp/ccpADs8h.s 			page 98
+ARM GAS  /tmp/ccqVs6OL.s 			page 98
 
 
  3105              	.LVL294:
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  906:Drivers/SOES/Src/esc_coe.c ****       return;
  3146              		.loc 1 906 7 is_stmt 1 view .LVU948
  3147 00ce 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
-ARM GAS  /tmp/ccpADs8h.s 			page 99
+ARM GAS  /tmp/ccqVs6OL.s 			page 99
 
 
  3148 00d2 BDF81610 		ldrh	r1, [sp, #22]
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  949:Drivers/SOES/Src/esc_coe.c ****       }
  3190              		.loc 1 949 10 is_stmt 1 view .LVU961
  3191 0102 0FE0     		b	.L185
-ARM GAS  /tmp/ccpADs8h.s 			page 100
+ARM GAS  /tmp/ccqVs6OL.s 			page 100
 
 
  3192              	.LVL313:
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3235 012e 03FB0055 		mla	r5, r3, r0, r5
  3236              	.LVL321:
  973:Drivers/SOES/Src/esc_coe.c ****                   COE_COMMAND_DOWNLOADRESPONSE | COE_COMPLETEACCESS,
-ARM GAS  /tmp/ccpADs8h.s 			page 101
+ARM GAS  /tmp/ccqVs6OL.s 			page 101
 
 
  3237              		.loc 1 973 7 is_stmt 1 view .LVU973
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3287              		.cfi_offset 4, -36
  3288              		.cfi_offset 5, -32
  3289              		.cfi_offset 6, -28
-ARM GAS  /tmp/ccpADs8h.s 			page 102
+ARM GAS  /tmp/ccqVs6OL.s 			page 102
 
 
  3290              		.cfi_offset 7, -24
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  300:Drivers/SOES/Src/esc_coe.c ****    {
  3327              		.loc 1 300 4 is_stmt 1 view .LVU997
  300:Drivers/SOES/Src/esc_coe.c ****    {
-ARM GAS  /tmp/ccpADs8h.s 			page 103
+ARM GAS  /tmp/ccqVs6OL.s 			page 103
 
 
  3328              		.loc 1 300 7 is_stmt 0 view .LVU998
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3367              		.loc 1 307 18 view .LVU1013
  3368 004c 03F00F03 		and	r3, r3, #15
  3369              	.LVL335:
-ARM GAS  /tmp/ccpADs8h.s 			page 104
+ARM GAS  /tmp/ccqVs6OL.s 			page 104
 
 
  308:Drivers/SOES/Src/esc_coe.c ****          {
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  314:Drivers/SOES/Src/esc_coe.c ****          {
  3411              		.loc 1 314 10 is_stmt 1 view .LVU1027
  314:Drivers/SOES/Src/esc_coe.c ****          {
-ARM GAS  /tmp/ccpADs8h.s 			page 105
+ARM GAS  /tmp/ccqVs6OL.s 			page 105
 
 
  3412              		.loc 1 314 13 is_stmt 0 view .LVU1028
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  324:Drivers/SOES/Src/esc_coe.c ****             {
  3451              		.loc 1 324 16 is_stmt 0 view .LVU1044
  3452 00c0 082B     		cmp	r3, #8
-ARM GAS  /tmp/ccpADs8h.s 			page 106
+ARM GAS  /tmp/ccqVs6OL.s 			page 106
 
 
  3453 00c2 33D8     		bhi	.L226
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3490              		.loc 1 342 13 is_stmt 1 view .LVU1061
  342:Drivers/SOES/Src/esc_coe.c ****             {
  3491              		.loc 1 342 16 is_stmt 0 view .LVU1062
-ARM GAS  /tmp/ccpADs8h.s 			page 107
+ARM GAS  /tmp/ccqVs6OL.s 			page 107
 
 
  3492 00e6 042B     		cmp	r3, #4
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  360:Drivers/SOES/Src/esc_coe.c ****                   }
  3531              		.loc 1 360 22 is_stmt 1 view .LVU1078
  3532 010a BDF80C20 		ldrh	r2, [sp, #12]
-ARM GAS  /tmp/ccpADs8h.s 			page 108
+ARM GAS  /tmp/ccqVs6OL.s 			page 108
 
 
  3533 010e 08F10C01 		add	r1, r8, #12
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3575              	.LVL357:
  3576              	.L218:
  365:Drivers/SOES/Src/esc_coe.c ****                   return;
-ARM GAS  /tmp/ccpADs8h.s 			page 109
+ARM GAS  /tmp/ccqVs6OL.s 			page 109
 
 
  3577              		.loc 1 365 19 is_stmt 1 view .LVU1091
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  378:Drivers/SOES/Src/esc_coe.c ****                   if ((size + COE_HEADERSIZE) > ESC_MBXDSIZE)
  3618              		.loc 1 378 32 is_stmt 0 view .LVU1105
  3619 0168 C8F80C30 		str	r3, [r8, #12]	@ unaligned
-ARM GAS  /tmp/ccpADs8h.s 			page 110
+ARM GAS  /tmp/ccqVs6OL.s 			page 110
 
 
  379:Drivers/SOES/Src/esc_coe.c ****                   {
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3655 0192 BDF80C20 		ldrh	r2, [sp, #12]
  3656 0196 02F10A03 		add	r3, r2, #10
  395:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 111
+ARM GAS  /tmp/ccqVs6OL.s 			page 111
 
 
  3657              		.loc 1 395 44 view .LVU1125
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  412:Drivers/SOES/Src/esc_coe.c ****                   return;
  3700              		.loc 1 412 19 is_stmt 1 view .LVU1137
  3701 01d2 3246     		mov	r2, r6
-ARM GAS  /tmp/ccpADs8h.s 			page 112
+ARM GAS  /tmp/ccqVs6OL.s 			page 112
 
 
  3702 01d4 2946     		mov	r1, r5
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3746              	.LVL376:
  3747              	.L234:
  430:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 113
+ARM GAS  /tmp/ccqVs6OL.s 			page 113
 
 
  3748              		.loc 1 430 1 view .LVU1148
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3793              		.loc 1 762 4 view .LVU1159
  3794              	.LVL377:
  763:Drivers/SOES/Src/esc_coe.c ****    subindex = coesdo->subindex;
-ARM GAS  /tmp/ccpADs8h.s 			page 114
+ARM GAS  /tmp/ccqVs6OL.s 			page 114
 
 
  3795              		.loc 1 763 4 view .LVU1160
@@ -6838,7 +6838,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  771:Drivers/SOES/Src/esc_coe.c ****          uint8_t access = (objd + nsub)->flags & 0x3f;
  3834              		.loc 1 771 15 view .LVU1176
  3835 0030 7B4B     		ldr	r3, .L256+4
-ARM GAS  /tmp/ccpADs8h.s 			page 115
+ARM GAS  /tmp/ccqVs6OL.s 			page 115
 
 
  3836 0032 03EB4404 		add	r4, r3, r4, lsl #1
@@ -6898,7 +6898,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  774:Drivers/SOES/Src/esc_coe.c ****          {
  3876              		.loc 1 774 14 discriminator 7 view .LVU1191
  3877 006e 082B     		cmp	r3, #8
-ARM GAS  /tmp/ccpADs8h.s 			page 116
+ARM GAS  /tmp/ccqVs6OL.s 			page 116
 
 
  3878 0070 09D0     		beq	.L239
@@ -6958,7 +6958,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  3917              		.loc 1 780 44 is_stmt 0 view .LVU1206
  3918 009e DB68     		ldr	r3, [r3, #12]	@ unaligned
  780:Drivers/SOES/Src/esc_coe.c ****                mbxdata = &size_value;
-ARM GAS  /tmp/ccpADs8h.s 			page 117
+ARM GAS  /tmp/ccqVs6OL.s 			page 117
 
 
  3919              		.loc 1 780 25 view .LVU1207
@@ -7018,7 +7018,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  804:Drivers/SOES/Src/esc_coe.c ****                         (type != DTYPE_ARRAY_OF_SINT) &&
  3958              		.loc 1 804 54 view .LVU1223
  3959 00c8 40F26122 		movw	r2, #609
-ARM GAS  /tmp/ccpADs8h.s 			page 118
+ARM GAS  /tmp/ccqVs6OL.s 			page 118
 
 
  3960 00cc 9342     		cmp	r3, r2
@@ -7078,7 +7078,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4001 00fe 2069     		ldr	r0, [r4, #16]	@ unaligned
  4002              	.LVL404:
  800:Drivers/SOES/Src/esc_coe.c ****                }
-ARM GAS  /tmp/ccpADs8h.s 			page 119
+ARM GAS  /tmp/ccqVs6OL.s 			page 119
 
 
  4003              		.loc 1 800 19 view .LVU1237
@@ -7138,7 +7138,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4044              		.loc 1 827 19 is_stmt 1 view .LVU1250
  827:Drivers/SOES/Src/esc_coe.c ****                   ESCvar.data = (objd + nsub)->data + size;
  4045              		.loc 1 827 36 is_stmt 0 view .LVU1251
-ARM GAS  /tmp/ccpADs8h.s 			page 120
+ARM GAS  /tmp/ccqVs6OL.s 			page 120
 
 
  4046 013a 3A4B     		ldr	r3, .L256+8
@@ -7198,7 +7198,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  838:Drivers/SOES/Src/esc_coe.c ****                if (MBXout)
  4084              		.loc 1 838 25 is_stmt 0 view .LVU1268
  4085 016c FFF7FEFF 		bl	ESC_claimbuffer
-ARM GAS  /tmp/ccpADs8h.s 			page 121
+ARM GAS  /tmp/ccqVs6OL.s 			page 121
 
 
  4086              	.LVL410:
@@ -7258,7 +7258,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4124 019c A3F80970 		strh	r7, [r3, #9]	@ unaligned
  847:Drivers/SOES/Src/esc_coe.c ****                   coeres->command = COE_COMMAND_DOWNLOADRESPONSE;
  4125              		.loc 1 847 19 is_stmt 1 view .LVU1285
-ARM GAS  /tmp/ccpADs8h.s 			page 122
+ARM GAS  /tmp/ccqVs6OL.s 			page 122
 
 
  847:Drivers/SOES/Src/esc_coe.c ****                   coeres->command = COE_COMMAND_DOWNLOADRESPONSE;
@@ -7318,7 +7318,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4164 01ca 3246     		mov	r2, r6
  4165 01cc 2946     		mov	r1, r5
  4166 01ce 4046     		mov	r0, r8
-ARM GAS  /tmp/ccpADs8h.s 			page 123
+ARM GAS  /tmp/ccqVs6OL.s 			page 123
 
 
  4167              	.LVL417:
@@ -7378,7 +7378,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4210              	.LVL427:
  4211 01fc 05E0     		b	.L251
  4212              	.L236:
-ARM GAS  /tmp/ccpADs8h.s 			page 124
+ARM GAS  /tmp/ccqVs6OL.s 			page 124
 
 
  886:Drivers/SOES/Src/esc_coe.c ****    }
@@ -7438,7 +7438,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4261              		.loc 1 1208 1 is_stmt 1 view -0
  4262              		.cfi_startproc
  4263              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccpADs8h.s 			page 125
+ARM GAS  /tmp/ccqVs6OL.s 			page 125
 
 
  4264              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -7498,7 +7498,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1222:Drivers/SOES/Src/esc_coe.c ****       {
  4302              		.loc 1 1222 7 is_stmt 1 view .LVU1337
 1222:Drivers/SOES/Src/esc_coe.c ****       {
-ARM GAS  /tmp/ccpADs8h.s 			page 126
+ARM GAS  /tmp/ccqVs6OL.s 			page 126
 
 
  4303              		.loc 1 1222 10 is_stmt 0 view .LVU1338
@@ -7558,7 +7558,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1231:Drivers/SOES/Src/esc_coe.c ****          coel->index = htoes (index);
  4343              		.loc 1 1231 10 is_stmt 1 view .LVU1353
 1231:Drivers/SOES/Src/esc_coe.c ****          coel->index = htoes (index);
-ARM GAS  /tmp/ccpADs8h.s 			page 127
+ARM GAS  /tmp/ccqVs6OL.s 			page 127
 
 
  4344              		.loc 1 1231 41 is_stmt 0 view .LVU1354
@@ -7618,7 +7618,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4383 0094 84F81190 		strb	r9, [r4, #17]
 1253:Drivers/SOES/Src/esc_coe.c ****          d = (uint8_t *) &(coel->name);
  4384              		.loc 1 1253 10 is_stmt 1 view .LVU1370
-ARM GAS  /tmp/ccpADs8h.s 			page 128
+ARM GAS  /tmp/ccqVs6OL.s 			page 128
 
 
 1253:Drivers/SOES/Src/esc_coe.c ****          d = (uint8_t *) &(coel->name);
@@ -7678,7 +7678,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4425              	.LVL444:
 1237:Drivers/SOES/Src/esc_coe.c ****             coel->maxsub = SDOobjects[nidx].maxsub;
  4426              		.loc 1 1237 28 view .LVU1385
-ARM GAS  /tmp/ccpADs8h.s 			page 129
+ARM GAS  /tmp/ccqVs6OL.s 			page 129
 
 
  4427 00d0 E281     		strh	r2, [r4, #14]	@ unaligned
@@ -7738,7 +7738,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1245:Drivers/SOES/Src/esc_coe.c ****          }
  4467              		.loc 1 1245 26 view .LVU1400
  4468 00fe 2374     		strb	r3, [r4, #16]
-ARM GAS  /tmp/ccpADs8h.s 			page 130
+ARM GAS  /tmp/ccqVs6OL.s 			page 130
 
 
  4469              	.LBE23:
@@ -7798,7 +7798,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1263:Drivers/SOES/Src/esc_coe.c ****          MBXcontrol[MBXout].state = MBXstate_outreq;
  4507              		.loc 1 1263 10 is_stmt 1 view .LVU1417
 1263:Drivers/SOES/Src/esc_coe.c ****          MBXcontrol[MBXout].state = MBXstate_outreq;
-ARM GAS  /tmp/ccpADs8h.s 			page 131
+ARM GAS  /tmp/ccqVs6OL.s 			page 131
 
 
  4508              		.loc 1 1263 35 is_stmt 0 view .LVU1418
@@ -7858,7 +7858,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4550              		.cfi_endproc
  4551              	.LFE18:
  4553              		.section	.text.SDO_geted,"ax",%progbits
-ARM GAS  /tmp/ccpADs8h.s 			page 132
+ARM GAS  /tmp/ccqVs6OL.s 			page 132
 
 
  4554              		.align	1
@@ -7918,7 +7918,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4593              		.loc 1 1293 4 is_stmt 1 view .LVU1446
 1293:Drivers/SOES/Src/esc_coe.c ****    if (nidx >= 0)
  4594              		.loc 1 1293 11 is_stmt 0 view .LVU1447
-ARM GAS  /tmp/ccpADs8h.s 			page 133
+ARM GAS  /tmp/ccqVs6OL.s 			page 133
 
 
  4595 000a A8B2     		uxth	r0, r5
@@ -7978,7 +7978,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1303:Drivers/SOES/Src/esc_coe.c ****             coel->mbxheader.mbxtype = MBXCOE;
  4634              		.loc 1 1303 13 is_stmt 1 view .LVU1463
 1303:Drivers/SOES/Src/esc_coe.c ****             coel->mbxheader.mbxtype = MBXCOE;
-ARM GAS  /tmp/ccpADs8h.s 			page 134
+ARM GAS  /tmp/ccqVs6OL.s 			page 134
 
 
  4635              		.loc 1 1303 50 is_stmt 0 view .LVU1464
@@ -8038,7 +8038,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4674 0070 9372     		strb	r3, [r2, #10]
  4675 0072 D372     		strb	r3, [r2, #11]
 1311:Drivers/SOES/Src/esc_coe.c ****             coel->subindex = subindex;
-ARM GAS  /tmp/ccpADs8h.s 			page 135
+ARM GAS  /tmp/ccqVs6OL.s 			page 135
 
 
  4676              		.loc 1 1311 13 is_stmt 1 view .LVU1480
@@ -8098,7 +8098,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4711              		.loc 1 1319 13 is_stmt 1 view .LVU1499
 1319:Drivers/SOES/Src/esc_coe.c ****             while (*s && (n < (ESC_MBXDSIZE - 0x10)))
  4712              		.loc 1 1319 15 is_stmt 0 view .LVU1500
-ARM GAS  /tmp/ccpADs8h.s 			page 136
+ARM GAS  /tmp/ccqVs6OL.s 			page 136
 
 
  4713 0092 1632     		adds	r2, r2, #22
@@ -8158,7 +8158,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1327:Drivers/SOES/Src/esc_coe.c ****             coel->mbxheader.length = htoes ((uint16_t) 0x10 + n);
  4750              		.loc 1 1327 16 is_stmt 0 view .LVU1518
  4751 00ae 1470     		strb	r4, [r2]
-ARM GAS  /tmp/ccpADs8h.s 			page 137
+ARM GAS  /tmp/ccqVs6OL.s 			page 137
 
 
 1328:Drivers/SOES/Src/esc_coe.c ****             MBXcontrol[MBXout].state = MBXstate_outreq;
@@ -8218,7 +8218,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4791 00d6 FFF7FEFF 		bl	SDO_infoerror
  4792              	.LVL490:
 1343:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 138
+ARM GAS  /tmp/ccqVs6OL.s 			page 138
 
 
  4793              		.loc 1 1343 1 view .LVU1534
@@ -8278,7 +8278,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  124:Drivers/SOES/Src/esc_coe.c ****    int mapIx = 0;
  4843              		.loc 1 124 4 view .LVU1541
  125:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 139
+ARM GAS  /tmp/ccqVs6OL.s 			page 139
 
 
  4844              		.loc 1 125 4 view .LVU1542
@@ -8338,7 +8338,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4882              		.loc 1 140 7 discriminator 1 view .LVU1558
  4883 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  4884 003c 0393     		str	r3, [sp, #12]
-ARM GAS  /tmp/ccpADs8h.s 			page 140
+ARM GAS  /tmp/ccqVs6OL.s 			page 140
 
 
  4885              	.L285:
@@ -8398,7 +8398,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4925              		.loc 1 145 15 discriminator 2 view .LVU1572
  4926 006e 80B2     		uxth	r0, r0
  4927 0070 68E0     		b	.L289
-ARM GAS  /tmp/ccpADs8h.s 			page 141
+ARM GAS  /tmp/ccqVs6OL.s 			page 141
 
 
  4928              	.LVL503:
@@ -8458,7 +8458,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  4969 0098 3CDB     		blt	.L300
  4970              	.LBB27:
  184:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 142
+ARM GAS  /tmp/ccqVs6OL.s 			page 142
 
 
  4971              		.loc 1 184 25 is_stmt 1 view .LVU1586
@@ -8518,7 +8518,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5009 00c8 09F10109 		add	r9, r9, #1
  5010              	.LVL514:
  5011              	.L296:
-ARM GAS  /tmp/ccpADs8h.s 			page 143
+ARM GAS  /tmp/ccqVs6OL.s 			page 143
 
 
  205:Drivers/SOES/Src/esc_coe.c ****                }
@@ -8578,7 +8578,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5051              	.LVL520:
  159:Drivers/SOES/Src/esc_coe.c ****                {
  5052              		.loc 1 159 16 is_stmt 1 discriminator 4 view .LVU1618
-ARM GAS  /tmp/ccpADs8h.s 			page 144
+ARM GAS  /tmp/ccqVs6OL.s 			page 144
 
 
  159:Drivers/SOES/Src/esc_coe.c ****                {
@@ -8638,7 +8638,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  191:Drivers/SOES/Src/esc_coe.c ****                         }
  5091              		.loc 1 191 28 is_stmt 1 view .LVU1635
  191:Drivers/SOES/Src/esc_coe.c ****                         }
-ARM GAS  /tmp/ccpADs8h.s 			page 145
+ARM GAS  /tmp/ccqVs6OL.s 			page 145
 
 
  5092              		.loc 1 191 35 is_stmt 0 view .LVU1636
@@ -8698,7 +8698,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  145:Drivers/SOES/Src/esc_coe.c ****          nidx = SDO_findobject (hobj);
  5134              		.loc 1 145 15 view .LVU1649
  5135 013e 002A     		cmp	r2, #0
-ARM GAS  /tmp/ccpADs8h.s 			page 146
+ARM GAS  /tmp/ccqVs6OL.s 			page 146
 
 
  5136 0140 94D0     		beq	.L288
@@ -8758,7 +8758,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  154:Drivers/SOES/Src/esc_coe.c ****             {
  5175              		.loc 1 154 20 is_stmt 0 discriminator 4 view .LVU1665
  5176 0168 0125     		movs	r5, #1
-ARM GAS  /tmp/ccpADs8h.s 			page 147
+ARM GAS  /tmp/ccqVs6OL.s 			page 147
 
 
  154:Drivers/SOES/Src/esc_coe.c ****             {
@@ -8818,7 +8818,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5220              		.align	2
  5221              	.L313:
  5222 018c 00000000 		.word	SDOobjects
-ARM GAS  /tmp/ccpADs8h.s 			page 148
+ARM GAS  /tmp/ccqVs6OL.s 			page 148
 
 
  5223              		.cfi_endproc
@@ -8878,7 +8878,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1374:Drivers/SOES/Src/esc_coe.c ****    {
  5266              		.loc 1 1374 4 is_stmt 1 view .LVU1690
 1374:Drivers/SOES/Src/esc_coe.c ****    {
-ARM GAS  /tmp/ccpADs8h.s 			page 149
+ARM GAS  /tmp/ccqVs6OL.s 			page 149
 
 
  5267              		.loc 1 1374 42 is_stmt 0 view .LVU1691
@@ -8938,7 +8938,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5307 004e 83F88A20 		strb	r2, [r3, #138]
  5308 0052 E2E7     		b	.L317
  5309              	.L335:
-ARM GAS  /tmp/ccpADs8h.s 			page 150
+ARM GAS  /tmp/ccqVs6OL.s 			page 150
 
 
 1366:Drivers/SOES/Src/esc_coe.c ****          }
@@ -8998,7 +8998,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5349 0076 50D0     		beq	.L339
  5350              	.L328:
 1451:Drivers/SOES/Src/esc_coe.c ****                   {
-ARM GAS  /tmp/ccpADs8h.s 			page 151
+ARM GAS  /tmp/ccqVs6OL.s 			page 151
 
 
  5351              		.loc 1 1451 19 is_stmt 1 view .LVU1721
@@ -9058,7 +9058,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5391              		.loc 1 1406 15 is_stmt 1 view .LVU1735
 1406:Drivers/SOES/Src/esc_coe.c ****          {
  5392              		.loc 1 1406 18 is_stmt 0 view .LVU1736
-ARM GAS  /tmp/ccpADs8h.s 			page 152
+ARM GAS  /tmp/ccqVs6OL.s 			page 152
 
 
  5393 00a4 202B     		cmp	r3, #32
@@ -9118,7 +9118,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5433              		.loc 1 1400 20 view .LVU1750
  5434 00cc 1E49     		ldr	r1, .L343+8
  5435              	.LVL557:
-ARM GAS  /tmp/ccpADs8h.s 			page 153
+ARM GAS  /tmp/ccqVs6OL.s 			page 153
 
 
 1400:Drivers/SOES/Src/esc_coe.c ****                && (ESCvar.segmented == MBXSEU))
@@ -9178,7 +9178,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1428:Drivers/SOES/Src/esc_coe.c ****          {
  5477              		.loc 1 1428 16 view .LVU1764
  5478 00fe 012A     		cmp	r2, #1
-ARM GAS  /tmp/ccpADs8h.s 			page 154
+ARM GAS  /tmp/ccqVs6OL.s 			page 154
 
 
  5479 0100 B6D1     		bne	.L326
@@ -9238,7 +9238,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5521 0132 B1F80910 		ldrh	r1, [r1, #9]	@ unaligned
  5522              	.LVL572:
 1459:Drivers/SOES/Src/esc_coe.c ****                      }
-ARM GAS  /tmp/ccpADs8h.s 			page 155
+ARM GAS  /tmp/ccqVs6OL.s 			page 155
 
 
  5523              		.loc 1 1459 25 view .LVU1777
@@ -9298,7 +9298,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5564              		.cfi_def_cfa_offset 24
  5565              		.cfi_offset 4, -24
  5566              		.cfi_offset 5, -20
-ARM GAS  /tmp/ccpADs8h.s 			page 156
+ARM GAS  /tmp/ccqVs6OL.s 			page 156
 
 
  5567              		.cfi_offset 6, -16
@@ -9358,7 +9358,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5599 0024 04EB8403 		add	r3, r4, r4, lsl #2
  5600 0028 9D00     		lsls	r5, r3, #2
  5601 002a 7019     		adds	r0, r6, r5
-ARM GAS  /tmp/ccpADs8h.s 			page 157
+ARM GAS  /tmp/ccqVs6OL.s 			page 157
 
 
 1676:Drivers/SOES/Src/esc_coe.c ****          {
@@ -9418,7 +9418,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5642              	.L357:
 1682:Drivers/SOES/Src/esc_coe.c ****    }
 1683:Drivers/SOES/Src/esc_coe.c **** 
-ARM GAS  /tmp/ccpADs8h.s 			page 158
+ARM GAS  /tmp/ccqVs6OL.s 			page 158
 
 
 1684:Drivers/SOES/Src/esc_coe.c ****    /* Let application override default values */
@@ -9478,7 +9478,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1691:Drivers/SOES/Src/esc_coe.c **** /**
 1692:Drivers/SOES/Src/esc_coe.c ****  * Pack process data
 1693:Drivers/SOES/Src/esc_coe.c ****  *
-ARM GAS  /tmp/ccpADs8h.s 			page 159
+ARM GAS  /tmp/ccqVs6OL.s 			page 159
 
 
 1694:Drivers/SOES/Src/esc_coe.c ****  * This function reads mapped objects and constructs the process data
@@ -9538,7 +9538,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5724              	.LVL587:
 1706:Drivers/SOES/Src/esc_coe.c **** 
  5725              		.loc 1 1706 4 discriminator 1 view .LVU1827
-ARM GAS  /tmp/ccpADs8h.s 			page 160
+ARM GAS  /tmp/ccqVs6OL.s 			page 160
 
 
  5726 0020 FFF7FEFF 		bl	__assert_func
@@ -9598,7 +9598,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5757              	.LBB34:
 1710:Drivers/SOES/Src/esc_coe.c ****       uint16_t offset = mappings[ix].offset;
  5758              		.loc 1 1710 7 is_stmt 1 view .LVU1837
-ARM GAS  /tmp/ccpADs8h.s 			page 161
+ARM GAS  /tmp/ccqVs6OL.s 			page 161
 
 
 1710:Drivers/SOES/Src/esc_coe.c ****       uint16_t offset = mappings[ix].offset;
@@ -9658,7 +9658,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5797              	.LBE34:
 1728:Drivers/SOES/Src/esc_coe.c ****                (uint64_t *)buffer,
 1729:Drivers/SOES/Src/esc_coe.c ****                offset,
-ARM GAS  /tmp/ccpADs8h.s 			page 162
+ARM GAS  /tmp/ccqVs6OL.s 			page 162
 
 
 1730:Drivers/SOES/Src/esc_coe.c ****                obj->bitlength,
@@ -9718,7 +9718,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5834              		.cfi_offset 7, -12
  5835              		.cfi_offset 8, -8
  5836              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccpADs8h.s 			page 163
+ARM GAS  /tmp/ccqVs6OL.s 			page 163
 
 
 1750:Drivers/SOES/Src/esc_coe.c ****    int ix;
@@ -9778,7 +9778,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1773:Drivers/SOES/Src/esc_coe.c ****             uint64_t value = COE_bitsliceGet (
  5864              		.loc 1 1773 13 is_stmt 1 view .LVU1865
  5865              		.loc 1 1773 30 is_stmt 0 view .LVU1866
-ARM GAS  /tmp/ccpADs8h.s 			page 164
+ARM GAS  /tmp/ccqVs6OL.s 			page 164
 
 
  5866 0022 4046     		mov	r0, r8
@@ -9838,7 +9838,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5904 0044 F5D0     		beq	.L373
 1762:Drivers/SOES/Src/esc_coe.c ****          {
  5905              		.loc 1 1762 10 is_stmt 1 view .LVU1881
-ARM GAS  /tmp/ccpADs8h.s 			page 165
+ARM GAS  /tmp/ccqVs6OL.s 			page 165
 
 
 1762:Drivers/SOES/Src/esc_coe.c ****          {
@@ -9898,7 +9898,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  5948              		.thumb
  5949              		.thumb_func
  5951              	COE_maxSub:
-ARM GAS  /tmp/ccpADs8h.s 			page 166
+ARM GAS  /tmp/ccqVs6OL.s 			page 166
 
 
  5952              	.LVL616:
@@ -9958,7 +9958,7 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
 1802:Drivers/SOES/Src/esc_coe.c **** }
  5987              		.loc 1 1802 1 view .LVU1906
  5988 0020 08BD     		pop	{r3, pc}
-ARM GAS  /tmp/ccpADs8h.s 			page 167
+ARM GAS  /tmp/ccqVs6OL.s 			page 167
 
 
  5989              	.L384:
@@ -10016,110 +10016,110 @@ ARM GAS  /tmp/ccpADs8h.s 			page 1
  6036              		.file 6 "Drivers/SOES/Inc/esc.h"
  6037              		.file 7 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h"
  6038              		.file 8 "<built-in>"
-ARM GAS  /tmp/ccpADs8h.s 			page 168
+ARM GAS  /tmp/ccqVs6OL.s 			page 168
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 esc_coe.c
-     /tmp/ccpADs8h.s:20     .text.init_coesdo:0000000000000000 $t
-     /tmp/ccpADs8h.s:25     .text.init_coesdo:0000000000000000 init_coesdo
-     /tmp/ccpADs8h.s:74     .text.COE_bitsliceGet:0000000000000000 $t
-     /tmp/ccpADs8h.s:79     .text.COE_bitsliceGet:0000000000000000 COE_bitsliceGet
-     /tmp/ccpADs8h.s:229    .text.COE_bitsliceSet:0000000000000000 $t
-     /tmp/ccpADs8h.s:234    .text.COE_bitsliceSet:0000000000000000 COE_bitsliceSet
-     /tmp/ccpADs8h.s:432    .text.COE_setValue:0000000000000000 $t
-     /tmp/ccpADs8h.s:437    .text.COE_setValue:0000000000000000 COE_setValue
-     /tmp/ccpADs8h.s:454    .text.COE_setValue:000000000000000c $d
-     /tmp/ccpADs8h.s:549    .text.SDO_getodlistcont:0000000000000000 $t
-     /tmp/ccpADs8h.s:554    .text.SDO_getodlistcont:0000000000000000 SDO_getodlistcont
-     /tmp/ccpADs8h.s:750    .text.SDO_getodlistcont:00000000000000d4 $d
-     /tmp/ccpADs8h.s:758    .text.SDO_infoerror:0000000000000000 $t
-     /tmp/ccpADs8h.s:763    .text.SDO_infoerror:0000000000000000 SDO_infoerror
-     /tmp/ccpADs8h.s:863    .text.SDO_infoerror:0000000000000070 $d
-     /tmp/ccpADs8h.s:870    .text.SDO_getodlist:0000000000000000 $t
-     /tmp/ccpADs8h.s:875    .text.SDO_getodlist:0000000000000000 SDO_getodlist
-     /tmp/ccpADs8h.s:1224   .text.SDO_getodlist:0000000000000168 $d
-     /tmp/ccpADs8h.s:1234   .text.SDO_abort:0000000000000000 $t
-     /tmp/ccpADs8h.s:1239   .text.SDO_abort:0000000000000000 SDO_abort
-     /tmp/ccpADs8h.s:1331   .text.SDO_abort:0000000000000060 $d
-     /tmp/ccpADs8h.s:1338   .text.set_state_idle:0000000000000000 $t
-     /tmp/ccpADs8h.s:1343   .text.set_state_idle:0000000000000000 set_state_idle
-     /tmp/ccpADs8h.s:1381   .text.set_state_idle:0000000000000018 $d
-     /tmp/ccpADs8h.s:1387   .text.copy2mbx:0000000000000000 $t
-     /tmp/ccpADs8h.s:1392   .text.copy2mbx:0000000000000000 copy2mbx
-     /tmp/ccpADs8h.s:1420   .text.SDO_uploadsegment:0000000000000000 $t
-     /tmp/ccpADs8h.s:1425   .text.SDO_uploadsegment:0000000000000000 SDO_uploadsegment
-     /tmp/ccpADs8h.s:1646   .text.SDO_uploadsegment:0000000000000108 $d
-     /tmp/ccpADs8h.s:1654   .text.complete_access_subindex_loop:0000000000000000 $t
-     /tmp/ccpADs8h.s:1659   .text.complete_access_subindex_loop:0000000000000000 complete_access_subindex_loop
-     /tmp/ccpADs8h.s:2007   .text.complete_access_subindex_loop:0000000000000180 $d
-     /tmp/ccpADs8h.s:2014   .text.SDO_downloadsegment:0000000000000000 $t
-     /tmp/ccpADs8h.s:2019   .text.SDO_downloadsegment:0000000000000000 SDO_downloadsegment
-     /tmp/ccpADs8h.s:2182   .text.SDO_downloadsegment:00000000000000b0 $d
-     /tmp/ccpADs8h.s:2191   .rodata.COE_getValue.str1.4:0000000000000000 $d
-     /tmp/ccpADs8h.s:2198   .text.COE_getValue:0000000000000000 $t
-     /tmp/ccpADs8h.s:2203   .text.COE_getValue:0000000000000000 COE_getValue
-     /tmp/ccpADs8h.s:2226   .text.COE_getValue:000000000000000e $d
-     /tmp/ccpADs8h.s:2349   .text.COE_getValue:0000000000000074 $d
-     /tmp/ccpADs8h.s:2356   .text.SDO_findsubindex:0000000000000000 $t
-     /tmp/ccpADs8h.s:2362   .text.SDO_findsubindex:0000000000000000 SDO_findsubindex
-     /tmp/ccpADs8h.s:2461   .text.SDO_findsubindex:0000000000000058 $d
-     /tmp/ccpADs8h.s:2466   .text.SDO_findobject:0000000000000000 $t
-     /tmp/ccpADs8h.s:2472   .text.SDO_findobject:0000000000000000 SDO_findobject
-     /tmp/ccpADs8h.s:2522   .text.SDO_findobject:0000000000000020 $d
-     /tmp/ccpADs8h.s:2527   .text.complete_access_get_variables:0000000000000000 $t
-     /tmp/ccpADs8h.s:2532   .text.complete_access_get_variables:0000000000000000 complete_access_get_variables
-     /tmp/ccpADs8h.s:2614   .text.complete_access_get_variables:0000000000000040 $d
-     /tmp/ccpADs8h.s:2621   .text.SDO_upload_complete_access:0000000000000000 $t
-     /tmp/ccpADs8h.s:2626   .text.SDO_upload_complete_access:0000000000000000 SDO_upload_complete_access
-     /tmp/ccpADs8h.s:2972   .text.SDO_upload_complete_access:00000000000001f8 $d
-     /tmp/ccpADs8h.s:2982   .text.SDO_download_complete_access:0000000000000000 $t
-     /tmp/ccpADs8h.s:2987   .text.SDO_download_complete_access:0000000000000000 SDO_download_complete_access
-     /tmp/ccpADs8h.s:3264   .text.SDO_download_complete_access:0000000000000158 $d
-ARM GAS  /tmp/ccpADs8h.s 			page 169
+     /tmp/ccqVs6OL.s:20     .text.init_coesdo:0000000000000000 $t
+     /tmp/ccqVs6OL.s:25     .text.init_coesdo:0000000000000000 init_coesdo
+     /tmp/ccqVs6OL.s:74     .text.COE_bitsliceGet:0000000000000000 $t
+     /tmp/ccqVs6OL.s:79     .text.COE_bitsliceGet:0000000000000000 COE_bitsliceGet
+     /tmp/ccqVs6OL.s:229    .text.COE_bitsliceSet:0000000000000000 $t
+     /tmp/ccqVs6OL.s:234    .text.COE_bitsliceSet:0000000000000000 COE_bitsliceSet
+     /tmp/ccqVs6OL.s:432    .text.COE_setValue:0000000000000000 $t
+     /tmp/ccqVs6OL.s:437    .text.COE_setValue:0000000000000000 COE_setValue
+     /tmp/ccqVs6OL.s:454    .text.COE_setValue:000000000000000c $d
+     /tmp/ccqVs6OL.s:549    .text.SDO_getodlistcont:0000000000000000 $t
+     /tmp/ccqVs6OL.s:554    .text.SDO_getodlistcont:0000000000000000 SDO_getodlistcont
+     /tmp/ccqVs6OL.s:750    .text.SDO_getodlistcont:00000000000000d4 $d
+     /tmp/ccqVs6OL.s:758    .text.SDO_infoerror:0000000000000000 $t
+     /tmp/ccqVs6OL.s:763    .text.SDO_infoerror:0000000000000000 SDO_infoerror
+     /tmp/ccqVs6OL.s:863    .text.SDO_infoerror:0000000000000070 $d
+     /tmp/ccqVs6OL.s:870    .text.SDO_getodlist:0000000000000000 $t
+     /tmp/ccqVs6OL.s:875    .text.SDO_getodlist:0000000000000000 SDO_getodlist
+     /tmp/ccqVs6OL.s:1224   .text.SDO_getodlist:0000000000000168 $d
+     /tmp/ccqVs6OL.s:1234   .text.SDO_abort:0000000000000000 $t
+     /tmp/ccqVs6OL.s:1239   .text.SDO_abort:0000000000000000 SDO_abort
+     /tmp/ccqVs6OL.s:1331   .text.SDO_abort:0000000000000060 $d
+     /tmp/ccqVs6OL.s:1338   .text.set_state_idle:0000000000000000 $t
+     /tmp/ccqVs6OL.s:1343   .text.set_state_idle:0000000000000000 set_state_idle
+     /tmp/ccqVs6OL.s:1381   .text.set_state_idle:0000000000000018 $d
+     /tmp/ccqVs6OL.s:1387   .text.copy2mbx:0000000000000000 $t
+     /tmp/ccqVs6OL.s:1392   .text.copy2mbx:0000000000000000 copy2mbx
+     /tmp/ccqVs6OL.s:1420   .text.SDO_uploadsegment:0000000000000000 $t
+     /tmp/ccqVs6OL.s:1425   .text.SDO_uploadsegment:0000000000000000 SDO_uploadsegment
+     /tmp/ccqVs6OL.s:1646   .text.SDO_uploadsegment:0000000000000108 $d
+     /tmp/ccqVs6OL.s:1654   .text.complete_access_subindex_loop:0000000000000000 $t
+     /tmp/ccqVs6OL.s:1659   .text.complete_access_subindex_loop:0000000000000000 complete_access_subindex_loop
+     /tmp/ccqVs6OL.s:2007   .text.complete_access_subindex_loop:0000000000000180 $d
+     /tmp/ccqVs6OL.s:2014   .text.SDO_downloadsegment:0000000000000000 $t
+     /tmp/ccqVs6OL.s:2019   .text.SDO_downloadsegment:0000000000000000 SDO_downloadsegment
+     /tmp/ccqVs6OL.s:2182   .text.SDO_downloadsegment:00000000000000b0 $d
+     /tmp/ccqVs6OL.s:2191   .rodata.COE_getValue.str1.4:0000000000000000 $d
+     /tmp/ccqVs6OL.s:2198   .text.COE_getValue:0000000000000000 $t
+     /tmp/ccqVs6OL.s:2203   .text.COE_getValue:0000000000000000 COE_getValue
+     /tmp/ccqVs6OL.s:2226   .text.COE_getValue:000000000000000e $d
+     /tmp/ccqVs6OL.s:2349   .text.COE_getValue:0000000000000074 $d
+     /tmp/ccqVs6OL.s:2356   .text.SDO_findsubindex:0000000000000000 $t
+     /tmp/ccqVs6OL.s:2362   .text.SDO_findsubindex:0000000000000000 SDO_findsubindex
+     /tmp/ccqVs6OL.s:2461   .text.SDO_findsubindex:0000000000000058 $d
+     /tmp/ccqVs6OL.s:2466   .text.SDO_findobject:0000000000000000 $t
+     /tmp/ccqVs6OL.s:2472   .text.SDO_findobject:0000000000000000 SDO_findobject
+     /tmp/ccqVs6OL.s:2522   .text.SDO_findobject:0000000000000020 $d
+     /tmp/ccqVs6OL.s:2527   .text.complete_access_get_variables:0000000000000000 $t
+     /tmp/ccqVs6OL.s:2532   .text.complete_access_get_variables:0000000000000000 complete_access_get_variables
+     /tmp/ccqVs6OL.s:2614   .text.complete_access_get_variables:0000000000000040 $d
+     /tmp/ccqVs6OL.s:2621   .text.SDO_upload_complete_access:0000000000000000 $t
+     /tmp/ccqVs6OL.s:2626   .text.SDO_upload_complete_access:0000000000000000 SDO_upload_complete_access
+     /tmp/ccqVs6OL.s:2972   .text.SDO_upload_complete_access:00000000000001f8 $d
+     /tmp/ccqVs6OL.s:2982   .text.SDO_download_complete_access:0000000000000000 $t
+     /tmp/ccqVs6OL.s:2987   .text.SDO_download_complete_access:0000000000000000 SDO_download_complete_access
+     /tmp/ccqVs6OL.s:3264   .text.SDO_download_complete_access:0000000000000158 $d
+ARM GAS  /tmp/ccqVs6OL.s 			page 169
 
 
-     /tmp/ccpADs8h.s:3274   .text.SDO_upload:0000000000000000 $t
-     /tmp/ccpADs8h.s:3279   .text.SDO_upload:0000000000000000 SDO_upload
-     /tmp/ccpADs8h.s:3751   .text.SDO_upload:000000000000020c $d
-     /tmp/ccpADs8h.s:3762   .text.SDO_download:0000000000000000 $t
-     /tmp/ccpADs8h.s:3767   .text.SDO_download:0000000000000000 SDO_download
-     /tmp/ccpADs8h.s:4241   .text.SDO_download:000000000000021c $d
-     /tmp/ccpADs8h.s:4254   .text.SDO_getod:0000000000000000 $t
-     /tmp/ccpADs8h.s:4259   .text.SDO_getod:0000000000000000 SDO_getod
-     /tmp/ccpADs8h.s:4545   .text.SDO_getod:0000000000000140 $d
-     /tmp/ccpADs8h.s:4554   .text.SDO_geted:0000000000000000 $t
-     /tmp/ccpADs8h.s:4559   .text.SDO_geted:0000000000000000 SDO_geted
-     /tmp/ccpADs8h.s:4798   .text.SDO_geted:00000000000000dc $d
-     /tmp/ccpADs8h.s:4808   .text.sizeOfPDO:0000000000000000 $t
-     /tmp/ccpADs8h.s:4814   .text.sizeOfPDO:0000000000000000 sizeOfPDO
-     /tmp/ccpADs8h.s:5222   .text.sizeOfPDO:000000000000018c $d
-     /tmp/ccpADs8h.s:5227   .text.ESC_coeprocess:0000000000000000 $t
-     /tmp/ccpADs8h.s:5233   .text.ESC_coeprocess:0000000000000000 ESC_coeprocess
-     /tmp/ccpADs8h.s:5532   .text.ESC_coeprocess:0000000000000140 $d
-     /tmp/ccpADs8h.s:5540   .text.COE_initDefaultValues:0000000000000000 $t
-     /tmp/ccpADs8h.s:5546   .text.COE_initDefaultValues:0000000000000000 COE_initDefaultValues
-     /tmp/ccpADs8h.s:5669   .text.COE_initDefaultValues:000000000000006c $d
-     /tmp/ccpADs8h.s:5675   .rodata.COE_pdoPack.str1.4:0000000000000000 $d
-     /tmp/ccpADs8h.s:5679   .text.COE_pdoPack:0000000000000000 $t
-     /tmp/ccpADs8h.s:5685   .text.COE_pdoPack:0000000000000000 COE_pdoPack
-     /tmp/ccpADs8h.s:5808   .text.COE_pdoPack:000000000000006c $d
-     /tmp/ccpADs8h.s:5815   .text.COE_pdoUnpack:0000000000000000 $t
-     /tmp/ccpADs8h.s:5821   .text.COE_pdoUnpack:0000000000000000 COE_pdoUnpack
-     /tmp/ccpADs8h.s:5938   .text.COE_pdoUnpack:0000000000000064 $d
-     /tmp/ccpADs8h.s:5945   .text.COE_maxSub:0000000000000000 $t
-     /tmp/ccpADs8h.s:5951   .text.COE_maxSub:0000000000000000 COE_maxSub
-     /tmp/ccpADs8h.s:6005   .text.COE_maxSub:000000000000002c $d
-     /tmp/ccpADs8h.s:6010   .rodata.__func__.0:0000000000000000 $d
-     /tmp/ccpADs8h.s:6014   .rodata.__func__.0:0000000000000000 __func__.0
-     /tmp/ccpADs8h.s:6017   .rodata.__func__.1:0000000000000000 $d
-     /tmp/ccpADs8h.s:6021   .rodata.__func__.1:0000000000000000 __func__.1
-     /tmp/ccpADs8h.s:6024   .rodata.__func__.2:0000000000000000 $d
-     /tmp/ccpADs8h.s:6028   .rodata.__func__.2:0000000000000000 __func__.2
-     /tmp/ccpADs8h.s:509    .text.COE_setValue:0000000000000043 $d
-     /tmp/ccpADs8h.s:509    .text.COE_setValue:0000000000000044 $t
-     /tmp/ccpADs8h.s:2281   .text.COE_getValue:0000000000000045 $d
-     /tmp/ccpADs8h.s:2281   .text.COE_getValue:0000000000000046 $t
+     /tmp/ccqVs6OL.s:3274   .text.SDO_upload:0000000000000000 $t
+     /tmp/ccqVs6OL.s:3279   .text.SDO_upload:0000000000000000 SDO_upload
+     /tmp/ccqVs6OL.s:3751   .text.SDO_upload:000000000000020c $d
+     /tmp/ccqVs6OL.s:3762   .text.SDO_download:0000000000000000 $t
+     /tmp/ccqVs6OL.s:3767   .text.SDO_download:0000000000000000 SDO_download
+     /tmp/ccqVs6OL.s:4241   .text.SDO_download:000000000000021c $d
+     /tmp/ccqVs6OL.s:4254   .text.SDO_getod:0000000000000000 $t
+     /tmp/ccqVs6OL.s:4259   .text.SDO_getod:0000000000000000 SDO_getod
+     /tmp/ccqVs6OL.s:4545   .text.SDO_getod:0000000000000140 $d
+     /tmp/ccqVs6OL.s:4554   .text.SDO_geted:0000000000000000 $t
+     /tmp/ccqVs6OL.s:4559   .text.SDO_geted:0000000000000000 SDO_geted
+     /tmp/ccqVs6OL.s:4798   .text.SDO_geted:00000000000000dc $d
+     /tmp/ccqVs6OL.s:4808   .text.sizeOfPDO:0000000000000000 $t
+     /tmp/ccqVs6OL.s:4814   .text.sizeOfPDO:0000000000000000 sizeOfPDO
+     /tmp/ccqVs6OL.s:5222   .text.sizeOfPDO:000000000000018c $d
+     /tmp/ccqVs6OL.s:5227   .text.ESC_coeprocess:0000000000000000 $t
+     /tmp/ccqVs6OL.s:5233   .text.ESC_coeprocess:0000000000000000 ESC_coeprocess
+     /tmp/ccqVs6OL.s:5532   .text.ESC_coeprocess:0000000000000140 $d
+     /tmp/ccqVs6OL.s:5540   .text.COE_initDefaultValues:0000000000000000 $t
+     /tmp/ccqVs6OL.s:5546   .text.COE_initDefaultValues:0000000000000000 COE_initDefaultValues
+     /tmp/ccqVs6OL.s:5669   .text.COE_initDefaultValues:000000000000006c $d
+     /tmp/ccqVs6OL.s:5675   .rodata.COE_pdoPack.str1.4:0000000000000000 $d
+     /tmp/ccqVs6OL.s:5679   .text.COE_pdoPack:0000000000000000 $t
+     /tmp/ccqVs6OL.s:5685   .text.COE_pdoPack:0000000000000000 COE_pdoPack
+     /tmp/ccqVs6OL.s:5808   .text.COE_pdoPack:000000000000006c $d
+     /tmp/ccqVs6OL.s:5815   .text.COE_pdoUnpack:0000000000000000 $t
+     /tmp/ccqVs6OL.s:5821   .text.COE_pdoUnpack:0000000000000000 COE_pdoUnpack
+     /tmp/ccqVs6OL.s:5938   .text.COE_pdoUnpack:0000000000000064 $d
+     /tmp/ccqVs6OL.s:5945   .text.COE_maxSub:0000000000000000 $t
+     /tmp/ccqVs6OL.s:5951   .text.COE_maxSub:0000000000000000 COE_maxSub
+     /tmp/ccqVs6OL.s:6005   .text.COE_maxSub:000000000000002c $d
+     /tmp/ccqVs6OL.s:6010   .rodata.__func__.0:0000000000000000 $d
+     /tmp/ccqVs6OL.s:6014   .rodata.__func__.0:0000000000000000 __func__.0
+     /tmp/ccqVs6OL.s:6017   .rodata.__func__.1:0000000000000000 $d
+     /tmp/ccqVs6OL.s:6021   .rodata.__func__.1:0000000000000000 __func__.1
+     /tmp/ccqVs6OL.s:6024   .rodata.__func__.2:0000000000000000 $d
+     /tmp/ccqVs6OL.s:6028   .rodata.__func__.2:0000000000000000 __func__.2
+     /tmp/ccqVs6OL.s:509    .text.COE_setValue:0000000000000043 $d
+     /tmp/ccqVs6OL.s:509    .text.COE_setValue:0000000000000044 $t
+     /tmp/ccqVs6OL.s:2281   .text.COE_getValue:0000000000000045 $d
+     /tmp/ccqVs6OL.s:2281   .text.COE_getValue:0000000000000046 $t
 
 UNDEFINED SYMBOLS
 ESC_claimbuffer

@@ -28,8 +28,7 @@ build/stm32f4xx_it.o: Core/Src/stm32f4xx_it.c Core/Inc/main.h \
  Drivers/SOES/Inc/esc.h Drivers/SOES/Inc/cc.h Drivers/SOES/Inc/esc_coe.h \
  Drivers/SOES/Inc/options.h Drivers/soes-esi/Inc/ecat_options.h \
  Drivers/SOES/Inc/ecat_slv.h Drivers/SOES/Inc/esc.h Core/Inc/ecatapp.h \
- Core/Inc/pdo_override.h Drivers/soes-esi/Inc/utypes.h \
- Core/Inc/stm32f4xx_it.h
+ Core/Inc/pdo_override.h Core/Inc/stm32f4xx_it.h
 Core/Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Core/Inc/stm32f4xx_hal_conf.h:
@@ -68,5 +67,4 @@ Drivers/SOES/Inc/ecat_slv.h:
 Drivers/SOES/Inc/esc.h:
 Core/Inc/ecatapp.h:
 Core/Inc/pdo_override.h:
-Drivers/soes-esi/Inc/utypes.h:
 Core/Inc/stm32f4xx_it.h:

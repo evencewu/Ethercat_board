@@ -120,60 +120,9 @@ void ESC_write(uint16_t address, void *buf, uint16_t len)
     // PB8 HIGH
 }
 
-// static void task_delay(uint32_t time_us)
-//{
-// #define DELAY_1_uS 168 // todo tweak to used clock speed
-//     uint32_t delay_ticks = DELAY_1_uS * time_us;
-//
-//     for (int32_t i = 0; i < delay_ticks; ++i)
-//     {
-//         // do nothing
-//     }
-// }
-
-// void ESC_reset(void)
-//{
-//     volatile uint32_t timeout;
-//
-//     DPRINT("esc_reset_started\n");
-//
-//     //rst_low();
-//     task_delay(1000);
-//
-//     //rst_check_start();
-//
-//     while (timeout < 10000000)
-//     {
-//         /* ECAT releases resetpin, typically takes 40 us
-//            Reset to operational PDI is max 70 ms */
-//         if (is_esc_reset())
-//         {
-//             //rst_high();
-//             break; // OK
-//         }
-//         timeout++;
-//         task_delay(30);
-//     }
-//     DPRINT("esc_reset_ended\n");
-// }
-
 void ESC_init(const esc_cfg_t *config)
 {
-    // rst_setup();
-    // rst_high();
     read_termination[MAX_READ_SIZE - 1] = 0xFF;
-
-    // uint8_t device_symbol = 0;
-    // while (device_symbol == 0)
-    // {
-    //    ESC_read(, (void *)&device_symbol, sizeof(uint8_t));
-    //    if ((device_symbol != 0) || (device_symbol != 0xFF))
-    //    {
-    //       DPRINT("ESC init successful");
-    //    }
-    // }
-    // task_delay(1000); // allow ESC to load EEPROM, or if EEP_DONE can be read
-    // then wait while EEP_DONE is low.
 }
 
 /** ESC interrupt enable function by the Slave stack in IRQ mode.
