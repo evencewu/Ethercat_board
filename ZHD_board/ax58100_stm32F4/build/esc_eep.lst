@@ -1,0 +1,343 @@
+ARM GAS  /tmp/cc5mrtbM.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"esc_eep.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.EEP_process,"ax",%progbits
+  20              		.align	1
+  21              		.global	EEP_process
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	EEP_process:
+  27              	.LFB0:
+  28              		.file 1 "Drivers/SOES/Src/esc_eep.c"
+   1:Drivers/SOES/Src/esc_eep.c **** /*
+   2:Drivers/SOES/Src/esc_eep.c ****  * Licensed under the GNU General Public License version 2 with exceptions. See
+   3:Drivers/SOES/Src/esc_eep.c ****  * LICENSE file in the project root for full license information
+   4:Drivers/SOES/Src/esc_eep.c ****  */
+   5:Drivers/SOES/Src/esc_eep.c **** 
+   6:Drivers/SOES/Src/esc_eep.c ****  /** \file
+   7:Drivers/SOES/Src/esc_eep.c ****  * \brief
+   8:Drivers/SOES/Src/esc_eep.c ****  * ESI EEPROM emulator module.
+   9:Drivers/SOES/Src/esc_eep.c ****  */
+  10:Drivers/SOES/Src/esc_eep.c **** 
+  11:Drivers/SOES/Src/esc_eep.c **** #include "cc.h"
+  12:Drivers/SOES/Src/esc_eep.c **** #include "esc.h"
+  13:Drivers/SOES/Src/esc_eep.c **** #include "esc_eep.h"
+  14:Drivers/SOES/Src/esc_eep.c **** 
+  15:Drivers/SOES/Src/esc_eep.c **** #include <string.h>
+  16:Drivers/SOES/Src/esc_eep.c **** 
+  17:Drivers/SOES/Src/esc_eep.c **** static uint8_t eep_buf[8];
+  18:Drivers/SOES/Src/esc_eep.c **** 
+  19:Drivers/SOES/Src/esc_eep.c **** /** EPP periodic task of ESC side EEPROM emulation.
+  20:Drivers/SOES/Src/esc_eep.c ****  *
+  21:Drivers/SOES/Src/esc_eep.c ****  */
+  22:Drivers/SOES/Src/esc_eep.c **** void EEP_process (void)
+  23:Drivers/SOES/Src/esc_eep.c **** {
+  29              		.loc 1 23 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  24:Drivers/SOES/Src/esc_eep.c ****    eep_stat_t stat;
+  33              		.loc 1 24 4 view .LVU1
+  25:Drivers/SOES/Src/esc_eep.c **** 
+ARM GAS  /tmp/cc5mrtbM.s 			page 2
+
+
+  26:Drivers/SOES/Src/esc_eep.c ****    /* check for eeprom event */
+  27:Drivers/SOES/Src/esc_eep.c ****    if ((ESCvar.ALevent & ESCREG_ALEVENT_EEP) == 0) {
+  34              		.loc 1 27 4 view .LVU2
+  35              		.loc 1 27 15 is_stmt 0 view .LVU3
+  36 0000 3A4B     		ldr	r3, .L13
+  37 0002 B3F8DC30 		ldrh	r3, [r3, #220]
+  38              		.loc 1 27 7 view .LVU4
+  39 0006 13F0200F 		tst	r3, #32
+  40 000a 6ED0     		beq	.L11
+  23:Drivers/SOES/Src/esc_eep.c ****    eep_stat_t stat;
+  41              		.loc 1 23 1 view .LVU5
+  42 000c 10B5     		push	{r4, lr}
+  43              		.cfi_def_cfa_offset 8
+  44              		.cfi_offset 4, -8
+  45              		.cfi_offset 14, -4
+  46 000e 82B0     		sub	sp, sp, #8
+  47              		.cfi_def_cfa_offset 16
+  48 0010 12E0     		b	.L9
+  49              	.L4:
+  28:Drivers/SOES/Src/esc_eep.c ****      return;
+  29:Drivers/SOES/Src/esc_eep.c ****    }
+  30:Drivers/SOES/Src/esc_eep.c **** 
+  31:Drivers/SOES/Src/esc_eep.c ****    while (1) {
+  32:Drivers/SOES/Src/esc_eep.c ****       /* read eeprom status */
+  33:Drivers/SOES/Src/esc_eep.c ****       ESC_read (ESCREG_EECONTSTAT, &stat, sizeof (eep_stat_t));
+  34:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.reg = etohs(stat.contstat.reg);
+  35:Drivers/SOES/Src/esc_eep.c ****       stat.addr = etohl(stat.addr);
+  36:Drivers/SOES/Src/esc_eep.c **** 
+  37:Drivers/SOES/Src/esc_eep.c ****       /* check busy flag, exit if job finished */
+  38:Drivers/SOES/Src/esc_eep.c ****       if (!stat.contstat.bits.busy) {
+  39:Drivers/SOES/Src/esc_eep.c ****         return;
+  40:Drivers/SOES/Src/esc_eep.c ****       }
+  41:Drivers/SOES/Src/esc_eep.c **** 
+  42:Drivers/SOES/Src/esc_eep.c ****       /* clear error bits */
+  43:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.csumErr = 0;
+  44:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.eeLoading = 0;
+  45:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.ackErr = 0;
+  46:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.wrErr = 0;
+  47:Drivers/SOES/Src/esc_eep.c **** 
+  48:Drivers/SOES/Src/esc_eep.c ****       /* process commands */
+  49:Drivers/SOES/Src/esc_eep.c ****       switch (stat.contstat.bits.cmdReg) {
+  50:Drivers/SOES/Src/esc_eep.c ****          case EEP_CMD_IDLE:
+  51:Drivers/SOES/Src/esc_eep.c ****             break;
+  52:Drivers/SOES/Src/esc_eep.c **** 
+  53:Drivers/SOES/Src/esc_eep.c ****          case EEP_CMD_READ:
+  54:Drivers/SOES/Src/esc_eep.c ****          case EEP_CMD_RELOAD:
+  55:Drivers/SOES/Src/esc_eep.c ****             /* handle read request */
+  56:Drivers/SOES/Src/esc_eep.c ****             if (EEP_read (stat.addr * sizeof(uint16_t), eep_buf, EEP_READ_SIZE) != 0) {
+  50              		.loc 1 56 13 is_stmt 1 view .LVU6
+  51              		.loc 1 56 17 is_stmt 0 view .LVU7
+  52 0012 0822     		movs	r2, #8
+  53 0014 3649     		ldr	r1, .L13+4
+  54 0016 4000     		lsls	r0, r0, #1
+  55 0018 FFF7FEFF 		bl	EEP_read
+  56              	.LVL0:
+  57              		.loc 1 56 16 view .LVU8
+  58 001c 0028     		cmp	r0, #0
+ARM GAS  /tmp/cc5mrtbM.s 			page 3
+
+
+  59 001e 3DD0     		beq	.L8
+  57:Drivers/SOES/Src/esc_eep.c ****                stat.contstat.bits.ackErr = 1;
+  60              		.loc 1 57 16 is_stmt 1 view .LVU9
+  61              		.loc 1 57 42 is_stmt 0 view .LVU10
+  62 0020 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2
+  63 0024 43F02003 		orr	r3, r3, #32
+  64 0028 8DF80130 		strb	r3, [sp, #1]
+  65              	.L7:
+  58:Drivers/SOES/Src/esc_eep.c ****             } else {
+  59:Drivers/SOES/Src/esc_eep.c ****                ESC_write (ESCREG_EEDATA, eep_buf, EEP_READ_SIZE);
+  60:Drivers/SOES/Src/esc_eep.c ****             }
+  61:Drivers/SOES/Src/esc_eep.c ****             break;
+  62:Drivers/SOES/Src/esc_eep.c **** 
+  63:Drivers/SOES/Src/esc_eep.c ****          case EEP_CMD_WRITE:
+  64:Drivers/SOES/Src/esc_eep.c ****             /* handle write request */
+  65:Drivers/SOES/Src/esc_eep.c ****             ESC_read (ESCREG_EEDATA, eep_buf, EEP_WRITE_SIZE);
+  66:Drivers/SOES/Src/esc_eep.c ****             if (EEP_write (stat.addr * sizeof(uint16_t), eep_buf, EEP_WRITE_SIZE) != 0) {
+  67:Drivers/SOES/Src/esc_eep.c ****                stat.contstat.bits.ackErr = 1;
+  68:Drivers/SOES/Src/esc_eep.c ****             }
+  69:Drivers/SOES/Src/esc_eep.c ****             break;
+  70:Drivers/SOES/Src/esc_eep.c **** 
+  71:Drivers/SOES/Src/esc_eep.c ****          default:
+  72:Drivers/SOES/Src/esc_eep.c ****             stat.contstat.bits.ackErr = 1;
+  73:Drivers/SOES/Src/esc_eep.c ****       }
+  74:Drivers/SOES/Src/esc_eep.c **** 
+  75:Drivers/SOES/Src/esc_eep.c ****       /* acknowledge command */
+  76:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.reg = htoes(stat.contstat.reg);
+  66              		.loc 1 76 7 is_stmt 1 view .LVU11
+  77:Drivers/SOES/Src/esc_eep.c ****       ESC_write (ESCREG_EECONTSTAT, &stat.contstat.reg, sizeof(uint16_t));
+  67              		.loc 1 77 7 view .LVU12
+  68 002c 0222     		movs	r2, #2
+  69 002e 6946     		mov	r1, sp
+  70 0030 40F20250 		movw	r0, #1282
+  71 0034 FFF7FEFF 		bl	ESC_write
+  72              	.LVL1:
+  31:Drivers/SOES/Src/esc_eep.c ****       /* read eeprom status */
+  73              		.loc 1 31 10 view .LVU13
+  74              	.L9:
+  31:Drivers/SOES/Src/esc_eep.c ****       /* read eeprom status */
+  75              		.loc 1 31 4 view .LVU14
+  33:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.reg = etohs(stat.contstat.reg);
+  76              		.loc 1 33 7 view .LVU15
+  77 0038 0622     		movs	r2, #6
+  78 003a 6946     		mov	r1, sp
+  79 003c 40F20250 		movw	r0, #1282
+  80 0040 FFF7FEFF 		bl	ESC_read
+  81              	.LVL2:
+  34:Drivers/SOES/Src/esc_eep.c ****       stat.addr = etohl(stat.addr);
+  82              		.loc 1 34 7 view .LVU16
+  35:Drivers/SOES/Src/esc_eep.c **** 
+  83              		.loc 1 35 7 view .LVU17
+  35:Drivers/SOES/Src/esc_eep.c **** 
+  84              		.loc 1 35 19 is_stmt 0 view .LVU18
+  85 0044 DDF80200 		ldr	r0, [sp, #2]	@ unaligned
+  38:Drivers/SOES/Src/esc_eep.c ****         return;
+  86              		.loc 1 38 7 is_stmt 1 view .LVU19
+  38:Drivers/SOES/Src/esc_eep.c ****         return;
+ARM GAS  /tmp/cc5mrtbM.s 			page 4
+
+
+  87              		.loc 1 38 10 is_stmt 0 view .LVU20
+  88 0048 9DF90130 		ldrsb	r3, [sp, #1]
+  89 004c 002B     		cmp	r3, #0
+  90 004e 4ADA     		bge	.L1
+  43:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.eeLoading = 0;
+  91              		.loc 1 43 7 is_stmt 1 view .LVU21
+  43:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.eeLoading = 0;
+  92              		.loc 1 43 34 is_stmt 0 view .LVU22
+  93 0050 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2
+  94 0054 6FF3C303 		bfc	r3, #3, #1
+  95 0058 8DF80130 		strb	r3, [sp, #1]
+  44:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.ackErr = 0;
+  96              		.loc 1 44 7 is_stmt 1 view .LVU23
+  44:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.ackErr = 0;
+  97              		.loc 1 44 36 is_stmt 0 view .LVU24
+  98 005c DBB2     		uxtb	r3, r3
+  99 005e 6FF30413 		bfc	r3, #4, #1
+ 100 0062 8DF80130 		strb	r3, [sp, #1]
+  45:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.wrErr = 0;
+ 101              		.loc 1 45 7 is_stmt 1 view .LVU25
+  45:Drivers/SOES/Src/esc_eep.c ****       stat.contstat.bits.wrErr = 0;
+ 102              		.loc 1 45 33 is_stmt 0 view .LVU26
+ 103 0066 DBB2     		uxtb	r3, r3
+ 104 0068 6FF34513 		bfc	r3, #5, #1
+ 105 006c 8DF80130 		strb	r3, [sp, #1]
+  46:Drivers/SOES/Src/esc_eep.c **** 
+ 106              		.loc 1 46 7 is_stmt 1 view .LVU27
+  46:Drivers/SOES/Src/esc_eep.c **** 
+ 107              		.loc 1 46 32 is_stmt 0 view .LVU28
+ 108 0070 DBB2     		uxtb	r3, r3
+ 109 0072 6FF38613 		bfc	r3, #6, #1
+ 110 0076 8DF80130 		strb	r3, [sp, #1]
+  49:Drivers/SOES/Src/esc_eep.c ****          case EEP_CMD_IDLE:
+ 111              		.loc 1 49 7 is_stmt 1 view .LVU29
+  49:Drivers/SOES/Src/esc_eep.c ****          case EEP_CMD_IDLE:
+ 112              		.loc 1 49 33 is_stmt 0 view .LVU30
+ 113 007a DBB2     		uxtb	r3, r3
+ 114 007c 03F00703 		and	r3, r3, #7
+  49:Drivers/SOES/Src/esc_eep.c ****          case EEP_CMD_IDLE:
+ 115              		.loc 1 49 7 view .LVU31
+ 116 0080 032B     		cmp	r3, #3
+ 117 0082 29D8     		bhi	.L3
+ 118 0084 01A2     		adr	r2, .L5
+ 119 0086 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 120 008a 00BF     		.p2align 2
+ 121              	.L5:
+ 122 008c 2D000000 		.word	.L7+1
+ 123 0090 13000000 		.word	.L4+1
+ 124 0094 AB000000 		.word	.L6+1
+ 125 0098 13000000 		.word	.L4+1
+ 126              		.p2align 1
+ 127              	.L8:
+  59:Drivers/SOES/Src/esc_eep.c ****             }
+ 128              		.loc 1 59 16 is_stmt 1 view .LVU32
+ 129 009c 0822     		movs	r2, #8
+ 130 009e 1449     		ldr	r1, .L13+4
+ 131 00a0 4FF4A160 		mov	r0, #1288
+ARM GAS  /tmp/cc5mrtbM.s 			page 5
+
+
+ 132 00a4 FFF7FEFF 		bl	ESC_write
+ 133              	.LVL3:
+ 134 00a8 C0E7     		b	.L7
+ 135              	.L6:
+  65:Drivers/SOES/Src/esc_eep.c ****             if (EEP_write (stat.addr * sizeof(uint16_t), eep_buf, EEP_WRITE_SIZE) != 0) {
+ 136              		.loc 1 65 13 view .LVU33
+ 137 00aa 114C     		ldr	r4, .L13+4
+ 138 00ac 0222     		movs	r2, #2
+ 139 00ae 2146     		mov	r1, r4
+ 140 00b0 4FF4A160 		mov	r0, #1288
+ 141 00b4 FFF7FEFF 		bl	ESC_read
+ 142              	.LVL4:
+  66:Drivers/SOES/Src/esc_eep.c ****                stat.contstat.bits.ackErr = 1;
+ 143              		.loc 1 66 13 view .LVU34
+  66:Drivers/SOES/Src/esc_eep.c ****                stat.contstat.bits.ackErr = 1;
+ 144              		.loc 1 66 32 is_stmt 0 view .LVU35
+ 145 00b8 DDF80200 		ldr	r0, [sp, #2]	@ unaligned
+  66:Drivers/SOES/Src/esc_eep.c ****                stat.contstat.bits.ackErr = 1;
+ 146              		.loc 1 66 17 view .LVU36
+ 147 00bc 0222     		movs	r2, #2
+ 148 00be 2146     		mov	r1, r4
+ 149 00c0 4000     		lsls	r0, r0, #1
+ 150 00c2 FFF7FEFF 		bl	EEP_write
+ 151              	.LVL5:
+  66:Drivers/SOES/Src/esc_eep.c ****                stat.contstat.bits.ackErr = 1;
+ 152              		.loc 1 66 16 view .LVU37
+ 153 00c6 0028     		cmp	r0, #0
+ 154 00c8 B0D0     		beq	.L7
+  67:Drivers/SOES/Src/esc_eep.c ****             }
+ 155              		.loc 1 67 16 is_stmt 1 view .LVU38
+  67:Drivers/SOES/Src/esc_eep.c ****             }
+ 156              		.loc 1 67 42 is_stmt 0 view .LVU39
+ 157 00ca 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2
+ 158 00ce 43F02003 		orr	r3, r3, #32
+ 159 00d2 8DF80130 		strb	r3, [sp, #1]
+ 160 00d6 A9E7     		b	.L7
+ 161              	.L3:
+  72:Drivers/SOES/Src/esc_eep.c ****       }
+ 162              		.loc 1 72 13 is_stmt 1 view .LVU40
+  72:Drivers/SOES/Src/esc_eep.c ****       }
+ 163              		.loc 1 72 39 is_stmt 0 view .LVU41
+ 164 00d8 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2
+ 165 00dc 43F02003 		orr	r3, r3, #32
+ 166 00e0 8DF80130 		strb	r3, [sp, #1]
+ 167 00e4 A2E7     		b	.L7
+ 168              	.L1:
+  78:Drivers/SOES/Src/esc_eep.c ****    }
+  79:Drivers/SOES/Src/esc_eep.c **** }
+ 169              		.loc 1 79 1 view .LVU42
+ 170 00e6 02B0     		add	sp, sp, #8
+ 171              		.cfi_def_cfa_offset 8
+ 172              		@ sp needed
+ 173 00e8 10BD     		pop	{r4, pc}
+ 174              	.L11:
+ 175              		.cfi_def_cfa_offset 0
+ 176              		.cfi_restore 4
+ 177              		.cfi_restore 14
+ARM GAS  /tmp/cc5mrtbM.s 			page 6
+
+
+ 178 00ea 7047     		bx	lr
+ 179              	.L14:
+ 180              		.align	2
+ 181              	.L13:
+ 182 00ec 00000000 		.word	ESCvar
+ 183 00f0 00000000 		.word	.LANCHOR0
+ 184              		.cfi_endproc
+ 185              	.LFE0:
+ 187              		.section	.bss.eep_buf,"aw",%nobits
+ 188              		.align	2
+ 189              		.set	.LANCHOR0,. + 0
+ 192              	eep_buf:
+ 193 0000 00000000 		.space	8
+ 193      00000000 
+ 194              		.text
+ 195              	.Letext0:
+ 196              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 197              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 198              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 199              		.file 5 "Drivers/SOES/Inc/esc.h"
+ 200              		.file 6 "Drivers/SOES/Inc/esc_eep.h"
+ARM GAS  /tmp/cc5mrtbM.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 esc_eep.c
+     /tmp/cc5mrtbM.s:20     .text.EEP_process:0000000000000000 $t
+     /tmp/cc5mrtbM.s:26     .text.EEP_process:0000000000000000 EEP_process
+     /tmp/cc5mrtbM.s:122    .text.EEP_process:000000000000008c $d
+     /tmp/cc5mrtbM.s:126    .text.EEP_process:000000000000009c $t
+     /tmp/cc5mrtbM.s:182    .text.EEP_process:00000000000000ec $d
+     /tmp/cc5mrtbM.s:188    .bss.eep_buf:0000000000000000 $d
+     /tmp/cc5mrtbM.s:192    .bss.eep_buf:0000000000000000 eep_buf
+
+UNDEFINED SYMBOLS
+EEP_read
+ESC_write
+ESC_read
+EEP_write
+ESCvar

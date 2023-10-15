@@ -1,0 +1,1615 @@
+ARM GAS  /tmp/cc9lJi8H.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ecat_slv.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ESC_download_pre_objecthandler,"ax",%progbits
+  20              		.align	1
+  21              		.global	ESC_download_pre_objecthandler
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	ESC_download_pre_objecthandler:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "Drivers/SOES/Src/ecat_slv.c"
+   1:Drivers/SOES/Src/ecat_slv.c **** /*
+   2:Drivers/SOES/Src/ecat_slv.c ****  * Licensed under the GNU General Public License version 2 with exceptions. See
+   3:Drivers/SOES/Src/ecat_slv.c ****  * LICENSE file in the project root for full license information
+   4:Drivers/SOES/Src/ecat_slv.c ****  */
+   5:Drivers/SOES/Src/ecat_slv.c **** #include <stddef.h>
+   6:Drivers/SOES/Src/ecat_slv.c **** #include "esc.h"
+   7:Drivers/SOES/Src/ecat_slv.c **** #include "esc_coe.h"
+   8:Drivers/SOES/Src/ecat_slv.c **** #include "esc_foe.h"
+   9:Drivers/SOES/Src/ecat_slv.c **** #include "esc_eoe.h"
+  10:Drivers/SOES/Src/ecat_slv.c **** #include "ecat_slv.h"
+  11:Drivers/SOES/Src/ecat_slv.c **** 
+  12:Drivers/SOES/Src/ecat_slv.c **** #define IS_RXPDO(index) ((index) >= 0x1600 && (index) < 0x1800)
+  13:Drivers/SOES/Src/ecat_slv.c **** #define IS_TXPDO(index) ((index) >= 0x1A00 && (index) < 0x1C00)
+  14:Drivers/SOES/Src/ecat_slv.c **** 
+  15:Drivers/SOES/Src/ecat_slv.c **** /* Global variables used by the stack */
+  16:Drivers/SOES/Src/ecat_slv.c **** uint8_t     MBX[MBXBUFFERS * MAX(MBXSIZE,MBXSIZEBOOT)];
+  17:Drivers/SOES/Src/ecat_slv.c **** _MBXcontrol MBXcontrol[MBXBUFFERS];
+  18:Drivers/SOES/Src/ecat_slv.c **** _SMmap      SMmap2[MAX_MAPPINGS_SM2];
+  19:Drivers/SOES/Src/ecat_slv.c **** _SMmap      SMmap3[MAX_MAPPINGS_SM3];
+  20:Drivers/SOES/Src/ecat_slv.c **** _ESCvar     ESCvar;
+  21:Drivers/SOES/Src/ecat_slv.c **** 
+  22:Drivers/SOES/Src/ecat_slv.c **** /* Private variables */
+  23:Drivers/SOES/Src/ecat_slv.c **** static volatile int watchdog;
+  24:Drivers/SOES/Src/ecat_slv.c **** 
+  25:Drivers/SOES/Src/ecat_slv.c **** #if MAX_MAPPINGS_SM2 > 0
+  26:Drivers/SOES/Src/ecat_slv.c **** static uint8_t rxpdo[MAX_RXPDO_SIZE] __attribute__((aligned (8)));
+  27:Drivers/SOES/Src/ecat_slv.c **** #else
+  28:Drivers/SOES/Src/ecat_slv.c **** extern uint8_t * rxpdo;
+  29:Drivers/SOES/Src/ecat_slv.c **** #endif
+ARM GAS  /tmp/cc9lJi8H.s 			page 2
+
+
+  30:Drivers/SOES/Src/ecat_slv.c **** 
+  31:Drivers/SOES/Src/ecat_slv.c **** #if MAX_MAPPINGS_SM3 > 0
+  32:Drivers/SOES/Src/ecat_slv.c **** static uint8_t txpdo[MAX_TXPDO_SIZE] __attribute__((aligned (8)));
+  33:Drivers/SOES/Src/ecat_slv.c **** #else
+  34:Drivers/SOES/Src/ecat_slv.c **** extern uint8_t * txpdo;
+  35:Drivers/SOES/Src/ecat_slv.c **** #endif
+  36:Drivers/SOES/Src/ecat_slv.c **** 
+  37:Drivers/SOES/Src/ecat_slv.c **** /** Function to pre-qualify the incoming SDO download.
+  38:Drivers/SOES/Src/ecat_slv.c ****  *
+  39:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] index      = index of SDO download request to check
+  40:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] sub-index  = sub-index of SDO download request to check
+  41:Drivers/SOES/Src/ecat_slv.c ****  * @return SDO abort code, or 0 on success
+  42:Drivers/SOES/Src/ecat_slv.c ****  */
+  43:Drivers/SOES/Src/ecat_slv.c **** uint32_t ESC_download_pre_objecthandler (uint16_t index,
+  44:Drivers/SOES/Src/ecat_slv.c ****       uint8_t subindex,
+  45:Drivers/SOES/Src/ecat_slv.c ****       void * data,
+  46:Drivers/SOES/Src/ecat_slv.c ****       size_t size,
+  47:Drivers/SOES/Src/ecat_slv.c ****       uint16_t flags)
+  48:Drivers/SOES/Src/ecat_slv.c **** {
+  30              		.loc 1 48 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 4, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 48 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  36              		.cfi_def_cfa_offset 28
+  37              		.cfi_offset 4, -28
+  38              		.cfi_offset 5, -24
+  39              		.cfi_offset 6, -20
+  40              		.cfi_offset 7, -16
+  41              		.cfi_offset 8, -12
+  42              		.cfi_offset 9, -8
+  43              		.cfi_offset 14, -4
+  44 0004 83B0     		sub	sp, sp, #12
+  45              		.cfi_def_cfa_offset 40
+  46 0006 0446     		mov	r4, r0
+  47 0008 0D46     		mov	r5, r1
+  48 000a 1646     		mov	r6, r2
+  49 000c 1F46     		mov	r7, r3
+  50 000e BDF82880 		ldrh	r8, [sp, #40]
+  49:Drivers/SOES/Src/ecat_slv.c ****    if (IS_RXPDO (index) ||
+  51              		.loc 1 49 4 is_stmt 1 view .LVU2
+  52              		.loc 1 49 8 is_stmt 0 view .LVU3
+  53 0012 A0F5B051 		sub	r1, r0, #5632
+  54              	.LVL1:
+  55              		.loc 1 49 8 view .LVU4
+  56 0016 89B2     		uxth	r1, r1
+  57              		.loc 1 49 7 view .LVU5
+  58 0018 B1F5007F 		cmp	r1, #512
+  59 001c 0DD3     		bcc	.L2
+  50:Drivers/SOES/Src/ecat_slv.c ****        IS_TXPDO (index) ||
+  60              		.loc 1 50 8 discriminator 1 view .LVU6
+  61 001e A0F5D053 		sub	r3, r0, #6656
+  62              	.LVL2:
+  63              		.loc 1 50 8 discriminator 1 view .LVU7
+  64 0022 9BB2     		uxth	r3, r3
+  49:Drivers/SOES/Src/ecat_slv.c ****    if (IS_RXPDO (index) ||
+ARM GAS  /tmp/cc9lJi8H.s 			page 3
+
+
+  65              		.loc 1 49 25 discriminator 1 view .LVU8
+  66 0024 B3F5007F 		cmp	r3, #512
+  67 0028 07D3     		bcc	.L2
+  68              		.loc 1 50 25 view .LVU9
+  69 002a 41F61243 		movw	r3, #7186
+  70 002e 9842     		cmp	r0, r3
+  71 0030 03D0     		beq	.L2
+  51:Drivers/SOES/Src/ecat_slv.c ****        index == RX_PDO_OBJIDX ||
+  72              		.loc 1 51 31 view .LVU10
+  73 0032 41F61343 		movw	r3, #7187
+  74 0036 9842     		cmp	r0, r3
+  75 0038 02D1     		bne	.L3
+  76              	.L2:
+  77              	.LBB2:
+  52:Drivers/SOES/Src/ecat_slv.c ****        index == TX_PDO_OBJIDX)
+  53:Drivers/SOES/Src/ecat_slv.c ****    {
+  54:Drivers/SOES/Src/ecat_slv.c ****       uint8_t minSub = ((flags & COMPLETE_ACCESS_FLAG) == 0) ? 0 : 1;
+  78              		.loc 1 54 7 is_stmt 1 view .LVU11
+  79              	.LVL3:
+  55:Drivers/SOES/Src/ecat_slv.c ****       if (subindex > minSub && COE_maxSub (index) != 0)
+  80              		.loc 1 55 7 view .LVU12
+  81              		.loc 1 55 10 is_stmt 0 view .LVU13
+  82 003a B5EBD83F 		cmp	r5, r8, lsr #15
+  83 003e 0FD8     		bhi	.L8
+  84              	.LVL4:
+  85              	.L3:
+  86              		.loc 1 55 10 view .LVU14
+  87              	.LBE2:
+  56:Drivers/SOES/Src/ecat_slv.c ****       {
+  57:Drivers/SOES/Src/ecat_slv.c ****          return ABORT_SUBINDEX0_NOT_ZERO;
+  58:Drivers/SOES/Src/ecat_slv.c ****       }
+  59:Drivers/SOES/Src/ecat_slv.c ****    }
+  60:Drivers/SOES/Src/ecat_slv.c **** 
+  61:Drivers/SOES/Src/ecat_slv.c ****    if (ESCvar.pre_object_download_hook)
+  88              		.loc 1 61 4 is_stmt 1 view .LVU15
+  89              		.loc 1 61 14 is_stmt 0 view .LVU16
+  90 0040 0C4B     		ldr	r3, .L9
+  91 0042 D3F83C90 		ldr	r9, [r3, #60]
+  92              		.loc 1 61 7 view .LVU17
+  93 0046 B9F1000F 		cmp	r9, #0
+  94 004a 10D0     		beq	.L6
+  62:Drivers/SOES/Src/ecat_slv.c ****    {
+  63:Drivers/SOES/Src/ecat_slv.c ****       return (ESCvar.pre_object_download_hook) (index,
+  95              		.loc 1 63 7 is_stmt 1 view .LVU18
+  96              		.loc 1 63 21 is_stmt 0 view .LVU19
+  97 004c CDF80080 		str	r8, [sp]
+  98 0050 3B46     		mov	r3, r7
+  99 0052 3246     		mov	r2, r6
+ 100 0054 2946     		mov	r1, r5
+ 101 0056 2046     		mov	r0, r4
+ 102 0058 C847     		blx	r9
+ 103              	.LVL5:
+ 104              	.L1:
+  64:Drivers/SOES/Src/ecat_slv.c ****             subindex,
+  65:Drivers/SOES/Src/ecat_slv.c ****             data,
+  66:Drivers/SOES/Src/ecat_slv.c ****             size,
+  67:Drivers/SOES/Src/ecat_slv.c ****             flags);
+ARM GAS  /tmp/cc9lJi8H.s 			page 4
+
+
+  68:Drivers/SOES/Src/ecat_slv.c ****    }
+  69:Drivers/SOES/Src/ecat_slv.c **** 
+  70:Drivers/SOES/Src/ecat_slv.c ****    return 0;
+  71:Drivers/SOES/Src/ecat_slv.c **** }
+ 105              		.loc 1 71 1 view .LVU20
+ 106 005a 03B0     		add	sp, sp, #12
+ 107              		.cfi_remember_state
+ 108              		.cfi_def_cfa_offset 28
+ 109              		@ sp needed
+ 110 005c BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 111              	.LVL6:
+ 112              	.L8:
+ 113              		.cfi_restore_state
+ 114              	.LBB3:
+  55:Drivers/SOES/Src/ecat_slv.c ****       {
+ 115              		.loc 1 55 32 discriminator 1 view .LVU21
+ 116 0060 2046     		mov	r0, r4
+ 117              	.LVL7:
+  55:Drivers/SOES/Src/ecat_slv.c ****       {
+ 118              		.loc 1 55 32 discriminator 1 view .LVU22
+ 119 0062 FFF7FEFF 		bl	COE_maxSub
+ 120              	.LVL8:
+  55:Drivers/SOES/Src/ecat_slv.c ****       {
+ 121              		.loc 1 55 29 discriminator 1 view .LVU23
+ 122 0066 0028     		cmp	r0, #0
+ 123 0068 EAD0     		beq	.L3
+  57:Drivers/SOES/Src/ecat_slv.c ****       }
+ 124              		.loc 1 57 17 view .LVU24
+ 125 006a 0348     		ldr	r0, .L9+4
+ 126 006c F5E7     		b	.L1
+ 127              	.LVL9:
+ 128              	.L6:
+  57:Drivers/SOES/Src/ecat_slv.c ****       }
+ 129              		.loc 1 57 17 view .LVU25
+ 130              	.LBE3:
+  70:Drivers/SOES/Src/ecat_slv.c **** }
+ 131              		.loc 1 70 11 view .LVU26
+ 132 006e 0020     		movs	r0, #0
+ 133 0070 F3E7     		b	.L1
+ 134              	.L10:
+ 135 0072 00BF     		.align	2
+ 136              	.L9:
+ 137 0074 00000000 		.word	.LANCHOR0
+ 138 0078 03000106 		.word	100728835
+ 139              		.cfi_endproc
+ 140              	.LFE0:
+ 142              		.section	.text.ESC_download_post_objecthandler,"ax",%progbits
+ 143              		.align	1
+ 144              		.global	ESC_download_post_objecthandler
+ 145              		.syntax unified
+ 146              		.thumb
+ 147              		.thumb_func
+ 149              	ESC_download_post_objecthandler:
+ 150              	.LVL10:
+ 151              	.LFB1:
+  72:Drivers/SOES/Src/ecat_slv.c **** 
+  73:Drivers/SOES/Src/ecat_slv.c **** /** Hook called from the slave stack SDO Download handler to act on
+ARM GAS  /tmp/cc9lJi8H.s 			page 5
+
+
+  74:Drivers/SOES/Src/ecat_slv.c ****  * user specified Index and Sub-index.
+  75:Drivers/SOES/Src/ecat_slv.c ****  *
+  76:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] index      = index of SDO download request to handle
+  77:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] sub-index  = sub-index of SDO download request to handle
+  78:Drivers/SOES/Src/ecat_slv.c ****  * @return SDO abort code, or 0 on success
+  79:Drivers/SOES/Src/ecat_slv.c ****  */
+  80:Drivers/SOES/Src/ecat_slv.c **** uint32_t ESC_download_post_objecthandler (uint16_t index, uint8_t subindex, uint16_t flags)
+  81:Drivers/SOES/Src/ecat_slv.c **** {
+ 152              		.loc 1 81 1 is_stmt 1 view -0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156              		.loc 1 81 1 is_stmt 0 view .LVU28
+ 157 0000 08B5     		push	{r3, lr}
+ 158              		.cfi_def_cfa_offset 8
+ 159              		.cfi_offset 3, -8
+ 160              		.cfi_offset 14, -4
+  82:Drivers/SOES/Src/ecat_slv.c ****    if (ESCvar.post_object_download_hook != NULL)
+ 161              		.loc 1 82 4 is_stmt 1 view .LVU29
+ 162              		.loc 1 82 14 is_stmt 0 view .LVU30
+ 163 0002 034B     		ldr	r3, .L15
+ 164 0004 1B6C     		ldr	r3, [r3, #64]
+ 165              		.loc 1 82 7 view .LVU31
+ 166 0006 0BB1     		cbz	r3, .L13
+  83:Drivers/SOES/Src/ecat_slv.c ****    {
+  84:Drivers/SOES/Src/ecat_slv.c ****       return (ESCvar.post_object_download_hook)(index, subindex, flags);
+ 167              		.loc 1 84 7 is_stmt 1 view .LVU32
+ 168              		.loc 1 84 21 is_stmt 0 view .LVU33
+ 169 0008 9847     		blx	r3
+ 170              	.LVL11:
+ 171              	.L11:
+  85:Drivers/SOES/Src/ecat_slv.c ****    }
+  86:Drivers/SOES/Src/ecat_slv.c **** 
+  87:Drivers/SOES/Src/ecat_slv.c ****    return 0;
+  88:Drivers/SOES/Src/ecat_slv.c **** }
+ 172              		.loc 1 88 1 view .LVU34
+ 173 000a 08BD     		pop	{r3, pc}
+ 174              	.LVL12:
+ 175              	.L13:
+  87:Drivers/SOES/Src/ecat_slv.c **** }
+ 176              		.loc 1 87 11 view .LVU35
+ 177 000c 0020     		movs	r0, #0
+ 178              	.LVL13:
+  87:Drivers/SOES/Src/ecat_slv.c **** }
+ 179              		.loc 1 87 11 view .LVU36
+ 180 000e FCE7     		b	.L11
+ 181              	.L16:
+ 182              		.align	2
+ 183              	.L15:
+ 184 0010 00000000 		.word	.LANCHOR0
+ 185              		.cfi_endproc
+ 186              	.LFE1:
+ 188              		.section	.text.ESC_upload_pre_objecthandler,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	ESC_upload_pre_objecthandler
+ 191              		.syntax unified
+ 192              		.thumb
+ARM GAS  /tmp/cc9lJi8H.s 			page 6
+
+
+ 193              		.thumb_func
+ 195              	ESC_upload_pre_objecthandler:
+ 196              	.LVL14:
+ 197              	.LFB2:
+  89:Drivers/SOES/Src/ecat_slv.c **** 
+  90:Drivers/SOES/Src/ecat_slv.c **** /** Function to pre-qualify the incoming SDO upload.
+  91:Drivers/SOES/Src/ecat_slv.c ****  *
+  92:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] index      = index of SDO upload request to handle
+  93:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] sub-index  = sub-index of SDO upload request to handle
+  94:Drivers/SOES/Src/ecat_slv.c ****  * @return SDO abort code, or 0 on success
+  95:Drivers/SOES/Src/ecat_slv.c ****  */
+  96:Drivers/SOES/Src/ecat_slv.c **** uint32_t ESC_upload_pre_objecthandler (uint16_t index,
+  97:Drivers/SOES/Src/ecat_slv.c ****       uint8_t subindex,
+  98:Drivers/SOES/Src/ecat_slv.c ****       void * data,
+  99:Drivers/SOES/Src/ecat_slv.c ****       size_t *size,
+ 100:Drivers/SOES/Src/ecat_slv.c ****       uint16_t flags)
+ 101:Drivers/SOES/Src/ecat_slv.c **** {
+ 198              		.loc 1 101 1 is_stmt 1 view -0
+ 199              		.cfi_startproc
+ 200              		@ args = 4, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202              		.loc 1 101 1 is_stmt 0 view .LVU38
+ 203 0000 30B5     		push	{r4, r5, lr}
+ 204              		.cfi_def_cfa_offset 12
+ 205              		.cfi_offset 4, -12
+ 206              		.cfi_offset 5, -8
+ 207              		.cfi_offset 14, -4
+ 208 0002 83B0     		sub	sp, sp, #12
+ 209              		.cfi_def_cfa_offset 24
+ 102:Drivers/SOES/Src/ecat_slv.c ****    if (ESCvar.pre_object_upload_hook != NULL)
+ 210              		.loc 1 102 4 is_stmt 1 view .LVU39
+ 211              		.loc 1 102 14 is_stmt 0 view .LVU40
+ 212 0004 054C     		ldr	r4, .L21
+ 213 0006 646C     		ldr	r4, [r4, #68]
+ 214              		.loc 1 102 7 view .LVU41
+ 215 0008 2CB1     		cbz	r4, .L19
+ 103:Drivers/SOES/Src/ecat_slv.c ****    {
+ 104:Drivers/SOES/Src/ecat_slv.c ****       return (ESCvar.pre_object_upload_hook) (index,
+ 216              		.loc 1 104 7 is_stmt 1 view .LVU42
+ 217              		.loc 1 104 21 is_stmt 0 view .LVU43
+ 218 000a BDF81850 		ldrh	r5, [sp, #24]
+ 219 000e 0095     		str	r5, [sp]
+ 220 0010 A047     		blx	r4
+ 221              	.LVL15:
+ 222              	.L17:
+ 105:Drivers/SOES/Src/ecat_slv.c ****             subindex,
+ 106:Drivers/SOES/Src/ecat_slv.c ****             data,
+ 107:Drivers/SOES/Src/ecat_slv.c ****             size,
+ 108:Drivers/SOES/Src/ecat_slv.c ****             flags);
+ 109:Drivers/SOES/Src/ecat_slv.c ****    }
+ 110:Drivers/SOES/Src/ecat_slv.c **** 
+ 111:Drivers/SOES/Src/ecat_slv.c ****    return 0;
+ 112:Drivers/SOES/Src/ecat_slv.c **** }
+ 223              		.loc 1 112 1 view .LVU44
+ 224 0012 03B0     		add	sp, sp, #12
+ 225              		.cfi_remember_state
+ 226              		.cfi_def_cfa_offset 12
+ARM GAS  /tmp/cc9lJi8H.s 			page 7
+
+
+ 227              		@ sp needed
+ 228 0014 30BD     		pop	{r4, r5, pc}
+ 229              	.LVL16:
+ 230              	.L19:
+ 231              		.cfi_restore_state
+ 111:Drivers/SOES/Src/ecat_slv.c **** }
+ 232              		.loc 1 111 11 view .LVU45
+ 233 0016 0020     		movs	r0, #0
+ 234              	.LVL17:
+ 111:Drivers/SOES/Src/ecat_slv.c **** }
+ 235              		.loc 1 111 11 view .LVU46
+ 236 0018 FBE7     		b	.L17
+ 237              	.L22:
+ 238 001a 00BF     		.align	2
+ 239              	.L21:
+ 240 001c 00000000 		.word	.LANCHOR0
+ 241              		.cfi_endproc
+ 242              	.LFE2:
+ 244              		.section	.text.ESC_upload_post_objecthandler,"ax",%progbits
+ 245              		.align	1
+ 246              		.global	ESC_upload_post_objecthandler
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 251              	ESC_upload_post_objecthandler:
+ 252              	.LVL18:
+ 253              	.LFB3:
+ 113:Drivers/SOES/Src/ecat_slv.c **** 
+ 114:Drivers/SOES/Src/ecat_slv.c **** /** Hook called from the slave stack SDO Upload handler to act on
+ 115:Drivers/SOES/Src/ecat_slv.c ****  * user specified Index and Sub-index.
+ 116:Drivers/SOES/Src/ecat_slv.c ****  *
+ 117:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] index      = index of SDO upload request to handle
+ 118:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] sub-index  = sub-index of SDO upload request to handle
+ 119:Drivers/SOES/Src/ecat_slv.c ****  * @return SDO abort code, or 0 on success
+ 120:Drivers/SOES/Src/ecat_slv.c ****  */
+ 121:Drivers/SOES/Src/ecat_slv.c **** uint32_t ESC_upload_post_objecthandler (uint16_t index, uint8_t subindex, uint16_t flags)
+ 122:Drivers/SOES/Src/ecat_slv.c **** {
+ 254              		.loc 1 122 1 is_stmt 1 view -0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		.loc 1 122 1 is_stmt 0 view .LVU48
+ 259 0000 08B5     		push	{r3, lr}
+ 260              		.cfi_def_cfa_offset 8
+ 261              		.cfi_offset 3, -8
+ 262              		.cfi_offset 14, -4
+ 123:Drivers/SOES/Src/ecat_slv.c ****    if (ESCvar.post_object_upload_hook != NULL)
+ 263              		.loc 1 123 4 is_stmt 1 view .LVU49
+ 264              		.loc 1 123 14 is_stmt 0 view .LVU50
+ 265 0002 034B     		ldr	r3, .L27
+ 266 0004 9B6C     		ldr	r3, [r3, #72]
+ 267              		.loc 1 123 7 view .LVU51
+ 268 0006 0BB1     		cbz	r3, .L25
+ 124:Drivers/SOES/Src/ecat_slv.c ****    {
+ 125:Drivers/SOES/Src/ecat_slv.c ****       return (ESCvar.post_object_upload_hook)(index, subindex, flags);
+ 269              		.loc 1 125 7 is_stmt 1 view .LVU52
+ 270              		.loc 1 125 21 is_stmt 0 view .LVU53
+ARM GAS  /tmp/cc9lJi8H.s 			page 8
+
+
+ 271 0008 9847     		blx	r3
+ 272              	.LVL19:
+ 273              	.L23:
+ 126:Drivers/SOES/Src/ecat_slv.c ****    }
+ 127:Drivers/SOES/Src/ecat_slv.c **** 
+ 128:Drivers/SOES/Src/ecat_slv.c ****    return 0;
+ 129:Drivers/SOES/Src/ecat_slv.c **** }
+ 274              		.loc 1 129 1 view .LVU54
+ 275 000a 08BD     		pop	{r3, pc}
+ 276              	.LVL20:
+ 277              	.L25:
+ 128:Drivers/SOES/Src/ecat_slv.c **** }
+ 278              		.loc 1 128 11 view .LVU55
+ 279 000c 0020     		movs	r0, #0
+ 280              	.LVL21:
+ 128:Drivers/SOES/Src/ecat_slv.c **** }
+ 281              		.loc 1 128 11 view .LVU56
+ 282 000e FCE7     		b	.L23
+ 283              	.L28:
+ 284              		.align	2
+ 285              	.L27:
+ 286 0010 00000000 		.word	.LANCHOR0
+ 287              		.cfi_endproc
+ 288              	.LFE3:
+ 290              		.section	.text.APP_safeoutput,"ax",%progbits
+ 291              		.align	1
+ 292              		.global	APP_safeoutput
+ 293              		.syntax unified
+ 294              		.thumb
+ 295              		.thumb_func
+ 297              	APP_safeoutput:
+ 298              	.LFB4:
+ 130:Drivers/SOES/Src/ecat_slv.c **** 
+ 131:Drivers/SOES/Src/ecat_slv.c **** /** Hook called from the slave stack ESC_stopoutputs to act on state changes
+ 132:Drivers/SOES/Src/ecat_slv.c ****  * forcing us to stop outputs. Here we can set them to a safe state.
+ 133:Drivers/SOES/Src/ecat_slv.c ****  */
+ 134:Drivers/SOES/Src/ecat_slv.c **** void APP_safeoutput (void)
+ 135:Drivers/SOES/Src/ecat_slv.c **** {
+ 299              		.loc 1 135 1 is_stmt 1 view -0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303 0000 08B5     		push	{r3, lr}
+ 304              		.cfi_def_cfa_offset 8
+ 305              		.cfi_offset 3, -8
+ 306              		.cfi_offset 14, -4
+ 136:Drivers/SOES/Src/ecat_slv.c ****    DPRINT ("APP_safeoutput\n");
+ 307              		.loc 1 136 31 view .LVU58
+ 137:Drivers/SOES/Src/ecat_slv.c **** 
+ 138:Drivers/SOES/Src/ecat_slv.c ****    if(ESCvar.safeoutput_override != NULL)
+ 308              		.loc 1 138 4 view .LVU59
+ 309              		.loc 1 138 13 is_stmt 0 view .LVU60
+ 310 0002 024B     		ldr	r3, .L32
+ 311 0004 9B6B     		ldr	r3, [r3, #56]
+ 312              		.loc 1 138 6 view .LVU61
+ 313 0006 03B1     		cbz	r3, .L29
+ 139:Drivers/SOES/Src/ecat_slv.c ****    {
+ARM GAS  /tmp/cc9lJi8H.s 			page 9
+
+
+ 140:Drivers/SOES/Src/ecat_slv.c ****       (ESCvar.safeoutput_override)();
+ 314              		.loc 1 140 7 is_stmt 1 view .LVU62
+ 315              		.loc 1 140 14 is_stmt 0 view .LVU63
+ 316 0008 9847     		blx	r3
+ 317              	.LVL22:
+ 318              	.L29:
+ 141:Drivers/SOES/Src/ecat_slv.c ****    }
+ 142:Drivers/SOES/Src/ecat_slv.c **** }
+ 319              		.loc 1 142 1 view .LVU64
+ 320 000a 08BD     		pop	{r3, pc}
+ 321              	.L33:
+ 322              		.align	2
+ 323              	.L32:
+ 324 000c 00000000 		.word	.LANCHOR0
+ 325              		.cfi_endproc
+ 326              	.LFE4:
+ 328              		.section	.text.TXPDO_update,"ax",%progbits
+ 329              		.align	1
+ 330              		.global	TXPDO_update
+ 331              		.syntax unified
+ 332              		.thumb
+ 333              		.thumb_func
+ 335              	TXPDO_update:
+ 336              	.LFB5:
+ 143:Drivers/SOES/Src/ecat_slv.c **** 
+ 144:Drivers/SOES/Src/ecat_slv.c **** /** Write local process data to Sync Manager 3, Master Inputs.
+ 145:Drivers/SOES/Src/ecat_slv.c ****  */
+ 146:Drivers/SOES/Src/ecat_slv.c **** void TXPDO_update (void)
+ 147:Drivers/SOES/Src/ecat_slv.c **** {
+ 337              		.loc 1 147 1 is_stmt 1 view -0
+ 338              		.cfi_startproc
+ 339              		@ args = 0, pretend = 0, frame = 0
+ 340              		@ frame_needed = 0, uses_anonymous_args = 0
+ 341 0000 38B5     		push	{r3, r4, r5, lr}
+ 342              		.cfi_def_cfa_offset 16
+ 343              		.cfi_offset 3, -16
+ 344              		.cfi_offset 4, -12
+ 345              		.cfi_offset 5, -8
+ 346              		.cfi_offset 14, -4
+ 148:Drivers/SOES/Src/ecat_slv.c ****    if(ESCvar.txpdo_override != NULL)
+ 347              		.loc 1 148 4 view .LVU66
+ 348              		.loc 1 148 13 is_stmt 0 view .LVU67
+ 349 0002 0A4B     		ldr	r3, .L38
+ 350 0004 1B6D     		ldr	r3, [r3, #80]
+ 351              		.loc 1 148 6 view .LVU68
+ 352 0006 0BB1     		cbz	r3, .L35
+ 149:Drivers/SOES/Src/ecat_slv.c ****    {
+ 150:Drivers/SOES/Src/ecat_slv.c ****       (ESCvar.txpdo_override)();
+ 353              		.loc 1 150 7 is_stmt 1 view .LVU69
+ 354              		.loc 1 150 14 is_stmt 0 view .LVU70
+ 355 0008 9847     		blx	r3
+ 356              	.LVL23:
+ 357              	.L34:
+ 151:Drivers/SOES/Src/ecat_slv.c ****    }
+ 152:Drivers/SOES/Src/ecat_slv.c ****    else
+ 153:Drivers/SOES/Src/ecat_slv.c ****    {
+ 154:Drivers/SOES/Src/ecat_slv.c ****       if (MAX_MAPPINGS_SM3 > 0)
+ARM GAS  /tmp/cc9lJi8H.s 			page 10
+
+
+ 155:Drivers/SOES/Src/ecat_slv.c ****       {
+ 156:Drivers/SOES/Src/ecat_slv.c ****          COE_pdoPack (txpdo, ESCvar.sm3mappings, SMmap3);
+ 157:Drivers/SOES/Src/ecat_slv.c ****       }
+ 158:Drivers/SOES/Src/ecat_slv.c ****       ESC_write (ESC_SM3_sma, txpdo, ESCvar.ESC_SM3_sml);
+ 159:Drivers/SOES/Src/ecat_slv.c ****    }
+ 160:Drivers/SOES/Src/ecat_slv.c **** }
+ 358              		.loc 1 160 1 view .LVU71
+ 359 000a 38BD     		pop	{r3, r4, r5, pc}
+ 360              	.L35:
+ 154:Drivers/SOES/Src/ecat_slv.c ****       {
+ 361              		.loc 1 154 7 is_stmt 1 view .LVU72
+ 156:Drivers/SOES/Src/ecat_slv.c ****       }
+ 362              		.loc 1 156 10 view .LVU73
+ 363 000c 074D     		ldr	r5, .L38
+ 364 000e 084C     		ldr	r4, .L38+4
+ 365 0010 084A     		ldr	r2, .L38+8
+ 366 0012 D5F8A810 		ldr	r1, [r5, #168]
+ 367 0016 2046     		mov	r0, r4
+ 368 0018 FFF7FEFF 		bl	COE_pdoPack
+ 369              	.LVL24:
+ 158:Drivers/SOES/Src/ecat_slv.c ****    }
+ 370              		.loc 1 158 7 view .LVU74
+ 371 001c B5F87620 		ldrh	r2, [r5, #118]
+ 372 0020 2146     		mov	r1, r4
+ 373 0022 4FF4D050 		mov	r0, #6656
+ 374 0026 FFF7FEFF 		bl	ESC_write
+ 375              	.LVL25:
+ 376              		.loc 1 160 1 is_stmt 0 view .LVU75
+ 377 002a EEE7     		b	.L34
+ 378              	.L39:
+ 379              		.align	2
+ 380              	.L38:
+ 381 002c 00000000 		.word	.LANCHOR0
+ 382 0030 00000000 		.word	.LANCHOR2
+ 383 0034 00000000 		.word	.LANCHOR1
+ 384              		.cfi_endproc
+ 385              	.LFE5:
+ 387              		.section	.text.RXPDO_update,"ax",%progbits
+ 388              		.align	1
+ 389              		.global	RXPDO_update
+ 390              		.syntax unified
+ 391              		.thumb
+ 392              		.thumb_func
+ 394              	RXPDO_update:
+ 395              	.LFB6:
+ 161:Drivers/SOES/Src/ecat_slv.c **** 
+ 162:Drivers/SOES/Src/ecat_slv.c **** /** Read Sync Manager 2 to local process data, Master Outputs.
+ 163:Drivers/SOES/Src/ecat_slv.c ****  */
+ 164:Drivers/SOES/Src/ecat_slv.c **** void RXPDO_update (void)
+ 165:Drivers/SOES/Src/ecat_slv.c **** {
+ 396              		.loc 1 165 1 is_stmt 1 view -0
+ 397              		.cfi_startproc
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 400 0000 38B5     		push	{r3, r4, r5, lr}
+ 401              		.cfi_def_cfa_offset 16
+ 402              		.cfi_offset 3, -16
+ARM GAS  /tmp/cc9lJi8H.s 			page 11
+
+
+ 403              		.cfi_offset 4, -12
+ 404              		.cfi_offset 5, -8
+ 405              		.cfi_offset 14, -4
+ 166:Drivers/SOES/Src/ecat_slv.c ****    if(ESCvar.rxpdo_override != NULL)
+ 406              		.loc 1 166 4 view .LVU77
+ 407              		.loc 1 166 13 is_stmt 0 view .LVU78
+ 408 0002 0A4B     		ldr	r3, .L44
+ 409 0004 DB6C     		ldr	r3, [r3, #76]
+ 410              		.loc 1 166 6 view .LVU79
+ 411 0006 0BB1     		cbz	r3, .L41
+ 167:Drivers/SOES/Src/ecat_slv.c ****    {
+ 168:Drivers/SOES/Src/ecat_slv.c ****       (ESCvar.rxpdo_override)();
+ 412              		.loc 1 168 7 is_stmt 1 view .LVU80
+ 413              		.loc 1 168 14 is_stmt 0 view .LVU81
+ 414 0008 9847     		blx	r3
+ 415              	.LVL26:
+ 416              	.L40:
+ 169:Drivers/SOES/Src/ecat_slv.c ****    }
+ 170:Drivers/SOES/Src/ecat_slv.c ****    else
+ 171:Drivers/SOES/Src/ecat_slv.c ****    {
+ 172:Drivers/SOES/Src/ecat_slv.c ****       ESC_read (ESC_SM2_sma, rxpdo, ESCvar.ESC_SM2_sml);
+ 173:Drivers/SOES/Src/ecat_slv.c ****       if (MAX_MAPPINGS_SM2 > 0)
+ 174:Drivers/SOES/Src/ecat_slv.c ****       {
+ 175:Drivers/SOES/Src/ecat_slv.c ****          COE_pdoUnpack (rxpdo, ESCvar.sm2mappings, SMmap2);
+ 176:Drivers/SOES/Src/ecat_slv.c ****       }
+ 177:Drivers/SOES/Src/ecat_slv.c ****    }
+ 178:Drivers/SOES/Src/ecat_slv.c **** }
+ 417              		.loc 1 178 1 view .LVU82
+ 418 000a 38BD     		pop	{r3, r4, r5, pc}
+ 419              	.L41:
+ 172:Drivers/SOES/Src/ecat_slv.c ****       if (MAX_MAPPINGS_SM2 > 0)
+ 420              		.loc 1 172 7 is_stmt 1 view .LVU83
+ 421 000c 074D     		ldr	r5, .L44
+ 422 000e 084C     		ldr	r4, .L44+4
+ 423 0010 B5F87420 		ldrh	r2, [r5, #116]
+ 424 0014 2146     		mov	r1, r4
+ 425 0016 4FF4A050 		mov	r0, #5120
+ 426 001a FFF7FEFF 		bl	ESC_read
+ 427              	.LVL27:
+ 173:Drivers/SOES/Src/ecat_slv.c ****       {
+ 428              		.loc 1 173 7 view .LVU84
+ 175:Drivers/SOES/Src/ecat_slv.c ****       }
+ 429              		.loc 1 175 10 view .LVU85
+ 430 001e 054A     		ldr	r2, .L44+8
+ 431 0020 D5F8A410 		ldr	r1, [r5, #164]
+ 432 0024 2046     		mov	r0, r4
+ 433 0026 FFF7FEFF 		bl	COE_pdoUnpack
+ 434              	.LVL28:
+ 435              		.loc 1 178 1 is_stmt 0 view .LVU86
+ 436 002a EEE7     		b	.L40
+ 437              	.L45:
+ 438              		.align	2
+ 439              	.L44:
+ 440 002c 00000000 		.word	.LANCHOR0
+ 441 0030 00000000 		.word	.LANCHOR3
+ 442 0034 00000000 		.word	.LANCHOR4
+ 443              		.cfi_endproc
+ARM GAS  /tmp/cc9lJi8H.s 			page 12
+
+
+ 444              	.LFE6:
+ 446              		.section	.text.APP_setwatchdog,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	APP_setwatchdog
+ 449              		.syntax unified
+ 450              		.thumb
+ 451              		.thumb_func
+ 453              	APP_setwatchdog:
+ 454              	.LVL29:
+ 455              	.LFB7:
+ 179:Drivers/SOES/Src/ecat_slv.c **** 
+ 180:Drivers/SOES/Src/ecat_slv.c **** /* Set the watchdog count value, don't have any affect when using
+ 181:Drivers/SOES/Src/ecat_slv.c ****  * HW watchdog 0x4xx
+ 182:Drivers/SOES/Src/ecat_slv.c ****  *
+ 183:Drivers/SOES/Src/ecat_slv.c ****  * @param[in] watchdogcnt  = new watchdog count value
+ 184:Drivers/SOES/Src/ecat_slv.c ****  */
+ 185:Drivers/SOES/Src/ecat_slv.c **** void APP_setwatchdog (int watchdogcnt)
+ 186:Drivers/SOES/Src/ecat_slv.c **** {
+ 456              		.loc 1 186 1 is_stmt 1 view -0
+ 457              		.cfi_startproc
+ 458              		@ args = 0, pretend = 0, frame = 0
+ 459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 460              		@ link register save eliminated.
+ 187:Drivers/SOES/Src/ecat_slv.c ****    CC_ATOMIC_SET(ESCvar.watchdogcnt, watchdogcnt);
+ 461              		.loc 1 187 4 view .LVU88
+ 462 0000 BFF35B8F 		dmb	ish
+ 463 0004 024B     		ldr	r3, .L47
+ 464 0006 C3F8D400 		str	r0, [r3, #212]
+ 465 000a BFF35B8F 		dmb	ish
+ 188:Drivers/SOES/Src/ecat_slv.c **** }
+ 466              		.loc 1 188 1 is_stmt 0 view .LVU89
+ 467 000e 7047     		bx	lr
+ 468              	.L48:
+ 469              		.align	2
+ 470              	.L47:
+ 471 0010 00000000 		.word	.LANCHOR0
+ 472              		.cfi_endproc
+ 473              	.LFE7:
+ 475              		.section	.text.DIG_process,"ax",%progbits
+ 476              		.align	1
+ 477              		.global	DIG_process
+ 478              		.syntax unified
+ 479              		.thumb
+ 480              		.thumb_func
+ 482              	DIG_process:
+ 483              	.LVL30:
+ 484              	.LFB8:
+ 189:Drivers/SOES/Src/ecat_slv.c **** 
+ 190:Drivers/SOES/Src/ecat_slv.c **** /* Function to update local I/O, call read ethercat outputs, call
+ 191:Drivers/SOES/Src/ecat_slv.c ****  * write ethercat inputs. Implement watch-dog counter to count-out if we have
+ 192:Drivers/SOES/Src/ecat_slv.c ****  * made state change affecting the App.state.
+ 193:Drivers/SOES/Src/ecat_slv.c ****  */
+ 194:Drivers/SOES/Src/ecat_slv.c **** void DIG_process (uint8_t flags)
+ 195:Drivers/SOES/Src/ecat_slv.c **** {
+ 485              		.loc 1 195 1 is_stmt 1 view -0
+ 486              		.cfi_startproc
+ 487              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc9lJi8H.s 			page 13
+
+
+ 488              		@ frame_needed = 0, uses_anonymous_args = 0
+ 489              		.loc 1 195 1 is_stmt 0 view .LVU91
+ 490 0000 10B5     		push	{r4, lr}
+ 491              		.cfi_def_cfa_offset 8
+ 492              		.cfi_offset 4, -8
+ 493              		.cfi_offset 14, -4
+ 494 0002 0446     		mov	r4, r0
+ 196:Drivers/SOES/Src/ecat_slv.c ****    /* Handle watchdog */
+ 197:Drivers/SOES/Src/ecat_slv.c ****    if((flags & DIG_PROCESS_WD_FLAG) > 0)
+ 495              		.loc 1 197 4 is_stmt 1 view .LVU92
+ 496              		.loc 1 197 6 is_stmt 0 view .LVU93
+ 497 0004 10F0040F 		tst	r0, #4
+ 498 0008 0DD1     		bne	.L59
+ 499              	.LVL31:
+ 500              	.L50:
+ 198:Drivers/SOES/Src/ecat_slv.c ****    {
+ 199:Drivers/SOES/Src/ecat_slv.c ****       if (CC_ATOMIC_GET(watchdog) > 0)
+ 200:Drivers/SOES/Src/ecat_slv.c ****       {
+ 201:Drivers/SOES/Src/ecat_slv.c ****          CC_ATOMIC_SUB(watchdog, 1);
+ 202:Drivers/SOES/Src/ecat_slv.c ****       }
+ 203:Drivers/SOES/Src/ecat_slv.c **** 
+ 204:Drivers/SOES/Src/ecat_slv.c ****       if ((CC_ATOMIC_GET(watchdog) <= 0) &&
+ 205:Drivers/SOES/Src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0))
+ 206:Drivers/SOES/Src/ecat_slv.c ****       {
+ 207:Drivers/SOES/Src/ecat_slv.c ****          DPRINT("DIG_process watchdog expired\n");
+ 208:Drivers/SOES/Src/ecat_slv.c ****          ESC_ALstatusgotoerror((ESCsafeop | ESCerror), ALERR_WATCHDOG);
+ 209:Drivers/SOES/Src/ecat_slv.c ****       }
+ 210:Drivers/SOES/Src/ecat_slv.c ****       else if(((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) == 0))
+ 211:Drivers/SOES/Src/ecat_slv.c ****       {
+ 212:Drivers/SOES/Src/ecat_slv.c ****          CC_ATOMIC_SET(watchdog, ESCvar.watchdogcnt);
+ 213:Drivers/SOES/Src/ecat_slv.c ****       }
+ 214:Drivers/SOES/Src/ecat_slv.c ****    }
+ 215:Drivers/SOES/Src/ecat_slv.c **** 
+ 216:Drivers/SOES/Src/ecat_slv.c ****    /* Handle Outputs */
+ 217:Drivers/SOES/Src/ecat_slv.c ****    if ((flags & DIG_PROCESS_OUTPUTS_FLAG) > 0)
+ 501              		.loc 1 217 4 is_stmt 1 view .LVU94
+ 502              		.loc 1 217 7 is_stmt 0 view .LVU95
+ 503 000a 14F0020F 		tst	r4, #2
+ 504 000e 49D1     		bne	.L60
+ 505              	.L53:
+ 218:Drivers/SOES/Src/ecat_slv.c ****    {
+ 219:Drivers/SOES/Src/ecat_slv.c ****       if(((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0) &&
+ 220:Drivers/SOES/Src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
+ 221:Drivers/SOES/Src/ecat_slv.c ****       {
+ 222:Drivers/SOES/Src/ecat_slv.c ****          RXPDO_update();
+ 223:Drivers/SOES/Src/ecat_slv.c ****          CC_ATOMIC_SET(watchdog, ESCvar.watchdogcnt);
+ 224:Drivers/SOES/Src/ecat_slv.c ****          /* Set outputs */
+ 225:Drivers/SOES/Src/ecat_slv.c ****          cb_set_outputs();
+ 226:Drivers/SOES/Src/ecat_slv.c ****       }
+ 227:Drivers/SOES/Src/ecat_slv.c ****       else if (ESCvar.ALevent & ESCREG_ALEVENT_SM2)
+ 228:Drivers/SOES/Src/ecat_slv.c ****       {
+ 229:Drivers/SOES/Src/ecat_slv.c ****          RXPDO_update();
+ 230:Drivers/SOES/Src/ecat_slv.c ****       }
+ 231:Drivers/SOES/Src/ecat_slv.c ****    }
+ 232:Drivers/SOES/Src/ecat_slv.c **** 
+ 233:Drivers/SOES/Src/ecat_slv.c ****    /* Call application */
+ 234:Drivers/SOES/Src/ecat_slv.c ****    if ((flags & DIG_PROCESS_APP_HOOK_FLAG) > 0)
+ARM GAS  /tmp/cc9lJi8H.s 			page 14
+
+
+ 506              		.loc 1 234 4 is_stmt 1 view .LVU96
+ 507              		.loc 1 234 7 is_stmt 0 view .LVU97
+ 508 0010 14F0080F 		tst	r4, #8
+ 509 0014 03D0     		beq	.L55
+ 235:Drivers/SOES/Src/ecat_slv.c ****    {
+ 236:Drivers/SOES/Src/ecat_slv.c ****       /* Call application callback if set */
+ 237:Drivers/SOES/Src/ecat_slv.c ****       if (ESCvar.application_hook != NULL)
+ 510              		.loc 1 237 7 is_stmt 1 view .LVU98
+ 511              		.loc 1 237 17 is_stmt 0 view .LVU99
+ 512 0016 3E4B     		ldr	r3, .L64
+ 513 0018 5B6B     		ldr	r3, [r3, #52]
+ 514              		.loc 1 237 10 view .LVU100
+ 515 001a 03B1     		cbz	r3, .L55
+ 238:Drivers/SOES/Src/ecat_slv.c ****       {
+ 239:Drivers/SOES/Src/ecat_slv.c ****          (ESCvar.application_hook)();
+ 516              		.loc 1 239 10 is_stmt 1 view .LVU101
+ 517              		.loc 1 239 17 is_stmt 0 view .LVU102
+ 518 001c 9847     		blx	r3
+ 519              	.LVL32:
+ 520              	.L55:
+ 240:Drivers/SOES/Src/ecat_slv.c ****       }
+ 241:Drivers/SOES/Src/ecat_slv.c ****    }
+ 242:Drivers/SOES/Src/ecat_slv.c **** 
+ 243:Drivers/SOES/Src/ecat_slv.c ****    /* Handle Inputs */
+ 244:Drivers/SOES/Src/ecat_slv.c ****    if ((flags & DIG_PROCESS_INPUTS_FLAG) > 0)
+ 521              		.loc 1 244 4 is_stmt 1 view .LVU103
+ 522              		.loc 1 244 7 is_stmt 0 view .LVU104
+ 523 001e 14F0010F 		tst	r4, #1
+ 524 0022 66D1     		bne	.L61
+ 525              	.L49:
+ 245:Drivers/SOES/Src/ecat_slv.c ****    {
+ 246:Drivers/SOES/Src/ecat_slv.c ****       if(CC_ATOMIC_GET(ESCvar.App.state) > 0)
+ 247:Drivers/SOES/Src/ecat_slv.c ****       {
+ 248:Drivers/SOES/Src/ecat_slv.c ****          /* Update inputs */
+ 249:Drivers/SOES/Src/ecat_slv.c ****          cb_get_inputs();
+ 250:Drivers/SOES/Src/ecat_slv.c ****          TXPDO_update();
+ 251:Drivers/SOES/Src/ecat_slv.c ****       }
+ 252:Drivers/SOES/Src/ecat_slv.c ****    }
+ 253:Drivers/SOES/Src/ecat_slv.c **** }
+ 526              		.loc 1 253 1 view .LVU105
+ 527 0024 10BD     		pop	{r4, pc}
+ 528              	.LVL33:
+ 529              	.L59:
+ 199:Drivers/SOES/Src/ecat_slv.c ****       {
+ 530              		.loc 1 199 7 is_stmt 1 view .LVU106
+ 199:Drivers/SOES/Src/ecat_slv.c ****       {
+ 531              		.loc 1 199 11 is_stmt 0 view .LVU107
+ 532 0026 BFF35B8F 		dmb	ish
+ 533 002a 3A4B     		ldr	r3, .L64+4
+ 534 002c 1B68     		ldr	r3, [r3]
+ 535 002e BFF35B8F 		dmb	ish
+ 199:Drivers/SOES/Src/ecat_slv.c ****       {
+ 536              		.loc 1 199 10 view .LVU108
+ 537 0032 002B     		cmp	r3, #0
+ 538 0034 0BDD     		ble	.L51
+ 201:Drivers/SOES/Src/ecat_slv.c ****       }
+ 539              		.loc 1 201 10 is_stmt 1 view .LVU109
+ARM GAS  /tmp/cc9lJi8H.s 			page 15
+
+
+ 540 0036 374B     		ldr	r3, .L64+4
+ 541 0038 BFF35B8F 		dmb	ish
+ 542              	.L57:
+ 543 003c 53E8002F 		ldrex	r2, [r3]
+ 544 0040 013A     		subs	r2, r2, #1
+ 545 0042 43E80021 		strex	r1, r2, [r3]
+ 546 0046 0029     		cmp	r1, #0
+ 547 0048 F8D1     		bne	.L57
+ 548 004a BFF35B8F 		dmb	ish
+ 549              	.L51:
+ 204:Drivers/SOES/Src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0))
+ 550              		.loc 1 204 7 view .LVU110
+ 204:Drivers/SOES/Src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0))
+ 551              		.loc 1 204 12 is_stmt 0 view .LVU111
+ 552 004e BFF35B8F 		dmb	ish
+ 553 0052 304B     		ldr	r3, .L64+4
+ 554 0054 1B68     		ldr	r3, [r3]
+ 555 0056 BFF35B8F 		dmb	ish
+ 204:Drivers/SOES/Src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0))
+ 556              		.loc 1 204 10 view .LVU112
+ 557 005a 002B     		cmp	r3, #0
+ 558 005c 13DD     		ble	.L62
+ 559              	.L52:
+ 210:Drivers/SOES/Src/ecat_slv.c ****       {
+ 560              		.loc 1 210 12 is_stmt 1 view .LVU113
+ 210:Drivers/SOES/Src/ecat_slv.c ****       {
+ 561              		.loc 1 210 17 is_stmt 0 view .LVU114
+ 562 005e BFF35B8F 		dmb	ish
+ 563 0062 2B4B     		ldr	r3, .L64
+ 564 0064 93F8DF30 		ldrb	r3, [r3, #223]	@ zero_extendqisi2
+ 565 0068 BFF35B8F 		dmb	ish
+ 210:Drivers/SOES/Src/ecat_slv.c ****       {
+ 566              		.loc 1 210 14 view .LVU115
+ 567 006c 13F0020F 		tst	r3, #2
+ 568 0070 CBD1     		bne	.L50
+ 212:Drivers/SOES/Src/ecat_slv.c ****       }
+ 569              		.loc 1 212 10 is_stmt 1 view .LVU116
+ 570 0072 274B     		ldr	r3, .L64
+ 571 0074 D3F8D420 		ldr	r2, [r3, #212]
+ 572 0078 BFF35B8F 		dmb	ish
+ 573 007c 254B     		ldr	r3, .L64+4
+ 574 007e 1A60     		str	r2, [r3]
+ 575 0080 BFF35B8F 		dmb	ish
+ 576 0084 C1E7     		b	.L50
+ 577              	.L62:
+ 205:Drivers/SOES/Src/ecat_slv.c ****       {
+ 578              		.loc 1 205 13 is_stmt 0 discriminator 1 view .LVU117
+ 579 0086 BFF35B8F 		dmb	ish
+ 580 008a 214B     		ldr	r3, .L64
+ 581 008c 93F8DF30 		ldrb	r3, [r3, #223]	@ zero_extendqisi2
+ 582 0090 BFF35B8F 		dmb	ish
+ 204:Drivers/SOES/Src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0))
+ 583              		.loc 1 204 42 discriminator 1 view .LVU118
+ 584 0094 13F0020F 		tst	r3, #2
+ 585 0098 E1D0     		beq	.L52
+ 207:Drivers/SOES/Src/ecat_slv.c ****          ESC_ALstatusgotoerror((ESCsafeop | ESCerror), ALERR_WATCHDOG);
+ 586              		.loc 1 207 50 is_stmt 1 view .LVU119
+ARM GAS  /tmp/cc9lJi8H.s 			page 16
+
+
+ 208:Drivers/SOES/Src/ecat_slv.c ****       }
+ 587              		.loc 1 208 10 view .LVU120
+ 588 009a 1B21     		movs	r1, #27
+ 589 009c 1420     		movs	r0, #20
+ 590              	.LVL34:
+ 208:Drivers/SOES/Src/ecat_slv.c ****       }
+ 591              		.loc 1 208 10 is_stmt 0 view .LVU121
+ 592 009e FFF7FEFF 		bl	ESC_ALstatusgotoerror
+ 593              	.LVL35:
+ 594 00a2 B2E7     		b	.L50
+ 595              	.L60:
+ 219:Drivers/SOES/Src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
+ 596              		.loc 1 219 7 is_stmt 1 view .LVU122
+ 219:Drivers/SOES/Src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
+ 597              		.loc 1 219 12 is_stmt 0 view .LVU123
+ 598 00a4 BFF35B8F 		dmb	ish
+ 599 00a8 194B     		ldr	r3, .L64
+ 600 00aa 93F8DF30 		ldrb	r3, [r3, #223]	@ zero_extendqisi2
+ 601 00ae BFF35B8F 		dmb	ish
+ 219:Drivers/SOES/Src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
+ 602              		.loc 1 219 9 view .LVU124
+ 603 00b2 13F0020F 		tst	r3, #2
+ 604 00b6 05D0     		beq	.L54
+ 220:Drivers/SOES/Src/ecat_slv.c ****       {
+ 605              		.loc 1 220 17 discriminator 1 view .LVU125
+ 606 00b8 154B     		ldr	r3, .L64
+ 607 00ba B3F8DC30 		ldrh	r3, [r3, #220]
+ 219:Drivers/SOES/Src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
+ 608              		.loc 1 219 68 discriminator 1 view .LVU126
+ 609 00be 13F4806F 		tst	r3, #1024
+ 610 00c2 08D1     		bne	.L63
+ 611              	.L54:
+ 227:Drivers/SOES/Src/ecat_slv.c ****       {
+ 612              		.loc 1 227 12 is_stmt 1 view .LVU127
+ 227:Drivers/SOES/Src/ecat_slv.c ****       {
+ 613              		.loc 1 227 22 is_stmt 0 view .LVU128
+ 614 00c4 124B     		ldr	r3, .L64
+ 615 00c6 B3F8DC30 		ldrh	r3, [r3, #220]
+ 227:Drivers/SOES/Src/ecat_slv.c ****       {
+ 616              		.loc 1 227 15 view .LVU129
+ 617 00ca 13F4806F 		tst	r3, #1024
+ 618 00ce 9FD0     		beq	.L53
+ 229:Drivers/SOES/Src/ecat_slv.c ****       }
+ 619              		.loc 1 229 10 is_stmt 1 view .LVU130
+ 620 00d0 FFF7FEFF 		bl	RXPDO_update
+ 621              	.LVL36:
+ 622 00d4 9CE7     		b	.L53
+ 623              	.L63:
+ 222:Drivers/SOES/Src/ecat_slv.c ****          CC_ATOMIC_SET(watchdog, ESCvar.watchdogcnt);
+ 624              		.loc 1 222 10 view .LVU131
+ 625 00d6 FFF7FEFF 		bl	RXPDO_update
+ 626              	.LVL37:
+ 223:Drivers/SOES/Src/ecat_slv.c ****          /* Set outputs */
+ 627              		.loc 1 223 10 view .LVU132
+ 628 00da 0D4B     		ldr	r3, .L64
+ 629 00dc D3F8D420 		ldr	r2, [r3, #212]
+ 630 00e0 BFF35B8F 		dmb	ish
+ARM GAS  /tmp/cc9lJi8H.s 			page 17
+
+
+ 631 00e4 0B4B     		ldr	r3, .L64+4
+ 632 00e6 1A60     		str	r2, [r3]
+ 633 00e8 BFF35B8F 		dmb	ish
+ 225:Drivers/SOES/Src/ecat_slv.c ****       }
+ 634              		.loc 1 225 10 view .LVU133
+ 635 00ec FFF7FEFF 		bl	cb_set_outputs
+ 636              	.LVL38:
+ 637 00f0 8EE7     		b	.L53
+ 638              	.L61:
+ 246:Drivers/SOES/Src/ecat_slv.c ****       {
+ 639              		.loc 1 246 7 view .LVU134
+ 246:Drivers/SOES/Src/ecat_slv.c ****       {
+ 640              		.loc 1 246 10 is_stmt 0 view .LVU135
+ 641 00f2 BFF35B8F 		dmb	ish
+ 642 00f6 064B     		ldr	r3, .L64
+ 643 00f8 93F8DF30 		ldrb	r3, [r3, #223]	@ zero_extendqisi2
+ 644 00fc BFF35B8F 		dmb	ish
+ 246:Drivers/SOES/Src/ecat_slv.c ****       {
+ 645              		.loc 1 246 9 view .LVU136
+ 646 0100 002B     		cmp	r3, #0
+ 647 0102 8FD0     		beq	.L49
+ 249:Drivers/SOES/Src/ecat_slv.c ****          TXPDO_update();
+ 648              		.loc 1 249 10 is_stmt 1 view .LVU137
+ 649 0104 FFF7FEFF 		bl	cb_get_inputs
+ 650              	.LVL39:
+ 250:Drivers/SOES/Src/ecat_slv.c ****       }
+ 651              		.loc 1 250 10 view .LVU138
+ 652 0108 FFF7FEFF 		bl	TXPDO_update
+ 653              	.LVL40:
+ 654              		.loc 1 253 1 is_stmt 0 view .LVU139
+ 655 010c 8AE7     		b	.L49
+ 656              	.L65:
+ 657 010e 00BF     		.align	2
+ 658              	.L64:
+ 659 0110 00000000 		.word	.LANCHOR0
+ 660 0114 00000000 		.word	.LANCHOR5
+ 661              		.cfi_endproc
+ 662              	.LFE8:
+ 664              		.section	.text.ecat_slv_worker,"ax",%progbits
+ 665              		.align	1
+ 666              		.global	ecat_slv_worker
+ 667              		.syntax unified
+ 668              		.thumb
+ 669              		.thumb_func
+ 671              	ecat_slv_worker:
+ 672              	.LVL41:
+ 673              	.LFB9:
+ 254:Drivers/SOES/Src/ecat_slv.c **** 
+ 255:Drivers/SOES/Src/ecat_slv.c **** /*
+ 256:Drivers/SOES/Src/ecat_slv.c ****  * Handler for SM change, SM0/1, AL CONTROL and EEPROM events, the application
+ 257:Drivers/SOES/Src/ecat_slv.c ****  * control what interrupts that should be served and re-activated with
+ 258:Drivers/SOES/Src/ecat_slv.c ****  * event mask argument
+ 259:Drivers/SOES/Src/ecat_slv.c ****  */
+ 260:Drivers/SOES/Src/ecat_slv.c **** void ecat_slv_worker (uint32_t event_mask)
+ 261:Drivers/SOES/Src/ecat_slv.c **** {
+ 674              		.loc 1 261 1 is_stmt 1 view -0
+ 675              		.cfi_startproc
+ARM GAS  /tmp/cc9lJi8H.s 			page 18
+
+
+ 676              		@ args = 0, pretend = 0, frame = 0
+ 677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 678              		.loc 1 261 1 is_stmt 0 view .LVU141
+ 679 0000 10B5     		push	{r4, lr}
+ 680              		.cfi_def_cfa_offset 8
+ 681              		.cfi_offset 4, -8
+ 682              		.cfi_offset 14, -4
+ 683 0002 0446     		mov	r4, r0
+ 684 0004 1EE0     		b	.L70
+ 685              	.LVL42:
+ 686              	.L68:
+ 262:Drivers/SOES/Src/ecat_slv.c ****    do
+ 263:Drivers/SOES/Src/ecat_slv.c ****    {
+ 264:Drivers/SOES/Src/ecat_slv.c ****       /* Check the state machine */
+ 265:Drivers/SOES/Src/ecat_slv.c ****       ESC_state();
+ 266:Drivers/SOES/Src/ecat_slv.c ****       /* Check the SM activation event */
+ 267:Drivers/SOES/Src/ecat_slv.c ****       ESC_sm_act_event();
+ 268:Drivers/SOES/Src/ecat_slv.c **** 
+ 269:Drivers/SOES/Src/ecat_slv.c ****       /* Check mailboxes */
+ 270:Drivers/SOES/Src/ecat_slv.c ****       while ((ESC_mbxprocess() > 0) || (ESCvar.txcue > 0))
+ 271:Drivers/SOES/Src/ecat_slv.c ****       {
+ 272:Drivers/SOES/Src/ecat_slv.c ****          ESC_coeprocess();
+ 687              		.loc 1 272 10 is_stmt 1 view .LVU142
+ 688 0006 FFF7FEFF 		bl	ESC_coeprocess
+ 689              	.LVL43:
+ 273:Drivers/SOES/Src/ecat_slv.c **** #if USE_FOE
+ 274:Drivers/SOES/Src/ecat_slv.c ****          ESC_foeprocess();
+ 275:Drivers/SOES/Src/ecat_slv.c **** #endif
+ 276:Drivers/SOES/Src/ecat_slv.c **** #if USE_EOE
+ 277:Drivers/SOES/Src/ecat_slv.c ****          ESC_eoeprocess();
+ 278:Drivers/SOES/Src/ecat_slv.c **** #endif
+ 279:Drivers/SOES/Src/ecat_slv.c ****          ESC_xoeprocess();
+ 690              		.loc 1 279 10 view .LVU143
+ 691 000a FFF7FEFF 		bl	ESC_xoeprocess
+ 692              	.LVL44:
+ 693              	.L67:
+ 270:Drivers/SOES/Src/ecat_slv.c ****       {
+ 694              		.loc 1 270 13 view .LVU144
+ 270:Drivers/SOES/Src/ecat_slv.c ****       {
+ 695              		.loc 1 270 15 is_stmt 0 view .LVU145
+ 696 000e FFF7FEFF 		bl	ESC_mbxprocess
+ 697              	.LVL45:
+ 270:Drivers/SOES/Src/ecat_slv.c ****       {
+ 698              		.loc 1 270 13 view .LVU146
+ 699 0012 0028     		cmp	r0, #0
+ 700 0014 F7D1     		bne	.L68
+ 270:Drivers/SOES/Src/ecat_slv.c ****       {
+ 701              		.loc 1 270 47 discriminator 1 view .LVU147
+ 702 0016 114B     		ldr	r3, .L73
+ 703 0018 93F88B30 		ldrb	r3, [r3, #139]	@ zero_extendqisi2
+ 270:Drivers/SOES/Src/ecat_slv.c ****       {
+ 704              		.loc 1 270 37 discriminator 1 view .LVU148
+ 705 001c 002B     		cmp	r3, #0
+ 706 001e F2D1     		bne	.L68
+ 280:Drivers/SOES/Src/ecat_slv.c ****       }
+ 281:Drivers/SOES/Src/ecat_slv.c **** #if USE_EOE
+ 282:Drivers/SOES/Src/ecat_slv.c ****       ESC_eoeprocess_tx();
+ARM GAS  /tmp/cc9lJi8H.s 			page 19
+
+
+ 283:Drivers/SOES/Src/ecat_slv.c **** #endif
+ 284:Drivers/SOES/Src/ecat_slv.c ****       /* Call emulated eeprom handler if set */
+ 285:Drivers/SOES/Src/ecat_slv.c ****       if (ESCvar.esc_hw_eep_handler != NULL)
+ 707              		.loc 1 285 7 is_stmt 1 view .LVU149
+ 708              		.loc 1 285 17 is_stmt 0 view .LVU150
+ 709 0020 0E4B     		ldr	r3, .L73
+ 710 0022 DB6D     		ldr	r3, [r3, #92]
+ 711              		.loc 1 285 10 view .LVU151
+ 712 0024 03B1     		cbz	r3, .L69
+ 286:Drivers/SOES/Src/ecat_slv.c ****       {
+ 287:Drivers/SOES/Src/ecat_slv.c ****          (ESCvar.esc_hw_eep_handler)();
+ 713              		.loc 1 287 10 is_stmt 1 view .LVU152
+ 714              		.loc 1 287 17 is_stmt 0 view .LVU153
+ 715 0026 9847     		blx	r3
+ 716              	.LVL46:
+ 717              	.L69:
+ 288:Drivers/SOES/Src/ecat_slv.c ****       }
+ 289:Drivers/SOES/Src/ecat_slv.c **** 
+ 290:Drivers/SOES/Src/ecat_slv.c ****       CC_ATOMIC_SET(ESCvar.ALevent, ESC_ALeventread());
+ 718              		.loc 1 290 7 is_stmt 1 view .LVU154
+ 719 0028 FFF7FEFF 		bl	ESC_ALeventread
+ 720              	.LVL47:
+ 721 002c 0B4B     		ldr	r3, .L73
+ 722 002e BFF35B8F 		dmb	ish
+ 723 0032 A3F8DC00 		strh	r0, [r3, #220]	@ movhi
+ 724 0036 BFF35B8F 		dmb	ish
+ 291:Drivers/SOES/Src/ecat_slv.c **** 
+ 292:Drivers/SOES/Src/ecat_slv.c ****    }while(ESCvar.ALevent & event_mask);
+ 725              		.loc 1 292 10 view .LVU155
+ 726              		.loc 1 292 17 is_stmt 0 view .LVU156
+ 727 003a B3F8DC30 		ldrh	r3, [r3, #220]
+ 728 003e 9BB2     		uxth	r3, r3
+ 729              		.loc 1 292 4 view .LVU157
+ 730 0040 2342     		tst	r3, r4
+ 731 0042 04D0     		beq	.L72
+ 732              	.L70:
+ 262:Drivers/SOES/Src/ecat_slv.c ****    {
+ 733              		.loc 1 262 4 is_stmt 1 view .LVU158
+ 265:Drivers/SOES/Src/ecat_slv.c ****       /* Check the SM activation event */
+ 734              		.loc 1 265 7 view .LVU159
+ 735 0044 FFF7FEFF 		bl	ESC_state
+ 736              	.LVL48:
+ 267:Drivers/SOES/Src/ecat_slv.c **** 
+ 737              		.loc 1 267 7 view .LVU160
+ 738 0048 FFF7FEFF 		bl	ESC_sm_act_event
+ 739              	.LVL49:
+ 270:Drivers/SOES/Src/ecat_slv.c ****       {
+ 740              		.loc 1 270 7 view .LVU161
+ 270:Drivers/SOES/Src/ecat_slv.c ****       {
+ 741              		.loc 1 270 13 is_stmt 0 view .LVU162
+ 742 004c DFE7     		b	.L67
+ 743              	.L72:
+ 293:Drivers/SOES/Src/ecat_slv.c **** 
+ 294:Drivers/SOES/Src/ecat_slv.c ****    ESC_ALeventmaskwrite(ESC_ALeventmaskread() | event_mask);
+ 744              		.loc 1 294 4 is_stmt 1 view .LVU163
+ 745              		.loc 1 294 25 is_stmt 0 view .LVU164
+ 746 004e FFF7FEFF 		bl	ESC_ALeventmaskread
+ARM GAS  /tmp/cc9lJi8H.s 			page 20
+
+
+ 747              	.LVL50:
+ 748              		.loc 1 294 4 view .LVU165
+ 749 0052 2043     		orrs	r0, r0, r4
+ 750 0054 FFF7FEFF 		bl	ESC_ALeventmaskwrite
+ 751              	.LVL51:
+ 295:Drivers/SOES/Src/ecat_slv.c **** }
+ 752              		.loc 1 295 1 view .LVU166
+ 753 0058 10BD     		pop	{r4, pc}
+ 754              	.LVL52:
+ 755              	.L74:
+ 756              		.loc 1 295 1 view .LVU167
+ 757 005a 00BF     		.align	2
+ 758              	.L73:
+ 759 005c 00000000 		.word	.LANCHOR0
+ 760              		.cfi_endproc
+ 761              	.LFE9:
+ 763              		.section	.text.ecat_slv_poll,"ax",%progbits
+ 764              		.align	1
+ 765              		.global	ecat_slv_poll
+ 766              		.syntax unified
+ 767              		.thumb
+ 768              		.thumb_func
+ 770              	ecat_slv_poll:
+ 771              	.LFB10:
+ 296:Drivers/SOES/Src/ecat_slv.c **** 
+ 297:Drivers/SOES/Src/ecat_slv.c **** /*
+ 298:Drivers/SOES/Src/ecat_slv.c ****  * Polling function. It should be called periodically for an application 
+ 299:Drivers/SOES/Src/ecat_slv.c ****  * when only SM2/DC interrupt is active.
+ 300:Drivers/SOES/Src/ecat_slv.c ****  * Read and handle events for the EtherCAT state, status, mailbox and eeprom.
+ 301:Drivers/SOES/Src/ecat_slv.c ****  */
+ 302:Drivers/SOES/Src/ecat_slv.c **** void ecat_slv_poll (void)
+ 303:Drivers/SOES/Src/ecat_slv.c **** {
+ 772              		.loc 1 303 1 is_stmt 1 view -0
+ 773              		.cfi_startproc
+ 774              		@ args = 0, pretend = 0, frame = 0
+ 775              		@ frame_needed = 0, uses_anonymous_args = 0
+ 776 0000 10B5     		push	{r4, lr}
+ 777              		.cfi_def_cfa_offset 8
+ 778              		.cfi_offset 4, -8
+ 779              		.cfi_offset 14, -4
+ 304:Drivers/SOES/Src/ecat_slv.c ****    /* Read local time from ESC*/
+ 305:Drivers/SOES/Src/ecat_slv.c ****    ESC_read (ESCREG_LOCALTIME, (void *) &ESCvar.Time, sizeof (ESCvar.Time));
+ 780              		.loc 1 305 4 view .LVU169
+ 781 0002 0E4C     		ldr	r4, .L80
+ 782 0004 0422     		movs	r2, #4
+ 783 0006 04F1D801 		add	r1, r4, #216
+ 784 000a 4FF41160 		mov	r0, #2320
+ 785 000e FFF7FEFF 		bl	ESC_read
+ 786              	.LVL53:
+ 306:Drivers/SOES/Src/ecat_slv.c ****    ESCvar.Time = etohl (ESCvar.Time);
+ 787              		.loc 1 306 4 view .LVU170
+ 788              		.loc 1 306 18 is_stmt 0 view .LVU171
+ 789 0012 D4F8D830 		ldr	r3, [r4, #216]
+ 790              		.loc 1 306 16 view .LVU172
+ 791 0016 C4F8D830 		str	r3, [r4, #216]
+ 307:Drivers/SOES/Src/ecat_slv.c **** 
+ 308:Drivers/SOES/Src/ecat_slv.c ****    /* Check the state machine */
+ARM GAS  /tmp/cc9lJi8H.s 			page 21
+
+
+ 309:Drivers/SOES/Src/ecat_slv.c ****    ESC_state();
+ 792              		.loc 1 309 4 is_stmt 1 view .LVU173
+ 793 001a FFF7FEFF 		bl	ESC_state
+ 794              	.LVL54:
+ 310:Drivers/SOES/Src/ecat_slv.c ****    /* Check the SM activation event */
+ 311:Drivers/SOES/Src/ecat_slv.c ****    ESC_sm_act_event();
+ 795              		.loc 1 311 4 view .LVU174
+ 796 001e FFF7FEFF 		bl	ESC_sm_act_event
+ 797              	.LVL55:
+ 312:Drivers/SOES/Src/ecat_slv.c **** 
+ 313:Drivers/SOES/Src/ecat_slv.c ****    /* Check mailboxes */
+ 314:Drivers/SOES/Src/ecat_slv.c ****    if (ESC_mbxprocess())
+ 798              		.loc 1 314 4 view .LVU175
+ 799              		.loc 1 314 8 is_stmt 0 view .LVU176
+ 800 0022 FFF7FEFF 		bl	ESC_mbxprocess
+ 801              	.LVL56:
+ 802              		.loc 1 314 7 view .LVU177
+ 803 0026 20B9     		cbnz	r0, .L79
+ 804              	.L76:
+ 315:Drivers/SOES/Src/ecat_slv.c ****    {
+ 316:Drivers/SOES/Src/ecat_slv.c ****       ESC_coeprocess();
+ 317:Drivers/SOES/Src/ecat_slv.c **** #if USE_FOE
+ 318:Drivers/SOES/Src/ecat_slv.c ****       ESC_foeprocess();
+ 319:Drivers/SOES/Src/ecat_slv.c **** #endif
+ 320:Drivers/SOES/Src/ecat_slv.c **** #if USE_EOE
+ 321:Drivers/SOES/Src/ecat_slv.c ****       ESC_eoeprocess();
+ 322:Drivers/SOES/Src/ecat_slv.c **** #endif
+ 323:Drivers/SOES/Src/ecat_slv.c ****       ESC_xoeprocess();
+ 324:Drivers/SOES/Src/ecat_slv.c ****    }
+ 325:Drivers/SOES/Src/ecat_slv.c **** #if USE_EOE
+ 326:Drivers/SOES/Src/ecat_slv.c ****    ESC_eoeprocess_tx();
+ 327:Drivers/SOES/Src/ecat_slv.c **** #endif
+ 328:Drivers/SOES/Src/ecat_slv.c **** 
+ 329:Drivers/SOES/Src/ecat_slv.c ****    /* Call emulated eeprom handler if set */
+ 330:Drivers/SOES/Src/ecat_slv.c ****    if (ESCvar.esc_hw_eep_handler != NULL)
+ 805              		.loc 1 330 4 is_stmt 1 view .LVU178
+ 806              		.loc 1 330 14 is_stmt 0 view .LVU179
+ 807 0028 044B     		ldr	r3, .L80
+ 808 002a DB6D     		ldr	r3, [r3, #92]
+ 809              		.loc 1 330 7 view .LVU180
+ 810 002c 03B1     		cbz	r3, .L75
+ 331:Drivers/SOES/Src/ecat_slv.c ****    {
+ 332:Drivers/SOES/Src/ecat_slv.c ****       (ESCvar.esc_hw_eep_handler)();
+ 811              		.loc 1 332 7 is_stmt 1 view .LVU181
+ 812              		.loc 1 332 14 is_stmt 0 view .LVU182
+ 813 002e 9847     		blx	r3
+ 814              	.LVL57:
+ 815              	.L75:
+ 333:Drivers/SOES/Src/ecat_slv.c ****    }
+ 334:Drivers/SOES/Src/ecat_slv.c **** }
+ 816              		.loc 1 334 1 view .LVU183
+ 817 0030 10BD     		pop	{r4, pc}
+ 818              	.L79:
+ 316:Drivers/SOES/Src/ecat_slv.c **** #if USE_FOE
+ 819              		.loc 1 316 7 is_stmt 1 view .LVU184
+ 820 0032 FFF7FEFF 		bl	ESC_coeprocess
+ 821              	.LVL58:
+ARM GAS  /tmp/cc9lJi8H.s 			page 22
+
+
+ 323:Drivers/SOES/Src/ecat_slv.c ****    }
+ 822              		.loc 1 323 7 view .LVU185
+ 823 0036 FFF7FEFF 		bl	ESC_xoeprocess
+ 824              	.LVL59:
+ 825 003a F5E7     		b	.L76
+ 826              	.L81:
+ 827              		.align	2
+ 828              	.L80:
+ 829 003c 00000000 		.word	.LANCHOR0
+ 830              		.cfi_endproc
+ 831              	.LFE10:
+ 833              		.section	.text.ecat_slv,"ax",%progbits
+ 834              		.align	1
+ 835              		.global	ecat_slv
+ 836              		.syntax unified
+ 837              		.thumb
+ 838              		.thumb_func
+ 840              	ecat_slv:
+ 841              	.LFB11:
+ 335:Drivers/SOES/Src/ecat_slv.c **** 
+ 336:Drivers/SOES/Src/ecat_slv.c **** /*
+ 337:Drivers/SOES/Src/ecat_slv.c ****  * Poll all events in a free-run application
+ 338:Drivers/SOES/Src/ecat_slv.c ****  */
+ 339:Drivers/SOES/Src/ecat_slv.c **** void ecat_slv (void)
+ 340:Drivers/SOES/Src/ecat_slv.c **** {
+ 842              		.loc 1 340 1 view -0
+ 843              		.cfi_startproc
+ 844              		@ args = 0, pretend = 0, frame = 0
+ 845              		@ frame_needed = 0, uses_anonymous_args = 0
+ 846 0000 08B5     		push	{r3, lr}
+ 847              		.cfi_def_cfa_offset 8
+ 848              		.cfi_offset 3, -8
+ 849              		.cfi_offset 14, -4
+ 341:Drivers/SOES/Src/ecat_slv.c ****    ecat_slv_poll();
+ 850              		.loc 1 341 4 view .LVU187
+ 851 0002 FFF7FEFF 		bl	ecat_slv_poll
+ 852              	.LVL60:
+ 342:Drivers/SOES/Src/ecat_slv.c ****    DIG_process(DIG_PROCESS_WD_FLAG | DIG_PROCESS_OUTPUTS_FLAG |
+ 853              		.loc 1 342 4 view .LVU188
+ 854 0006 0F20     		movs	r0, #15
+ 855 0008 FFF7FEFF 		bl	DIG_process
+ 856              	.LVL61:
+ 343:Drivers/SOES/Src/ecat_slv.c ****          DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
+ 344:Drivers/SOES/Src/ecat_slv.c **** }
+ 857              		.loc 1 344 1 is_stmt 0 view .LVU189
+ 858 000c 08BD     		pop	{r3, pc}
+ 859              		.cfi_endproc
+ 860              	.LFE11:
+ 862              		.section	.text.ecat_slv_init,"ax",%progbits
+ 863              		.align	1
+ 864              		.global	ecat_slv_init
+ 865              		.syntax unified
+ 866              		.thumb
+ 867              		.thumb_func
+ 869              	ecat_slv_init:
+ 870              	.LVL62:
+ 871              	.LFB12:
+ARM GAS  /tmp/cc9lJi8H.s 			page 23
+
+
+ 345:Drivers/SOES/Src/ecat_slv.c **** 
+ 346:Drivers/SOES/Src/ecat_slv.c **** /*
+ 347:Drivers/SOES/Src/ecat_slv.c ****  * Initialize the slave stack.
+ 348:Drivers/SOES/Src/ecat_slv.c ****  */
+ 349:Drivers/SOES/Src/ecat_slv.c **** void ecat_slv_init (esc_cfg_t * config)
+ 350:Drivers/SOES/Src/ecat_slv.c **** {
+ 872              		.loc 1 350 1 is_stmt 1 view -0
+ 873              		.cfi_startproc
+ 874              		@ args = 0, pretend = 0, frame = 0
+ 875              		@ frame_needed = 0, uses_anonymous_args = 0
+ 876              		.loc 1 350 1 is_stmt 0 view .LVU191
+ 877 0000 10B5     		push	{r4, lr}
+ 878              		.cfi_def_cfa_offset 8
+ 879              		.cfi_offset 4, -8
+ 880              		.cfi_offset 14, -4
+ 881 0002 0446     		mov	r4, r0
+ 351:Drivers/SOES/Src/ecat_slv.c ****    DPRINT ("Slave stack init started\n");
+ 882              		.loc 1 351 41 is_stmt 1 view .LVU192
+ 352:Drivers/SOES/Src/ecat_slv.c ****    
+ 353:Drivers/SOES/Src/ecat_slv.c ****    /* Init watchdog */
+ 354:Drivers/SOES/Src/ecat_slv.c ****    watchdog = config->watchdog_cnt;
+ 883              		.loc 1 354 4 view .LVU193
+ 884              		.loc 1 354 21 is_stmt 0 view .LVU194
+ 885 0004 8268     		ldr	r2, [r0, #8]
+ 886              		.loc 1 354 13 view .LVU195
+ 887 0006 114B     		ldr	r3, .L88
+ 888 0008 1A60     		str	r2, [r3]
+ 355:Drivers/SOES/Src/ecat_slv.c **** 
+ 356:Drivers/SOES/Src/ecat_slv.c ****    /* Call stack configuration */
+ 357:Drivers/SOES/Src/ecat_slv.c ****    ESC_config (config);
+ 889              		.loc 1 357 4 is_stmt 1 view .LVU196
+ 890 000a FFF7FEFF 		bl	ESC_config
+ 891              	.LVL63:
+ 358:Drivers/SOES/Src/ecat_slv.c ****    /* Call HW init */
+ 359:Drivers/SOES/Src/ecat_slv.c ****    ESC_init (config);
+ 892              		.loc 1 359 4 view .LVU197
+ 893 000e 2046     		mov	r0, r4
+ 894 0010 FFF7FEFF 		bl	ESC_init
+ 895              	.LVL64:
+ 360:Drivers/SOES/Src/ecat_slv.c **** 
+ 361:Drivers/SOES/Src/ecat_slv.c ****    /*  wait until ESC is started up */
+ 362:Drivers/SOES/Src/ecat_slv.c ****    while ((ESCvar.DLstatus & 0x0001) == 0)
+ 896              		.loc 1 362 4 view .LVU198
+ 897              		.loc 1 362 10 is_stmt 0 view .LVU199
+ 898 0014 05E0     		b	.L85
+ 899              	.L86:
+ 363:Drivers/SOES/Src/ecat_slv.c ****    {
+ 364:Drivers/SOES/Src/ecat_slv.c ****       ESC_read (ESCREG_DLSTATUS, (void *) &ESCvar.DLstatus,
+ 900              		.loc 1 364 7 is_stmt 1 view .LVU200
+ 901 0016 0222     		movs	r2, #2
+ 902 0018 0D49     		ldr	r1, .L88+4
+ 903 001a 4FF48870 		mov	r0, #272
+ 904 001e FFF7FEFF 		bl	ESC_read
+ 905              	.LVL65:
+ 365:Drivers/SOES/Src/ecat_slv.c ****                 sizeof (ESCvar.DLstatus));
+ 366:Drivers/SOES/Src/ecat_slv.c ****       ESCvar.DLstatus = etohs (ESCvar.DLstatus);
+ 906              		.loc 1 366 7 view .LVU201
+ARM GAS  /tmp/cc9lJi8H.s 			page 24
+
+
+ 907              	.L85:
+ 362:Drivers/SOES/Src/ecat_slv.c ****    {
+ 908              		.loc 1 362 10 view .LVU202
+ 362:Drivers/SOES/Src/ecat_slv.c ****    {
+ 909              		.loc 1 362 18 is_stmt 0 view .LVU203
+ 910 0022 0C4B     		ldr	r3, .L88+8
+ 911 0024 B3F88230 		ldrh	r3, [r3, #130]
+ 362:Drivers/SOES/Src/ecat_slv.c ****    {
+ 912              		.loc 1 362 10 view .LVU204
+ 913 0028 13F0010F 		tst	r3, #1
+ 914 002c F3D0     		beq	.L86
+ 367:Drivers/SOES/Src/ecat_slv.c ****    }
+ 368:Drivers/SOES/Src/ecat_slv.c ****    
+ 369:Drivers/SOES/Src/ecat_slv.c **** 
+ 370:Drivers/SOES/Src/ecat_slv.c **** #if USE_FOE
+ 371:Drivers/SOES/Src/ecat_slv.c ****    /* Init FoE */
+ 372:Drivers/SOES/Src/ecat_slv.c ****    FOE_init ();
+ 373:Drivers/SOES/Src/ecat_slv.c **** #endif
+ 374:Drivers/SOES/Src/ecat_slv.c **** 
+ 375:Drivers/SOES/Src/ecat_slv.c **** #if USE_EOE
+ 376:Drivers/SOES/Src/ecat_slv.c ****    /* Init EoE */
+ 377:Drivers/SOES/Src/ecat_slv.c ****    EOE_init ();
+ 378:Drivers/SOES/Src/ecat_slv.c **** #endif
+ 379:Drivers/SOES/Src/ecat_slv.c **** 
+ 380:Drivers/SOES/Src/ecat_slv.c ****    /* reset ESC to init state */
+ 381:Drivers/SOES/Src/ecat_slv.c ****    ESC_ALstatus (ESCinit);
+ 915              		.loc 1 381 4 is_stmt 1 view .LVU205
+ 916 002e 0120     		movs	r0, #1
+ 917 0030 FFF7FEFF 		bl	ESC_ALstatus
+ 918              	.LVL66:
+ 382:Drivers/SOES/Src/ecat_slv.c ****    ESC_ALerror (ALERR_NONE);
+ 919              		.loc 1 382 4 view .LVU206
+ 920 0034 0020     		movs	r0, #0
+ 921 0036 FFF7FEFF 		bl	ESC_ALerror
+ 922              	.LVL67:
+ 383:Drivers/SOES/Src/ecat_slv.c ****    ESC_stopmbx ();
+ 923              		.loc 1 383 4 view .LVU207
+ 924 003a FFF7FEFF 		bl	ESC_stopmbx
+ 925              	.LVL68:
+ 384:Drivers/SOES/Src/ecat_slv.c ****    ESC_stopinput ();
+ 926              		.loc 1 384 4 view .LVU208
+ 927 003e FFF7FEFF 		bl	ESC_stopinput
+ 928              	.LVL69:
+ 385:Drivers/SOES/Src/ecat_slv.c ****    ESC_stopoutput ();
+ 929              		.loc 1 385 4 view .LVU209
+ 930 0042 FFF7FEFF 		bl	ESC_stopoutput
+ 931              	.LVL70:
+ 386:Drivers/SOES/Src/ecat_slv.c ****    /* Init Object Dictionary default values */
+ 387:Drivers/SOES/Src/ecat_slv.c ****    COE_initDefaultValues ();
+ 932              		.loc 1 387 4 view .LVU210
+ 933 0046 FFF7FEFF 		bl	COE_initDefaultValues
+ 934              	.LVL71:
+ 388:Drivers/SOES/Src/ecat_slv.c **** }
+ 935              		.loc 1 388 1 is_stmt 0 view .LVU211
+ 936 004a 10BD     		pop	{r4, pc}
+ 937              	.LVL72:
+ 938              	.L89:
+ARM GAS  /tmp/cc9lJi8H.s 			page 25
+
+
+ 939              		.loc 1 388 1 view .LVU212
+ 940              		.align	2
+ 941              	.L88:
+ 942 004c 00000000 		.word	.LANCHOR5
+ 943 0050 82000000 		.word	.LANCHOR0+130
+ 944 0054 00000000 		.word	.LANCHOR0
+ 945              		.cfi_endproc
+ 946              	.LFE12:
+ 948              		.global	ESCvar
+ 949              		.global	SMmap3
+ 950              		.global	SMmap2
+ 951              		.global	MBXcontrol
+ 952              		.global	MBX
+ 953              		.section	.bss.ESCvar,"aw",%nobits
+ 954              		.align	2
+ 955              		.set	.LANCHOR0,. + 0
+ 958              	ESCvar:
+ 959 0000 00000000 		.space	1760
+ 959      00000000 
+ 959      00000000 
+ 959      00000000 
+ 959      00000000 
+ 960              		.section	.bss.MBX,"aw",%nobits
+ 961              		.align	2
+ 964              	MBX:
+ 965 0000 00000000 		.space	1536
+ 965      00000000 
+ 965      00000000 
+ 965      00000000 
+ 965      00000000 
+ 966              		.section	.bss.MBXcontrol,"aw",%nobits
+ 967              		.align	2
+ 970              	MBXcontrol:
+ 971 0000 000000   		.space	3
+ 972              		.section	.bss.SMmap2,"aw",%nobits
+ 973              		.align	2
+ 974              		.set	.LANCHOR4,. + 0
+ 977              	SMmap2:
+ 978 0000 00000000 		.space	16
+ 978      00000000 
+ 978      00000000 
+ 978      00000000 
+ 979              		.section	.bss.SMmap3,"aw",%nobits
+ 980              		.align	2
+ 981              		.set	.LANCHOR1,. + 0
+ 984              	SMmap3:
+ 985 0000 00000000 		.space	16
+ 985      00000000 
+ 985      00000000 
+ 985      00000000 
+ 986              		.section	.bss.rxpdo,"aw",%nobits
+ 987              		.align	3
+ 988              		.set	.LANCHOR3,. + 0
+ 991              	rxpdo:
+ 992 0000 00000000 		.space	512
+ 992      00000000 
+ 992      00000000 
+ARM GAS  /tmp/cc9lJi8H.s 			page 26
+
+
+ 992      00000000 
+ 992      00000000 
+ 993              		.section	.bss.txpdo,"aw",%nobits
+ 994              		.align	3
+ 995              		.set	.LANCHOR2,. + 0
+ 998              	txpdo:
+ 999 0000 00000000 		.space	512
+ 999      00000000 
+ 999      00000000 
+ 999      00000000 
+ 999      00000000 
+ 1000              		.section	.bss.watchdog,"aw",%nobits
+ 1001              		.align	2
+ 1002              		.set	.LANCHOR5,. + 0
+ 1005              	watchdog:
+ 1006 0000 00000000 		.space	4
+ 1007              		.text
+ 1008              	.Letext0:
+ 1009              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1010              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 1011              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 1012              		.file 5 "Drivers/SOES/Inc/esc_coe.h"
+ 1013              		.file 6 "Drivers/SOES/Inc/esc.h"
+ 1014              		.file 7 "Drivers/SOES/Inc/ecat_slv.h"
+ARM GAS  /tmp/cc9lJi8H.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 ecat_slv.c
+     /tmp/cc9lJi8H.s:20     .text.ESC_download_pre_objecthandler:0000000000000000 $t
+     /tmp/cc9lJi8H.s:26     .text.ESC_download_pre_objecthandler:0000000000000000 ESC_download_pre_objecthandler
+     /tmp/cc9lJi8H.s:137    .text.ESC_download_pre_objecthandler:0000000000000074 $d
+     /tmp/cc9lJi8H.s:143    .text.ESC_download_post_objecthandler:0000000000000000 $t
+     /tmp/cc9lJi8H.s:149    .text.ESC_download_post_objecthandler:0000000000000000 ESC_download_post_objecthandler
+     /tmp/cc9lJi8H.s:184    .text.ESC_download_post_objecthandler:0000000000000010 $d
+     /tmp/cc9lJi8H.s:189    .text.ESC_upload_pre_objecthandler:0000000000000000 $t
+     /tmp/cc9lJi8H.s:195    .text.ESC_upload_pre_objecthandler:0000000000000000 ESC_upload_pre_objecthandler
+     /tmp/cc9lJi8H.s:240    .text.ESC_upload_pre_objecthandler:000000000000001c $d
+     /tmp/cc9lJi8H.s:245    .text.ESC_upload_post_objecthandler:0000000000000000 $t
+     /tmp/cc9lJi8H.s:251    .text.ESC_upload_post_objecthandler:0000000000000000 ESC_upload_post_objecthandler
+     /tmp/cc9lJi8H.s:286    .text.ESC_upload_post_objecthandler:0000000000000010 $d
+     /tmp/cc9lJi8H.s:291    .text.APP_safeoutput:0000000000000000 $t
+     /tmp/cc9lJi8H.s:297    .text.APP_safeoutput:0000000000000000 APP_safeoutput
+     /tmp/cc9lJi8H.s:324    .text.APP_safeoutput:000000000000000c $d
+     /tmp/cc9lJi8H.s:329    .text.TXPDO_update:0000000000000000 $t
+     /tmp/cc9lJi8H.s:335    .text.TXPDO_update:0000000000000000 TXPDO_update
+     /tmp/cc9lJi8H.s:381    .text.TXPDO_update:000000000000002c $d
+     /tmp/cc9lJi8H.s:388    .text.RXPDO_update:0000000000000000 $t
+     /tmp/cc9lJi8H.s:394    .text.RXPDO_update:0000000000000000 RXPDO_update
+     /tmp/cc9lJi8H.s:440    .text.RXPDO_update:000000000000002c $d
+     /tmp/cc9lJi8H.s:447    .text.APP_setwatchdog:0000000000000000 $t
+     /tmp/cc9lJi8H.s:453    .text.APP_setwatchdog:0000000000000000 APP_setwatchdog
+     /tmp/cc9lJi8H.s:471    .text.APP_setwatchdog:0000000000000010 $d
+     /tmp/cc9lJi8H.s:476    .text.DIG_process:0000000000000000 $t
+     /tmp/cc9lJi8H.s:482    .text.DIG_process:0000000000000000 DIG_process
+     /tmp/cc9lJi8H.s:659    .text.DIG_process:0000000000000110 $d
+     /tmp/cc9lJi8H.s:665    .text.ecat_slv_worker:0000000000000000 $t
+     /tmp/cc9lJi8H.s:671    .text.ecat_slv_worker:0000000000000000 ecat_slv_worker
+     /tmp/cc9lJi8H.s:759    .text.ecat_slv_worker:000000000000005c $d
+     /tmp/cc9lJi8H.s:764    .text.ecat_slv_poll:0000000000000000 $t
+     /tmp/cc9lJi8H.s:770    .text.ecat_slv_poll:0000000000000000 ecat_slv_poll
+     /tmp/cc9lJi8H.s:829    .text.ecat_slv_poll:000000000000003c $d
+     /tmp/cc9lJi8H.s:834    .text.ecat_slv:0000000000000000 $t
+     /tmp/cc9lJi8H.s:840    .text.ecat_slv:0000000000000000 ecat_slv
+     /tmp/cc9lJi8H.s:863    .text.ecat_slv_init:0000000000000000 $t
+     /tmp/cc9lJi8H.s:869    .text.ecat_slv_init:0000000000000000 ecat_slv_init
+     /tmp/cc9lJi8H.s:942    .text.ecat_slv_init:000000000000004c $d
+     /tmp/cc9lJi8H.s:958    .bss.ESCvar:0000000000000000 ESCvar
+     /tmp/cc9lJi8H.s:984    .bss.SMmap3:0000000000000000 SMmap3
+     /tmp/cc9lJi8H.s:977    .bss.SMmap2:0000000000000000 SMmap2
+     /tmp/cc9lJi8H.s:970    .bss.MBXcontrol:0000000000000000 MBXcontrol
+     /tmp/cc9lJi8H.s:964    .bss.MBX:0000000000000000 MBX
+     /tmp/cc9lJi8H.s:954    .bss.ESCvar:0000000000000000 $d
+     /tmp/cc9lJi8H.s:961    .bss.MBX:0000000000000000 $d
+     /tmp/cc9lJi8H.s:967    .bss.MBXcontrol:0000000000000000 $d
+     /tmp/cc9lJi8H.s:973    .bss.SMmap2:0000000000000000 $d
+     /tmp/cc9lJi8H.s:980    .bss.SMmap3:0000000000000000 $d
+     /tmp/cc9lJi8H.s:987    .bss.rxpdo:0000000000000000 $d
+     /tmp/cc9lJi8H.s:991    .bss.rxpdo:0000000000000000 rxpdo
+     /tmp/cc9lJi8H.s:994    .bss.txpdo:0000000000000000 $d
+     /tmp/cc9lJi8H.s:998    .bss.txpdo:0000000000000000 txpdo
+     /tmp/cc9lJi8H.s:1001   .bss.watchdog:0000000000000000 $d
+     /tmp/cc9lJi8H.s:1005   .bss.watchdog:0000000000000000 watchdog
+
+ARM GAS  /tmp/cc9lJi8H.s 			page 28
+
+
+UNDEFINED SYMBOLS
+COE_maxSub
+COE_pdoPack
+ESC_write
+ESC_read
+COE_pdoUnpack
+ESC_ALstatusgotoerror
+cb_set_outputs
+cb_get_inputs
+ESC_coeprocess
+ESC_xoeprocess
+ESC_mbxprocess
+ESC_ALeventread
+ESC_state
+ESC_sm_act_event
+ESC_ALeventmaskread
+ESC_ALeventmaskwrite
+ESC_config
+ESC_init
+ESC_ALstatus
+ESC_ALerror
+ESC_stopmbx
+ESC_stopinput
+ESC_stopoutput
+COE_initDefaultValues

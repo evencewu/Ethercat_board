@@ -1,0 +1,2257 @@
+ARM GAS  /tmp/ccRRK0Mn.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"esc_foe.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.FOE_fwrite,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	FOE_fwrite:
+  26              	.LVL0:
+  27              	.LFB1:
+  28              		.file 1 "Drivers/SOES/Src/esc_foe.c"
+   1:Drivers/SOES/Src/esc_foe.c **** /*
+   2:Drivers/SOES/Src/esc_foe.c ****  * Licensed under the GNU General Public License version 2 with exceptions. See
+   3:Drivers/SOES/Src/esc_foe.c ****  * LICENSE file in the project root for full license information
+   4:Drivers/SOES/Src/esc_foe.c ****  */
+   5:Drivers/SOES/Src/esc_foe.c **** 
+   6:Drivers/SOES/Src/esc_foe.c ****  /** \file
+   7:Drivers/SOES/Src/esc_foe.c ****  * \brief
+   8:Drivers/SOES/Src/esc_foe.c ****  * File over EtherCAT (FoE) module.
+   9:Drivers/SOES/Src/esc_foe.c ****  */
+  10:Drivers/SOES/Src/esc_foe.c **** 
+  11:Drivers/SOES/Src/esc_foe.c **** 
+  12:Drivers/SOES/Src/esc_foe.c **** #include <cc.h>
+  13:Drivers/SOES/Src/esc_foe.c **** #include "esc.h"
+  14:Drivers/SOES/Src/esc_foe.c **** #include "esc_foe.h"
+  15:Drivers/SOES/Src/esc_foe.c **** #include <string.h>
+  16:Drivers/SOES/Src/esc_foe.c **** 
+  17:Drivers/SOES/Src/esc_foe.c ****  /** \file
+  18:Drivers/SOES/Src/esc_foe.c ****  * \brief
+  19:Drivers/SOES/Src/esc_foe.c ****  * File over EtherCAT (FoE) module.
+  20:Drivers/SOES/Src/esc_foe.c ****  *
+  21:Drivers/SOES/Src/esc_foe.c ****  * FOE read / write and FOE service functions
+  22:Drivers/SOES/Src/esc_foe.c ****  */
+  23:Drivers/SOES/Src/esc_foe.c **** 
+  24:Drivers/SOES/Src/esc_foe.c **** //define if FOE_read should be supported
+  25:Drivers/SOES/Src/esc_foe.c **** //#define FOE_READ_SUPPORTED
+  26:Drivers/SOES/Src/esc_foe.c **** 
+  27:Drivers/SOES/Src/esc_foe.c **** /** Variable holding current filename read at FOE Open.
+  28:Drivers/SOES/Src/esc_foe.c ****  */
+  29:Drivers/SOES/Src/esc_foe.c **** static char foe_file_name[FOE_FN_MAX + 1];
+  30:Drivers/SOES/Src/esc_foe.c **** 
+ARM GAS  /tmp/ccRRK0Mn.s 			page 2
+
+
+  31:Drivers/SOES/Src/esc_foe.c **** 
+  32:Drivers/SOES/Src/esc_foe.c **** /** Main FoE configuration pointer data array. Structure is allocated and filled
+  33:Drivers/SOES/Src/esc_foe.c ****  * by the application defining what preferences it requires.
+  34:Drivers/SOES/Src/esc_foe.c ****  */
+  35:Drivers/SOES/Src/esc_foe.c **** static foe_cfg_t * foe_cfg;
+  36:Drivers/SOES/Src/esc_foe.c **** /** Pointer to current file configuration item used by FoE.
+  37:Drivers/SOES/Src/esc_foe.c ****  */
+  38:Drivers/SOES/Src/esc_foe.c **** static foe_file_cfg_t * foe_file;
+  39:Drivers/SOES/Src/esc_foe.c **** /** Main FoE status data array. Structure gets filled with current status
+  40:Drivers/SOES/Src/esc_foe.c ****  * variables during FoE usage.
+  41:Drivers/SOES/Src/esc_foe.c ****  */
+  42:Drivers/SOES/Src/esc_foe.c **** static _FOEvar FOEvar;
+  43:Drivers/SOES/Src/esc_foe.c **** 
+  44:Drivers/SOES/Src/esc_foe.c **** /** Validate a write or read request by checking filename and password.
+  45:Drivers/SOES/Src/esc_foe.c ****  *
+  46:Drivers/SOES/Src/esc_foe.c ****  * @param[in] name      = Filename
+  47:Drivers/SOES/Src/esc_foe.c ****  * @param[in] num_chars = Length of filename
+  48:Drivers/SOES/Src/esc_foe.c ****  * @param[in] pass      = Numeric variable of password
+  49:Drivers/SOES/Src/esc_foe.c ****  * @param[in] op        = Request op-code
+  50:Drivers/SOES/Src/esc_foe.c ****  * @return 0= if we succeed, FOE_ERR_NOTFOUND something wrong with filename or
+  51:Drivers/SOES/Src/esc_foe.c ****  * password
+  52:Drivers/SOES/Src/esc_foe.c ****  */
+  53:Drivers/SOES/Src/esc_foe.c **** static int FOE_fopen (char *name, uint8_t num_chars, uint32_t pass, uint8_t op)
+  54:Drivers/SOES/Src/esc_foe.c **** {
+  55:Drivers/SOES/Src/esc_foe.c ****    uint32_t i;
+  56:Drivers/SOES/Src/esc_foe.c **** 
+  57:Drivers/SOES/Src/esc_foe.c ****    /* Unpack the file name into characters we can look at. */
+  58:Drivers/SOES/Src/esc_foe.c ****    if (num_chars > FOE_FN_MAX)
+  59:Drivers/SOES/Src/esc_foe.c ****    {
+  60:Drivers/SOES/Src/esc_foe.c ****       num_chars = FOE_FN_MAX;
+  61:Drivers/SOES/Src/esc_foe.c ****    }
+  62:Drivers/SOES/Src/esc_foe.c **** 
+  63:Drivers/SOES/Src/esc_foe.c ****    for (i = 0; i < num_chars; i++)
+  64:Drivers/SOES/Src/esc_foe.c ****    {
+  65:Drivers/SOES/Src/esc_foe.c ****       foe_file_name[i] = name[i];
+  66:Drivers/SOES/Src/esc_foe.c ****    }
+  67:Drivers/SOES/Src/esc_foe.c ****    foe_file_name[i] = '\0';
+  68:Drivers/SOES/Src/esc_foe.c **** 
+  69:Drivers/SOES/Src/esc_foe.c ****    /* Figure out what file they're talking about. */
+  70:Drivers/SOES/Src/esc_foe.c ****    for (i = 0; i < foe_cfg->n_files; i++)
+  71:Drivers/SOES/Src/esc_foe.c ****    {
+  72:Drivers/SOES/Src/esc_foe.c ****       if (0 == strncmp (foe_file_name, foe_cfg->files[i].name, num_chars))
+  73:Drivers/SOES/Src/esc_foe.c ****       {
+  74:Drivers/SOES/Src/esc_foe.c ****          if (pass != foe_cfg->files[i].filepass)
+  75:Drivers/SOES/Src/esc_foe.c ****          {
+  76:Drivers/SOES/Src/esc_foe.c ****             return FOE_ERR_NORIGHTS;
+  77:Drivers/SOES/Src/esc_foe.c ****          }
+  78:Drivers/SOES/Src/esc_foe.c **** 
+  79:Drivers/SOES/Src/esc_foe.c ****          if (op == FOE_OP_WRQ &&
+  80:Drivers/SOES/Src/esc_foe.c ****              (foe_cfg->files[i].write_only_in_boot) &&
+  81:Drivers/SOES/Src/esc_foe.c ****              (ESCvar.ALstatus != ESCboot))
+  82:Drivers/SOES/Src/esc_foe.c ****          {
+  83:Drivers/SOES/Src/esc_foe.c ****             return FOE_ERR_NOTINBOOTSTRAP;
+  84:Drivers/SOES/Src/esc_foe.c ****          }
+  85:Drivers/SOES/Src/esc_foe.c **** 
+  86:Drivers/SOES/Src/esc_foe.c ****          foe_file = &foe_cfg->files[i];
+  87:Drivers/SOES/Src/esc_foe.c ****          foe_file->address_offset = 0;
+ARM GAS  /tmp/ccRRK0Mn.s 			page 3
+
+
+  88:Drivers/SOES/Src/esc_foe.c ****          foe_file->total_size = 0;
+  89:Drivers/SOES/Src/esc_foe.c ****          switch (op)
+  90:Drivers/SOES/Src/esc_foe.c ****          {
+  91:Drivers/SOES/Src/esc_foe.c ****             case FOE_OP_RRQ:
+  92:Drivers/SOES/Src/esc_foe.c ****             {
+  93:Drivers/SOES/Src/esc_foe.c ****                FOEvar.fposition = 0;
+  94:Drivers/SOES/Src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
+  95:Drivers/SOES/Src/esc_foe.c ****                return 0;
+  96:Drivers/SOES/Src/esc_foe.c ****             }
+  97:Drivers/SOES/Src/esc_foe.c ****             case FOE_OP_WRQ:
+  98:Drivers/SOES/Src/esc_foe.c ****             {
+  99:Drivers/SOES/Src/esc_foe.c ****                FOEvar.fposition = 0;
+ 100:Drivers/SOES/Src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
+ 101:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 102:Drivers/SOES/Src/esc_foe.c ****             }
+ 103:Drivers/SOES/Src/esc_foe.c ****          }
+ 104:Drivers/SOES/Src/esc_foe.c ****       }
+ 105:Drivers/SOES/Src/esc_foe.c ****    }
+ 106:Drivers/SOES/Src/esc_foe.c **** 
+ 107:Drivers/SOES/Src/esc_foe.c ****    return FOE_ERR_NOTFOUND;
+ 108:Drivers/SOES/Src/esc_foe.c **** }
+ 109:Drivers/SOES/Src/esc_foe.c **** 
+ 110:Drivers/SOES/Src/esc_foe.c **** #ifdef FOE_READ_SUPPORTED
+ 111:Drivers/SOES/Src/esc_foe.c **** /** Function writing local data to mailbox buffer to be sent as next FoE frame.
+ 112:Drivers/SOES/Src/esc_foe.c ****  * It will try to fill the Mailbox buffer available if there is enough data
+ 113:Drivers/SOES/Src/esc_foe.c ****  * left to read.
+ 114:Drivers/SOES/Src/esc_foe.c ****  *
+ 115:Drivers/SOES/Src/esc_foe.c ****  * @param[in] data      = pointer to buffer
+ 116:Drivers/SOES/Src/esc_foe.c ****  * @param[in] maxlength = max length of data possible to read, controlled by
+ 117:Drivers/SOES/Src/esc_foe.c ****  * Mailbox - FoE and Mailbox frame headers.
+ 118:Drivers/SOES/Src/esc_foe.c **** 
+ 119:Drivers/SOES/Src/esc_foe.c ****  * @return Number of copied bytes.
+ 120:Drivers/SOES/Src/esc_foe.c ****  */
+ 121:Drivers/SOES/Src/esc_foe.c **** static uint16_t FOE_fread (uint8_t * data, uint16_t maxlength)
+ 122:Drivers/SOES/Src/esc_foe.c **** {
+ 123:Drivers/SOES/Src/esc_foe.c ****    uint16_t ncopied = 0;
+ 124:Drivers/SOES/Src/esc_foe.c **** 
+ 125:Drivers/SOES/Src/esc_foe.c ****    while (maxlength && (FOEvar.fend - FOEvar.fposition))
+ 126:Drivers/SOES/Src/esc_foe.c ****    {
+ 127:Drivers/SOES/Src/esc_foe.c ****       maxlength--;
+ 128:Drivers/SOES/Src/esc_foe.c ****       *(data++) = foe_cfg->fbuffer[FOEvar.fposition++];
+ 129:Drivers/SOES/Src/esc_foe.c ****       ncopied++;
+ 130:Drivers/SOES/Src/esc_foe.c ****    }
+ 131:Drivers/SOES/Src/esc_foe.c **** 
+ 132:Drivers/SOES/Src/esc_foe.c ****    return ncopied;
+ 133:Drivers/SOES/Src/esc_foe.c **** }
+ 134:Drivers/SOES/Src/esc_foe.c **** #endif
+ 135:Drivers/SOES/Src/esc_foe.c **** 
+ 136:Drivers/SOES/Src/esc_foe.c **** /** Function reading mailbox buffer to local buffer to be handled by
+ 137:Drivers/SOES/Src/esc_foe.c ****  * application write hook. Ex. flash routine used by software update.
+ 138:Drivers/SOES/Src/esc_foe.c ****  * It will consume the buffer and call the write hook every time the configured
+ 139:Drivers/SOES/Src/esc_foe.c ****  * flush buffer limit is reached.
+ 140:Drivers/SOES/Src/esc_foe.c ****  *
+ 141:Drivers/SOES/Src/esc_foe.c ****  *
+ 142:Drivers/SOES/Src/esc_foe.c ****  * @param[in] data   = Pointer to buffer
+ 143:Drivers/SOES/Src/esc_foe.c ****  * @param[in] length = Length of data to read
+ 144:Drivers/SOES/Src/esc_foe.c **** 
+ARM GAS  /tmp/ccRRK0Mn.s 			page 4
+
+
+ 145:Drivers/SOES/Src/esc_foe.c ****  * @return Number of copied bytes.
+ 146:Drivers/SOES/Src/esc_foe.c ****  */
+ 147:Drivers/SOES/Src/esc_foe.c **** static uint16_t FOE_fwrite (uint8_t *data, uint16_t length)
+ 148:Drivers/SOES/Src/esc_foe.c **** {
+  29              		.loc 1 148 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 148 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  35              		.cfi_def_cfa_offset 24
+  36              		.cfi_offset 4, -24
+  37              		.cfi_offset 5, -20
+  38              		.cfi_offset 6, -16
+  39              		.cfi_offset 7, -12
+  40              		.cfi_offset 8, -8
+  41              		.cfi_offset 14, -4
+  42 0004 0446     		mov	r4, r0
+  43 0006 0D46     		mov	r5, r1
+ 149:Drivers/SOES/Src/esc_foe.c ****     uint16_t ncopied = 0;
+  44              		.loc 1 149 5 is_stmt 1 view .LVU2
+  45              	.LVL1:
+ 150:Drivers/SOES/Src/esc_foe.c ****     uint32_t failed = 0;
+  46              		.loc 1 150 5 view .LVU3
+ 151:Drivers/SOES/Src/esc_foe.c **** 
+ 152:Drivers/SOES/Src/esc_foe.c ****     DPRINT("FOE_fwrite\n");
+  47              		.loc 1 152 27 view .LVU4
+ 153:Drivers/SOES/Src/esc_foe.c ****     FOEvar.fprevposition = FOEvar.fposition;
+  48              		.loc 1 153 5 view .LVU5
+  49              		.loc 1 153 34 is_stmt 0 view .LVU6
+  50 0008 254B     		ldr	r3, .L7
+  51 000a D3F80720 		ldr	r2, [r3, #7]	@ unaligned
+  52              		.loc 1 153 26 view .LVU7
+  53 000e C3F80B20 		str	r2, [r3, #11]	@ unaligned
+ 154:Drivers/SOES/Src/esc_foe.c ****     while (length && (FOEvar.fend - FOEvar.fposition) && !failed)
+  54              		.loc 1 154 5 is_stmt 1 view .LVU8
+ 150:Drivers/SOES/Src/esc_foe.c **** 
+  55              		.loc 1 150 14 is_stmt 0 view .LVU9
+  56 0012 4FF0000E 		mov	lr, #0
+ 149:Drivers/SOES/Src/esc_foe.c ****     uint32_t failed = 0;
+  57              		.loc 1 149 14 view .LVU10
+  58 0016 7646     		mov	r6, lr
+  59              		.loc 1 154 11 view .LVU11
+  60 0018 07E0     		b	.L2
+  61              	.LVL2:
+  62              	.L3:
+ 155:Drivers/SOES/Src/esc_foe.c ****     {
+ 156:Drivers/SOES/Src/esc_foe.c ****        length--;
+ 157:Drivers/SOES/Src/esc_foe.c ****        foe_cfg->fbuffer[FOEvar.fbufposition++] = *(data++);
+ 158:Drivers/SOES/Src/esc_foe.c ****        if(FOEvar.fbufposition >= foe_cfg->buffer_size)
+ 159:Drivers/SOES/Src/esc_foe.c ****        {
+ 160:Drivers/SOES/Src/esc_foe.c ****           failed = foe_file->write_function (foe_file, foe_cfg->fbuffer, FOEvar.fbufposition);
+ 161:Drivers/SOES/Src/esc_foe.c ****           FOEvar.fbufposition = 0;
+ 162:Drivers/SOES/Src/esc_foe.c ****           foe_file->address_offset += foe_cfg->buffer_size;
+ 163:Drivers/SOES/Src/esc_foe.c ****        }
+ 164:Drivers/SOES/Src/esc_foe.c ****        FOEvar.fposition++;
+  63              		.loc 1 164 8 is_stmt 1 view .LVU12
+ARM GAS  /tmp/ccRRK0Mn.s 			page 5
+
+
+  64              		.loc 1 164 14 is_stmt 0 view .LVU13
+  65 001a 214A     		ldr	r2, .L7
+  66 001c D2F80730 		ldr	r3, [r2, #7]	@ unaligned
+  67              		.loc 1 164 24 view .LVU14
+  68 0020 0133     		adds	r3, r3, #1
+  69 0022 C2F80730 		str	r3, [r2, #7]	@ unaligned
+ 165:Drivers/SOES/Src/esc_foe.c ****        ncopied++;
+  70              		.loc 1 165 8 is_stmt 1 view .LVU15
+  71              		.loc 1 165 15 is_stmt 0 view .LVU16
+  72 0026 0136     		adds	r6, r6, #1
+  73              	.LVL3:
+  74              		.loc 1 165 15 view .LVU17
+  75 0028 B6B2     		uxth	r6, r6
+  76              	.LVL4:
+  77              	.L2:
+ 154:Drivers/SOES/Src/esc_foe.c ****     {
+  78              		.loc 1 154 11 is_stmt 1 view .LVU18
+  79 002a 002D     		cmp	r5, #0
+  80 002c 30D0     		beq	.L4
+ 154:Drivers/SOES/Src/esc_foe.c ****     {
+  81              		.loc 1 154 29 is_stmt 0 discriminator 1 view .LVU19
+  82 002e 1C4B     		ldr	r3, .L7
+  83 0030 D3F80F20 		ldr	r2, [r3, #15]	@ unaligned
+ 154:Drivers/SOES/Src/esc_foe.c ****     {
+  84              		.loc 1 154 43 discriminator 1 view .LVU20
+  85 0034 D3F80730 		ldr	r3, [r3, #7]	@ unaligned
+ 154:Drivers/SOES/Src/esc_foe.c ****     {
+  86              		.loc 1 154 19 discriminator 1 view .LVU21
+  87 0038 9A42     		cmp	r2, r3
+  88 003a 29D0     		beq	.L4
+ 154:Drivers/SOES/Src/esc_foe.c ****     {
+  89              		.loc 1 154 55 discriminator 2 view .LVU22
+  90 003c BEF1000F 		cmp	lr, #0
+  91 0040 26D1     		bne	.L4
+ 156:Drivers/SOES/Src/esc_foe.c ****        foe_cfg->fbuffer[FOEvar.fbufposition++] = *(data++);
+  92              		.loc 1 156 8 is_stmt 1 view .LVU23
+ 156:Drivers/SOES/Src/esc_foe.c ****        foe_cfg->fbuffer[FOEvar.fbufposition++] = *(data++);
+  93              		.loc 1 156 14 is_stmt 0 view .LVU24
+  94 0042 013D     		subs	r5, r5, #1
+  95              	.LVL5:
+ 156:Drivers/SOES/Src/esc_foe.c ****        foe_cfg->fbuffer[FOEvar.fbufposition++] = *(data++);
+  96              		.loc 1 156 14 view .LVU25
+  97 0044 ADB2     		uxth	r5, r5
+  98              	.LVL6:
+ 157:Drivers/SOES/Src/esc_foe.c ****        if(FOEvar.fbufposition >= foe_cfg->buffer_size)
+  99              		.loc 1 157 8 is_stmt 1 view .LVU26
+ 157:Drivers/SOES/Src/esc_foe.c ****        if(FOEvar.fbufposition >= foe_cfg->buffer_size)
+ 100              		.loc 1 157 15 is_stmt 0 view .LVU27
+ 101 0046 174B     		ldr	r3, .L7+4
+ 102 0048 1B68     		ldr	r3, [r3]
+ 157:Drivers/SOES/Src/esc_foe.c ****        if(FOEvar.fbufposition >= foe_cfg->buffer_size)
+ 103              		.loc 1 157 31 view .LVU28
+ 104 004a 154F     		ldr	r7, .L7
+ 105 004c B7F80110 		ldrh	r1, [r7, #1]	@ unaligned
+ 157:Drivers/SOES/Src/esc_foe.c ****        if(FOEvar.fbufposition >= foe_cfg->buffer_size)
+ 106              		.loc 1 157 44 view .LVU29
+ 107 0050 01F1010C 		add	ip, r1, #1
+ARM GAS  /tmp/ccRRK0Mn.s 			page 6
+
+
+ 108 0054 1FFA8CF2 		uxth	r2, ip
+ 109 0058 A7F801C0 		strh	ip, [r7, #1]	@ unaligned
+ 157:Drivers/SOES/Src/esc_foe.c ****        if(FOEvar.fbufposition >= foe_cfg->buffer_size)
+ 110              		.loc 1 157 50 view .LVU30
+ 111 005c 14F8017B 		ldrb	r7, [r4], #1	@ zero_extendqisi2
+ 112              	.LVL7:
+ 157:Drivers/SOES/Src/esc_foe.c ****        if(FOEvar.fbufposition >= foe_cfg->buffer_size)
+ 113              		.loc 1 157 48 view .LVU31
+ 114 0060 1868     		ldr	r0, [r3]
+ 115 0062 4754     		strb	r7, [r0, r1]
+ 158:Drivers/SOES/Src/esc_foe.c ****        {
+ 116              		.loc 1 158 8 is_stmt 1 view .LVU32
+ 158:Drivers/SOES/Src/esc_foe.c ****        {
+ 117              		.loc 1 158 41 is_stmt 0 view .LVU33
+ 118 0064 5968     		ldr	r1, [r3, #4]
+ 158:Drivers/SOES/Src/esc_foe.c ****        {
+ 119              		.loc 1 158 10 view .LVU34
+ 120 0066 8A42     		cmp	r2, r1
+ 121 0068 D7D3     		bcc	.L3
+ 160:Drivers/SOES/Src/esc_foe.c ****           FOEvar.fbufposition = 0;
+ 122              		.loc 1 160 11 is_stmt 1 view .LVU35
+ 160:Drivers/SOES/Src/esc_foe.c ****           FOEvar.fbufposition = 0;
+ 123              		.loc 1 160 28 is_stmt 0 view .LVU36
+ 124 006a 0F4F     		ldr	r7, .L7+8
+ 125 006c 3868     		ldr	r0, [r7]
+ 126 006e D0F81C80 		ldr	r8, [r0, #28]
+ 160:Drivers/SOES/Src/esc_foe.c ****           FOEvar.fbufposition = 0;
+ 127              		.loc 1 160 20 view .LVU37
+ 128 0072 1968     		ldr	r1, [r3]
+ 129 0074 C047     		blx	r8
+ 130              	.LVL8:
+ 160:Drivers/SOES/Src/esc_foe.c ****           FOEvar.fbufposition = 0;
+ 131              		.loc 1 160 20 view .LVU38
+ 132 0076 8646     		mov	lr, r0
+ 133              	.LVL9:
+ 161:Drivers/SOES/Src/esc_foe.c ****           foe_file->address_offset += foe_cfg->buffer_size;
+ 134              		.loc 1 161 11 is_stmt 1 view .LVU39
+ 161:Drivers/SOES/Src/esc_foe.c ****           foe_file->address_offset += foe_cfg->buffer_size;
+ 135              		.loc 1 161 31 is_stmt 0 view .LVU40
+ 136 0078 094B     		ldr	r3, .L7
+ 137 007a 0022     		movs	r2, #0
+ 138 007c 5A70     		strb	r2, [r3, #1]
+ 139 007e 9A70     		strb	r2, [r3, #2]
+ 162:Drivers/SOES/Src/esc_foe.c ****        }
+ 140              		.loc 1 162 11 is_stmt 1 view .LVU41
+ 162:Drivers/SOES/Src/esc_foe.c ****        }
+ 141              		.loc 1 162 36 is_stmt 0 view .LVU42
+ 142 0080 3A68     		ldr	r2, [r7]
+ 162:Drivers/SOES/Src/esc_foe.c ****        }
+ 143              		.loc 1 162 46 view .LVU43
+ 144 0082 084B     		ldr	r3, .L7+4
+ 145 0084 1B68     		ldr	r3, [r3]
+ 146 0086 5968     		ldr	r1, [r3, #4]
+ 162:Drivers/SOES/Src/esc_foe.c ****        }
+ 147              		.loc 1 162 36 view .LVU44
+ 148 0088 D368     		ldr	r3, [r2, #12]
+ 149 008a 0B44     		add	r3, r3, r1
+ARM GAS  /tmp/ccRRK0Mn.s 			page 7
+
+
+ 150 008c D360     		str	r3, [r2, #12]
+ 151 008e C4E7     		b	.L3
+ 152              	.LVL10:
+ 153              	.L4:
+ 166:Drivers/SOES/Src/esc_foe.c ****     }
+ 167:Drivers/SOES/Src/esc_foe.c **** 
+ 168:Drivers/SOES/Src/esc_foe.c ****     foe_file->total_size += ncopied;
+ 154              		.loc 1 168 5 is_stmt 1 view .LVU45
+ 155              		.loc 1 168 26 is_stmt 0 view .LVU46
+ 156 0090 054B     		ldr	r3, .L7+8
+ 157 0092 1A68     		ldr	r2, [r3]
+ 158 0094 1369     		ldr	r3, [r2, #16]
+ 159 0096 3344     		add	r3, r3, r6
+ 160 0098 1361     		str	r3, [r2, #16]
+ 169:Drivers/SOES/Src/esc_foe.c **** 
+ 170:Drivers/SOES/Src/esc_foe.c ****     DPRINT("FOE_fwrite END with : %d\n",ncopied);
+ 161              		.loc 1 170 49 is_stmt 1 view .LVU47
+ 171:Drivers/SOES/Src/esc_foe.c ****     return ncopied;
+ 162              		.loc 1 171 5 view .LVU48
+ 172:Drivers/SOES/Src/esc_foe.c **** }
+ 163              		.loc 1 172 1 is_stmt 0 view .LVU49
+ 164 009a 3046     		mov	r0, r6
+ 165 009c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 166              	.LVL11:
+ 167              	.L8:
+ 168              		.loc 1 172 1 view .LVU50
+ 169              		.align	2
+ 170              	.L7:
+ 171 00a0 00000000 		.word	.LANCHOR0
+ 172 00a4 00000000 		.word	.LANCHOR1
+ 173 00a8 00000000 		.word	.LANCHOR2
+ 174              		.cfi_endproc
+ 175              	.LFE1:
+ 177              		.section	.text.FOE_fclose,"ax",%progbits
+ 178              		.align	1
+ 179              		.syntax unified
+ 180              		.thumb
+ 181              		.thumb_func
+ 183              	FOE_fclose:
+ 184              	.LFB2:
+ 173:Drivers/SOES/Src/esc_foe.c **** 
+ 174:Drivers/SOES/Src/esc_foe.c **** 
+ 175:Drivers/SOES/Src/esc_foe.c **** /** Function handling the final FOE_fwrite when we close up regardless
+ 176:Drivers/SOES/Src/esc_foe.c ****  * if we have filled the buffers or not.
+ 177:Drivers/SOES/Src/esc_foe.c ****  *
+ 178:Drivers/SOES/Src/esc_foe.c ****  * @return Number of copied bytes on success, 0= if failed.
+ 179:Drivers/SOES/Src/esc_foe.c ****  */
+ 180:Drivers/SOES/Src/esc_foe.c **** static uint32_t FOE_fclose (void)
+ 181:Drivers/SOES/Src/esc_foe.c **** {
+ 185              		.loc 1 181 1 is_stmt 1 view -0
+ 186              		.cfi_startproc
+ 187              		@ args = 0, pretend = 0, frame = 0
+ 188              		@ frame_needed = 0, uses_anonymous_args = 0
+ 189 0000 38B5     		push	{r3, r4, r5, lr}
+ 190              		.cfi_def_cfa_offset 16
+ 191              		.cfi_offset 3, -16
+ 192              		.cfi_offset 4, -12
+ARM GAS  /tmp/ccRRK0Mn.s 			page 8
+
+
+ 193              		.cfi_offset 5, -8
+ 194              		.cfi_offset 14, -4
+ 182:Drivers/SOES/Src/esc_foe.c ****    uint32_t failed = 0;
+ 195              		.loc 1 182 4 view .LVU52
+ 196              	.LVL12:
+ 183:Drivers/SOES/Src/esc_foe.c **** 
+ 184:Drivers/SOES/Src/esc_foe.c ****    DPRINT("FOE_fclose\n");
+ 197              		.loc 1 184 26 view .LVU53
+ 185:Drivers/SOES/Src/esc_foe.c ****    
+ 186:Drivers/SOES/Src/esc_foe.c ****    failed = foe_file->write_function (foe_file, foe_cfg->fbuffer, FOEvar.fbufposition);
+ 198              		.loc 1 186 4 view .LVU54
+ 199              		.loc 1 186 21 is_stmt 0 view .LVU55
+ 200 0002 0A4D     		ldr	r5, .L11
+ 201 0004 2868     		ldr	r0, [r5]
+ 202 0006 C369     		ldr	r3, [r0, #28]
+ 203              		.loc 1 186 56 view .LVU56
+ 204 0008 094A     		ldr	r2, .L11+4
+ 205 000a 1168     		ldr	r1, [r2]
+ 206              		.loc 1 186 73 view .LVU57
+ 207 000c 094C     		ldr	r4, .L11+8
+ 208              		.loc 1 186 13 view .LVU58
+ 209 000e B4F80120 		ldrh	r2, [r4, #1]	@ unaligned
+ 210 0012 0968     		ldr	r1, [r1]
+ 211 0014 9847     		blx	r3
+ 212              	.LVL13:
+ 187:Drivers/SOES/Src/esc_foe.c ****    foe_file->address_offset += FOEvar.fbufposition;
+ 213              		.loc 1 187 4 is_stmt 1 view .LVU59
+ 214              		.loc 1 187 29 is_stmt 0 view .LVU60
+ 215 0016 2A68     		ldr	r2, [r5]
+ 216              		.loc 1 187 38 view .LVU61
+ 217 0018 B4F80110 		ldrh	r1, [r4, #1]	@ unaligned
+ 218              		.loc 1 187 29 view .LVU62
+ 219 001c D368     		ldr	r3, [r2, #12]
+ 220 001e 0B44     		add	r3, r3, r1
+ 221 0020 D360     		str	r3, [r2, #12]
+ 188:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fbufposition = 0;
+ 222              		.loc 1 188 4 is_stmt 1 view .LVU63
+ 223              		.loc 1 188 24 is_stmt 0 view .LVU64
+ 224 0022 0023     		movs	r3, #0
+ 225 0024 6370     		strb	r3, [r4, #1]
+ 226 0026 A370     		strb	r3, [r4, #2]
+ 189:Drivers/SOES/Src/esc_foe.c **** 
+ 190:Drivers/SOES/Src/esc_foe.c ****    return failed;
+ 227              		.loc 1 190 4 is_stmt 1 view .LVU65
+ 191:Drivers/SOES/Src/esc_foe.c **** }
+ 228              		.loc 1 191 1 is_stmt 0 view .LVU66
+ 229 0028 38BD     		pop	{r3, r4, r5, pc}
+ 230              	.L12:
+ 231 002a 00BF     		.align	2
+ 232              	.L11:
+ 233 002c 00000000 		.word	.LANCHOR2
+ 234 0030 00000000 		.word	.LANCHOR1
+ 235 0034 00000000 		.word	.LANCHOR0
+ 236              		.cfi_endproc
+ 237              	.LFE2:
+ 239              		.section	.text.FOE_fopen,"ax",%progbits
+ 240              		.align	1
+ARM GAS  /tmp/ccRRK0Mn.s 			page 9
+
+
+ 241              		.syntax unified
+ 242              		.thumb
+ 243              		.thumb_func
+ 245              	FOE_fopen:
+ 246              	.LVL14:
+ 247              	.LFB0:
+  54:Drivers/SOES/Src/esc_foe.c ****    uint32_t i;
+ 248              		.loc 1 54 1 is_stmt 1 view -0
+ 249              		.cfi_startproc
+ 250              		@ args = 0, pretend = 0, frame = 0
+ 251              		@ frame_needed = 0, uses_anonymous_args = 0
+  54:Drivers/SOES/Src/esc_foe.c ****    uint32_t i;
+ 252              		.loc 1 54 1 is_stmt 0 view .LVU68
+ 253 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 254              		.cfi_def_cfa_offset 32
+ 255              		.cfi_offset 4, -32
+ 256              		.cfi_offset 5, -28
+ 257              		.cfi_offset 6, -24
+ 258              		.cfi_offset 7, -20
+ 259              		.cfi_offset 8, -16
+ 260              		.cfi_offset 9, -12
+ 261              		.cfi_offset 10, -8
+ 262              		.cfi_offset 14, -4
+ 263 0004 1746     		mov	r7, r2
+ 264 0006 1E46     		mov	r6, r3
+  55:Drivers/SOES/Src/esc_foe.c **** 
+ 265              		.loc 1 55 4 is_stmt 1 view .LVU69
+  58:Drivers/SOES/Src/esc_foe.c ****    {
+ 266              		.loc 1 58 4 view .LVU70
+  58:Drivers/SOES/Src/esc_foe.c ****    {
+ 267              		.loc 1 58 7 is_stmt 0 view .LVU71
+ 268 0008 1F29     		cmp	r1, #31
+ 269 000a 00D9     		bls	.L14
+  60:Drivers/SOES/Src/esc_foe.c ****    }
+ 270              		.loc 1 60 17 view .LVU72
+ 271 000c 1F21     		movs	r1, #31
+ 272              	.LVL15:
+ 273              	.L14:
+  63:Drivers/SOES/Src/esc_foe.c ****    {
+ 274              		.loc 1 63 4 is_stmt 1 view .LVU73
+  63:Drivers/SOES/Src/esc_foe.c ****    {
+ 275              		.loc 1 63 11 is_stmt 0 view .LVU74
+ 276 000e 4FF0000C 		mov	ip, #0
+  63:Drivers/SOES/Src/esc_foe.c ****    {
+ 277              		.loc 1 63 4 view .LVU75
+ 278 0012 06E0     		b	.L15
+ 279              	.LVL16:
+ 280              	.L16:
+  65:Drivers/SOES/Src/esc_foe.c ****    }
+ 281              		.loc 1 65 7 is_stmt 1 discriminator 3 view .LVU76
+  65:Drivers/SOES/Src/esc_foe.c ****    }
+ 282              		.loc 1 65 30 is_stmt 0 discriminator 3 view .LVU77
+ 283 0014 10F80CE0 		ldrb	lr, [r0, ip]	@ zero_extendqisi2
+  65:Drivers/SOES/Src/esc_foe.c ****    }
+ 284              		.loc 1 65 24 discriminator 3 view .LVU78
+ 285 0018 324C     		ldr	r4, .L30
+ 286 001a 04F80CE0 		strb	lr, [r4, ip]
+ARM GAS  /tmp/ccRRK0Mn.s 			page 10
+
+
+  63:Drivers/SOES/Src/esc_foe.c ****    {
+ 287              		.loc 1 63 31 is_stmt 1 discriminator 3 view .LVU79
+  63:Drivers/SOES/Src/esc_foe.c ****    {
+ 288              		.loc 1 63 32 is_stmt 0 discriminator 3 view .LVU80
+ 289 001e 0CF1010C 		add	ip, ip, #1
+ 290              	.LVL17:
+ 291              	.L15:
+  63:Drivers/SOES/Src/esc_foe.c ****    {
+ 292              		.loc 1 63 16 is_stmt 1 discriminator 1 view .LVU81
+  63:Drivers/SOES/Src/esc_foe.c ****    {
+ 293              		.loc 1 63 18 is_stmt 0 discriminator 1 view .LVU82
+ 294 0022 0D46     		mov	r5, r1
+  63:Drivers/SOES/Src/esc_foe.c ****    {
+ 295              		.loc 1 63 4 discriminator 1 view .LVU83
+ 296 0024 6145     		cmp	r1, ip
+ 297 0026 F5D8     		bhi	.L16
+  67:Drivers/SOES/Src/esc_foe.c **** 
+ 298              		.loc 1 67 4 is_stmt 1 view .LVU84
+  67:Drivers/SOES/Src/esc_foe.c **** 
+ 299              		.loc 1 67 21 is_stmt 0 view .LVU85
+ 300 0028 0024     		movs	r4, #0
+ 301 002a 2E4B     		ldr	r3, .L30
+ 302              	.LVL18:
+  67:Drivers/SOES/Src/esc_foe.c **** 
+ 303              		.loc 1 67 21 view .LVU86
+ 304 002c 03F80C40 		strb	r4, [r3, ip]
+  70:Drivers/SOES/Src/esc_foe.c ****    {
+ 305              		.loc 1 70 4 is_stmt 1 view .LVU87
+ 306              	.LVL19:
+  70:Drivers/SOES/Src/esc_foe.c ****    {
+ 307              		.loc 1 70 4 is_stmt 0 view .LVU88
+ 308 0030 1BE0     		b	.L17
+ 309              	.LVL20:
+ 310              	.L29:
+  80:Drivers/SOES/Src/esc_foe.c ****              (ESCvar.ALstatus != ESCboot))
+ 311              		.loc 1 80 32 discriminator 1 view .LVU89
+ 312 0032 99F81830 		ldrb	r3, [r9, #24]	@ zero_extendqisi2
+  79:Drivers/SOES/Src/esc_foe.c ****              (foe_cfg->files[i].write_only_in_boot) &&
+ 313              		.loc 1 79 31 discriminator 1 view .LVU90
+ 314 0036 A3B3     		cbz	r3, .L20
+  81:Drivers/SOES/Src/esc_foe.c ****          {
+ 315              		.loc 1 81 21 view .LVU91
+ 316 0038 2B4B     		ldr	r3, .L30+4
+ 317 003a B3F87C30 		ldrh	r3, [r3, #124]
+  80:Drivers/SOES/Src/esc_foe.c ****              (ESCvar.ALstatus != ESCboot))
+ 318              		.loc 1 80 53 view .LVU92
+ 319 003e 032B     		cmp	r3, #3
+ 320 0040 2FD0     		beq	.L20
+  83:Drivers/SOES/Src/esc_foe.c ****          }
+ 321              		.loc 1 83 20 view .LVU93
+ 322 0042 48F20902 		movw	r2, #32777
+ 323 0046 0CE0     		b	.L13
+ 324              	.L21:
+  93:Drivers/SOES/Src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
+ 325              		.loc 1 93 16 is_stmt 1 view .LVU94
+  93:Drivers/SOES/Src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
+ 326              		.loc 1 93 33 is_stmt 0 view .LVU95
+ARM GAS  /tmp/ccRRK0Mn.s 			page 11
+
+
+ 327 0048 284B     		ldr	r3, .L30+8
+ 328 004a 0021     		movs	r1, #0
+ 329 004c D971     		strb	r1, [r3, #7]
+ 330 004e 1972     		strb	r1, [r3, #8]
+ 331 0050 5972     		strb	r1, [r3, #9]
+ 332 0052 9972     		strb	r1, [r3, #10]
+  94:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 333              		.loc 1 94 16 is_stmt 1 view .LVU96
+  94:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 334              		.loc 1 94 37 is_stmt 0 view .LVU97
+ 335 0054 D8F80C10 		ldr	r1, [r8, #12]
+  94:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 336              		.loc 1 94 44 view .LVU98
+ 337 0058 8A44     		add	r10, r10, r1
+  94:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 338              		.loc 1 94 47 view .LVU99
+ 339 005a DAF80410 		ldr	r1, [r10, #4]
+  94:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 340              		.loc 1 94 28 view .LVU100
+ 341 005e C3F80F10 		str	r1, [r3, #15]	@ unaligned
+  95:Drivers/SOES/Src/esc_foe.c ****             }
+ 342              		.loc 1 95 16 is_stmt 1 view .LVU101
+ 343              	.L13:
+ 108:Drivers/SOES/Src/esc_foe.c **** 
+ 344              		.loc 1 108 1 is_stmt 0 view .LVU102
+ 345 0062 1046     		mov	r0, r2
+ 346 0064 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 347              	.LVL21:
+ 348              	.L18:
+  70:Drivers/SOES/Src/esc_foe.c ****    {
+ 349              		.loc 1 70 38 is_stmt 1 discriminator 2 view .LVU103
+  70:Drivers/SOES/Src/esc_foe.c ****    {
+ 350              		.loc 1 70 39 is_stmt 0 discriminator 2 view .LVU104
+ 351 0068 0134     		adds	r4, r4, #1
+ 352              	.LVL22:
+ 353              	.L17:
+  70:Drivers/SOES/Src/esc_foe.c ****    {
+ 354              		.loc 1 70 16 is_stmt 1 discriminator 1 view .LVU105
+  70:Drivers/SOES/Src/esc_foe.c ****    {
+ 355              		.loc 1 70 27 is_stmt 0 discriminator 1 view .LVU106
+ 356 006a 214B     		ldr	r3, .L30+12
+ 357 006c D3F80080 		ldr	r8, [r3]
+ 358 0070 D8F80830 		ldr	r3, [r8, #8]
+  70:Drivers/SOES/Src/esc_foe.c ****    {
+ 359              		.loc 1 70 4 discriminator 1 view .LVU107
+ 360 0074 A342     		cmp	r3, r4
+ 361 0076 2ED9     		bls	.L28
+  72:Drivers/SOES/Src/esc_foe.c ****       {
+ 362              		.loc 1 72 7 is_stmt 1 view .LVU108
+  72:Drivers/SOES/Src/esc_foe.c ****       {
+ 363              		.loc 1 72 47 is_stmt 0 view .LVU109
+ 364 0078 D8F80C30 		ldr	r3, [r8, #12]
+  72:Drivers/SOES/Src/esc_foe.c ****       {
+ 365              		.loc 1 72 54 view .LVU110
+ 366 007c 4FEA441A 		lsl	r10, r4, #5
+ 367 0080 03EB4419 		add	r9, r3, r4, lsl #5
+  72:Drivers/SOES/Src/esc_foe.c ****       {
+ARM GAS  /tmp/ccRRK0Mn.s 			page 12
+
+
+ 368              		.loc 1 72 16 view .LVU111
+ 369 0084 2A46     		mov	r2, r5
+ 370 0086 53F80A10 		ldr	r1, [r3, r10]
+ 371 008a 1648     		ldr	r0, .L30
+ 372 008c FFF7FEFF 		bl	strncmp
+ 373              	.LVL23:
+  72:Drivers/SOES/Src/esc_foe.c ****       {
+ 374              		.loc 1 72 10 view .LVU112
+ 375 0090 0246     		mov	r2, r0
+ 376 0092 0028     		cmp	r0, #0
+ 377 0094 E8D1     		bne	.L18
+  74:Drivers/SOES/Src/esc_foe.c ****          {
+ 378              		.loc 1 74 10 is_stmt 1 view .LVU113
+  74:Drivers/SOES/Src/esc_foe.c ****          {
+ 379              		.loc 1 74 39 is_stmt 0 view .LVU114
+ 380 0096 D9F81430 		ldr	r3, [r9, #20]
+  74:Drivers/SOES/Src/esc_foe.c ****          {
+ 381              		.loc 1 74 13 view .LVU115
+ 382 009a BB42     		cmp	r3, r7
+ 383 009c 1ED1     		bne	.L25
+  79:Drivers/SOES/Src/esc_foe.c ****              (foe_cfg->files[i].write_only_in_boot) &&
+ 384              		.loc 1 79 10 is_stmt 1 view .LVU116
+  79:Drivers/SOES/Src/esc_foe.c ****              (foe_cfg->files[i].write_only_in_boot) &&
+ 385              		.loc 1 79 13 is_stmt 0 view .LVU117
+ 386 009e 022E     		cmp	r6, #2
+ 387 00a0 C7D0     		beq	.L29
+ 388              	.L20:
+  86:Drivers/SOES/Src/esc_foe.c ****          foe_file->address_offset = 0;
+ 389              		.loc 1 86 10 is_stmt 1 view .LVU118
+  86:Drivers/SOES/Src/esc_foe.c ****          foe_file->address_offset = 0;
+ 390              		.loc 1 86 19 is_stmt 0 view .LVU119
+ 391 00a2 144B     		ldr	r3, .L30+16
+ 392 00a4 C3F80090 		str	r9, [r3]
+  87:Drivers/SOES/Src/esc_foe.c ****          foe_file->total_size = 0;
+ 393              		.loc 1 87 10 is_stmt 1 view .LVU120
+  87:Drivers/SOES/Src/esc_foe.c ****          foe_file->total_size = 0;
+ 394              		.loc 1 87 35 is_stmt 0 view .LVU121
+ 395 00a8 0023     		movs	r3, #0
+ 396 00aa C9F80C30 		str	r3, [r9, #12]
+  88:Drivers/SOES/Src/esc_foe.c ****          switch (op)
+ 397              		.loc 1 88 10 is_stmt 1 view .LVU122
+  88:Drivers/SOES/Src/esc_foe.c ****          switch (op)
+ 398              		.loc 1 88 31 is_stmt 0 view .LVU123
+ 399 00ae C9F81030 		str	r3, [r9, #16]
+  89:Drivers/SOES/Src/esc_foe.c ****          {
+ 400              		.loc 1 89 10 is_stmt 1 view .LVU124
+ 401 00b2 012E     		cmp	r6, #1
+ 402 00b4 C8D0     		beq	.L21
+ 403 00b6 022E     		cmp	r6, #2
+ 404 00b8 D6D1     		bne	.L18
+  99:Drivers/SOES/Src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
+ 405              		.loc 1 99 16 view .LVU125
+  99:Drivers/SOES/Src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
+ 406              		.loc 1 99 33 is_stmt 0 view .LVU126
+ 407 00ba 0C4B     		ldr	r3, .L30+8
+ 408 00bc 0021     		movs	r1, #0
+ 409 00be D971     		strb	r1, [r3, #7]
+ARM GAS  /tmp/ccRRK0Mn.s 			page 13
+
+
+ 410 00c0 1972     		strb	r1, [r3, #8]
+ 411 00c2 5972     		strb	r1, [r3, #9]
+ 412 00c4 9972     		strb	r1, [r3, #10]
+ 100:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 413              		.loc 1 100 16 is_stmt 1 view .LVU127
+ 100:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 414              		.loc 1 100 37 is_stmt 0 view .LVU128
+ 415 00c6 D8F80C10 		ldr	r1, [r8, #12]
+ 100:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 416              		.loc 1 100 44 view .LVU129
+ 417 00ca 8A44     		add	r10, r10, r1
+ 100:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 418              		.loc 1 100 47 view .LVU130
+ 419 00cc DAF80410 		ldr	r1, [r10, #4]
+ 100:Drivers/SOES/Src/esc_foe.c ****                return 0;
+ 420              		.loc 1 100 28 view .LVU131
+ 421 00d0 C3F80F10 		str	r1, [r3, #15]	@ unaligned
+ 101:Drivers/SOES/Src/esc_foe.c ****             }
+ 422              		.loc 1 101 16 is_stmt 1 view .LVU132
+ 101:Drivers/SOES/Src/esc_foe.c ****             }
+ 423              		.loc 1 101 23 is_stmt 0 view .LVU133
+ 424 00d4 C5E7     		b	.L13
+ 425              	.L28:
+ 107:Drivers/SOES/Src/esc_foe.c **** }
+ 426              		.loc 1 107 11 view .LVU134
+ 427 00d6 48F20102 		movw	r2, #32769
+ 428 00da C2E7     		b	.L13
+ 429              	.L25:
+  76:Drivers/SOES/Src/esc_foe.c ****          }
+ 430              		.loc 1 76 20 view .LVU135
+ 431 00dc 48F20A02 		movw	r2, #32778
+ 432 00e0 BFE7     		b	.L13
+ 433              	.L31:
+ 434 00e2 00BF     		.align	2
+ 435              	.L30:
+ 436 00e4 00000000 		.word	.LANCHOR3
+ 437 00e8 00000000 		.word	ESCvar
+ 438 00ec 00000000 		.word	.LANCHOR0
+ 439 00f0 00000000 		.word	.LANCHOR1
+ 440 00f4 00000000 		.word	.LANCHOR2
+ 441              		.cfi_endproc
+ 442              	.LFE0:
+ 444              		.section	.text.FOE_send_ack,"ax",%progbits
+ 445              		.align	1
+ 446              		.syntax unified
+ 447              		.thumb
+ 448              		.thumb_func
+ 450              	FOE_send_ack:
+ 451              	.LFB5:
+ 192:Drivers/SOES/Src/esc_foe.c **** 
+ 193:Drivers/SOES/Src/esc_foe.c **** /** Initialize by clearing all current status variables.
+ 194:Drivers/SOES/Src/esc_foe.c ****  *
+ 195:Drivers/SOES/Src/esc_foe.c ****  */
+ 196:Drivers/SOES/Src/esc_foe.c **** void FOE_init ()
+ 197:Drivers/SOES/Src/esc_foe.c **** {
+ 198:Drivers/SOES/Src/esc_foe.c ****    DPRINT("FOE_init\n");
+ 199:Drivers/SOES/Src/esc_foe.c ****    FOEvar.foepacket = 0;
+ARM GAS  /tmp/ccRRK0Mn.s 			page 14
+
+
+ 200:Drivers/SOES/Src/esc_foe.c ****    FOEvar.foestate = FOE_READY;
+ 201:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fposition = 0;
+ 202:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fprevposition = 0;
+ 203:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fbufposition = 0;
+ 204:Drivers/SOES/Src/esc_foe.c **** }
+ 205:Drivers/SOES/Src/esc_foe.c **** 
+ 206:Drivers/SOES/Src/esc_foe.c **** /** Function for sending an FOE abort frame.
+ 207:Drivers/SOES/Src/esc_foe.c ****  *
+ 208:Drivers/SOES/Src/esc_foe.c ****  * @param[in] code   = abort code
+ 209:Drivers/SOES/Src/esc_foe.c ****  */
+ 210:Drivers/SOES/Src/esc_foe.c **** static void FOE_abort (uint32_t code)
+ 211:Drivers/SOES/Src/esc_foe.c **** {
+ 212:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 213:Drivers/SOES/Src/esc_foe.c ****    uint8_t mbxhandle;
+ 214:Drivers/SOES/Src/esc_foe.c **** 
+ 215:Drivers/SOES/Src/esc_foe.c ****    if (code)
+ 216:Drivers/SOES/Src/esc_foe.c ****    {
+ 217:Drivers/SOES/Src/esc_foe.c ****       /* Send back an error packet. */
+ 218:Drivers/SOES/Src/esc_foe.c ****       mbxhandle = ESC_claimbuffer ();
+ 219:Drivers/SOES/Src/esc_foe.c ****       if (mbxhandle)
+ 220:Drivers/SOES/Src/esc_foe.c ****       {
+ 221:Drivers/SOES/Src/esc_foe.c ****          foembx = (_FOE *) &MBX[mbxhandle * ESC_MBXSIZE];
+ 222:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
+ 223:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.mbxtype = MBXFOE;
+ 224:Drivers/SOES/Src/esc_foe.c ****          foembx->foeheader.opcode = FOE_OP_ERR;
+ 225:Drivers/SOES/Src/esc_foe.c ****          foembx->foeheader.errorcode = htoel (code);
+ 226:Drivers/SOES/Src/esc_foe.c ****          MBXcontrol[mbxhandle].state = MBXstate_outreq;
+ 227:Drivers/SOES/Src/esc_foe.c ****       }
+ 228:Drivers/SOES/Src/esc_foe.c ****       /* Nothing we can do if we can't get an outbound mailbox. */
+ 229:Drivers/SOES/Src/esc_foe.c ****    }
+ 230:Drivers/SOES/Src/esc_foe.c ****    DPRINT("FOE_abort: 0x%X\n", code);
+ 231:Drivers/SOES/Src/esc_foe.c ****    FOE_init ();
+ 232:Drivers/SOES/Src/esc_foe.c **** }
+ 233:Drivers/SOES/Src/esc_foe.c **** 
+ 234:Drivers/SOES/Src/esc_foe.c **** #ifdef FOE_READ_SUPPORTED
+ 235:Drivers/SOES/Src/esc_foe.c **** /** Sends an FoE data frame, returning the number of data bytes
+ 236:Drivers/SOES/Src/esc_foe.c ****  * written or an error number.
+ 237:Drivers/SOES/Src/esc_foe.c ****  * Error numbers will be greater than FOE_DATA_SIZE.
+ 238:Drivers/SOES/Src/esc_foe.c **** 
+ 239:Drivers/SOES/Src/esc_foe.c ****  * @param[in] data   = pointer to buffer
+ 240:Drivers/SOES/Src/esc_foe.c ****  * @param[in] length = length of data to read
+ 241:Drivers/SOES/Src/esc_foe.c **** 
+ 242:Drivers/SOES/Src/esc_foe.c ****  * @return Number of data bytes written or an error number. Error numbers
+ 243:Drivers/SOES/Src/esc_foe.c ****  * will be greater than FOE_DATA_SIZE.
+ 244:Drivers/SOES/Src/esc_foe.c ****  */
+ 245:Drivers/SOES/Src/esc_foe.c **** static int FOE_send_data_packet ()
+ 246:Drivers/SOES/Src/esc_foe.c **** {
+ 247:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 248:Drivers/SOES/Src/esc_foe.c ****    uint16_t data_len;
+ 249:Drivers/SOES/Src/esc_foe.c ****    uint8_t mbxhandle;
+ 250:Drivers/SOES/Src/esc_foe.c **** 
+ 251:Drivers/SOES/Src/esc_foe.c ****    mbxhandle = ESC_claimbuffer ();
+ 252:Drivers/SOES/Src/esc_foe.c ****    if (mbxhandle)
+ 253:Drivers/SOES/Src/esc_foe.c ****    {
+ 254:Drivers/SOES/Src/esc_foe.c ****       foembx = (_FOE *) &MBX[mbxhandle * ESC_MBXSIZE];
+ 255:Drivers/SOES/Src/esc_foe.c ****       data_len = FOE_fread (foembx->data, ESC_FOE_DATA_SIZE);
+ 256:Drivers/SOES/Src/esc_foe.c ****       foembx->foeheader.opcode = FOE_OP_DATA;
+ARM GAS  /tmp/ccRRK0Mn.s 			page 15
+
+
+ 257:Drivers/SOES/Src/esc_foe.c ****       foembx->foeheader.packetnumber = htoel (FOEvar.foepacket);
+ 258:Drivers/SOES/Src/esc_foe.c ****       FOEvar.foepacket++;
+ 259:Drivers/SOES/Src/esc_foe.c ****       foembx->mbxheader.length = htoes (data_len + ESC_FOEHSIZE);
+ 260:Drivers/SOES/Src/esc_foe.c ****       foembx->mbxheader.mbxtype = MBXFOE;
+ 261:Drivers/SOES/Src/esc_foe.c ****       /* Mark the outbound mailbox as filled. */
+ 262:Drivers/SOES/Src/esc_foe.c ****       MBXcontrol[mbxhandle].state = MBXstate_outreq;
+ 263:Drivers/SOES/Src/esc_foe.c ****       return data_len;
+ 264:Drivers/SOES/Src/esc_foe.c ****    }
+ 265:Drivers/SOES/Src/esc_foe.c ****    else
+ 266:Drivers/SOES/Src/esc_foe.c ****    {
+ 267:Drivers/SOES/Src/esc_foe.c ****       return FOE_ERR_PROGERROR;
+ 268:Drivers/SOES/Src/esc_foe.c ****    }
+ 269:Drivers/SOES/Src/esc_foe.c **** }
+ 270:Drivers/SOES/Src/esc_foe.c **** #endif
+ 271:Drivers/SOES/Src/esc_foe.c **** 
+ 272:Drivers/SOES/Src/esc_foe.c **** /** Sends an FoE ack data frame.
+ 273:Drivers/SOES/Src/esc_foe.c **** 
+ 274:Drivers/SOES/Src/esc_foe.c ****  * @return 0= or error number.
+ 275:Drivers/SOES/Src/esc_foe.c ****  */
+ 276:Drivers/SOES/Src/esc_foe.c **** static int FOE_send_ack ()
+ 277:Drivers/SOES/Src/esc_foe.c **** {
+ 452              		.loc 1 277 1 is_stmt 1 view -0
+ 453              		.cfi_startproc
+ 454              		@ args = 0, pretend = 0, frame = 0
+ 455              		@ frame_needed = 0, uses_anonymous_args = 0
+ 456 0000 10B5     		push	{r4, lr}
+ 457              		.cfi_def_cfa_offset 8
+ 458              		.cfi_offset 4, -8
+ 459              		.cfi_offset 14, -4
+ 278:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 460              		.loc 1 278 4 view .LVU137
+ 279:Drivers/SOES/Src/esc_foe.c ****    uint8_t mbxhandle;
+ 461              		.loc 1 279 4 view .LVU138
+ 280:Drivers/SOES/Src/esc_foe.c **** 
+ 281:Drivers/SOES/Src/esc_foe.c ****    mbxhandle = ESC_claimbuffer ();
+ 462              		.loc 1 281 4 view .LVU139
+ 463              		.loc 1 281 16 is_stmt 0 view .LVU140
+ 464 0002 FFF7FEFF 		bl	ESC_claimbuffer
+ 465              	.LVL24:
+ 282:Drivers/SOES/Src/esc_foe.c ****    if (mbxhandle)
+ 466              		.loc 1 282 4 is_stmt 1 view .LVU141
+ 467              		.loc 1 282 7 is_stmt 0 view .LVU142
+ 468 0006 E8B1     		cbz	r0, .L34
+ 469 0008 0146     		mov	r1, r0
+ 283:Drivers/SOES/Src/esc_foe.c ****    {
+ 284:Drivers/SOES/Src/esc_foe.c ****       DPRINT("FOE_send_ack\n");
+ 470              		.loc 1 284 31 is_stmt 1 view .LVU143
+ 285:Drivers/SOES/Src/esc_foe.c ****       foembx = (_FOE *) &MBX[mbxhandle * ESC_MBXSIZE];
+ 471              		.loc 1 285 7 view .LVU144
+ 472              		.loc 1 285 42 is_stmt 0 view .LVU145
+ 473 000a 104B     		ldr	r3, .L36
+ 474 000c 9A6E     		ldr	r2, [r3, #104]
+ 475              		.loc 1 285 40 view .LVU146
+ 476 000e 00FB02F2 		mul	r2, r0, r2
+ 477              		.loc 1 285 14 view .LVU147
+ 478 0012 0F4C     		ldr	r4, .L36+4
+ 479 0014 1319     		adds	r3, r2, r4
+ARM GAS  /tmp/ccRRK0Mn.s 			page 16
+
+
+ 480              	.LVL25:
+ 286:Drivers/SOES/Src/esc_foe.c ****       foembx->mbxheader.length = htoes (ESC_FOEHSIZE);
+ 481              		.loc 1 286 7 is_stmt 1 view .LVU148
+ 482              		.loc 1 286 32 is_stmt 0 view .LVU149
+ 483 0016 0020     		movs	r0, #0
+ 484              	.LVL26:
+ 485              		.loc 1 286 32 view .LVU150
+ 486 0018 4FF0060C 		mov	ip, #6
+ 487 001c 02F804C0 		strb	ip, [r2, r4]
+ 488 0020 5870     		strb	r0, [r3, #1]
+ 287:Drivers/SOES/Src/esc_foe.c ****       foembx->mbxheader.mbxtype = MBXFOE;
+ 489              		.loc 1 287 7 is_stmt 1 view .LVU151
+ 490              		.loc 1 287 33 is_stmt 0 view .LVU152
+ 491 0022 5C79     		ldrb	r4, [r3, #5]	@ zero_extendqisi2
+ 492 0024 0422     		movs	r2, #4
+ 493 0026 62F30304 		bfi	r4, r2, #0, #4
+ 494 002a 5C71     		strb	r4, [r3, #5]
+ 288:Drivers/SOES/Src/esc_foe.c ****       foembx->foeheader.opcode = FOE_OP_ACK;
+ 495              		.loc 1 288 7 is_stmt 1 view .LVU153
+ 496              		.loc 1 288 32 is_stmt 0 view .LVU154
+ 497 002c 9A71     		strb	r2, [r3, #6]
+ 289:Drivers/SOES/Src/esc_foe.c ****       foembx->foeheader.packetnumber = htoel (FOEvar.foepacket);
+ 498              		.loc 1 289 7 is_stmt 1 view .LVU155
+ 499              		.loc 1 289 40 is_stmt 0 view .LVU156
+ 500 002e 094C     		ldr	r4, .L36+8
+ 501 0030 D4F80320 		ldr	r2, [r4, #3]	@ unaligned
+ 502              		.loc 1 289 38 view .LVU157
+ 503 0034 9A60     		str	r2, [r3, #8]	@ unaligned
+ 290:Drivers/SOES/Src/esc_foe.c ****       FOEvar.foepacket++;
+ 504              		.loc 1 290 7 is_stmt 1 view .LVU158
+ 505              		.loc 1 290 23 is_stmt 0 view .LVU159
+ 506 0036 0132     		adds	r2, r2, #1
+ 507 0038 C4F80320 		str	r2, [r4, #3]	@ unaligned
+ 291:Drivers/SOES/Src/esc_foe.c ****       MBXcontrol[mbxhandle].state = MBXstate_outreq;
+ 508              		.loc 1 291 7 is_stmt 1 view .LVU160
+ 509              		.loc 1 291 35 is_stmt 0 view .LVU161
+ 510 003c 064B     		ldr	r3, .L36+12
+ 511              	.LVL27:
+ 512              		.loc 1 291 35 view .LVU162
+ 513 003e 0322     		movs	r2, #3
+ 514 0040 5A54     		strb	r2, [r3, r1]
+ 292:Drivers/SOES/Src/esc_foe.c ****       return 0;
+ 515              		.loc 1 292 7 is_stmt 1 view .LVU163
+ 516              	.LVL28:
+ 517              	.L32:
+ 293:Drivers/SOES/Src/esc_foe.c ****    }
+ 294:Drivers/SOES/Src/esc_foe.c ****    else
+ 295:Drivers/SOES/Src/esc_foe.c ****    {
+ 296:Drivers/SOES/Src/esc_foe.c ****       DPRINT("ERROR:FOE_send_ack\n");
+ 297:Drivers/SOES/Src/esc_foe.c ****       return FOE_ERR_PROGERROR;
+ 298:Drivers/SOES/Src/esc_foe.c ****    }
+ 299:Drivers/SOES/Src/esc_foe.c **** }
+ 518              		.loc 1 299 1 is_stmt 0 view .LVU164
+ 519 0042 10BD     		pop	{r4, pc}
+ 520              	.LVL29:
+ 521              	.L34:
+ 297:Drivers/SOES/Src/esc_foe.c ****    }
+ARM GAS  /tmp/ccRRK0Mn.s 			page 17
+
+
+ 522              		.loc 1 297 14 view .LVU165
+ 523 0044 48F20B00 		movw	r0, #32779
+ 524              	.LVL30:
+ 297:Drivers/SOES/Src/esc_foe.c ****    }
+ 525              		.loc 1 297 14 view .LVU166
+ 526 0048 FBE7     		b	.L32
+ 527              	.L37:
+ 528 004a 00BF     		.align	2
+ 529              	.L36:
+ 530 004c 00000000 		.word	ESCvar
+ 531 0050 00000000 		.word	MBX
+ 532 0054 00000000 		.word	.LANCHOR0
+ 533 0058 00000000 		.word	MBXcontrol
+ 534              		.cfi_endproc
+ 535              	.LFE5:
+ 537              		.section	.text.FOE_init,"ax",%progbits
+ 538              		.align	1
+ 539              		.global	FOE_init
+ 540              		.syntax unified
+ 541              		.thumb
+ 542              		.thumb_func
+ 544              	FOE_init:
+ 545              	.LFB3:
+ 197:Drivers/SOES/Src/esc_foe.c ****    DPRINT("FOE_init\n");
+ 546              		.loc 1 197 1 is_stmt 1 view -0
+ 547              		.cfi_startproc
+ 548              		@ args = 0, pretend = 0, frame = 0
+ 549              		@ frame_needed = 0, uses_anonymous_args = 0
+ 550              		@ link register save eliminated.
+ 198:Drivers/SOES/Src/esc_foe.c ****    FOEvar.foepacket = 0;
+ 551              		.loc 1 198 24 view .LVU168
+ 199:Drivers/SOES/Src/esc_foe.c ****    FOEvar.foestate = FOE_READY;
+ 552              		.loc 1 199 4 view .LVU169
+ 199:Drivers/SOES/Src/esc_foe.c ****    FOEvar.foestate = FOE_READY;
+ 553              		.loc 1 199 21 is_stmt 0 view .LVU170
+ 554 0000 084B     		ldr	r3, .L39
+ 555 0002 0022     		movs	r2, #0
+ 556 0004 DA70     		strb	r2, [r3, #3]
+ 557 0006 1A71     		strb	r2, [r3, #4]
+ 558 0008 5A71     		strb	r2, [r3, #5]
+ 559 000a 9A71     		strb	r2, [r3, #6]
+ 200:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fposition = 0;
+ 560              		.loc 1 200 4 is_stmt 1 view .LVU171
+ 200:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fposition = 0;
+ 561              		.loc 1 200 20 is_stmt 0 view .LVU172
+ 562 000c 1A70     		strb	r2, [r3]
+ 201:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fprevposition = 0;
+ 563              		.loc 1 201 4 is_stmt 1 view .LVU173
+ 201:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fprevposition = 0;
+ 564              		.loc 1 201 21 is_stmt 0 view .LVU174
+ 565 000e DA71     		strb	r2, [r3, #7]
+ 566 0010 1A72     		strb	r2, [r3, #8]
+ 567 0012 5A72     		strb	r2, [r3, #9]
+ 568 0014 9A72     		strb	r2, [r3, #10]
+ 202:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fbufposition = 0;
+ 569              		.loc 1 202 4 is_stmt 1 view .LVU175
+ 202:Drivers/SOES/Src/esc_foe.c ****    FOEvar.fbufposition = 0;
+ARM GAS  /tmp/ccRRK0Mn.s 			page 18
+
+
+ 570              		.loc 1 202 25 is_stmt 0 view .LVU176
+ 571 0016 DA72     		strb	r2, [r3, #11]
+ 572 0018 1A73     		strb	r2, [r3, #12]
+ 573 001a 5A73     		strb	r2, [r3, #13]
+ 574 001c 9A73     		strb	r2, [r3, #14]
+ 203:Drivers/SOES/Src/esc_foe.c **** }
+ 575              		.loc 1 203 4 is_stmt 1 view .LVU177
+ 203:Drivers/SOES/Src/esc_foe.c **** }
+ 576              		.loc 1 203 24 is_stmt 0 view .LVU178
+ 577 001e 5A70     		strb	r2, [r3, #1]
+ 578 0020 9A70     		strb	r2, [r3, #2]
+ 204:Drivers/SOES/Src/esc_foe.c **** 
+ 579              		.loc 1 204 1 view .LVU179
+ 580 0022 7047     		bx	lr
+ 581              	.L40:
+ 582              		.align	2
+ 583              	.L39:
+ 584 0024 00000000 		.word	.LANCHOR0
+ 585              		.cfi_endproc
+ 586              	.LFE3:
+ 588              		.section	.text.FOE_abort,"ax",%progbits
+ 589              		.align	1
+ 590              		.syntax unified
+ 591              		.thumb
+ 592              		.thumb_func
+ 594              	FOE_abort:
+ 595              	.LVL31:
+ 596              	.LFB4:
+ 211:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 597              		.loc 1 211 1 is_stmt 1 view -0
+ 598              		.cfi_startproc
+ 599              		@ args = 0, pretend = 0, frame = 0
+ 600              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 601              		.loc 1 211 1 is_stmt 0 view .LVU181
+ 602 0000 10B5     		push	{r4, lr}
+ 603              		.cfi_def_cfa_offset 8
+ 604              		.cfi_offset 4, -8
+ 605              		.cfi_offset 14, -4
+ 212:Drivers/SOES/Src/esc_foe.c ****    uint8_t mbxhandle;
+ 606              		.loc 1 212 4 is_stmt 1 view .LVU182
+ 213:Drivers/SOES/Src/esc_foe.c **** 
+ 607              		.loc 1 213 4 view .LVU183
+ 215:Drivers/SOES/Src/esc_foe.c ****    {
+ 608              		.loc 1 215 4 view .LVU184
+ 215:Drivers/SOES/Src/esc_foe.c ****    {
+ 609              		.loc 1 215 7 is_stmt 0 view .LVU185
+ 610 0002 10B9     		cbnz	r0, .L44
+ 611              	.LVL32:
+ 612              	.L42:
+ 230:Drivers/SOES/Src/esc_foe.c ****    FOE_init ();
+ 613              		.loc 1 230 37 is_stmt 1 view .LVU186
+ 231:Drivers/SOES/Src/esc_foe.c **** }
+ 614              		.loc 1 231 4 view .LVU187
+ 615 0004 FFF7FEFF 		bl	FOE_init
+ 616              	.LVL33:
+ 232:Drivers/SOES/Src/esc_foe.c **** 
+ARM GAS  /tmp/ccRRK0Mn.s 			page 19
+
+
+ 617              		.loc 1 232 1 is_stmt 0 view .LVU188
+ 618 0008 10BD     		pop	{r4, pc}
+ 619              	.LVL34:
+ 620              	.L44:
+ 232:Drivers/SOES/Src/esc_foe.c **** 
+ 621              		.loc 1 232 1 view .LVU189
+ 622 000a 0446     		mov	r4, r0
+ 218:Drivers/SOES/Src/esc_foe.c ****       if (mbxhandle)
+ 623              		.loc 1 218 7 is_stmt 1 view .LVU190
+ 218:Drivers/SOES/Src/esc_foe.c ****       if (mbxhandle)
+ 624              		.loc 1 218 19 is_stmt 0 view .LVU191
+ 625 000c FFF7FEFF 		bl	ESC_claimbuffer
+ 626              	.LVL35:
+ 219:Drivers/SOES/Src/esc_foe.c ****       {
+ 627              		.loc 1 219 7 is_stmt 1 view .LVU192
+ 219:Drivers/SOES/Src/esc_foe.c ****       {
+ 628              		.loc 1 219 10 is_stmt 0 view .LVU193
+ 629 0010 0146     		mov	r1, r0
+ 630 0012 0028     		cmp	r0, #0
+ 631 0014 F6D0     		beq	.L42
+ 221:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
+ 632              		.loc 1 221 10 is_stmt 1 view .LVU194
+ 221:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
+ 633              		.loc 1 221 45 is_stmt 0 view .LVU195
+ 634 0016 0C4B     		ldr	r3, .L45
+ 635 0018 9A6E     		ldr	r2, [r3, #104]
+ 221:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
+ 636              		.loc 1 221 43 view .LVU196
+ 637 001a 00FB02F2 		mul	r2, r0, r2
+ 221:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
+ 638              		.loc 1 221 17 view .LVU197
+ 639 001e 0B48     		ldr	r0, .L45+4
+ 640              	.LVL36:
+ 221:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
+ 641              		.loc 1 221 17 view .LVU198
+ 642 0020 1318     		adds	r3, r2, r0
+ 643              	.LVL37:
+ 222:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.mbxtype = MBXFOE;
+ 644              		.loc 1 222 10 is_stmt 1 view .LVU199
+ 222:Drivers/SOES/Src/esc_foe.c ****          foembx->mbxheader.mbxtype = MBXFOE;
+ 645              		.loc 1 222 35 is_stmt 0 view .LVU200
+ 646 0022 4FF0060C 		mov	ip, #6
+ 647 0026 02F800C0 		strb	ip, [r2, r0]
+ 648 002a 0022     		movs	r2, #0
+ 649 002c 5A70     		strb	r2, [r3, #1]
+ 223:Drivers/SOES/Src/esc_foe.c ****          foembx->foeheader.opcode = FOE_OP_ERR;
+ 650              		.loc 1 223 10 is_stmt 1 view .LVU201
+ 223:Drivers/SOES/Src/esc_foe.c ****          foembx->foeheader.opcode = FOE_OP_ERR;
+ 651              		.loc 1 223 36 is_stmt 0 view .LVU202
+ 652 002e 5A79     		ldrb	r2, [r3, #5]	@ zero_extendqisi2
+ 653 0030 0420     		movs	r0, #4
+ 654 0032 60F30302 		bfi	r2, r0, #0, #4
+ 655 0036 5A71     		strb	r2, [r3, #5]
+ 224:Drivers/SOES/Src/esc_foe.c ****          foembx->foeheader.errorcode = htoel (code);
+ 656              		.loc 1 224 10 is_stmt 1 view .LVU203
+ 224:Drivers/SOES/Src/esc_foe.c ****          foembx->foeheader.errorcode = htoel (code);
+ 657              		.loc 1 224 35 is_stmt 0 view .LVU204
+ARM GAS  /tmp/ccRRK0Mn.s 			page 20
+
+
+ 658 0038 0522     		movs	r2, #5
+ 659 003a 9A71     		strb	r2, [r3, #6]
+ 225:Drivers/SOES/Src/esc_foe.c ****          MBXcontrol[mbxhandle].state = MBXstate_outreq;
+ 660              		.loc 1 225 10 is_stmt 1 view .LVU205
+ 225:Drivers/SOES/Src/esc_foe.c ****          MBXcontrol[mbxhandle].state = MBXstate_outreq;
+ 661              		.loc 1 225 38 is_stmt 0 view .LVU206
+ 662 003c 9C60     		str	r4, [r3, #8]	@ unaligned
+ 226:Drivers/SOES/Src/esc_foe.c ****       }
+ 663              		.loc 1 226 10 is_stmt 1 view .LVU207
+ 226:Drivers/SOES/Src/esc_foe.c ****       }
+ 664              		.loc 1 226 38 is_stmt 0 view .LVU208
+ 665 003e 044B     		ldr	r3, .L45+8
+ 666              	.LVL38:
+ 226:Drivers/SOES/Src/esc_foe.c ****       }
+ 667              		.loc 1 226 38 view .LVU209
+ 668 0040 0322     		movs	r2, #3
+ 669 0042 5A54     		strb	r2, [r3, r1]
+ 670 0044 DEE7     		b	.L42
+ 671              	.L46:
+ 672 0046 00BF     		.align	2
+ 673              	.L45:
+ 674 0048 00000000 		.word	ESCvar
+ 675 004c 00000000 		.word	MBX
+ 676 0050 00000000 		.word	MBXcontrol
+ 677              		.cfi_endproc
+ 678              	.LFE4:
+ 680              		.section	.text.FOE_error,"ax",%progbits
+ 681              		.align	1
+ 682              		.syntax unified
+ 683              		.thumb
+ 684              		.thumb_func
+ 686              	FOE_error:
+ 687              	.LFB8:
+ 300:Drivers/SOES/Src/esc_foe.c **** 
+ 301:Drivers/SOES/Src/esc_foe.c **** /* Handlers for various FoE states. */
+ 302:Drivers/SOES/Src/esc_foe.c **** 
+ 303:Drivers/SOES/Src/esc_foe.c **** #ifdef FOE_READ_SUPPORTED
+ 304:Drivers/SOES/Src/esc_foe.c **** /** FoE read request handler. Starts with Initialize, Open and Sending one frame.
+ 305:Drivers/SOES/Src/esc_foe.c ****  * When first frame have been sent we will send data from Ack.
+ 306:Drivers/SOES/Src/esc_foe.c ****  * On error we will send FOE Abort.
+ 307:Drivers/SOES/Src/esc_foe.c ****  *
+ 308:Drivers/SOES/Src/esc_foe.c ****  */
+ 309:Drivers/SOES/Src/esc_foe.c **** static void FOE_read ()
+ 310:Drivers/SOES/Src/esc_foe.c **** {
+ 311:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 312:Drivers/SOES/Src/esc_foe.c ****    uint32_t data_len;
+ 313:Drivers/SOES/Src/esc_foe.c ****    uint32_t password;
+ 314:Drivers/SOES/Src/esc_foe.c ****    int res;
+ 315:Drivers/SOES/Src/esc_foe.c **** 
+ 316:Drivers/SOES/Src/esc_foe.c ****    if (FOEvar.foestate != FOE_READY)
+ 317:Drivers/SOES/Src/esc_foe.c ****    {
+ 318:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_ILLEGAL);
+ 319:Drivers/SOES/Src/esc_foe.c ****       return;
+ 320:Drivers/SOES/Src/esc_foe.c ****    }
+ 321:Drivers/SOES/Src/esc_foe.c **** 
+ 322:Drivers/SOES/Src/esc_foe.c ****    FOE_init ();
+ 323:Drivers/SOES/Src/esc_foe.c ****    foembx = (_FOE *) &MBX[0];
+ARM GAS  /tmp/ccRRK0Mn.s 			page 21
+
+
+ 324:Drivers/SOES/Src/esc_foe.c ****    /* Get the length of the file name in octets. */
+ 325:Drivers/SOES/Src/esc_foe.c ****    data_len = etohs (foembx->mbxheader.length) - ESC_FOEHSIZE;
+ 326:Drivers/SOES/Src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
+ 327:Drivers/SOES/Src/esc_foe.c **** 
+ 328:Drivers/SOES/Src/esc_foe.c ****    res = FOE_fopen (foembx->filename, data_len, password, FOE_OP_RRQ);
+ 329:Drivers/SOES/Src/esc_foe.c ****    if (res == 0)
+ 330:Drivers/SOES/Src/esc_foe.c ****    {
+ 331:Drivers/SOES/Src/esc_foe.c ****       FOEvar.foepacket = 1;
+ 332:Drivers/SOES/Src/esc_foe.c ****       /*
+ 333:Drivers/SOES/Src/esc_foe.c ****        * Attempt to send the packet
+ 334:Drivers/SOES/Src/esc_foe.c ****        */
+ 335:Drivers/SOES/Src/esc_foe.c ****       res = FOE_send_data_packet ();
+ 336:Drivers/SOES/Src/esc_foe.c ****       if (res <= (int)ESC_FOE_DATA_SIZE)
+ 337:Drivers/SOES/Src/esc_foe.c ****       {
+ 338:Drivers/SOES/Src/esc_foe.c ****          FOEvar.foestate = FOE_WAIT_FOR_ACK;
+ 339:Drivers/SOES/Src/esc_foe.c ****       }
+ 340:Drivers/SOES/Src/esc_foe.c ****       else
+ 341:Drivers/SOES/Src/esc_foe.c ****       {
+ 342:Drivers/SOES/Src/esc_foe.c ****          FOE_abort (res);
+ 343:Drivers/SOES/Src/esc_foe.c ****       }
+ 344:Drivers/SOES/Src/esc_foe.c ****    }
+ 345:Drivers/SOES/Src/esc_foe.c ****    else
+ 346:Drivers/SOES/Src/esc_foe.c ****    {
+ 347:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (res);
+ 348:Drivers/SOES/Src/esc_foe.c ****    }
+ 349:Drivers/SOES/Src/esc_foe.c **** }
+ 350:Drivers/SOES/Src/esc_foe.c **** 
+ 351:Drivers/SOES/Src/esc_foe.c **** /** FoE data ack handler. Will continue sending next frame until finished.
+ 352:Drivers/SOES/Src/esc_foe.c ****  * On error we will send FOE Abort.
+ 353:Drivers/SOES/Src/esc_foe.c ****  */
+ 354:Drivers/SOES/Src/esc_foe.c **** static void FOE_ack ()
+ 355:Drivers/SOES/Src/esc_foe.c **** {
+ 356:Drivers/SOES/Src/esc_foe.c ****    int res;
+ 357:Drivers/SOES/Src/esc_foe.c **** 
+ 358:Drivers/SOES/Src/esc_foe.c ****    /* Make sure we're able to take this. */
+ 359:Drivers/SOES/Src/esc_foe.c ****    if (FOEvar.foestate == FOE_WAIT_FOR_FINAL_ACK)
+ 360:Drivers/SOES/Src/esc_foe.c ****    {
+ 361:Drivers/SOES/Src/esc_foe.c ****       /* Move us back to ready state. */
+ 362:Drivers/SOES/Src/esc_foe.c ****       FOE_init ();
+ 363:Drivers/SOES/Src/esc_foe.c ****       return;
+ 364:Drivers/SOES/Src/esc_foe.c ****    }
+ 365:Drivers/SOES/Src/esc_foe.c ****    else if (FOEvar.foestate != FOE_WAIT_FOR_ACK)
+ 366:Drivers/SOES/Src/esc_foe.c ****    {
+ 367:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_ILLEGAL);
+ 368:Drivers/SOES/Src/esc_foe.c ****       return;
+ 369:Drivers/SOES/Src/esc_foe.c ****    }
+ 370:Drivers/SOES/Src/esc_foe.c ****    res = FOE_send_data_packet ();
+ 371:Drivers/SOES/Src/esc_foe.c ****    if (res < (int)ESC_FOE_DATA_SIZE)
+ 372:Drivers/SOES/Src/esc_foe.c ****    {
+ 373:Drivers/SOES/Src/esc_foe.c ****       FOEvar.foestate = FOE_WAIT_FOR_FINAL_ACK;
+ 374:Drivers/SOES/Src/esc_foe.c ****    }
+ 375:Drivers/SOES/Src/esc_foe.c ****    else if (res >= FOE_ERR_NOTDEFINED)
+ 376:Drivers/SOES/Src/esc_foe.c ****    {
+ 377:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_PROGERROR);
+ 378:Drivers/SOES/Src/esc_foe.c ****    }
+ 379:Drivers/SOES/Src/esc_foe.c **** }
+ 380:Drivers/SOES/Src/esc_foe.c **** #endif
+ARM GAS  /tmp/ccRRK0Mn.s 			page 22
+
+
+ 381:Drivers/SOES/Src/esc_foe.c **** 
+ 382:Drivers/SOES/Src/esc_foe.c **** /** FoE write request handler. Starts with Initialize, Open and Ack that we can/will
+ 383:Drivers/SOES/Src/esc_foe.c ****  * receive data. On error we will send FOE Abort.
+ 384:Drivers/SOES/Src/esc_foe.c ****  *
+ 385:Drivers/SOES/Src/esc_foe.c ****  */
+ 386:Drivers/SOES/Src/esc_foe.c **** static void FOE_write ()
+ 387:Drivers/SOES/Src/esc_foe.c **** {
+ 388:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 389:Drivers/SOES/Src/esc_foe.c ****    uint32_t data_len;
+ 390:Drivers/SOES/Src/esc_foe.c ****    uint32_t password;
+ 391:Drivers/SOES/Src/esc_foe.c ****    int res;
+ 392:Drivers/SOES/Src/esc_foe.c **** 
+ 393:Drivers/SOES/Src/esc_foe.c ****    if (FOEvar.foestate != FOE_READY)
+ 394:Drivers/SOES/Src/esc_foe.c ****    {
+ 395:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_ILLEGAL);
+ 396:Drivers/SOES/Src/esc_foe.c ****       return;
+ 397:Drivers/SOES/Src/esc_foe.c ****    }
+ 398:Drivers/SOES/Src/esc_foe.c **** 
+ 399:Drivers/SOES/Src/esc_foe.c ****    FOE_init ();
+ 400:Drivers/SOES/Src/esc_foe.c ****    foembx = (_FOE *) &MBX[0];
+ 401:Drivers/SOES/Src/esc_foe.c ****    data_len = etohs (foembx->mbxheader.length) - ESC_FOEHSIZE;
+ 402:Drivers/SOES/Src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
+ 403:Drivers/SOES/Src/esc_foe.c **** 
+ 404:Drivers/SOES/Src/esc_foe.c ****    /* Get an address we can write the file to, if possible. */
+ 405:Drivers/SOES/Src/esc_foe.c ****    res = FOE_fopen (foembx->filename, data_len, password, FOE_OP_WRQ);
+ 406:Drivers/SOES/Src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
+ 407:Drivers/SOES/Src/esc_foe.c ****    if (res == 0)
+ 408:Drivers/SOES/Src/esc_foe.c ****    {
+ 409:Drivers/SOES/Src/esc_foe.c ****       res = FOE_send_ack ();
+ 410:Drivers/SOES/Src/esc_foe.c ****       if (res)
+ 411:Drivers/SOES/Src/esc_foe.c ****       {
+ 412:Drivers/SOES/Src/esc_foe.c ****          FOE_abort (res);
+ 413:Drivers/SOES/Src/esc_foe.c ****       }
+ 414:Drivers/SOES/Src/esc_foe.c ****       else
+ 415:Drivers/SOES/Src/esc_foe.c ****       {
+ 416:Drivers/SOES/Src/esc_foe.c ****          FOEvar.foestate = FOE_WAIT_FOR_DATA;
+ 417:Drivers/SOES/Src/esc_foe.c ****       }
+ 418:Drivers/SOES/Src/esc_foe.c ****    }
+ 419:Drivers/SOES/Src/esc_foe.c ****    else
+ 420:Drivers/SOES/Src/esc_foe.c ****    {
+ 421:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (res);
+ 422:Drivers/SOES/Src/esc_foe.c ****    }
+ 423:Drivers/SOES/Src/esc_foe.c **** }
+ 424:Drivers/SOES/Src/esc_foe.c **** /** FoE data request handler. Validates and reads data until we're finished. Every
+ 425:Drivers/SOES/Src/esc_foe.c ****  * read frame followed by an Ack frame. On error we will send FOE Abort.
+ 426:Drivers/SOES/Src/esc_foe.c ****  *
+ 427:Drivers/SOES/Src/esc_foe.c ****  */
+ 428:Drivers/SOES/Src/esc_foe.c **** static void FOE_data ()
+ 429:Drivers/SOES/Src/esc_foe.c **** {
+ 430:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 431:Drivers/SOES/Src/esc_foe.c ****    uint32_t packet;
+ 432:Drivers/SOES/Src/esc_foe.c ****    uint16_t data_len, ncopied;
+ 433:Drivers/SOES/Src/esc_foe.c ****    int res;
+ 434:Drivers/SOES/Src/esc_foe.c **** 
+ 435:Drivers/SOES/Src/esc_foe.c ****    if(FOEvar.foestate != FOE_WAIT_FOR_DATA)
+ 436:Drivers/SOES/Src/esc_foe.c ****    {
+ 437:Drivers/SOES/Src/esc_foe.c ****       FOE_abort(FOE_ERR_ILLEGAL);
+ARM GAS  /tmp/ccRRK0Mn.s 			page 23
+
+
+ 438:Drivers/SOES/Src/esc_foe.c ****       return;
+ 439:Drivers/SOES/Src/esc_foe.c ****    }
+ 440:Drivers/SOES/Src/esc_foe.c **** 
+ 441:Drivers/SOES/Src/esc_foe.c ****    foembx = (_FOE*)&MBX[0];
+ 442:Drivers/SOES/Src/esc_foe.c ****    data_len = etohs(foembx->mbxheader.length) - ESC_FOEHSIZE;
+ 443:Drivers/SOES/Src/esc_foe.c ****    packet = etohl(foembx->foeheader.packetnumber);
+ 444:Drivers/SOES/Src/esc_foe.c **** 
+ 445:Drivers/SOES/Src/esc_foe.c ****    if (packet != FOEvar.foepacket)
+ 446:Drivers/SOES/Src/esc_foe.c ****    {
+ 447:Drivers/SOES/Src/esc_foe.c ****       DPRINT("FOE_data packet error, packet: %d, foeheader.packet: %d\n",packet,FOEvar.foepacket);
+ 448:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_PACKETNO);
+ 449:Drivers/SOES/Src/esc_foe.c ****    }
+ 450:Drivers/SOES/Src/esc_foe.c ****    else if (data_len == 0)
+ 451:Drivers/SOES/Src/esc_foe.c ****    {
+ 452:Drivers/SOES/Src/esc_foe.c ****       DPRINT("FOE_data completed\n");
+ 453:Drivers/SOES/Src/esc_foe.c ****       FOE_fclose ();
+ 454:Drivers/SOES/Src/esc_foe.c ****       res = FOE_send_ack ();
+ 455:Drivers/SOES/Src/esc_foe.c ****       FOE_init ();
+ 456:Drivers/SOES/Src/esc_foe.c ****    }
+ 457:Drivers/SOES/Src/esc_foe.c ****    else if (FOEvar.fposition + data_len > FOEvar.fend)
+ 458:Drivers/SOES/Src/esc_foe.c ****    {
+ 459:Drivers/SOES/Src/esc_foe.c ****       DPRINT("FOE_data disk full\n");
+ 460:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_DISKFULL);
+ 461:Drivers/SOES/Src/esc_foe.c ****    }
+ 462:Drivers/SOES/Src/esc_foe.c ****    else
+ 463:Drivers/SOES/Src/esc_foe.c ****    {
+ 464:Drivers/SOES/Src/esc_foe.c ****       ncopied = FOE_fwrite (foembx->data, data_len);
+ 465:Drivers/SOES/Src/esc_foe.c ****       if (!ncopied)
+ 466:Drivers/SOES/Src/esc_foe.c ****       {
+ 467:Drivers/SOES/Src/esc_foe.c ****          DPRINT("FOE_data no copied\n");
+ 468:Drivers/SOES/Src/esc_foe.c ****          FOE_abort (FOE_ERR_PROGERROR);
+ 469:Drivers/SOES/Src/esc_foe.c ****       }
+ 470:Drivers/SOES/Src/esc_foe.c ****       else if (data_len == ESC_FOE_DATA_SIZE)
+ 471:Drivers/SOES/Src/esc_foe.c ****       {
+ 472:Drivers/SOES/Src/esc_foe.c ****          DPRINT("FOE_data data_len == FOE_DATA_SIZE\n");
+ 473:Drivers/SOES/Src/esc_foe.c ****          if (ncopied != data_len)
+ 474:Drivers/SOES/Src/esc_foe.c ****          {
+ 475:Drivers/SOES/Src/esc_foe.c ****             DPRINT("FOE_data only %d of %d copied\n",ncopied, data_len);
+ 476:Drivers/SOES/Src/esc_foe.c ****             FOE_abort (FOE_ERR_PROGERROR);
+ 477:Drivers/SOES/Src/esc_foe.c ****          }
+ 478:Drivers/SOES/Src/esc_foe.c ****          res = FOE_send_ack ();
+ 479:Drivers/SOES/Src/esc_foe.c ****          if (res)
+ 480:Drivers/SOES/Src/esc_foe.c ****          {
+ 481:Drivers/SOES/Src/esc_foe.c ****             FOE_abort (res);
+ 482:Drivers/SOES/Src/esc_foe.c ****          }
+ 483:Drivers/SOES/Src/esc_foe.c ****       }
+ 484:Drivers/SOES/Src/esc_foe.c ****       else
+ 485:Drivers/SOES/Src/esc_foe.c ****       {
+ 486:Drivers/SOES/Src/esc_foe.c ****          if ((ncopied != data_len) || FOE_fclose ())
+ 487:Drivers/SOES/Src/esc_foe.c ****          {
+ 488:Drivers/SOES/Src/esc_foe.c ****             DPRINT("FOE_fclose failed to write extra buffer\n");
+ 489:Drivers/SOES/Src/esc_foe.c ****             FOE_abort (FOE_ERR_PROGERROR);
+ 490:Drivers/SOES/Src/esc_foe.c ****          }
+ 491:Drivers/SOES/Src/esc_foe.c ****          else
+ 492:Drivers/SOES/Src/esc_foe.c ****          {
+ 493:Drivers/SOES/Src/esc_foe.c ****             DPRINT("FOE_data completed\n");
+ 494:Drivers/SOES/Src/esc_foe.c ****             res = FOE_send_ack ();
+ARM GAS  /tmp/ccRRK0Mn.s 			page 24
+
+
+ 495:Drivers/SOES/Src/esc_foe.c ****             FOE_init ();
+ 496:Drivers/SOES/Src/esc_foe.c ****          }
+ 497:Drivers/SOES/Src/esc_foe.c ****       }
+ 498:Drivers/SOES/Src/esc_foe.c ****    }
+ 499:Drivers/SOES/Src/esc_foe.c **** }
+ 500:Drivers/SOES/Src/esc_foe.c **** 
+ 501:Drivers/SOES/Src/esc_foe.c **** #ifdef FOE_READ_SUPPORTED
+ 502:Drivers/SOES/Src/esc_foe.c **** /** FoE read request busy handler. Send an Ack of last frame again. On error
+ 503:Drivers/SOES/Src/esc_foe.c ****  * we will send FOE Abort.
+ 504:Drivers/SOES/Src/esc_foe.c ****  *
+ 505:Drivers/SOES/Src/esc_foe.c ****  */
+ 506:Drivers/SOES/Src/esc_foe.c **** static void FOE_busy ()
+ 507:Drivers/SOES/Src/esc_foe.c **** {
+ 508:Drivers/SOES/Src/esc_foe.c ****    /* Only valid if we're servicing a read request. */
+ 509:Drivers/SOES/Src/esc_foe.c ****    if (FOEvar.foestate != FOE_WAIT_FOR_ACK)
+ 510:Drivers/SOES/Src/esc_foe.c ****    {
+ 511:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_ILLEGAL);
+ 512:Drivers/SOES/Src/esc_foe.c ****    }
+ 513:Drivers/SOES/Src/esc_foe.c ****    else
+ 514:Drivers/SOES/Src/esc_foe.c ****    {
+ 515:Drivers/SOES/Src/esc_foe.c ****       /* Send the last part again. */
+ 516:Drivers/SOES/Src/esc_foe.c ****       FOEvar.fposition = FOEvar.fprevposition;
+ 517:Drivers/SOES/Src/esc_foe.c ****       FOEvar.foepacket--;
+ 518:Drivers/SOES/Src/esc_foe.c ****       FOE_ack ();
+ 519:Drivers/SOES/Src/esc_foe.c ****    }
+ 520:Drivers/SOES/Src/esc_foe.c **** }
+ 521:Drivers/SOES/Src/esc_foe.c **** #endif
+ 522:Drivers/SOES/Src/esc_foe.c **** 
+ 523:Drivers/SOES/Src/esc_foe.c **** /** FoE error requesthandler. Send an FOE Abort.
+ 524:Drivers/SOES/Src/esc_foe.c ****  *
+ 525:Drivers/SOES/Src/esc_foe.c ****  */
+ 526:Drivers/SOES/Src/esc_foe.c **** static void FOE_error ()
+ 527:Drivers/SOES/Src/esc_foe.c **** {
+ 688              		.loc 1 527 1 is_stmt 1 view -0
+ 689              		.cfi_startproc
+ 690              		@ args = 0, pretend = 0, frame = 0
+ 691              		@ frame_needed = 0, uses_anonymous_args = 0
+ 692 0000 08B5     		push	{r3, lr}
+ 693              		.cfi_def_cfa_offset 8
+ 694              		.cfi_offset 3, -8
+ 695              		.cfi_offset 14, -4
+ 528:Drivers/SOES/Src/esc_foe.c ****    /* Master panic! abort the transfer. */
+ 529:Drivers/SOES/Src/esc_foe.c ****    FOE_abort (0);
+ 696              		.loc 1 529 4 view .LVU211
+ 697 0002 0020     		movs	r0, #0
+ 698 0004 FFF7FEFF 		bl	FOE_abort
+ 699              	.LVL39:
+ 530:Drivers/SOES/Src/esc_foe.c **** }
+ 700              		.loc 1 530 1 is_stmt 0 view .LVU212
+ 701 0008 08BD     		pop	{r3, pc}
+ 702              		.cfi_endproc
+ 703              	.LFE8:
+ 705              		.section	.text.FOE_write,"ax",%progbits
+ 706              		.align	1
+ 707              		.syntax unified
+ 708              		.thumb
+ 709              		.thumb_func
+ARM GAS  /tmp/ccRRK0Mn.s 			page 25
+
+
+ 711              	FOE_write:
+ 712              	.LFB6:
+ 387:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 713              		.loc 1 387 1 is_stmt 1 view -0
+ 714              		.cfi_startproc
+ 715              		@ args = 0, pretend = 0, frame = 0
+ 716              		@ frame_needed = 0, uses_anonymous_args = 0
+ 717 0000 08B5     		push	{r3, lr}
+ 718              		.cfi_def_cfa_offset 8
+ 719              		.cfi_offset 3, -8
+ 720              		.cfi_offset 14, -4
+ 388:Drivers/SOES/Src/esc_foe.c ****    uint32_t data_len;
+ 721              		.loc 1 388 4 view .LVU214
+ 389:Drivers/SOES/Src/esc_foe.c ****    uint32_t password;
+ 722              		.loc 1 389 4 view .LVU215
+ 390:Drivers/SOES/Src/esc_foe.c ****    int res;
+ 723              		.loc 1 390 4 view .LVU216
+ 391:Drivers/SOES/Src/esc_foe.c **** 
+ 724              		.loc 1 391 4 view .LVU217
+ 393:Drivers/SOES/Src/esc_foe.c ****    {
+ 725              		.loc 1 393 4 view .LVU218
+ 393:Drivers/SOES/Src/esc_foe.c ****    {
+ 726              		.loc 1 393 14 is_stmt 0 view .LVU219
+ 727 0002 104B     		ldr	r3, .L57
+ 728 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 393:Drivers/SOES/Src/esc_foe.c ****    {
+ 729              		.loc 1 393 7 view .LVU220
+ 730 0006 93B9     		cbnz	r3, .L55
+ 399:Drivers/SOES/Src/esc_foe.c ****    foembx = (_FOE *) &MBX[0];
+ 731              		.loc 1 399 4 is_stmt 1 view .LVU221
+ 732 0008 FFF7FEFF 		bl	FOE_init
+ 733              	.LVL40:
+ 400:Drivers/SOES/Src/esc_foe.c ****    data_len = etohs (foembx->mbxheader.length) - ESC_FOEHSIZE;
+ 734              		.loc 1 400 4 view .LVU222
+ 401:Drivers/SOES/Src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
+ 735              		.loc 1 401 4 view .LVU223
+ 401:Drivers/SOES/Src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
+ 736              		.loc 1 401 15 is_stmt 0 view .LVU224
+ 737 000c 0E48     		ldr	r0, .L57+4
+ 738 000e 0188     		ldrh	r1, [r0]	@ unaligned
+ 401:Drivers/SOES/Src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
+ 739              		.loc 1 401 13 view .LVU225
+ 740 0010 0639     		subs	r1, r1, #6
+ 741              	.LVL41:
+ 402:Drivers/SOES/Src/esc_foe.c **** 
+ 742              		.loc 1 402 4 is_stmt 1 view .LVU226
+ 405:Drivers/SOES/Src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
+ 743              		.loc 1 405 4 view .LVU227
+ 405:Drivers/SOES/Src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
+ 744              		.loc 1 405 10 is_stmt 0 view .LVU228
+ 745 0012 0223     		movs	r3, #2
+ 746 0014 8268     		ldr	r2, [r0, #8]	@ unaligned
+ 747              	.LVL42:
+ 405:Drivers/SOES/Src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
+ 748              		.loc 1 405 10 view .LVU229
+ 749 0016 C9B2     		uxtb	r1, r1
+ 750              	.LVL43:
+ARM GAS  /tmp/ccRRK0Mn.s 			page 26
+
+
+ 405:Drivers/SOES/Src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
+ 751              		.loc 1 405 10 view .LVU230
+ 752 0018 0C30     		adds	r0, r0, #12
+ 753              	.LVL44:
+ 405:Drivers/SOES/Src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
+ 754              		.loc 1 405 10 view .LVU231
+ 755 001a FFF7FEFF 		bl	FOE_fopen
+ 756              	.LVL45:
+ 406:Drivers/SOES/Src/esc_foe.c ****    if (res == 0)
+ 757              		.loc 1 406 84 is_stmt 1 view .LVU232
+ 407:Drivers/SOES/Src/esc_foe.c ****    {
+ 758              		.loc 1 407 4 view .LVU233
+ 407:Drivers/SOES/Src/esc_foe.c ****    {
+ 759              		.loc 1 407 7 is_stmt 0 view .LVU234
+ 760 001e 70B9     		cbnz	r0, .L52
+ 409:Drivers/SOES/Src/esc_foe.c ****       if (res)
+ 761              		.loc 1 409 7 is_stmt 1 view .LVU235
+ 409:Drivers/SOES/Src/esc_foe.c ****       if (res)
+ 762              		.loc 1 409 13 is_stmt 0 view .LVU236
+ 763 0020 FFF7FEFF 		bl	FOE_send_ack
+ 764              	.LVL46:
+ 410:Drivers/SOES/Src/esc_foe.c ****       {
+ 765              		.loc 1 410 7 is_stmt 1 view .LVU237
+ 410:Drivers/SOES/Src/esc_foe.c ****       {
+ 766              		.loc 1 410 10 is_stmt 0 view .LVU238
+ 767 0024 40B9     		cbnz	r0, .L56
+ 416:Drivers/SOES/Src/esc_foe.c ****       }
+ 768              		.loc 1 416 10 is_stmt 1 view .LVU239
+ 416:Drivers/SOES/Src/esc_foe.c ****       }
+ 769              		.loc 1 416 26 is_stmt 0 view .LVU240
+ 770 0026 074B     		ldr	r3, .L57
+ 771 0028 0322     		movs	r2, #3
+ 772 002a 1A70     		strb	r2, [r3]
+ 773 002c 03E0     		b	.L49
+ 774              	.LVL47:
+ 775              	.L55:
+ 395:Drivers/SOES/Src/esc_foe.c ****       return;
+ 776              		.loc 1 395 7 is_stmt 1 view .LVU241
+ 777 002e 48F20400 		movw	r0, #32772
+ 778 0032 FFF7FEFF 		bl	FOE_abort
+ 779              	.LVL48:
+ 396:Drivers/SOES/Src/esc_foe.c ****    }
+ 780              		.loc 1 396 7 view .LVU242
+ 781              	.L49:
+ 423:Drivers/SOES/Src/esc_foe.c **** /** FoE data request handler. Validates and reads data until we're finished. Every
+ 782              		.loc 1 423 1 is_stmt 0 view .LVU243
+ 783 0036 08BD     		pop	{r3, pc}
+ 784              	.LVL49:
+ 785              	.L56:
+ 412:Drivers/SOES/Src/esc_foe.c ****       }
+ 786              		.loc 1 412 10 is_stmt 1 view .LVU244
+ 787 0038 FFF7FEFF 		bl	FOE_abort
+ 788              	.LVL50:
+ 412:Drivers/SOES/Src/esc_foe.c ****       }
+ 789              		.loc 1 412 10 is_stmt 0 view .LVU245
+ 790 003c FBE7     		b	.L49
+ 791              	.LVL51:
+ARM GAS  /tmp/ccRRK0Mn.s 			page 27
+
+
+ 792              	.L52:
+ 421:Drivers/SOES/Src/esc_foe.c ****    }
+ 793              		.loc 1 421 7 is_stmt 1 view .LVU246
+ 794 003e FFF7FEFF 		bl	FOE_abort
+ 795              	.LVL52:
+ 421:Drivers/SOES/Src/esc_foe.c ****    }
+ 796              		.loc 1 421 7 is_stmt 0 view .LVU247
+ 797 0042 F8E7     		b	.L49
+ 798              	.L58:
+ 799              		.align	2
+ 800              	.L57:
+ 801 0044 00000000 		.word	.LANCHOR0
+ 802 0048 00000000 		.word	MBX
+ 803              		.cfi_endproc
+ 804              	.LFE6:
+ 806              		.section	.text.FOE_data,"ax",%progbits
+ 807              		.align	1
+ 808              		.syntax unified
+ 809              		.thumb
+ 810              		.thumb_func
+ 812              	FOE_data:
+ 813              	.LFB7:
+ 429:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 814              		.loc 1 429 1 is_stmt 1 view -0
+ 815              		.cfi_startproc
+ 816              		@ args = 0, pretend = 0, frame = 0
+ 817              		@ frame_needed = 0, uses_anonymous_args = 0
+ 818 0000 10B5     		push	{r4, lr}
+ 819              		.cfi_def_cfa_offset 8
+ 820              		.cfi_offset 4, -8
+ 821              		.cfi_offset 14, -4
+ 430:Drivers/SOES/Src/esc_foe.c ****    uint32_t packet;
+ 822              		.loc 1 430 4 view .LVU249
+ 431:Drivers/SOES/Src/esc_foe.c ****    uint16_t data_len, ncopied;
+ 823              		.loc 1 431 4 view .LVU250
+ 432:Drivers/SOES/Src/esc_foe.c ****    int res;
+ 824              		.loc 1 432 4 view .LVU251
+ 433:Drivers/SOES/Src/esc_foe.c **** 
+ 825              		.loc 1 433 4 view .LVU252
+ 435:Drivers/SOES/Src/esc_foe.c ****    {
+ 826              		.loc 1 435 4 view .LVU253
+ 435:Drivers/SOES/Src/esc_foe.c ****    {
+ 827              		.loc 1 435 13 is_stmt 0 view .LVU254
+ 828 0002 2D4B     		ldr	r3, .L78
+ 829 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 435:Drivers/SOES/Src/esc_foe.c ****    {
+ 830              		.loc 1 435 6 view .LVU255
+ 831 0006 032B     		cmp	r3, #3
+ 832 0008 17D1     		bne	.L71
+ 441:Drivers/SOES/Src/esc_foe.c ****    data_len = etohs(foembx->mbxheader.length) - ESC_FOEHSIZE;
+ 833              		.loc 1 441 4 is_stmt 1 view .LVU256
+ 834              	.LVL53:
+ 442:Drivers/SOES/Src/esc_foe.c ****    packet = etohl(foembx->foeheader.packetnumber);
+ 835              		.loc 1 442 4 view .LVU257
+ 442:Drivers/SOES/Src/esc_foe.c ****    packet = etohl(foembx->foeheader.packetnumber);
+ 836              		.loc 1 442 15 is_stmt 0 view .LVU258
+ 837 000a 2C4B     		ldr	r3, .L78+4
+ARM GAS  /tmp/ccRRK0Mn.s 			page 28
+
+
+ 838 000c 1C88     		ldrh	r4, [r3]	@ unaligned
+ 442:Drivers/SOES/Src/esc_foe.c ****    packet = etohl(foembx->foeheader.packetnumber);
+ 839              		.loc 1 442 13 view .LVU259
+ 840 000e 063C     		subs	r4, r4, #6
+ 841 0010 A4B2     		uxth	r4, r4
+ 842              	.LVL54:
+ 443:Drivers/SOES/Src/esc_foe.c **** 
+ 843              		.loc 1 443 4 is_stmt 1 view .LVU260
+ 443:Drivers/SOES/Src/esc_foe.c **** 
+ 844              		.loc 1 443 11 is_stmt 0 view .LVU261
+ 845 0012 9B68     		ldr	r3, [r3, #8]	@ unaligned
+ 846              	.LVL55:
+ 445:Drivers/SOES/Src/esc_foe.c ****    {
+ 847              		.loc 1 445 4 is_stmt 1 view .LVU262
+ 445:Drivers/SOES/Src/esc_foe.c ****    {
+ 848              		.loc 1 445 24 is_stmt 0 view .LVU263
+ 849 0014 284A     		ldr	r2, .L78
+ 850 0016 D2F80320 		ldr	r2, [r2, #3]	@ unaligned
+ 445:Drivers/SOES/Src/esc_foe.c ****    {
+ 851              		.loc 1 445 7 view .LVU264
+ 852 001a 9A42     		cmp	r2, r3
+ 853 001c 12D1     		bne	.L72
+ 450:Drivers/SOES/Src/esc_foe.c ****    {
+ 854              		.loc 1 450 9 is_stmt 1 view .LVU265
+ 450:Drivers/SOES/Src/esc_foe.c ****    {
+ 855              		.loc 1 450 12 is_stmt 0 view .LVU266
+ 856 001e B4B1     		cbz	r4, .L73
+ 457:Drivers/SOES/Src/esc_foe.c ****    {
+ 857              		.loc 1 457 9 is_stmt 1 view .LVU267
+ 457:Drivers/SOES/Src/esc_foe.c ****    {
+ 858              		.loc 1 457 19 is_stmt 0 view .LVU268
+ 859 0020 254A     		ldr	r2, .L78
+ 860 0022 D2F80730 		ldr	r3, [r2, #7]	@ unaligned
+ 861              	.LVL56:
+ 457:Drivers/SOES/Src/esc_foe.c ****    {
+ 862              		.loc 1 457 30 view .LVU269
+ 863 0026 2344     		add	r3, r3, r4
+ 457:Drivers/SOES/Src/esc_foe.c ****    {
+ 864              		.loc 1 457 49 view .LVU270
+ 865 0028 D2F80F20 		ldr	r2, [r2, #15]	@ unaligned
+ 457:Drivers/SOES/Src/esc_foe.c ****    {
+ 866              		.loc 1 457 12 view .LVU271
+ 867 002c 9342     		cmp	r3, r2
+ 868 002e 15D9     		bls	.L64
+ 459:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_DISKFULL);
+ 869              		.loc 1 459 37 is_stmt 1 view .LVU272
+ 460:Drivers/SOES/Src/esc_foe.c ****    }
+ 870              		.loc 1 460 7 view .LVU273
+ 871 0030 48F20300 		movw	r0, #32771
+ 872 0034 FFF7FEFF 		bl	FOE_abort
+ 873              	.LVL57:
+ 460:Drivers/SOES/Src/esc_foe.c ****    }
+ 874              		.loc 1 460 7 is_stmt 0 view .LVU274
+ 875 0038 03E0     		b	.L59
+ 876              	.LVL58:
+ 877              	.L71:
+ 437:Drivers/SOES/Src/esc_foe.c ****       return;
+ARM GAS  /tmp/ccRRK0Mn.s 			page 29
+
+
+ 878              		.loc 1 437 7 is_stmt 1 view .LVU275
+ 879 003a 48F20400 		movw	r0, #32772
+ 880 003e FFF7FEFF 		bl	FOE_abort
+ 881              	.LVL59:
+ 438:Drivers/SOES/Src/esc_foe.c ****    }
+ 882              		.loc 1 438 7 view .LVU276
+ 883              	.L59:
+ 499:Drivers/SOES/Src/esc_foe.c **** 
+ 884              		.loc 1 499 1 is_stmt 0 view .LVU277
+ 885 0042 10BD     		pop	{r4, pc}
+ 886              	.LVL60:
+ 887              	.L72:
+ 447:Drivers/SOES/Src/esc_foe.c ****       FOE_abort (FOE_ERR_PACKETNO);
+ 888              		.loc 1 447 98 is_stmt 1 view .LVU278
+ 448:Drivers/SOES/Src/esc_foe.c ****    }
+ 889              		.loc 1 448 7 view .LVU279
+ 890 0044 48F20500 		movw	r0, #32773
+ 891 0048 FFF7FEFF 		bl	FOE_abort
+ 892              	.LVL61:
+ 448:Drivers/SOES/Src/esc_foe.c ****    }
+ 893              		.loc 1 448 7 is_stmt 0 view .LVU280
+ 894 004c F9E7     		b	.L59
+ 895              	.LVL62:
+ 896              	.L73:
+ 452:Drivers/SOES/Src/esc_foe.c ****       FOE_fclose ();
+ 897              		.loc 1 452 37 is_stmt 1 view .LVU281
+ 453:Drivers/SOES/Src/esc_foe.c ****       res = FOE_send_ack ();
+ 898              		.loc 1 453 7 view .LVU282
+ 899 004e FFF7FEFF 		bl	FOE_fclose
+ 900              	.LVL63:
+ 454:Drivers/SOES/Src/esc_foe.c ****       FOE_init ();
+ 901              		.loc 1 454 7 view .LVU283
+ 454:Drivers/SOES/Src/esc_foe.c ****       FOE_init ();
+ 902              		.loc 1 454 13 is_stmt 0 view .LVU284
+ 903 0052 FFF7FEFF 		bl	FOE_send_ack
+ 904              	.LVL64:
+ 455:Drivers/SOES/Src/esc_foe.c ****    }
+ 905              		.loc 1 455 7 is_stmt 1 view .LVU285
+ 906 0056 FFF7FEFF 		bl	FOE_init
+ 907              	.LVL65:
+ 908 005a F2E7     		b	.L59
+ 909              	.LVL66:
+ 910              	.L64:
+ 464:Drivers/SOES/Src/esc_foe.c ****       if (!ncopied)
+ 911              		.loc 1 464 7 view .LVU286
+ 464:Drivers/SOES/Src/esc_foe.c ****       if (!ncopied)
+ 912              		.loc 1 464 17 is_stmt 0 view .LVU287
+ 913 005c 2146     		mov	r1, r4
+ 914 005e 1848     		ldr	r0, .L78+8
+ 915 0060 FFF7FEFF 		bl	FOE_fwrite
+ 916              	.LVL67:
+ 465:Drivers/SOES/Src/esc_foe.c ****       {
+ 917              		.loc 1 465 7 is_stmt 1 view .LVU288
+ 465:Drivers/SOES/Src/esc_foe.c ****       {
+ 918              		.loc 1 465 10 is_stmt 0 view .LVU289
+ 919 0064 58B1     		cbz	r0, .L74
+ 470:Drivers/SOES/Src/esc_foe.c ****       {
+ARM GAS  /tmp/ccRRK0Mn.s 			page 30
+
+
+ 920              		.loc 1 470 12 is_stmt 1 view .LVU290
+ 470:Drivers/SOES/Src/esc_foe.c ****       {
+ 921              		.loc 1 470 28 is_stmt 0 view .LVU291
+ 922 0066 174B     		ldr	r3, .L78+12
+ 923 0068 9B6E     		ldr	r3, [r3, #104]
+ 924 006a 0C3B     		subs	r3, r3, #12
+ 470:Drivers/SOES/Src/esc_foe.c ****       {
+ 925              		.loc 1 470 15 view .LVU292
+ 926 006c 9C42     		cmp	r4, r3
+ 927 006e 0BD0     		beq	.L75
+ 486:Drivers/SOES/Src/esc_foe.c ****          {
+ 928              		.loc 1 486 10 is_stmt 1 view .LVU293
+ 486:Drivers/SOES/Src/esc_foe.c ****          {
+ 929              		.loc 1 486 13 is_stmt 0 view .LVU294
+ 930 0070 8442     		cmp	r4, r0
+ 931 0072 17D0     		beq	.L76
+ 932              	.LVL68:
+ 933              	.L68:
+ 488:Drivers/SOES/Src/esc_foe.c ****             FOE_abort (FOE_ERR_PROGERROR);
+ 934              		.loc 1 488 64 is_stmt 1 view .LVU295
+ 489:Drivers/SOES/Src/esc_foe.c ****          }
+ 935              		.loc 1 489 13 view .LVU296
+ 936 0074 48F20B00 		movw	r0, #32779
+ 937 0078 FFF7FEFF 		bl	FOE_abort
+ 938              	.LVL69:
+ 939 007c E1E7     		b	.L59
+ 940              	.LVL70:
+ 941              	.L74:
+ 467:Drivers/SOES/Src/esc_foe.c ****          FOE_abort (FOE_ERR_PROGERROR);
+ 942              		.loc 1 467 40 view .LVU297
+ 468:Drivers/SOES/Src/esc_foe.c ****       }
+ 943              		.loc 1 468 10 view .LVU298
+ 944 007e 48F20B00 		movw	r0, #32779
+ 945              	.LVL71:
+ 468:Drivers/SOES/Src/esc_foe.c ****       }
+ 946              		.loc 1 468 10 is_stmt 0 view .LVU299
+ 947 0082 FFF7FEFF 		bl	FOE_abort
+ 948              	.LVL72:
+ 949 0086 DCE7     		b	.L59
+ 950              	.LVL73:
+ 951              	.L75:
+ 472:Drivers/SOES/Src/esc_foe.c ****          if (ncopied != data_len)
+ 952              		.loc 1 472 56 is_stmt 1 view .LVU300
+ 473:Drivers/SOES/Src/esc_foe.c ****          {
+ 953              		.loc 1 473 10 view .LVU301
+ 473:Drivers/SOES/Src/esc_foe.c ****          {
+ 954              		.loc 1 473 13 is_stmt 0 view .LVU302
+ 955 0088 8442     		cmp	r4, r0
+ 956 008a 06D1     		bne	.L77
+ 957              	.LVL74:
+ 958              	.L67:
+ 478:Drivers/SOES/Src/esc_foe.c ****          if (res)
+ 959              		.loc 1 478 10 is_stmt 1 view .LVU303
+ 478:Drivers/SOES/Src/esc_foe.c ****          if (res)
+ 960              		.loc 1 478 16 is_stmt 0 view .LVU304
+ 961 008c FFF7FEFF 		bl	FOE_send_ack
+ 962              	.LVL75:
+ARM GAS  /tmp/ccRRK0Mn.s 			page 31
+
+
+ 479:Drivers/SOES/Src/esc_foe.c ****          {
+ 963              		.loc 1 479 10 is_stmt 1 view .LVU305
+ 479:Drivers/SOES/Src/esc_foe.c ****          {
+ 964              		.loc 1 479 13 is_stmt 0 view .LVU306
+ 965 0090 0028     		cmp	r0, #0
+ 966 0092 D6D0     		beq	.L59
+ 481:Drivers/SOES/Src/esc_foe.c ****          }
+ 967              		.loc 1 481 13 is_stmt 1 view .LVU307
+ 968 0094 FFF7FEFF 		bl	FOE_abort
+ 969              	.LVL76:
+ 481:Drivers/SOES/Src/esc_foe.c ****          }
+ 970              		.loc 1 481 13 is_stmt 0 view .LVU308
+ 971 0098 D3E7     		b	.L59
+ 972              	.LVL77:
+ 973              	.L77:
+ 475:Drivers/SOES/Src/esc_foe.c ****             FOE_abort (FOE_ERR_PROGERROR);
+ 974              		.loc 1 475 72 is_stmt 1 view .LVU309
+ 476:Drivers/SOES/Src/esc_foe.c ****          }
+ 975              		.loc 1 476 13 view .LVU310
+ 976 009a 48F20B00 		movw	r0, #32779
+ 977              	.LVL78:
+ 476:Drivers/SOES/Src/esc_foe.c ****          }
+ 978              		.loc 1 476 13 is_stmt 0 view .LVU311
+ 979 009e FFF7FEFF 		bl	FOE_abort
+ 980              	.LVL79:
+ 981 00a2 F3E7     		b	.L67
+ 982              	.LVL80:
+ 983              	.L76:
+ 486:Drivers/SOES/Src/esc_foe.c ****          {
+ 984              		.loc 1 486 39 discriminator 1 view .LVU312
+ 985 00a4 FFF7FEFF 		bl	FOE_fclose
+ 986              	.LVL81:
+ 486:Drivers/SOES/Src/esc_foe.c ****          {
+ 987              		.loc 1 486 36 discriminator 1 view .LVU313
+ 988 00a8 0028     		cmp	r0, #0
+ 989 00aa E3D1     		bne	.L68
+ 493:Drivers/SOES/Src/esc_foe.c ****             res = FOE_send_ack ();
+ 990              		.loc 1 493 43 is_stmt 1 view .LVU314
+ 494:Drivers/SOES/Src/esc_foe.c ****             FOE_init ();
+ 991              		.loc 1 494 13 view .LVU315
+ 494:Drivers/SOES/Src/esc_foe.c ****             FOE_init ();
+ 992              		.loc 1 494 19 is_stmt 0 view .LVU316
+ 993 00ac FFF7FEFF 		bl	FOE_send_ack
+ 994              	.LVL82:
+ 495:Drivers/SOES/Src/esc_foe.c ****          }
+ 995              		.loc 1 495 13 is_stmt 1 view .LVU317
+ 996 00b0 FFF7FEFF 		bl	FOE_init
+ 997              	.LVL83:
+ 998 00b4 C5E7     		b	.L59
+ 999              	.L79:
+ 1000 00b6 00BF     		.align	2
+ 1001              	.L78:
+ 1002 00b8 00000000 		.word	.LANCHOR0
+ 1003 00bc 00000000 		.word	MBX
+ 1004 00c0 0C000000 		.word	MBX+12
+ 1005 00c4 00000000 		.word	ESCvar
+ 1006              		.cfi_endproc
+ARM GAS  /tmp/ccRRK0Mn.s 			page 32
+
+
+ 1007              	.LFE7:
+ 1009              		.section	.text.FOE_config,"ax",%progbits
+ 1010              		.align	1
+ 1011              		.global	FOE_config
+ 1012              		.syntax unified
+ 1013              		.thumb
+ 1014              		.thumb_func
+ 1016              	FOE_config:
+ 1017              	.LVL84:
+ 1018              	.LFB9:
+ 531:Drivers/SOES/Src/esc_foe.c **** 
+ 532:Drivers/SOES/Src/esc_foe.c **** /** Function copying the application configuration variable
+ 533:Drivers/SOES/Src/esc_foe.c ****  * to the FoE module local pointer variable.
+ 534:Drivers/SOES/Src/esc_foe.c ****  *
+ 535:Drivers/SOES/Src/esc_foe.c ****  * @param[in] cfg       = Pointer to by the Application static declared
+ 536:Drivers/SOES/Src/esc_foe.c ****  * configuration variable holding application specific details.
+ 537:Drivers/SOES/Src/esc_foe.c ****  */
+ 538:Drivers/SOES/Src/esc_foe.c **** void FOE_config (foe_cfg_t * cfg)
+ 539:Drivers/SOES/Src/esc_foe.c **** {
+ 1019              		.loc 1 539 1 view -0
+ 1020              		.cfi_startproc
+ 1021              		@ args = 0, pretend = 0, frame = 0
+ 1022              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1023              		@ link register save eliminated.
+ 540:Drivers/SOES/Src/esc_foe.c ****    foe_cfg = cfg;
+ 1024              		.loc 1 540 4 view .LVU319
+ 1025              		.loc 1 540 12 is_stmt 0 view .LVU320
+ 1026 0000 014B     		ldr	r3, .L81
+ 1027 0002 1860     		str	r0, [r3]
+ 541:Drivers/SOES/Src/esc_foe.c **** }
+ 1028              		.loc 1 541 1 view .LVU321
+ 1029 0004 7047     		bx	lr
+ 1030              	.L82:
+ 1031 0006 00BF     		.align	2
+ 1032              	.L81:
+ 1033 0008 00000000 		.word	.LANCHOR1
+ 1034              		.cfi_endproc
+ 1035              	.LFE9:
+ 1037              		.section	.text.ESC_foeprocess,"ax",%progbits
+ 1038              		.align	1
+ 1039              		.global	ESC_foeprocess
+ 1040              		.syntax unified
+ 1041              		.thumb
+ 1042              		.thumb_func
+ 1044              	ESC_foeprocess:
+ 1045              	.LFB10:
+ 542:Drivers/SOES/Src/esc_foe.c **** 
+ 543:Drivers/SOES/Src/esc_foe.c **** /** Main FoE function checking the status on current mailbox buffers carrying
+ 544:Drivers/SOES/Src/esc_foe.c ****  * data, distributing the mailboxes to appropriate FOE functions depending
+ 545:Drivers/SOES/Src/esc_foe.c ****  * on requested opcode.
+ 546:Drivers/SOES/Src/esc_foe.c ****  * On Error an FoE Error or FoE Abort will be sent.
+ 547:Drivers/SOES/Src/esc_foe.c ****  */
+ 548:Drivers/SOES/Src/esc_foe.c **** void ESC_foeprocess (void)
+ 549:Drivers/SOES/Src/esc_foe.c **** {
+ 1046              		.loc 1 549 1 is_stmt 1 view -0
+ 1047              		.cfi_startproc
+ 1048              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccRRK0Mn.s 			page 33
+
+
+ 1049              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1050 0000 08B5     		push	{r3, lr}
+ 1051              		.cfi_def_cfa_offset 8
+ 1052              		.cfi_offset 3, -8
+ 1053              		.cfi_offset 14, -4
+ 550:Drivers/SOES/Src/esc_foe.c ****    _MBXh *mbh;
+ 1054              		.loc 1 550 4 view .LVU323
+ 551:Drivers/SOES/Src/esc_foe.c ****    _FOE *foembx;
+ 1055              		.loc 1 551 4 view .LVU324
+ 552:Drivers/SOES/Src/esc_foe.c **** 
+ 553:Drivers/SOES/Src/esc_foe.c ****    if (ESCvar.MBXrun == 0)
+ 1056              		.loc 1 553 4 view .LVU325
+ 1057              		.loc 1 553 14 is_stmt 0 view .LVU326
+ 1058 0002 204B     		ldr	r3, .L96
+ 1059 0004 93F86430 		ldrb	r3, [r3, #100]	@ zero_extendqisi2
+ 1060              		.loc 1 553 7 view .LVU327
+ 1061 0008 63B1     		cbz	r3, .L83
+ 554:Drivers/SOES/Src/esc_foe.c ****    {
+ 555:Drivers/SOES/Src/esc_foe.c ****       return;
+ 556:Drivers/SOES/Src/esc_foe.c ****    }
+ 557:Drivers/SOES/Src/esc_foe.c ****    if (!ESCvar.xoe && (MBXcontrol[0].state == MBXstate_inclaim))
+ 1062              		.loc 1 557 4 is_stmt 1 view .LVU328
+ 1063              		.loc 1 557 15 is_stmt 0 view .LVU329
+ 1064 000a 1E4B     		ldr	r3, .L96
+ 1065 000c 93F88A30 		ldrb	r3, [r3, #138]	@ zero_extendqisi2
+ 1066              		.loc 1 557 7 view .LVU330
+ 1067 0010 1BB9     		cbnz	r3, .L85
+ 1068              		.loc 1 557 37 discriminator 1 view .LVU331
+ 1069 0012 1D4B     		ldr	r3, .L96+4
+ 1070 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1071              		.loc 1 557 20 discriminator 1 view .LVU332
+ 1072 0016 012B     		cmp	r3, #1
+ 1073 0018 05D0     		beq	.L92
+ 1074              	.L85:
+ 558:Drivers/SOES/Src/esc_foe.c ****    {
+ 559:Drivers/SOES/Src/esc_foe.c ****       mbh = (_MBXh *) &MBX[0];
+ 560:Drivers/SOES/Src/esc_foe.c ****       if (mbh->mbxtype == MBXFOE)
+ 561:Drivers/SOES/Src/esc_foe.c ****       {
+ 562:Drivers/SOES/Src/esc_foe.c ****          ESCvar.xoe = MBXFOE;
+ 563:Drivers/SOES/Src/esc_foe.c ****       }
+ 564:Drivers/SOES/Src/esc_foe.c ****    }
+ 565:Drivers/SOES/Src/esc_foe.c ****    if (ESCvar.xoe == MBXFOE)
+ 1075              		.loc 1 565 4 is_stmt 1 view .LVU333
+ 1076              		.loc 1 565 14 is_stmt 0 view .LVU334
+ 1077 001a 1A4B     		ldr	r3, .L96
+ 1078 001c 93F88A30 		ldrb	r3, [r3, #138]	@ zero_extendqisi2
+ 1079              		.loc 1 565 7 view .LVU335
+ 1080 0020 042B     		cmp	r3, #4
+ 1081 0022 0BD0     		beq	.L93
+ 1082              	.L83:
+ 566:Drivers/SOES/Src/esc_foe.c ****    {
+ 567:Drivers/SOES/Src/esc_foe.c ****       foembx = (_FOE *) &MBX[0];
+ 568:Drivers/SOES/Src/esc_foe.c ****       /* Verify the size of the file data. */
+ 569:Drivers/SOES/Src/esc_foe.c ****       if (etohs (foembx->mbxheader.length) < ESC_FOEHSIZE)
+ 570:Drivers/SOES/Src/esc_foe.c ****       {
+ 571:Drivers/SOES/Src/esc_foe.c ****          FOE_abort (MBXERR_SIZETOOSHORT);
+ 572:Drivers/SOES/Src/esc_foe.c ****       }
+ARM GAS  /tmp/ccRRK0Mn.s 			page 34
+
+
+ 573:Drivers/SOES/Src/esc_foe.c ****       else
+ 574:Drivers/SOES/Src/esc_foe.c ****       {
+ 575:Drivers/SOES/Src/esc_foe.c ****          switch (foembx->foeheader.opcode)
+ 576:Drivers/SOES/Src/esc_foe.c ****          {
+ 577:Drivers/SOES/Src/esc_foe.c ****             case FOE_OP_WRQ:
+ 578:Drivers/SOES/Src/esc_foe.c ****             {
+ 579:Drivers/SOES/Src/esc_foe.c ****                DPRINT("FOE_OP_WRQ\n");
+ 580:Drivers/SOES/Src/esc_foe.c ****                FOE_write ();
+ 581:Drivers/SOES/Src/esc_foe.c ****                break;
+ 582:Drivers/SOES/Src/esc_foe.c ****             }
+ 583:Drivers/SOES/Src/esc_foe.c ****             case FOE_OP_DATA:
+ 584:Drivers/SOES/Src/esc_foe.c ****             {
+ 585:Drivers/SOES/Src/esc_foe.c ****                DPRINT("FOE_OP_DATA\n");
+ 586:Drivers/SOES/Src/esc_foe.c ****                FOE_data ();
+ 587:Drivers/SOES/Src/esc_foe.c ****                break;
+ 588:Drivers/SOES/Src/esc_foe.c ****             }
+ 589:Drivers/SOES/Src/esc_foe.c **** #ifdef FOE_READ_SUPPORTED
+ 590:Drivers/SOES/Src/esc_foe.c ****             case FOE_OP_RRQ:
+ 591:Drivers/SOES/Src/esc_foe.c ****             {
+ 592:Drivers/SOES/Src/esc_foe.c ****                DPRINT("FOE_OP_RRQ\n");
+ 593:Drivers/SOES/Src/esc_foe.c ****                FOE_read ();
+ 594:Drivers/SOES/Src/esc_foe.c ****                break;
+ 595:Drivers/SOES/Src/esc_foe.c ****             }
+ 596:Drivers/SOES/Src/esc_foe.c ****             case FOE_OP_ACK:
+ 597:Drivers/SOES/Src/esc_foe.c ****             {
+ 598:Drivers/SOES/Src/esc_foe.c ****                DPRINT("FOE_OP_ACK\n");
+ 599:Drivers/SOES/Src/esc_foe.c ****                FOE_ack ();
+ 600:Drivers/SOES/Src/esc_foe.c ****                break;
+ 601:Drivers/SOES/Src/esc_foe.c ****             }
+ 602:Drivers/SOES/Src/esc_foe.c **** 
+ 603:Drivers/SOES/Src/esc_foe.c ****             case FOE_OP_BUSY:
+ 604:Drivers/SOES/Src/esc_foe.c ****             {
+ 605:Drivers/SOES/Src/esc_foe.c ****                DPRINT("FOE_OP_BUSY\n");
+ 606:Drivers/SOES/Src/esc_foe.c ****                FOE_busy ();
+ 607:Drivers/SOES/Src/esc_foe.c ****                break;
+ 608:Drivers/SOES/Src/esc_foe.c ****             }
+ 609:Drivers/SOES/Src/esc_foe.c **** #endif
+ 610:Drivers/SOES/Src/esc_foe.c ****             case FOE_OP_ERR:
+ 611:Drivers/SOES/Src/esc_foe.c ****             {
+ 612:Drivers/SOES/Src/esc_foe.c ****                DPRINT("FOE_OP_ERR\n");
+ 613:Drivers/SOES/Src/esc_foe.c ****                FOE_error ();
+ 614:Drivers/SOES/Src/esc_foe.c ****                break;
+ 615:Drivers/SOES/Src/esc_foe.c ****             }
+ 616:Drivers/SOES/Src/esc_foe.c ****             default:
+ 617:Drivers/SOES/Src/esc_foe.c ****             {
+ 618:Drivers/SOES/Src/esc_foe.c ****                DPRINT("FOE_ERR_NOTDEFINED\n");
+ 619:Drivers/SOES/Src/esc_foe.c ****                FOE_abort (FOE_ERR_NOTDEFINED);
+ 620:Drivers/SOES/Src/esc_foe.c ****                break;
+ 621:Drivers/SOES/Src/esc_foe.c ****             }
+ 622:Drivers/SOES/Src/esc_foe.c ****          }
+ 623:Drivers/SOES/Src/esc_foe.c ****       }
+ 624:Drivers/SOES/Src/esc_foe.c ****       MBXcontrol[0].state = MBXstate_idle;
+ 625:Drivers/SOES/Src/esc_foe.c ****       ESCvar.xoe = 0;
+ 626:Drivers/SOES/Src/esc_foe.c ****    }
+ 627:Drivers/SOES/Src/esc_foe.c **** }
+ 1083              		.loc 1 627 1 view .LVU336
+ 1084 0024 08BD     		pop	{r3, pc}
+ARM GAS  /tmp/ccRRK0Mn.s 			page 35
+
+
+ 1085              	.L92:
+ 559:Drivers/SOES/Src/esc_foe.c ****       if (mbh->mbxtype == MBXFOE)
+ 1086              		.loc 1 559 7 is_stmt 1 view .LVU337
+ 1087              	.LVL85:
+ 560:Drivers/SOES/Src/esc_foe.c ****       {
+ 1088              		.loc 1 560 7 view .LVU338
+ 560:Drivers/SOES/Src/esc_foe.c ****       {
+ 1089              		.loc 1 560 24 is_stmt 0 view .LVU339
+ 1090 0026 194B     		ldr	r3, .L96+8
+ 1091 0028 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 1092 002a 03F00F03 		and	r3, r3, #15
+ 560:Drivers/SOES/Src/esc_foe.c ****       {
+ 1093              		.loc 1 560 10 view .LVU340
+ 1094 002e 042B     		cmp	r3, #4
+ 1095 0030 F3D1     		bne	.L85
+ 562:Drivers/SOES/Src/esc_foe.c ****       }
+ 1096              		.loc 1 562 10 is_stmt 1 view .LVU341
+ 562:Drivers/SOES/Src/esc_foe.c ****       }
+ 1097              		.loc 1 562 21 is_stmt 0 view .LVU342
+ 1098 0032 144B     		ldr	r3, .L96
+ 1099 0034 0422     		movs	r2, #4
+ 1100 0036 83F88A20 		strb	r2, [r3, #138]
+ 1101 003a EEE7     		b	.L85
+ 1102              	.LVL86:
+ 1103              	.L93:
+ 567:Drivers/SOES/Src/esc_foe.c ****       /* Verify the size of the file data. */
+ 1104              		.loc 1 567 7 is_stmt 1 view .LVU343
+ 569:Drivers/SOES/Src/esc_foe.c ****       {
+ 1105              		.loc 1 569 7 view .LVU344
+ 569:Drivers/SOES/Src/esc_foe.c ****       {
+ 1106              		.loc 1 569 11 is_stmt 0 view .LVU345
+ 1107 003c 134B     		ldr	r3, .L96+8
+ 1108 003e 1B88     		ldrh	r3, [r3]	@ unaligned
+ 569:Drivers/SOES/Src/esc_foe.c ****       {
+ 1109              		.loc 1 569 10 view .LVU346
+ 1110 0040 052B     		cmp	r3, #5
+ 1111 0042 0CD9     		bls	.L94
+ 575:Drivers/SOES/Src/esc_foe.c ****          {
+ 1112              		.loc 1 575 10 is_stmt 1 view .LVU347
+ 575:Drivers/SOES/Src/esc_foe.c ****          {
+ 1113              		.loc 1 575 35 is_stmt 0 view .LVU348
+ 1114 0044 114B     		ldr	r3, .L96+8
+ 1115 0046 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 575:Drivers/SOES/Src/esc_foe.c ****          {
+ 1116              		.loc 1 575 10 view .LVU349
+ 1117 0048 032B     		cmp	r3, #3
+ 1118 004a 15D0     		beq	.L88
+ 1119 004c 052B     		cmp	r3, #5
+ 1120 004e 16D0     		beq	.L89
+ 1121 0050 022B     		cmp	r3, #2
+ 1122 0052 0ED0     		beq	.L95
+ 618:Drivers/SOES/Src/esc_foe.c ****                FOE_abort (FOE_ERR_NOTDEFINED);
+ 1123              		.loc 1 618 46 is_stmt 1 view .LVU350
+ 619:Drivers/SOES/Src/esc_foe.c ****                break;
+ 1124              		.loc 1 619 16 view .LVU351
+ 1125 0054 4FF40040 		mov	r0, #32768
+ 1126 0058 FFF7FEFF 		bl	FOE_abort
+ARM GAS  /tmp/ccRRK0Mn.s 			page 36
+
+
+ 1127              	.LVL87:
+ 620:Drivers/SOES/Src/esc_foe.c ****             }
+ 1128              		.loc 1 620 16 view .LVU352
+ 1129 005c 02E0     		b	.L87
+ 1130              	.L94:
+ 571:Drivers/SOES/Src/esc_foe.c ****       }
+ 1131              		.loc 1 571 10 view .LVU353
+ 1132 005e 0620     		movs	r0, #6
+ 1133 0060 FFF7FEFF 		bl	FOE_abort
+ 1134              	.LVL88:
+ 1135              	.L87:
+ 624:Drivers/SOES/Src/esc_foe.c ****       ESCvar.xoe = 0;
+ 1136              		.loc 1 624 7 view .LVU354
+ 624:Drivers/SOES/Src/esc_foe.c ****       ESCvar.xoe = 0;
+ 1137              		.loc 1 624 27 is_stmt 0 view .LVU355
+ 1138 0064 0023     		movs	r3, #0
+ 1139 0066 084A     		ldr	r2, .L96+4
+ 1140 0068 1370     		strb	r3, [r2]
+ 625:Drivers/SOES/Src/esc_foe.c ****    }
+ 1141              		.loc 1 625 7 is_stmt 1 view .LVU356
+ 625:Drivers/SOES/Src/esc_foe.c ****    }
+ 1142              		.loc 1 625 18 is_stmt 0 view .LVU357
+ 1143 006a 064A     		ldr	r2, .L96
+ 1144 006c 82F88A30 		strb	r3, [r2, #138]
+ 1145 0070 D8E7     		b	.L83
+ 1146              	.L95:
+ 579:Drivers/SOES/Src/esc_foe.c ****                FOE_write ();
+ 1147              		.loc 1 579 38 is_stmt 1 view .LVU358
+ 580:Drivers/SOES/Src/esc_foe.c ****                break;
+ 1148              		.loc 1 580 16 view .LVU359
+ 1149 0072 FFF7FEFF 		bl	FOE_write
+ 1150              	.LVL89:
+ 581:Drivers/SOES/Src/esc_foe.c ****             }
+ 1151              		.loc 1 581 16 view .LVU360
+ 1152 0076 F5E7     		b	.L87
+ 1153              	.L88:
+ 585:Drivers/SOES/Src/esc_foe.c ****                FOE_data ();
+ 1154              		.loc 1 585 39 view .LVU361
+ 586:Drivers/SOES/Src/esc_foe.c ****                break;
+ 1155              		.loc 1 586 16 view .LVU362
+ 1156 0078 FFF7FEFF 		bl	FOE_data
+ 1157              	.LVL90:
+ 587:Drivers/SOES/Src/esc_foe.c ****             }
+ 1158              		.loc 1 587 16 view .LVU363
+ 1159 007c F2E7     		b	.L87
+ 1160              	.L89:
+ 612:Drivers/SOES/Src/esc_foe.c ****                FOE_error ();
+ 1161              		.loc 1 612 38 view .LVU364
+ 613:Drivers/SOES/Src/esc_foe.c ****                break;
+ 1162              		.loc 1 613 16 view .LVU365
+ 1163 007e FFF7FEFF 		bl	FOE_error
+ 1164              	.LVL91:
+ 614:Drivers/SOES/Src/esc_foe.c ****             }
+ 1165              		.loc 1 614 16 view .LVU366
+ 1166 0082 EFE7     		b	.L87
+ 1167              	.L97:
+ 1168              		.align	2
+ARM GAS  /tmp/ccRRK0Mn.s 			page 37
+
+
+ 1169              	.L96:
+ 1170 0084 00000000 		.word	ESCvar
+ 1171 0088 00000000 		.word	MBXcontrol
+ 1172 008c 00000000 		.word	MBX
+ 1173              		.cfi_endproc
+ 1174              	.LFE10:
+ 1176              		.section	.bss.FOEvar,"aw",%nobits
+ 1177              		.align	2
+ 1178              		.set	.LANCHOR0,. + 0
+ 1181              	FOEvar:
+ 1182 0000 00000000 		.space	19
+ 1182      00000000 
+ 1182      00000000 
+ 1182      00000000 
+ 1182      000000
+ 1183              		.section	.bss.foe_cfg,"aw",%nobits
+ 1184              		.align	2
+ 1185              		.set	.LANCHOR1,. + 0
+ 1188              	foe_cfg:
+ 1189 0000 00000000 		.space	4
+ 1190              		.section	.bss.foe_file,"aw",%nobits
+ 1191              		.align	2
+ 1192              		.set	.LANCHOR2,. + 0
+ 1195              	foe_file:
+ 1196 0000 00000000 		.space	4
+ 1197              		.section	.bss.foe_file_name,"aw",%nobits
+ 1198              		.align	2
+ 1199              		.set	.LANCHOR3,. + 0
+ 1202              	foe_file_name:
+ 1203 0000 00000000 		.space	32
+ 1203      00000000 
+ 1203      00000000 
+ 1203      00000000 
+ 1203      00000000 
+ 1204              		.text
+ 1205              	.Letext0:
+ 1206              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 1207              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 1208              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1209              		.file 5 "Drivers/SOES/Inc/esc.h"
+ 1210              		.file 6 "Drivers/SOES/Inc/esc_foe.h"
+ 1211              		.file 7 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h"
+ARM GAS  /tmp/ccRRK0Mn.s 			page 38
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 esc_foe.c
+     /tmp/ccRRK0Mn.s:20     .text.FOE_fwrite:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:25     .text.FOE_fwrite:0000000000000000 FOE_fwrite
+     /tmp/ccRRK0Mn.s:171    .text.FOE_fwrite:00000000000000a0 $d
+     /tmp/ccRRK0Mn.s:178    .text.FOE_fclose:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:183    .text.FOE_fclose:0000000000000000 FOE_fclose
+     /tmp/ccRRK0Mn.s:233    .text.FOE_fclose:000000000000002c $d
+     /tmp/ccRRK0Mn.s:240    .text.FOE_fopen:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:245    .text.FOE_fopen:0000000000000000 FOE_fopen
+     /tmp/ccRRK0Mn.s:436    .text.FOE_fopen:00000000000000e4 $d
+     /tmp/ccRRK0Mn.s:445    .text.FOE_send_ack:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:450    .text.FOE_send_ack:0000000000000000 FOE_send_ack
+     /tmp/ccRRK0Mn.s:530    .text.FOE_send_ack:000000000000004c $d
+     /tmp/ccRRK0Mn.s:538    .text.FOE_init:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:544    .text.FOE_init:0000000000000000 FOE_init
+     /tmp/ccRRK0Mn.s:584    .text.FOE_init:0000000000000024 $d
+     /tmp/ccRRK0Mn.s:589    .text.FOE_abort:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:594    .text.FOE_abort:0000000000000000 FOE_abort
+     /tmp/ccRRK0Mn.s:674    .text.FOE_abort:0000000000000048 $d
+     /tmp/ccRRK0Mn.s:681    .text.FOE_error:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:686    .text.FOE_error:0000000000000000 FOE_error
+     /tmp/ccRRK0Mn.s:706    .text.FOE_write:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:711    .text.FOE_write:0000000000000000 FOE_write
+     /tmp/ccRRK0Mn.s:801    .text.FOE_write:0000000000000044 $d
+     /tmp/ccRRK0Mn.s:807    .text.FOE_data:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:812    .text.FOE_data:0000000000000000 FOE_data
+     /tmp/ccRRK0Mn.s:1002   .text.FOE_data:00000000000000b8 $d
+     /tmp/ccRRK0Mn.s:1010   .text.FOE_config:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:1016   .text.FOE_config:0000000000000000 FOE_config
+     /tmp/ccRRK0Mn.s:1033   .text.FOE_config:0000000000000008 $d
+     /tmp/ccRRK0Mn.s:1038   .text.ESC_foeprocess:0000000000000000 $t
+     /tmp/ccRRK0Mn.s:1044   .text.ESC_foeprocess:0000000000000000 ESC_foeprocess
+     /tmp/ccRRK0Mn.s:1170   .text.ESC_foeprocess:0000000000000084 $d
+     /tmp/ccRRK0Mn.s:1177   .bss.FOEvar:0000000000000000 $d
+     /tmp/ccRRK0Mn.s:1181   .bss.FOEvar:0000000000000000 FOEvar
+     /tmp/ccRRK0Mn.s:1184   .bss.foe_cfg:0000000000000000 $d
+     /tmp/ccRRK0Mn.s:1188   .bss.foe_cfg:0000000000000000 foe_cfg
+     /tmp/ccRRK0Mn.s:1191   .bss.foe_file:0000000000000000 $d
+     /tmp/ccRRK0Mn.s:1195   .bss.foe_file:0000000000000000 foe_file
+     /tmp/ccRRK0Mn.s:1198   .bss.foe_file_name:0000000000000000 $d
+     /tmp/ccRRK0Mn.s:1202   .bss.foe_file_name:0000000000000000 foe_file_name
+
+UNDEFINED SYMBOLS
+strncmp
+ESCvar
+ESC_claimbuffer
+MBX
+MBXcontrol

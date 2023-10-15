@@ -1,0 +1,1147 @@
+ARM GAS  /tmp/ccU6drkP.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"cia402device.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.cia402_init,"ax",%progbits
+  20              		.align	1
+  21              		.global	cia402_init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	cia402_init:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "Drivers/cia402device/Src/cia402device.c"
+   1:Drivers/cia402device/Src/cia402device.c **** /*
+   2:Drivers/cia402device/Src/cia402device.c ****  * Licensed under the GNU General Public License version 2 with exceptions. See
+   3:Drivers/cia402device/Src/cia402device.c ****  * LICENSE file in the project root for full license information
+   4:Drivers/cia402device/Src/cia402device.c ****  */
+   5:Drivers/cia402device/Src/cia402device.c **** 
+   6:Drivers/cia402device/Src/cia402device.c **** #include "stddef.h"
+   7:Drivers/cia402device/Src/cia402device.c **** #include "cia402device.h"
+   8:Drivers/cia402device/Src/cia402device.c **** 
+   9:Drivers/cia402device/Src/cia402device.c **** 
+  10:Drivers/cia402device/Src/cia402device.c **** void cia402_init(cia402_axis_t * axis) 
+  11:Drivers/cia402device/Src/cia402device.c **** {
+  30              		.loc 1 11 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 11 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 3, -8
+  38              		.cfi_offset 14, -4
+  12:Drivers/cia402device/Src/cia402device.c ****     axis->state = NOT_READY_TO_SWITCH_ON;
+  39              		.loc 1 12 5 is_stmt 1 view .LVU2
+  40              		.loc 1 12 17 is_stmt 0 view .LVU3
+  41 0002 0023     		movs	r3, #0
+  42 0004 0370     		strb	r3, [r0]
+  13:Drivers/cia402device/Src/cia402device.c ****     axis->transition = NO_TRANSITION;
+  43              		.loc 1 13 5 is_stmt 1 view .LVU4
+  44              		.loc 1 13 22 is_stmt 0 view .LVU5
+  45 0006 4370     		strb	r3, [r0, #1]
+ARM GAS  /tmp/ccU6drkP.s 			page 2
+
+
+  14:Drivers/cia402device/Src/cia402device.c ****     
+  15:Drivers/cia402device/Src/cia402device.c ****     if (axis->init_od_hook != NULL) { // TODO null check
+  46              		.loc 1 15 5 is_stmt 1 view .LVU6
+  47              		.loc 1 15 13 is_stmt 0 view .LVU7
+  48 0008 C368     		ldr	r3, [r0, #12]
+  49              		.loc 1 15 8 view .LVU8
+  50 000a 03B1     		cbz	r3, .L1
+  16:Drivers/cia402device/Src/cia402device.c ****         axis->init_od_hook();
+  51              		.loc 1 16 9 is_stmt 1 view .LVU9
+  52 000c 9847     		blx	r3
+  53              	.LVL1:
+  54              	.L1:
+  17:Drivers/cia402device/Src/cia402device.c ****     }
+  18:Drivers/cia402device/Src/cia402device.c **** }
+  55              		.loc 1 18 1 is_stmt 0 view .LVU10
+  56 000e 08BD     		pop	{r3, pc}
+  57              		.cfi_endproc
+  58              	.LFE0:
+  60              		.section	.text.is_command,"ax",%progbits
+  61              		.align	1
+  62              		.global	is_command
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  67              	is_command:
+  68              	.LVL2:
+  69              	.LFB1:
+  19:Drivers/cia402device/Src/cia402device.c **** 
+  20:Drivers/cia402device/Src/cia402device.c **** 
+  21:Drivers/cia402device/Src/cia402device.c **** uint8_t is_command(uint16_t controlword, cia402_controlword_command_t command_to_check)
+  22:Drivers/cia402device/Src/cia402device.c **** {
+  70              		.loc 1 22 1 is_stmt 1 view -0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74              		@ link register save eliminated.
+  23:Drivers/cia402device/Src/cia402device.c ****     uint16_t mask          = 0x0000;
+  75              		.loc 1 23 5 view .LVU12
+  24:Drivers/cia402device/Src/cia402device.c ****     uint16_t command_value = 0xFFFF;
+  76              		.loc 1 24 5 view .LVU13
+  25:Drivers/cia402device/Src/cia402device.c **** 
+  26:Drivers/cia402device/Src/cia402device.c ****     switch (command_to_check)
+  77              		.loc 1 26 5 view .LVU14
+  78 0000 0729     		cmp	r1, #7
+  79 0002 05D8     		bhi	.L5
+  80 0004 DFE801F0 		tbb	[pc, r1]
+  81              	.L7:
+  82 0008 1D       		.byte	(.L15-.L7)/2
+  83 0009 08       		.byte	(.L13-.L7)/2
+  84 000a 0B       		.byte	(.L12-.L7)/2
+  85 000b 0E       		.byte	(.L11-.L7)/2
+  86 000c 11       		.byte	(.L10-.L7)/2
+  87 000d 14       		.byte	(.L9-.L7)/2
+  88 000e 17       		.byte	(.L8-.L7)/2
+  89 000f 1A       		.byte	(.L6-.L7)/2
+  90              		.p2align 1
+  91              	.L5:
+ARM GAS  /tmp/ccU6drkP.s 			page 3
+
+
+  92 0010 4FF6FF72 		movw	r2, #65535
+  93 0014 0023     		movs	r3, #0
+  94 0016 16E0     		b	.L14
+  95              	.L13:
+  27:Drivers/cia402device/Src/cia402device.c ****     {
+  28:Drivers/cia402device/Src/cia402device.c ****     case SHUTDOWN_CMD:
+  29:Drivers/cia402device/Src/cia402device.c ****         mask = CIA402_CONTROLWORD_MASK_SHUTDOWN;
+  30:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_SHUTDOWN;
+  31:Drivers/cia402device/Src/cia402device.c ****         break;
+  32:Drivers/cia402device/Src/cia402device.c ****     case SWITCH_ON_CMD:
+  33:Drivers/cia402device/Src/cia402device.c ****         mask = CIA402_CONTROLWORD_MASK_SWITCHON;
+  96              		.loc 1 33 9 view .LVU15
+  97              	.LVL3:
+  34:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_SWITCHON;
+  98              		.loc 1 34 9 view .LVU16
+  35:Drivers/cia402device/Src/cia402device.c ****         break;
+  99              		.loc 1 35 9 view .LVU17
+  34:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_SWITCHON;
+ 100              		.loc 1 34 23 is_stmt 0 view .LVU18
+ 101 0018 0722     		movs	r2, #7
+  33:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_SWITCHON;
+ 102              		.loc 1 33 14 view .LVU19
+ 103 001a 8723     		movs	r3, #135
+ 104              		.loc 1 35 9 view .LVU20
+ 105 001c 13E0     		b	.L14
+ 106              	.LVL4:
+ 107              	.L12:
+  36:Drivers/cia402device/Src/cia402device.c ****     case SWITCH_ON_ENABLE_CMD:
+  37:Drivers/cia402device/Src/cia402device.c ****         mask = CIA402_CONTROLWORD_MASK_SWITCHON_ENABLE;
+ 108              		.loc 1 37 9 is_stmt 1 view .LVU21
+  38:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_SWITCHON_ENABLE;
+ 109              		.loc 1 38 9 view .LVU22
+  39:Drivers/cia402device/Src/cia402device.c ****         break;
+ 110              		.loc 1 39 9 view .LVU23
+  38:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_SWITCHON_ENABLE;
+ 111              		.loc 1 38 23 is_stmt 0 view .LVU24
+ 112 001e 0F22     		movs	r2, #15
+  37:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_SWITCHON_ENABLE;
+ 113              		.loc 1 37 14 view .LVU25
+ 114 0020 8F23     		movs	r3, #143
+ 115              		.loc 1 39 9 view .LVU26
+ 116 0022 10E0     		b	.L14
+ 117              	.LVL5:
+ 118              	.L11:
+  40:Drivers/cia402device/Src/cia402device.c ****     case DISABLE_VOLTAGE_CMD:
+  41:Drivers/cia402device/Src/cia402device.c ****         mask = CIA402_CONTROLWORD_MASK_DISABLEVOLTAGE;
+ 119              		.loc 1 41 9 is_stmt 1 view .LVU27
+  42:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_DISABLEVOLTAGE;
+ 120              		.loc 1 42 9 view .LVU28
+  43:Drivers/cia402device/Src/cia402device.c ****         break;
+ 121              		.loc 1 43 9 view .LVU29
+  42:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_DISABLEVOLTAGE;
+ 122              		.loc 1 42 23 is_stmt 0 view .LVU30
+ 123 0024 0022     		movs	r2, #0
+  41:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_DISABLEVOLTAGE;
+ 124              		.loc 1 41 14 view .LVU31
+ 125 0026 8223     		movs	r3, #130
+ARM GAS  /tmp/ccU6drkP.s 			page 4
+
+
+ 126              		.loc 1 43 9 view .LVU32
+ 127 0028 0DE0     		b	.L14
+ 128              	.LVL6:
+ 129              	.L10:
+  44:Drivers/cia402device/Src/cia402device.c ****     case QUICK_STOP_CMD:
+  45:Drivers/cia402device/Src/cia402device.c ****         mask = CIA402_CONTROLWORD_MASK_QUICKSTOP;
+ 130              		.loc 1 45 9 is_stmt 1 view .LVU33
+  46:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_QUICKSTOP;
+ 131              		.loc 1 46 9 view .LVU34
+  47:Drivers/cia402device/Src/cia402device.c ****         break;
+ 132              		.loc 1 47 9 view .LVU35
+  46:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_QUICKSTOP;
+ 133              		.loc 1 46 23 is_stmt 0 view .LVU36
+ 134 002a 0222     		movs	r2, #2
+  45:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_QUICKSTOP;
+ 135              		.loc 1 45 14 view .LVU37
+ 136 002c 8623     		movs	r3, #134
+ 137              		.loc 1 47 9 view .LVU38
+ 138 002e 0AE0     		b	.L14
+ 139              	.LVL7:
+ 140              	.L9:
+  48:Drivers/cia402device/Src/cia402device.c ****     case DISABLE_OPERATION_CMD:
+  49:Drivers/cia402device/Src/cia402device.c ****         mask = CIA402_CONTROLWORD_MASK_DISABLEOPERATION;
+ 141              		.loc 1 49 9 is_stmt 1 view .LVU39
+  50:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_DISABLEOPERATION;
+ 142              		.loc 1 50 9 view .LVU40
+  51:Drivers/cia402device/Src/cia402device.c ****         break;
+ 143              		.loc 1 51 9 view .LVU41
+  50:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_DISABLEOPERATION;
+ 144              		.loc 1 50 23 is_stmt 0 view .LVU42
+ 145 0030 0722     		movs	r2, #7
+  49:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_DISABLEOPERATION;
+ 146              		.loc 1 49 14 view .LVU43
+ 147 0032 8F23     		movs	r3, #143
+ 148              		.loc 1 51 9 view .LVU44
+ 149 0034 07E0     		b	.L14
+ 150              	.LVL8:
+ 151              	.L8:
+  52:Drivers/cia402device/Src/cia402device.c ****     case ENABLE_OPERATION:
+  53:Drivers/cia402device/Src/cia402device.c ****         mask = CIA402_CONTROLWORD_MASK_ENABLEOPERATION;
+ 152              		.loc 1 53 9 is_stmt 1 view .LVU45
+  54:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_ENABLEOPERATION;
+ 153              		.loc 1 54 9 view .LVU46
+  55:Drivers/cia402device/Src/cia402device.c ****         break;
+ 154              		.loc 1 55 9 view .LVU47
+  54:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_ENABLEOPERATION;
+ 155              		.loc 1 54 23 is_stmt 0 view .LVU48
+ 156 0036 0F22     		movs	r2, #15
+  53:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_ENABLEOPERATION;
+ 157              		.loc 1 53 14 view .LVU49
+ 158 0038 8F23     		movs	r3, #143
+ 159              		.loc 1 55 9 view .LVU50
+ 160 003a 04E0     		b	.L14
+ 161              	.LVL9:
+ 162              	.L6:
+  56:Drivers/cia402device/Src/cia402device.c ****     case FAULT_RESET:
+  57:Drivers/cia402device/Src/cia402device.c ****         mask = CIA402_CONTROLWORD_MASK_FAULTRESET;
+ARM GAS  /tmp/ccU6drkP.s 			page 5
+
+
+ 163              		.loc 1 57 9 is_stmt 1 view .LVU51
+  58:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_FAULTRESET;
+ 164              		.loc 1 58 9 view .LVU52
+  59:Drivers/cia402device/Src/cia402device.c ****         break;
+ 165              		.loc 1 59 9 view .LVU53
+  58:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_FAULTRESET;
+ 166              		.loc 1 58 23 is_stmt 0 view .LVU54
+ 167 003c 8022     		movs	r2, #128
+  57:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_FAULTRESET;
+ 168              		.loc 1 57 14 view .LVU55
+ 169 003e 1346     		mov	r3, r2
+ 170              		.loc 1 59 9 view .LVU56
+ 171 0040 01E0     		b	.L14
+ 172              	.LVL10:
+ 173              	.L15:
+  30:Drivers/cia402device/Src/cia402device.c ****         break;
+ 174              		.loc 1 30 23 view .LVU57
+ 175 0042 0622     		movs	r2, #6
+  29:Drivers/cia402device/Src/cia402device.c ****         command_value = CIA402_CONTROLWORD_COMMAND_SHUTDOWN;
+ 176              		.loc 1 29 14 view .LVU58
+ 177 0044 8723     		movs	r3, #135
+ 178              	.LVL11:
+ 179              	.L14:
+  60:Drivers/cia402device/Src/cia402device.c ****     default:
+  61:Drivers/cia402device/Src/cia402device.c ****         break;
+  62:Drivers/cia402device/Src/cia402device.c ****     }
+  63:Drivers/cia402device/Src/cia402device.c **** 
+  64:Drivers/cia402device/Src/cia402device.c ****     return (controlword & mask) == command_value;
+ 180              		.loc 1 64 5 is_stmt 1 view .LVU59
+ 181              		.loc 1 64 33 is_stmt 0 view .LVU60
+ 182 0046 1840     		ands	r0, r0, r3
+ 183              	.LVL12:
+  65:Drivers/cia402device/Src/cia402device.c **** }
+ 184              		.loc 1 65 1 view .LVU61
+ 185 0048 9042     		cmp	r0, r2
+ 186 004a 14BF     		ite	ne
+ 187 004c 0020     		movne	r0, #0
+ 188 004e 0120     		moveq	r0, #1
+ 189 0050 7047     		bx	lr
+ 190              		.cfi_endproc
+ 191              	.LFE1:
+ 193              		.section	.text.cia402_state_machine,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	cia402_state_machine
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 200              	cia402_state_machine:
+ 201              	.LVL13:
+ 202              	.LFB2:
+  66:Drivers/cia402device/Src/cia402device.c **** 
+  67:Drivers/cia402device/Src/cia402device.c **** 
+  68:Drivers/cia402device/Src/cia402device.c **** void cia402_state_machine(cia402_axis_t * axis, uint16_t controlword) {
+ 203              		.loc 1 68 71 is_stmt 1 view -0
+ 204              		.cfi_startproc
+ 205              		@ args = 0, pretend = 0, frame = 0
+ 206              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccU6drkP.s 			page 6
+
+
+ 207              		.loc 1 68 71 is_stmt 0 view .LVU63
+ 208 0000 38B5     		push	{r3, r4, r5, lr}
+ 209              		.cfi_def_cfa_offset 16
+ 210              		.cfi_offset 3, -16
+ 211              		.cfi_offset 4, -12
+ 212              		.cfi_offset 5, -8
+ 213              		.cfi_offset 14, -4
+ 214 0002 0446     		mov	r4, r0
+ 215 0004 0D46     		mov	r5, r1
+  69:Drivers/cia402device/Src/cia402device.c ****     
+  70:Drivers/cia402device/Src/cia402device.c ****     *(axis->statusword) = 0x0000;
+ 216              		.loc 1 70 5 is_stmt 1 view .LVU64
+ 217              		.loc 1 70 11 is_stmt 0 view .LVU65
+ 218 0006 4268     		ldr	r2, [r0, #4]
+ 219              		.loc 1 70 25 view .LVU66
+ 220 0008 0023     		movs	r3, #0
+ 221 000a 1380     		strh	r3, [r2]	@ movhi
+  71:Drivers/cia402device/Src/cia402device.c ****     axis->transition = NO_TRANSITION;
+ 222              		.loc 1 71 5 is_stmt 1 view .LVU67
+ 223              		.loc 1 71 22 is_stmt 0 view .LVU68
+ 224 000c 4370     		strb	r3, [r0, #1]
+  72:Drivers/cia402device/Src/cia402device.c **** 
+  73:Drivers/cia402device/Src/cia402device.c ****     switch (axis->state)
+ 225              		.loc 1 73 5 is_stmt 1 view .LVU69
+ 226              		.loc 1 73 17 is_stmt 0 view .LVU70
+ 227 000e 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 228              		.loc 1 73 5 view .LVU71
+ 229 0010 0F2B     		cmp	r3, #15
+ 230 0012 2BD9     		bls	.L48
+ 231 0014 402B     		cmp	r3, #64
+ 232 0016 00F24F81 		bhi	.L19
+ 233 001a 212B     		cmp	r3, #33
+ 234 001c C0F04C81 		bcc	.L19
+ 235 0020 213B     		subs	r3, r3, #33
+ 236 0022 1F2B     		cmp	r3, #31
+ 237 0024 00F24881 		bhi	.L19
+ 238 0028 DFE813F0 		tbh	[pc, r3, lsl #1]
+ 239              	.L21:
+ 240 002c 5D00     		.2byte	(.L24-.L21)/2
+ 241 002e 4601     		.2byte	(.L19-.L21)/2
+ 242 0030 9100     		.2byte	(.L23-.L21)/2
+ 243 0032 4601     		.2byte	(.L19-.L21)/2
+ 244 0034 4601     		.2byte	(.L19-.L21)/2
+ 245 0036 4601     		.2byte	(.L19-.L21)/2
+ 246 0038 C400     		.2byte	(.L22-.L21)/2
+ 247 003a 4601     		.2byte	(.L19-.L21)/2
+ 248 003c 4601     		.2byte	(.L19-.L21)/2
+ 249 003e 4601     		.2byte	(.L19-.L21)/2
+ 250 0040 4601     		.2byte	(.L19-.L21)/2
+ 251 0042 4601     		.2byte	(.L19-.L21)/2
+ 252 0044 4601     		.2byte	(.L19-.L21)/2
+ 253 0046 4601     		.2byte	(.L19-.L21)/2
+ 254 0048 4601     		.2byte	(.L19-.L21)/2
+ 255 004a 4601     		.2byte	(.L19-.L21)/2
+ 256 004c 4601     		.2byte	(.L19-.L21)/2
+ 257 004e 4601     		.2byte	(.L19-.L21)/2
+ 258 0050 4601     		.2byte	(.L19-.L21)/2
+ARM GAS  /tmp/ccU6drkP.s 			page 7
+
+
+ 259 0052 4601     		.2byte	(.L19-.L21)/2
+ 260 0054 4601     		.2byte	(.L19-.L21)/2
+ 261 0056 4601     		.2byte	(.L19-.L21)/2
+ 262 0058 4601     		.2byte	(.L19-.L21)/2
+ 263 005a 4601     		.2byte	(.L19-.L21)/2
+ 264 005c 4601     		.2byte	(.L19-.L21)/2
+ 265 005e 4601     		.2byte	(.L19-.L21)/2
+ 266 0060 4601     		.2byte	(.L19-.L21)/2
+ 267 0062 4601     		.2byte	(.L19-.L21)/2
+ 268 0064 4601     		.2byte	(.L19-.L21)/2
+ 269 0066 4601     		.2byte	(.L19-.L21)/2
+ 270 0068 4601     		.2byte	(.L19-.L21)/2
+ 271 006a 4400     		.2byte	(.L20-.L21)/2
+ 272              		.p2align 1
+ 273              	.L48:
+ 274 006c 0F2B     		cmp	r3, #15
+ 275 006e 00F22381 		bhi	.L19
+ 276 0072 DFE813F0 		tbh	[pc, r3, lsl #1]
+ 277              	.L26:
+ 278 0076 1000     		.2byte	(.L29-.L26)/2
+ 279 0078 2101     		.2byte	(.L19-.L26)/2
+ 280 007a 2101     		.2byte	(.L19-.L26)/2
+ 281 007c 2101     		.2byte	(.L19-.L26)/2
+ 282 007e 2101     		.2byte	(.L19-.L26)/2
+ 283 0080 2101     		.2byte	(.L19-.L26)/2
+ 284 0082 2101     		.2byte	(.L19-.L26)/2
+ 285 0084 E800     		.2byte	(.L28-.L26)/2
+ 286 0086 0C01     		.2byte	(.L27-.L26)/2
+ 287 0088 2101     		.2byte	(.L19-.L26)/2
+ 288 008a 2101     		.2byte	(.L19-.L26)/2
+ 289 008c 2101     		.2byte	(.L19-.L26)/2
+ 290 008e 2101     		.2byte	(.L19-.L26)/2
+ 291 0090 2101     		.2byte	(.L19-.L26)/2
+ 292 0092 2101     		.2byte	(.L19-.L26)/2
+ 293 0094 0201     		.2byte	(.L25-.L26)/2
+ 294              		.p2align 1
+ 295              	.L29:
+  74:Drivers/cia402device/Src/cia402device.c ****     {
+  75:Drivers/cia402device/Src/cia402device.c ****     case NOT_READY_TO_SWITCH_ON: 
+  76:Drivers/cia402device/Src/cia402device.c ****     {
+  77:Drivers/cia402device/Src/cia402device.c ****         // automatic transition on reaching OP 
+  78:Drivers/cia402device/Src/cia402device.c ****         if (*(axis->ALstatus) == AL_STATUS_OP) {
+ 296              		.loc 1 78 9 is_stmt 1 view .LVU72
+ 297              		.loc 1 78 19 is_stmt 0 view .LVU73
+ 298 0096 8368     		ldr	r3, [r0, #8]
+ 299              		.loc 1 78 13 view .LVU74
+ 300 0098 1B88     		ldrh	r3, [r3]
+ 301              		.loc 1 78 12 view .LVU75
+ 302 009a 082B     		cmp	r3, #8
+ 303 009c 40F0F680 		bne	.L16
+  79:Drivers/cia402device/Src/cia402device.c ****             // transition 1
+  80:Drivers/cia402device/Src/cia402device.c ****             axis->state = SWITCH_ON_DISABLED;
+ 304              		.loc 1 80 13 is_stmt 1 view .LVU76
+ 305              		.loc 1 80 25 is_stmt 0 view .LVU77
+ 306 00a0 4023     		movs	r3, #64
+ 307 00a2 0370     		strb	r3, [r0]
+  81:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ARM GAS  /tmp/ccU6drkP.s 			page 8
+
+
+ 308              		.loc 1 81 13 is_stmt 1 view .LVU78
+ 309              		.loc 1 81 19 is_stmt 0 view .LVU79
+ 310 00a4 4268     		ldr	r2, [r0, #4]
+ 311              		.loc 1 81 33 view .LVU80
+ 312 00a6 1388     		ldrh	r3, [r2]
+ 313 00a8 43F04003 		orr	r3, r3, #64
+ 314 00ac 1380     		strh	r3, [r2]	@ movhi
+  82:Drivers/cia402device/Src/cia402device.c ****             axis->transition = NOT_READY_TO_SWITCH_ON_TO_SWITCH_ON_DISABLED;
+ 315              		.loc 1 82 13 is_stmt 1 view .LVU81
+ 316              		.loc 1 82 30 is_stmt 0 view .LVU82
+ 317 00ae 0123     		movs	r3, #1
+ 318 00b0 4370     		strb	r3, [r0, #1]
+ 319 00b2 EBE0     		b	.L16
+ 320              	.L20:
+  83:Drivers/cia402device/Src/cia402device.c ****         } else {
+  84:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= NOT_READY_TO_SWITCH_ON;
+  85:Drivers/cia402device/Src/cia402device.c ****         }
+  86:Drivers/cia402device/Src/cia402device.c ****         break;
+  87:Drivers/cia402device/Src/cia402device.c ****     }
+  88:Drivers/cia402device/Src/cia402device.c ****     
+  89:Drivers/cia402device/Src/cia402device.c ****     case SWITCH_ON_DISABLED: 
+  90:Drivers/cia402device/Src/cia402device.c ****     {
+  91:Drivers/cia402device/Src/cia402device.c ****         if (is_command(controlword, SHUTDOWN_CMD) || *(axis->ALstatus) == AL_STATUS_OP) {
+ 321              		.loc 1 91 9 is_stmt 1 view .LVU83
+ 322              		.loc 1 91 13 is_stmt 0 view .LVU84
+ 323 00b4 0021     		movs	r1, #0
+ 324              	.LVL14:
+ 325              		.loc 1 91 13 view .LVU85
+ 326 00b6 2846     		mov	r0, r5
+ 327              	.LVL15:
+ 328              		.loc 1 91 13 view .LVU86
+ 329 00b8 FFF7FEFF 		bl	is_command
+ 330              	.LVL16:
+ 331              		.loc 1 91 12 view .LVU87
+ 332 00bc 48B9     		cbnz	r0, .L32
+ 333              		.loc 1 91 60 discriminator 1 view .LVU88
+ 334 00be A368     		ldr	r3, [r4, #8]
+ 335              		.loc 1 91 54 discriminator 1 view .LVU89
+ 336 00c0 1B88     		ldrh	r3, [r3]
+ 337              		.loc 1 91 51 discriminator 1 view .LVU90
+ 338 00c2 082B     		cmp	r3, #8
+ 339 00c4 05D0     		beq	.L32
+  92:Drivers/cia402device/Src/cia402device.c ****             // transition 2
+  93:Drivers/cia402device/Src/cia402device.c ****             axis->state = READY_TO_SWITCH_ON;
+  94:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= READY_TO_SWITCH_ON;
+  95:Drivers/cia402device/Src/cia402device.c ****             axis->transition = SWITCH_ON_DISABLED_TO_READY_TO_SWITCH_ON;
+  96:Drivers/cia402device/Src/cia402device.c ****         } else {
+  97:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ 340              		.loc 1 97 13 is_stmt 1 view .LVU91
+ 341              		.loc 1 97 19 is_stmt 0 view .LVU92
+ 342 00c6 6268     		ldr	r2, [r4, #4]
+ 343              		.loc 1 97 33 view .LVU93
+ 344 00c8 1388     		ldrh	r3, [r2]
+ 345 00ca 43F04003 		orr	r3, r3, #64
+ 346 00ce 1380     		strh	r3, [r2]	@ movhi
+ 347 00d0 DCE0     		b	.L16
+ 348              	.L32:
+ARM GAS  /tmp/ccU6drkP.s 			page 9
+
+
+  93:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= READY_TO_SWITCH_ON;
+ 349              		.loc 1 93 13 is_stmt 1 view .LVU94
+  93:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= READY_TO_SWITCH_ON;
+ 350              		.loc 1 93 25 is_stmt 0 view .LVU95
+ 351 00d2 2123     		movs	r3, #33
+ 352 00d4 2370     		strb	r3, [r4]
+  94:Drivers/cia402device/Src/cia402device.c ****             axis->transition = SWITCH_ON_DISABLED_TO_READY_TO_SWITCH_ON;
+ 353              		.loc 1 94 13 is_stmt 1 view .LVU96
+  94:Drivers/cia402device/Src/cia402device.c ****             axis->transition = SWITCH_ON_DISABLED_TO_READY_TO_SWITCH_ON;
+ 354              		.loc 1 94 19 is_stmt 0 view .LVU97
+ 355 00d6 6268     		ldr	r2, [r4, #4]
+  94:Drivers/cia402device/Src/cia402device.c ****             axis->transition = SWITCH_ON_DISABLED_TO_READY_TO_SWITCH_ON;
+ 356              		.loc 1 94 33 view .LVU98
+ 357 00d8 1388     		ldrh	r3, [r2]
+ 358 00da 43F02103 		orr	r3, r3, #33
+ 359 00de 1380     		strh	r3, [r2]	@ movhi
+  95:Drivers/cia402device/Src/cia402device.c ****         } else {
+ 360              		.loc 1 95 13 is_stmt 1 view .LVU99
+  95:Drivers/cia402device/Src/cia402device.c ****         } else {
+ 361              		.loc 1 95 30 is_stmt 0 view .LVU100
+ 362 00e0 0223     		movs	r3, #2
+ 363 00e2 6370     		strb	r3, [r4, #1]
+ 364 00e4 D2E0     		b	.L16
+ 365              	.LVL17:
+ 366              	.L24:
+  98:Drivers/cia402device/Src/cia402device.c ****         }
+  99:Drivers/cia402device/Src/cia402device.c ****         break;
+ 100:Drivers/cia402device/Src/cia402device.c ****     }
+ 101:Drivers/cia402device/Src/cia402device.c ****     
+ 102:Drivers/cia402device/Src/cia402device.c ****     case READY_TO_SWITCH_ON: 
+ 103:Drivers/cia402device/Src/cia402device.c ****     {
+ 104:Drivers/cia402device/Src/cia402device.c ****         if (is_command(controlword, DISABLE_VOLTAGE_CMD)) {
+ 367              		.loc 1 104 9 is_stmt 1 view .LVU101
+ 368              		.loc 1 104 13 is_stmt 0 view .LVU102
+ 369 00e6 0321     		movs	r1, #3
+ 370              	.LVL18:
+ 371              		.loc 1 104 13 view .LVU103
+ 372 00e8 2846     		mov	r0, r5
+ 373              	.LVL19:
+ 374              		.loc 1 104 13 view .LVU104
+ 375 00ea FFF7FEFF 		bl	is_command
+ 376              	.LVL20:
+ 377              		.loc 1 104 12 view .LVU105
+ 378 00ee 48B1     		cbz	r0, .L34
+ 105:Drivers/cia402device/Src/cia402device.c ****             // transition 7
+ 106:Drivers/cia402device/Src/cia402device.c ****             axis->state = SWITCH_ON_DISABLED;
+ 379              		.loc 1 106 13 is_stmt 1 view .LVU106
+ 380              		.loc 1 106 25 is_stmt 0 view .LVU107
+ 381 00f0 4023     		movs	r3, #64
+ 382 00f2 2370     		strb	r3, [r4]
+ 107:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ 383              		.loc 1 107 13 is_stmt 1 view .LVU108
+ 384              		.loc 1 107 19 is_stmt 0 view .LVU109
+ 385 00f4 6268     		ldr	r2, [r4, #4]
+ 386              		.loc 1 107 33 view .LVU110
+ 387 00f6 1388     		ldrh	r3, [r2]
+ 388 00f8 43F04003 		orr	r3, r3, #64
+ARM GAS  /tmp/ccU6drkP.s 			page 10
+
+
+ 389 00fc 1380     		strh	r3, [r2]	@ movhi
+ 108:Drivers/cia402device/Src/cia402device.c ****             axis->transition = READY_TO_SWITCH_ON_TO_SWITCH_ON_DISABLED;
+ 390              		.loc 1 108 13 is_stmt 1 view .LVU111
+ 391              		.loc 1 108 30 is_stmt 0 view .LVU112
+ 392 00fe 0723     		movs	r3, #7
+ 393 0100 6370     		strb	r3, [r4, #1]
+ 394 0102 C3E0     		b	.L16
+ 395              	.L34:
+ 109:Drivers/cia402device/Src/cia402device.c ****         } else if (is_command(controlword, SWITCH_ON_CMD)) {
+ 396              		.loc 1 109 16 is_stmt 1 view .LVU113
+ 397              		.loc 1 109 20 is_stmt 0 view .LVU114
+ 398 0104 0121     		movs	r1, #1
+ 399 0106 2846     		mov	r0, r5
+ 400 0108 FFF7FEFF 		bl	is_command
+ 401              	.LVL21:
+ 402              		.loc 1 109 19 view .LVU115
+ 403 010c C8B1     		cbz	r0, .L35
+ 110:Drivers/cia402device/Src/cia402device.c ****             // transition 3
+ 111:Drivers/cia402device/Src/cia402device.c ****             axis->state = SWITCHED_ON;
+ 404              		.loc 1 111 13 is_stmt 1 view .LVU116
+ 405              		.loc 1 111 25 is_stmt 0 view .LVU117
+ 406 010e 2323     		movs	r3, #35
+ 407 0110 2370     		strb	r3, [r4]
+ 112:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCHED_ON;
+ 408              		.loc 1 112 13 is_stmt 1 view .LVU118
+ 409              		.loc 1 112 19 is_stmt 0 view .LVU119
+ 410 0112 6268     		ldr	r2, [r4, #4]
+ 411              		.loc 1 112 33 view .LVU120
+ 412 0114 1388     		ldrh	r3, [r2]
+ 413 0116 43F02303 		orr	r3, r3, #35
+ 414 011a 1380     		strh	r3, [r2]	@ movhi
+ 113:Drivers/cia402device/Src/cia402device.c ****             axis->transition = READY_TO_SWITCH_ON_TO_SWITCHED_ON;
+ 415              		.loc 1 113 13 is_stmt 1 view .LVU121
+ 416              		.loc 1 113 30 is_stmt 0 view .LVU122
+ 417 011c 0323     		movs	r3, #3
+ 418 011e 6370     		strb	r3, [r4, #1]
+ 114:Drivers/cia402device/Src/cia402device.c ****             
+ 115:Drivers/cia402device/Src/cia402device.c ****             if (is_command(controlword, SWITCH_ON_ENABLE_CMD)) {
+ 419              		.loc 1 115 13 is_stmt 1 view .LVU123
+ 420              		.loc 1 115 17 is_stmt 0 view .LVU124
+ 421 0120 0221     		movs	r1, #2
+ 422 0122 2846     		mov	r0, r5
+ 423 0124 FFF7FEFF 		bl	is_command
+ 424              	.LVL22:
+ 425              		.loc 1 115 16 view .LVU125
+ 426 0128 0028     		cmp	r0, #0
+ 427 012a 00F0AF80 		beq	.L16
+ 116:Drivers/cia402device/Src/cia402device.c ****                 // transitions 3 + 4 in one command
+ 117:Drivers/cia402device/Src/cia402device.c ****                 axis->state = OPERATION_ENABLED;
+ 428              		.loc 1 117 17 is_stmt 1 view .LVU126
+ 429              		.loc 1 117 29 is_stmt 0 view .LVU127
+ 430 012e 2723     		movs	r3, #39
+ 431 0130 2370     		strb	r3, [r4]
+ 118:Drivers/cia402device/Src/cia402device.c ****                 *(axis->statusword) |= OPERATION_ENABLED;
+ 432              		.loc 1 118 17 is_stmt 1 view .LVU128
+ 433              		.loc 1 118 23 is_stmt 0 view .LVU129
+ 434 0132 6268     		ldr	r2, [r4, #4]
+ARM GAS  /tmp/ccU6drkP.s 			page 11
+
+
+ 435              		.loc 1 118 37 view .LVU130
+ 436 0134 1388     		ldrh	r3, [r2]
+ 437 0136 43F02703 		orr	r3, r3, #39
+ 438 013a 1380     		strh	r3, [r2]	@ movhi
+ 119:Drivers/cia402device/Src/cia402device.c ****                 axis->transition = READY_TO_SWITCH_ON_TO_OPERATION_ENABLED;
+ 439              		.loc 1 119 17 is_stmt 1 view .LVU131
+ 440              		.loc 1 119 34 is_stmt 0 view .LVU132
+ 441 013c 2223     		movs	r3, #34
+ 442 013e 6370     		strb	r3, [r4, #1]
+ 443 0140 A4E0     		b	.L16
+ 444              	.L35:
+ 120:Drivers/cia402device/Src/cia402device.c ****             }
+ 121:Drivers/cia402device/Src/cia402device.c ****         } else {
+ 122:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= READY_TO_SWITCH_ON;
+ 445              		.loc 1 122 13 is_stmt 1 view .LVU133
+ 446              		.loc 1 122 19 is_stmt 0 view .LVU134
+ 447 0142 6268     		ldr	r2, [r4, #4]
+ 448              		.loc 1 122 33 view .LVU135
+ 449 0144 1388     		ldrh	r3, [r2]
+ 450 0146 43F02103 		orr	r3, r3, #33
+ 451 014a 1380     		strh	r3, [r2]	@ movhi
+ 452 014c 9EE0     		b	.L16
+ 453              	.LVL23:
+ 454              	.L23:
+ 123:Drivers/cia402device/Src/cia402device.c ****         }
+ 124:Drivers/cia402device/Src/cia402device.c ****         break;
+ 125:Drivers/cia402device/Src/cia402device.c ****     }
+ 126:Drivers/cia402device/Src/cia402device.c ****     
+ 127:Drivers/cia402device/Src/cia402device.c ****     case SWITCHED_ON: 
+ 128:Drivers/cia402device/Src/cia402device.c ****     {
+ 129:Drivers/cia402device/Src/cia402device.c ****         if (is_command(controlword, SHUTDOWN_CMD)) {
+ 455              		.loc 1 129 9 is_stmt 1 view .LVU136
+ 456              		.loc 1 129 13 is_stmt 0 view .LVU137
+ 457 014e 0021     		movs	r1, #0
+ 458              	.LVL24:
+ 459              		.loc 1 129 13 view .LVU138
+ 460 0150 2846     		mov	r0, r5
+ 461              	.LVL25:
+ 462              		.loc 1 129 13 view .LVU139
+ 463 0152 FFF7FEFF 		bl	is_command
+ 464              	.LVL26:
+ 465              		.loc 1 129 12 view .LVU140
+ 466 0156 48B1     		cbz	r0, .L36
+ 130:Drivers/cia402device/Src/cia402device.c ****             // transition 6
+ 131:Drivers/cia402device/Src/cia402device.c ****             axis->state = READY_TO_SWITCH_ON;
+ 467              		.loc 1 131 13 is_stmt 1 view .LVU141
+ 468              		.loc 1 131 25 is_stmt 0 view .LVU142
+ 469 0158 2123     		movs	r3, #33
+ 470 015a 2370     		strb	r3, [r4]
+ 132:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= READY_TO_SWITCH_ON;
+ 471              		.loc 1 132 13 is_stmt 1 view .LVU143
+ 472              		.loc 1 132 19 is_stmt 0 view .LVU144
+ 473 015c 6268     		ldr	r2, [r4, #4]
+ 474              		.loc 1 132 33 view .LVU145
+ 475 015e 1388     		ldrh	r3, [r2]
+ 476 0160 43F02103 		orr	r3, r3, #33
+ 477 0164 1380     		strh	r3, [r2]	@ movhi
+ARM GAS  /tmp/ccU6drkP.s 			page 12
+
+
+ 133:Drivers/cia402device/Src/cia402device.c ****             axis->transition = SWITCHED_ON_TO_READY_TO_SWITCH_ON;
+ 478              		.loc 1 133 13 is_stmt 1 view .LVU146
+ 479              		.loc 1 133 30 is_stmt 0 view .LVU147
+ 480 0166 0623     		movs	r3, #6
+ 481 0168 6370     		strb	r3, [r4, #1]
+ 482 016a 8FE0     		b	.L16
+ 483              	.L36:
+ 134:Drivers/cia402device/Src/cia402device.c ****         } else if (is_command(controlword, ENABLE_OPERATION)) {
+ 484              		.loc 1 134 16 is_stmt 1 view .LVU148
+ 485              		.loc 1 134 20 is_stmt 0 view .LVU149
+ 486 016c 0621     		movs	r1, #6
+ 487 016e 2846     		mov	r0, r5
+ 488 0170 FFF7FEFF 		bl	is_command
+ 489              	.LVL27:
+ 490              		.loc 1 134 19 view .LVU150
+ 491 0174 48B1     		cbz	r0, .L37
+ 135:Drivers/cia402device/Src/cia402device.c ****             // transition 4
+ 136:Drivers/cia402device/Src/cia402device.c ****             axis->state = OPERATION_ENABLED;
+ 492              		.loc 1 136 13 is_stmt 1 view .LVU151
+ 493              		.loc 1 136 25 is_stmt 0 view .LVU152
+ 494 0176 2723     		movs	r3, #39
+ 495 0178 2370     		strb	r3, [r4]
+ 137:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= OPERATION_ENABLED;
+ 496              		.loc 1 137 13 is_stmt 1 view .LVU153
+ 497              		.loc 1 137 19 is_stmt 0 view .LVU154
+ 498 017a 6268     		ldr	r2, [r4, #4]
+ 499              		.loc 1 137 33 view .LVU155
+ 500 017c 1388     		ldrh	r3, [r2]
+ 501 017e 43F02703 		orr	r3, r3, #39
+ 502 0182 1380     		strh	r3, [r2]	@ movhi
+ 138:Drivers/cia402device/Src/cia402device.c ****             axis->transition = SWITCHED_ON_TO_OPERATION_ENABLED;
+ 503              		.loc 1 138 13 is_stmt 1 view .LVU156
+ 504              		.loc 1 138 30 is_stmt 0 view .LVU157
+ 505 0184 0423     		movs	r3, #4
+ 506 0186 6370     		strb	r3, [r4, #1]
+ 507 0188 80E0     		b	.L16
+ 508              	.L37:
+ 139:Drivers/cia402device/Src/cia402device.c ****         } else if (is_command(controlword, DISABLE_VOLTAGE_CMD)) {
+ 509              		.loc 1 139 16 is_stmt 1 view .LVU158
+ 510              		.loc 1 139 20 is_stmt 0 view .LVU159
+ 511 018a 0321     		movs	r1, #3
+ 512 018c 2846     		mov	r0, r5
+ 513 018e FFF7FEFF 		bl	is_command
+ 514              	.LVL28:
+ 515              		.loc 1 139 19 view .LVU160
+ 516 0192 48B1     		cbz	r0, .L38
+ 140:Drivers/cia402device/Src/cia402device.c ****             // transition 10
+ 141:Drivers/cia402device/Src/cia402device.c ****             axis->state = SWITCH_ON_DISABLED;
+ 517              		.loc 1 141 13 is_stmt 1 view .LVU161
+ 518              		.loc 1 141 25 is_stmt 0 view .LVU162
+ 519 0194 4023     		movs	r3, #64
+ 520 0196 2370     		strb	r3, [r4]
+ 142:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ 521              		.loc 1 142 13 is_stmt 1 view .LVU163
+ 522              		.loc 1 142 19 is_stmt 0 view .LVU164
+ 523 0198 6268     		ldr	r2, [r4, #4]
+ 524              		.loc 1 142 33 view .LVU165
+ARM GAS  /tmp/ccU6drkP.s 			page 13
+
+
+ 525 019a 1388     		ldrh	r3, [r2]
+ 526 019c 43F04003 		orr	r3, r3, #64
+ 527 01a0 1380     		strh	r3, [r2]	@ movhi
+ 143:Drivers/cia402device/Src/cia402device.c ****             axis->transition = SWITCHED_ON_TO_SWITCH_ON_DISABLED;
+ 528              		.loc 1 143 13 is_stmt 1 view .LVU166
+ 529              		.loc 1 143 30 is_stmt 0 view .LVU167
+ 530 01a2 0A23     		movs	r3, #10
+ 531 01a4 6370     		strb	r3, [r4, #1]
+ 532 01a6 71E0     		b	.L16
+ 533              	.L38:
+ 144:Drivers/cia402device/Src/cia402device.c ****         } else {
+ 145:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCHED_ON;
+ 534              		.loc 1 145 13 is_stmt 1 view .LVU168
+ 535              		.loc 1 145 19 is_stmt 0 view .LVU169
+ 536 01a8 6268     		ldr	r2, [r4, #4]
+ 537              		.loc 1 145 33 view .LVU170
+ 538 01aa 1388     		ldrh	r3, [r2]
+ 539 01ac 43F02303 		orr	r3, r3, #35
+ 540 01b0 1380     		strh	r3, [r2]	@ movhi
+ 541 01b2 6BE0     		b	.L16
+ 542              	.LVL29:
+ 543              	.L22:
+ 146:Drivers/cia402device/Src/cia402device.c ****         }
+ 147:Drivers/cia402device/Src/cia402device.c ****         break;
+ 148:Drivers/cia402device/Src/cia402device.c ****     }
+ 149:Drivers/cia402device/Src/cia402device.c ****     
+ 150:Drivers/cia402device/Src/cia402device.c ****     case OPERATION_ENABLED: 
+ 151:Drivers/cia402device/Src/cia402device.c ****     {
+ 152:Drivers/cia402device/Src/cia402device.c ****         if (is_command(controlword, DISABLE_OPERATION_CMD)) {
+ 544              		.loc 1 152 9 is_stmt 1 view .LVU171
+ 545              		.loc 1 152 13 is_stmt 0 view .LVU172
+ 546 01b4 0521     		movs	r1, #5
+ 547              	.LVL30:
+ 548              		.loc 1 152 13 view .LVU173
+ 549 01b6 2846     		mov	r0, r5
+ 550              	.LVL31:
+ 551              		.loc 1 152 13 view .LVU174
+ 552 01b8 FFF7FEFF 		bl	is_command
+ 553              	.LVL32:
+ 554              		.loc 1 152 12 view .LVU175
+ 555 01bc 48B1     		cbz	r0, .L39
+ 153:Drivers/cia402device/Src/cia402device.c ****             // transition 5
+ 154:Drivers/cia402device/Src/cia402device.c ****             axis->state = SWITCHED_ON;
+ 556              		.loc 1 154 13 is_stmt 1 view .LVU176
+ 557              		.loc 1 154 25 is_stmt 0 view .LVU177
+ 558 01be 2323     		movs	r3, #35
+ 559 01c0 2370     		strb	r3, [r4]
+ 155:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCHED_ON;
+ 560              		.loc 1 155 13 is_stmt 1 view .LVU178
+ 561              		.loc 1 155 19 is_stmt 0 view .LVU179
+ 562 01c2 6268     		ldr	r2, [r4, #4]
+ 563              		.loc 1 155 33 view .LVU180
+ 564 01c4 1388     		ldrh	r3, [r2]
+ 565 01c6 43F02303 		orr	r3, r3, #35
+ 566 01ca 1380     		strh	r3, [r2]	@ movhi
+ 156:Drivers/cia402device/Src/cia402device.c ****             axis->transition = OPERATION_ENABLED_TO_SWITCHED_ON;
+ 567              		.loc 1 156 13 is_stmt 1 view .LVU181
+ARM GAS  /tmp/ccU6drkP.s 			page 14
+
+
+ 568              		.loc 1 156 30 is_stmt 0 view .LVU182
+ 569 01cc 0523     		movs	r3, #5
+ 570 01ce 6370     		strb	r3, [r4, #1]
+ 571 01d0 5CE0     		b	.L16
+ 572              	.L39:
+ 157:Drivers/cia402device/Src/cia402device.c ****         }
+ 158:Drivers/cia402device/Src/cia402device.c ****         else if (is_command(controlword, SHUTDOWN_CMD)) {
+ 573              		.loc 1 158 14 is_stmt 1 view .LVU183
+ 574              		.loc 1 158 18 is_stmt 0 view .LVU184
+ 575 01d2 0021     		movs	r1, #0
+ 576 01d4 2846     		mov	r0, r5
+ 577 01d6 FFF7FEFF 		bl	is_command
+ 578              	.LVL33:
+ 579              		.loc 1 158 17 view .LVU185
+ 580 01da 48B1     		cbz	r0, .L40
+ 159:Drivers/cia402device/Src/cia402device.c ****             // transition 8
+ 160:Drivers/cia402device/Src/cia402device.c ****             axis->state = READY_TO_SWITCH_ON;
+ 581              		.loc 1 160 13 is_stmt 1 view .LVU186
+ 582              		.loc 1 160 25 is_stmt 0 view .LVU187
+ 583 01dc 2123     		movs	r3, #33
+ 584 01de 2370     		strb	r3, [r4]
+ 161:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= READY_TO_SWITCH_ON;
+ 585              		.loc 1 161 13 is_stmt 1 view .LVU188
+ 586              		.loc 1 161 19 is_stmt 0 view .LVU189
+ 587 01e0 6268     		ldr	r2, [r4, #4]
+ 588              		.loc 1 161 33 view .LVU190
+ 589 01e2 1388     		ldrh	r3, [r2]
+ 590 01e4 43F02103 		orr	r3, r3, #33
+ 591 01e8 1380     		strh	r3, [r2]	@ movhi
+ 162:Drivers/cia402device/Src/cia402device.c ****             axis->transition = OPERATION_ENABLED_TO_READY_TO_SWITCH_ON;
+ 592              		.loc 1 162 13 is_stmt 1 view .LVU191
+ 593              		.loc 1 162 30 is_stmt 0 view .LVU192
+ 594 01ea 0823     		movs	r3, #8
+ 595 01ec 6370     		strb	r3, [r4, #1]
+ 596 01ee 4DE0     		b	.L16
+ 597              	.L40:
+ 163:Drivers/cia402device/Src/cia402device.c ****         }
+ 164:Drivers/cia402device/Src/cia402device.c ****         else if (is_command(controlword, DISABLE_VOLTAGE_CMD)
+ 598              		.loc 1 164 14 is_stmt 1 view .LVU193
+ 599              		.loc 1 164 18 is_stmt 0 view .LVU194
+ 600 01f0 0321     		movs	r1, #3
+ 601 01f2 2846     		mov	r0, r5
+ 602 01f4 FFF7FEFF 		bl	is_command
+ 603              	.LVL34:
+ 604              		.loc 1 164 17 view .LVU195
+ 605 01f8 18B9     		cbnz	r0, .L41
+ 165:Drivers/cia402device/Src/cia402device.c ****             || *(axis->ALstatus) != AL_STATUS_OP) { // connection lost 
+ 606              		.loc 1 165 22 view .LVU196
+ 607 01fa A368     		ldr	r3, [r4, #8]
+ 608              		.loc 1 165 16 view .LVU197
+ 609 01fc 1B88     		ldrh	r3, [r3]
+ 610              		.loc 1 165 13 view .LVU198
+ 611 01fe 082B     		cmp	r3, #8
+ 612 0200 09D0     		beq	.L42
+ 613              	.L41:
+ 166:Drivers/cia402device/Src/cia402device.c ****             // transition 9
+ 167:Drivers/cia402device/Src/cia402device.c ****             axis->state = SWITCH_ON_DISABLED;
+ARM GAS  /tmp/ccU6drkP.s 			page 15
+
+
+ 614              		.loc 1 167 13 is_stmt 1 view .LVU199
+ 615              		.loc 1 167 25 is_stmt 0 view .LVU200
+ 616 0202 4023     		movs	r3, #64
+ 617 0204 2370     		strb	r3, [r4]
+ 168:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ 618              		.loc 1 168 13 is_stmt 1 view .LVU201
+ 619              		.loc 1 168 19 is_stmt 0 view .LVU202
+ 620 0206 6268     		ldr	r2, [r4, #4]
+ 621              		.loc 1 168 33 view .LVU203
+ 622 0208 1388     		ldrh	r3, [r2]
+ 623 020a 43F04003 		orr	r3, r3, #64
+ 624 020e 1380     		strh	r3, [r2]	@ movhi
+ 169:Drivers/cia402device/Src/cia402device.c ****             axis->transition = OPERATION_ENABLED_TO_SWITCH_ON_DISABLED;
+ 625              		.loc 1 169 13 is_stmt 1 view .LVU204
+ 626              		.loc 1 169 30 is_stmt 0 view .LVU205
+ 627 0210 0923     		movs	r3, #9
+ 628 0212 6370     		strb	r3, [r4, #1]
+ 629 0214 3AE0     		b	.L16
+ 630              	.L42:
+ 170:Drivers/cia402device/Src/cia402device.c ****         }
+ 171:Drivers/cia402device/Src/cia402device.c ****         else if (is_command(controlword, QUICK_STOP_CMD)) {
+ 631              		.loc 1 171 14 is_stmt 1 view .LVU206
+ 632              		.loc 1 171 18 is_stmt 0 view .LVU207
+ 633 0216 0421     		movs	r1, #4
+ 634 0218 2846     		mov	r0, r5
+ 635 021a FFF7FEFF 		bl	is_command
+ 636              	.LVL35:
+ 637              		.loc 1 171 17 view .LVU208
+ 638 021e 48B1     		cbz	r0, .L43
+ 172:Drivers/cia402device/Src/cia402device.c ****             // transition 11
+ 173:Drivers/cia402device/Src/cia402device.c ****             axis->state = QUICK_STOP_ACTIVE;
+ 639              		.loc 1 173 13 is_stmt 1 view .LVU209
+ 640              		.loc 1 173 25 is_stmt 0 view .LVU210
+ 641 0220 0723     		movs	r3, #7
+ 642 0222 2370     		strb	r3, [r4]
+ 174:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= QUICK_STOP_ACTIVE;
+ 643              		.loc 1 174 13 is_stmt 1 view .LVU211
+ 644              		.loc 1 174 19 is_stmt 0 view .LVU212
+ 645 0224 6268     		ldr	r2, [r4, #4]
+ 646              		.loc 1 174 33 view .LVU213
+ 647 0226 1388     		ldrh	r3, [r2]
+ 648 0228 43F00703 		orr	r3, r3, #7
+ 649 022c 1380     		strh	r3, [r2]	@ movhi
+ 175:Drivers/cia402device/Src/cia402device.c ****             axis->transition = OPERATION_ENABLED_TO_QUICK_STOP_ACTIVE;
+ 650              		.loc 1 175 13 is_stmt 1 view .LVU214
+ 651              		.loc 1 175 30 is_stmt 0 view .LVU215
+ 652 022e 0B23     		movs	r3, #11
+ 653 0230 6370     		strb	r3, [r4, #1]
+ 654 0232 2BE0     		b	.L16
+ 655              	.L43:
+ 176:Drivers/cia402device/Src/cia402device.c ****         }
+ 177:Drivers/cia402device/Src/cia402device.c ****         else {
+ 178:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= OPERATION_ENABLED;
+ 656              		.loc 1 178 13 is_stmt 1 view .LVU216
+ 657              		.loc 1 178 19 is_stmt 0 view .LVU217
+ 658 0234 6268     		ldr	r2, [r4, #4]
+ 659              		.loc 1 178 33 view .LVU218
+ARM GAS  /tmp/ccU6drkP.s 			page 16
+
+
+ 660 0236 1388     		ldrh	r3, [r2]
+ 661 0238 43F02703 		orr	r3, r3, #39
+ 662 023c 1380     		strh	r3, [r2]	@ movhi
+ 179:Drivers/cia402device/Src/cia402device.c **** 
+ 180:Drivers/cia402device/Src/cia402device.c ****             if (axis->motion_control_hook) {
+ 663              		.loc 1 180 13 is_stmt 1 view .LVU219
+ 664              		.loc 1 180 21 is_stmt 0 view .LVU220
+ 665 023e 2369     		ldr	r3, [r4, #16]
+ 666              		.loc 1 180 16 view .LVU221
+ 667 0240 23B3     		cbz	r3, .L16
+ 181:Drivers/cia402device/Src/cia402device.c ****                 axis->motion_control_hook();
+ 668              		.loc 1 181 17 is_stmt 1 view .LVU222
+ 669 0242 9847     		blx	r3
+ 670              	.LVL36:
+ 671 0244 22E0     		b	.L16
+ 672              	.LVL37:
+ 673              	.L28:
+ 182:Drivers/cia402device/Src/cia402device.c ****             }
+ 183:Drivers/cia402device/Src/cia402device.c ****         }
+ 184:Drivers/cia402device/Src/cia402device.c ****         break;
+ 185:Drivers/cia402device/Src/cia402device.c ****     }
+ 186:Drivers/cia402device/Src/cia402device.c ****     
+ 187:Drivers/cia402device/Src/cia402device.c ****     case QUICK_STOP_ACTIVE: 
+ 188:Drivers/cia402device/Src/cia402device.c ****     {
+ 189:Drivers/cia402device/Src/cia402device.c ****         if (is_command(controlword, DISABLE_VOLTAGE_CMD)) {
+ 674              		.loc 1 189 9 view .LVU223
+ 675              		.loc 1 189 13 is_stmt 0 view .LVU224
+ 676 0246 0321     		movs	r1, #3
+ 677              	.LVL38:
+ 678              		.loc 1 189 13 view .LVU225
+ 679 0248 2846     		mov	r0, r5
+ 680              	.LVL39:
+ 681              		.loc 1 189 13 view .LVU226
+ 682 024a FFF7FEFF 		bl	is_command
+ 683              	.LVL40:
+ 684              		.loc 1 189 12 view .LVU227
+ 685 024e 48B1     		cbz	r0, .L44
+ 190:Drivers/cia402device/Src/cia402device.c ****             // transition 12
+ 191:Drivers/cia402device/Src/cia402device.c ****             axis->state = SWITCH_ON_DISABLED;
+ 686              		.loc 1 191 13 is_stmt 1 view .LVU228
+ 687              		.loc 1 191 25 is_stmt 0 view .LVU229
+ 688 0250 4023     		movs	r3, #64
+ 689 0252 2370     		strb	r3, [r4]
+ 192:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ 690              		.loc 1 192 13 is_stmt 1 view .LVU230
+ 691              		.loc 1 192 19 is_stmt 0 view .LVU231
+ 692 0254 6268     		ldr	r2, [r4, #4]
+ 693              		.loc 1 192 33 view .LVU232
+ 694 0256 1388     		ldrh	r3, [r2]
+ 695 0258 43F04003 		orr	r3, r3, #64
+ 696 025c 1380     		strh	r3, [r2]	@ movhi
+ 193:Drivers/cia402device/Src/cia402device.c ****             axis->transition = QUICK_STOP_ACTIVE_TO_OPERATION_ENABLED;
+ 697              		.loc 1 193 13 is_stmt 1 view .LVU233
+ 698              		.loc 1 193 30 is_stmt 0 view .LVU234
+ 699 025e 1023     		movs	r3, #16
+ 700 0260 6370     		strb	r3, [r4, #1]
+ 701 0262 13E0     		b	.L16
+ARM GAS  /tmp/ccU6drkP.s 			page 17
+
+
+ 702              	.L44:
+ 194:Drivers/cia402device/Src/cia402device.c ****         }
+ 195:Drivers/cia402device/Src/cia402device.c ****         else if (is_command(controlword, ENABLE_OPERATION)) {
+ 703              		.loc 1 195 14 is_stmt 1 view .LVU235
+ 704              		.loc 1 195 18 is_stmt 0 view .LVU236
+ 705 0264 0621     		movs	r1, #6
+ 706 0266 2846     		mov	r0, r5
+ 707 0268 FFF7FEFF 		bl	is_command
+ 708              	.LVL41:
+ 709              		.loc 1 195 17 view .LVU237
+ 710 026c 70B9     		cbnz	r0, .L16
+ 196:Drivers/cia402device/Src/cia402device.c ****             // transition 16, supporting not recommended
+ 197:Drivers/cia402device/Src/cia402device.c ****             break;
+ 198:Drivers/cia402device/Src/cia402device.c ****             axis->state = OPERATION_ENABLED;
+ 199:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= OPERATION_ENABLED;
+ 200:Drivers/cia402device/Src/cia402device.c ****             axis->transition = QUICK_STOP_ACTIVE_TO_OPERATION_ENABLED;
+ 201:Drivers/cia402device/Src/cia402device.c ****         } else {
+ 202:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= QUICK_STOP_ACTIVE;
+ 711              		.loc 1 202 13 is_stmt 1 view .LVU238
+ 712              		.loc 1 202 19 is_stmt 0 view .LVU239
+ 713 026e 6268     		ldr	r2, [r4, #4]
+ 714              		.loc 1 202 33 view .LVU240
+ 715 0270 1388     		ldrh	r3, [r2]
+ 716 0272 43F00703 		orr	r3, r3, #7
+ 717 0276 1380     		strh	r3, [r2]	@ movhi
+ 718 0278 08E0     		b	.L16
+ 719              	.LVL42:
+ 720              	.L25:
+ 203:Drivers/cia402device/Src/cia402device.c ****         }
+ 204:Drivers/cia402device/Src/cia402device.c ****         break;
+ 205:Drivers/cia402device/Src/cia402device.c ****     }
+ 206:Drivers/cia402device/Src/cia402device.c ****     
+ 207:Drivers/cia402device/Src/cia402device.c ****     case FAULT_REACTION_ACTIVE: 
+ 208:Drivers/cia402device/Src/cia402device.c ****     {
+ 209:Drivers/cia402device/Src/cia402device.c ****         // transition 14 is automatic
+ 210:Drivers/cia402device/Src/cia402device.c ****         axis->state = FAULT;
+ 721              		.loc 1 210 9 is_stmt 1 view .LVU241
+ 722              		.loc 1 210 21 is_stmt 0 view .LVU242
+ 723 027a 0823     		movs	r3, #8
+ 724 027c 0370     		strb	r3, [r0]
+ 211:Drivers/cia402device/Src/cia402device.c ****         *(axis->statusword) |= FAULT;
+ 725              		.loc 1 211 9 is_stmt 1 view .LVU243
+ 726              		.loc 1 211 15 is_stmt 0 view .LVU244
+ 727 027e 4268     		ldr	r2, [r0, #4]
+ 728              		.loc 1 211 29 view .LVU245
+ 729 0280 1388     		ldrh	r3, [r2]
+ 730 0282 43F00803 		orr	r3, r3, #8
+ 731 0286 1380     		strh	r3, [r2]	@ movhi
+ 212:Drivers/cia402device/Src/cia402device.c ****         axis->transition = FAULT_REACTION_ACTIVE_TO_FAULT;
+ 732              		.loc 1 212 9 is_stmt 1 view .LVU246
+ 733              		.loc 1 212 26 is_stmt 0 view .LVU247
+ 734 0288 0E23     		movs	r3, #14
+ 735 028a 4370     		strb	r3, [r0, #1]
+ 213:Drivers/cia402device/Src/cia402device.c ****         break;
+ 736              		.loc 1 213 9 is_stmt 1 view .LVU248
+ 737              	.LVL43:
+ 738              	.L16:
+ARM GAS  /tmp/ccU6drkP.s 			page 18
+
+
+ 214:Drivers/cia402device/Src/cia402device.c ****     }
+ 215:Drivers/cia402device/Src/cia402device.c ****     
+ 216:Drivers/cia402device/Src/cia402device.c ****     case FAULT: 
+ 217:Drivers/cia402device/Src/cia402device.c ****     {
+ 218:Drivers/cia402device/Src/cia402device.c ****         if (is_command(controlword, FAULT_RESET)) {
+ 219:Drivers/cia402device/Src/cia402device.c ****             // transition 15
+ 220:Drivers/cia402device/Src/cia402device.c ****             axis->state = SWITCH_ON_DISABLED;
+ 221:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ 222:Drivers/cia402device/Src/cia402device.c ****             axis->transition = FAULT_TO_SWITCH_ON_DISABLED;
+ 223:Drivers/cia402device/Src/cia402device.c ****         } else {
+ 224:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= FAULT;
+ 225:Drivers/cia402device/Src/cia402device.c ****         }
+ 226:Drivers/cia402device/Src/cia402device.c ****         break;
+ 227:Drivers/cia402device/Src/cia402device.c ****     }
+ 228:Drivers/cia402device/Src/cia402device.c ****     
+ 229:Drivers/cia402device/Src/cia402device.c ****     default:
+ 230:Drivers/cia402device/Src/cia402device.c ****         // this should never happen, but just in case
+ 231:Drivers/cia402device/Src/cia402device.c ****         axis->state = NOT_READY_TO_SWITCH_ON;
+ 232:Drivers/cia402device/Src/cia402device.c ****         *(axis->statusword) |= NOT_READY_TO_SWITCH_ON;
+ 233:Drivers/cia402device/Src/cia402device.c ****         axis->transition = NO_TRANSITION;
+ 234:Drivers/cia402device/Src/cia402device.c ****         break;
+ 235:Drivers/cia402device/Src/cia402device.c ****     }
+ 236:Drivers/cia402device/Src/cia402device.c **** }
+ 739              		.loc 1 236 1 is_stmt 0 view .LVU249
+ 740 028c 38BD     		pop	{r3, r4, r5, pc}
+ 741              	.LVL44:
+ 742              	.L27:
+ 218:Drivers/cia402device/Src/cia402device.c ****             // transition 15
+ 743              		.loc 1 218 9 is_stmt 1 view .LVU250
+ 218:Drivers/cia402device/Src/cia402device.c ****             // transition 15
+ 744              		.loc 1 218 13 is_stmt 0 view .LVU251
+ 745 028e 0721     		movs	r1, #7
+ 746              	.LVL45:
+ 218:Drivers/cia402device/Src/cia402device.c ****             // transition 15
+ 747              		.loc 1 218 13 view .LVU252
+ 748 0290 2846     		mov	r0, r5
+ 749              	.LVL46:
+ 218:Drivers/cia402device/Src/cia402device.c ****             // transition 15
+ 750              		.loc 1 218 13 view .LVU253
+ 751 0292 FFF7FEFF 		bl	is_command
+ 752              	.LVL47:
+ 218:Drivers/cia402device/Src/cia402device.c ****             // transition 15
+ 753              		.loc 1 218 12 view .LVU254
+ 754 0296 48B1     		cbz	r0, .L45
+ 220:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ 755              		.loc 1 220 13 is_stmt 1 view .LVU255
+ 220:Drivers/cia402device/Src/cia402device.c ****             *(axis->statusword) |= SWITCH_ON_DISABLED;
+ 756              		.loc 1 220 25 is_stmt 0 view .LVU256
+ 757 0298 4023     		movs	r3, #64
+ 758 029a 2370     		strb	r3, [r4]
+ 221:Drivers/cia402device/Src/cia402device.c ****             axis->transition = FAULT_TO_SWITCH_ON_DISABLED;
+ 759              		.loc 1 221 13 is_stmt 1 view .LVU257
+ 221:Drivers/cia402device/Src/cia402device.c ****             axis->transition = FAULT_TO_SWITCH_ON_DISABLED;
+ 760              		.loc 1 221 19 is_stmt 0 view .LVU258
+ 761 029c 6268     		ldr	r2, [r4, #4]
+ 221:Drivers/cia402device/Src/cia402device.c ****             axis->transition = FAULT_TO_SWITCH_ON_DISABLED;
+ 762              		.loc 1 221 33 view .LVU259
+ARM GAS  /tmp/ccU6drkP.s 			page 19
+
+
+ 763 029e 1388     		ldrh	r3, [r2]
+ 764 02a0 43F04003 		orr	r3, r3, #64
+ 765 02a4 1380     		strh	r3, [r2]	@ movhi
+ 222:Drivers/cia402device/Src/cia402device.c ****         } else {
+ 766              		.loc 1 222 13 is_stmt 1 view .LVU260
+ 222:Drivers/cia402device/Src/cia402device.c ****         } else {
+ 767              		.loc 1 222 30 is_stmt 0 view .LVU261
+ 768 02a6 0F23     		movs	r3, #15
+ 769 02a8 6370     		strb	r3, [r4, #1]
+ 770 02aa EFE7     		b	.L16
+ 771              	.L45:
+ 224:Drivers/cia402device/Src/cia402device.c ****         }
+ 772              		.loc 1 224 13 is_stmt 1 view .LVU262
+ 224:Drivers/cia402device/Src/cia402device.c ****         }
+ 773              		.loc 1 224 19 is_stmt 0 view .LVU263
+ 774 02ac 6268     		ldr	r2, [r4, #4]
+ 224:Drivers/cia402device/Src/cia402device.c ****         }
+ 775              		.loc 1 224 33 view .LVU264
+ 776 02ae 1388     		ldrh	r3, [r2]
+ 777 02b0 43F00803 		orr	r3, r3, #8
+ 778 02b4 1380     		strh	r3, [r2]	@ movhi
+ 779 02b6 E9E7     		b	.L16
+ 780              	.LVL48:
+ 781              	.L19:
+ 231:Drivers/cia402device/Src/cia402device.c ****         *(axis->statusword) |= NOT_READY_TO_SWITCH_ON;
+ 782              		.loc 1 231 9 is_stmt 1 view .LVU265
+ 231:Drivers/cia402device/Src/cia402device.c ****         *(axis->statusword) |= NOT_READY_TO_SWITCH_ON;
+ 783              		.loc 1 231 21 is_stmt 0 view .LVU266
+ 784 02b8 0023     		movs	r3, #0
+ 785 02ba 2370     		strb	r3, [r4]
+ 232:Drivers/cia402device/Src/cia402device.c ****         axis->transition = NO_TRANSITION;
+ 786              		.loc 1 232 9 is_stmt 1 view .LVU267
+ 233:Drivers/cia402device/Src/cia402device.c ****         break;
+ 787              		.loc 1 233 9 view .LVU268
+ 234:Drivers/cia402device/Src/cia402device.c ****     }
+ 788              		.loc 1 234 9 view .LVU269
+ 789              		.loc 1 236 1 is_stmt 0 view .LVU270
+ 790 02bc E6E7     		b	.L16
+ 791              		.cfi_endproc
+ 792              	.LFE2:
+ 794              		.text
+ 795              	.Letext0:
+ 796              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 797              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 798              		.file 4 "Drivers/cia402device/Inc/cia402device.h"
+ARM GAS  /tmp/ccU6drkP.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 cia402device.c
+     /tmp/ccU6drkP.s:20     .text.cia402_init:0000000000000000 $t
+     /tmp/ccU6drkP.s:26     .text.cia402_init:0000000000000000 cia402_init
+     /tmp/ccU6drkP.s:61     .text.is_command:0000000000000000 $t
+     /tmp/ccU6drkP.s:67     .text.is_command:0000000000000000 is_command
+     /tmp/ccU6drkP.s:82     .text.is_command:0000000000000008 $d
+     /tmp/ccU6drkP.s:90     .text.is_command:0000000000000010 $t
+     /tmp/ccU6drkP.s:194    .text.cia402_state_machine:0000000000000000 $t
+     /tmp/ccU6drkP.s:200    .text.cia402_state_machine:0000000000000000 cia402_state_machine
+     /tmp/ccU6drkP.s:240    .text.cia402_state_machine:000000000000002c $d
+     /tmp/ccU6drkP.s:272    .text.cia402_state_machine:000000000000006c $t
+     /tmp/ccU6drkP.s:278    .text.cia402_state_machine:0000000000000076 $d
+     /tmp/ccU6drkP.s:294    .text.cia402_state_machine:0000000000000096 $t
+
+NO UNDEFINED SYMBOLS
