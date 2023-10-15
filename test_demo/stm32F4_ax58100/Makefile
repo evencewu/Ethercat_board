@@ -57,7 +57,18 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
-Core/Src/system_stm32f4xx.c  
+Core/Src/system_stm32f4xx.c \
+Lib/soes/src/ecat_slv.c \
+Lib/soes/src/esc_coe.c \
+Lib/soes/src/esc_eep.c \
+Lib/soes/src/esc_eoe.c \
+Lib/soes/src/esc_foe.c \
+Lib/soes/src/esc.c \
+Lib/soes_hal_bsp/src/esc_irq.c \
+Lib/soes_hal_bsp/src/rst.c \
+Lib/soes_hal_bsp/src/spi.c \
+Lib/soes-esi/objectlist.c \
+Lib/soes/hal/ax58100/esc_hw.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -118,7 +129,9 @@ C_INCLUDES =  \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
--IDrivers/CMSIS/Include
+-IDrivers/CMSIS/Include \
+-ILib/soes_hal_bsp/include \
+-ILib/soes/include
 
 
 # compile gcc flags
