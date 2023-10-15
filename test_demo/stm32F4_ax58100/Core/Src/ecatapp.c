@@ -1,13 +1,12 @@
-#include "usart.h"
-
 #include "esc.h"
 #include "ecat_slv.h"
 #include "utypes.h"
 
 #include "esc_irq.h"
 #include "pdo_override.h"
-#include "cia402device.h"
 #include "ecatapp.h"
+
+#include "main.h"
 
 
 /* CANopen Object Dictionary */
@@ -17,11 +16,6 @@ _Objects    Obj;
 /* Application hook declaration */
 void ecatapp(void);
 uint16_t check_dc_handler(void);
-
-/* CiA402 hooks declarations */
-void app_cia402_init(void);
-void app_cia402_mc(void);
-
 
 /* SOES configuration */
 static esc_cfg_t config = { 
@@ -43,40 +37,10 @@ static esc_cfg_t config = {
     .esc_check_dc_handler      = check_dc_handler,
 };
 
-/* CiA402 motion control configuration */
-cia402_axis_t cia402axis = {
-    .init_od_hook              = app_cia402_init,
-    .motion_control_hook       = app_cia402_mc,
-};
 
-// **************************************************************
-
-static uint8_t sync0_irq_flag = 0;
-
-void EXTI1_IRQHandler(void)
-{
-    if(EXTI_GetITStatus(EXTI_Line1) != RESET)
-    {
-        EXTI_ClearITPendingBit(EXTI_Line1);
-        sync0_irq_flag = 1;
-    }
-}
-
-static uint8_t pdi_irq_flag = 0;
-
-void EXTI3_IRQHandler(void)
-{
-    if(EXTI_GetITStatus(EXTI_Line3) != RESET)
-    {
-        EXTI_ClearITPendingBit(EXTI_Line3);
-        pdi_irq_flag = 1;
-    }
-}
-// **************************************************************
 
 void ecatapp_init(void) {
     ecat_slv_init(&config);
-    cia402_init(&cia402axis);
 	init_override();
 }
 
@@ -105,7 +69,7 @@ uint16_t check_dc_handler (void)
 
 void ecatapp()
 {
-    cia402_state_machine(&cia402axis, Obj.Control_Word);
+
 }
 
 
@@ -118,23 +82,6 @@ void cb_get_inputs()
 void cb_set_outputs()
 {
     /* SOES reqires this function but nothing to do here in CiA402 app */
-}
-
-
-void app_cia402_init(void)
-{
-    /* Match CiA 402 objects to used CoE Object Dictionary implementation */
-    cia402axis.statusword = &Obj.Status_Word;
-    cia402axis.ALstatus = &ESCvar.ALstatus;
-}
-
-
-void app_cia402_mc()
-{
-    // TODO motion control here
-    Obj.Position_actual = Obj.Target_position; // dummy loopback
-    // csp is the only supported mode for now
-    *(cia402axis.statusword) |= CIA402_STATUSWORD_CSP_DRIVE_FOLLOWS_COMMAND;
 }
  
 void ecatapp_loop(void)
