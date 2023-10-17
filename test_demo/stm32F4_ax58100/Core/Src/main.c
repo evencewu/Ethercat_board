@@ -100,7 +100,7 @@ int main(void)
   MX_CAN1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-
+  ecatapp_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,6 +110,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    ecatapp_loop();
   }
   /* USER CODE END 3 */
 }
@@ -280,6 +281,11 @@ static void MX_DMA_Init(void)
 
   /* DMA controller clock enable */
   __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
 
 }
 

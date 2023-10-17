@@ -13,13 +13,11 @@ typedef struct
 
    /* Inputs */
 
-   uint16_t Status_Word;
-   uint32_t Position_actual;
+   uint8_t LED1;
 
    /* Outputs */
 
-   uint16_t Control_Word;
-   uint32_t Target_position;
+   uint8_t LED2;
 
    /* Parameters */
 

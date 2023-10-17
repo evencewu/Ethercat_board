@@ -12,7 +12,7 @@
 #define __esc__
 
 #include <stdbool.h>
-#include "cc.h"
+#include <cc.h>
 #include <esc_coe.h>
 #include "options.h"
 

@@ -13,7 +13,7 @@ extern SPI_HandleTypeDef hspi2;
 
 static int et1100 = 1;
 
-static volatile DMA_PDI_transmission_state_t pdi_dma_transmission = NOT_STARTED;
+volatile DMA_PDI_transmission_state_t pdi_dma_transmission = NOT_STARTED;
 
 /* SPI DMA RX buffer */
 uint8_t pdo_rxbuf[PDO_TR_SIZE + RX_PADDING_SIZE] __attribute__((aligned (8)));

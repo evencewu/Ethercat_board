@@ -30,7 +30,8 @@ build/ecatapp.o: Core/Src/ecatapp.c Lib/soes/include/esc.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
+ Core/Inc/ecatapp.h
 Lib/soes/include/esc.h:
 Lib/soes/include/cc.h:
 Lib/soes/include/esc_coe.h:
@@ -72,3 +73,4 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+Core/Inc/ecatapp.h:

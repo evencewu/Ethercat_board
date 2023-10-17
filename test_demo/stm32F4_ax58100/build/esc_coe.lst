@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccoeYwR8.s 			page 1
+ARM GAS  /tmp/ccCma9kM.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
   28:Lib/soes/src/esc_coe.c **** #define SDO_COMMAND(byte)         \
   29:Lib/soes/src/esc_coe.c ****    (byte & 0xe0)
   30:Lib/soes/src/esc_coe.c **** #define SDO_COMPLETE_ACCESS(byte) \
-ARM GAS  /tmp/ccoeYwR8.s 			page 2
+ARM GAS  /tmp/ccCma9kM.s 			page 2
 
 
   31:Lib/soes/src/esc_coe.c ****    ((byte & COE_COMPLETEACCESS) == COE_COMPLETEACCESS)
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
   85:Lib/soes/src/esc_coe.c ****    int32_t n = 0;
   86:Lib/soes/src/esc_coe.c ****    while (SDOobjects[n].index < index)
   87:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 3
+ARM GAS  /tmp/ccCma9kM.s 			page 3
 
 
   88:Lib/soes/src/esc_coe.c ****       n++;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  142:Lib/soes/src/esc_coe.c ****    si = OBJ_VALUE_FETCH (si, objd1c1x[0]);
  143:Lib/soes/src/esc_coe.c ****    if (si)
  144:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 4
+ARM GAS  /tmp/ccCma9kM.s 			page 4
 
 
  145:Lib/soes/src/esc_coe.c ****       for (sic = 1; sic <= si; sic++)
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  199:Lib/soes/src/esc_coe.c ****                         mapping = &SDOobjects[nidx].objdesc[nsub];
  200:Lib/soes/src/esc_coe.c ****                      }
  201:Lib/soes/src/esc_coe.c ****                      else
-ARM GAS  /tmp/ccoeYwR8.s 			page 5
+ARM GAS  /tmp/ccCma9kM.s 			page 5
 
 
  202:Lib/soes/src/esc_coe.c ****                      {
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  256:Lib/soes/src/esc_coe.c ****  * @param[in] abortcode  = abort code to send in reply
  257:Lib/soes/src/esc_coe.c ****  */
  258:Lib/soes/src/esc_coe.c **** static void SDO_abort (uint8_t reusembx, uint16_t index, uint8_t subindex, uint32_t abortcode)
-ARM GAS  /tmp/ccoeYwR8.s 			page 6
+ARM GAS  /tmp/ccCma9kM.s 			page 6
 
 
  259:Lib/soes/src/esc_coe.c **** {
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  313:Lib/soes/src/esc_coe.c ****    subindex = coesdo->subindex;
  314:Lib/soes/src/esc_coe.c ****    nidx = SDO_findobject (index);
  315:Lib/soes/src/esc_coe.c ****    if (nidx >= 0)
-ARM GAS  /tmp/ccoeYwR8.s 			page 7
+ARM GAS  /tmp/ccCma9kM.s 			page 7
 
 
  316:Lib/soes/src/esc_coe.c ****    {
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  370:Lib/soes/src/esc_coe.c ****                      coeres->size = htoel ((objd + nsub)->value);
  371:Lib/soes/src/esc_coe.c ****                   }
  372:Lib/soes/src/esc_coe.c ****                   else
-ARM GAS  /tmp/ccoeYwR8.s 			page 8
+ARM GAS  /tmp/ccCma9kM.s 			page 8
 
 
  373:Lib/soes/src/esc_coe.c ****                   {
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  427:Lib/soes/src/esc_coe.c ****                   set_state_idle (MBXout, index, subindex, abort);
  428:Lib/soes/src/esc_coe.c ****                   return;
  429:Lib/soes/src/esc_coe.c ****                }
-ARM GAS  /tmp/ccoeYwR8.s 			page 9
+ARM GAS  /tmp/ccCma9kM.s 			page 9
 
 
  430:Lib/soes/src/esc_coe.c ****             }
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  484:Lib/soes/src/esc_coe.c ****        (objd->datatype == DTYPE_OCTET_STRING)   ||
  485:Lib/soes/src/esc_coe.c ****        (objd->datatype == DTYPE_UNICODE_STRING))
  486:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 10
+ARM GAS  /tmp/ccCma9kM.s 			page 10
 
 
  487:Lib/soes/src/esc_coe.c ****       return ABORT_CA_NOT_SUPPORTED;
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  541:Lib/soes/src/esc_coe.c ****          uint32_t bitmask = (1U << bitlen) - 1U;
  542:Lib/soes/src/esc_coe.c ****          uint32_t tempmask;
  543:Lib/soes/src/esc_coe.c ****          if (READ_ACCESS(access, state))
-ARM GAS  /tmp/ccoeYwR8.s 			page 11
+ARM GAS  /tmp/ccCma9kM.s 			page 11
 
 
  544:Lib/soes/src/esc_coe.c ****          {
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
   47              	.LVL1:
  580:Lib/soes/src/esc_coe.c ****    coesdo->coeheader.numberservice = htoes(sdoservice << 12);
   48              		.loc 1 580 4 is_stmt 1 view .LVU6
-ARM GAS  /tmp/ccoeYwR8.s 			page 12
+ARM GAS  /tmp/ccCma9kM.s 			page 12
 
 
   49              		.loc 1 580 38 is_stmt 0 view .LVU7
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  606:Lib/soes/src/esc_coe.c ****    uint8_t MBXout = ESC_claimbuffer ();
  607:Lib/soes/src/esc_coe.c ****    if (MBXout == 0)
  608:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 13
+ARM GAS  /tmp/ccCma9kM.s 			page 13
 
 
  609:Lib/soes/src/esc_coe.c ****       /* It is a bad idea to call SDO_abort when ESC_claimbuffer fails,
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  663:Lib/soes/src/esc_coe.c ****    }
  664:Lib/soes/src/esc_coe.c ****    else
  665:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 14
+ARM GAS  /tmp/ccCma9kM.s 			page 14
 
 
  666:Lib/soes/src/esc_coe.c ****       /* normal response, i.e. length > 4 bytes */
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  720:Lib/soes/src/esc_coe.c ****       uint8_t command = COE_COMMAND_UPLOADSEGMENT |
  721:Lib/soes/src/esc_coe.c ****             (coesdo->command & COE_TOGGLEBIT);  /* copy toggle bit */
  722:Lib/soes/src/esc_coe.c ****       init_coesdo(coeres, COE_SDORESPONSE, command,
-ARM GAS  /tmp/ccoeYwR8.s 			page 15
+ARM GAS  /tmp/ccCma9kM.s 			page 15
 
 
  723:Lib/soes/src/esc_coe.c ****             coesdo->index, coesdo->subindex);
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  777:Lib/soes/src/esc_coe.c ****    uint16_t index;
  778:Lib/soes/src/esc_coe.c ****    uint8_t subindex;
  779:Lib/soes/src/esc_coe.c ****    int32_t nidx;
-ARM GAS  /tmp/ccoeYwR8.s 			page 16
+ARM GAS  /tmp/ccCma9kM.s 			page 16
 
 
  780:Lib/soes/src/esc_coe.c ****    int16_t nsub;
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  834:Lib/soes/src/esc_coe.c ****                   return;
  835:Lib/soes/src/esc_coe.c ****                }
  836:Lib/soes/src/esc_coe.c ****             }
-ARM GAS  /tmp/ccoeYwR8.s 			page 17
+ARM GAS  /tmp/ccCma9kM.s 			page 17
 
 
  837:Lib/soes/src/esc_coe.c ****             abort = ESC_download_pre_objecthandler (
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  891:Lib/soes/src/esc_coe.c ****          else
  892:Lib/soes/src/esc_coe.c ****          {
  893:Lib/soes/src/esc_coe.c ****             if (access == ATYPE_RO)
-ARM GAS  /tmp/ccoeYwR8.s 			page 18
+ARM GAS  /tmp/ccCma9kM.s 			page 18
 
 
  894:Lib/soes/src/esc_coe.c ****             {
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  948:Lib/soes/src/esc_coe.c ****       mbxdata++;
  949:Lib/soes/src/esc_coe.c ****    }
  950:Lib/soes/src/esc_coe.c **** 
-ARM GAS  /tmp/ccoeYwR8.s 			page 19
+ARM GAS  /tmp/ccCma9kM.s 			page 19
 
 
  951:Lib/soes/src/esc_coe.c ****    const _objd *objd = SDOobjects[nidx].objdesc;
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1005:Lib/soes/src/esc_coe.c **** 
 1006:Lib/soes/src/esc_coe.c ****          abortcode = ESC_download_post_objecthandler(index, subindex,
 1007:Lib/soes/src/esc_coe.c ****                objd->flags | COMPLETE_ACCESS_FLAG);
-ARM GAS  /tmp/ccoeYwR8.s 			page 20
+ARM GAS  /tmp/ccCma9kM.s 			page 20
 
 
 1008:Lib/soes/src/esc_coe.c ****          if (abortcode != 0)
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1062:Lib/soes/src/esc_coe.c **** 
 1063:Lib/soes/src/esc_coe.c ****             if(ESCvar.frags > ESCvar.fragsleft + size)
 1064:Lib/soes/src/esc_coe.c ****             {
-ARM GAS  /tmp/ccoeYwR8.s 			page 21
+ARM GAS  /tmp/ccCma9kM.s 			page 21
 
 
 1065:Lib/soes/src/esc_coe.c ****                set_state_idle (0, ESCvar.index, ESCvar.subindex, ABORT_TYPEMISMATCH);
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1119:Lib/soes/src/esc_coe.c **** static void SDO_infoerror (uint32_t abortcode)
 1120:Lib/soes/src/esc_coe.c **** {
 1121:Lib/soes/src/esc_coe.c ****    uint8_t MBXout;
-ARM GAS  /tmp/ccoeYwR8.s 			page 22
+ARM GAS  /tmp/ccCma9kM.s 			page 22
 
 
 1122:Lib/soes/src/esc_coe.c ****    _COEobjdesc *coeres;
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1176:Lib/soes/src/esc_coe.c ****    {
 1177:Lib/soes/src/esc_coe.c ****       coel = (_COEobjdesc *) &MBX[MBXout * ESC_MBXSIZE];
 1178:Lib/soes/src/esc_coe.c ****       coel->mbxheader.mbxtype = MBXCOE;
-ARM GAS  /tmp/ccoeYwR8.s 			page 23
+ARM GAS  /tmp/ccCma9kM.s 			page 23
 
 
 1179:Lib/soes/src/esc_coe.c ****       coel->coeheader.numberservice =
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1233:Lib/soes/src/esc_coe.c **** 
 1234:Lib/soes/src/esc_coe.c ****          coel->mbxheader.length = htoes (0x08 + (n << 1));
 1235:Lib/soes/src/esc_coe.c ****       }
-ARM GAS  /tmp/ccoeYwR8.s 			page 24
+ARM GAS  /tmp/ccCma9kM.s 			page 24
 
 
 1236:Lib/soes/src/esc_coe.c ****       MBXcontrol[MBXout].state = MBXstate_outreq;
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1290:Lib/soes/src/esc_coe.c **** {
 1291:Lib/soes/src/esc_coe.c ****    uint8_t MBXout;
 1292:Lib/soes/src/esc_coe.c ****    uint16_t index;
-ARM GAS  /tmp/ccoeYwR8.s 			page 25
+ARM GAS  /tmp/ccCma9kM.s 			page 25
 
 
 1293:Lib/soes/src/esc_coe.c ****    int32_t nidx;
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1347:Lib/soes/src/esc_coe.c ****          MBXcontrol[0].state = MBXstate_idle;
 1348:Lib/soes/src/esc_coe.c ****          ESCvar.xoe = 0;
 1349:Lib/soes/src/esc_coe.c ****       }
-ARM GAS  /tmp/ccoeYwR8.s 			page 26
+ARM GAS  /tmp/ccCma9kM.s 			page 26
 
 
 1350:Lib/soes/src/esc_coe.c ****    }
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1404:Lib/soes/src/esc_coe.c ****             {
 1405:Lib/soes/src/esc_coe.c ****                *d = *s;
 1406:Lib/soes/src/esc_coe.c ****                n++;
-ARM GAS  /tmp/ccoeYwR8.s 			page 27
+ARM GAS  /tmp/ccCma9kM.s 			page 27
 
 
 1407:Lib/soes/src/esc_coe.c ****                s++;
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1461:Lib/soes/src/esc_coe.c ****    }
 1462:Lib/soes/src/esc_coe.c ****    if (ESCvar.xoe == MBXCOE)
 1463:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 28
+ARM GAS  /tmp/ccCma9kM.s 			page 28
 
 
 1464:Lib/soes/src/esc_coe.c ****       coesdo = (_COEsdo *) &MBX[0];
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1518:Lib/soes/src/esc_coe.c ****             if ((service == COE_SDOINFORMATION)
 1519:Lib/soes/src/esc_coe.c ****                   && (coeobjdesc->infoheader.opcode == 0x03))
 1520:Lib/soes/src/esc_coe.c ****             {
-ARM GAS  /tmp/ccoeYwR8.s 			page 29
+ARM GAS  /tmp/ccCma9kM.s 			page 29
 
 
 1521:Lib/soes/src/esc_coe.c ****                SDO_getod ();
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
   89              		.cfi_offset 6, -16
   90              		.cfi_offset 7, -12
   91              		.cfi_offset 8, -8
-ARM GAS  /tmp/ccoeYwR8.s 			page 30
+ARM GAS  /tmp/ccCma9kM.s 			page 30
 
 
   92              		.cfi_offset 14, -4
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  137 0052 4CEA060C 		orr	ip, ip, r6
  138 0056 DC40     		lsrs	r4, r4, r3
  139              	.LVL10:
-ARM GAS  /tmp/ccoeYwR8.s 			page 31
+ARM GAS  /tmp/ccCma9kM.s 			page 31
 
 
 1575:Lib/soes/src/esc_coe.c **** 
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  185              		.loc 1 1583 7 view .LVU52
  186 0088 2243     		orrs	r2, r2, r4
  187              	.LVL21:
-ARM GAS  /tmp/ccoeYwR8.s 			page 32
+ARM GAS  /tmp/ccCma9kM.s 			page 32
 
 
 1584:Lib/soes/src/esc_coe.c ****    return (w0 & mask);
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  225              		.loc 1 1599 1 is_stmt 0 view .LVU60
  226 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
  227              		.cfi_def_cfa_offset 36
-ARM GAS  /tmp/ccoeYwR8.s 			page 33
+ARM GAS  /tmp/ccCma9kM.s 			page 33
 
 
  228              		.cfi_offset 4, -36
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  277              		.loc 1 1604 4 is_stmt 1 discriminator 4 view .LVU71
  278              		.loc 1 1604 13 is_stmt 0 discriminator 4 view .LVU72
  279 0054 A1F1200A 		sub	r10, r1, #32
-ARM GAS  /tmp/ccoeYwR8.s 			page 34
+ARM GAS  /tmp/ccCma9kM.s 			page 34
 
 
  280 0058 C1F12009 		rsb	r9, r1, #32
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  324 00b4 C1F12001 		rsb	r1, r1, #32
  325              	.LVL34:
  326              		.loc 1 1614 22 view .LVU87
-ARM GAS  /tmp/ccoeYwR8.s 			page 35
+ARM GAS  /tmp/ccCma9kM.s 			page 35
 
 
  327 00b8 D340     		lsrs	r3, r3, r2
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  376              	.LVL45:
  377              		.loc 1 1619 31 view .LVU102
  378 0102 6A60     		str	r2, [r5, #4]
-ARM GAS  /tmp/ccoeYwR8.s 			page 36
+ARM GAS  /tmp/ccCma9kM.s 			page 36
 
 
  379              	.LVL46:
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1646:Lib/soes/src/esc_coe.c ****    case DTYPE_BIT8:
 1647:Lib/soes/src/esc_coe.c ****    case DTYPE_BOOLEAN:
 1648:Lib/soes/src/esc_coe.c ****    case DTYPE_UNSIGNED8:
-ARM GAS  /tmp/ccoeYwR8.s 			page 37
+ARM GAS  /tmp/ccCma9kM.s 			page 37
 
 
 1649:Lib/soes/src/esc_coe.c ****    case DTYPE_INTEGER8:
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  419 0006 29D8     		bhi	.L14
  420 0008 DFE801F0 		tbb	[pc, r1]
  421              	.L17:
-ARM GAS  /tmp/ccoeYwR8.s 			page 38
+ARM GAS  /tmp/ccCma9kM.s 			page 38
 
 
  422 000c 1C       		.byte	(.L16-.L17)/2
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  476 0042 1C       		.byte	(.L16-.L17)/2
  477 0043 00       		.p2align 1
  478              	.L16:
-ARM GAS  /tmp/ccoeYwR8.s 			page 39
+ARM GAS  /tmp/ccCma9kM.s 			page 39
 
 
 1692:Lib/soes/src/esc_coe.c ****    {
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1722:Lib/soes/src/esc_coe.c ****    case DTYPE_UNSIGNED64:
 1723:Lib/soes/src/esc_coe.c ****    case DTYPE_INTEGER64:
 1724:Lib/soes/src/esc_coe.c ****       /* FIXME: must be atomic */
-ARM GAS  /tmp/ccoeYwR8.s 			page 40
+ARM GAS  /tmp/ccCma9kM.s 			page 40
 
 
 1725:Lib/soes/src/esc_coe.c ****       *(uint64_t *)obj->data = value;
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1250:Lib/soes/src/esc_coe.c ****    {
  543              		.loc 1 1250 7 is_stmt 0 view .LVU135
  544 0006 0028     		cmp	r0, #0
-ARM GAS  /tmp/ccoeYwR8.s 			page 41
+ARM GAS  /tmp/ccCma9kM.s 			page 41
 
 
  545 0008 59D0     		beq	.L21
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  583 003e 9BB2     		uxth	r3, r3
 1257:Lib/soes/src/esc_coe.c ****       if (ESCvar.fragsleft > 1)
  584              		.loc 1 1257 59 view .LVU152
-ARM GAS  /tmp/ccoeYwR8.s 			page 42
+ARM GAS  /tmp/ccCma9kM.s 			page 42
 
 
  585 0040 496F     		ldr	r1, [r1, #116]
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1272:Lib/soes/src/esc_coe.c ****       /* pointer 2 bytes back to exclude index */
  624              		.loc 1 1272 38 is_stmt 0 view .LVU168
  625 0074 5081     		strh	r0, [r2, #10]	@ movhi
-ARM GAS  /tmp/ccoeYwR8.s 			page 43
+ARM GAS  /tmp/ccCma9kM.s 			page 43
 
 
 1274:Lib/soes/src/esc_coe.c ****       for (i = s; i < n; i++)
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1277:Lib/soes/src/esc_coe.c ****          p++;
  664              		.loc 1 1277 13 discriminator 3 view .LVU185
  665 009c 22F8020B 		strh	r0, [r2], #2	@ movhi
-ARM GAS  /tmp/ccoeYwR8.s 			page 44
+ARM GAS  /tmp/ccCma9kM.s 			page 44
 
 
  666              	.LVL58:
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  706 00c4 00000000 		.word	MBX
  707 00c8 00000000 		.word	MBXcontrol
  708 00cc 00000000 		.word	SDOobjects
-ARM GAS  /tmp/ccoeYwR8.s 			page 45
+ARM GAS  /tmp/ccCma9kM.s 			page 45
 
 
  709              		.cfi_endproc
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  752 0014 134D     		ldr	r5, .L33+4
  753 0016 5319     		adds	r3, r2, r5
  754              	.LVL67:
-ARM GAS  /tmp/ccoeYwR8.s 			page 46
+ARM GAS  /tmp/ccCma9kM.s 			page 46
 
 
 1127:Lib/soes/src/esc_coe.c ****       coeres->mbxheader.mbxtype = MBXCOE;
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  791              		.loc 1 1137 26 is_stmt 0 view .LVU230
  792 004c 240C     		lsrs	r4, r4, #16
  793              	.LVL68:
-ARM GAS  /tmp/ccoeYwR8.s 			page 47
+ARM GAS  /tmp/ccCma9kM.s 			page 47
 
 
 1137:Lib/soes/src/esc_coe.c ****       MBXcontrol[MBXout].state = MBXstate_outreq;
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  840              		.cfi_offset 14, -4
 1151:Lib/soes/src/esc_coe.c ****    uint8_t MBXout = 0;
  841              		.loc 1 1151 4 view .LVU241
-ARM GAS  /tmp/ccoeYwR8.s 			page 48
+ARM GAS  /tmp/ccCma9kM.s 			page 48
 
 
 1152:Lib/soes/src/esc_coe.c ****    uint16_t entries = 0;
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  878 001e 5B6F     		ldr	r3, [r3, #116]
  879 0020 5D88     		ldrh	r5, [r3, #2]
  880 0022 0E3D     		subs	r5, r5, #14
-ARM GAS  /tmp/ccoeYwR8.s 			page 49
+ARM GAS  /tmp/ccCma9kM.s 			page 49
 
 
  881 0024 25F00105 		bic	r5, r5, #1
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1177:Lib/soes/src/esc_coe.c ****       coel->mbxheader.mbxtype = MBXCOE;
  920              		.loc 1 1177 7 is_stmt 1 view .LVU275
 1177:Lib/soes/src/esc_coe.c ****       coel->mbxheader.mbxtype = MBXCOE;
-ARM GAS  /tmp/ccoeYwR8.s 			page 50
+ARM GAS  /tmp/ccCma9kM.s 			page 50
 
 
  921              		.loc 1 1177 44 is_stmt 0 view .LVU276
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1187:Lib/soes/src/esc_coe.c ****          coel->infoheader.fragmentsleft = htoes (0);
  960              		.loc 1 1187 10 is_stmt 1 view .LVU292
 1187:Lib/soes/src/esc_coe.c ****          coel->infoheader.fragmentsleft = htoes (0);
-ARM GAS  /tmp/ccoeYwR8.s 			page 51
+ARM GAS  /tmp/ccCma9kM.s 			page 51
 
 
  961              		.loc 1 1187 36 is_stmt 0 view .LVU293
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  995              		.loc 1 1198 13 is_stmt 0 view .LVU313
  996 00a0 5A82     		strh	r2, [r3, #18]	@ movhi
 1199:Lib/soes/src/esc_coe.c ****          *p = 0;
-ARM GAS  /tmp/ccoeYwR8.s 			page 52
+ARM GAS  /tmp/ccCma9kM.s 			page 52
 
 
  997              		.loc 1 1199 10 is_stmt 1 view .LVU314
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1035              		.loc 1 1210 13 is_stmt 1 view .LVU330
 1210:Lib/soes/src/esc_coe.c ****             ESCvar.xoe = MBXCOE + MBXODL;
  1036              		.loc 1 1210 41 is_stmt 0 view .LVU331
-ARM GAS  /tmp/ccoeYwR8.s 			page 53
+ARM GAS  /tmp/ccCma9kM.s 			page 53
 
 
  1037 00c0 1A7A     		ldrb	r2, [r3, #8]	@ zero_extendqisi2
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1074              		.loc 1 1225 22 is_stmt 0 view .LVU348
  1075 00ec 0121     		movs	r1, #1
  1076 00ee 9981     		strh	r1, [r3, #12]	@ movhi
-ARM GAS  /tmp/ccoeYwR8.s 			page 54
+ARM GAS  /tmp/ccCma9kM.s 			page 54
 
 
 1227:Lib/soes/src/esc_coe.c ****          for (i = 0; i < n; i++)
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1228:Lib/soes/src/esc_coe.c ****          {
  1115              		.loc 1 1228 29 discriminator 3 view .LVU365
 1228:Lib/soes/src/esc_coe.c ****          {
-ARM GAS  /tmp/ccoeYwR8.s 			page 55
+ARM GAS  /tmp/ccCma9kM.s 			page 55
 
 
  1116              		.loc 1 1228 30 is_stmt 0 discriminator 3 view .LVU366
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1163              		.cfi_def_cfa_offset 24
  1164              		.cfi_offset 3, -24
  1165              		.cfi_offset 4, -20
-ARM GAS  /tmp/ccoeYwR8.s 			page 56
+ARM GAS  /tmp/ccCma9kM.s 			page 56
 
 
  1166              		.cfi_offset 5, -16
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  271:Lib/soes/src/esc_coe.c ****          htoes ((0 & 0x01f) | (COE_SDOREQUEST << 12));
  1205              		.loc 1 271 39 is_stmt 0 view .LVU391
  1206 002e 4FF40052 		mov	r2, #8192
-ARM GAS  /tmp/ccoeYwR8.s 			page 57
+ARM GAS  /tmp/ccCma9kM.s 			page 57
 
 
  1207 0032 ACF80620 		strh	r2, [ip, #6]	@ movhi
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1246              		.cfi_endproc
  1247              	.LFE4:
  1249              		.section	.text.set_state_idle,"ax",%progbits
-ARM GAS  /tmp/ccoeYwR8.s 			page 58
+ARM GAS  /tmp/ccCma9kM.s 			page 58
 
 
  1250              		.align	1
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1294 001c 00000000 		.word	ESCvar
  1295              		.cfi_endproc
  1296              	.LFE5:
-ARM GAS  /tmp/ccoeYwR8.s 			page 59
+ARM GAS  /tmp/ccCma9kM.s 			page 59
 
 
  1298              		.section	.text.copy2mbx,"ax",%progbits
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1348              		.cfi_offset 7, -20
  1349              		.cfi_offset 8, -16
  1350              		.cfi_offset 9, -12
-ARM GAS  /tmp/ccoeYwR8.s 			page 60
+ARM GAS  /tmp/ccCma9kM.s 			page 60
 
 
  1351              		.cfi_offset 10, -8
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  717:Lib/soes/src/esc_coe.c ****       offset = ESCvar.fragsleft;
  1391              		.loc 1 717 7 is_stmt 1 view .LVU439
  717:Lib/soes/src/esc_coe.c ****       offset = ESCvar.fragsleft;
-ARM GAS  /tmp/ccoeYwR8.s 			page 61
+ARM GAS  /tmp/ccCma9kM.s 			page 61
 
 
  1392              		.loc 1 717 42 is_stmt 0 view .LVU440
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1431              		.loc 1 724 44 view .LVU455
  1432 0052 FB6E     		ldr	r3, [r7, #108]
  1433 0054 9A1F     		subs	r2, r3, #6
-ARM GAS  /tmp/ccoeYwR8.s 			page 62
+ARM GAS  /tmp/ccCma9kM.s 			page 62
 
 
  724:Lib/soes/src/esc_coe.c ****       {
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1472 008a 9A55     		strb	r2, [r3, r6]
  1473 008c BEE7     		b	.L66
  1474              	.L67:
-ARM GAS  /tmp/ccoeYwR8.s 			page 63
+ARM GAS  /tmp/ccCma9kM.s 			page 63
 
 
  736:Lib/soes/src/esc_coe.c ****          ESCvar.frags = 0;
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  747:Lib/soes/src/esc_coe.c ****          }
  1512              		.loc 1 747 13 is_stmt 1 view .LVU489
  747:Lib/soes/src/esc_coe.c ****          }
-ARM GAS  /tmp/ccoeYwR8.s 			page 64
+ARM GAS  /tmp/ccCma9kM.s 			page 64
 
 
  1513              		.loc 1 747 38 is_stmt 0 view .LVU490
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1558              		.thumb
  1559              		.thumb_func
  1561              	complete_access_subindex_loop:
-ARM GAS  /tmp/ccoeYwR8.s 			page 65
+ARM GAS  /tmp/ccCma9kM.s 			page 65
 
 
  1562              	.LVL132:
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1605              		.loc 1 495 7 is_stmt 1 view .LVU511
  495:Lib/soes/src/esc_coe.c ****    }
  1606              		.loc 1 495 18 is_stmt 0 view .LVU512
-ARM GAS  /tmp/ccoeYwR8.s 			page 66
+ARM GAS  /tmp/ccCma9kM.s 			page 66
 
 
  1607 0028 0023     		movs	r3, #0
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1649 0058 04D0     		beq	.L90
  1650              	.L91:
  531:Lib/soes/src/esc_coe.c ****             {
-ARM GAS  /tmp/ccoeYwR8.s 			page 67
+ARM GAS  /tmp/ccCma9kM.s 			page 67
 
 
  1651              		.loc 1 531 22 discriminator 6 view .LVU525
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1690              		.loc 1 543 13 is_stmt 0 view .LVU540
  1691 0082 1CF0010F 		tst	ip, #1
  1692 0086 01D0     		beq	.L92
-ARM GAS  /tmp/ccoeYwR8.s 			page 68
+ARM GAS  /tmp/ccCma9kM.s 			page 68
 
 
  543:Lib/soes/src/esc_coe.c ****          {
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1732              		.loc 1 560 32 is_stmt 0 view .LVU555
  1733 00ac 04B9     		cbnz	r4, .L97
  560:Lib/soes/src/esc_coe.c ****       nsub++;
-ARM GAS  /tmp/ccoeYwR8.s 			page 69
+ARM GAS  /tmp/ccCma9kM.s 			page 69
 
 
  1734              		.loc 1 560 32 view .LVU556
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  500:Lib/soes/src/esc_coe.c ****       void *ul_source = ((objd + nsub)->data != NULL) ?
  1774              		.loc 1 500 16 view .LVU571
  1775 00d8 9D88     		ldrh	r5, [r3, #4]
-ARM GAS  /tmp/ccoeYwR8.s 			page 70
+ARM GAS  /tmp/ccCma9kM.s 			page 70
 
 
  1776              	.LVL155:
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1813 00fe 0836     		adds	r6, r6, #8
  1814              	.LVL161:
  1815              	.L82:
-ARM GAS  /tmp/ccoeYwR8.s 			page 71
+ARM GAS  /tmp/ccCma9kM.s 			page 71
 
 
  514:Lib/soes/src/esc_coe.c ****          {
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1855              	.LVL163:
  527:Lib/soes/src/esc_coe.c ****                }
  1856              		.loc 1 527 19 view .LVU604
-ARM GAS  /tmp/ccoeYwR8.s 			page 72
+ARM GAS  /tmp/ccCma9kM.s 			page 72
 
 
  1857 0130 07EBD000 		add	r0, r7, r0, lsr #3
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  550:Lib/soes/src/esc_coe.c ****          }
  1896              		.loc 1 550 48 view .LVU620
  1897 0154 0A43     		orrs	r2, r2, r1
-ARM GAS  /tmp/ccoeYwR8.s 			page 73
+ARM GAS  /tmp/ccCma9kM.s 			page 73
 
 
  1898 0156 FA54     		strb	r2, [r7, r3]
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1632:Lib/soes/src/esc_coe.c ****    uint64_t value = 0;
  1944              		.loc 1 1632 1 is_stmt 0 view .LVU627
  1945 0000 08B5     		push	{r3, lr}
-ARM GAS  /tmp/ccoeYwR8.s 			page 74
+ARM GAS  /tmp/ccCma9kM.s 			page 74
 
 
  1946              		.cfi_def_cfa_offset 8
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  1996 0032 2C       		.byte	(.L108-.L110)/2
  1997 0033 2C       		.byte	(.L108-.L110)/2
  1998 0034 2C       		.byte	(.L108-.L110)/2
-ARM GAS  /tmp/ccoeYwR8.s 			page 75
+ARM GAS  /tmp/ccCma9kM.s 			page 75
 
 
  1999 0035 2C       		.byte	(.L108-.L110)/2
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2042 0054 FAE7     		b	.L107
  2043              	.LVL182:
  2044              	.L111:
-ARM GAS  /tmp/ccoeYwR8.s 			page 76
+ARM GAS  /tmp/ccCma9kM.s 			page 76
 
 
 1664:Lib/soes/src/esc_coe.c ****       break;
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2087              	.LFE23:
  2089              		.section	.text.SDO_findsubindex,"ax",%progbits
  2090              		.align	1
-ARM GAS  /tmp/ccoeYwR8.s 			page 77
+ARM GAS  /tmp/ccCma9kM.s 			page 77
 
 
  2091              		.global	SDO_findsubindex
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
   62:Lib/soes/src/esc_coe.c ****    {
  2132              		.loc 1 62 61 discriminator 1 view .LVU669
  2133 001a 8BB2     		uxth	r3, r1
-ARM GAS  /tmp/ccoeYwR8.s 			page 78
+ARM GAS  /tmp/ccCma9kM.s 			page 78
 
 
   62:Lib/soes/src/esc_coe.c ****    {
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
   71:Lib/soes/src/esc_coe.c ****    {
  2174              		.loc 1 71 7 is_stmt 0 view .LVU684
  2175 0042 9A42     		cmp	r2, r3
-ARM GAS  /tmp/ccoeYwR8.s 			page 79
+ARM GAS  /tmp/ccCma9kM.s 			page 79
 
 
  2176 0044 02D1     		bne	.L128
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2223 0002 0020     		movs	r0, #0
  2224              	.LVL207:
   86:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 80
+ARM GAS  /tmp/ccCma9kM.s 			page 80
 
 
  2225              		.loc 1 86 10 view .LVU694
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2271              	.LFB7:
  450:Lib/soes/src/esc_coe.c ****    *index = etohs (coesdo->index);
  2272              		.loc 1 450 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccoeYwR8.s 			page 81
+ARM GAS  /tmp/ccCma9kM.s 			page 81
 
 
  2273              		.cfi_startproc
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2312 001e 0ADB     		blt	.L142
  466:Lib/soes/src/esc_coe.c ****    if (*nsub < 0)
  2313              		.loc 1 466 4 is_stmt 1 view .LVU721
-ARM GAS  /tmp/ccoeYwR8.s 			page 82
+ARM GAS  /tmp/ccCma9kM.s 			page 82
 
 
  466:Lib/soes/src/esc_coe.c ****    if (*nsub < 0)
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2359              		.thumb
  2360              		.thumb_func
  2362              	SDO_upload_complete_access:
-ARM GAS  /tmp/ccoeYwR8.s 			page 83
+ARM GAS  /tmp/ccCma9kM.s 			page 83
 
 
  2363              	.LFB10:
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  607:Lib/soes/src/esc_coe.c ****    {
  2405              		.loc 1 607 4 is_stmt 1 view .LVU744
  607:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 84
+ARM GAS  /tmp/ccCma9kM.s 			page 84
 
 
  2406              		.loc 1 607 7 is_stmt 0 view .LVU745
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2446              	.L151:
  2447              	.LVL228:
  625:Lib/soes/src/esc_coe.c **** 
-ARM GAS  /tmp/ccoeYwR8.s 			page 85
+ARM GAS  /tmp/ccCma9kM.s 			page 85
 
 
  2448              		.loc 1 625 4 is_stmt 1 discriminator 4 view .LVU760
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2489 00ac 2846     		mov	r0, r5
  2490              	.LVL230:
  649:Lib/soes/src/esc_coe.c **** 
-ARM GAS  /tmp/ccoeYwR8.s 			page 86
+ARM GAS  /tmp/ccCma9kM.s 			page 86
 
 
  2491              		.loc 1 649 4 is_stmt 0 view .LVU774
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2529              		.loc 1 669 37 view .LVU790
  2530 00ea 4449     		ldr	r1, .L169+12
  2531 00ec C96E     		ldr	r1, [r1, #108]
-ARM GAS  /tmp/ccoeYwR8.s 			page 87
+ARM GAS  /tmp/ccCma9kM.s 			page 87
 
 
  2532 00ee 881F     		subs	r0, r1, #6
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2568 0122 3549     		ldr	r1, .L169+8
  2569 0124 09F11000 		add	r0, r9, #16
  2570 0128 FFF7FEFF 		bl	memcpy
-ARM GAS  /tmp/ccoeYwR8.s 			page 88
+ARM GAS  /tmp/ccCma9kM.s 			page 88
 
 
  2571              	.LVL234:
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2612              		.loc 1 602 7 is_stmt 1 view .LVU821
  2613 0166 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
  2614 016a BDF81610 		ldrh	r1, [sp, #22]
-ARM GAS  /tmp/ccoeYwR8.s 			page 89
+ARM GAS  /tmp/ccCma9kM.s 			page 89
 
 
  2615 016e 0020     		movs	r0, #0
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2659 01a0 184B     		ldr	r3, .L169+20
  2660 01a2 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
  2661 01a6 BDF81610 		ldrh	r1, [sp, #22]
-ARM GAS  /tmp/ccoeYwR8.s 			page 90
+ARM GAS  /tmp/ccCma9kM.s 			page 90
 
 
  2662 01aa 3046     		mov	r0, r6
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2705              		.loc 1 696 10 is_stmt 1 view .LVU842
  2706 01ec C2E7     		b	.L147
  2707              	.L170:
-ARM GAS  /tmp/ccoeYwR8.s 			page 91
+ARM GAS  /tmp/ccCma9kM.s 			page 91
 
 
  2708 01ee 00BF     		.align	2
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2755              		.loc 1 930 4 is_stmt 1 view .LVU851
  930:Lib/soes/src/esc_coe.c ****    {
  2756              		.loc 1 930 7 is_stmt 0 view .LVU852
-ARM GAS  /tmp/ccoeYwR8.s 			page 92
+ARM GAS  /tmp/ccCma9kM.s 			page 92
 
 
  2757 001a 0028     		cmp	r0, #0
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2796              		.loc 1 954 20 view .LVU867
  2797 004c FFF7FEFF 		bl	complete_access_subindex_loop
  2798              	.LVL264:
-ARM GAS  /tmp/ccoeYwR8.s 			page 93
+ARM GAS  /tmp/ccCma9kM.s 			page 93
 
 
  955:Lib/soes/src/esc_coe.c ****    if (size > 0xffff)
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2837              		.loc 1 978 10 view .LVU883
  2838 0086 8B42     		cmp	r3, r1
  2839 0088 57D9     		bls	.L179
-ARM GAS  /tmp/ccoeYwR8.s 			page 94
+ARM GAS  /tmp/ccCma9kM.s 			page 94
 
 
  981:Lib/soes/src/esc_coe.c ****          {
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  996:Lib/soes/src/esc_coe.c ****          /* Store the data */
  2876              		.loc 1 996 10 is_stmt 1 view .LVU902
  996:Lib/soes/src/esc_coe.c ****          /* Store the data */
-ARM GAS  /tmp/ccoeYwR8.s 			page 95
+ARM GAS  /tmp/ccCma9kM.s 			page 95
 
 
  2877              		.loc 1 996 23 is_stmt 0 view .LVU903
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2921              	.LVL276:
  932:Lib/soes/src/esc_coe.c ****       return;
  2922              		.loc 1 932 7 is_stmt 0 view .LVU914
-ARM GAS  /tmp/ccoeYwR8.s 			page 96
+ARM GAS  /tmp/ccCma9kM.s 			page 96
 
 
  2923 00f8 FFF7FEFF 		bl	set_state_idle
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  2965 0128 274B     		ldr	r3, .L190+12
  2966 012a 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
  2967 012e BDF81610 		ldrh	r1, [sp, #22]
-ARM GAS  /tmp/ccoeYwR8.s 			page 97
+ARM GAS  /tmp/ccCma9kM.s 			page 97
 
 
  2968 0132 0020     		movs	r0, #0
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3010 0172 BDF81610 		ldrh	r1, [sp, #22]
  3011 0176 0020     		movs	r0, #0
  3012              	.LVL292:
-ARM GAS  /tmp/ccoeYwR8.s 			page 98
+ARM GAS  /tmp/ccCma9kM.s 			page 98
 
 
 1010:Lib/soes/src/esc_coe.c ****             return;
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3055 01aa FFF7FEFF 		bl	init_coesdo
  3056              	.LVL302:
 1029:Lib/soes/src/esc_coe.c ****       MBXcontrol[MBXout].state = MBXstate_outreq;
-ARM GAS  /tmp/ccoeYwR8.s 			page 99
+ARM GAS  /tmp/ccCma9kM.s 			page 99
 
 
  3057              		.loc 1 1029 7 is_stmt 1 view .LVU951
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  303:Lib/soes/src/esc_coe.c ****    int32_t nidx;
  3107              		.loc 1 303 4 view .LVU958
  304:Lib/soes/src/esc_coe.c ****    int16_t nsub;
-ARM GAS  /tmp/ccoeYwR8.s 			page 100
+ARM GAS  /tmp/ccCma9kM.s 			page 100
 
 
  3108              		.loc 1 304 4 view .LVU959
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3143              		.loc 1 318 7 is_stmt 1 view .LVU978
  318:Lib/soes/src/esc_coe.c ****       {
  3144              		.loc 1 318 10 is_stmt 0 view .LVU979
-ARM GAS  /tmp/ccoeYwR8.s 			page 101
+ARM GAS  /tmp/ccCma9kM.s 			page 101
 
 
  3145 0024 0028     		cmp	r0, #0
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3184              		.loc 1 323 15 discriminator 5 view .LVU994
  3185 0056 042B     		cmp	r3, #4
  3186 0058 0BD0     		beq	.L196
-ARM GAS  /tmp/ccoeYwR8.s 			page 102
+ARM GAS  /tmp/ccCma9kM.s 			page 102
 
 
  3187              	.L197:
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3227 008a 09EB0B08 		add	r8, r9, fp
  3228              	.LVL319:
  332:Lib/soes/src/esc_coe.c ****             coeres->mbxheader.mbxtype = MBXCOE;
-ARM GAS  /tmp/ccoeYwR8.s 			page 103
+ARM GAS  /tmp/ccCma9kM.s 			page 103
 
 
  3229              		.loc 1 332 13 is_stmt 1 view .LVU1009
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  347:Lib/soes/src/esc_coe.c ****             {
  3267              		.loc 1 347 16 is_stmt 0 view .LVU1026
  3268 00ba 182B     		cmp	r3, #24
-ARM GAS  /tmp/ccoeYwR8.s 			page 104
+ARM GAS  /tmp/ccCma9kM.s 			page 104
 
 
  3269 00bc 00D9     		bls	.L203
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3305 00e2 E2B1     		cbz	r2, .L218
  3306              	.L205:
  3307              	.LVL325:
-ARM GAS  /tmp/ccoeYwR8.s 			page 105
+ARM GAS  /tmp/ccCma9kM.s 			page 105
 
 
  363:Lib/soes/src/esc_coe.c ****                      dataptr, (size_t *)&size, (objd + nsub)->flags);
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3347 010e 4ED0     		beq	.L220
  3348              	.LVL331:
  3349              	.L212:
-ARM GAS  /tmp/ccoeYwR8.s 			page 106
+ARM GAS  /tmp/ccCma9kM.s 			page 106
 
 
  431:Lib/soes/src/esc_coe.c ****          }
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3392              		.loc 1 387 16 is_stmt 1 view .LVU1071
  387:Lib/soes/src/esc_coe.c ****                      (objd + nsub)->data, (size_t *)&size, (objd + nsub)->flags);
  3393              		.loc 1 387 24 is_stmt 0 view .LVU1072
-ARM GAS  /tmp/ccoeYwR8.s 			page 107
+ARM GAS  /tmp/ccCma9kM.s 			page 107
 
 
  3394 013a 2269     		ldr	r2, [r4, #16]
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3432              		.loc 1 398 27 view .LVU1088
  3433 0166 0392     		str	r2, [sp, #12]
  400:Lib/soes/src/esc_coe.c ****                      /* signal segmented transfer */
-ARM GAS  /tmp/ccoeYwR8.s 			page 108
+ARM GAS  /tmp/ccCma9kM.s 			page 108
 
 
  3434              		.loc 1 400 22 is_stmt 1 view .LVU1089
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3472 0198 0022     		movs	r2, #0
  3473 019a 83F89120 		strb	r2, [r3, #145]
  3474 019e EFE7     		b	.L211
-ARM GAS  /tmp/ccoeYwR8.s 			page 109
+ARM GAS  /tmp/ccCma9kM.s 			page 109
 
 
  3475              	.L209:
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3517 01ce 2946     		mov	r1, r5
  3518 01d0 0020     		movs	r0, #0
  3519 01d2 FFF7FEFF 		bl	SDO_abort
-ARM GAS  /tmp/ccoeYwR8.s 			page 110
+ARM GAS  /tmp/ccCma9kM.s 			page 110
 
 
  3520              	.LVL352:
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3567              		.thumb
  3568              		.thumb_func
  3570              	SDO_download:
-ARM GAS  /tmp/ccoeYwR8.s 			page 111
+ARM GAS  /tmp/ccCma9kM.s 			page 111
 
 
  3571              	.LFB12:
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  790:Lib/soes/src/esc_coe.c ****    if (nidx >= 0)
  3609              		.loc 1 790 4 is_stmt 1 view .LVU1142
  790:Lib/soes/src/esc_coe.c ****    if (nidx >= 0)
-ARM GAS  /tmp/ccoeYwR8.s 			page 112
+ARM GAS  /tmp/ccCma9kM.s 			page 112
 
 
  3610              		.loc 1 790 11 is_stmt 0 view .LVU1143
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3649              	.LVL366:
  798:Lib/soes/src/esc_coe.c ****          if (WRITE_ACCESS(access, state))
  3650              		.loc 1 798 10 is_stmt 1 view .LVU1159
-ARM GAS  /tmp/ccoeYwR8.s 			page 113
+ARM GAS  /tmp/ccCma9kM.s 			page 113
 
 
  798:Lib/soes/src/esc_coe.c ****          if (WRITE_ACCESS(access, state))
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3691 0074 0020     		movs	r0, #0
  3692 0076 FFF7FEFF 		bl	SDO_abort
  3693              	.LVL370:
-ARM GAS  /tmp/ccoeYwR8.s 			page 114
+ARM GAS  /tmp/ccCma9kM.s 			page 114
 
 
  900:Lib/soes/src/esc_coe.c ****             }
@@ -6838,7 +6838,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  821:Lib/soes/src/esc_coe.c ****                {
  3732              		.loc 1 821 16 is_stmt 1 view .LVU1190
  821:Lib/soes/src/esc_coe.c ****                {
-ARM GAS  /tmp/ccoeYwR8.s 			page 115
+ARM GAS  /tmp/ccCma9kM.s 			page 115
 
 
  3733              		.loc 1 821 19 is_stmt 0 view .LVU1191
@@ -6898,7 +6898,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  834:Lib/soes/src/esc_coe.c ****                }
  3775              		.loc 1 834 19 is_stmt 0 view .LVU1204
  3776              	.LBE13:
-ARM GAS  /tmp/ccoeYwR8.s 			page 116
+ARM GAS  /tmp/ccCma9kM.s 			page 116
 
 
  810:Lib/soes/src/esc_coe.c ****                mbxdata = (&(coesdo->size)) + 1;
@@ -6958,7 +6958,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3817              		.loc 1 844 13 is_stmt 1 view .LVU1218
  844:Lib/soes/src/esc_coe.c ****             {
  3818              		.loc 1 844 16 is_stmt 0 view .LVU1219
-ARM GAS  /tmp/ccoeYwR8.s 			page 117
+ARM GAS  /tmp/ccCma9kM.s 			page 117
 
 
  3819 010a 0346     		mov	r3, r0
@@ -7018,7 +7018,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3855              		.loc 1 855 47 is_stmt 0 view .LVU1237
  3856 0138 E188     		ldrh	r1, [r4, #6]
  855:Lib/soes/src/esc_coe.c ****                }
-ARM GAS  /tmp/ccoeYwR8.s 			page 118
+ARM GAS  /tmp/ccCma9kM.s 			page 118
 
 
  3857              		.loc 1 855 32 view .LVU1238
@@ -7078,7 +7078,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3896 0164 2449     		ldr	r1, .L244
  3897 0166 5318     		adds	r3, r2, r1
  3898              	.LVL393:
-ARM GAS  /tmp/ccoeYwR8.s 			page 119
+ARM GAS  /tmp/ccCma9kM.s 			page 119
 
 
  866:Lib/soes/src/esc_coe.c ****                   coeres->mbxheader.mbxtype = MBXCOE;
@@ -7138,7 +7138,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3935              	.LVL396:
  3936              	.L238:
  876:Lib/soes/src/esc_coe.c ****                {
-ARM GAS  /tmp/ccoeYwR8.s 			page 120
+ARM GAS  /tmp/ccCma9kM.s 			page 120
 
 
  3937              		.loc 1 876 16 is_stmt 1 view .LVU1272
@@ -7198,7 +7198,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  3978              		.loc 1 895 16 is_stmt 1 view .LVU1285
  3979 01be 144B     		ldr	r3, .L244+24
  3980 01c0 3246     		mov	r2, r6
-ARM GAS  /tmp/ccoeYwR8.s 			page 121
+ARM GAS  /tmp/ccCma9kM.s 			page 121
 
 
  3981              	.LVL404:
@@ -7258,7 +7258,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4024              	.L223:
  915:Lib/soes/src/esc_coe.c **** 
  4025              		.loc 1 915 1 view .LVU1297
-ARM GAS  /tmp/ccoeYwR8.s 			page 122
+ARM GAS  /tmp/ccCma9kM.s 			page 122
 
 
  4026 01f2 03B0     		add	sp, sp, #12
@@ -7318,7 +7318,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1040:Lib/soes/src/esc_coe.c ****    {
  4076              		.loc 1 1040 7 is_stmt 0 view .LVU1304
  4077 000a 0028     		cmp	r0, #0
-ARM GAS  /tmp/ccoeYwR8.s 			page 123
+ARM GAS  /tmp/ccCma9kM.s 			page 123
 
 
  4078 000c 00F08C80 		beq	.L247
@@ -7378,7 +7378,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4117 0034 0321     		movs	r1, #3
  4118 0036 FFF7FEFF 		bl	init_coesdo
  4119              	.LVL421:
-ARM GAS  /tmp/ccoeYwR8.s 			page 124
+ARM GAS  /tmp/ccCma9kM.s 			page 124
 
 
 1053:Lib/soes/src/esc_coe.c ****       copy2mbx (mbxdata, ESCvar.data, size);
@@ -7438,7 +7438,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1069:Lib/soes/src/esc_coe.c ****             nsub = SDO_findsubindex (nidx, ESCvar.subindex);
  4158              		.loc 1 1069 20 is_stmt 0 view .LVU1336
  4159 006e 334F     		ldr	r7, .L259
-ARM GAS  /tmp/ccoeYwR8.s 			page 125
+ARM GAS  /tmp/ccCma9kM.s 			page 125
 
 
  4160 0070 B7F8A480 		ldrh	r8, [r7, #164]
@@ -7498,7 +7498,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4202              	.LBE17:
 1089:Lib/soes/src/esc_coe.c ****          ESCvar.frags = 0;
  4203              		.loc 1 1089 10 is_stmt 1 view .LVU1349
-ARM GAS  /tmp/ccoeYwR8.s 			page 126
+ARM GAS  /tmp/ccCma9kM.s 			page 126
 
 
 1089:Lib/soes/src/esc_coe.c ****          ESCvar.frags = 0;
@@ -7558,7 +7558,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4243 00de 1C7A     		ldrb	r4, [r3, #8]	@ zero_extendqisi2
  4244              	.LVL436:
 1046:Lib/soes/src/esc_coe.c ****       }
-ARM GAS  /tmp/ccoeYwR8.s 			page 127
+ARM GAS  /tmp/ccCma9kM.s 			page 127
 
 
  4245              		.loc 1 1046 19 view .LVU1365
@@ -7618,7 +7618,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4289 0114 C3F89420 		str	r2, [r3, #148]
 1106:Lib/soes/src/esc_coe.c ****       }
  4290              		.loc 1 1106 10 is_stmt 1 view .LVU1376
-ARM GAS  /tmp/ccoeYwR8.s 			page 128
+ARM GAS  /tmp/ccCma9kM.s 			page 128
 
 
 1106:Lib/soes/src/esc_coe.c ****       }
@@ -7678,7 +7678,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4340              		.loc 1 1290 1 is_stmt 1 view -0
  4341              		.cfi_startproc
  4342              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccoeYwR8.s 			page 129
+ARM GAS  /tmp/ccCma9kM.s 			page 129
 
 
  4343              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -7738,7 +7738,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1304:Lib/soes/src/esc_coe.c ****       {
  4381              		.loc 1 1304 7 is_stmt 1 view .LVU1400
 1304:Lib/soes/src/esc_coe.c ****       {
-ARM GAS  /tmp/ccoeYwR8.s 			page 130
+ARM GAS  /tmp/ccCma9kM.s 			page 130
 
 
  4382              		.loc 1 1304 10 is_stmt 0 view .LVU1401
@@ -7798,7 +7798,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4421              		.loc 1 1313 10 is_stmt 1 view .LVU1416
 1313:Lib/soes/src/esc_coe.c ****          coel->index = htoes (index);
  4422              		.loc 1 1313 41 is_stmt 0 view .LVU1417
-ARM GAS  /tmp/ccoeYwR8.s 			page 131
+ARM GAS  /tmp/ccCma9kM.s 			page 131
 
 
  4423 0054 7B81     		strh	r3, [r7, #10]	@ movhi
@@ -7858,7 +7858,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4460 0084 2648     		ldr	r0, .L273+8
  4461 0086 00EB0810 		add	r0, r0, r8, lsl #4
  4462 008a D0F808C0 		ldr	ip, [r0, #8]
-ARM GAS  /tmp/ccoeYwR8.s 			page 132
+ARM GAS  /tmp/ccCma9kM.s 			page 132
 
 
  4463              	.LVL454:
@@ -7918,7 +7918,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4501              		.loc 1 1320 44 is_stmt 0 view .LVU1450
  4502 00b2 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
  4503              	.LVL462:
-ARM GAS  /tmp/ccoeYwR8.s 			page 133
+ARM GAS  /tmp/ccCma9kM.s 			page 133
 
 
 1320:Lib/soes/src/esc_coe.c ****          }
@@ -7978,7 +7978,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4544              		.loc 1 1339 13 is_stmt 1 view .LVU1464
 1339:Lib/soes/src/esc_coe.c ****             n++;
  4545              		.loc 1 1339 16 is_stmt 0 view .LVU1465
-ARM GAS  /tmp/ccoeYwR8.s 			page 134
+ARM GAS  /tmp/ccCma9kM.s 			page 134
 
 
  4546 00da 01F8010B 		strb	r0, [r1], #1
@@ -8038,7 +8038,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4583 00fa A353     		strh	r3, [r4, r6]	@ movhi
 1346:Lib/soes/src/esc_coe.c ****          MBXcontrol[0].state = MBXstate_idle;
  4584              		.loc 1 1346 10 is_stmt 1 view .LVU1483
-ARM GAS  /tmp/ccoeYwR8.s 			page 135
+ARM GAS  /tmp/ccCma9kM.s 			page 135
 
 
 1346:Lib/soes/src/esc_coe.c ****          MBXcontrol[0].state = MBXstate_idle;
@@ -8098,7 +8098,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4631              		.cfi_startproc
  4632              		@ args = 0, pretend = 0, frame = 0
  4633              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccoeYwR8.s 			page 136
+ARM GAS  /tmp/ccCma9kM.s 			page 136
 
 
  4634 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
@@ -8158,7 +8158,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4669              		.loc 1 1377 7 is_stmt 0 view .LVU1512
  4670 0010 071E     		subs	r7, r0, #0
  4671 0012 5CDB     		blt	.L276
-ARM GAS  /tmp/ccoeYwR8.s 			page 137
+ARM GAS  /tmp/ccCma9kM.s 			page 137
 
 
 1379:Lib/soes/src/esc_coe.c ****       if (nsub >= 0)
@@ -8218,7 +8218,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4709              		.loc 1 1386 18 view .LVU1529
  4710 003c 0CEB0002 		add	r2, ip, r0
  4711              	.LVL488:
-ARM GAS  /tmp/ccoeYwR8.s 			page 138
+ARM GAS  /tmp/ccCma9kM.s 			page 138
 
 
 1387:Lib/soes/src/esc_coe.c ****             coel->coeheader.numberservice =
@@ -8278,7 +8278,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1396:Lib/soes/src/esc_coe.c ****                COE_VALUEINFO_OBJECT + COE_VALUEINFO_MAPPABLE;
  4749              		.loc 1 1396 29 is_stmt 0 view .LVU1547
  4750 0072 0721     		movs	r1, #7
-ARM GAS  /tmp/ccoeYwR8.s 			page 139
+ARM GAS  /tmp/ccCma9kM.s 			page 139
 
 
  4751 0074 D173     		strb	r1, [r2, #15]
@@ -8338,7 +8338,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4786              		.loc 1 1403 32 discriminator 1 view .LVU1566
  4787 0092 1349     		ldr	r1, .L283+8
  4788 0094 C96E     		ldr	r1, [r1, #108]
-ARM GAS  /tmp/ccoeYwR8.s 			page 140
+ARM GAS  /tmp/ccCma9kM.s 			page 140
 
 
 1403:Lib/soes/src/esc_coe.c ****             {
@@ -8398,7 +8398,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4825              	.LVL497:
 1412:Lib/soes/src/esc_coe.c ****             MBXcontrol[0].state = MBXstate_idle;
  4826              		.loc 1 1412 38 view .LVU1585
-ARM GAS  /tmp/ccoeYwR8.s 			page 141
+ARM GAS  /tmp/ccCma9kM.s 			page 141
 
 
  4827 00b2 0323     		movs	r3, #3
@@ -8458,7 +8458,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4872              		.align	1
  4873              		.global	sizeOfPDO
  4874              		.syntax unified
-ARM GAS  /tmp/ccoeYwR8.s 			page 142
+ARM GAS  /tmp/ccCma9kM.s 			page 142
 
 
  4875              		.thumb
@@ -8518,7 +8518,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4917              		.loc 1 129 7 view .LVU1608
  4918 0014 012B     		cmp	r3, #1
  4919 0016 00F2AE80 		bhi	.L311
-ARM GAS  /tmp/ccoeYwR8.s 			page 143
+ARM GAS  /tmp/ccCma9kM.s 			page 143
 
 
  134:Lib/soes/src/esc_coe.c ****    if(nidx < 0)
@@ -8578,7 +8578,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  4958              	.LVL512:
  4959              	.L290:
  228:Lib/soes/src/esc_coe.c ****    {
-ARM GAS  /tmp/ccoeYwR8.s 			page 144
+ARM GAS  /tmp/ccCma9kM.s 			page 144
 
 
  4960              		.loc 1 228 4 is_stmt 1 view .LVU1625
@@ -8638,7 +8638,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5003              		.loc 1 170 22 is_stmt 1 view .LVU1636
  170:Lib/soes/src/esc_coe.c ****                      return 0;
  5004              		.loc 1 170 33 is_stmt 0 view .LVU1637
-ARM GAS  /tmp/ccoeYwR8.s 			page 145
+ARM GAS  /tmp/ccCma9kM.s 			page 145
 
 
  5005 0072 4FF0FF33 		mov	r3, #-1
@@ -8698,7 +8698,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5043 0098 DB68     		ldr	r3, [r3, #12]
  199:Lib/soes/src/esc_coe.c ****                      }
  5044              		.loc 1 199 60 view .LVU1654
-ARM GAS  /tmp/ccoeYwR8.s 			page 146
+ARM GAS  /tmp/ccCma9kM.s 			page 146
 
 
  5045 009a 00EB8000 		add	r0, r0, r0, lsl #2
@@ -8758,7 +8758,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5083              	.LVL526:
  222:Lib/soes/src/esc_coe.c ****             }
  5084              		.loc 1 222 23 discriminator 2 view .LVU1671
-ARM GAS  /tmp/ccoeYwR8.s 			page 147
+ARM GAS  /tmp/ccCma9kM.s 			page 147
 
 
  5085              	.LBE23:
@@ -8818,7 +8818,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5124              	.LVL531:
  165:Lib/soes/src/esc_coe.c **** 
  5125              		.loc 1 165 19 is_stmt 1 view .LVU1687
-ARM GAS  /tmp/ccoeYwR8.s 			page 148
+ARM GAS  /tmp/ccCma9kM.s 			page 148
 
 
  167:Lib/soes/src/esc_coe.c ****                   {
@@ -8878,7 +8878,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  205:Lib/soes/src/esc_coe.c ****                      }
  5164              		.loc 1 205 32 is_stmt 0 view .LVU1704
  5165 0112 0020     		movs	r0, #0
-ARM GAS  /tmp/ccoeYwR8.s 			page 149
+ARM GAS  /tmp/ccCma9kM.s 			page 149
 
 
  5166              	.LVL534:
@@ -8938,7 +8938,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5208              	.L292:
  5209              	.LVL538:
  148:Lib/soes/src/esc_coe.c ****          if (nidx >= 0)
-ARM GAS  /tmp/ccoeYwR8.s 			page 150
+ARM GAS  /tmp/ccCma9kM.s 			page 150
 
 
  5210              		.loc 1 148 10 is_stmt 1 discriminator 4 view .LVU1717
@@ -8998,7 +8998,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5248              		.loc 1 145 16 view .LVU1733
  5249 0166 0123     		movs	r3, #1
  5250 0168 0293     		str	r3, [sp, #8]
-ARM GAS  /tmp/ccoeYwR8.s 			page 151
+ARM GAS  /tmp/ccCma9kM.s 			page 151
 
 
  121:Lib/soes/src/esc_coe.c ****    uint16_t hobj;
@@ -9058,7 +9058,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5299              		.cfi_startproc
  5300              		@ args = 0, pretend = 0, frame = 0
  5301              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccoeYwR8.s 			page 152
+ARM GAS  /tmp/ccCma9kM.s 			page 152
 
 
  5302 0000 08B5     		push	{r3, lr}
@@ -9118,7 +9118,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5339              		.loc 1 1462 14 is_stmt 0 view .LVU1758
  5340 002a 454B     		ldr	r3, .L348
  5341 002c 93F88E30 		ldrb	r3, [r3, #142]	@ zero_extendqisi2
-ARM GAS  /tmp/ccoeYwR8.s 			page 153
+ARM GAS  /tmp/ccCma9kM.s 			page 153
 
 
 1462:Lib/soes/src/esc_coe.c ****    {
@@ -9178,7 +9178,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5383 0060 E3E7     		b	.L324
  5384              	.L339:
 1464:Lib/soes/src/esc_coe.c ****       coeobjdesc = (_COEobjdesc *) &MBX[0];
-ARM GAS  /tmp/ccoeYwR8.s 			page 154
+ARM GAS  /tmp/ccCma9kM.s 			page 154
 
 
  5385              		.loc 1 1464 7 view .LVU1772
@@ -9238,7 +9238,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5423              	.L335:
 1544:Lib/soes/src/esc_coe.c ****                      ESCvar.xoe = 0;
  5424              		.loc 1 1544 22 view .LVU1789
-ARM GAS  /tmp/ccoeYwR8.s 			page 155
+ARM GAS  /tmp/ccCma9kM.s 			page 155
 
 
 1544:Lib/soes/src/esc_coe.c ****                      ESCvar.xoe = 0;
@@ -9298,7 +9298,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1504:Lib/soes/src/esc_coe.c ****          }
  5465              		.loc 1 1504 13 is_stmt 0 view .LVU1804
  5466 00b0 C0E7     		b	.L320
-ARM GAS  /tmp/ccoeYwR8.s 			page 156
+ARM GAS  /tmp/ccCma9kM.s 			page 156
 
 
  5467              	.LVL559:
@@ -9358,7 +9358,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1484:Lib/soes/src/esc_coe.c ****          {
  5508              		.loc 1 1484 16 view .LVU1818
  5509 00da 4029     		cmp	r1, #64
-ARM GAS  /tmp/ccoeYwR8.s 			page 157
+ARM GAS  /tmp/ccCma9kM.s 			page 157
 
 
  5510 00dc E2D1     		bne	.L328
@@ -9418,7 +9418,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5551 0108 0F4A     		ldr	r2, .L348+8
  5552 010a 127A     		ldrb	r2, [r2, #8]	@ zero_extendqisi2
  5553 010c 02F07F02 		and	r2, r2, #127
-ARM GAS  /tmp/ccoeYwR8.s 			page 158
+ARM GAS  /tmp/ccCma9kM.s 			page 158
 
 
 1519:Lib/soes/src/esc_coe.c ****             {
@@ -9478,7 +9478,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5595 013e 00BF     		.align	2
  5596              	.L348:
  5597 0140 00000000 		.word	ESCvar
-ARM GAS  /tmp/ccoeYwR8.s 			page 159
+ARM GAS  /tmp/ccCma9kM.s 			page 159
 
 
  5598 0144 00000000 		.word	MBXcontrol
@@ -9538,7 +9538,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1750:Lib/soes/src/esc_coe.c ****    /* Set default values from object descriptor */
 1751:Lib/soes/src/esc_coe.c ****    for (n = 0; SDOobjects[n].index != 0xffff; n++)
  5636              		.loc 1 1751 11 view .LVU1854
-ARM GAS  /tmp/ccoeYwR8.s 			page 160
+ARM GAS  /tmp/ccCma9kM.s 			page 160
 
 
  5637 000c 4FF00008 		mov	r8, #0
@@ -9598,7 +9598,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5670 002e 002B     		cmp	r3, #0
  5671 0030 EFD1     		bne	.L361
 1759:Lib/soes/src/esc_coe.c ****          {
-ARM GAS  /tmp/ccoeYwR8.s 			page 161
+ARM GAS  /tmp/ccCma9kM.s 			page 161
 
 
  5672              		.loc 1 1759 13 view .LVU1867
@@ -9658,7 +9658,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1772:Lib/soes/src/esc_coe.c ****    {
 1773:Lib/soes/src/esc_coe.c ****       ESCvar.set_defaults_hook();
  5711              		.loc 1 1773 7 is_stmt 1 view .LVU1882
-ARM GAS  /tmp/ccoeYwR8.s 			page 162
+ARM GAS  /tmp/ccCma9kM.s 			page 162
 
 
  5712 005c 9847     		blx	r3
@@ -9718,7 +9718,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1788:Lib/soes/src/esc_coe.c **** {
  5750              		.loc 1 1788 1 is_stmt 1 view -0
  5751              		.cfi_startproc
-ARM GAS  /tmp/ccoeYwR8.s 			page 163
+ARM GAS  /tmp/ccCma9kM.s 			page 163
 
 
  5752              		@ args = 0, pretend = 0, frame = 0
@@ -9778,7 +9778,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1798:Lib/soes/src/esc_coe.c **** 
 1799:Lib/soes/src/esc_coe.c ****       if (obj != NULL)
 1800:Lib/soes/src/esc_coe.c ****       {
-ARM GAS  /tmp/ccoeYwR8.s 			page 164
+ARM GAS  /tmp/ccCma9kM.s 			page 164
 
 
 1801:Lib/soes/src/esc_coe.c ****          if (obj->bitlength > 64)
@@ -9838,7 +9838,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1797:Lib/soes/src/esc_coe.c **** 
  5827              		.loc 1 1797 7 is_stmt 1 view .LVU1906
 1797:Lib/soes/src/esc_coe.c **** 
-ARM GAS  /tmp/ccoeYwR8.s 			page 165
+ARM GAS  /tmp/ccCma9kM.s 			page 165
 
 
  5828              		.loc 1 1797 16 is_stmt 0 view .LVU1907
@@ -9898,7 +9898,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5862 0068 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
  5863              	.LVL607:
  5864              	.L375:
-ARM GAS  /tmp/ccoeYwR8.s 			page 166
+ARM GAS  /tmp/ccCma9kM.s 			page 166
 
 
  5865              		.loc 1 1822 1 view .LVU1920
@@ -9958,7 +9958,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1840:Lib/soes/src/esc_coe.c **** 
 1841:Lib/soes/src/esc_coe.c ****    for (ix = 0; ix < nmappings; ix++)
  5904              		.loc 1 1841 12 is_stmt 0 view .LVU1925
-ARM GAS  /tmp/ccoeYwR8.s 			page 167
+ARM GAS  /tmp/ccCma9kM.s 			page 167
 
 
  5905 0010 0024     		movs	r4, #0
@@ -10018,7 +10018,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
 1864:Lib/soes/src/esc_coe.c ****             COE_setValue (obj, value);
  5933              		.loc 1 1864 13 is_stmt 1 view .LVU1933
  5934 002c 2846     		mov	r0, r5
-ARM GAS  /tmp/ccoeYwR8.s 			page 168
+ARM GAS  /tmp/ccCma9kM.s 			page 168
 
 
  5935 002e FFF7FEFF 		bl	COE_setValue
@@ -10078,7 +10078,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  5973              		.loc 1 1853 16 is_stmt 0 view .LVU1950
  5974 0050 0732     		adds	r2, r2, #7
 1850:Lib/soes/src/esc_coe.c ****                obj->data,
-ARM GAS  /tmp/ccoeYwR8.s 			page 169
+ARM GAS  /tmp/ccCma9kM.s 			page 169
 
 
  5975              		.loc 1 1850 13 view .LVU1951
@@ -10138,7 +10138,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  6014              		@ args = 0, pretend = 0, frame = 0
  6015              		@ frame_needed = 0, uses_anonymous_args = 0
  6016              		.loc 1 1878 1 is_stmt 0 view .LVU1958
-ARM GAS  /tmp/ccoeYwR8.s 			page 170
+ARM GAS  /tmp/ccCma9kM.s 			page 170
 
 
  6017 0000 08B5     		push	{r3, lr}
@@ -10198,7 +10198,7 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  6058              		.align	2
  6059              	.L392:
  6060 0024 00000000 		.word	SDOobjects
-ARM GAS  /tmp/ccoeYwR8.s 			page 171
+ARM GAS  /tmp/ccCma9kM.s 			page 171
 
 
  6061              		.cfi_endproc
@@ -10235,110 +10235,110 @@ ARM GAS  /tmp/ccoeYwR8.s 			page 1
  6091              		.file 6 "Lib/soes/include/esc.h"
  6092              		.file 7 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h"
  6093              		.file 8 "<built-in>"
-ARM GAS  /tmp/ccoeYwR8.s 			page 172
+ARM GAS  /tmp/ccCma9kM.s 			page 172
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 esc_coe.c
-     /tmp/ccoeYwR8.s:20     .text.init_coesdo:0000000000000000 $t
-     /tmp/ccoeYwR8.s:25     .text.init_coesdo:0000000000000000 init_coesdo
-     /tmp/ccoeYwR8.s:72     .text.COE_bitsliceGet:0000000000000000 $t
-     /tmp/ccoeYwR8.s:77     .text.COE_bitsliceGet:0000000000000000 COE_bitsliceGet
-     /tmp/ccoeYwR8.s:213    .text.COE_bitsliceSet:0000000000000000 $t
-     /tmp/ccoeYwR8.s:218    .text.COE_bitsliceSet:0000000000000000 COE_bitsliceSet
-     /tmp/ccoeYwR8.s:400    .text.COE_setValue:0000000000000000 $t
-     /tmp/ccoeYwR8.s:405    .text.COE_setValue:0000000000000000 COE_setValue
-     /tmp/ccoeYwR8.s:422    .text.COE_setValue:000000000000000c $d
-     /tmp/ccoeYwR8.s:517    .text.SDO_getodlistcont:0000000000000000 $t
-     /tmp/ccoeYwR8.s:522    .text.SDO_getodlistcont:0000000000000000 SDO_getodlistcont
-     /tmp/ccoeYwR8.s:705    .text.SDO_getodlistcont:00000000000000c0 $d
-     /tmp/ccoeYwR8.s:713    .text.SDO_infoerror:0000000000000000 $t
-     /tmp/ccoeYwR8.s:718    .text.SDO_infoerror:0000000000000000 SDO_infoerror
-     /tmp/ccoeYwR8.s:815    .text.SDO_infoerror:0000000000000060 $d
-     /tmp/ccoeYwR8.s:822    .text.SDO_getodlist:0000000000000000 $t
-     /tmp/ccoeYwR8.s:827    .text.SDO_getodlist:0000000000000000 SDO_getodlist
-     /tmp/ccoeYwR8.s:1140   .text.SDO_getodlist:0000000000000128 $d
-     /tmp/ccoeYwR8.s:1149   .text.SDO_abort:0000000000000000 $t
-     /tmp/ccoeYwR8.s:1154   .text.SDO_abort:0000000000000000 SDO_abort
-     /tmp/ccoeYwR8.s:1243   .text.SDO_abort:0000000000000058 $d
-     /tmp/ccoeYwR8.s:1250   .text.set_state_idle:0000000000000000 $t
-     /tmp/ccoeYwR8.s:1255   .text.set_state_idle:0000000000000000 set_state_idle
-     /tmp/ccoeYwR8.s:1293   .text.set_state_idle:0000000000000018 $d
-     /tmp/ccoeYwR8.s:1299   .text.copy2mbx:0000000000000000 $t
-     /tmp/ccoeYwR8.s:1304   .text.copy2mbx:0000000000000000 copy2mbx
-     /tmp/ccoeYwR8.s:1332   .text.SDO_uploadsegment:0000000000000000 $t
-     /tmp/ccoeYwR8.s:1337   .text.SDO_uploadsegment:0000000000000000 SDO_uploadsegment
-     /tmp/ccoeYwR8.s:1548   .text.SDO_uploadsegment:00000000000000f4 $d
-     /tmp/ccoeYwR8.s:1556   .text.complete_access_subindex_loop:0000000000000000 $t
-     /tmp/ccoeYwR8.s:1561   .text.complete_access_subindex_loop:0000000000000000 complete_access_subindex_loop
-     /tmp/ccoeYwR8.s:1918   .text.complete_access_subindex_loop:0000000000000164 $d
-     /tmp/ccoeYwR8.s:1925   .rodata.COE_getValue.str1.4:0000000000000000 $d
-     /tmp/ccoeYwR8.s:1932   .text.COE_getValue:0000000000000000 $t
-     /tmp/ccoeYwR8.s:1937   .text.COE_getValue:0000000000000000 COE_getValue
-     /tmp/ccoeYwR8.s:1960   .text.COE_getValue:000000000000000e $d
-     /tmp/ccoeYwR8.s:2083   .text.COE_getValue:0000000000000074 $d
-     /tmp/ccoeYwR8.s:2090   .text.SDO_findsubindex:0000000000000000 $t
-     /tmp/ccoeYwR8.s:2096   .text.SDO_findsubindex:0000000000000000 SDO_findsubindex
-     /tmp/ccoeYwR8.s:2198   .text.SDO_findsubindex:0000000000000054 $d
-     /tmp/ccoeYwR8.s:2203   .text.SDO_findobject:0000000000000000 $t
-     /tmp/ccoeYwR8.s:2209   .text.SDO_findobject:0000000000000000 SDO_findobject
-     /tmp/ccoeYwR8.s:2259   .text.SDO_findobject:000000000000001c $d
-     /tmp/ccoeYwR8.s:2264   .text.complete_access_get_variables:0000000000000000 $t
-     /tmp/ccoeYwR8.s:2269   .text.complete_access_get_variables:0000000000000000 complete_access_get_variables
-     /tmp/ccoeYwR8.s:2350   .text.complete_access_get_variables:0000000000000040 $d
-     /tmp/ccoeYwR8.s:2357   .text.SDO_upload_complete_access:0000000000000000 $t
-     /tmp/ccoeYwR8.s:2362   .text.SDO_upload_complete_access:0000000000000000 SDO_upload_complete_access
-     /tmp/ccoeYwR8.s:2710   .text.SDO_upload_complete_access:00000000000001f0 $d
-     /tmp/ccoeYwR8.s:2720   .text.SDO_download_complete_access:0000000000000000 $t
-     /tmp/ccoeYwR8.s:2725   .text.SDO_download_complete_access:0000000000000000 SDO_download_complete_access
-     /tmp/ccoeYwR8.s:3070   .text.SDO_download_complete_access:00000000000001bc $d
-     /tmp/ccoeYwR8.s:3081   .text.SDO_upload:0000000000000000 $t
-     /tmp/ccoeYwR8.s:3086   .text.SDO_upload:0000000000000000 SDO_upload
-     /tmp/ccoeYwR8.s:3554   .text.SDO_upload:00000000000001f8 $d
-ARM GAS  /tmp/ccoeYwR8.s 			page 173
+     /tmp/ccCma9kM.s:20     .text.init_coesdo:0000000000000000 $t
+     /tmp/ccCma9kM.s:25     .text.init_coesdo:0000000000000000 init_coesdo
+     /tmp/ccCma9kM.s:72     .text.COE_bitsliceGet:0000000000000000 $t
+     /tmp/ccCma9kM.s:77     .text.COE_bitsliceGet:0000000000000000 COE_bitsliceGet
+     /tmp/ccCma9kM.s:213    .text.COE_bitsliceSet:0000000000000000 $t
+     /tmp/ccCma9kM.s:218    .text.COE_bitsliceSet:0000000000000000 COE_bitsliceSet
+     /tmp/ccCma9kM.s:400    .text.COE_setValue:0000000000000000 $t
+     /tmp/ccCma9kM.s:405    .text.COE_setValue:0000000000000000 COE_setValue
+     /tmp/ccCma9kM.s:422    .text.COE_setValue:000000000000000c $d
+     /tmp/ccCma9kM.s:517    .text.SDO_getodlistcont:0000000000000000 $t
+     /tmp/ccCma9kM.s:522    .text.SDO_getodlistcont:0000000000000000 SDO_getodlistcont
+     /tmp/ccCma9kM.s:705    .text.SDO_getodlistcont:00000000000000c0 $d
+     /tmp/ccCma9kM.s:713    .text.SDO_infoerror:0000000000000000 $t
+     /tmp/ccCma9kM.s:718    .text.SDO_infoerror:0000000000000000 SDO_infoerror
+     /tmp/ccCma9kM.s:815    .text.SDO_infoerror:0000000000000060 $d
+     /tmp/ccCma9kM.s:822    .text.SDO_getodlist:0000000000000000 $t
+     /tmp/ccCma9kM.s:827    .text.SDO_getodlist:0000000000000000 SDO_getodlist
+     /tmp/ccCma9kM.s:1140   .text.SDO_getodlist:0000000000000128 $d
+     /tmp/ccCma9kM.s:1149   .text.SDO_abort:0000000000000000 $t
+     /tmp/ccCma9kM.s:1154   .text.SDO_abort:0000000000000000 SDO_abort
+     /tmp/ccCma9kM.s:1243   .text.SDO_abort:0000000000000058 $d
+     /tmp/ccCma9kM.s:1250   .text.set_state_idle:0000000000000000 $t
+     /tmp/ccCma9kM.s:1255   .text.set_state_idle:0000000000000000 set_state_idle
+     /tmp/ccCma9kM.s:1293   .text.set_state_idle:0000000000000018 $d
+     /tmp/ccCma9kM.s:1299   .text.copy2mbx:0000000000000000 $t
+     /tmp/ccCma9kM.s:1304   .text.copy2mbx:0000000000000000 copy2mbx
+     /tmp/ccCma9kM.s:1332   .text.SDO_uploadsegment:0000000000000000 $t
+     /tmp/ccCma9kM.s:1337   .text.SDO_uploadsegment:0000000000000000 SDO_uploadsegment
+     /tmp/ccCma9kM.s:1548   .text.SDO_uploadsegment:00000000000000f4 $d
+     /tmp/ccCma9kM.s:1556   .text.complete_access_subindex_loop:0000000000000000 $t
+     /tmp/ccCma9kM.s:1561   .text.complete_access_subindex_loop:0000000000000000 complete_access_subindex_loop
+     /tmp/ccCma9kM.s:1918   .text.complete_access_subindex_loop:0000000000000164 $d
+     /tmp/ccCma9kM.s:1925   .rodata.COE_getValue.str1.4:0000000000000000 $d
+     /tmp/ccCma9kM.s:1932   .text.COE_getValue:0000000000000000 $t
+     /tmp/ccCma9kM.s:1937   .text.COE_getValue:0000000000000000 COE_getValue
+     /tmp/ccCma9kM.s:1960   .text.COE_getValue:000000000000000e $d
+     /tmp/ccCma9kM.s:2083   .text.COE_getValue:0000000000000074 $d
+     /tmp/ccCma9kM.s:2090   .text.SDO_findsubindex:0000000000000000 $t
+     /tmp/ccCma9kM.s:2096   .text.SDO_findsubindex:0000000000000000 SDO_findsubindex
+     /tmp/ccCma9kM.s:2198   .text.SDO_findsubindex:0000000000000054 $d
+     /tmp/ccCma9kM.s:2203   .text.SDO_findobject:0000000000000000 $t
+     /tmp/ccCma9kM.s:2209   .text.SDO_findobject:0000000000000000 SDO_findobject
+     /tmp/ccCma9kM.s:2259   .text.SDO_findobject:000000000000001c $d
+     /tmp/ccCma9kM.s:2264   .text.complete_access_get_variables:0000000000000000 $t
+     /tmp/ccCma9kM.s:2269   .text.complete_access_get_variables:0000000000000000 complete_access_get_variables
+     /tmp/ccCma9kM.s:2350   .text.complete_access_get_variables:0000000000000040 $d
+     /tmp/ccCma9kM.s:2357   .text.SDO_upload_complete_access:0000000000000000 $t
+     /tmp/ccCma9kM.s:2362   .text.SDO_upload_complete_access:0000000000000000 SDO_upload_complete_access
+     /tmp/ccCma9kM.s:2710   .text.SDO_upload_complete_access:00000000000001f0 $d
+     /tmp/ccCma9kM.s:2720   .text.SDO_download_complete_access:0000000000000000 $t
+     /tmp/ccCma9kM.s:2725   .text.SDO_download_complete_access:0000000000000000 SDO_download_complete_access
+     /tmp/ccCma9kM.s:3070   .text.SDO_download_complete_access:00000000000001bc $d
+     /tmp/ccCma9kM.s:3081   .text.SDO_upload:0000000000000000 $t
+     /tmp/ccCma9kM.s:3086   .text.SDO_upload:0000000000000000 SDO_upload
+     /tmp/ccCma9kM.s:3554   .text.SDO_upload:00000000000001f8 $d
+ARM GAS  /tmp/ccCma9kM.s 			page 173
 
 
-     /tmp/ccoeYwR8.s:3565   .text.SDO_download:0000000000000000 $t
-     /tmp/ccoeYwR8.s:3570   .text.SDO_download:0000000000000000 SDO_download
-     /tmp/ccoeYwR8.s:4035   .text.SDO_download:00000000000001f8 $d
-     /tmp/ccoeYwR8.s:4048   .text.SDO_downloadsegment:0000000000000000 $t
-     /tmp/ccoeYwR8.s:4053   .text.SDO_downloadsegment:0000000000000000 SDO_downloadsegment
-     /tmp/ccoeYwR8.s:4322   .text.SDO_downloadsegment:000000000000013c $d
-     /tmp/ccoeYwR8.s:4333   .text.SDO_getod:0000000000000000 $t
-     /tmp/ccoeYwR8.s:4338   .text.SDO_getod:0000000000000000 SDO_getod
-     /tmp/ccoeYwR8.s:4614   .text.SDO_getod:0000000000000118 $d
-     /tmp/ccoeYwR8.s:4623   .text.SDO_geted:0000000000000000 $t
-     /tmp/ccoeYwR8.s:4628   .text.SDO_geted:0000000000000000 SDO_geted
-     /tmp/ccoeYwR8.s:4862   .text.SDO_geted:00000000000000d8 $d
-     /tmp/ccoeYwR8.s:4872   .text.sizeOfPDO:0000000000000000 $t
-     /tmp/ccoeYwR8.s:4878   .text.sizeOfPDO:0000000000000000 sizeOfPDO
-     /tmp/ccoeYwR8.s:5285   .text.sizeOfPDO:0000000000000184 $d
-     /tmp/ccoeYwR8.s:5290   .text.ESC_coeprocess:0000000000000000 $t
-     /tmp/ccoeYwR8.s:5296   .text.ESC_coeprocess:0000000000000000 ESC_coeprocess
-     /tmp/ccoeYwR8.s:5597   .text.ESC_coeprocess:0000000000000140 $d
-     /tmp/ccoeYwR8.s:5605   .text.COE_initDefaultValues:0000000000000000 $t
-     /tmp/ccoeYwR8.s:5611   .text.COE_initDefaultValues:0000000000000000 COE_initDefaultValues
-     /tmp/ccoeYwR8.s:5731   .text.COE_initDefaultValues:0000000000000064 $d
-     /tmp/ccoeYwR8.s:5737   .rodata.COE_pdoPack.str1.4:0000000000000000 $d
-     /tmp/ccoeYwR8.s:5741   .text.COE_pdoPack:0000000000000000 $t
-     /tmp/ccoeYwR8.s:5747   .text.COE_pdoPack:0000000000000000 COE_pdoPack
-     /tmp/ccoeYwR8.s:5868   .text.COE_pdoPack:000000000000006c $d
-     /tmp/ccoeYwR8.s:5875   .text.COE_pdoUnpack:0000000000000000 $t
-     /tmp/ccoeYwR8.s:5881   .text.COE_pdoUnpack:0000000000000000 COE_pdoUnpack
-     /tmp/ccoeYwR8.s:5996   .text.COE_pdoUnpack:0000000000000064 $d
-     /tmp/ccoeYwR8.s:6003   .text.COE_maxSub:0000000000000000 $t
-     /tmp/ccoeYwR8.s:6009   .text.COE_maxSub:0000000000000000 COE_maxSub
-     /tmp/ccoeYwR8.s:6060   .text.COE_maxSub:0000000000000024 $d
-     /tmp/ccoeYwR8.s:6065   .rodata.__func__.0:0000000000000000 $d
-     /tmp/ccoeYwR8.s:6069   .rodata.__func__.0:0000000000000000 __func__.0
-     /tmp/ccoeYwR8.s:6072   .rodata.__func__.1:0000000000000000 $d
-     /tmp/ccoeYwR8.s:6076   .rodata.__func__.1:0000000000000000 __func__.1
-     /tmp/ccoeYwR8.s:6079   .rodata.__func__.2:0000000000000000 $d
-     /tmp/ccoeYwR8.s:6083   .rodata.__func__.2:0000000000000000 __func__.2
-     /tmp/ccoeYwR8.s:477    .text.COE_setValue:0000000000000043 $d
-     /tmp/ccoeYwR8.s:477    .text.COE_setValue:0000000000000044 $t
-     /tmp/ccoeYwR8.s:2015   .text.COE_getValue:0000000000000045 $d
-     /tmp/ccoeYwR8.s:2015   .text.COE_getValue:0000000000000046 $t
+     /tmp/ccCma9kM.s:3565   .text.SDO_download:0000000000000000 $t
+     /tmp/ccCma9kM.s:3570   .text.SDO_download:0000000000000000 SDO_download
+     /tmp/ccCma9kM.s:4035   .text.SDO_download:00000000000001f8 $d
+     /tmp/ccCma9kM.s:4048   .text.SDO_downloadsegment:0000000000000000 $t
+     /tmp/ccCma9kM.s:4053   .text.SDO_downloadsegment:0000000000000000 SDO_downloadsegment
+     /tmp/ccCma9kM.s:4322   .text.SDO_downloadsegment:000000000000013c $d
+     /tmp/ccCma9kM.s:4333   .text.SDO_getod:0000000000000000 $t
+     /tmp/ccCma9kM.s:4338   .text.SDO_getod:0000000000000000 SDO_getod
+     /tmp/ccCma9kM.s:4614   .text.SDO_getod:0000000000000118 $d
+     /tmp/ccCma9kM.s:4623   .text.SDO_geted:0000000000000000 $t
+     /tmp/ccCma9kM.s:4628   .text.SDO_geted:0000000000000000 SDO_geted
+     /tmp/ccCma9kM.s:4862   .text.SDO_geted:00000000000000d8 $d
+     /tmp/ccCma9kM.s:4872   .text.sizeOfPDO:0000000000000000 $t
+     /tmp/ccCma9kM.s:4878   .text.sizeOfPDO:0000000000000000 sizeOfPDO
+     /tmp/ccCma9kM.s:5285   .text.sizeOfPDO:0000000000000184 $d
+     /tmp/ccCma9kM.s:5290   .text.ESC_coeprocess:0000000000000000 $t
+     /tmp/ccCma9kM.s:5296   .text.ESC_coeprocess:0000000000000000 ESC_coeprocess
+     /tmp/ccCma9kM.s:5597   .text.ESC_coeprocess:0000000000000140 $d
+     /tmp/ccCma9kM.s:5605   .text.COE_initDefaultValues:0000000000000000 $t
+     /tmp/ccCma9kM.s:5611   .text.COE_initDefaultValues:0000000000000000 COE_initDefaultValues
+     /tmp/ccCma9kM.s:5731   .text.COE_initDefaultValues:0000000000000064 $d
+     /tmp/ccCma9kM.s:5737   .rodata.COE_pdoPack.str1.4:0000000000000000 $d
+     /tmp/ccCma9kM.s:5741   .text.COE_pdoPack:0000000000000000 $t
+     /tmp/ccCma9kM.s:5747   .text.COE_pdoPack:0000000000000000 COE_pdoPack
+     /tmp/ccCma9kM.s:5868   .text.COE_pdoPack:000000000000006c $d
+     /tmp/ccCma9kM.s:5875   .text.COE_pdoUnpack:0000000000000000 $t
+     /tmp/ccCma9kM.s:5881   .text.COE_pdoUnpack:0000000000000000 COE_pdoUnpack
+     /tmp/ccCma9kM.s:5996   .text.COE_pdoUnpack:0000000000000064 $d
+     /tmp/ccCma9kM.s:6003   .text.COE_maxSub:0000000000000000 $t
+     /tmp/ccCma9kM.s:6009   .text.COE_maxSub:0000000000000000 COE_maxSub
+     /tmp/ccCma9kM.s:6060   .text.COE_maxSub:0000000000000024 $d
+     /tmp/ccCma9kM.s:6065   .rodata.__func__.0:0000000000000000 $d
+     /tmp/ccCma9kM.s:6069   .rodata.__func__.0:0000000000000000 __func__.0
+     /tmp/ccCma9kM.s:6072   .rodata.__func__.1:0000000000000000 $d
+     /tmp/ccCma9kM.s:6076   .rodata.__func__.1:0000000000000000 __func__.1
+     /tmp/ccCma9kM.s:6079   .rodata.__func__.2:0000000000000000 $d
+     /tmp/ccCma9kM.s:6083   .rodata.__func__.2:0000000000000000 __func__.2
+     /tmp/ccCma9kM.s:477    .text.COE_setValue:0000000000000043 $d
+     /tmp/ccCma9kM.s:477    .text.COE_setValue:0000000000000044 $t
+     /tmp/ccCma9kM.s:2015   .text.COE_getValue:0000000000000045 $d
+     /tmp/ccCma9kM.s:2015   .text.COE_getValue:0000000000000046 $t
 
 UNDEFINED SYMBOLS
 ESC_claimbuffer

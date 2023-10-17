@@ -30,7 +30,7 @@ build/pdo_override.o: Core/Src/pdo_override.c \
  Lib/soes/include/cc.h Lib/soes/include/esc_coe.h \
  Lib/soes/include/options.h Lib/soes-esi/ecat_options.h \
  Lib/soes/include/ecat_slv.h Lib/soes/include/esc.h Lib/soes-esi/utypes.h \
- Core/Inc/pdo_override.h Core/Inc/main.h
+ Core/Inc/pdo_override.h Core/Inc/main.h Core/Inc/ecatapp.h
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h:
 Drivers/CMSIS/Include/core_cm4.h:
@@ -71,3 +71,4 @@ Lib/soes/include/esc.h:
 Lib/soes-esi/utypes.h:
 Core/Inc/pdo_override.h:
 Core/Inc/main.h:
+Core/Inc/ecatapp.h:

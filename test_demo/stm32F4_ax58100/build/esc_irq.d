@@ -26,7 +26,8 @@ build/esc_irq.o: Lib/soes_hal_bsp/src/esc_irq.c \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
+ Core/Inc/ecatapp.h
 Lib/soes_hal_bsp/include/esc_irq.h:
 Core/Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -58,3 +59,4 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+Core/Inc/ecatapp.h:

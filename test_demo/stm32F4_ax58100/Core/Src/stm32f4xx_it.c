@@ -23,6 +23,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ecatapp.h"
+#include "pdo_override.h"
+
+extern volatile DMA_PDI_transmission_state_t pdi_dma_transmission;
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,6 +62,7 @@
 /* External variables --------------------------------------------------------*/
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
+extern DMA_HandleTypeDef hdma_spi2_rx;
 extern TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN EV */
@@ -217,6 +222,20 @@ void EXTI0_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles DMA1 stream3 global interrupt.
+  */
+void DMA1_Stream3_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Stream3_IRQn 0 */
+
+  /* USER CODE END DMA1_Stream3_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_spi2_rx);
+  /* USER CODE BEGIN DMA1_Stream3_IRQn 1 */
+  pdi_dma_transmission = NOT_STARTED;
+  /* USER CODE END DMA1_Stream3_IRQn 1 */
+}
+
+/**
   * @brief This function handles CAN1 RX0 interrupts.
   */
 void CAN1_RX0_IRQHandler(void)
@@ -268,7 +287,7 @@ void CAN2_RX0_IRQHandler(void)
   /* USER CODE END CAN2_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan2);
   /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
-
+  
   /* USER CODE END CAN2_RX0_IRQn 1 */
 }
 
