@@ -13,11 +13,13 @@ typedef struct
 
    /* Inputs */
 
-   uint8_t LED1;
+   uint8_t led1_tx;
+   uint8_t led2_tx;
 
    /* Outputs */
 
-   uint8_t LED2;
+   uint8_t led2_rx;
+   uint8_t led1_rx;
 
    /* Parameters */
 

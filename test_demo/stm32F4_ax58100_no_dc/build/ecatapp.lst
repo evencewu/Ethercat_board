@@ -1,0 +1,232 @@
+ARM GAS  /tmp/ccfRtSvm.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ecatapp.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ecatapp,"ax",%progbits
+  20              		.align	1
+  21              		.global	ecatapp
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	ecatapp:
+  27              	.LFB130:
+  28              		.file 1 "Lib/ecatapp/src/ecatapp.c"
+   1:Lib/ecatapp/src/ecatapp.c **** #include "esc.h"
+   2:Lib/ecatapp/src/ecatapp.c **** #include "ecat_slv.h"
+   3:Lib/ecatapp/src/ecatapp.c **** #include "utypes.h"
+   4:Lib/ecatapp/src/ecatapp.c **** 
+   5:Lib/ecatapp/src/ecatapp.c **** #include "esc_irq.h"
+   6:Lib/ecatapp/src/ecatapp.c **** #include "ecatapp.h"
+   7:Lib/ecatapp/src/ecatapp.c **** 
+   8:Lib/ecatapp/src/ecatapp.c **** #include "main.h"
+   9:Lib/ecatapp/src/ecatapp.c **** 
+  10:Lib/ecatapp/src/ecatapp.c **** /* CANopen Object Dictionary */
+  11:Lib/ecatapp/src/ecatapp.c **** _Objects Obj;
+  12:Lib/ecatapp/src/ecatapp.c **** 
+  13:Lib/ecatapp/src/ecatapp.c **** /* Application hook declaration */
+  14:Lib/ecatapp/src/ecatapp.c **** void ecatapp(void);
+  15:Lib/ecatapp/src/ecatapp.c **** 
+  16:Lib/ecatapp/src/ecatapp.c **** /* SOES configuration */
+  17:Lib/ecatapp/src/ecatapp.c **** static esc_cfg_t config = {
+  18:Lib/ecatapp/src/ecatapp.c ****     .user_arg = "ax58100",
+  19:Lib/ecatapp/src/ecatapp.c ****     .use_interrupt = 1,
+  20:Lib/ecatapp/src/ecatapp.c ****     .watchdog_cnt = INT32_MAX,
+  21:Lib/ecatapp/src/ecatapp.c ****     .set_defaults_hook = NULL,
+  22:Lib/ecatapp/src/ecatapp.c ****     .pre_state_change_hook = NULL,
+  23:Lib/ecatapp/src/ecatapp.c ****     .post_state_change_hook = NULL,
+  24:Lib/ecatapp/src/ecatapp.c ****     .application_hook = ecatapp,
+  25:Lib/ecatapp/src/ecatapp.c ****     .safeoutput_override = NULL,
+  26:Lib/ecatapp/src/ecatapp.c ****     .pre_object_download_hook = NULL,
+  27:Lib/ecatapp/src/ecatapp.c ****     .post_object_download_hook = NULL,
+  28:Lib/ecatapp/src/ecatapp.c ****     .rxpdo_override = NULL,
+  29:Lib/ecatapp/src/ecatapp.c ****     .txpdo_override = NULL,
+  30:Lib/ecatapp/src/ecatapp.c ****     .esc_hw_interrupt_enable = NULL,
+ARM GAS  /tmp/ccfRtSvm.s 			page 2
+
+
+  31:Lib/ecatapp/src/ecatapp.c ****     .esc_hw_interrupt_disable = NULL,
+  32:Lib/ecatapp/src/ecatapp.c ****     .esc_hw_eep_handler = NULL,
+  33:Lib/ecatapp/src/ecatapp.c ****     .esc_check_dc_handler = NULL,
+  34:Lib/ecatapp/src/ecatapp.c **** };
+  35:Lib/ecatapp/src/ecatapp.c **** 
+  36:Lib/ecatapp/src/ecatapp.c **** void ecatapp()
+  37:Lib/ecatapp/src/ecatapp.c **** {
+  29              		.loc 1 37 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  38:Lib/ecatapp/src/ecatapp.c **** 
+  39:Lib/ecatapp/src/ecatapp.c **** }
+  34              		.loc 1 39 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE130:
+  39              		.section	.text.ecatapp_init,"ax",%progbits
+  40              		.align	1
+  41              		.global	ecatapp_init
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	ecatapp_init:
+  47              	.LFB131:
+  40:Lib/ecatapp/src/ecatapp.c **** 
+  41:Lib/ecatapp/src/ecatapp.c **** void ecatapp_init(void)
+  42:Lib/ecatapp/src/ecatapp.c **** {
+  48              		.loc 1 42 1 view -0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52 0000 08B5     		push	{r3, lr}
+  53              		.cfi_def_cfa_offset 8
+  54              		.cfi_offset 3, -8
+  55              		.cfi_offset 14, -4
+  43:Lib/ecatapp/src/ecatapp.c ****     ecat_slv_init(&config);
+  56              		.loc 1 43 5 view .LVU3
+  57 0002 0248     		ldr	r0, .L4
+  58 0004 FFF7FEFF 		bl	ecat_slv_init
+  59              	.LVL0:
+  44:Lib/ecatapp/src/ecatapp.c **** }
+  60              		.loc 1 44 1 is_stmt 0 view .LVU4
+  61 0008 08BD     		pop	{r3, pc}
+  62              	.L5:
+  63 000a 00BF     		.align	2
+  64              	.L4:
+  65 000c 00000000 		.word	.LANCHOR0
+  66              		.cfi_endproc
+  67              	.LFE131:
+  69              		.section	.text.cb_get_inputs,"ax",%progbits
+  70              		.align	1
+  71              		.global	cb_get_inputs
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+ARM GAS  /tmp/ccfRtSvm.s 			page 3
+
+
+  76              	cb_get_inputs:
+  77              	.LFB132:
+  45:Lib/ecatapp/src/ecatapp.c **** 
+  46:Lib/ecatapp/src/ecatapp.c **** void cb_get_inputs()
+  47:Lib/ecatapp/src/ecatapp.c **** {
+  78              		.loc 1 47 1 is_stmt 1 view -0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  48:Lib/ecatapp/src/ecatapp.c ****     /* SOES reqires this function but nothing to do here in CiA402 app */
+  49:Lib/ecatapp/src/ecatapp.c **** }
+  83              		.loc 1 49 1 view .LVU6
+  84 0000 7047     		bx	lr
+  85              		.cfi_endproc
+  86              	.LFE132:
+  88              		.section	.text.cb_set_outputs,"ax",%progbits
+  89              		.align	1
+  90              		.global	cb_set_outputs
+  91              		.syntax unified
+  92              		.thumb
+  93              		.thumb_func
+  95              	cb_set_outputs:
+  96              	.LFB133:
+  50:Lib/ecatapp/src/ecatapp.c **** 
+  51:Lib/ecatapp/src/ecatapp.c **** void cb_set_outputs()
+  52:Lib/ecatapp/src/ecatapp.c **** {
+  97              		.loc 1 52 1 view -0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+  53:Lib/ecatapp/src/ecatapp.c ****     /* SOES reqires this function but nothing to do here in CiA402 app */
+  54:Lib/ecatapp/src/ecatapp.c **** }
+ 102              		.loc 1 54 1 view .LVU8
+ 103 0000 7047     		bx	lr
+ 104              		.cfi_endproc
+ 105              	.LFE133:
+ 107              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 108              		.align	2
+ 109              	.LC0:
+ 110 0000 61783538 		.ascii	"ax58100\000"
+ 110      31303000 
+ 111              		.global	Obj
+ 112              		.section	.bss.Obj,"aw",%nobits
+ 113              		.align	2
+ 116              	Obj:
+ 117 0000 00000000 		.space	64
+ 117      00000000 
+ 117      00000000 
+ 117      00000000 
+ 117      00000000 
+ 118              		.section	.data.config,"aw"
+ 119              		.align	2
+ 120              		.set	.LANCHOR0,. + 0
+ 123              	config:
+ 124 0000 00000000 		.word	.LC0
+ARM GAS  /tmp/ccfRtSvm.s 			page 4
+
+
+ 125 0004 01000000 		.word	1
+ 126 0008 FFFFFF7F 		.word	2147483647
+ 127 000c 00000000 		.space	4
+ 128 0010 00000000 		.word	0
+ 129 0014 00000000 		.word	0
+ 130 0018 00000000 		.word	0
+ 131 001c 00000000 		.word	ecatapp
+ 132 0020 00000000 		.word	0
+ 133 0024 00000000 		.word	0
+ 134 0028 00000000 		.word	0
+ 135 002c 00000000 		.space	8
+ 135      00000000 
+ 136 0034 00000000 		.word	0
+ 137 0038 00000000 		.word	0
+ 138 003c 00000000 		.word	0
+ 139 0040 00000000 		.word	0
+ 140 0044 00000000 		.word	0
+ 141 0048 00000000 		.word	0
+ 142 004c 00000000 		.space	4
+ 143              		.text
+ 144              	.Letext0:
+ 145              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 146              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 147              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 148              		.file 5 "Lib/soes/include/esc.h"
+ 149              		.file 6 "Lib/soes-esi/utypes.h"
+ 150              		.file 7 "Lib/soes/include/ecat_slv.h"
+ARM GAS  /tmp/ccfRtSvm.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 ecatapp.c
+     /tmp/ccfRtSvm.s:20     .text.ecatapp:0000000000000000 $t
+     /tmp/ccfRtSvm.s:26     .text.ecatapp:0000000000000000 ecatapp
+     /tmp/ccfRtSvm.s:40     .text.ecatapp_init:0000000000000000 $t
+     /tmp/ccfRtSvm.s:46     .text.ecatapp_init:0000000000000000 ecatapp_init
+     /tmp/ccfRtSvm.s:65     .text.ecatapp_init:000000000000000c $d
+     /tmp/ccfRtSvm.s:70     .text.cb_get_inputs:0000000000000000 $t
+     /tmp/ccfRtSvm.s:76     .text.cb_get_inputs:0000000000000000 cb_get_inputs
+     /tmp/ccfRtSvm.s:89     .text.cb_set_outputs:0000000000000000 $t
+     /tmp/ccfRtSvm.s:95     .text.cb_set_outputs:0000000000000000 cb_set_outputs
+     /tmp/ccfRtSvm.s:108    .rodata.str1.4:0000000000000000 $d
+     /tmp/ccfRtSvm.s:116    .bss.Obj:0000000000000000 Obj
+     /tmp/ccfRtSvm.s:113    .bss.Obj:0000000000000000 $d
+     /tmp/ccfRtSvm.s:119    .data.config:0000000000000000 $d
+     /tmp/ccfRtSvm.s:123    .data.config:0000000000000000 config
+
+UNDEFINED SYMBOLS
+ecat_slv_init

@@ -1,0 +1,240 @@
+ARM GAS  /tmp/ccm5HwjI.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"rst.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.rst_setup,"ax",%progbits
+  20              		.align	1
+  21              		.global	rst_setup
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	rst_setup:
+  27              	.LFB130:
+  28              		.file 1 "Lib/soes_hal_bsp/src/rst.c"
+   1:Lib/soes_hal_bsp/src/rst.c **** #include "rst.h"
+   2:Lib/soes_hal_bsp/src/rst.c **** #include "main.h"
+   3:Lib/soes_hal_bsp/src/rst.c **** 
+   4:Lib/soes_hal_bsp/src/rst.c **** void rst_setup(void)
+   5:Lib/soes_hal_bsp/src/rst.c **** {
+  29              		.loc 1 5 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+   6:Lib/soes_hal_bsp/src/rst.c ****     HAL_GPIO_WritePin(nRST_GPIO_Port, nRST_Pin, GPIO_PIN_SET);
+  37              		.loc 1 6 5 view .LVU1
+  38 0002 0122     		movs	r2, #1
+  39 0004 0421     		movs	r1, #4
+  40 0006 0248     		ldr	r0, .L3
+  41 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  42              	.LVL0:
+   7:Lib/soes_hal_bsp/src/rst.c **** }
+  43              		.loc 1 7 1 is_stmt 0 view .LVU2
+  44 000c 08BD     		pop	{r3, pc}
+  45              	.L4:
+  46 000e 00BF     		.align	2
+  47              	.L3:
+  48 0010 00000240 		.word	1073872896
+  49              		.cfi_endproc
+  50              	.LFE130:
+  52              		.section	.text.rst_low,"ax",%progbits
+ARM GAS  /tmp/ccm5HwjI.s 			page 2
+
+
+  53              		.align	1
+  54              		.global	rst_low
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  59              	rst_low:
+  60              	.LFB131:
+   8:Lib/soes_hal_bsp/src/rst.c **** 
+   9:Lib/soes_hal_bsp/src/rst.c **** void rst_low(void)
+  10:Lib/soes_hal_bsp/src/rst.c **** { /* Set RSTN line low */
+  61              		.loc 1 10 1 is_stmt 1 view -0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65 0000 08B5     		push	{r3, lr}
+  66              		.cfi_def_cfa_offset 8
+  67              		.cfi_offset 3, -8
+  68              		.cfi_offset 14, -4
+  11:Lib/soes_hal_bsp/src/rst.c ****     HAL_GPIO_WritePin(nRST_GPIO_Port, nRST_Pin, GPIO_PIN_RESET);
+  69              		.loc 1 11 5 view .LVU4
+  70 0002 0022     		movs	r2, #0
+  71 0004 0421     		movs	r1, #4
+  72 0006 0248     		ldr	r0, .L7
+  73 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  74              	.LVL1:
+  12:Lib/soes_hal_bsp/src/rst.c **** }
+  75              		.loc 1 12 1 is_stmt 0 view .LVU5
+  76 000c 08BD     		pop	{r3, pc}
+  77              	.L8:
+  78 000e 00BF     		.align	2
+  79              	.L7:
+  80 0010 00000240 		.word	1073872896
+  81              		.cfi_endproc
+  82              	.LFE131:
+  84              		.section	.text.rst_high,"ax",%progbits
+  85              		.align	1
+  86              		.global	rst_high
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  91              	rst_high:
+  92              	.LFB132:
+  13:Lib/soes_hal_bsp/src/rst.c **** 
+  14:Lib/soes_hal_bsp/src/rst.c **** void rst_high(void)
+  15:Lib/soes_hal_bsp/src/rst.c **** {
+  93              		.loc 1 15 1 is_stmt 1 view -0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 0
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  97 0000 08B5     		push	{r3, lr}
+  98              		.cfi_def_cfa_offset 8
+  99              		.cfi_offset 3, -8
+ 100              		.cfi_offset 14, -4
+  16:Lib/soes_hal_bsp/src/rst.c ****     /* Set RSTN line high */
+  17:Lib/soes_hal_bsp/src/rst.c ****     HAL_GPIO_WritePin(nRST_GPIO_Port, nRST_Pin, GPIO_PIN_SET);
+ 101              		.loc 1 17 5 view .LVU7
+ 102 0002 0122     		movs	r2, #1
+ARM GAS  /tmp/ccm5HwjI.s 			page 3
+
+
+ 103 0004 0421     		movs	r1, #4
+ 104 0006 0248     		ldr	r0, .L11
+ 105 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 106              	.LVL2:
+  18:Lib/soes_hal_bsp/src/rst.c **** }
+ 107              		.loc 1 18 1 is_stmt 0 view .LVU8
+ 108 000c 08BD     		pop	{r3, pc}
+ 109              	.L12:
+ 110 000e 00BF     		.align	2
+ 111              	.L11:
+ 112 0010 00000240 		.word	1073872896
+ 113              		.cfi_endproc
+ 114              	.LFE132:
+ 116              		.section	.text.rst_check_start,"ax",%progbits
+ 117              		.align	1
+ 118              		.global	rst_check_start
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 123              	rst_check_start:
+ 124              	.LFB133:
+  19:Lib/soes_hal_bsp/src/rst.c **** 
+  20:Lib/soes_hal_bsp/src/rst.c **** void rst_check_start(void)
+  21:Lib/soes_hal_bsp/src/rst.c **** {
+ 125              		.loc 1 21 1 is_stmt 1 view -0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129 0000 08B5     		push	{r3, lr}
+ 130              		.cfi_def_cfa_offset 8
+ 131              		.cfi_offset 3, -8
+ 132              		.cfi_offset 14, -4
+  22:Lib/soes_hal_bsp/src/rst.c ****     HAL_GPIO_WritePin(nRST_GPIO_Port, nRST_Pin, GPIO_PIN_SET);
+ 133              		.loc 1 22 5 view .LVU10
+ 134 0002 0122     		movs	r2, #1
+ 135 0004 0421     		movs	r1, #4
+ 136 0006 0248     		ldr	r0, .L15
+ 137 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 138              	.LVL3:
+  23:Lib/soes_hal_bsp/src/rst.c **** }
+ 139              		.loc 1 23 1 is_stmt 0 view .LVU11
+ 140 000c 08BD     		pop	{r3, pc}
+ 141              	.L16:
+ 142 000e 00BF     		.align	2
+ 143              	.L15:
+ 144 0010 00000240 		.word	1073872896
+ 145              		.cfi_endproc
+ 146              	.LFE133:
+ 148              		.section	.text.is_esc_reset,"ax",%progbits
+ 149              		.align	1
+ 150              		.global	is_esc_reset
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 155              	is_esc_reset:
+ 156              	.LFB134:
+  24:Lib/soes_hal_bsp/src/rst.c **** 
+ARM GAS  /tmp/ccm5HwjI.s 			page 4
+
+
+  25:Lib/soes_hal_bsp/src/rst.c **** uint8_t is_esc_reset(void)
+  26:Lib/soes_hal_bsp/src/rst.c **** {
+ 157              		.loc 1 26 1 is_stmt 1 view -0
+ 158              		.cfi_startproc
+ 159              		@ args = 0, pretend = 0, frame = 0
+ 160              		@ frame_needed = 0, uses_anonymous_args = 0
+ 161 0000 08B5     		push	{r3, lr}
+ 162              		.cfi_def_cfa_offset 8
+ 163              		.cfi_offset 3, -8
+ 164              		.cfi_offset 14, -4
+  27:Lib/soes_hal_bsp/src/rst.c ****     /* Check if ESC pulled RSTN line up */
+  28:Lib/soes_hal_bsp/src/rst.c ****     return HAL_GPIO_ReadPin(nRST_GPIO_Port, nRST_Pin);
+ 165              		.loc 1 28 5 view .LVU13
+ 166              		.loc 1 28 12 is_stmt 0 view .LVU14
+ 167 0002 0421     		movs	r1, #4
+ 168 0004 0148     		ldr	r0, .L19
+ 169 0006 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 170              	.LVL4:
+  29:Lib/soes_hal_bsp/src/rst.c **** }...
+ 171              		.loc 1 29 1 view .LVU15
+ 172 000a 08BD     		pop	{r3, pc}
+ 173              	.L20:
+ 174              		.align	2
+ 175              	.L19:
+ 176 000c 00000240 		.word	1073872896
+ 177              		.cfi_endproc
+ 178              	.LFE134:
+ 180              		.text
+ 181              	.Letext0:
+ 182              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 183              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 184              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 185              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  /tmp/ccm5HwjI.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 rst.c
+     /tmp/ccm5HwjI.s:20     .text.rst_setup:0000000000000000 $t
+     /tmp/ccm5HwjI.s:26     .text.rst_setup:0000000000000000 rst_setup
+     /tmp/ccm5HwjI.s:48     .text.rst_setup:0000000000000010 $d
+     /tmp/ccm5HwjI.s:53     .text.rst_low:0000000000000000 $t
+     /tmp/ccm5HwjI.s:59     .text.rst_low:0000000000000000 rst_low
+     /tmp/ccm5HwjI.s:80     .text.rst_low:0000000000000010 $d
+     /tmp/ccm5HwjI.s:85     .text.rst_high:0000000000000000 $t
+     /tmp/ccm5HwjI.s:91     .text.rst_high:0000000000000000 rst_high
+     /tmp/ccm5HwjI.s:112    .text.rst_high:0000000000000010 $d
+     /tmp/ccm5HwjI.s:117    .text.rst_check_start:0000000000000000 $t
+     /tmp/ccm5HwjI.s:123    .text.rst_check_start:0000000000000000 rst_check_start
+     /tmp/ccm5HwjI.s:144    .text.rst_check_start:0000000000000010 $d
+     /tmp/ccm5HwjI.s:149    .text.is_esc_reset:0000000000000000 $t
+     /tmp/ccm5HwjI.s:155    .text.is_esc_reset:0000000000000000 is_esc_reset
+     /tmp/ccm5HwjI.s:176    .text.is_esc_reset:000000000000000c $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_GPIO_ReadPin

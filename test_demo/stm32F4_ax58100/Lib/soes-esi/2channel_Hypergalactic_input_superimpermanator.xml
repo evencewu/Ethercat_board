@@ -124,7 +124,31 @@
                 </SubItem>
                 <SubItem>
                   <SubIdx>1</SubIdx>
-                  <Name>LED2</Name>
+                  <Name>led2_rx</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <Name>DT1601</Name>
+                <BitSize>48</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>Max SubIndex</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>1</SubIdx>
+                  <Name>led1_rx</Name>
                   <Type>UDINT</Type>
                   <BitSize>32</BitSize>
                   <BitOffs>16</BitOffs>
@@ -148,7 +172,31 @@
                 </SubItem>
                 <SubItem>
                   <SubIdx>1</SubIdx>
-                  <Name>LED1</Name>
+                  <Name>led1_tx</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <Name>DT1A01</Name>
+                <BitSize>48</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>Max SubIndex</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>1</SubIdx>
+                  <Name>led2_tx</Name>
                   <Type>UDINT</Type>
                   <BitSize>32</BitSize>
                   <BitOffs>16</BitOffs>
@@ -192,15 +240,15 @@
               <DataType>
                 <Name>DT1C12ARR</Name>
                 <BaseType>UINT</BaseType>
-                <BitSize>16</BitSize>
+                <BitSize>32</BitSize>
                 <ArrayInfo>
                   <LBound>1</LBound>
-                  <Elements>1</Elements>
+                  <Elements>2</Elements>
                 </ArrayInfo>
               </DataType>
               <DataType>
                 <Name>DT1C12</Name>
-                <BitSize>32</BitSize>
+                <BitSize>48</BitSize>
                 <SubItem>
                   <SubIdx>0</SubIdx>
                   <Name>Max SubIndex</Name>
@@ -214,7 +262,7 @@
                 <SubItem>
                   <Name>Elements</Name>
                   <Type>DT1C12ARR</Type>
-                  <BitSize>16</BitSize>
+                  <BitSize>32</BitSize>
                   <BitOffs>16</BitOffs>
                   <Flags>
                     <Access>ro</Access>
@@ -224,15 +272,15 @@
               <DataType>
                 <Name>DT1C13ARR</Name>
                 <BaseType>UINT</BaseType>
-                <BitSize>16</BitSize>
+                <BitSize>32</BitSize>
                 <ArrayInfo>
                   <LBound>1</LBound>
-                  <Elements>1</Elements>
+                  <Elements>2</Elements>
                 </ArrayInfo>
               </DataType>
               <DataType>
                 <Name>DT1C13</Name>
-                <BitSize>32</BitSize>
+                <BitSize>48</BitSize>
                 <SubItem>
                   <SubIdx>0</SubIdx>
                   <Name>Max SubIndex</Name>
@@ -246,7 +294,7 @@
                 <SubItem>
                   <Name>Elements</Name>
                   <Type>DT1C13ARR</Type>
-                  <BitSize>16</BitSize>
+                  <BitSize>32</BitSize>
                   <BitOffs>16</BitOffs>
                   <Flags>
                     <Access>ro</Access>
@@ -541,7 +589,7 @@
               </Object>
               <Object>
                 <Index>#x1600</Index>
-                <Name>LED2</Name>
+                <Name>led2_rx</Name>
                 <Type>DT1600</Type>
                 <BitSize>48</BitSize>
                 <Info>
@@ -552,7 +600,7 @@
                     </Info>
                   </SubItem>
                   <SubItem>
-                    <Name>LED2</Name>
+                    <Name>led2_rx</Name>
                     <Info>
                       <DefaultValue>#x70000008</DefaultValue>
                     </Info>
@@ -563,8 +611,31 @@
                 </Flags>
               </Object>
               <Object>
+                <Index>#x1601</Index>
+                <Name>led1_rx</Name>
+                <Type>DT1601</Type>
+                <BitSize>48</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>Max SubIndex</Name>
+                    <Info>
+                      <DefaultValue>1</DefaultValue>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>led1_rx</Name>
+                    <Info>
+                      <DefaultValue>#x70010008</DefaultValue>
+                    </Info>
+                  </SubItem>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                </Flags>
+              </Object>
+              <Object>
                 <Index>#x1A00</Index>
-                <Name>LED1</Name>
+                <Name>led1_tx</Name>
                 <Type>DT1A00</Type>
                 <BitSize>48</BitSize>
                 <Info>
@@ -575,9 +646,32 @@
                     </Info>
                   </SubItem>
                   <SubItem>
-                    <Name>LED1</Name>
+                    <Name>led1_tx</Name>
                     <Info>
                       <DefaultValue>#x60000008</DefaultValue>
+                    </Info>
+                  </SubItem>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1A01</Index>
+                <Name>led2_tx</Name>
+                <Type>DT1A01</Type>
+                <BitSize>48</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>Max SubIndex</Name>
+                    <Info>
+                      <DefaultValue>1</DefaultValue>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>led2_tx</Name>
+                    <Info>
+                      <DefaultValue>#x60010008</DefaultValue>
                     </Info>
                   </SubItem>
                 </Info>
@@ -630,18 +724,24 @@
                 <Index>#x1C12</Index>
                 <Name>Sync Manager 2 PDO Assignment</Name>
                 <Type>DT1C12</Type>
-                <BitSize>32</BitSize>
+                <BitSize>48</BitSize>
                 <Info>
                   <SubItem>
                     <Name>Max SubIndex</Name>
                     <Info>
-                      <DefaultValue>1</DefaultValue>
+                      <DefaultValue>2</DefaultValue>
                     </Info>
                   </SubItem>
                   <SubItem>
                     <Name>PDO Mapping</Name>
                     <Info>
                       <DefaultValue>#x1600</DefaultValue>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>PDO Mapping</Name>
+                    <Info>
+                      <DefaultValue>#x1601</DefaultValue>
                     </Info>
                   </SubItem>
                 </Info>
@@ -653,18 +753,24 @@
                 <Index>#x1C13</Index>
                 <Name>Sync Manager 3 PDO Assignment</Name>
                 <Type>DT1C13</Type>
-                <BitSize>32</BitSize>
+                <BitSize>48</BitSize>
                 <Info>
                   <SubItem>
                     <Name>Max SubIndex</Name>
                     <Info>
-                      <DefaultValue>1</DefaultValue>
+                      <DefaultValue>2</DefaultValue>
                     </Info>
                   </SubItem>
                   <SubItem>
                     <Name>PDO Mapping</Name>
                     <Info>
                       <DefaultValue>#x1A00</DefaultValue>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>PDO Mapping</Name>
+                    <Info>
+                      <DefaultValue>#x1A01</DefaultValue>
                     </Info>
                   </SubItem>
                 </Info>
@@ -768,7 +874,20 @@
               </Object>
               <Object>
                 <Index>#x6000</Index>
-                <Name>LED1</Name>
+                <Name>led1_tx</Name>
+                <Type>USINT</Type>
+                <BitSize>8</BitSize>
+                <Info>
+                  <DefaultValue>0</DefaultValue>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <PdoMapping>T</PdoMapping>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x6001</Index>
+                <Name>led2_tx</Name>
                 <Type>USINT</Type>
                 <BitSize>8</BitSize>
                 <Info>
@@ -817,7 +936,20 @@
               </Object>
               <Object>
                 <Index>#x7000</Index>
-                <Name>LED2</Name>
+                <Name>led2_rx</Name>
+                <Type>USINT</Type>
+                <BitSize>8</BitSize>
+                <Info>
+                  <DefaultValue>0</DefaultValue>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <PdoMapping>R</PdoMapping>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x7001</Index>
+                <Name>led1_rx</Name>
                 <Type>USINT</Type>
                 <BitSize>8</BitSize>
                 <Info>
@@ -840,23 +972,45 @@
         <Sm StartAddress="#x1A00" ControlByte="#x20" Enable="1">Inputs</Sm>
         <RxPdo Fixed="true" Mandatory="true" Sm="2">
           <Index>#x1600</Index>
-          <Name>LED2</Name>
+          <Name>led2_rx</Name>
           <Entry>
             <Index>#x7000</Index>
             <SubIndex>#x0</SubIndex>
             <BitLen>8</BitLen>
-            <Name>LED2</Name>
+            <Name>led2_rx</Name>
+            <DataType>USINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="2">
+          <Index>#x1601</Index>
+          <Name>led1_rx</Name>
+          <Entry>
+            <Index>#x7001</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>led1_rx</Name>
             <DataType>USINT</DataType>
           </Entry>
         </RxPdo>
         <TxPdo Fixed="true" Mandatory="true" Sm="3">
           <Index>#x1A00</Index>
-          <Name>LED1</Name>
+          <Name>led1_tx</Name>
           <Entry>
             <Index>#x6000</Index>
             <SubIndex>#x0</SubIndex>
             <BitLen>8</BitLen>
-            <Name>LED1</Name>
+            <Name>led1_tx</Name>
+            <DataType>USINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="3">
+          <Index>#x1A01</Index>
+          <Name>led2_tx</Name>
+          <Entry>
+            <Index>#x6001</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>led2_tx</Name>
             <DataType>USINT</DataType>
           </Entry>
         </TxPdo>

@@ -12,6 +12,10 @@
 /* CANopen Object Dictionary */
 _Objects    Obj;
 
+extern int led_flag;
+
+uint8_t sync0_irq_flag = 0;
+uint8_t pdi_irq_flag = 0;
 
 /* Application hook declaration */
 void ecatapp(void);
@@ -36,8 +40,6 @@ static esc_cfg_t config = {
     .esc_hw_eep_handler        = NULL,
     .esc_check_dc_handler      = check_dc_handler,
 };
-
-
 
 void ecatapp_init(void) {
     ecat_slv_init(&config);
@@ -93,6 +95,7 @@ void ecatapp_loop(void)
         sync0_irq_flag = 0;
     }
     if (pdi_irq_flag) {
+        
         ESC_updateALevent();
         if (ESCvar.dcsync) {
             DIG_process (DIG_PROCESS_OUTPUTS_FLAG);    
@@ -101,9 +104,10 @@ void ecatapp_loop(void)
         }
         pdi_irq_flag = 0;
     } else {
+        led_flag = 1;
         // ecat_slv_worker(ESCREG_ALEVENT_CONTROL | ESCREG_ALEVENT_SMCHANGE
         //                 | ESCREG_ALEVENT_SM0 | ESCREG_ALEVENT_SM1);
-        ecat_slv_poll();
+        ecat_slv_poll();//TODO
         DIG_process(DIG_PROCESS_WD_FLAG);
     }
 }
