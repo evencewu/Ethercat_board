@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc3f6pAD.s 			page 1
+ARM GAS  /tmp/ccrRYh01.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
   28:Lib/soes/src/esc.c ****    ESC_write (ESCREG_ALERROR, &dummy, sizeof (dummy));
   29:Lib/soes/src/esc.c **** }
   30:Lib/soes/src/esc.c **** 
-ARM GAS  /tmp/cc3f6pAD.s 			page 2
+ARM GAS  /tmp/ccrRYh01.s 			page 2
 
 
   31:Lib/soes/src/esc.c **** /** Write AL Status to the ESC.
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
   85:Lib/soes/src/esc.c **** 
   86:Lib/soes/src/esc.c **** /** Write ALeventMask register 0x204.
   87:Lib/soes/src/esc.c ****  *
-ARM GAS  /tmp/cc3f6pAD.s 			page 3
+ARM GAS  /tmp/ccrRYh01.s 			page 3
 
 
   88:Lib/soes/src/esc.c ****  * @param[in] n   = AL Event Mask
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  142:Lib/soes/src/esc.c **** /** Read SM Status register 0x805(+ offset to SyncManager n) and save the
  143:Lib/soes/src/esc.c ****  * result in global variable ESCvar.SM[n].
  144:Lib/soes/src/esc.c ****  *
-ARM GAS  /tmp/cc3f6pAD.s 			page 4
+ARM GAS  /tmp/ccrRYh01.s 			page 4
 
 
  145:Lib/soes/src/esc.c ****  * @param[in] n   = Read Sync Manager no. n
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  199:Lib/soes/src/esc.c ****  */
  200:Lib/soes/src/esc.c **** uint8_t ESC_WDstatus (void)
  201:Lib/soes/src/esc.c **** {
-ARM GAS  /tmp/cc3f6pAD.s 			page 5
+ARM GAS  /tmp/ccrRYh01.s 			page 5
 
 
  202:Lib/soes/src/esc.c ****    uint16_t wdstatus;
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  256:Lib/soes/src/esc.c ****       /* Trigger a by the application given DC check handler, return error if
  257:Lib/soes/src/esc.c ****        *  non is given
  258:Lib/soes/src/esc.c ****        */
-ARM GAS  /tmp/cc3f6pAD.s 			page 6
+ARM GAS  /tmp/ccrRYh01.s 			page 6
 
 
  259:Lib/soes/src/esc.c ****       ret = ALERR_DCINVALIDSYNCCFG;
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  313:Lib/soes/src/esc.c ****  * @param[in] state   = Current state request read from ALControl 0x0120
  314:Lib/soes/src/esc.c ****  * @return if all Mailbox values is correct we return incoming state, otherwise
  315:Lib/soes/src/esc.c ****  * we return state Init with Error flag set.
-ARM GAS  /tmp/cc3f6pAD.s 			page 7
+ARM GAS  /tmp/ccrRYh01.s 			page 7
 
 
  316:Lib/soes/src/esc.c ****  */
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  370:Lib/soes/src/esc.c ****       ESCvar.MBXrun = 1;
  371:Lib/soes/src/esc.c ****    }
  372:Lib/soes/src/esc.c ****    return state;
-ARM GAS  /tmp/cc3f6pAD.s 			page 8
+ARM GAS  /tmp/ccrRYh01.s 			page 8
 
 
  373:Lib/soes/src/esc.c **** }
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  427:Lib/soes/src/esc.c **** /** Write local mailbox buffer ESCvar.MBX[n] to Send mailbox.
  428:Lib/soes/src/esc.c ****  * Combined function for bootstrap and other states. State check decides
  429:Lib/soes/src/esc.c ****  * which one to write.
-ARM GAS  /tmp/cc3f6pAD.s 			page 9
+ARM GAS  /tmp/ccrRYh01.s 			page 9
 
 
  430:Lib/soes/src/esc.c ****  *
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  484:Lib/soes/src/esc.c ****       {
  485:Lib/soes/src/esc.c ****          ESCvar.mbxcnt = 1;
  486:Lib/soes/src/esc.c ****       }
-ARM GAS  /tmp/cc3f6pAD.s 			page 10
+ARM GAS  /tmp/ccrRYh01.s 			page 10
 
 
  487:Lib/soes/src/esc.c ****       MBh->address = htoes (0x0000);      // destination is master
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  541:Lib/soes/src/esc.c **** 
  542:Lib/soes/src/esc.c ****    if (ESCvar.MBXrun == 0)
  543:Lib/soes/src/esc.c ****    {
-ARM GAS  /tmp/cc3f6pAD.s 			page 11
+ARM GAS  /tmp/ccrRYh01.s 			page 11
 
 
  544:Lib/soes/src/esc.c ****       /* nothing to do */
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  598:Lib/soes/src/esc.c ****             /* activate mailbox */
  599:Lib/soes/src/esc.c ****             ESC_SMenable (1);
  600:Lib/soes/src/esc.c ****             /* use backup mbx */
-ARM GAS  /tmp/cc3f6pAD.s 			page 12
+ARM GAS  /tmp/ccrRYh01.s 			page 12
 
 
  601:Lib/soes/src/esc.c ****             ESC_writembx (ESCvar.mbxbackup);
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  655:Lib/soes/src/esc.c ****  * in Mailbox.
  656:Lib/soes/src/esc.c ****  */
  657:Lib/soes/src/esc.c **** void ESC_xoeprocess (void)
-ARM GAS  /tmp/cc3f6pAD.s 			page 13
+ARM GAS  /tmp/ccrRYh01.s 			page 13
 
 
  658:Lib/soes/src/esc.c **** {
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  712:Lib/soes/src/esc.c ****       ESCvar.SMtestresult = SMRESULT_ERRSM2;
  713:Lib/soes/src/esc.c ****       /* fail state change */
  714:Lib/soes/src/esc.c ****       return (ESCpreop | ESCerror);
-ARM GAS  /tmp/cc3f6pAD.s 			page 14
+ARM GAS  /tmp/ccrRYh01.s 			page 14
 
 
  715:Lib/soes/src/esc.c ****    }
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  769:Lib/soes/src/esc.c **** }
  770:Lib/soes/src/esc.c **** 
  771:Lib/soes/src/esc.c **** /** Function trying to enable start updating the process data inputs. It calls the check SM 2 & 3
-ARM GAS  /tmp/cc3f6pAD.s 			page 15
+ARM GAS  /tmp/ccrRYh01.s 			page 15
 
 
  772:Lib/soes/src/esc.c ****  * routine, based on the result from there if enables or disables the Input SyncManager, in additio
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  826:Lib/soes/src/esc.c ****       else
  827:Lib/soes/src/esc.c ****       {
  828:Lib/soes/src/esc.c ****          if (ESCvar.esc_hw_interrupt_enable != NULL)
-ARM GAS  /tmp/cc3f6pAD.s 			page 16
+ARM GAS  /tmp/ccrRYh01.s 			page 16
 
 
  829:Lib/soes/src/esc.c ****          {
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  883:Lib/soes/src/esc.c **** 	
  884:Lib/soes/src/esc.c ****    /* If outputs > 0 , enable SM2 */
  885:Lib/soes/src/esc.c ****    if (ESCvar.ESC_SM2_sml > 0)
-ARM GAS  /tmp/cc3f6pAD.s 			page 17
+ARM GAS  /tmp/ccrRYh01.s 			page 17
 
 
  886:Lib/soes/src/esc.c ****    {
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  940:Lib/soes/src/esc.c ****        * this execution path.
  941:Lib/soes/src/esc.c ****        */
  942:Lib/soes/src/esc.c ****       ax = ESC_checkmbx (as);
-ARM GAS  /tmp/cc3f6pAD.s 			page 18
+ARM GAS  /tmp/ccrRYh01.s 			page 18
 
 
  943:Lib/soes/src/esc.c ****       ax23 = ESC_checkSM23 (as);
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  997:Lib/soes/src/esc.c **** static bool ESC_check_id_request (uint16_t ALcontrol, uint8_t * an)
  998:Lib/soes/src/esc.c **** {
   29              		.loc 1 998 1 view -0
-ARM GAS  /tmp/cc3f6pAD.s 			page 19
+ARM GAS  /tmp/ccrRYh01.s 			page 19
 
 
   30              		.cfi_startproc
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
   65              	.LVL3:
   66              	.L3:
  998:Lib/soes/src/esc.c ****    if ((ALcontrol & ESCREG_AL_ID_REQUEST) != 0)
-ARM GAS  /tmp/cc3f6pAD.s 			page 20
+ARM GAS  /tmp/ccrRYh01.s 			page 20
 
 
   67              		.loc 1 998 1 view .LVU14
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
 1016:Lib/soes/src/esc.c **** }
  112              		.loc 1 1016 11 view .LVU25
  113 004c 7047     		bx	lr
-ARM GAS  /tmp/cc3f6pAD.s 			page 21
+ARM GAS  /tmp/ccrRYh01.s 			page 21
 
 
  114              		.cfi_endproc
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  160              	.L12:
  161 0024 00000000 		.word	ESCvar
  162              		.cfi_endproc
-ARM GAS  /tmp/cc3f6pAD.s 			page 22
+ARM GAS  /tmp/ccrRYh01.s 			page 22
 
 
  163              	.LFE0:
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
 1036:Lib/soes/src/esc.c **** 
 1037:Lib/soes/src/esc.c ****    if (device_id != 0)
  201              		.loc 1 1037 4 is_stmt 1 view .LVU46
-ARM GAS  /tmp/cc3f6pAD.s 			page 23
+ARM GAS  /tmp/ccrRYh01.s 			page 23
 
 
  202              		.loc 1 1037 18 is_stmt 0 view .LVU47
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  244              		.thumb_func
  246              	ESC_ALstatus:
  247              	.LVL17:
-ARM GAS  /tmp/cc3f6pAD.s 			page 24
+ARM GAS  /tmp/ccrRYh01.s 			page 24
 
 
  248              	.LFB1:
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  294              	ESC_ALeventmaskwrite:
  295              	.LVL20:
  296              	.LFB3:
-ARM GAS  /tmp/cc3f6pAD.s 			page 25
+ARM GAS  /tmp/ccrRYh01.s 			page 25
 
 
   91:Lib/soes/src/esc.c ****    uint32_t aleventmask;
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  344              		.cfi_def_cfa_offset 16
  103:Lib/soes/src/esc.c **** 
  345              		.loc 1 103 4 view .LVU74
-ARM GAS  /tmp/cc3f6pAD.s 			page 26
+ARM GAS  /tmp/ccrRYh01.s 			page 26
 
 
  105:Lib/soes/src/esc.c ****    return htoel(aleventmask);
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  392 0010 FFF7FEFF 		bl	ESC_write
  393              	.LVL26:
  118:Lib/soes/src/esc.c **** 
-ARM GAS  /tmp/cc3f6pAD.s 			page 27
+ARM GAS  /tmp/ccrRYh01.s 			page 27
 
 
  394              		.loc 1 118 1 view .LVU85
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  137:Lib/soes/src/esc.c ****    uint8_t dummy;
  447              		.loc 1 137 1 is_stmt 1 view -0
  448              		.cfi_startproc
-ARM GAS  /tmp/cc3f6pAD.s 			page 28
+ARM GAS  /tmp/ccrRYh01.s 			page 28
 
 
  449              		@ args = 0, pretend = 0, frame = 8
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  150:Lib/soes/src/esc.c ****    ESC_read ((uint16_t)(ESCREG_SM0STATUS + (n << 3)), &(sm->Status), 1);
  496              		.loc 1 150 4 view .LVU101
  150:Lib/soes/src/esc.c ****    ESC_read ((uint16_t)(ESCREG_SM0STATUS + (n << 3)), &(sm->Status), 1);
-ARM GAS  /tmp/cc3f6pAD.s 			page 29
+ARM GAS  /tmp/ccrRYh01.s 			page 29
 
 
  497              		.loc 1 150 7 is_stmt 0 view .LVU102
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  161:Lib/soes/src/esc.c ****    ESC_write ((uint16_t)(ESCREG_SM0PDI + (n << 3)), &(sm->ActPDI), 1);
  544              		.loc 1 161 7 is_stmt 0 view .LVU112
  545 0002 00F11703 		add	r3, r0, #23
-ARM GAS  /tmp/cc3f6pAD.s 			page 30
+ARM GAS  /tmp/ccrRYh01.s 			page 30
 
 
  546 0006 0549     		ldr	r1, .L43
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  592 0002 00F11702 		add	r2, r0, #23
  593 0006 054B     		ldr	r3, .L47
  594 0008 03EBC203 		add	r3, r3, r2, lsl #3
-ARM GAS  /tmp/cc3f6pAD.s 			page 31
+ARM GAS  /tmp/ccrRYh01.s 			page 31
 
 
  595              	.LVL42:
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  640              		.loc 1 184 15 is_stmt 0 view .LVU133
  641 000c DA7A     		ldrb	r2, [r3, #11]	@ zero_extendqisi2
  642 000e 42F00102 		orr	r2, r2, #1
-ARM GAS  /tmp/cc3f6pAD.s 			page 32
+ARM GAS  /tmp/ccrRYh01.s 			page 32
 
 
  643 0012 DA72     		strb	r2, [r3, #11]
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  694              		.thumb_func
  696              	ESC_WDstatus:
  697              	.LFB13:
-ARM GAS  /tmp/cc3f6pAD.s 			page 33
+ARM GAS  /tmp/ccrRYh01.s 			page 33
 
 
  201:Lib/soes/src/esc.c ****    uint16_t wdstatus;
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  745 0004 0122     		movs	r2, #1
  746 0006 0DF10701 		add	r1, sp, #7
  747 000a 40F68110 		movw	r0, #2433
-ARM GAS  /tmp/cc3f6pAD.s 			page 34
+ARM GAS  /tmp/ccrRYh01.s 			page 34
 
 
  748 000e FFF7FEFF 		bl	ESC_read
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  797              		.align	1
  798              		.global	ESC_SYNC1cycletime
  799              		.syntax unified
-ARM GAS  /tmp/cc3f6pAD.s 			page 35
+ARM GAS  /tmp/ccrRYh01.s 			page 35
 
 
  800              		.thumb
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  849              		.loc 1 250 4 view .LVU164
  850              	.LVL52:
  252:Lib/soes/src/esc.c ****    /* Do we need to check sync settings? */
-ARM GAS  /tmp/cc3f6pAD.s 			page 36
+ARM GAS  /tmp/ccrRYh01.s 			page 36
 
 
  851              		.loc 1 252 4 view .LVU165
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  888              		.loc 1 272 1 is_stmt 0 view .LVU182
  889 0022 08BD     		pop	{r3, pc}
  890              	.LVL59:
-ARM GAS  /tmp/cc3f6pAD.s 			page 37
+ARM GAS  /tmp/ccrRYh01.s 			page 37
 
 
  891              	.L68:
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  939 0016 40F60800 		movw	r0, #2056
  940 001a FFF7FEFF 		bl	ESC_read
  941              	.LVL64:
-ARM GAS  /tmp/cc3f6pAD.s 			page 38
+ARM GAS  /tmp/ccrRYh01.s 			page 38
 
 
  288:Lib/soes/src/esc.c ****    if ((etohs (SM->PSA) != ESC_MBX0_sma) || (etohs (SM->Length) != ESC_MBX0_sml)
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  980 0050 B3F8C410 		ldrh	r1, [r3, #196]
  298:Lib/soes/src/esc.c ****        || (SM->Command != ESC_MBX1_smc) || (ESCvar.SM[1].ECsm == 0))
  981              		.loc 1 298 28 view .LVU207
-ARM GAS  /tmp/cc3f6pAD.s 			page 39
+ARM GAS  /tmp/ccrRYh01.s 			page 39
 
 
  982 0054 5B6F     		ldr	r3, [r3, #116]
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  294:Lib/soes/src/esc.c ****       return (uint8_t) (ESCinit | ESCerror);      //fail state change
  1023              		.loc 1 294 7 view .LVU221
  1024 0092 2046     		mov	r0, r4
-ARM GAS  /tmp/cc3f6pAD.s 			page 40
+ARM GAS  /tmp/ccrRYh01.s 			page 40
 
 
  1025 0094 FFF7FEFF 		bl	ESC_SMdisable
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1071              		.loc 1 318 1 is_stmt 1 view -0
  1072              		.cfi_startproc
  1073              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/cc3f6pAD.s 			page 41
+ARM GAS  /tmp/ccrRYh01.s 			page 41
 
 
  1074              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1114 002e 2046     		mov	r0, r4
  1115 0030 FFF7FEFF 		bl	ESC_checkmbx
  1116              	.LVL80:
-ARM GAS  /tmp/cc3f6pAD.s 			page 42
+ARM GAS  /tmp/ccrRYh01.s 			page 42
 
 
  1117 0034 0446     		mov	r4, r0
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1160              		.section	.text.ESC_startmbxboot,"ax",%progbits
  1161              		.align	1
  1162              		.global	ESC_startmbxboot
-ARM GAS  /tmp/cc3f6pAD.s 			page 43
+ARM GAS  /tmp/ccrRYh01.s 			page 43
 
 
  1163              		.syntax unified
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1206              	.LVL90:
  361:Lib/soes/src/esc.c ****    if ((state = ESC_checkmbx (state)) & ESCerror)
  1207              		.loc 1 361 4 view .LVU270
-ARM GAS  /tmp/cc3f6pAD.s 			page 44
+ARM GAS  /tmp/ccrRYh01.s 			page 44
 
 
  1208 002a 0120     		movs	r0, #1
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1248 005c 024B     		ldr	r3, .L93
  1249 005e 0022     		movs	r2, #0
  1250 0060 83F86820 		strb	r2, [r3, #104]
-ARM GAS  /tmp/cc3f6pAD.s 			page 45
+ARM GAS  /tmp/ccrRYh01.s 			page 45
 
 
  1251 0064 F5E7     		b	.L90
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1297              		.loc 1 386 7 is_stmt 1 discriminator 3 view .LVU294
  386:Lib/soes/src/esc.c ****    }
  1298              		.loc 1 386 27 is_stmt 0 discriminator 3 view .LVU295
-ARM GAS  /tmp/cc3f6pAD.s 			page 46
+ARM GAS  /tmp/ccrRYh01.s 			page 46
 
 
  1299 001a 134B     		ldr	r3, .L99+4
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1335              		.loc 1 394 4 is_stmt 1 view .LVU313
  394:Lib/soes/src/esc.c ****    ESCvar.frags = 0;
  1336              		.loc 1 394 21 is_stmt 0 view .LVU314
-ARM GAS  /tmp/cc3f6pAD.s 			page 47
+ARM GAS  /tmp/ccrRYh01.s 			page 47
 
 
  1337 0046 83F89120 		strb	r2, [r3, #145]
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1379 0000 30B5     		push	{r4, r5, lr}
  1380              		.cfi_def_cfa_offset 12
  1381              		.cfi_offset 4, -12
-ARM GAS  /tmp/cc3f6pAD.s 			page 48
+ARM GAS  /tmp/ccrRYh01.s 			page 48
 
 
  1382              		.cfi_offset 5, -8
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1420              		.loc 1 419 25 is_stmt 0 view .LVU344
  1421 002a 1088     		ldrh	r0, [r2]
  419:Lib/soes/src/esc.c ****    if (length + ESC_MBXHSIZE < ESC_MBX0_sml)
-ARM GAS  /tmp/cc3f6pAD.s 			page 49
+ARM GAS  /tmp/ccrRYh01.s 			page 49
 
 
  1422              		.loc 1 419 4 view .LVU345
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1468              		.cfi_endproc
  1469              	.LFE22:
  1471              		.section	.text.ESC_writembx,"ax",%progbits
-ARM GAS  /tmp/cc3f6pAD.s 			page 50
+ARM GAS  /tmp/ccrRYh01.s 			page 50
 
 
  1472              		.align	1
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1514 0018 506F     		ldr	r0, [r2, #116]
  1515 001a 4288     		ldrh	r2, [r0, #2]
  440:Lib/soes/src/esc.c ****    {
-ARM GAS  /tmp/cc3f6pAD.s 			page 51
+ARM GAS  /tmp/ccrRYh01.s 			page 51
 
 
  1516              		.loc 1 440 31 view .LVU367
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1559              	.LVL113:
  1560 0050 F2E7     		b	.L110
  1561              	.L114:
-ARM GAS  /tmp/cc3f6pAD.s 			page 52
+ARM GAS  /tmp/ccrRYh01.s 			page 52
 
 
  1562 0052 00BF     		.align	2
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1609              		@ sp needed
  1610 0022 10BD     		pop	{r4, pc}
  1611              	.L118:
-ARM GAS  /tmp/cc3f6pAD.s 			page 53
+ARM GAS  /tmp/ccrRYh01.s 			page 53
 
 
  1612              		.align	2
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1656 000e 002B     		cmp	r3, #0
  1657 0010 F8D1     		bne	.L122
  1658              	.L121:
-ARM GAS  /tmp/cc3f6pAD.s 			page 54
+ARM GAS  /tmp/ccrRYh01.s 			page 54
 
 
  477:Lib/soes/src/esc.c ****    {
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  487:Lib/soes/src/esc.c ****       MBh->channel = 0;
  1696              		.loc 1 487 7 is_stmt 1 view .LVU417
  487:Lib/soes/src/esc.c ****       MBh->channel = 0;
-ARM GAS  /tmp/cc3f6pAD.s 			page 55
+ARM GAS  /tmp/ccrRYh01.s 			page 55
 
 
  1697              		.loc 1 487 20 is_stmt 0 view .LVU418
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1740              		.section	.text.ESC_outreqbuffer,"ax",%progbits
  1741              		.align	1
  1742              		.global	ESC_outreqbuffer
-ARM GAS  /tmp/cc3f6pAD.s 			page 56
+ARM GAS  /tmp/ccrRYh01.s 			page 56
 
 
  1743              		.syntax unified
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1785              	.L131:
  1786 0014 00000000 		.word	MBXcontrol
  1787              		.cfi_endproc
-ARM GAS  /tmp/cc3f6pAD.s 			page 57
+ARM GAS  /tmp/ccrRYh01.s 			page 57
 
 
  1788              	.LFE26:
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1831              	.LVL129:
  523:Lib/soes/src/esc.c ****       mbxerr->mbxheader.mbxtype = MBXERR;
  1832              		.loc 1 523 7 is_stmt 1 view .LVU457
-ARM GAS  /tmp/cc3f6pAD.s 			page 58
+ARM GAS  /tmp/ccrRYh01.s 			page 58
 
 
  523:Lib/soes/src/esc.c ****       mbxerr->mbxheader.mbxtype = MBXERR;
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1878              	ESC_mbxprocess:
  1879              	.LFB28:
  538:Lib/soes/src/esc.c ****    uint8_t mbxhandle = 0;
-ARM GAS  /tmp/cc3f6pAD.s 			page 59
+ARM GAS  /tmp/ccrRYh01.s 			page 59
 
 
  1880              		.loc 1 538 1 is_stmt 1 view -0
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  582:Lib/soes/src/esc.c ****    {
  1919              		.loc 1 582 20 is_stmt 0 view .LVU485
  1920 002a 654A     		ldr	r2, .L163
-ARM GAS  /tmp/cc3f6pAD.s 			page 60
+ARM GAS  /tmp/ccrRYh01.s 			page 60
 
 
  1921 002c 92F8CA30 		ldrb	r3, [r2, #202]	@ zero_extendqisi2
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  1961              	.L145:
  607:Lib/soes/src/esc.c ****    }
  1962              		.loc 1 607 7 view .LVU500
-ARM GAS  /tmp/cc3f6pAD.s 			page 61
+ARM GAS  /tmp/ccrRYh01.s 			page 61
 
 
  607:Lib/soes/src/esc.c ****    }
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2003              		.loc 1 565 10 view .LVU514
  2004 00a2 062B     		cmp	r3, #6
  2005 00a4 10D0     		beq	.L159
-ARM GAS  /tmp/cc3f6pAD.s 			page 62
+ARM GAS  /tmp/ccrRYh01.s 			page 62
 
 
  2006              	.L143:
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  597:Lib/soes/src/esc.c ****             /* activate mailbox */
  2045              		.loc 1 597 49 view .LVU530
  2046 00da 3A4A     		ldr	r2, .L163+4
-ARM GAS  /tmp/cc3f6pAD.s 			page 63
+ARM GAS  /tmp/ccrRYh01.s 			page 63
 
 
  2047 00dc 0621     		movs	r1, #6
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  632:Lib/soes/src/esc.c ****          && (ESCvar.mbxoutpost == 0) && (ESCvar.xoe == 0))
  2088              		.loc 1 632 4 is_stmt 1 view .LVU544
  632:Lib/soes/src/esc.c ****          && (ESCvar.mbxoutpost == 0) && (ESCvar.xoe == 0))
-ARM GAS  /tmp/cc3f6pAD.s 			page 64
+ARM GAS  /tmp/ccrRYh01.s 			page 64
 
 
  2089              		.loc 1 632 30 is_stmt 0 view .LVU545
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2129              		.loc 1 643 37 discriminator 1 view .LVU559
  2130 0158 1B4B     		ldr	r3, .L163+8
  2131 015a 5A79     		ldrb	r2, [r3, #5]	@ zero_extendqisi2
-ARM GAS  /tmp/cc3f6pAD.s 			page 65
+ARM GAS  /tmp/ccrRYh01.s 			page 65
 
 
  643:Lib/soes/src/esc.c ****       {
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2171 0190 93F88F30 		ldrb	r3, [r3, #143]	@ zero_extendqisi2
  624:Lib/soes/src/esc.c ****          {
  2172              		.loc 1 624 13 view .LVU575
-ARM GAS  /tmp/cc3f6pAD.s 			page 66
+ARM GAS  /tmp/ccrRYh01.s 			page 66
 
 
  2173 0194 002B     		cmp	r3, #0
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2219              		.section	.text.ESC_xoeprocess,"ax",%progbits
  2220              		.align	1
  2221              		.global	ESC_xoeprocess
-ARM GAS  /tmp/cc3f6pAD.s 			page 67
+ARM GAS  /tmp/ccrRYh01.s 			page 67
 
 
  2222              		.syntax unified
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2263 001c 0B4B     		ldr	r3, .L172+8
  2264 001e 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
  667:Lib/soes/src/esc.c ****       {
-ARM GAS  /tmp/cc3f6pAD.s 			page 68
+ARM GAS  /tmp/ccrRYh01.s 			page 68
 
 
  2265              		.loc 1 667 10 view .LVU599
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  687:Lib/soes/src/esc.c ****    _ESCsm2 *SM;
  2314              		.loc 1 687 1 is_stmt 0 view .LVU607
  2315 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  /tmp/cc3f6pAD.s 			page 69
+ARM GAS  /tmp/ccrRYh01.s 			page 69
 
 
  2316              		.cfi_def_cfa_offset 16
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2355              		.loc 1 717 9 view .LVU622
  718:Lib/soes/src/esc.c ****             (ESCvar.ESC_SM2_sml > 0))
  2356              		.loc 1 718 17 is_stmt 0 view .LVU623
-ARM GAS  /tmp/cc3f6pAD.s 			page 70
+ARM GAS  /tmp/ccrRYh01.s 			page 70
 
 
  2357 0034 2D49     		ldr	r1, .L192+4
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2396 0070 B3F8D620 		ldrh	r2, [r3, #214]
  745:Lib/soes/src/esc.c ****    {
  2397              		.loc 1 745 41 view .LVU639
-ARM GAS  /tmp/cc3f6pAD.s 			page 71
+ARM GAS  /tmp/ccrRYh01.s 			page 71
 
 
  2398 0074 B3F87A30 		ldrh	r3, [r3, #122]
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2436 00a2 1220     		movs	r0, #18
  2437 00a4 F8E7     		b	.L177
  2438              	.L188:
-ARM GAS  /tmp/cc3f6pAD.s 			page 72
+ARM GAS  /tmp/ccrRYh01.s 			page 72
 
 
  721:Lib/soes/src/esc.c ****       /* fail state change */
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2477 00d4 E0E7     		b	.L177
  2478              	.L191:
  764:Lib/soes/src/esc.c ****       /* fail state change */
-ARM GAS  /tmp/cc3f6pAD.s 			page 73
+ARM GAS  /tmp/ccrRYh01.s 			page 73
 
 
  2479              		.loc 1 764 7 is_stmt 1 view .LVU672
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2526              	.LVL163:
  783:Lib/soes/src/esc.c ****    {
  2527              		.loc 1 783 4 is_stmt 1 view .LVU682
-ARM GAS  /tmp/cc3f6pAD.s 			page 74
+ARM GAS  /tmp/ccrRYh01.s 			page 74
 
 
  783:Lib/soes/src/esc.c ****    {
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2569              	.LVL168:
  2570              	.L195:
  795:Lib/soes/src/esc.c ****       ESC_SMdisable (3);
-ARM GAS  /tmp/cc3f6pAD.s 			page 75
+ARM GAS  /tmp/ccrRYh01.s 			page 75
 
 
  2571              		.loc 1 795 7 is_stmt 1 view .LVU696
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2611 0066 134B     		ldr	r3, .L208
  2612 0068 5B6D     		ldr	r3, [r3, #84]
  828:Lib/soes/src/esc.c ****          {
-ARM GAS  /tmp/cc3f6pAD.s 			page 76
+ARM GAS  /tmp/ccrRYh01.s 			page 76
 
 
  2613              		.loc 1 828 13 view .LVU711
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  822:Lib/soes/src/esc.c ****          ESC_SMdisable (3);
  2652              		.loc 1 822 10 view .LVU727
  2653 008e 0220     		movs	r0, #2
-ARM GAS  /tmp/cc3f6pAD.s 			page 77
+ARM GAS  /tmp/ccrRYh01.s 			page 77
 
 
  2654 0090 FFF7FEFF 		bl	ESC_SMdisable
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  859:Lib/soes/src/esc.c ****    ESC_SMdisable (3);
  2704              		.loc 1 859 4 view .LVU734
  2705 0002 0C4C     		ldr	r4, .L213
-ARM GAS  /tmp/cc3f6pAD.s 			page 78
+ARM GAS  /tmp/ccrRYh01.s 			page 78
 
 
  2706 0004 BFF35B8F 		dmb	ish
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2752              		.loc 1 882 1 is_stmt 1 view -0
  2753              		.cfi_startproc
  2754              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/cc3f6pAD.s 			page 79
+ARM GAS  /tmp/ccrRYh01.s 			page 79
 
 
  2755              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2801              		.section	.text.ESC_stopoutput,"ax",%progbits
  2802              		.align	1
  2803              		.global	ESC_stopoutput
-ARM GAS  /tmp/cc3f6pAD.s 			page 80
+ARM GAS  /tmp/ccrRYh01.s 			page 80
 
 
  2804              		.syntax unified
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2855              		.cfi_startproc
  2856              		@ args = 0, pretend = 0, frame = 8
  2857              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/cc3f6pAD.s 			page 81
+ARM GAS  /tmp/ccrRYh01.s 			page 81
 
 
   54:Lib/soes/src/esc.c **** 
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2895 002c 0DF10701 		add	r1, sp, #7
  2896              	.LVL195:
   69:Lib/soes/src/esc.c ****    }
-ARM GAS  /tmp/cc3f6pAD.s 			page 82
+ARM GAS  /tmp/ccrRYh01.s 			page 82
 
 
  2897              		.loc 1 69 7 is_stmt 0 view .LVU777
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  2938 0068 03B0     		add	sp, sp, #12
  2939              		.cfi_remember_state
  2940              		.cfi_def_cfa_offset 12
-ARM GAS  /tmp/cc3f6pAD.s 			page 83
+ARM GAS  /tmp/ccrRYh01.s 			page 83
 
 
  2941              		@ sp needed
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  916:Lib/soes/src/esc.c ****    {
  2991              		.loc 1 916 7 view .LVU797
  2992 0008 13F0100F 		tst	r3, #16
-ARM GAS  /tmp/cc3f6pAD.s 			page 84
+ARM GAS  /tmp/ccrRYh01.s 			page 84
 
 
  2993 000c 34D0     		beq	.L240
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  935:Lib/soes/src/esc.c ****        ((as == ESCboot) == 0) && ESCvar.MBXrun)
  3030              		.loc 1 935 7 is_stmt 0 view .LVU815
  3031 0036 13F00E0F 		tst	r3, #14
-ARM GAS  /tmp/cc3f6pAD.s 			page 85
+ARM GAS  /tmp/ccrRYh01.s 			page 85
 
 
  3032 003a 05D0     		beq	.L244
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  995:Lib/soes/src/esc.c **** 
  3075              		.loc 1 995 1 is_stmt 0 view .LVU827
  3076 0078 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
-ARM GAS  /tmp/cc3f6pAD.s 			page 86
+ARM GAS  /tmp/ccrRYh01.s 			page 86
 
 
  3077              	.LVL215:
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  3117              		.loc 1 971 10 is_stmt 1 view .LVU841
  3118 00ae FFF7FEFF 		bl	ESC_stopoutput
  3119              	.LVL220:
-ARM GAS  /tmp/cc3f6pAD.s 			page 87
+ARM GAS  /tmp/ccrRYh01.s 			page 87
 
 
  972:Lib/soes/src/esc.c ****          if (ESCvar.SMtestresult & SMRESULT_ERRSM3)
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  3161 00ec 83F86820 		strb	r2, [r3, #104]
  963:Lib/soes/src/esc.c ****          return;
  3162              		.loc 1 963 10 is_stmt 1 view .LVU855
-ARM GAS  /tmp/cc3f6pAD.s 			page 88
+ARM GAS  /tmp/ccrRYh01.s 			page 88
 
 
  3163 00f0 3846     		mov	r0, r7
@@ -5278,34 +5278,35 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
 1063:Lib/soes/src/esc.c **** #endif
 1064:Lib/soes/src/esc.c **** 
 1065:Lib/soes/src/esc.c **** /** The state handler acting on ALControl Bit(0)
-ARM GAS  /tmp/cc3f6pAD.s 			page 89
+ARM GAS  /tmp/ccrRYh01.s 			page 89
 
 
 1066:Lib/soes/src/esc.c ****  * events in the Al Event Request register 0x220.
 1067:Lib/soes/src/esc.c ****  *
 1068:Lib/soes/src/esc.c ****  */
-1069:Lib/soes/src/esc.c **** void ESC_state (void)
-1070:Lib/soes/src/esc.c **** {
- 3199              		.loc 1 1070 1 view -0
+1069:Lib/soes/src/esc.c **** uint8_t as_all = 0x00;
+1070:Lib/soes/src/esc.c **** void ESC_state (void)
+1071:Lib/soes/src/esc.c **** {
+ 3199              		.loc 1 1071 1 view -0
  3200              		.cfi_startproc
  3201              		@ args = 0, pretend = 0, frame = 8
  3202              		@ frame_needed = 0, uses_anonymous_args = 0
-1071:Lib/soes/src/esc.c ****    uint8_t ac, an, as;
- 3203              		.loc 1 1071 4 view .LVU861
-1072:Lib/soes/src/esc.c **** 
-1073:Lib/soes/src/esc.c ****    /* Do we have a state change request pending */
-1074:Lib/soes/src/esc.c ****    if (ESCvar.ALevent & ESCREG_ALEVENT_CONTROL)
- 3204              		.loc 1 1074 4 view .LVU862
- 3205              		.loc 1 1074 14 is_stmt 0 view .LVU863
- 3206 0000 A54B     		ldr	r3, .L303
+1072:Lib/soes/src/esc.c ****    uint8_t ac, an, as;
+ 3203              		.loc 1 1072 4 view .LVU861
+1073:Lib/soes/src/esc.c **** 
+1074:Lib/soes/src/esc.c ****    /* Do we have a state change request pending */
+1075:Lib/soes/src/esc.c ****    if (ESCvar.ALevent & ESCREG_ALEVENT_CONTROL)
+ 3204              		.loc 1 1075 4 view .LVU862
+ 3205              		.loc 1 1075 14 is_stmt 0 view .LVU863
+ 3206 0000 A34B     		ldr	r3, .L303
  3207 0002 D3F8E430 		ldr	r3, [r3, #228]
- 3208              		.loc 1 1074 7 view .LVU864
+ 3208              		.loc 1 1075 7 view .LVU864
  3209 0006 13F0010F 		tst	r3, #1
  3210 000a 00D1     		bne	.L295
  3211 000c 7047     		bx	lr
  3212              	.L295:
-1070:Lib/soes/src/esc.c ****    uint8_t ac, an, as;
- 3213              		.loc 1 1070 1 view .LVU865
+1071:Lib/soes/src/esc.c ****    uint8_t ac, an, as;
+ 3213              		.loc 1 1071 1 view .LVU865
  3214 000e 30B5     		push	{r4, r5, lr}
  3215              		.cfi_def_cfa_offset 12
  3216              		.cfi_offset 4, -12
@@ -5313,1387 +5314,1403 @@ ARM GAS  /tmp/cc3f6pAD.s 			page 1
  3218              		.cfi_offset 14, -4
  3219 0010 83B0     		sub	sp, sp, #12
  3220              		.cfi_def_cfa_offset 24
-1075:Lib/soes/src/esc.c ****    {
-1076:Lib/soes/src/esc.c ****       ESC_read (ESCREG_ALCONTROL, (void *) &ESCvar.ALcontrol,
- 3221              		.loc 1 1076 7 is_stmt 1 view .LVU866
- 3222 0012 A24C     		ldr	r4, .L303+4
+1076:Lib/soes/src/esc.c ****    {
+1077:Lib/soes/src/esc.c ****       ESC_read (ESCREG_ALCONTROL, (void *) &ESCvar.ALcontrol,
+ 3221              		.loc 1 1077 7 is_stmt 1 view .LVU866
+ 3222 0012 A04C     		ldr	r4, .L303+4
  3223 0014 0222     		movs	r2, #2
  3224 0016 2146     		mov	r1, r4
  3225 0018 4FF49070 		mov	r0, #288
  3226 001c FFF7FEFF 		bl	ESC_read
  3227              	.LVL230:
-1077:Lib/soes/src/esc.c ****                 sizeof (ESCvar.ALcontrol));
-1078:Lib/soes/src/esc.c ****       ESCvar.ALcontrol = etohs (ESCvar.ALcontrol);
- 3228              		.loc 1 1078 7 view .LVU867
- 3229              		.loc 1 1078 26 is_stmt 0 view .LVU868
+1078:Lib/soes/src/esc.c ****                 sizeof (ESCvar.ALcontrol));
+1079:Lib/soes/src/esc.c ****       ESCvar.ALcontrol = etohs (ESCvar.ALcontrol);
+ 3228              		.loc 1 1079 7 view .LVU867
+ 3229              		.loc 1 1079 26 is_stmt 0 view .LVU868
  3230 0020 2146     		mov	r1, r4
-1079:Lib/soes/src/esc.c ****    }
-1080:Lib/soes/src/esc.c ****    else
-1081:Lib/soes/src/esc.c ****    {
-1082:Lib/soes/src/esc.c ****       /* nothing to do */
-1083:Lib/soes/src/esc.c ****       return;
-1084:Lib/soes/src/esc.c ****    }
-1085:Lib/soes/src/esc.c ****    /* Mask state request bits + Error ACK */
-1086:Lib/soes/src/esc.c ****    ac = ESCvar.ALcontrol & ESCREG_AL_STATEMASK;
- 3231              		.loc 1 1086 4 is_stmt 1 view .LVU869
- 3232              		.loc 1 1086 26 is_stmt 0 view .LVU870
+1080:Lib/soes/src/esc.c ****    }
+1081:Lib/soes/src/esc.c ****    else
+1082:Lib/soes/src/esc.c ****    {
+1083:Lib/soes/src/esc.c ****       /* nothing to do */
+1084:Lib/soes/src/esc.c ****       return;
+1085:Lib/soes/src/esc.c ****    }
+1086:Lib/soes/src/esc.c ****    /* Mask state request bits + Error ACK */
+1087:Lib/soes/src/esc.c ****    ac = ESCvar.ALcontrol & ESCREG_AL_STATEMASK;
+ 3231              		.loc 1 1087 4 is_stmt 1 view .LVU869
+ 3232              		.loc 1 1087 26 is_stmt 0 view .LVU870
+ARM GAS  /tmp/ccrRYh01.s 			page 90
+
+
  3233 0022 11F88229 		ldrb	r2, [r1], #-130	@ zero_extendqisi2
-ARM GAS  /tmp/cc3f6pAD.s 			page 90
-
-
- 3234              		.loc 1 1086 7 view .LVU871
+ 3234              		.loc 1 1087 7 view .LVU871
  3235 0026 02F01F04 		and	r4, r2, #31
  3236              	.LVL231:
-1087:Lib/soes/src/esc.c ****    as = ESCvar.ALstatus & ESCREG_AL_STATEMASK;
- 3237              		.loc 1 1087 4 is_stmt 1 view .LVU872
- 3238              		.loc 1 1087 15 is_stmt 0 view .LVU873
+1088:Lib/soes/src/esc.c ****    as = ESCvar.ALstatus & ESCREG_AL_STATEMASK;
+ 3237              		.loc 1 1088 4 is_stmt 1 view .LVU872
+ 3238              		.loc 1 1088 15 is_stmt 0 view .LVU873
  3239 002a B1F88030 		ldrh	r3, [r1, #128]
- 3240              		.loc 1 1087 25 view .LVU874
+ 3240              		.loc 1 1088 25 view .LVU874
  3241 002e 03F01F03 		and	r3, r3, #31
- 3242              		.loc 1 1087 7 view .LVU875
+ 3242              		.loc 1 1088 7 view .LVU875
  3243 0032 8DF80630 		strb	r3, [sp, #6]
-1088:Lib/soes/src/esc.c ****    an = as;
- 3244              		.loc 1 1088 4 is_stmt 1 view .LVU876
- 3245              		.loc 1 1088 7 is_stmt 0 view .LVU877
+1089:Lib/soes/src/esc.c ****    an = as;
+ 3244              		.loc 1 1089 4 is_stmt 1 view .LVU876
+ 3245              		.loc 1 1089 7 is_stmt 0 view .LVU877
  3246 0036 8DF80730 		strb	r3, [sp, #7]
-1089:Lib/soes/src/esc.c ****    if (((ac & ESCerror) || (ac == ESCinit)))
- 3247              		.loc 1 1089 4 is_stmt 1 view .LVU878
- 3248              		.loc 1 1089 7 is_stmt 0 view .LVU879
+1090:Lib/soes/src/esc.c ****    if (((ac & ESCerror) || (ac == ESCinit)))
+ 3247              		.loc 1 1090 4 is_stmt 1 view .LVU878
+ 3248              		.loc 1 1090 7 is_stmt 0 view .LVU879
  3249 003a 12F0100F 		tst	r2, #16
  3250 003e 01D1     		bne	.L259
- 3251              		.loc 1 1089 25 discriminator 1 view .LVU880
+ 3251              		.loc 1 1090 25 discriminator 1 view .LVU880
  3252 0040 012C     		cmp	r4, #1
  3253 0042 05D1     		bne	.L260
  3254              	.L259:
-1090:Lib/soes/src/esc.c ****    {
-1091:Lib/soes/src/esc.c ****       /* if error bit confirmed reset */
-1092:Lib/soes/src/esc.c ****       ac &= ESCREG_AL_ERRACKMASK;
- 3255              		.loc 1 1092 7 is_stmt 1 view .LVU881
- 3256              		.loc 1 1092 10 is_stmt 0 view .LVU882
+1091:Lib/soes/src/esc.c ****    {
+1092:Lib/soes/src/esc.c ****       /* if error bit confirmed reset */
+1093:Lib/soes/src/esc.c ****       ac &= ESCREG_AL_ERRACKMASK;
+ 3255              		.loc 1 1093 7 is_stmt 1 view .LVU881
+ 3256              		.loc 1 1093 10 is_stmt 0 view .LVU882
  3257 0044 02F00F04 		and	r4, r2, #15
  3258              	.LVL232:
-1093:Lib/soes/src/esc.c ****       an &= ESCREG_AL_ERRACKMASK;
- 3259              		.loc 1 1093 7 is_stmt 1 view .LVU883
- 3260              		.loc 1 1093 10 is_stmt 0 view .LVU884
+1094:Lib/soes/src/esc.c ****       an &= ESCREG_AL_ERRACKMASK;
+ 3259              		.loc 1 1094 7 is_stmt 1 view .LVU883
+ 3260              		.loc 1 1094 10 is_stmt 0 view .LVU884
  3261 0048 03F00F02 		and	r2, r3, #15
  3262 004c 8DF80720 		strb	r2, [sp, #7]
  3263              	.L260:
-1094:Lib/soes/src/esc.c ****    }
-1095:Lib/soes/src/esc.c **** 
-1096:Lib/soes/src/esc.c ****    /* Error state not acked, leave original */
-1097:Lib/soes/src/esc.c ****    if ((an & ESCerror) && ((ac & ESCerror) == 0))
- 3264              		.loc 1 1097 4 is_stmt 1 view .LVU885
- 3265              		.loc 1 1097 12 is_stmt 0 view .LVU886
+1095:Lib/soes/src/esc.c ****    }
+1096:Lib/soes/src/esc.c **** 
+1097:Lib/soes/src/esc.c ****    /* Error state not acked, leave original */
+1098:Lib/soes/src/esc.c ****    if ((an & ESCerror) && ((ac & ESCerror) == 0))
+ 3264              		.loc 1 1098 4 is_stmt 1 view .LVU885
+ 3265              		.loc 1 1098 12 is_stmt 0 view .LVU886
  3266 0050 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
- 3267              		.loc 1 1097 7 view .LVU887
+ 3267              		.loc 1 1098 7 view .LVU887
  3268 0054 12F0100F 		tst	r2, #16
  3269 0058 03D0     		beq	.L261
- 3270              		.loc 1 1097 24 discriminator 1 view .LVU888
+ 3270              		.loc 1 1098 24 discriminator 1 view .LVU888
  3271 005a 14F0100F 		tst	r4, #16
- 3272 005e 00F0B680 		beq	.L257
+ 3272 005e 00F0B880 		beq	.L257
  3273              	.L261:
-1098:Lib/soes/src/esc.c ****    {
-1099:Lib/soes/src/esc.c ****       return;
-1100:Lib/soes/src/esc.c ****    }
-1101:Lib/soes/src/esc.c **** 
-1102:Lib/soes/src/esc.c ****    /* Mask high bits ALcommand, low bits ALstatus */
-1103:Lib/soes/src/esc.c ****    as = (uint8_t)((ac << 4) | (as & 0x0f));
-ARM GAS  /tmp/cc3f6pAD.s 			page 91
+1099:Lib/soes/src/esc.c ****    {
+1100:Lib/soes/src/esc.c ****       return;
+1101:Lib/soes/src/esc.c ****    }
+1102:Lib/soes/src/esc.c **** 
+1103:Lib/soes/src/esc.c ****    /* Mask high bits ALcommand, low bits ALstatus */
+ARM GAS  /tmp/ccrRYh01.s 			page 91
 
 
- 3274              		.loc 1 1103 4 is_stmt 1 view .LVU889
- 3275              		.loc 1 1103 35 is_stmt 0 view .LVU890
+1104:Lib/soes/src/esc.c ****    as = (uint8_t)((ac << 4) | (as & 0x0f));
+ 3274              		.loc 1 1104 4 is_stmt 1 view .LVU889
+ 3275              		.loc 1 1104 35 is_stmt 0 view .LVU890
  3276 0062 03F00F03 		and	r3, r3, #15
- 3277              		.loc 1 1103 29 view .LVU891
+ 3277              		.loc 1 1104 29 view .LVU891
  3278 0066 43EA0413 		orr	r3, r3, r4, lsl #4
- 3279              		.loc 1 1103 7 view .LVU892
+ 3279              		.loc 1 1104 7 view .LVU892
  3280 006a 8DF80630 		strb	r3, [sp, #6]
-1104:Lib/soes/src/esc.c **** 
-1105:Lib/soes/src/esc.c ****    /* Call post state change hook case it have been configured  */
-1106:Lib/soes/src/esc.c ****    if (ESCvar.pre_state_change_hook != NULL)
- 3281              		.loc 1 1106 4 is_stmt 1 view .LVU893
- 3282              		.loc 1 1106 14 is_stmt 0 view .LVU894
- 3283 006e 8A4B     		ldr	r3, .L303
+1105:Lib/soes/src/esc.c **** 
+1106:Lib/soes/src/esc.c ****    /* Call post state change hook case it have been configured  */
+1107:Lib/soes/src/esc.c ****    if (ESCvar.pre_state_change_hook != NULL)
+ 3281              		.loc 1 1107 4 is_stmt 1 view .LVU893
+ 3282              		.loc 1 1107 14 is_stmt 0 view .LVU894
+ 3283 006e 884B     		ldr	r3, .L303
  3284 0070 DB6A     		ldr	r3, [r3, #44]
- 3285              		.loc 1 1106 7 view .LVU895
+ 3285              		.loc 1 1107 7 view .LVU895
  3286 0072 23B1     		cbz	r3, .L262
-1107:Lib/soes/src/esc.c ****    {
-1108:Lib/soes/src/esc.c ****       ESCvar.pre_state_change_hook (&as, &an);
- 3287              		.loc 1 1108 7 is_stmt 1 view .LVU896
+1108:Lib/soes/src/esc.c ****    {
+1109:Lib/soes/src/esc.c ****       ESCvar.pre_state_change_hook (&as, &an);
+ 3287              		.loc 1 1109 7 is_stmt 1 view .LVU896
  3288 0074 0DF10701 		add	r1, sp, #7
  3289 0078 0DF10600 		add	r0, sp, #6
  3290 007c 9847     		blx	r3
  3291              	.LVL233:
  3292              	.L262:
-1109:Lib/soes/src/esc.c ****    }
-1110:Lib/soes/src/esc.c **** 
-1111:Lib/soes/src/esc.c ****    /* Switch through the state change requested via AlControl from
-1112:Lib/soes/src/esc.c ****     * current state read in AL status
-1113:Lib/soes/src/esc.c ****     */
-1114:Lib/soes/src/esc.c ****    switch (as)
- 3293              		.loc 1 1114 4 view .LVU897
- 3294 007e 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
- 3295 0082 113B     		subs	r3, r3, #17
- 3296 0084 772B     		cmp	r3, #119
- 3297 0086 00F25A81 		bhi	.L263
- 3298 008a DFE813F0 		tbh	[pc, r3, lsl #1]
- 3299              	.L265:
- 3300 008e 7F00     		.2byte	(.L264-.L265)/2
- 3301 0090 C200     		.2byte	(.L281-.L265)/2
- 3302 0092 C800     		.2byte	(.L280-.L265)/2
- 3303 0094 BA00     		.2byte	(.L279-.L265)/2
- 3304 0096 5801     		.2byte	(.L263-.L265)/2
- 3305 0098 5801     		.2byte	(.L263-.L265)/2
- 3306 009a 5801     		.2byte	(.L263-.L265)/2
- 3307 009c B000     		.2byte	(.L278-.L265)/2
- 3308 009e 5801     		.2byte	(.L263-.L265)/2
- 3309 00a0 5801     		.2byte	(.L263-.L265)/2
- 3310 00a2 5801     		.2byte	(.L263-.L265)/2
- 3311 00a4 5801     		.2byte	(.L263-.L265)/2
- 3312 00a6 5801     		.2byte	(.L263-.L265)/2
- 3313 00a8 5801     		.2byte	(.L263-.L265)/2
- 3314 00aa 5801     		.2byte	(.L263-.L265)/2
- 3315 00ac 5801     		.2byte	(.L263-.L265)/2
- 3316 00ae 7800     		.2byte	(.L277-.L265)/2
- 3317 00b0 7F00     		.2byte	(.L264-.L265)/2
- 3318 00b2 CE00     		.2byte	(.L267-.L265)/2
- 3319 00b4 2701     		.2byte	(.L276-.L265)/2
-ARM GAS  /tmp/cc3f6pAD.s 			page 92
+1110:Lib/soes/src/esc.c ****    }
+1111:Lib/soes/src/esc.c **** 
+1112:Lib/soes/src/esc.c ****    /* Switch through the state change requested via AlControl from
+1113:Lib/soes/src/esc.c ****     * current state read in AL status
+1114:Lib/soes/src/esc.c ****     */
+1115:Lib/soes/src/esc.c **** 
+1116:Lib/soes/src/esc.c ****    //
+1117:Lib/soes/src/esc.c ****       as_all = as;
+ 3293              		.loc 1 1117 7 view .LVU897
+ 3294              		.loc 1 1117 14 is_stmt 0 view .LVU898
+ 3295 007e 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+ 3296 0082 854A     		ldr	r2, .L303+8
+ 3297 0084 1370     		strb	r3, [r2]
+1118:Lib/soes/src/esc.c ****    //
+1119:Lib/soes/src/esc.c ****    switch (as)
+ 3298              		.loc 1 1119 4 is_stmt 1 view .LVU899
+ 3299 0086 113B     		subs	r3, r3, #17
+ 3300 0088 772B     		cmp	r3, #119
+ 3301 008a 00F25D81 		bhi	.L263
+ 3302 008e DFE813F0 		tbh	[pc, r3, lsl #1]
+ 3303              	.L265:
+ 3304 0092 7F00     		.2byte	(.L264-.L265)/2
+ 3305 0094 C200     		.2byte	(.L281-.L265)/2
+ 3306 0096 C800     		.2byte	(.L280-.L265)/2
+ 3307 0098 BA00     		.2byte	(.L279-.L265)/2
+ 3308 009a 5B01     		.2byte	(.L263-.L265)/2
+ 3309 009c 5B01     		.2byte	(.L263-.L265)/2
+ 3310 009e 5B01     		.2byte	(.L263-.L265)/2
+ 3311 00a0 B000     		.2byte	(.L278-.L265)/2
+ 3312 00a2 5B01     		.2byte	(.L263-.L265)/2
+ 3313 00a4 5B01     		.2byte	(.L263-.L265)/2
+ 3314 00a6 5B01     		.2byte	(.L263-.L265)/2
+ARM GAS  /tmp/ccrRYh01.s 			page 92
 
 
- 3320 00b6 5801     		.2byte	(.L263-.L265)/2
- 3321 00b8 5801     		.2byte	(.L263-.L265)/2
- 3322 00ba 5801     		.2byte	(.L263-.L265)/2
- 3323 00bc 1F01     		.2byte	(.L275-.L265)/2
- 3324 00be 5801     		.2byte	(.L263-.L265)/2
- 3325 00c0 5801     		.2byte	(.L263-.L265)/2
- 3326 00c2 5801     		.2byte	(.L263-.L265)/2
- 3327 00c4 5801     		.2byte	(.L263-.L265)/2
- 3328 00c6 5801     		.2byte	(.L263-.L265)/2
- 3329 00c8 5801     		.2byte	(.L263-.L265)/2
- 3330 00ca 5801     		.2byte	(.L263-.L265)/2
- 3331 00cc 5801     		.2byte	(.L263-.L265)/2
- 3332 00ce A200     		.2byte	(.L274-.L265)/2
- 3333 00d0 CE00     		.2byte	(.L267-.L265)/2
- 3334 00d2 A200     		.2byte	(.L274-.L265)/2
- 3335 00d4 2D01     		.2byte	(.L273-.L265)/2
- 3336 00d6 5801     		.2byte	(.L263-.L265)/2
- 3337 00d8 5801     		.2byte	(.L263-.L265)/2
- 3338 00da 5801     		.2byte	(.L263-.L265)/2
- 3339 00dc 3A01     		.2byte	(.L272-.L265)/2
- 3340 00de 5801     		.2byte	(.L263-.L265)/2
- 3341 00e0 5801     		.2byte	(.L263-.L265)/2
- 3342 00e2 5801     		.2byte	(.L263-.L265)/2
- 3343 00e4 5801     		.2byte	(.L263-.L265)/2
- 3344 00e6 5801     		.2byte	(.L263-.L265)/2
- 3345 00e8 5801     		.2byte	(.L263-.L265)/2
- 3346 00ea 5801     		.2byte	(.L263-.L265)/2
- 3347 00ec 5801     		.2byte	(.L263-.L265)/2
- 3348 00ee AA00     		.2byte	(.L269-.L265)/2
- 3349 00f0 D500     		.2byte	(.L271-.L265)/2
- 3350 00f2 CE00     		.2byte	(.L267-.L265)/2
- 3351 00f4 D500     		.2byte	(.L271-.L265)/2
- 3352 00f6 5801     		.2byte	(.L263-.L265)/2
- 3353 00f8 5801     		.2byte	(.L263-.L265)/2
- 3354 00fa 5801     		.2byte	(.L263-.L265)/2
- 3355 00fc 5201     		.2byte	(.L270-.L265)/2
- 3356 00fe 5801     		.2byte	(.L263-.L265)/2
- 3357 0100 5801     		.2byte	(.L263-.L265)/2
- 3358 0102 5801     		.2byte	(.L263-.L265)/2
- 3359 0104 5801     		.2byte	(.L263-.L265)/2
- 3360 0106 5801     		.2byte	(.L263-.L265)/2
- 3361 0108 5801     		.2byte	(.L263-.L265)/2
- 3362 010a 5801     		.2byte	(.L263-.L265)/2
- 3363 010c 5801     		.2byte	(.L263-.L265)/2
- 3364 010e 5801     		.2byte	(.L263-.L265)/2
- 3365 0110 5801     		.2byte	(.L263-.L265)/2
- 3366 0112 5801     		.2byte	(.L263-.L265)/2
- 3367 0114 5801     		.2byte	(.L263-.L265)/2
- 3368 0116 5801     		.2byte	(.L263-.L265)/2
- 3369 0118 5801     		.2byte	(.L263-.L265)/2
- 3370 011a 5801     		.2byte	(.L263-.L265)/2
- 3371 011c 5801     		.2byte	(.L263-.L265)/2
- 3372 011e 5801     		.2byte	(.L263-.L265)/2
- 3373 0120 5801     		.2byte	(.L263-.L265)/2
- 3374 0122 5801     		.2byte	(.L263-.L265)/2
- 3375 0124 5801     		.2byte	(.L263-.L265)/2
- 3376 0126 5801     		.2byte	(.L263-.L265)/2
-ARM GAS  /tmp/cc3f6pAD.s 			page 93
+ 3315 00a8 5B01     		.2byte	(.L263-.L265)/2
+ 3316 00aa 5B01     		.2byte	(.L263-.L265)/2
+ 3317 00ac 5B01     		.2byte	(.L263-.L265)/2
+ 3318 00ae 5B01     		.2byte	(.L263-.L265)/2
+ 3319 00b0 5B01     		.2byte	(.L263-.L265)/2
+ 3320 00b2 7800     		.2byte	(.L277-.L265)/2
+ 3321 00b4 7F00     		.2byte	(.L264-.L265)/2
+ 3322 00b6 CE00     		.2byte	(.L267-.L265)/2
+ 3323 00b8 2A01     		.2byte	(.L276-.L265)/2
+ 3324 00ba 5B01     		.2byte	(.L263-.L265)/2
+ 3325 00bc 5B01     		.2byte	(.L263-.L265)/2
+ 3326 00be 5B01     		.2byte	(.L263-.L265)/2
+ 3327 00c0 2201     		.2byte	(.L275-.L265)/2
+ 3328 00c2 5B01     		.2byte	(.L263-.L265)/2
+ 3329 00c4 5B01     		.2byte	(.L263-.L265)/2
+ 3330 00c6 5B01     		.2byte	(.L263-.L265)/2
+ 3331 00c8 5B01     		.2byte	(.L263-.L265)/2
+ 3332 00ca 5B01     		.2byte	(.L263-.L265)/2
+ 3333 00cc 5B01     		.2byte	(.L263-.L265)/2
+ 3334 00ce 5B01     		.2byte	(.L263-.L265)/2
+ 3335 00d0 5B01     		.2byte	(.L263-.L265)/2
+ 3336 00d2 A200     		.2byte	(.L274-.L265)/2
+ 3337 00d4 CE00     		.2byte	(.L267-.L265)/2
+ 3338 00d6 A200     		.2byte	(.L274-.L265)/2
+ 3339 00d8 3001     		.2byte	(.L273-.L265)/2
+ 3340 00da 5B01     		.2byte	(.L263-.L265)/2
+ 3341 00dc 5B01     		.2byte	(.L263-.L265)/2
+ 3342 00de 5B01     		.2byte	(.L263-.L265)/2
+ 3343 00e0 3D01     		.2byte	(.L272-.L265)/2
+ 3344 00e2 5B01     		.2byte	(.L263-.L265)/2
+ 3345 00e4 5B01     		.2byte	(.L263-.L265)/2
+ 3346 00e6 5B01     		.2byte	(.L263-.L265)/2
+ 3347 00e8 5B01     		.2byte	(.L263-.L265)/2
+ 3348 00ea 5B01     		.2byte	(.L263-.L265)/2
+ 3349 00ec 5B01     		.2byte	(.L263-.L265)/2
+ 3350 00ee 5B01     		.2byte	(.L263-.L265)/2
+ 3351 00f0 5B01     		.2byte	(.L263-.L265)/2
+ 3352 00f2 AA00     		.2byte	(.L269-.L265)/2
+ 3353 00f4 D500     		.2byte	(.L271-.L265)/2
+ 3354 00f6 CE00     		.2byte	(.L267-.L265)/2
+ 3355 00f8 D500     		.2byte	(.L271-.L265)/2
+ 3356 00fa 5B01     		.2byte	(.L263-.L265)/2
+ 3357 00fc 5B01     		.2byte	(.L263-.L265)/2
+ 3358 00fe 5B01     		.2byte	(.L263-.L265)/2
+ 3359 0100 5501     		.2byte	(.L270-.L265)/2
+ 3360 0102 5B01     		.2byte	(.L263-.L265)/2
+ 3361 0104 5B01     		.2byte	(.L263-.L265)/2
+ 3362 0106 5B01     		.2byte	(.L263-.L265)/2
+ 3363 0108 5B01     		.2byte	(.L263-.L265)/2
+ 3364 010a 5B01     		.2byte	(.L263-.L265)/2
+ 3365 010c 5B01     		.2byte	(.L263-.L265)/2
+ 3366 010e 5B01     		.2byte	(.L263-.L265)/2
+ 3367 0110 5B01     		.2byte	(.L263-.L265)/2
+ 3368 0112 5B01     		.2byte	(.L263-.L265)/2
+ 3369 0114 5B01     		.2byte	(.L263-.L265)/2
+ 3370 0116 5B01     		.2byte	(.L263-.L265)/2
+ 3371 0118 5B01     		.2byte	(.L263-.L265)/2
+ARM GAS  /tmp/ccrRYh01.s 			page 93
 
 
- 3377 0128 5801     		.2byte	(.L263-.L265)/2
- 3378 012a 5801     		.2byte	(.L263-.L265)/2
- 3379 012c 5801     		.2byte	(.L263-.L265)/2
- 3380 012e 5801     		.2byte	(.L263-.L265)/2
- 3381 0130 5801     		.2byte	(.L263-.L265)/2
- 3382 0132 5801     		.2byte	(.L263-.L265)/2
- 3383 0134 5801     		.2byte	(.L263-.L265)/2
- 3384 0136 5801     		.2byte	(.L263-.L265)/2
- 3385 0138 5801     		.2byte	(.L263-.L265)/2
- 3386 013a 5801     		.2byte	(.L263-.L265)/2
- 3387 013c 5801     		.2byte	(.L263-.L265)/2
- 3388 013e 5801     		.2byte	(.L263-.L265)/2
- 3389 0140 5801     		.2byte	(.L263-.L265)/2
- 3390 0142 5801     		.2byte	(.L263-.L265)/2
- 3391 0144 5801     		.2byte	(.L263-.L265)/2
- 3392 0146 5801     		.2byte	(.L263-.L265)/2
- 3393 0148 5801     		.2byte	(.L263-.L265)/2
- 3394 014a 5801     		.2byte	(.L263-.L265)/2
- 3395 014c 5801     		.2byte	(.L263-.L265)/2
- 3396 014e 5801     		.2byte	(.L263-.L265)/2
- 3397 0150 5801     		.2byte	(.L263-.L265)/2
- 3398 0152 5801     		.2byte	(.L263-.L265)/2
- 3399 0154 5801     		.2byte	(.L263-.L265)/2
- 3400 0156 5801     		.2byte	(.L263-.L265)/2
- 3401 0158 5801     		.2byte	(.L263-.L265)/2
- 3402 015a 5801     		.2byte	(.L263-.L265)/2
- 3403 015c 5801     		.2byte	(.L263-.L265)/2
- 3404 015e 5801     		.2byte	(.L263-.L265)/2
- 3405 0160 5801     		.2byte	(.L263-.L265)/2
- 3406 0162 5801     		.2byte	(.L263-.L265)/2
- 3407 0164 5801     		.2byte	(.L263-.L265)/2
- 3408 0166 5801     		.2byte	(.L263-.L265)/2
- 3409 0168 5801     		.2byte	(.L263-.L265)/2
- 3410 016a 5801     		.2byte	(.L263-.L265)/2
- 3411 016c 5801     		.2byte	(.L263-.L265)/2
- 3412 016e AA00     		.2byte	(.L269-.L265)/2
- 3413 0170 1801     		.2byte	(.L268-.L265)/2
- 3414 0172 CE00     		.2byte	(.L267-.L265)/2
- 3415 0174 3401     		.2byte	(.L266-.L265)/2
- 3416 0176 5801     		.2byte	(.L263-.L265)/2
- 3417 0178 5801     		.2byte	(.L263-.L265)/2
- 3418 017a 5801     		.2byte	(.L263-.L265)/2
- 3419 017c 7F00     		.2byte	(.L264-.L265)/2
- 3420              		.p2align 1
- 3421              	.L277:
-1115:Lib/soes/src/esc.c ****    {
-1116:Lib/soes/src/esc.c ****       case INIT_TO_INIT:
-1117:Lib/soes/src/esc.c ****       case PREOP_TO_PREOP:
-1118:Lib/soes/src/esc.c ****       case OP_TO_OP:
-1119:Lib/soes/src/esc.c ****       {
-1120:Lib/soes/src/esc.c ****          break;
-1121:Lib/soes/src/esc.c ****       }
-1122:Lib/soes/src/esc.c ****       case INIT_TO_PREOP:
-1123:Lib/soes/src/esc.c ****       {
-1124:Lib/soes/src/esc.c ****          /* get station address */
-1125:Lib/soes/src/esc.c ****          ESC_address ();
- 3422              		.loc 1 1125 10 view .LVU898
-ARM GAS  /tmp/cc3f6pAD.s 			page 94
+ 3372 011a 5B01     		.2byte	(.L263-.L265)/2
+ 3373 011c 5B01     		.2byte	(.L263-.L265)/2
+ 3374 011e 5B01     		.2byte	(.L263-.L265)/2
+ 3375 0120 5B01     		.2byte	(.L263-.L265)/2
+ 3376 0122 5B01     		.2byte	(.L263-.L265)/2
+ 3377 0124 5B01     		.2byte	(.L263-.L265)/2
+ 3378 0126 5B01     		.2byte	(.L263-.L265)/2
+ 3379 0128 5B01     		.2byte	(.L263-.L265)/2
+ 3380 012a 5B01     		.2byte	(.L263-.L265)/2
+ 3381 012c 5B01     		.2byte	(.L263-.L265)/2
+ 3382 012e 5B01     		.2byte	(.L263-.L265)/2
+ 3383 0130 5B01     		.2byte	(.L263-.L265)/2
+ 3384 0132 5B01     		.2byte	(.L263-.L265)/2
+ 3385 0134 5B01     		.2byte	(.L263-.L265)/2
+ 3386 0136 5B01     		.2byte	(.L263-.L265)/2
+ 3387 0138 5B01     		.2byte	(.L263-.L265)/2
+ 3388 013a 5B01     		.2byte	(.L263-.L265)/2
+ 3389 013c 5B01     		.2byte	(.L263-.L265)/2
+ 3390 013e 5B01     		.2byte	(.L263-.L265)/2
+ 3391 0140 5B01     		.2byte	(.L263-.L265)/2
+ 3392 0142 5B01     		.2byte	(.L263-.L265)/2
+ 3393 0144 5B01     		.2byte	(.L263-.L265)/2
+ 3394 0146 5B01     		.2byte	(.L263-.L265)/2
+ 3395 0148 5B01     		.2byte	(.L263-.L265)/2
+ 3396 014a 5B01     		.2byte	(.L263-.L265)/2
+ 3397 014c 5B01     		.2byte	(.L263-.L265)/2
+ 3398 014e 5B01     		.2byte	(.L263-.L265)/2
+ 3399 0150 5B01     		.2byte	(.L263-.L265)/2
+ 3400 0152 5B01     		.2byte	(.L263-.L265)/2
+ 3401 0154 5B01     		.2byte	(.L263-.L265)/2
+ 3402 0156 5B01     		.2byte	(.L263-.L265)/2
+ 3403 0158 5B01     		.2byte	(.L263-.L265)/2
+ 3404 015a 5B01     		.2byte	(.L263-.L265)/2
+ 3405 015c 5B01     		.2byte	(.L263-.L265)/2
+ 3406 015e 5B01     		.2byte	(.L263-.L265)/2
+ 3407 0160 5B01     		.2byte	(.L263-.L265)/2
+ 3408 0162 5B01     		.2byte	(.L263-.L265)/2
+ 3409 0164 5B01     		.2byte	(.L263-.L265)/2
+ 3410 0166 5B01     		.2byte	(.L263-.L265)/2
+ 3411 0168 5B01     		.2byte	(.L263-.L265)/2
+ 3412 016a 5B01     		.2byte	(.L263-.L265)/2
+ 3413 016c 5B01     		.2byte	(.L263-.L265)/2
+ 3414 016e 5B01     		.2byte	(.L263-.L265)/2
+ 3415 0170 5B01     		.2byte	(.L263-.L265)/2
+ 3416 0172 AA00     		.2byte	(.L269-.L265)/2
+ 3417 0174 1B01     		.2byte	(.L268-.L265)/2
+ 3418 0176 CE00     		.2byte	(.L267-.L265)/2
+ 3419 0178 3701     		.2byte	(.L266-.L265)/2
+ 3420 017a 5B01     		.2byte	(.L263-.L265)/2
+ 3421 017c 5B01     		.2byte	(.L263-.L265)/2
+ 3422 017e 5B01     		.2byte	(.L263-.L265)/2
+ 3423 0180 7F00     		.2byte	(.L264-.L265)/2
+ 3424              		.p2align 1
+ 3425              	.L277:
+1120:Lib/soes/src/esc.c ****    {
+1121:Lib/soes/src/esc.c ****       case INIT_TO_INIT:
+1122:Lib/soes/src/esc.c ****       case PREOP_TO_PREOP:
+ARM GAS  /tmp/ccrRYh01.s 			page 94
 
 
- 3423 017e FFF7FEFF 		bl	ESC_address
- 3424              	.LVL234:
-1126:Lib/soes/src/esc.c ****          an = ESC_startmbx (ac);
- 3425              		.loc 1 1126 10 view .LVU899
- 3426              		.loc 1 1126 15 is_stmt 0 view .LVU900
- 3427 0182 2046     		mov	r0, r4
- 3428 0184 FFF7FEFF 		bl	ESC_startmbx
- 3429              	.LVL235:
- 3430              		.loc 1 1126 13 view .LVU901
- 3431 0188 8DF80700 		strb	r0, [sp, #7]
-1127:Lib/soes/src/esc.c ****          break;
- 3432              		.loc 1 1127 10 is_stmt 1 view .LVU902
- 3433              	.L264:
-1128:Lib/soes/src/esc.c ****       }
-1129:Lib/soes/src/esc.c ****       case INIT_TO_BOOT:
-1130:Lib/soes/src/esc.c ****       case BOOT_TO_BOOT:
-1131:Lib/soes/src/esc.c ****       {
-1132:Lib/soes/src/esc.c ****          /* get station address */
-1133:Lib/soes/src/esc.c ****          ESC_address ();
-1134:Lib/soes/src/esc.c ****          an = ESC_startmbxboot (ac);
-1135:Lib/soes/src/esc.c ****          break;
-1136:Lib/soes/src/esc.c ****       }
-1137:Lib/soes/src/esc.c ****       case INIT_TO_SAFEOP:
-1138:Lib/soes/src/esc.c ****       case INIT_TO_OP:
-1139:Lib/soes/src/esc.c ****       {
-1140:Lib/soes/src/esc.c ****          an = ESCinit | ESCerror;
-1141:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
-1142:Lib/soes/src/esc.c ****          break;
-1143:Lib/soes/src/esc.c ****       }
-1144:Lib/soes/src/esc.c ****       case OP_TO_INIT:
-1145:Lib/soes/src/esc.c ****       {
-1146:Lib/soes/src/esc.c ****          ESC_stopoutput ();
-1147:Lib/soes/src/esc.c ****          ESC_stopinput ();
-1148:Lib/soes/src/esc.c ****          ESC_stopmbx ();
-1149:Lib/soes/src/esc.c ****          an = ESCinit;
-1150:Lib/soes/src/esc.c ****          break;
-1151:Lib/soes/src/esc.c ****       }
-1152:Lib/soes/src/esc.c ****       case SAFEOP_TO_INIT:
-1153:Lib/soes/src/esc.c ****       {
-1154:Lib/soes/src/esc.c ****          ESC_stopinput ();
-1155:Lib/soes/src/esc.c ****          ESC_stopmbx ();
-1156:Lib/soes/src/esc.c ****          an = ESCinit;
-1157:Lib/soes/src/esc.c ****          break;
-1158:Lib/soes/src/esc.c ****       }
-1159:Lib/soes/src/esc.c ****       case PREOP_TO_INIT:
-1160:Lib/soes/src/esc.c ****       {
-1161:Lib/soes/src/esc.c ****          ESC_stopmbx ();
-1162:Lib/soes/src/esc.c ****          an = ESCinit;
-1163:Lib/soes/src/esc.c ****          break;
-1164:Lib/soes/src/esc.c ****       }
-1165:Lib/soes/src/esc.c ****       case BOOT_TO_INIT:
-1166:Lib/soes/src/esc.c ****       {
-1167:Lib/soes/src/esc.c ****          ESC_stopmbx ();
-1168:Lib/soes/src/esc.c ****          an = ESCinit;
-1169:Lib/soes/src/esc.c ****          break;
-1170:Lib/soes/src/esc.c ****       }
-1171:Lib/soes/src/esc.c ****       case PREOP_TO_BOOT:
-ARM GAS  /tmp/cc3f6pAD.s 			page 95
+1123:Lib/soes/src/esc.c ****       case OP_TO_OP:
+1124:Lib/soes/src/esc.c ****       {
+1125:Lib/soes/src/esc.c ****          break;
+1126:Lib/soes/src/esc.c ****       }
+1127:Lib/soes/src/esc.c ****       case INIT_TO_PREOP:
+1128:Lib/soes/src/esc.c ****       {
+1129:Lib/soes/src/esc.c ****          /* get station address */
+1130:Lib/soes/src/esc.c ****          ESC_address ();
+ 3426              		.loc 1 1130 10 view .LVU900
+ 3427 0182 FFF7FEFF 		bl	ESC_address
+ 3428              	.LVL234:
+1131:Lib/soes/src/esc.c ****          an = ESC_startmbx (ac);
+ 3429              		.loc 1 1131 10 view .LVU901
+ 3430              		.loc 1 1131 15 is_stmt 0 view .LVU902
+ 3431 0186 2046     		mov	r0, r4
+ 3432 0188 FFF7FEFF 		bl	ESC_startmbx
+ 3433              	.LVL235:
+ 3434              		.loc 1 1131 13 view .LVU903
+ 3435 018c 8DF80700 		strb	r0, [sp, #7]
+1132:Lib/soes/src/esc.c ****          break;
+ 3436              		.loc 1 1132 10 is_stmt 1 view .LVU904
+ 3437              	.L264:
+1133:Lib/soes/src/esc.c ****       }
+1134:Lib/soes/src/esc.c ****       case INIT_TO_BOOT:
+1135:Lib/soes/src/esc.c ****       case BOOT_TO_BOOT:
+1136:Lib/soes/src/esc.c ****       {
+1137:Lib/soes/src/esc.c ****          /* get station address */
+1138:Lib/soes/src/esc.c ****          ESC_address ();
+1139:Lib/soes/src/esc.c ****          an = ESC_startmbxboot (ac);
+1140:Lib/soes/src/esc.c ****          break;
+1141:Lib/soes/src/esc.c ****       }
+1142:Lib/soes/src/esc.c ****       case INIT_TO_SAFEOP:
+1143:Lib/soes/src/esc.c ****       case INIT_TO_OP:
+1144:Lib/soes/src/esc.c ****       {
+1145:Lib/soes/src/esc.c ****          an = ESCinit | ESCerror;
+1146:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+1147:Lib/soes/src/esc.c ****          break;
+1148:Lib/soes/src/esc.c ****       }
+1149:Lib/soes/src/esc.c ****       case OP_TO_INIT:
+1150:Lib/soes/src/esc.c ****       {
+1151:Lib/soes/src/esc.c ****          ESC_stopoutput ();
+1152:Lib/soes/src/esc.c ****          ESC_stopinput ();
+1153:Lib/soes/src/esc.c ****          ESC_stopmbx ();
+1154:Lib/soes/src/esc.c ****          an = ESCinit;
+1155:Lib/soes/src/esc.c ****          break;
+1156:Lib/soes/src/esc.c ****       }
+1157:Lib/soes/src/esc.c ****       case SAFEOP_TO_INIT:
+1158:Lib/soes/src/esc.c ****       {
+1159:Lib/soes/src/esc.c ****          ESC_stopinput ();
+1160:Lib/soes/src/esc.c ****          ESC_stopmbx ();
+1161:Lib/soes/src/esc.c ****          an = ESCinit;
+1162:Lib/soes/src/esc.c ****          break;
+1163:Lib/soes/src/esc.c ****       }
+1164:Lib/soes/src/esc.c ****       case PREOP_TO_INIT:
+1165:Lib/soes/src/esc.c ****       {
+1166:Lib/soes/src/esc.c ****          ESC_stopmbx ();
+1167:Lib/soes/src/esc.c ****          an = ESCinit;
+ARM GAS  /tmp/ccrRYh01.s 			page 95
 
 
-1172:Lib/soes/src/esc.c ****       case BOOT_TO_PREOP:
-1173:Lib/soes/src/esc.c ****       case BOOT_TO_SAFEOP:
-1174:Lib/soes/src/esc.c ****       case BOOT_TO_OP:
-1175:Lib/soes/src/esc.c ****       {
-1176:Lib/soes/src/esc.c ****          an = ESCpreop | ESCerror;
-1177:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
-1178:Lib/soes/src/esc.c ****          break;
-1179:Lib/soes/src/esc.c ****       }
-1180:Lib/soes/src/esc.c ****       case PREOP_TO_SAFEOP:
-1181:Lib/soes/src/esc.c ****       case SAFEOP_TO_SAFEOP:
-1182:Lib/soes/src/esc.c ****       {
-1183:Lib/soes/src/esc.c ****          ESCvar.ESC_SM2_sml = sizeOfPDO (RX_PDO_OBJIDX, &ESCvar.sm2mappings,
-1184:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
-1185:Lib/soes/src/esc.c ****          if (ESCvar.sm2mappings < 0)
-1186:Lib/soes/src/esc.c ****          {
-1187:Lib/soes/src/esc.c ****             an = ESCpreop | ESCerror;
-1188:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDOUTPUTSM);
-1189:Lib/soes/src/esc.c ****             break;
-1190:Lib/soes/src/esc.c ****          }
-1191:Lib/soes/src/esc.c **** 
-1192:Lib/soes/src/esc.c ****          ESCvar.ESC_SM3_sml = sizeOfPDO (TX_PDO_OBJIDX, &ESCvar.sm3mappings,
-1193:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
-1194:Lib/soes/src/esc.c ****          if (ESCvar.sm3mappings < 0)
-1195:Lib/soes/src/esc.c ****          {
-1196:Lib/soes/src/esc.c ****             an = ESCpreop | ESCerror;
-1197:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDINPUTSM);
-1198:Lib/soes/src/esc.c ****             break;
-1199:Lib/soes/src/esc.c ****          }
-1200:Lib/soes/src/esc.c **** 
-1201:Lib/soes/src/esc.c ****          an = ESC_startinput (ac);
-1202:Lib/soes/src/esc.c ****          if (an == ac)
-1203:Lib/soes/src/esc.c ****          {
-1204:Lib/soes/src/esc.c ****             ESC_SMenable (2);
-1205:Lib/soes/src/esc.c ****          }
-1206:Lib/soes/src/esc.c ****          break;
-1207:Lib/soes/src/esc.c ****       }
-1208:Lib/soes/src/esc.c ****       case PREOP_TO_OP:
-1209:Lib/soes/src/esc.c ****       {
-1210:Lib/soes/src/esc.c ****          an = ESCpreop | ESCerror;
-1211:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
-1212:Lib/soes/src/esc.c ****          break;
-1213:Lib/soes/src/esc.c ****       }
-1214:Lib/soes/src/esc.c ****       case OP_TO_PREOP:
-1215:Lib/soes/src/esc.c ****       {
-1216:Lib/soes/src/esc.c ****          ESC_stopoutput ();
-1217:Lib/soes/src/esc.c ****          ESC_stopinput ();
-1218:Lib/soes/src/esc.c ****          an = ESCpreop;
-1219:Lib/soes/src/esc.c ****          break;
-1220:Lib/soes/src/esc.c ****       }
-1221:Lib/soes/src/esc.c ****       case SAFEOP_TO_PREOP:
-1222:Lib/soes/src/esc.c ****       {
-1223:Lib/soes/src/esc.c ****          ESC_stopinput ();
-1224:Lib/soes/src/esc.c ****          an = ESCpreop;
-1225:Lib/soes/src/esc.c ****          break;
-1226:Lib/soes/src/esc.c ****       }
-1227:Lib/soes/src/esc.c ****       case SAFEOP_TO_BOOT:
-1228:Lib/soes/src/esc.c ****       {
-ARM GAS  /tmp/cc3f6pAD.s 			page 96
+1168:Lib/soes/src/esc.c ****          break;
+1169:Lib/soes/src/esc.c ****       }
+1170:Lib/soes/src/esc.c ****       case BOOT_TO_INIT:
+1171:Lib/soes/src/esc.c ****       {
+1172:Lib/soes/src/esc.c ****          ESC_stopmbx ();
+1173:Lib/soes/src/esc.c ****          an = ESCinit;
+1174:Lib/soes/src/esc.c ****          break;
+1175:Lib/soes/src/esc.c ****       }
+1176:Lib/soes/src/esc.c ****       case PREOP_TO_BOOT:
+1177:Lib/soes/src/esc.c ****       case BOOT_TO_PREOP:
+1178:Lib/soes/src/esc.c ****       case BOOT_TO_SAFEOP:
+1179:Lib/soes/src/esc.c ****       case BOOT_TO_OP:
+1180:Lib/soes/src/esc.c ****       {
+1181:Lib/soes/src/esc.c ****          an = ESCpreop | ESCerror;
+1182:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+1183:Lib/soes/src/esc.c ****          break;
+1184:Lib/soes/src/esc.c ****       }
+1185:Lib/soes/src/esc.c ****       case PREOP_TO_SAFEOP:
+1186:Lib/soes/src/esc.c ****       case SAFEOP_TO_SAFEOP:
+1187:Lib/soes/src/esc.c ****       {
+1188:Lib/soes/src/esc.c ****          ESCvar.ESC_SM2_sml = sizeOfPDO (RX_PDO_OBJIDX, &ESCvar.sm2mappings,
+1189:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
+1190:Lib/soes/src/esc.c ****          if (ESCvar.sm2mappings < 0)
+1191:Lib/soes/src/esc.c ****          {
+1192:Lib/soes/src/esc.c ****             an = ESCpreop | ESCerror;
+1193:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDOUTPUTSM);
+1194:Lib/soes/src/esc.c ****             break;
+1195:Lib/soes/src/esc.c ****          }
+1196:Lib/soes/src/esc.c **** 
+1197:Lib/soes/src/esc.c ****          ESCvar.ESC_SM3_sml = sizeOfPDO (TX_PDO_OBJIDX, &ESCvar.sm3mappings,
+1198:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
+1199:Lib/soes/src/esc.c ****          if (ESCvar.sm3mappings < 0)
+1200:Lib/soes/src/esc.c ****          {
+1201:Lib/soes/src/esc.c ****             an = ESCpreop | ESCerror;
+1202:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDINPUTSM);
+1203:Lib/soes/src/esc.c ****             break;
+1204:Lib/soes/src/esc.c ****          }
+1205:Lib/soes/src/esc.c **** 
+1206:Lib/soes/src/esc.c ****          an = ESC_startinput (ac);
+1207:Lib/soes/src/esc.c ****          if (an == ac)
+1208:Lib/soes/src/esc.c ****          {
+1209:Lib/soes/src/esc.c ****             ESC_SMenable (2);
+1210:Lib/soes/src/esc.c ****          }
+1211:Lib/soes/src/esc.c ****          break;
+1212:Lib/soes/src/esc.c ****       }
+1213:Lib/soes/src/esc.c ****       case PREOP_TO_OP:
+1214:Lib/soes/src/esc.c ****       {
+1215:Lib/soes/src/esc.c ****          an = ESCpreop | ESCerror;
+1216:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+1217:Lib/soes/src/esc.c ****          break;
+1218:Lib/soes/src/esc.c ****       }
+1219:Lib/soes/src/esc.c ****       case OP_TO_PREOP:
+1220:Lib/soes/src/esc.c ****       {
+1221:Lib/soes/src/esc.c ****          ESC_stopoutput ();
+1222:Lib/soes/src/esc.c ****          ESC_stopinput ();
+1223:Lib/soes/src/esc.c ****          an = ESCpreop;
+1224:Lib/soes/src/esc.c ****          break;
+ARM GAS  /tmp/ccrRYh01.s 			page 96
 
 
-1229:Lib/soes/src/esc.c ****          an = ESCsafeop | ESCerror;
-1230:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
-1231:Lib/soes/src/esc.c ****          break;
-1232:Lib/soes/src/esc.c ****       }
-1233:Lib/soes/src/esc.c ****       case SAFEOP_TO_OP:
-1234:Lib/soes/src/esc.c ****       {
-1235:Lib/soes/src/esc.c ****          an = ESC_startoutput (ac);
+1225:Lib/soes/src/esc.c ****       }
+1226:Lib/soes/src/esc.c ****       case SAFEOP_TO_PREOP:
+1227:Lib/soes/src/esc.c ****       {
+1228:Lib/soes/src/esc.c ****          ESC_stopinput ();
+1229:Lib/soes/src/esc.c ****          an = ESCpreop;
+1230:Lib/soes/src/esc.c ****          break;
+1231:Lib/soes/src/esc.c ****       }
+1232:Lib/soes/src/esc.c ****       case SAFEOP_TO_BOOT:
+1233:Lib/soes/src/esc.c ****       {
+1234:Lib/soes/src/esc.c ****          an = ESCsafeop | ESCerror;
+1235:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
 1236:Lib/soes/src/esc.c ****          break;
 1237:Lib/soes/src/esc.c ****       }
-1238:Lib/soes/src/esc.c ****       case OP_TO_BOOT:
+1238:Lib/soes/src/esc.c ****       case SAFEOP_TO_OP:
 1239:Lib/soes/src/esc.c ****       {
-1240:Lib/soes/src/esc.c ****          an = ESCsafeop | ESCerror;
-1241:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
-1242:Lib/soes/src/esc.c ****          ESC_stopoutput ();
-1243:Lib/soes/src/esc.c ****          /* If no outputs present, we need to flag error using SM3 */
-1244:Lib/soes/src/esc.c ****          if (ESCvar.ESC_SM2_sml == 0 && ESCvar.ESC_SM3_sml > 0)
-1245:Lib/soes/src/esc.c ****          {
-1246:Lib/soes/src/esc.c ****             ESC_SMdisable (3);
-1247:Lib/soes/src/esc.c ****          }
-1248:Lib/soes/src/esc.c ****          break;
-1249:Lib/soes/src/esc.c ****       }
-1250:Lib/soes/src/esc.c ****       case OP_TO_SAFEOP:
-1251:Lib/soes/src/esc.c ****       {
-1252:Lib/soes/src/esc.c ****          an = ESCsafeop;
-1253:Lib/soes/src/esc.c ****          ESC_stopoutput ();
-1254:Lib/soes/src/esc.c ****          break;
-1255:Lib/soes/src/esc.c ****       }
-1256:Lib/soes/src/esc.c ****       default:
-1257:Lib/soes/src/esc.c ****       {
-1258:Lib/soes/src/esc.c ****          if (an == ESCop)
-1259:Lib/soes/src/esc.c ****          {
-1260:Lib/soes/src/esc.c ****             ESC_stopoutput ();
-1261:Lib/soes/src/esc.c ****             /* If no outputs present, we need to flag error using SM3 */
-1262:Lib/soes/src/esc.c ****             if (ESCvar.ESC_SM2_sml == 0 && ESCvar.ESC_SM3_sml > 0)
-1263:Lib/soes/src/esc.c ****             {
-1264:Lib/soes/src/esc.c ****                ESC_SMdisable (3);
-1265:Lib/soes/src/esc.c ****             }
-1266:Lib/soes/src/esc.c ****             an = ESCsafeop;
-1267:Lib/soes/src/esc.c ****          }
-1268:Lib/soes/src/esc.c ****          if (as == ESCsafeop)
-1269:Lib/soes/src/esc.c ****          {
-1270:Lib/soes/src/esc.c ****             ESC_stopinput ();
-1271:Lib/soes/src/esc.c ****          }
-1272:Lib/soes/src/esc.c ****          an |= ESCerror;
-1273:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_UNKNOWNSTATE);
-1274:Lib/soes/src/esc.c ****          break;
-1275:Lib/soes/src/esc.c ****       }
-1276:Lib/soes/src/esc.c ****    }
-1277:Lib/soes/src/esc.c **** 
-1278:Lib/soes/src/esc.c ****    /* Call post state change hook case it have been configured  */
-1279:Lib/soes/src/esc.c ****    if (ESCvar.post_state_change_hook != NULL)
- 3434              		.loc 1 1279 4 view .LVU903
- 3435              		.loc 1 1279 14 is_stmt 0 view .LVU904
- 3436 018c 424B     		ldr	r3, .L303
- 3437 018e 1B6B     		ldr	r3, [r3, #48]
- 3438              		.loc 1 1279 7 view .LVU905
- 3439 0190 23B1     		cbz	r3, .L287
-ARM GAS  /tmp/cc3f6pAD.s 			page 97
+1240:Lib/soes/src/esc.c ****          an = ESC_startoutput (ac);
+1241:Lib/soes/src/esc.c ****          break;
+1242:Lib/soes/src/esc.c ****       }
+1243:Lib/soes/src/esc.c ****       case OP_TO_BOOT:
+1244:Lib/soes/src/esc.c ****       {
+1245:Lib/soes/src/esc.c ****          an = ESCsafeop | ESCerror;
+1246:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+1247:Lib/soes/src/esc.c ****          ESC_stopoutput ();
+1248:Lib/soes/src/esc.c ****          /* If no outputs present, we need to flag error using SM3 */
+1249:Lib/soes/src/esc.c ****          if (ESCvar.ESC_SM2_sml == 0 && ESCvar.ESC_SM3_sml > 0)
+1250:Lib/soes/src/esc.c ****          {
+1251:Lib/soes/src/esc.c ****             ESC_SMdisable (3);
+1252:Lib/soes/src/esc.c ****          }
+1253:Lib/soes/src/esc.c ****          break;
+1254:Lib/soes/src/esc.c ****       }
+1255:Lib/soes/src/esc.c ****       case OP_TO_SAFEOP:
+1256:Lib/soes/src/esc.c ****       {
+1257:Lib/soes/src/esc.c ****          an = ESCsafeop;
+1258:Lib/soes/src/esc.c ****          ESC_stopoutput ();
+1259:Lib/soes/src/esc.c ****          break;
+1260:Lib/soes/src/esc.c ****       }
+1261:Lib/soes/src/esc.c ****       default:
+1262:Lib/soes/src/esc.c ****       {
+1263:Lib/soes/src/esc.c ****          if (an == ESCop)
+1264:Lib/soes/src/esc.c ****          {
+1265:Lib/soes/src/esc.c ****             ESC_stopoutput ();
+1266:Lib/soes/src/esc.c ****             /* If no outputs present, we need to flag error using SM3 */
+1267:Lib/soes/src/esc.c ****             if (ESCvar.ESC_SM2_sml == 0 && ESCvar.ESC_SM3_sml > 0)
+1268:Lib/soes/src/esc.c ****             {
+1269:Lib/soes/src/esc.c ****                ESC_SMdisable (3);
+1270:Lib/soes/src/esc.c ****             }
+1271:Lib/soes/src/esc.c ****             an = ESCsafeop;
+1272:Lib/soes/src/esc.c ****          }
+1273:Lib/soes/src/esc.c ****          if (as == ESCsafeop)
+1274:Lib/soes/src/esc.c ****          {
+1275:Lib/soes/src/esc.c ****             ESC_stopinput ();
+1276:Lib/soes/src/esc.c ****          }
+1277:Lib/soes/src/esc.c ****          an |= ESCerror;
+1278:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_UNKNOWNSTATE);
+1279:Lib/soes/src/esc.c ****          break;
+1280:Lib/soes/src/esc.c ****       }
+1281:Lib/soes/src/esc.c ****    }
+ARM GAS  /tmp/ccrRYh01.s 			page 97
 
 
-1280:Lib/soes/src/esc.c ****    {
-1281:Lib/soes/src/esc.c ****       ESCvar.post_state_change_hook (&as, &an);
- 3440              		.loc 1 1281 7 is_stmt 1 view .LVU906
- 3441 0192 0DF10701 		add	r1, sp, #7
- 3442 0196 0DF10600 		add	r0, sp, #6
- 3443 019a 9847     		blx	r3
- 3444              	.LVL236:
- 3445              	.L287:
-1282:Lib/soes/src/esc.c ****    }
-1283:Lib/soes/src/esc.c **** 
-1284:Lib/soes/src/esc.c ****    if (!(an & ESCerror) && (ESCvar.ALerror))
- 3446              		.loc 1 1284 4 view .LVU907
- 3447              		.loc 1 1284 13 is_stmt 0 view .LVU908
- 3448 019c 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
- 3449              		.loc 1 1284 7 view .LVU909
- 3450 01a0 13F0100F 		tst	r3, #16
- 3451 01a4 05D1     		bne	.L288
- 3452              		.loc 1 1284 35 discriminator 1 view .LVU910
- 3453 01a6 3C4B     		ldr	r3, .L303
- 3454 01a8 B3F88430 		ldrh	r3, [r3, #132]
- 3455              		.loc 1 1284 25 discriminator 1 view .LVU911
- 3456 01ac 002B     		cmp	r3, #0
- 3457 01ae 40F0ED80 		bne	.L296
- 3458              	.L288:
+1282:Lib/soes/src/esc.c **** 
+1283:Lib/soes/src/esc.c ****    /* Call post state change hook case it have been configured  */
+1284:Lib/soes/src/esc.c ****    if (ESCvar.post_state_change_hook != NULL)
+ 3438              		.loc 1 1284 4 view .LVU905
+ 3439              		.loc 1 1284 14 is_stmt 0 view .LVU906
+ 3440 0190 3F4B     		ldr	r3, .L303
+ 3441 0192 1B6B     		ldr	r3, [r3, #48]
+ 3442              		.loc 1 1284 7 view .LVU907
+ 3443 0194 23B1     		cbz	r3, .L287
 1285:Lib/soes/src/esc.c ****    {
-1286:Lib/soes/src/esc.c ****       /* clear error */
-1287:Lib/soes/src/esc.c ****       ESC_ALerror (ALERR_NONE);
-1288:Lib/soes/src/esc.c ****    }
-1289:Lib/soes/src/esc.c **** 
-1290:Lib/soes/src/esc.c ****    if (ESC_check_id_request (ESCvar.ALcontrol, &an))
- 3459              		.loc 1 1290 4 is_stmt 1 view .LVU912
- 3460              		.loc 1 1290 8 is_stmt 0 view .LVU913
- 3461 01b2 0DF10701 		add	r1, sp, #7
- 3462 01b6 384B     		ldr	r3, .L303
- 3463 01b8 B3F88200 		ldrh	r0, [r3, #130]
- 3464 01bc FFF7FEFF 		bl	ESC_check_id_request
- 3465              	.LVL237:
- 3466              		.loc 1 1290 7 view .LVU914
- 3467 01c0 0028     		cmp	r0, #0
- 3468 01c2 40F0E780 		bne	.L297
- 3469              	.L289:
-1291:Lib/soes/src/esc.c ****    {
-1292:Lib/soes/src/esc.c ****       an |= ESC_load_device_id ();
+1286:Lib/soes/src/esc.c ****       ESCvar.post_state_change_hook (&as, &an);
+ 3444              		.loc 1 1286 7 is_stmt 1 view .LVU908
+ 3445 0196 0DF10701 		add	r1, sp, #7
+ 3446 019a 0DF10600 		add	r0, sp, #6
+ 3447 019e 9847     		blx	r3
+ 3448              	.LVL236:
+ 3449              	.L287:
+1287:Lib/soes/src/esc.c ****    }
+1288:Lib/soes/src/esc.c **** 
+1289:Lib/soes/src/esc.c ****    if (!(an & ESCerror) && (ESCvar.ALerror))
+ 3450              		.loc 1 1289 4 view .LVU909
+ 3451              		.loc 1 1289 13 is_stmt 0 view .LVU910
+ 3452 01a0 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 3453              		.loc 1 1289 7 view .LVU911
+ 3454 01a4 13F0100F 		tst	r3, #16
+ 3455 01a8 05D1     		bne	.L288
+ 3456              		.loc 1 1289 35 discriminator 1 view .LVU912
+ 3457 01aa 394B     		ldr	r3, .L303
+ 3458 01ac B3F88430 		ldrh	r3, [r3, #132]
+ 3459              		.loc 1 1289 25 discriminator 1 view .LVU913
+ 3460 01b0 002B     		cmp	r3, #0
+ 3461 01b2 40F0F080 		bne	.L296
+ 3462              	.L288:
+1290:Lib/soes/src/esc.c ****    {
+1291:Lib/soes/src/esc.c ****       /* clear error */
+1292:Lib/soes/src/esc.c ****       ESC_ALerror (ALERR_NONE);
 1293:Lib/soes/src/esc.c ****    }
 1294:Lib/soes/src/esc.c **** 
-1295:Lib/soes/src/esc.c ****    ESC_ALstatus (an);
- 3470              		.loc 1 1295 4 is_stmt 1 view .LVU915
- 3471 01c6 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
- 3472 01ca FFF7FEFF 		bl	ESC_ALstatus
- 3473              	.LVL238:
- 3474              	.L257:
-1296:Lib/soes/src/esc.c **** 
-1297:Lib/soes/src/esc.c **** #ifdef ESC_DEBUG
-1298:Lib/soes/src/esc.c ****    DPRINT ("state %s\n", ESC_state_to_string (an & 0xF));
-1299:Lib/soes/src/esc.c **** #endif
-1300:Lib/soes/src/esc.c **** }
- 3475              		.loc 1 1300 1 is_stmt 0 view .LVU916
-ARM GAS  /tmp/cc3f6pAD.s 			page 98
+1295:Lib/soes/src/esc.c ****    if (ESC_check_id_request (ESCvar.ALcontrol, &an))
+ 3463              		.loc 1 1295 4 is_stmt 1 view .LVU914
+ 3464              		.loc 1 1295 8 is_stmt 0 view .LVU915
+ 3465 01b6 0DF10701 		add	r1, sp, #7
+ 3466 01ba 354B     		ldr	r3, .L303
+ 3467 01bc B3F88200 		ldrh	r0, [r3, #130]
+ 3468 01c0 FFF7FEFF 		bl	ESC_check_id_request
+ 3469              	.LVL237:
+ 3470              		.loc 1 1295 7 view .LVU916
+ 3471 01c4 0028     		cmp	r0, #0
+ 3472 01c6 40F0EA80 		bne	.L297
+ 3473              	.L289:
+1296:Lib/soes/src/esc.c ****    {
+1297:Lib/soes/src/esc.c ****       an |= ESC_load_device_id ();
+1298:Lib/soes/src/esc.c ****    }
+1299:Lib/soes/src/esc.c **** 
+1300:Lib/soes/src/esc.c ****    ESC_ALstatus (an);
+ 3474              		.loc 1 1300 4 is_stmt 1 view .LVU917
+ 3475 01ca 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ARM GAS  /tmp/ccrRYh01.s 			page 98
 
 
- 3476 01ce 03B0     		add	sp, sp, #12
- 3477              		.cfi_remember_state
- 3478              		.cfi_def_cfa_offset 12
- 3479              		@ sp needed
- 3480 01d0 30BD     		pop	{r4, r5, pc}
- 3481              	.LVL239:
- 3482              	.L274:
- 3483              		.cfi_restore_state
-1133:Lib/soes/src/esc.c ****          an = ESC_startmbxboot (ac);
- 3484              		.loc 1 1133 10 is_stmt 1 view .LVU917
- 3485 01d2 FFF7FEFF 		bl	ESC_address
- 3486              	.LVL240:
-1134:Lib/soes/src/esc.c ****          break;
- 3487              		.loc 1 1134 10 view .LVU918
-1134:Lib/soes/src/esc.c ****          break;
- 3488              		.loc 1 1134 15 is_stmt 0 view .LVU919
- 3489 01d6 2046     		mov	r0, r4
- 3490 01d8 FFF7FEFF 		bl	ESC_startmbxboot
- 3491              	.LVL241:
-1134:Lib/soes/src/esc.c ****          break;
- 3492              		.loc 1 1134 13 view .LVU920
- 3493 01dc 8DF80700 		strb	r0, [sp, #7]
-1135:Lib/soes/src/esc.c ****       }
- 3494              		.loc 1 1135 10 is_stmt 1 view .LVU921
- 3495 01e0 D4E7     		b	.L264
- 3496              	.L269:
-1140:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3497              		.loc 1 1140 10 view .LVU922
-1140:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3498              		.loc 1 1140 13 is_stmt 0 view .LVU923
- 3499 01e2 1120     		movs	r0, #17
- 3500 01e4 8DF80700 		strb	r0, [sp, #7]
-1141:Lib/soes/src/esc.c ****          break;
- 3501              		.loc 1 1141 10 is_stmt 1 view .LVU924
- 3502 01e8 FFF7FEFF 		bl	ESC_ALerror
- 3503              	.LVL242:
-1142:Lib/soes/src/esc.c ****       }
- 3504              		.loc 1 1142 10 view .LVU925
- 3505 01ec CEE7     		b	.L264
- 3506              	.L278:
-1146:Lib/soes/src/esc.c ****          ESC_stopinput ();
- 3507              		.loc 1 1146 10 view .LVU926
- 3508 01ee FFF7FEFF 		bl	ESC_stopoutput
- 3509              	.LVL243:
-1147:Lib/soes/src/esc.c ****          ESC_stopmbx ();
- 3510              		.loc 1 1147 10 view .LVU927
- 3511 01f2 FFF7FEFF 		bl	ESC_stopinput
- 3512              	.LVL244:
-1148:Lib/soes/src/esc.c ****          an = ESCinit;
- 3513              		.loc 1 1148 10 view .LVU928
- 3514 01f6 FFF7FEFF 		bl	ESC_stopmbx
- 3515              	.LVL245:
-1149:Lib/soes/src/esc.c ****          break;
- 3516              		.loc 1 1149 10 view .LVU929
-1149:Lib/soes/src/esc.c ****          break;
- 3517              		.loc 1 1149 13 is_stmt 0 view .LVU930
- 3518 01fa 0123     		movs	r3, #1
-ARM GAS  /tmp/cc3f6pAD.s 			page 99
+ 3476 01ce FFF7FEFF 		bl	ESC_ALstatus
+ 3477              	.LVL238:
+ 3478              	.L257:
+1301:Lib/soes/src/esc.c **** 
+1302:Lib/soes/src/esc.c **** #ifdef ESC_DEBUG
+1303:Lib/soes/src/esc.c ****    DPRINT ("state %s\n", ESC_state_to_string (an & 0xF));
+1304:Lib/soes/src/esc.c **** #endif
+1305:Lib/soes/src/esc.c **** }
+ 3479              		.loc 1 1305 1 is_stmt 0 view .LVU918
+ 3480 01d2 03B0     		add	sp, sp, #12
+ 3481              		.cfi_remember_state
+ 3482              		.cfi_def_cfa_offset 12
+ 3483              		@ sp needed
+ 3484 01d4 30BD     		pop	{r4, r5, pc}
+ 3485              	.LVL239:
+ 3486              	.L274:
+ 3487              		.cfi_restore_state
+1138:Lib/soes/src/esc.c ****          an = ESC_startmbxboot (ac);
+ 3488              		.loc 1 1138 10 is_stmt 1 view .LVU919
+ 3489 01d6 FFF7FEFF 		bl	ESC_address
+ 3490              	.LVL240:
+1139:Lib/soes/src/esc.c ****          break;
+ 3491              		.loc 1 1139 10 view .LVU920
+1139:Lib/soes/src/esc.c ****          break;
+ 3492              		.loc 1 1139 15 is_stmt 0 view .LVU921
+ 3493 01da 2046     		mov	r0, r4
+ 3494 01dc FFF7FEFF 		bl	ESC_startmbxboot
+ 3495              	.LVL241:
+1139:Lib/soes/src/esc.c ****          break;
+ 3496              		.loc 1 1139 13 view .LVU922
+ 3497 01e0 8DF80700 		strb	r0, [sp, #7]
+1140:Lib/soes/src/esc.c ****       }
+ 3498              		.loc 1 1140 10 is_stmt 1 view .LVU923
+ 3499 01e4 D4E7     		b	.L264
+ 3500              	.L269:
+1145:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3501              		.loc 1 1145 10 view .LVU924
+1145:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3502              		.loc 1 1145 13 is_stmt 0 view .LVU925
+ 3503 01e6 1120     		movs	r0, #17
+ 3504 01e8 8DF80700 		strb	r0, [sp, #7]
+1146:Lib/soes/src/esc.c ****          break;
+ 3505              		.loc 1 1146 10 is_stmt 1 view .LVU926
+ 3506 01ec FFF7FEFF 		bl	ESC_ALerror
+ 3507              	.LVL242:
+1147:Lib/soes/src/esc.c ****       }
+ 3508              		.loc 1 1147 10 view .LVU927
+ 3509 01f0 CEE7     		b	.L264
+ 3510              	.L278:
+1151:Lib/soes/src/esc.c ****          ESC_stopinput ();
+ 3511              		.loc 1 1151 10 view .LVU928
+ 3512 01f2 FFF7FEFF 		bl	ESC_stopoutput
+ 3513              	.LVL243:
+1152:Lib/soes/src/esc.c ****          ESC_stopmbx ();
+ 3514              		.loc 1 1152 10 view .LVU929
+ 3515 01f6 FFF7FEFF 		bl	ESC_stopinput
+ 3516              	.LVL244:
+ARM GAS  /tmp/ccrRYh01.s 			page 99
 
 
- 3519 01fc 8DF80730 		strb	r3, [sp, #7]
-1150:Lib/soes/src/esc.c ****       }
- 3520              		.loc 1 1150 10 is_stmt 1 view .LVU931
- 3521 0200 C4E7     		b	.L264
- 3522              	.L279:
-1154:Lib/soes/src/esc.c ****          ESC_stopmbx ();
- 3523              		.loc 1 1154 10 view .LVU932
- 3524 0202 FFF7FEFF 		bl	ESC_stopinput
- 3525              	.LVL246:
-1155:Lib/soes/src/esc.c ****          an = ESCinit;
- 3526              		.loc 1 1155 10 view .LVU933
- 3527 0206 FFF7FEFF 		bl	ESC_stopmbx
- 3528              	.LVL247:
-1156:Lib/soes/src/esc.c ****          break;
- 3529              		.loc 1 1156 10 view .LVU934
-1156:Lib/soes/src/esc.c ****          break;
- 3530              		.loc 1 1156 13 is_stmt 0 view .LVU935
- 3531 020a 0123     		movs	r3, #1
- 3532 020c 8DF80730 		strb	r3, [sp, #7]
-1157:Lib/soes/src/esc.c ****       }
- 3533              		.loc 1 1157 10 is_stmt 1 view .LVU936
- 3534 0210 BCE7     		b	.L264
- 3535              	.L281:
-1161:Lib/soes/src/esc.c ****          an = ESCinit;
- 3536              		.loc 1 1161 10 view .LVU937
- 3537 0212 FFF7FEFF 		bl	ESC_stopmbx
- 3538              	.LVL248:
-1162:Lib/soes/src/esc.c ****          break;
- 3539              		.loc 1 1162 10 view .LVU938
-1162:Lib/soes/src/esc.c ****          break;
- 3540              		.loc 1 1162 13 is_stmt 0 view .LVU939
- 3541 0216 0123     		movs	r3, #1
- 3542 0218 8DF80730 		strb	r3, [sp, #7]
-1163:Lib/soes/src/esc.c ****       }
- 3543              		.loc 1 1163 10 is_stmt 1 view .LVU940
- 3544 021c B6E7     		b	.L264
- 3545              	.L280:
-1167:Lib/soes/src/esc.c ****          an = ESCinit;
- 3546              		.loc 1 1167 10 view .LVU941
- 3547 021e FFF7FEFF 		bl	ESC_stopmbx
- 3548              	.LVL249:
-1168:Lib/soes/src/esc.c ****          break;
- 3549              		.loc 1 1168 10 view .LVU942
-1168:Lib/soes/src/esc.c ****          break;
- 3550              		.loc 1 1168 13 is_stmt 0 view .LVU943
- 3551 0222 0123     		movs	r3, #1
- 3552 0224 8DF80730 		strb	r3, [sp, #7]
-1169:Lib/soes/src/esc.c ****       }
- 3553              		.loc 1 1169 10 is_stmt 1 view .LVU944
- 3554 0228 B0E7     		b	.L264
- 3555              	.L267:
-1176:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3556              		.loc 1 1176 10 view .LVU945
-1176:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3557              		.loc 1 1176 13 is_stmt 0 view .LVU946
- 3558 022a 1223     		movs	r3, #18
- 3559 022c 8DF80730 		strb	r3, [sp, #7]
-ARM GAS  /tmp/cc3f6pAD.s 			page 100
+1153:Lib/soes/src/esc.c ****          an = ESCinit;
+ 3517              		.loc 1 1153 10 view .LVU930
+ 3518 01fa FFF7FEFF 		bl	ESC_stopmbx
+ 3519              	.LVL245:
+1154:Lib/soes/src/esc.c ****          break;
+ 3520              		.loc 1 1154 10 view .LVU931
+1154:Lib/soes/src/esc.c ****          break;
+ 3521              		.loc 1 1154 13 is_stmt 0 view .LVU932
+ 3522 01fe 0123     		movs	r3, #1
+ 3523 0200 8DF80730 		strb	r3, [sp, #7]
+1155:Lib/soes/src/esc.c ****       }
+ 3524              		.loc 1 1155 10 is_stmt 1 view .LVU933
+ 3525 0204 C4E7     		b	.L264
+ 3526              	.L279:
+1159:Lib/soes/src/esc.c ****          ESC_stopmbx ();
+ 3527              		.loc 1 1159 10 view .LVU934
+ 3528 0206 FFF7FEFF 		bl	ESC_stopinput
+ 3529              	.LVL246:
+1160:Lib/soes/src/esc.c ****          an = ESCinit;
+ 3530              		.loc 1 1160 10 view .LVU935
+ 3531 020a FFF7FEFF 		bl	ESC_stopmbx
+ 3532              	.LVL247:
+1161:Lib/soes/src/esc.c ****          break;
+ 3533              		.loc 1 1161 10 view .LVU936
+1161:Lib/soes/src/esc.c ****          break;
+ 3534              		.loc 1 1161 13 is_stmt 0 view .LVU937
+ 3535 020e 0123     		movs	r3, #1
+ 3536 0210 8DF80730 		strb	r3, [sp, #7]
+1162:Lib/soes/src/esc.c ****       }
+ 3537              		.loc 1 1162 10 is_stmt 1 view .LVU938
+ 3538 0214 BCE7     		b	.L264
+ 3539              	.L281:
+1166:Lib/soes/src/esc.c ****          an = ESCinit;
+ 3540              		.loc 1 1166 10 view .LVU939
+ 3541 0216 FFF7FEFF 		bl	ESC_stopmbx
+ 3542              	.LVL248:
+1167:Lib/soes/src/esc.c ****          break;
+ 3543              		.loc 1 1167 10 view .LVU940
+1167:Lib/soes/src/esc.c ****          break;
+ 3544              		.loc 1 1167 13 is_stmt 0 view .LVU941
+ 3545 021a 0123     		movs	r3, #1
+ 3546 021c 8DF80730 		strb	r3, [sp, #7]
+1168:Lib/soes/src/esc.c ****       }
+ 3547              		.loc 1 1168 10 is_stmt 1 view .LVU942
+ 3548 0220 B6E7     		b	.L264
+ 3549              	.L280:
+1172:Lib/soes/src/esc.c ****          an = ESCinit;
+ 3550              		.loc 1 1172 10 view .LVU943
+ 3551 0222 FFF7FEFF 		bl	ESC_stopmbx
+ 3552              	.LVL249:
+1173:Lib/soes/src/esc.c ****          break;
+ 3553              		.loc 1 1173 10 view .LVU944
+1173:Lib/soes/src/esc.c ****          break;
+ 3554              		.loc 1 1173 13 is_stmt 0 view .LVU945
+ 3555 0226 0123     		movs	r3, #1
+ 3556 0228 8DF80730 		strb	r3, [sp, #7]
+1174:Lib/soes/src/esc.c ****       }
+ARM GAS  /tmp/ccrRYh01.s 			page 100
 
 
-1177:Lib/soes/src/esc.c ****          break;
- 3560              		.loc 1 1177 10 is_stmt 1 view .LVU947
- 3561 0230 1120     		movs	r0, #17
- 3562 0232 FFF7FEFF 		bl	ESC_ALerror
- 3563              	.LVL250:
-1178:Lib/soes/src/esc.c ****       }
- 3564              		.loc 1 1178 10 view .LVU948
- 3565 0236 A9E7     		b	.L264
- 3566              	.L271:
-1183:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
- 3567              		.loc 1 1183 10 view .LVU949
-1183:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
- 3568              		.loc 1 1183 31 is_stmt 0 view .LVU950
- 3569 0238 194D     		ldr	r5, .L303+8
- 3570 023a 0223     		movs	r3, #2
- 3571 023c 194A     		ldr	r2, .L303+12
- 3572 023e 2946     		mov	r1, r5
- 3573 0240 41F61240 		movw	r0, #7186
- 3574 0244 FFF7FEFF 		bl	sizeOfPDO
- 3575              	.LVL251:
-1183:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
- 3576              		.loc 1 1183 29 view .LVU951
- 3577 0248 25F8340C 		strh	r0, [r5, #-52]	@ movhi
- 3578 024c AC3D     		subs	r5, r5, #172
-1185:Lib/soes/src/esc.c ****          {
- 3579              		.loc 1 1185 10 is_stmt 1 view .LVU952
-1185:Lib/soes/src/esc.c ****          {
- 3580              		.loc 1 1185 20 is_stmt 0 view .LVU953
- 3581 024e D5F8AC30 		ldr	r3, [r5, #172]
-1185:Lib/soes/src/esc.c ****          {
- 3582              		.loc 1 1185 13 view .LVU954
- 3583 0252 002B     		cmp	r3, #0
- 3584 0254 19DB     		blt	.L298
-1192:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
- 3585              		.loc 1 1192 10 is_stmt 1 view .LVU955
-1192:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
- 3586              		.loc 1 1192 31 is_stmt 0 view .LVU956
- 3587 0256 144D     		ldr	r5, .L303+16
- 3588 0258 0223     		movs	r3, #2
- 3589 025a 144A     		ldr	r2, .L303+20
- 3590 025c 2946     		mov	r1, r5
- 3591 025e 41F61340 		movw	r0, #7187
- 3592 0262 FFF7FEFF 		bl	sizeOfPDO
- 3593              	.LVL252:
-1192:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
- 3594              		.loc 1 1192 29 view .LVU957
- 3595 0266 25F8360C 		strh	r0, [r5, #-54]	@ movhi
- 3596 026a B03D     		subs	r5, r5, #176
-1194:Lib/soes/src/esc.c ****          {
- 3597              		.loc 1 1194 10 is_stmt 1 view .LVU958
-1194:Lib/soes/src/esc.c ****          {
- 3598              		.loc 1 1194 20 is_stmt 0 view .LVU959
- 3599 026c D5F8B030 		ldr	r3, [r5, #176]
-1194:Lib/soes/src/esc.c ****          {
- 3600              		.loc 1 1194 13 view .LVU960
- 3601 0270 002B     		cmp	r3, #0
- 3602 0272 1DDB     		blt	.L299
-ARM GAS  /tmp/cc3f6pAD.s 			page 101
+ 3557              		.loc 1 1174 10 is_stmt 1 view .LVU946
+ 3558 022c B0E7     		b	.L264
+ 3559              	.L267:
+1181:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3560              		.loc 1 1181 10 view .LVU947
+1181:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3561              		.loc 1 1181 13 is_stmt 0 view .LVU948
+ 3562 022e 1223     		movs	r3, #18
+ 3563 0230 8DF80730 		strb	r3, [sp, #7]
+1182:Lib/soes/src/esc.c ****          break;
+ 3564              		.loc 1 1182 10 is_stmt 1 view .LVU949
+ 3565 0234 1120     		movs	r0, #17
+ 3566 0236 FFF7FEFF 		bl	ESC_ALerror
+ 3567              	.LVL250:
+1183:Lib/soes/src/esc.c ****       }
+ 3568              		.loc 1 1183 10 view .LVU950
+ 3569 023a A9E7     		b	.L264
+ 3570              	.L271:
+1188:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
+ 3571              		.loc 1 1188 10 view .LVU951
+1188:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
+ 3572              		.loc 1 1188 31 is_stmt 0 view .LVU952
+ 3573 023c 174D     		ldr	r5, .L303+12
+ 3574 023e 0223     		movs	r3, #2
+ 3575 0240 174A     		ldr	r2, .L303+16
+ 3576 0242 2946     		mov	r1, r5
+ 3577 0244 41F61240 		movw	r0, #7186
+ 3578 0248 FFF7FEFF 		bl	sizeOfPDO
+ 3579              	.LVL251:
+1188:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
+ 3580              		.loc 1 1188 29 view .LVU953
+ 3581 024c 25F8340C 		strh	r0, [r5, #-52]	@ movhi
+ 3582 0250 AC3D     		subs	r5, r5, #172
+1190:Lib/soes/src/esc.c ****          {
+ 3583              		.loc 1 1190 10 is_stmt 1 view .LVU954
+1190:Lib/soes/src/esc.c ****          {
+ 3584              		.loc 1 1190 20 is_stmt 0 view .LVU955
+ 3585 0252 D5F8AC30 		ldr	r3, [r5, #172]
+1190:Lib/soes/src/esc.c ****          {
+ 3586              		.loc 1 1190 13 view .LVU956
+ 3587 0256 002B     		cmp	r3, #0
+ 3588 0258 28DB     		blt	.L298
+1197:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
+ 3589              		.loc 1 1197 10 is_stmt 1 view .LVU957
+1197:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
+ 3590              		.loc 1 1197 31 is_stmt 0 view .LVU958
+ 3591 025a 124D     		ldr	r5, .L303+20
+ 3592 025c 0223     		movs	r3, #2
+ 3593 025e 124A     		ldr	r2, .L303+24
+ 3594 0260 2946     		mov	r1, r5
+ 3595 0262 41F61340 		movw	r0, #7187
+ 3596 0266 FFF7FEFF 		bl	sizeOfPDO
+ 3597              	.LVL252:
+1197:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
+ 3598              		.loc 1 1197 29 view .LVU959
+ 3599 026a 25F8360C 		strh	r0, [r5, #-54]	@ movhi
+ 3600 026e B03D     		subs	r5, r5, #176
+ARM GAS  /tmp/ccrRYh01.s 			page 101
 
 
-1201:Lib/soes/src/esc.c ****          if (an == ac)
- 3603              		.loc 1 1201 10 is_stmt 1 view .LVU961
-1201:Lib/soes/src/esc.c ****          if (an == ac)
- 3604              		.loc 1 1201 15 is_stmt 0 view .LVU962
- 3605 0274 2046     		mov	r0, r4
- 3606 0276 FFF7FEFF 		bl	ESC_startinput
- 3607              	.LVL253:
-1201:Lib/soes/src/esc.c ****          if (an == ac)
- 3608              		.loc 1 1201 13 view .LVU963
- 3609 027a 8DF80700 		strb	r0, [sp, #7]
-1202:Lib/soes/src/esc.c ****          {
- 3610              		.loc 1 1202 10 is_stmt 1 view .LVU964
-1202:Lib/soes/src/esc.c ****          {
- 3611              		.loc 1 1202 13 is_stmt 0 view .LVU965
- 3612 027e A042     		cmp	r0, r4
- 3613 0280 84D1     		bne	.L264
-1204:Lib/soes/src/esc.c ****          }
- 3614              		.loc 1 1204 13 is_stmt 1 view .LVU966
- 3615 0282 0220     		movs	r0, #2
- 3616 0284 FFF7FEFF 		bl	ESC_SMenable
- 3617              	.LVL254:
- 3618 0288 80E7     		b	.L264
- 3619              	.L298:
-1187:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDOUTPUTSM);
- 3620              		.loc 1 1187 13 view .LVU967
-1187:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDOUTPUTSM);
- 3621              		.loc 1 1187 16 is_stmt 0 view .LVU968
- 3622 028a 1223     		movs	r3, #18
- 3623 028c 8DF80730 		strb	r3, [sp, #7]
-1188:Lib/soes/src/esc.c ****             break;
- 3624              		.loc 1 1188 13 is_stmt 1 view .LVU969
- 3625 0290 1D20     		movs	r0, #29
- 3626 0292 FFF7FEFF 		bl	ESC_ALerror
- 3627              	.LVL255:
-1189:Lib/soes/src/esc.c ****          }
- 3628              		.loc 1 1189 13 view .LVU970
- 3629 0296 79E7     		b	.L264
- 3630              	.L304:
- 3631              		.align	2
- 3632              	.L303:
- 3633 0298 00000000 		.word	ESCvar
- 3634 029c 82000000 		.word	ESCvar+130
- 3635 02a0 AC000000 		.word	ESCvar+172
- 3636 02a4 00000000 		.word	SMmap2
- 3637 02a8 B0000000 		.word	ESCvar+176
- 3638 02ac 00000000 		.word	SMmap3
- 3639              	.L299:
-1196:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDINPUTSM);
- 3640              		.loc 1 1196 13 view .LVU971
-1196:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDINPUTSM);
- 3641              		.loc 1 1196 16 is_stmt 0 view .LVU972
- 3642 02b0 1223     		movs	r3, #18
- 3643 02b2 8DF80730 		strb	r3, [sp, #7]
-1197:Lib/soes/src/esc.c ****             break;
- 3644              		.loc 1 1197 13 is_stmt 1 view .LVU973
- 3645 02b6 1E20     		movs	r0, #30
- 3646 02b8 FFF7FEFF 		bl	ESC_ALerror
-ARM GAS  /tmp/cc3f6pAD.s 			page 102
+1199:Lib/soes/src/esc.c ****          {
+ 3601              		.loc 1 1199 10 is_stmt 1 view .LVU960
+1199:Lib/soes/src/esc.c ****          {
+ 3602              		.loc 1 1199 20 is_stmt 0 view .LVU961
+ 3603 0270 D5F8B030 		ldr	r3, [r5, #176]
+1199:Lib/soes/src/esc.c ****          {
+ 3604              		.loc 1 1199 13 view .LVU962
+ 3605 0274 002B     		cmp	r3, #0
+ 3606 0276 20DB     		blt	.L299
+1206:Lib/soes/src/esc.c ****          if (an == ac)
+ 3607              		.loc 1 1206 10 is_stmt 1 view .LVU963
+1206:Lib/soes/src/esc.c ****          if (an == ac)
+ 3608              		.loc 1 1206 15 is_stmt 0 view .LVU964
+ 3609 0278 2046     		mov	r0, r4
+ 3610 027a FFF7FEFF 		bl	ESC_startinput
+ 3611              	.LVL253:
+1206:Lib/soes/src/esc.c ****          if (an == ac)
+ 3612              		.loc 1 1206 13 view .LVU965
+ 3613 027e 8DF80700 		strb	r0, [sp, #7]
+1207:Lib/soes/src/esc.c ****          {
+ 3614              		.loc 1 1207 10 is_stmt 1 view .LVU966
+1207:Lib/soes/src/esc.c ****          {
+ 3615              		.loc 1 1207 13 is_stmt 0 view .LVU967
+ 3616 0282 A042     		cmp	r0, r4
+ 3617 0284 84D1     		bne	.L264
+1209:Lib/soes/src/esc.c ****          }
+ 3618              		.loc 1 1209 13 is_stmt 1 view .LVU968
+ 3619 0286 0220     		movs	r0, #2
+ 3620 0288 FFF7FEFF 		bl	ESC_SMenable
+ 3621              	.LVL254:
+ 3622 028c 80E7     		b	.L264
+ 3623              	.L304:
+ 3624 028e 00BF     		.align	2
+ 3625              	.L303:
+ 3626 0290 00000000 		.word	ESCvar
+ 3627 0294 82000000 		.word	ESCvar+130
+ 3628 0298 00000000 		.word	.LANCHOR0
+ 3629 029c AC000000 		.word	ESCvar+172
+ 3630 02a0 00000000 		.word	SMmap2
+ 3631 02a4 B0000000 		.word	ESCvar+176
+ 3632 02a8 00000000 		.word	SMmap3
+ 3633              	.L298:
+1192:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDOUTPUTSM);
+ 3634              		.loc 1 1192 13 view .LVU969
+1192:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDOUTPUTSM);
+ 3635              		.loc 1 1192 16 is_stmt 0 view .LVU970
+ 3636 02ac 1223     		movs	r3, #18
+ 3637 02ae 8DF80730 		strb	r3, [sp, #7]
+1193:Lib/soes/src/esc.c ****             break;
+ 3638              		.loc 1 1193 13 is_stmt 1 view .LVU971
+ 3639 02b2 1D20     		movs	r0, #29
+ 3640 02b4 FFF7FEFF 		bl	ESC_ALerror
+ 3641              	.LVL255:
+1194:Lib/soes/src/esc.c ****          }
+ 3642              		.loc 1 1194 13 view .LVU972
+ 3643 02b8 6AE7     		b	.L264
+ 3644              	.L299:
+ARM GAS  /tmp/ccrRYh01.s 			page 102
 
 
- 3647              	.LVL256:
-1198:Lib/soes/src/esc.c ****          }
- 3648              		.loc 1 1198 13 view .LVU974
- 3649 02bc 66E7     		b	.L264
- 3650              	.L268:
-1210:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3651              		.loc 1 1210 10 view .LVU975
-1210:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3652              		.loc 1 1210 13 is_stmt 0 view .LVU976
- 3653 02be 1223     		movs	r3, #18
- 3654 02c0 8DF80730 		strb	r3, [sp, #7]
-1211:Lib/soes/src/esc.c ****          break;
- 3655              		.loc 1 1211 10 is_stmt 1 view .LVU977
- 3656 02c4 1120     		movs	r0, #17
- 3657 02c6 FFF7FEFF 		bl	ESC_ALerror
- 3658              	.LVL257:
-1212:Lib/soes/src/esc.c ****       }
- 3659              		.loc 1 1212 10 view .LVU978
- 3660 02ca 5FE7     		b	.L264
- 3661              	.L275:
-1216:Lib/soes/src/esc.c ****          ESC_stopinput ();
- 3662              		.loc 1 1216 10 view .LVU979
- 3663 02cc FFF7FEFF 		bl	ESC_stopoutput
- 3664              	.LVL258:
-1217:Lib/soes/src/esc.c ****          an = ESCpreop;
- 3665              		.loc 1 1217 10 view .LVU980
- 3666 02d0 FFF7FEFF 		bl	ESC_stopinput
- 3667              	.LVL259:
-1218:Lib/soes/src/esc.c ****          break;
- 3668              		.loc 1 1218 10 view .LVU981
-1218:Lib/soes/src/esc.c ****          break;
- 3669              		.loc 1 1218 13 is_stmt 0 view .LVU982
- 3670 02d4 0223     		movs	r3, #2
- 3671 02d6 8DF80730 		strb	r3, [sp, #7]
-1219:Lib/soes/src/esc.c ****       }
- 3672              		.loc 1 1219 10 is_stmt 1 view .LVU983
- 3673 02da 57E7     		b	.L264
- 3674              	.L276:
-1223:Lib/soes/src/esc.c ****          an = ESCpreop;
- 3675              		.loc 1 1223 10 view .LVU984
- 3676 02dc FFF7FEFF 		bl	ESC_stopinput
- 3677              	.LVL260:
-1224:Lib/soes/src/esc.c ****          break;
- 3678              		.loc 1 1224 10 view .LVU985
-1224:Lib/soes/src/esc.c ****          break;
- 3679              		.loc 1 1224 13 is_stmt 0 view .LVU986
- 3680 02e0 0223     		movs	r3, #2
- 3681 02e2 8DF80730 		strb	r3, [sp, #7]
-1225:Lib/soes/src/esc.c ****       }
- 3682              		.loc 1 1225 10 is_stmt 1 view .LVU987
- 3683 02e6 51E7     		b	.L264
- 3684              	.L273:
-1229:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3685              		.loc 1 1229 10 view .LVU988
-1229:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3686              		.loc 1 1229 13 is_stmt 0 view .LVU989
- 3687 02e8 1423     		movs	r3, #20
-ARM GAS  /tmp/cc3f6pAD.s 			page 103
+1201:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDINPUTSM);
+ 3645              		.loc 1 1201 13 view .LVU973
+1201:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDINPUTSM);
+ 3646              		.loc 1 1201 16 is_stmt 0 view .LVU974
+ 3647 02ba 1223     		movs	r3, #18
+ 3648 02bc 8DF80730 		strb	r3, [sp, #7]
+1202:Lib/soes/src/esc.c ****             break;
+ 3649              		.loc 1 1202 13 is_stmt 1 view .LVU975
+ 3650 02c0 1E20     		movs	r0, #30
+ 3651 02c2 FFF7FEFF 		bl	ESC_ALerror
+ 3652              	.LVL256:
+1203:Lib/soes/src/esc.c ****          }
+ 3653              		.loc 1 1203 13 view .LVU976
+ 3654 02c6 63E7     		b	.L264
+ 3655              	.L268:
+1215:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3656              		.loc 1 1215 10 view .LVU977
+1215:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3657              		.loc 1 1215 13 is_stmt 0 view .LVU978
+ 3658 02c8 1223     		movs	r3, #18
+ 3659 02ca 8DF80730 		strb	r3, [sp, #7]
+1216:Lib/soes/src/esc.c ****          break;
+ 3660              		.loc 1 1216 10 is_stmt 1 view .LVU979
+ 3661 02ce 1120     		movs	r0, #17
+ 3662 02d0 FFF7FEFF 		bl	ESC_ALerror
+ 3663              	.LVL257:
+1217:Lib/soes/src/esc.c ****       }
+ 3664              		.loc 1 1217 10 view .LVU980
+ 3665 02d4 5CE7     		b	.L264
+ 3666              	.L275:
+1221:Lib/soes/src/esc.c ****          ESC_stopinput ();
+ 3667              		.loc 1 1221 10 view .LVU981
+ 3668 02d6 FFF7FEFF 		bl	ESC_stopoutput
+ 3669              	.LVL258:
+1222:Lib/soes/src/esc.c ****          an = ESCpreop;
+ 3670              		.loc 1 1222 10 view .LVU982
+ 3671 02da FFF7FEFF 		bl	ESC_stopinput
+ 3672              	.LVL259:
+1223:Lib/soes/src/esc.c ****          break;
+ 3673              		.loc 1 1223 10 view .LVU983
+1223:Lib/soes/src/esc.c ****          break;
+ 3674              		.loc 1 1223 13 is_stmt 0 view .LVU984
+ 3675 02de 0223     		movs	r3, #2
+ 3676 02e0 8DF80730 		strb	r3, [sp, #7]
+1224:Lib/soes/src/esc.c ****       }
+ 3677              		.loc 1 1224 10 is_stmt 1 view .LVU985
+ 3678 02e4 54E7     		b	.L264
+ 3679              	.L276:
+1228:Lib/soes/src/esc.c ****          an = ESCpreop;
+ 3680              		.loc 1 1228 10 view .LVU986
+ 3681 02e6 FFF7FEFF 		bl	ESC_stopinput
+ 3682              	.LVL260:
+1229:Lib/soes/src/esc.c ****          break;
+ 3683              		.loc 1 1229 10 view .LVU987
+1229:Lib/soes/src/esc.c ****          break;
+ 3684              		.loc 1 1229 13 is_stmt 0 view .LVU988
+ 3685 02ea 0223     		movs	r3, #2
+ARM GAS  /tmp/ccrRYh01.s 			page 103
 
 
- 3688 02ea 8DF80730 		strb	r3, [sp, #7]
-1230:Lib/soes/src/esc.c ****          break;
- 3689              		.loc 1 1230 10 is_stmt 1 view .LVU990
- 3690 02ee 1120     		movs	r0, #17
- 3691 02f0 FFF7FEFF 		bl	ESC_ALerror
- 3692              	.LVL261:
-1231:Lib/soes/src/esc.c ****       }
- 3693              		.loc 1 1231 10 view .LVU991
- 3694 02f4 4AE7     		b	.L264
- 3695              	.L266:
+ 3686 02ec 8DF80730 		strb	r3, [sp, #7]
+1230:Lib/soes/src/esc.c ****       }
+ 3687              		.loc 1 1230 10 is_stmt 1 view .LVU989
+ 3688 02f0 4EE7     		b	.L264
+ 3689              	.L273:
+1234:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3690              		.loc 1 1234 10 view .LVU990
+1234:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3691              		.loc 1 1234 13 is_stmt 0 view .LVU991
+ 3692 02f2 1423     		movs	r3, #20
+ 3693 02f4 8DF80730 		strb	r3, [sp, #7]
 1235:Lib/soes/src/esc.c ****          break;
- 3696              		.loc 1 1235 10 view .LVU992
-1235:Lib/soes/src/esc.c ****          break;
- 3697              		.loc 1 1235 15 is_stmt 0 view .LVU993
- 3698 02f6 2046     		mov	r0, r4
- 3699 02f8 FFF7FEFF 		bl	ESC_startoutput
- 3700              	.LVL262:
-1235:Lib/soes/src/esc.c ****          break;
- 3701              		.loc 1 1235 13 view .LVU994
- 3702 02fc 8DF80700 		strb	r0, [sp, #7]
+ 3694              		.loc 1 1235 10 is_stmt 1 view .LVU992
+ 3695 02f8 1120     		movs	r0, #17
+ 3696 02fa FFF7FEFF 		bl	ESC_ALerror
+ 3697              	.LVL261:
 1236:Lib/soes/src/esc.c ****       }
- 3703              		.loc 1 1236 10 is_stmt 1 view .LVU995
- 3704 0300 44E7     		b	.L264
- 3705              	.L272:
-1240:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3706              		.loc 1 1240 10 view .LVU996
-1240:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
- 3707              		.loc 1 1240 13 is_stmt 0 view .LVU997
- 3708 0302 1423     		movs	r3, #20
- 3709 0304 8DF80730 		strb	r3, [sp, #7]
-1241:Lib/soes/src/esc.c ****          ESC_stopoutput ();
- 3710              		.loc 1 1241 10 is_stmt 1 view .LVU998
- 3711 0308 1120     		movs	r0, #17
- 3712 030a FFF7FEFF 		bl	ESC_ALerror
- 3713              	.LVL263:
-1242:Lib/soes/src/esc.c ****          /* If no outputs present, we need to flag error using SM3 */
- 3714              		.loc 1 1242 10 view .LVU999
- 3715 030e FFF7FEFF 		bl	ESC_stopoutput
- 3716              	.LVL264:
-1244:Lib/soes/src/esc.c ****          {
- 3717              		.loc 1 1244 10 view .LVU1000
-1244:Lib/soes/src/esc.c ****          {
- 3718              		.loc 1 1244 20 is_stmt 0 view .LVU1001
- 3719 0312 244B     		ldr	r3, .L305
- 3720 0314 B3F87830 		ldrh	r3, [r3, #120]
-1244:Lib/soes/src/esc.c ****          {
- 3721              		.loc 1 1244 13 view .LVU1002
- 3722 0318 002B     		cmp	r3, #0
- 3723 031a 7FF437AF 		bne	.L264
-1244:Lib/soes/src/esc.c ****          {
- 3724              		.loc 1 1244 47 discriminator 1 view .LVU1003
- 3725 031e 214B     		ldr	r3, .L305
- 3726 0320 B3F87A30 		ldrh	r3, [r3, #122]
-1244:Lib/soes/src/esc.c ****          {
- 3727              		.loc 1 1244 38 discriminator 1 view .LVU1004
- 3728 0324 002B     		cmp	r3, #0
- 3729 0326 3FF431AF 		beq	.L264
-ARM GAS  /tmp/cc3f6pAD.s 			page 104
+ 3698              		.loc 1 1236 10 view .LVU993
+ 3699 02fe 47E7     		b	.L264
+ 3700              	.L266:
+1240:Lib/soes/src/esc.c ****          break;
+ 3701              		.loc 1 1240 10 view .LVU994
+1240:Lib/soes/src/esc.c ****          break;
+ 3702              		.loc 1 1240 15 is_stmt 0 view .LVU995
+ 3703 0300 2046     		mov	r0, r4
+ 3704 0302 FFF7FEFF 		bl	ESC_startoutput
+ 3705              	.LVL262:
+1240:Lib/soes/src/esc.c ****          break;
+ 3706              		.loc 1 1240 13 view .LVU996
+ 3707 0306 8DF80700 		strb	r0, [sp, #7]
+1241:Lib/soes/src/esc.c ****       }
+ 3708              		.loc 1 1241 10 is_stmt 1 view .LVU997
+ 3709 030a 41E7     		b	.L264
+ 3710              	.L272:
+1245:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3711              		.loc 1 1245 10 view .LVU998
+1245:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_INVALIDSTATECHANGE);
+ 3712              		.loc 1 1245 13 is_stmt 0 view .LVU999
+ 3713 030c 1423     		movs	r3, #20
+ 3714 030e 8DF80730 		strb	r3, [sp, #7]
+1246:Lib/soes/src/esc.c ****          ESC_stopoutput ();
+ 3715              		.loc 1 1246 10 is_stmt 1 view .LVU1000
+ 3716 0312 1120     		movs	r0, #17
+ 3717 0314 FFF7FEFF 		bl	ESC_ALerror
+ 3718              	.LVL263:
+1247:Lib/soes/src/esc.c ****          /* If no outputs present, we need to flag error using SM3 */
+ 3719              		.loc 1 1247 10 view .LVU1001
+ 3720 0318 FFF7FEFF 		bl	ESC_stopoutput
+ 3721              	.LVL264:
+1249:Lib/soes/src/esc.c ****          {
+ 3722              		.loc 1 1249 10 view .LVU1002
+1249:Lib/soes/src/esc.c ****          {
+ 3723              		.loc 1 1249 20 is_stmt 0 view .LVU1003
+ 3724 031c 244B     		ldr	r3, .L305
+ 3725 031e B3F87830 		ldrh	r3, [r3, #120]
+1249:Lib/soes/src/esc.c ****          {
+ 3726              		.loc 1 1249 13 view .LVU1004
+ARM GAS  /tmp/ccrRYh01.s 			page 104
 
 
-1246:Lib/soes/src/esc.c ****          }
- 3730              		.loc 1 1246 13 is_stmt 1 view .LVU1005
- 3731 032a 0320     		movs	r0, #3
- 3732 032c FFF7FEFF 		bl	ESC_SMdisable
- 3733              	.LVL265:
- 3734 0330 2CE7     		b	.L264
- 3735              	.L270:
-1252:Lib/soes/src/esc.c ****          ESC_stopoutput ();
- 3736              		.loc 1 1252 10 view .LVU1006
-1252:Lib/soes/src/esc.c ****          ESC_stopoutput ();
- 3737              		.loc 1 1252 13 is_stmt 0 view .LVU1007
- 3738 0332 0423     		movs	r3, #4
- 3739 0334 8DF80730 		strb	r3, [sp, #7]
-1253:Lib/soes/src/esc.c ****          break;
- 3740              		.loc 1 1253 10 is_stmt 1 view .LVU1008
- 3741 0338 FFF7FEFF 		bl	ESC_stopoutput
- 3742              	.LVL266:
-1254:Lib/soes/src/esc.c ****       }
- 3743              		.loc 1 1254 10 view .LVU1009
- 3744 033c 26E7     		b	.L264
- 3745              	.L263:
-1258:Lib/soes/src/esc.c ****          {
- 3746              		.loc 1 1258 10 view .LVU1010
-1258:Lib/soes/src/esc.c ****          {
- 3747              		.loc 1 1258 17 is_stmt 0 view .LVU1011
- 3748 033e 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
-1258:Lib/soes/src/esc.c ****          {
- 3749              		.loc 1 1258 13 view .LVU1012
- 3750 0342 082B     		cmp	r3, #8
- 3751 0344 0DD0     		beq	.L300
- 3752              	.L284:
-1268:Lib/soes/src/esc.c ****          {
- 3753              		.loc 1 1268 10 is_stmt 1 view .LVU1013
-1268:Lib/soes/src/esc.c ****          {
- 3754              		.loc 1 1268 17 is_stmt 0 view .LVU1014
- 3755 0346 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
-1268:Lib/soes/src/esc.c ****          {
- 3756              		.loc 1 1268 13 view .LVU1015
- 3757 034a 042B     		cmp	r3, #4
- 3758 034c 1BD0     		beq	.L301
- 3759              	.L286:
-1272:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_UNKNOWNSTATE);
- 3760              		.loc 1 1272 10 is_stmt 1 view .LVU1016
-1272:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_UNKNOWNSTATE);
- 3761              		.loc 1 1272 13 is_stmt 0 view .LVU1017
- 3762 034e 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
- 3763 0352 43F01003 		orr	r3, r3, #16
- 3764 0356 8DF80730 		strb	r3, [sp, #7]
-1273:Lib/soes/src/esc.c ****          break;
- 3765              		.loc 1 1273 10 is_stmt 1 view .LVU1018
- 3766 035a 1220     		movs	r0, #18
- 3767 035c FFF7FEFF 		bl	ESC_ALerror
- 3768              	.LVL267:
-1274:Lib/soes/src/esc.c ****       }
- 3769              		.loc 1 1274 10 view .LVU1019
- 3770 0360 14E7     		b	.L264
- 3771              	.L300:
-ARM GAS  /tmp/cc3f6pAD.s 			page 105
+ 3727 0322 002B     		cmp	r3, #0
+ 3728 0324 7FF434AF 		bne	.L264
+1249:Lib/soes/src/esc.c ****          {
+ 3729              		.loc 1 1249 47 discriminator 1 view .LVU1005
+ 3730 0328 214B     		ldr	r3, .L305
+ 3731 032a B3F87A30 		ldrh	r3, [r3, #122]
+1249:Lib/soes/src/esc.c ****          {
+ 3732              		.loc 1 1249 38 discriminator 1 view .LVU1006
+ 3733 032e 002B     		cmp	r3, #0
+ 3734 0330 3FF42EAF 		beq	.L264
+1251:Lib/soes/src/esc.c ****          }
+ 3735              		.loc 1 1251 13 is_stmt 1 view .LVU1007
+ 3736 0334 0320     		movs	r0, #3
+ 3737 0336 FFF7FEFF 		bl	ESC_SMdisable
+ 3738              	.LVL265:
+ 3739 033a 29E7     		b	.L264
+ 3740              	.L270:
+1257:Lib/soes/src/esc.c ****          ESC_stopoutput ();
+ 3741              		.loc 1 1257 10 view .LVU1008
+1257:Lib/soes/src/esc.c ****          ESC_stopoutput ();
+ 3742              		.loc 1 1257 13 is_stmt 0 view .LVU1009
+ 3743 033c 0423     		movs	r3, #4
+ 3744 033e 8DF80730 		strb	r3, [sp, #7]
+1258:Lib/soes/src/esc.c ****          break;
+ 3745              		.loc 1 1258 10 is_stmt 1 view .LVU1010
+ 3746 0342 FFF7FEFF 		bl	ESC_stopoutput
+ 3747              	.LVL266:
+1259:Lib/soes/src/esc.c ****       }
+ 3748              		.loc 1 1259 10 view .LVU1011
+ 3749 0346 23E7     		b	.L264
+ 3750              	.L263:
+1263:Lib/soes/src/esc.c ****          {
+ 3751              		.loc 1 1263 10 view .LVU1012
+1263:Lib/soes/src/esc.c ****          {
+ 3752              		.loc 1 1263 17 is_stmt 0 view .LVU1013
+ 3753 0348 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+1263:Lib/soes/src/esc.c ****          {
+ 3754              		.loc 1 1263 13 view .LVU1014
+ 3755 034c 082B     		cmp	r3, #8
+ 3756 034e 0DD0     		beq	.L300
+ 3757              	.L284:
+1273:Lib/soes/src/esc.c ****          {
+ 3758              		.loc 1 1273 10 is_stmt 1 view .LVU1015
+1273:Lib/soes/src/esc.c ****          {
+ 3759              		.loc 1 1273 17 is_stmt 0 view .LVU1016
+ 3760 0350 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+1273:Lib/soes/src/esc.c ****          {
+ 3761              		.loc 1 1273 13 view .LVU1017
+ 3762 0354 042B     		cmp	r3, #4
+ 3763 0356 1BD0     		beq	.L301
+ 3764              	.L286:
+1277:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_UNKNOWNSTATE);
+ 3765              		.loc 1 1277 10 is_stmt 1 view .LVU1018
+1277:Lib/soes/src/esc.c ****          ESC_ALerror (ALERR_UNKNOWNSTATE);
+ 3766              		.loc 1 1277 13 is_stmt 0 view .LVU1019
+ 3767 0358 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 3768 035c 43F01003 		orr	r3, r3, #16
+ARM GAS  /tmp/ccrRYh01.s 			page 105
 
 
-1260:Lib/soes/src/esc.c ****             /* If no outputs present, we need to flag error using SM3 */
- 3772              		.loc 1 1260 13 view .LVU1020
- 3773 0362 FFF7FEFF 		bl	ESC_stopoutput
- 3774              	.LVL268:
-1262:Lib/soes/src/esc.c ****             {
- 3775              		.loc 1 1262 13 view .LVU1021
-1262:Lib/soes/src/esc.c ****             {
- 3776              		.loc 1 1262 23 is_stmt 0 view .LVU1022
- 3777 0366 0F4B     		ldr	r3, .L305
- 3778 0368 B3F87830 		ldrh	r3, [r3, #120]
-1262:Lib/soes/src/esc.c ****             {
- 3779              		.loc 1 1262 16 view .LVU1023
- 3780 036c 1BB9     		cbnz	r3, .L285
-1262:Lib/soes/src/esc.c ****             {
- 3781              		.loc 1 1262 50 discriminator 1 view .LVU1024
- 3782 036e 0D4B     		ldr	r3, .L305
- 3783 0370 B3F87A30 		ldrh	r3, [r3, #122]
-1262:Lib/soes/src/esc.c ****             {
- 3784              		.loc 1 1262 41 discriminator 1 view .LVU1025
- 3785 0374 1BB9     		cbnz	r3, .L302
- 3786              	.L285:
-1266:Lib/soes/src/esc.c ****          }
- 3787              		.loc 1 1266 13 is_stmt 1 view .LVU1026
-1266:Lib/soes/src/esc.c ****          }
- 3788              		.loc 1 1266 16 is_stmt 0 view .LVU1027
- 3789 0376 0423     		movs	r3, #4
- 3790 0378 8DF80730 		strb	r3, [sp, #7]
- 3791 037c E3E7     		b	.L284
- 3792              	.L302:
-1264:Lib/soes/src/esc.c ****             }
- 3793              		.loc 1 1264 16 is_stmt 1 view .LVU1028
- 3794 037e 0320     		movs	r0, #3
- 3795 0380 FFF7FEFF 		bl	ESC_SMdisable
- 3796              	.LVL269:
- 3797 0384 F7E7     		b	.L285
- 3798              	.L301:
-1270:Lib/soes/src/esc.c ****          }
- 3799              		.loc 1 1270 13 view .LVU1029
- 3800 0386 FFF7FEFF 		bl	ESC_stopinput
- 3801              	.LVL270:
- 3802 038a E0E7     		b	.L286
- 3803              	.L296:
-1287:Lib/soes/src/esc.c ****    }
- 3804              		.loc 1 1287 7 view .LVU1030
- 3805 038c 0020     		movs	r0, #0
- 3806 038e FFF7FEFF 		bl	ESC_ALerror
- 3807              	.LVL271:
- 3808 0392 0EE7     		b	.L288
- 3809              	.L297:
+ 3769 0360 8DF80730 		strb	r3, [sp, #7]
+1278:Lib/soes/src/esc.c ****          break;
+ 3770              		.loc 1 1278 10 is_stmt 1 view .LVU1020
+ 3771 0364 1220     		movs	r0, #18
+ 3772 0366 FFF7FEFF 		bl	ESC_ALerror
+ 3773              	.LVL267:
+1279:Lib/soes/src/esc.c ****       }
+ 3774              		.loc 1 1279 10 view .LVU1021
+ 3775 036a 11E7     		b	.L264
+ 3776              	.L300:
+1265:Lib/soes/src/esc.c ****             /* If no outputs present, we need to flag error using SM3 */
+ 3777              		.loc 1 1265 13 view .LVU1022
+ 3778 036c FFF7FEFF 		bl	ESC_stopoutput
+ 3779              	.LVL268:
+1267:Lib/soes/src/esc.c ****             {
+ 3780              		.loc 1 1267 13 view .LVU1023
+1267:Lib/soes/src/esc.c ****             {
+ 3781              		.loc 1 1267 23 is_stmt 0 view .LVU1024
+ 3782 0370 0F4B     		ldr	r3, .L305
+ 3783 0372 B3F87830 		ldrh	r3, [r3, #120]
+1267:Lib/soes/src/esc.c ****             {
+ 3784              		.loc 1 1267 16 view .LVU1025
+ 3785 0376 1BB9     		cbnz	r3, .L285
+1267:Lib/soes/src/esc.c ****             {
+ 3786              		.loc 1 1267 50 discriminator 1 view .LVU1026
+ 3787 0378 0D4B     		ldr	r3, .L305
+ 3788 037a B3F87A30 		ldrh	r3, [r3, #122]
+1267:Lib/soes/src/esc.c ****             {
+ 3789              		.loc 1 1267 41 discriminator 1 view .LVU1027
+ 3790 037e 1BB9     		cbnz	r3, .L302
+ 3791              	.L285:
+1271:Lib/soes/src/esc.c ****          }
+ 3792              		.loc 1 1271 13 is_stmt 1 view .LVU1028
+1271:Lib/soes/src/esc.c ****          }
+ 3793              		.loc 1 1271 16 is_stmt 0 view .LVU1029
+ 3794 0380 0423     		movs	r3, #4
+ 3795 0382 8DF80730 		strb	r3, [sp, #7]
+ 3796 0386 E3E7     		b	.L284
+ 3797              	.L302:
+1269:Lib/soes/src/esc.c ****             }
+ 3798              		.loc 1 1269 16 is_stmt 1 view .LVU1030
+ 3799 0388 0320     		movs	r0, #3
+ 3800 038a FFF7FEFF 		bl	ESC_SMdisable
+ 3801              	.LVL269:
+ 3802 038e F7E7     		b	.L285
+ 3803              	.L301:
+1275:Lib/soes/src/esc.c ****          }
+ 3804              		.loc 1 1275 13 view .LVU1031
+ 3805 0390 FFF7FEFF 		bl	ESC_stopinput
+ 3806              	.LVL270:
+ 3807 0394 E0E7     		b	.L286
+ 3808              	.L296:
 1292:Lib/soes/src/esc.c ****    }
- 3810              		.loc 1 1292 7 view .LVU1031
-1292:Lib/soes/src/esc.c ****    }
- 3811              		.loc 1 1292 13 is_stmt 0 view .LVU1032
- 3812 0394 FFF7FEFF 		bl	ESC_load_device_id
- 3813              	.LVL272:
-1292:Lib/soes/src/esc.c ****    }
- 3814              		.loc 1 1292 10 view .LVU1033
-ARM GAS  /tmp/cc3f6pAD.s 			page 106
+ 3809              		.loc 1 1292 7 view .LVU1032
+ 3810 0396 0020     		movs	r0, #0
+ 3811 0398 FFF7FEFF 		bl	ESC_ALerror
+ 3812              	.LVL271:
+ARM GAS  /tmp/ccrRYh01.s 			page 106
 
 
- 3815 0398 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
- 3816 039c 1843     		orrs	r0, r0, r3
- 3817 039e 8DF80700 		strb	r0, [sp, #7]
- 3818 03a2 10E7     		b	.L289
- 3819              	.L306:
- 3820              		.align	2
- 3821              	.L305:
- 3822 03a4 00000000 		.word	ESCvar
- 3823              		.cfi_endproc
- 3824              	.LFE38:
- 3826              		.section	.text.ESC_config,"ax",%progbits
- 3827              		.align	1
- 3828              		.global	ESC_config
- 3829              		.syntax unified
- 3830              		.thumb
- 3831              		.thumb_func
- 3833              	ESC_config:
- 3834              	.LVL273:
- 3835              	.LFB39:
-1301:Lib/soes/src/esc.c **** /** Function copying the application configuration variable
-1302:Lib/soes/src/esc.c ****  * data to the stack local variable.
-1303:Lib/soes/src/esc.c ****  *
-1304:Lib/soes/src/esc.c ****  * @param[in] cfg   = Pointer to the Application configuration variable
-1305:Lib/soes/src/esc.c ****  * holding application specific details. Data is copied.
-1306:Lib/soes/src/esc.c ****  */
-1307:Lib/soes/src/esc.c **** void ESC_config (esc_cfg_t * cfg)
-1308:Lib/soes/src/esc.c **** {
- 3836              		.loc 1 1308 1 is_stmt 1 view -0
- 3837              		.cfi_startproc
- 3838              		@ args = 0, pretend = 0, frame = 0
- 3839              		@ frame_needed = 0, uses_anonymous_args = 0
- 3840              		@ link register save eliminated.
- 3841              		.loc 1 1308 1 is_stmt 0 view .LVU1035
- 3842 0000 0246     		mov	r2, r0
-1309:Lib/soes/src/esc.c ****    static sm_cfg_t mb0 = {MBX0_sma, MBX0_sml, MBX0_sme, MBX0_smc, 0};
- 3843              		.loc 1 1309 4 is_stmt 1 view .LVU1036
-1310:Lib/soes/src/esc.c ****    static sm_cfg_t mb1 = {MBX1_sma, MBX1_sml, MBX1_sme, MBX1_smc, 0};
- 3844              		.loc 1 1310 4 view .LVU1037
-1311:Lib/soes/src/esc.c ****    static sm_cfg_t mbboot0 = {MBX0_sma_b, MBX0_sml_b, MBX0_sme_b, MBX0_smc_b, 0};
- 3845              		.loc 1 1311 4 view .LVU1038
-1312:Lib/soes/src/esc.c ****    static sm_cfg_t mbboot1 = {MBX1_sma_b, MBX1_sml_b, MBX1_sme_b, MBX1_smc_b, 0};
- 3846              		.loc 1 1312 4 view .LVU1039
-1313:Lib/soes/src/esc.c **** 
-1314:Lib/soes/src/esc.c ****    /* Configure stack */
-1315:Lib/soes/src/esc.c ****    ESCvar.use_interrupt = cfg->use_interrupt;
- 3847              		.loc 1 1315 4 view .LVU1040
- 3848              		.loc 1 1315 30 is_stmt 0 view .LVU1041
- 3849 0002 4168     		ldr	r1, [r0, #4]
- 3850              		.loc 1 1315 25 view .LVU1042
- 3851 0004 204B     		ldr	r3, .L308
- 3852 0006 1960     		str	r1, [r3]
-1316:Lib/soes/src/esc.c ****    ESCvar.watchdogcnt = cfg->watchdog_cnt;
- 3853              		.loc 1 1316 4 is_stmt 1 view .LVU1043
- 3854              		.loc 1 1316 28 is_stmt 0 view .LVU1044
- 3855 0008 8168     		ldr	r1, [r0, #8]
- 3856              		.loc 1 1316 23 view .LVU1045
- 3857 000a C3F8DC10 		str	r1, [r3, #220]
-ARM GAS  /tmp/cc3f6pAD.s 			page 107
+ 3813 039c 0BE7     		b	.L288
+ 3814              	.L297:
+1297:Lib/soes/src/esc.c ****    }
+ 3815              		.loc 1 1297 7 view .LVU1033
+1297:Lib/soes/src/esc.c ****    }
+ 3816              		.loc 1 1297 13 is_stmt 0 view .LVU1034
+ 3817 039e FFF7FEFF 		bl	ESC_load_device_id
+ 3818              	.LVL272:
+1297:Lib/soes/src/esc.c ****    }
+ 3819              		.loc 1 1297 10 view .LVU1035
+ 3820 03a2 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 3821 03a6 1843     		orrs	r0, r0, r3
+ 3822 03a8 8DF80700 		strb	r0, [sp, #7]
+ 3823 03ac 0DE7     		b	.L289
+ 3824              	.L306:
+ 3825 03ae 00BF     		.align	2
+ 3826              	.L305:
+ 3827 03b0 00000000 		.word	ESCvar
+ 3828              		.cfi_endproc
+ 3829              	.LFE38:
+ 3831              		.section	.text.ESC_config,"ax",%progbits
+ 3832              		.align	1
+ 3833              		.global	ESC_config
+ 3834              		.syntax unified
+ 3835              		.thumb
+ 3836              		.thumb_func
+ 3838              	ESC_config:
+ 3839              	.LVL273:
+ 3840              	.LFB39:
+1306:Lib/soes/src/esc.c **** /** Function copying the application configuration variable
+1307:Lib/soes/src/esc.c ****  * data to the stack local variable.
+1308:Lib/soes/src/esc.c ****  *
+1309:Lib/soes/src/esc.c ****  * @param[in] cfg   = Pointer to the Application configuration variable
+1310:Lib/soes/src/esc.c ****  * holding application specific details. Data is copied.
+1311:Lib/soes/src/esc.c ****  */
+1312:Lib/soes/src/esc.c **** void ESC_config (esc_cfg_t * cfg)
+1313:Lib/soes/src/esc.c **** {
+ 3841              		.loc 1 1313 1 is_stmt 1 view -0
+ 3842              		.cfi_startproc
+ 3843              		@ args = 0, pretend = 0, frame = 0
+ 3844              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3845              		@ link register save eliminated.
+ 3846              		.loc 1 1313 1 is_stmt 0 view .LVU1037
+ 3847 0000 0246     		mov	r2, r0
+1314:Lib/soes/src/esc.c ****    static sm_cfg_t mb0 = {MBX0_sma, MBX0_sml, MBX0_sme, MBX0_smc, 0};
+ 3848              		.loc 1 1314 4 is_stmt 1 view .LVU1038
+1315:Lib/soes/src/esc.c ****    static sm_cfg_t mb1 = {MBX1_sma, MBX1_sml, MBX1_sme, MBX1_smc, 0};
+ 3849              		.loc 1 1315 4 view .LVU1039
+1316:Lib/soes/src/esc.c ****    static sm_cfg_t mbboot0 = {MBX0_sma_b, MBX0_sml_b, MBX0_sme_b, MBX0_smc_b, 0};
+ 3850              		.loc 1 1316 4 view .LVU1040
+1317:Lib/soes/src/esc.c ****    static sm_cfg_t mbboot1 = {MBX1_sma_b, MBX1_sml_b, MBX1_sme_b, MBX1_smc_b, 0};
+ 3851              		.loc 1 1317 4 view .LVU1041
+1318:Lib/soes/src/esc.c **** 
+1319:Lib/soes/src/esc.c ****    /* Configure stack */
+1320:Lib/soes/src/esc.c ****    ESCvar.use_interrupt = cfg->use_interrupt;
+ 3852              		.loc 1 1320 4 view .LVU1042
+ 3853              		.loc 1 1320 30 is_stmt 0 view .LVU1043
+ARM GAS  /tmp/ccrRYh01.s 			page 107
 
 
-1317:Lib/soes/src/esc.c **** 
-1318:Lib/soes/src/esc.c ****    ESCvar.mb[0] = mb0;
- 3858              		.loc 1 1318 4 is_stmt 1 view .LVU1046
- 3859              		.loc 1 1318 17 is_stmt 0 view .LVU1047
- 3860 000e 1F49     		ldr	r1, .L308+4
- 3861 0010 03F1040C 		add	ip, r3, #4
- 3862 0014 03C9     		ldm	r1, {r0, r1}
- 3863              	.LVL274:
- 3864              		.loc 1 1318 17 view .LVU1048
- 3865 0016 8CE80300 		stm	ip, {r0, r1}
-1319:Lib/soes/src/esc.c ****    ESCvar.mb[1] = mb1;
- 3866              		.loc 1 1319 4 is_stmt 1 view .LVU1049
- 3867              		.loc 1 1319 17 is_stmt 0 view .LVU1050
- 3868 001a 1D49     		ldr	r1, .L308+8
- 3869 001c 03F10C0C 		add	ip, r3, #12
- 3870 0020 03C9     		ldm	r1, {r0, r1}
- 3871 0022 8CE80300 		stm	ip, {r0, r1}
-1320:Lib/soes/src/esc.c ****    ESCvar.mbboot[0] = mbboot0;
- 3872              		.loc 1 1320 4 is_stmt 1 view .LVU1051
- 3873              		.loc 1 1320 21 is_stmt 0 view .LVU1052
- 3874 0026 1B49     		ldr	r1, .L308+12
- 3875 0028 03F1140C 		add	ip, r3, #20
- 3876 002c 03C9     		ldm	r1, {r0, r1}
- 3877 002e 8CE80300 		stm	ip, {r0, r1}
-1321:Lib/soes/src/esc.c ****    ESCvar.mbboot[1] = mbboot1;
- 3878              		.loc 1 1321 4 is_stmt 1 view .LVU1053
- 3879              		.loc 1 1321 21 is_stmt 0 view .LVU1054
- 3880 0032 1949     		ldr	r1, .L308+16
- 3881 0034 03F11C0C 		add	ip, r3, #28
- 3882 0038 03C9     		ldm	r1, {r0, r1}
- 3883 003a 8CE80300 		stm	ip, {r0, r1}
+ 3854 0002 4168     		ldr	r1, [r0, #4]
+ 3855              		.loc 1 1320 25 view .LVU1044
+ 3856 0004 204B     		ldr	r3, .L308
+ 3857 0006 1960     		str	r1, [r3]
+1321:Lib/soes/src/esc.c ****    ESCvar.watchdogcnt = cfg->watchdog_cnt;
+ 3858              		.loc 1 1321 4 is_stmt 1 view .LVU1045
+ 3859              		.loc 1 1321 28 is_stmt 0 view .LVU1046
+ 3860 0008 8168     		ldr	r1, [r0, #8]
+ 3861              		.loc 1 1321 23 view .LVU1047
+ 3862 000a C3F8DC10 		str	r1, [r3, #220]
 1322:Lib/soes/src/esc.c **** 
-1323:Lib/soes/src/esc.c ****    ESCvar.skip_default_initialization = cfg->skip_default_initialization;
- 3884              		.loc 1 1323 4 is_stmt 1 view .LVU1055
- 3885              		.loc 1 1323 44 is_stmt 0 view .LVU1056
- 3886 003e 117B     		ldrb	r1, [r2, #12]	@ zero_extendqisi2
- 3887              		.loc 1 1323 39 view .LVU1057
- 3888 0040 83F82410 		strb	r1, [r3, #36]
-1324:Lib/soes/src/esc.c ****    ESCvar.set_defaults_hook = cfg->set_defaults_hook;
- 3889              		.loc 1 1324 4 is_stmt 1 view .LVU1058
- 3890              		.loc 1 1324 34 is_stmt 0 view .LVU1059
- 3891 0044 1169     		ldr	r1, [r2, #16]
- 3892              		.loc 1 1324 29 view .LVU1060
- 3893 0046 9962     		str	r1, [r3, #40]
-1325:Lib/soes/src/esc.c ****    ESCvar.pre_state_change_hook = cfg->pre_state_change_hook;
- 3894              		.loc 1 1325 4 is_stmt 1 view .LVU1061
- 3895              		.loc 1 1325 38 is_stmt 0 view .LVU1062
- 3896 0048 5169     		ldr	r1, [r2, #20]
- 3897              		.loc 1 1325 33 view .LVU1063
- 3898 004a D962     		str	r1, [r3, #44]
-1326:Lib/soes/src/esc.c ****    ESCvar.post_state_change_hook = cfg->post_state_change_hook;
- 3899              		.loc 1 1326 4 is_stmt 1 view .LVU1064
- 3900              		.loc 1 1326 39 is_stmt 0 view .LVU1065
- 3901 004c 9169     		ldr	r1, [r2, #24]
- 3902              		.loc 1 1326 34 view .LVU1066
- 3903 004e 1963     		str	r1, [r3, #48]
-1327:Lib/soes/src/esc.c ****    ESCvar.application_hook = cfg->application_hook;
-ARM GAS  /tmp/cc3f6pAD.s 			page 108
+1323:Lib/soes/src/esc.c ****    ESCvar.mb[0] = mb0;
+ 3863              		.loc 1 1323 4 is_stmt 1 view .LVU1048
+ 3864              		.loc 1 1323 17 is_stmt 0 view .LVU1049
+ 3865 000e 1F49     		ldr	r1, .L308+4
+ 3866 0010 03F1040C 		add	ip, r3, #4
+ 3867 0014 03C9     		ldm	r1, {r0, r1}
+ 3868              	.LVL274:
+ 3869              		.loc 1 1323 17 view .LVU1050
+ 3870 0016 8CE80300 		stm	ip, {r0, r1}
+1324:Lib/soes/src/esc.c ****    ESCvar.mb[1] = mb1;
+ 3871              		.loc 1 1324 4 is_stmt 1 view .LVU1051
+ 3872              		.loc 1 1324 17 is_stmt 0 view .LVU1052
+ 3873 001a 1D49     		ldr	r1, .L308+8
+ 3874 001c 03F10C0C 		add	ip, r3, #12
+ 3875 0020 03C9     		ldm	r1, {r0, r1}
+ 3876 0022 8CE80300 		stm	ip, {r0, r1}
+1325:Lib/soes/src/esc.c ****    ESCvar.mbboot[0] = mbboot0;
+ 3877              		.loc 1 1325 4 is_stmt 1 view .LVU1053
+ 3878              		.loc 1 1325 21 is_stmt 0 view .LVU1054
+ 3879 0026 1B49     		ldr	r1, .L308+12
+ 3880 0028 03F1140C 		add	ip, r3, #20
+ 3881 002c 03C9     		ldm	r1, {r0, r1}
+ 3882 002e 8CE80300 		stm	ip, {r0, r1}
+1326:Lib/soes/src/esc.c ****    ESCvar.mbboot[1] = mbboot1;
+ 3883              		.loc 1 1326 4 is_stmt 1 view .LVU1055
+ 3884              		.loc 1 1326 21 is_stmt 0 view .LVU1056
+ 3885 0032 1949     		ldr	r1, .L308+16
+ 3886 0034 03F11C0C 		add	ip, r3, #28
+ 3887 0038 03C9     		ldm	r1, {r0, r1}
+ 3888 003a 8CE80300 		stm	ip, {r0, r1}
+1327:Lib/soes/src/esc.c **** 
+1328:Lib/soes/src/esc.c ****    ESCvar.skip_default_initialization = cfg->skip_default_initialization;
+ 3889              		.loc 1 1328 4 is_stmt 1 view .LVU1057
+ 3890              		.loc 1 1328 44 is_stmt 0 view .LVU1058
+ 3891 003e 117B     		ldrb	r1, [r2, #12]	@ zero_extendqisi2
+ 3892              		.loc 1 1328 39 view .LVU1059
+ 3893 0040 83F82410 		strb	r1, [r3, #36]
+1329:Lib/soes/src/esc.c ****    ESCvar.set_defaults_hook = cfg->set_defaults_hook;
+ 3894              		.loc 1 1329 4 is_stmt 1 view .LVU1060
+ 3895              		.loc 1 1329 34 is_stmt 0 view .LVU1061
+ 3896 0044 1169     		ldr	r1, [r2, #16]
+ 3897              		.loc 1 1329 29 view .LVU1062
+ 3898 0046 9962     		str	r1, [r3, #40]
+1330:Lib/soes/src/esc.c ****    ESCvar.pre_state_change_hook = cfg->pre_state_change_hook;
+ 3899              		.loc 1 1330 4 is_stmt 1 view .LVU1063
+ 3900              		.loc 1 1330 38 is_stmt 0 view .LVU1064
+ARM GAS  /tmp/ccrRYh01.s 			page 108
 
 
- 3904              		.loc 1 1327 4 is_stmt 1 view .LVU1067
- 3905              		.loc 1 1327 33 is_stmt 0 view .LVU1068
- 3906 0050 D169     		ldr	r1, [r2, #28]
- 3907              		.loc 1 1327 28 view .LVU1069
- 3908 0052 5963     		str	r1, [r3, #52]
-1328:Lib/soes/src/esc.c ****    ESCvar.safeoutput_override = cfg->safeoutput_override;
- 3909              		.loc 1 1328 4 is_stmt 1 view .LVU1070
- 3910              		.loc 1 1328 36 is_stmt 0 view .LVU1071
- 3911 0054 116A     		ldr	r1, [r2, #32]
- 3912              		.loc 1 1328 31 view .LVU1072
- 3913 0056 9963     		str	r1, [r3, #56]
-1329:Lib/soes/src/esc.c ****    ESCvar.pre_object_download_hook = cfg->pre_object_download_hook;
- 3914              		.loc 1 1329 4 is_stmt 1 view .LVU1073
- 3915              		.loc 1 1329 41 is_stmt 0 view .LVU1074
- 3916 0058 516A     		ldr	r1, [r2, #36]
- 3917              		.loc 1 1329 36 view .LVU1075
- 3918 005a D963     		str	r1, [r3, #60]
-1330:Lib/soes/src/esc.c ****    ESCvar.post_object_download_hook = cfg->post_object_download_hook;
- 3919              		.loc 1 1330 4 is_stmt 1 view .LVU1076
- 3920              		.loc 1 1330 42 is_stmt 0 view .LVU1077
- 3921 005c 916A     		ldr	r1, [r2, #40]
- 3922              		.loc 1 1330 37 view .LVU1078
- 3923 005e 1964     		str	r1, [r3, #64]
-1331:Lib/soes/src/esc.c ****    ESCvar.pre_object_upload_hook = cfg->pre_object_upload_hook;
- 3924              		.loc 1 1331 4 is_stmt 1 view .LVU1079
- 3925              		.loc 1 1331 39 is_stmt 0 view .LVU1080
- 3926 0060 D16A     		ldr	r1, [r2, #44]
- 3927              		.loc 1 1331 34 view .LVU1081
- 3928 0062 5964     		str	r1, [r3, #68]
-1332:Lib/soes/src/esc.c ****    ESCvar.post_object_upload_hook = cfg->post_object_upload_hook;
- 3929              		.loc 1 1332 4 is_stmt 1 view .LVU1082
- 3930              		.loc 1 1332 40 is_stmt 0 view .LVU1083
- 3931 0064 116B     		ldr	r1, [r2, #48]
- 3932              		.loc 1 1332 35 view .LVU1084
- 3933 0066 9964     		str	r1, [r3, #72]
-1333:Lib/soes/src/esc.c ****    ESCvar.rxpdo_override = cfg->rxpdo_override;
- 3934              		.loc 1 1333 4 is_stmt 1 view .LVU1085
- 3935              		.loc 1 1333 31 is_stmt 0 view .LVU1086
- 3936 0068 516B     		ldr	r1, [r2, #52]
- 3937              		.loc 1 1333 26 view .LVU1087
- 3938 006a D964     		str	r1, [r3, #76]
-1334:Lib/soes/src/esc.c ****    ESCvar.txpdo_override = cfg->txpdo_override;
- 3939              		.loc 1 1334 4 is_stmt 1 view .LVU1088
- 3940              		.loc 1 1334 31 is_stmt 0 view .LVU1089
- 3941 006c 916B     		ldr	r1, [r2, #56]
- 3942              		.loc 1 1334 26 view .LVU1090
- 3943 006e 1965     		str	r1, [r3, #80]
-1335:Lib/soes/src/esc.c ****    ESCvar.esc_hw_interrupt_enable = cfg->esc_hw_interrupt_enable;
- 3944              		.loc 1 1335 4 is_stmt 1 view .LVU1091
- 3945              		.loc 1 1335 40 is_stmt 0 view .LVU1092
- 3946 0070 D16B     		ldr	r1, [r2, #60]
- 3947              		.loc 1 1335 35 view .LVU1093
- 3948 0072 5965     		str	r1, [r3, #84]
-1336:Lib/soes/src/esc.c ****    ESCvar.esc_hw_interrupt_disable = cfg->esc_hw_interrupt_disable;
- 3949              		.loc 1 1336 4 is_stmt 1 view .LVU1094
- 3950              		.loc 1 1336 41 is_stmt 0 view .LVU1095
- 3951 0074 116C     		ldr	r1, [r2, #64]
-ARM GAS  /tmp/cc3f6pAD.s 			page 109
+ 3901 0048 5169     		ldr	r1, [r2, #20]
+ 3902              		.loc 1 1330 33 view .LVU1065
+ 3903 004a D962     		str	r1, [r3, #44]
+1331:Lib/soes/src/esc.c ****    ESCvar.post_state_change_hook = cfg->post_state_change_hook;
+ 3904              		.loc 1 1331 4 is_stmt 1 view .LVU1066
+ 3905              		.loc 1 1331 39 is_stmt 0 view .LVU1067
+ 3906 004c 9169     		ldr	r1, [r2, #24]
+ 3907              		.loc 1 1331 34 view .LVU1068
+ 3908 004e 1963     		str	r1, [r3, #48]
+1332:Lib/soes/src/esc.c ****    ESCvar.application_hook = cfg->application_hook;
+ 3909              		.loc 1 1332 4 is_stmt 1 view .LVU1069
+ 3910              		.loc 1 1332 33 is_stmt 0 view .LVU1070
+ 3911 0050 D169     		ldr	r1, [r2, #28]
+ 3912              		.loc 1 1332 28 view .LVU1071
+ 3913 0052 5963     		str	r1, [r3, #52]
+1333:Lib/soes/src/esc.c ****    ESCvar.safeoutput_override = cfg->safeoutput_override;
+ 3914              		.loc 1 1333 4 is_stmt 1 view .LVU1072
+ 3915              		.loc 1 1333 36 is_stmt 0 view .LVU1073
+ 3916 0054 116A     		ldr	r1, [r2, #32]
+ 3917              		.loc 1 1333 31 view .LVU1074
+ 3918 0056 9963     		str	r1, [r3, #56]
+1334:Lib/soes/src/esc.c ****    ESCvar.pre_object_download_hook = cfg->pre_object_download_hook;
+ 3919              		.loc 1 1334 4 is_stmt 1 view .LVU1075
+ 3920              		.loc 1 1334 41 is_stmt 0 view .LVU1076
+ 3921 0058 516A     		ldr	r1, [r2, #36]
+ 3922              		.loc 1 1334 36 view .LVU1077
+ 3923 005a D963     		str	r1, [r3, #60]
+1335:Lib/soes/src/esc.c ****    ESCvar.post_object_download_hook = cfg->post_object_download_hook;
+ 3924              		.loc 1 1335 4 is_stmt 1 view .LVU1078
+ 3925              		.loc 1 1335 42 is_stmt 0 view .LVU1079
+ 3926 005c 916A     		ldr	r1, [r2, #40]
+ 3927              		.loc 1 1335 37 view .LVU1080
+ 3928 005e 1964     		str	r1, [r3, #64]
+1336:Lib/soes/src/esc.c ****    ESCvar.pre_object_upload_hook = cfg->pre_object_upload_hook;
+ 3929              		.loc 1 1336 4 is_stmt 1 view .LVU1081
+ 3930              		.loc 1 1336 39 is_stmt 0 view .LVU1082
+ 3931 0060 D16A     		ldr	r1, [r2, #44]
+ 3932              		.loc 1 1336 34 view .LVU1083
+ 3933 0062 5964     		str	r1, [r3, #68]
+1337:Lib/soes/src/esc.c ****    ESCvar.post_object_upload_hook = cfg->post_object_upload_hook;
+ 3934              		.loc 1 1337 4 is_stmt 1 view .LVU1084
+ 3935              		.loc 1 1337 40 is_stmt 0 view .LVU1085
+ 3936 0064 116B     		ldr	r1, [r2, #48]
+ 3937              		.loc 1 1337 35 view .LVU1086
+ 3938 0066 9964     		str	r1, [r3, #72]
+1338:Lib/soes/src/esc.c ****    ESCvar.rxpdo_override = cfg->rxpdo_override;
+ 3939              		.loc 1 1338 4 is_stmt 1 view .LVU1087
+ 3940              		.loc 1 1338 31 is_stmt 0 view .LVU1088
+ 3941 0068 516B     		ldr	r1, [r2, #52]
+ 3942              		.loc 1 1338 26 view .LVU1089
+ 3943 006a D964     		str	r1, [r3, #76]
+1339:Lib/soes/src/esc.c ****    ESCvar.txpdo_override = cfg->txpdo_override;
+ 3944              		.loc 1 1339 4 is_stmt 1 view .LVU1090
+ 3945              		.loc 1 1339 31 is_stmt 0 view .LVU1091
+ 3946 006c 916B     		ldr	r1, [r2, #56]
+ 3947              		.loc 1 1339 26 view .LVU1092
+ 3948 006e 1965     		str	r1, [r3, #80]
+ARM GAS  /tmp/ccrRYh01.s 			page 109
 
 
- 3952              		.loc 1 1336 36 view .LVU1096
- 3953 0076 9965     		str	r1, [r3, #88]
-1337:Lib/soes/src/esc.c ****    ESCvar.esc_hw_eep_handler = cfg->esc_hw_eep_handler;
- 3954              		.loc 1 1337 4 is_stmt 1 view .LVU1097
- 3955              		.loc 1 1337 35 is_stmt 0 view .LVU1098
- 3956 0078 516C     		ldr	r1, [r2, #68]
- 3957              		.loc 1 1337 30 view .LVU1099
- 3958 007a D965     		str	r1, [r3, #92]
-1338:Lib/soes/src/esc.c ****    ESCvar.esc_check_dc_handler = cfg->esc_check_dc_handler;
- 3959              		.loc 1 1338 4 is_stmt 1 view .LVU1100
- 3960              		.loc 1 1338 37 is_stmt 0 view .LVU1101
- 3961 007c 916C     		ldr	r1, [r2, #72]
- 3962              		.loc 1 1338 32 view .LVU1102
- 3963 007e 1966     		str	r1, [r3, #96]
-1339:Lib/soes/src/esc.c ****    ESCvar.get_device_id = cfg->get_device_id;
- 3964              		.loc 1 1339 4 is_stmt 1 view .LVU1103
- 3965              		.loc 1 1339 30 is_stmt 0 view .LVU1104
- 3966 0080 D26C     		ldr	r2, [r2, #76]
- 3967              	.LVL275:
- 3968              		.loc 1 1339 25 view .LVU1105
- 3969 0082 5A66     		str	r2, [r3, #100]
-1340:Lib/soes/src/esc.c **** }
- 3970              		.loc 1 1340 1 view .LVU1106
- 3971 0084 7047     		bx	lr
- 3972              	.L309:
- 3973 0086 00BF     		.align	2
- 3974              	.L308:
- 3975 0088 00000000 		.word	ESCvar
- 3976 008c 00000000 		.word	.LANCHOR0
- 3977 0090 00000000 		.word	.LANCHOR1
- 3978 0094 00000000 		.word	.LANCHOR2
- 3979 0098 00000000 		.word	.LANCHOR3
- 3980              		.cfi_endproc
- 3981              	.LFE39:
- 3983              		.section	.rodata.mb0.3,"a"
- 3984              		.align	2
- 3985              		.set	.LANCHOR0,. + 0
- 3988              	mb0.3:
- 3989 0000 0010     		.short	4096
- 3990 0002 0002     		.short	512
- 3991 0004 FF11     		.short	4607
- 3992 0006 26       		.byte	38
- 3993 0007 00       		.byte	0
- 3994              		.section	.rodata.mb1.2,"a"
- 3995              		.align	2
- 3996              		.set	.LANCHOR1,. + 0
- 3999              	mb1.2:
- 4000 0000 0012     		.short	4608
- 4001 0002 0002     		.short	512
- 4002 0004 FF13     		.short	5119
- 4003 0006 22       		.byte	34
- 4004 0007 00       		.byte	0
- 4005              		.section	.rodata.mbboot0.1,"a"
- 4006              		.align	2
- 4007              		.set	.LANCHOR2,. + 0
- 4010              	mbboot0.1:
- 4011 0000 0010     		.short	4096
-ARM GAS  /tmp/cc3f6pAD.s 			page 110
+1340:Lib/soes/src/esc.c ****    ESCvar.esc_hw_interrupt_enable = cfg->esc_hw_interrupt_enable;
+ 3949              		.loc 1 1340 4 is_stmt 1 view .LVU1093
+ 3950              		.loc 1 1340 40 is_stmt 0 view .LVU1094
+ 3951 0070 D16B     		ldr	r1, [r2, #60]
+ 3952              		.loc 1 1340 35 view .LVU1095
+ 3953 0072 5965     		str	r1, [r3, #84]
+1341:Lib/soes/src/esc.c ****    ESCvar.esc_hw_interrupt_disable = cfg->esc_hw_interrupt_disable;
+ 3954              		.loc 1 1341 4 is_stmt 1 view .LVU1096
+ 3955              		.loc 1 1341 41 is_stmt 0 view .LVU1097
+ 3956 0074 116C     		ldr	r1, [r2, #64]
+ 3957              		.loc 1 1341 36 view .LVU1098
+ 3958 0076 9965     		str	r1, [r3, #88]
+1342:Lib/soes/src/esc.c ****    ESCvar.esc_hw_eep_handler = cfg->esc_hw_eep_handler;
+ 3959              		.loc 1 1342 4 is_stmt 1 view .LVU1099
+ 3960              		.loc 1 1342 35 is_stmt 0 view .LVU1100
+ 3961 0078 516C     		ldr	r1, [r2, #68]
+ 3962              		.loc 1 1342 30 view .LVU1101
+ 3963 007a D965     		str	r1, [r3, #92]
+1343:Lib/soes/src/esc.c ****    ESCvar.esc_check_dc_handler = cfg->esc_check_dc_handler;
+ 3964              		.loc 1 1343 4 is_stmt 1 view .LVU1102
+ 3965              		.loc 1 1343 37 is_stmt 0 view .LVU1103
+ 3966 007c 916C     		ldr	r1, [r2, #72]
+ 3967              		.loc 1 1343 32 view .LVU1104
+ 3968 007e 1966     		str	r1, [r3, #96]
+1344:Lib/soes/src/esc.c ****    ESCvar.get_device_id = cfg->get_device_id;
+ 3969              		.loc 1 1344 4 is_stmt 1 view .LVU1105
+ 3970              		.loc 1 1344 30 is_stmt 0 view .LVU1106
+ 3971 0080 D26C     		ldr	r2, [r2, #76]
+ 3972              	.LVL275:
+ 3973              		.loc 1 1344 25 view .LVU1107
+ 3974 0082 5A66     		str	r2, [r3, #100]
+1345:Lib/soes/src/esc.c **** }
+ 3975              		.loc 1 1345 1 view .LVU1108
+ 3976 0084 7047     		bx	lr
+ 3977              	.L309:
+ 3978 0086 00BF     		.align	2
+ 3979              	.L308:
+ 3980 0088 00000000 		.word	ESCvar
+ 3981 008c 00000000 		.word	.LANCHOR1
+ 3982 0090 00000000 		.word	.LANCHOR2
+ 3983 0094 00000000 		.word	.LANCHOR3
+ 3984 0098 00000000 		.word	.LANCHOR4
+ 3985              		.cfi_endproc
+ 3986              	.LFE39:
+ 3988              		.global	as_all
+ 3989              		.section	.bss.as_all,"aw",%nobits
+ 3990              		.set	.LANCHOR0,. + 0
+ 3993              	as_all:
+ 3994 0000 00       		.space	1
+ 3995              		.section	.rodata.mb0.3,"a"
+ 3996              		.align	2
+ 3997              		.set	.LANCHOR1,. + 0
+ 4000              	mb0.3:
+ 4001 0000 0010     		.short	4096
+ 4002 0002 0002     		.short	512
+ 4003 0004 FF11     		.short	4607
+ 4004 0006 26       		.byte	38
+ARM GAS  /tmp/ccrRYh01.s 			page 110
 
 
- 4012 0002 0002     		.short	512
- 4013 0004 FF11     		.short	4607
- 4014 0006 26       		.byte	38
- 4015 0007 00       		.byte	0
- 4016              		.section	.rodata.mbboot1.0,"a"
- 4017              		.align	2
- 4018              		.set	.LANCHOR3,. + 0
- 4021              	mbboot1.0:
- 4022 0000 0012     		.short	4608
- 4023 0002 0002     		.short	512
- 4024 0004 FF13     		.short	5119
- 4025 0006 22       		.byte	34
- 4026 0007 00       		.byte	0
- 4027              		.text
- 4028              	.Letext0:
- 4029              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 4030              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 4031              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 4032              		.file 5 "Lib/soes/include/esc_coe.h"
- 4033              		.file 6 "Lib/soes/include/esc.h"
-ARM GAS  /tmp/cc3f6pAD.s 			page 111
+ 4005 0007 00       		.byte	0
+ 4006              		.section	.rodata.mb1.2,"a"
+ 4007              		.align	2
+ 4008              		.set	.LANCHOR2,. + 0
+ 4011              	mb1.2:
+ 4012 0000 0012     		.short	4608
+ 4013 0002 0002     		.short	512
+ 4014 0004 FF13     		.short	5119
+ 4015 0006 22       		.byte	34
+ 4016 0007 00       		.byte	0
+ 4017              		.section	.rodata.mbboot0.1,"a"
+ 4018              		.align	2
+ 4019              		.set	.LANCHOR3,. + 0
+ 4022              	mbboot0.1:
+ 4023 0000 0010     		.short	4096
+ 4024 0002 0002     		.short	512
+ 4025 0004 FF11     		.short	4607
+ 4026 0006 26       		.byte	38
+ 4027 0007 00       		.byte	0
+ 4028              		.section	.rodata.mbboot1.0,"a"
+ 4029              		.align	2
+ 4030              		.set	.LANCHOR4,. + 0
+ 4033              	mbboot1.0:
+ 4034 0000 0012     		.short	4608
+ 4035 0002 0002     		.short	512
+ 4036 0004 FF13     		.short	5119
+ 4037 0006 22       		.byte	34
+ 4038 0007 00       		.byte	0
+ 4039              		.text
+ 4040              	.Letext0:
+ 4041              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 4042              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 4043              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 4044              		.file 5 "Lib/soes/include/esc_coe.h"
+ 4045              		.file 6 "Lib/soes/include/esc.h"
+ARM GAS  /tmp/ccrRYh01.s 			page 111
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 esc.c
-     /tmp/cc3f6pAD.s:20     .text.ESC_check_id_request:0000000000000000 $t
-     /tmp/cc3f6pAD.s:25     .text.ESC_check_id_request:0000000000000000 ESC_check_id_request
-     /tmp/cc3f6pAD.s:118    .text.ESC_ALerror:0000000000000000 $t
-     /tmp/cc3f6pAD.s:124    .text.ESC_ALerror:0000000000000000 ESC_ALerror
-     /tmp/cc3f6pAD.s:161    .text.ESC_ALerror:0000000000000024 $d
-     /tmp/cc3f6pAD.s:166    .text.ESC_load_device_id:0000000000000000 $t
-     /tmp/cc3f6pAD.s:171    .text.ESC_load_device_id:0000000000000000 ESC_load_device_id
-     /tmp/cc3f6pAD.s:235    .text.ESC_load_device_id:000000000000003c $d
-     /tmp/cc3f6pAD.s:240    .text.ESC_ALstatus:0000000000000000 $t
-     /tmp/cc3f6pAD.s:246    .text.ESC_ALstatus:0000000000000000 ESC_ALstatus
-     /tmp/cc3f6pAD.s:283    .text.ESC_ALstatus:0000000000000024 $d
-     /tmp/cc3f6pAD.s:288    .text.ESC_ALeventmaskwrite:0000000000000000 $t
-     /tmp/cc3f6pAD.s:294    .text.ESC_ALeventmaskwrite:0000000000000000 ESC_ALeventmaskwrite
-     /tmp/cc3f6pAD.s:328    .text.ESC_ALeventmaskread:0000000000000000 $t
-     /tmp/cc3f6pAD.s:334    .text.ESC_ALeventmaskread:0000000000000000 ESC_ALeventmaskread
-     /tmp/cc3f6pAD.s:363    .text.ESC_ALeventwrite:0000000000000000 $t
-     /tmp/cc3f6pAD.s:369    .text.ESC_ALeventwrite:0000000000000000 ESC_ALeventwrite
-     /tmp/cc3f6pAD.s:403    .text.ESC_ALeventread:0000000000000000 $t
-     /tmp/cc3f6pAD.s:409    .text.ESC_ALeventread:0000000000000000 ESC_ALeventread
-     /tmp/cc3f6pAD.s:438    .text.ESC_SMack:0000000000000000 $t
-     /tmp/cc3f6pAD.s:444    .text.ESC_SMack:0000000000000000 ESC_SMack
-     /tmp/cc3f6pAD.s:477    .text.ESC_SMstatus:0000000000000000 $t
-     /tmp/cc3f6pAD.s:483    .text.ESC_SMstatus:0000000000000000 ESC_SMstatus
-     /tmp/cc3f6pAD.s:519    .text.ESC_SMstatus:000000000000001c $d
-     /tmp/cc3f6pAD.s:524    .text.ESC_SMwritepdi:0000000000000000 $t
-     /tmp/cc3f6pAD.s:530    .text.ESC_SMwritepdi:0000000000000000 ESC_SMwritepdi
-     /tmp/cc3f6pAD.s:566    .text.ESC_SMwritepdi:000000000000001c $d
-     /tmp/cc3f6pAD.s:571    .text.ESC_SMenable:0000000000000000 $t
-     /tmp/cc3f6pAD.s:577    .text.ESC_SMenable:0000000000000000 ESC_SMenable
-     /tmp/cc3f6pAD.s:609    .text.ESC_SMenable:000000000000001c $d
-     /tmp/cc3f6pAD.s:614    .text.ESC_SMdisable:0000000000000000 $t
-     /tmp/cc3f6pAD.s:620    .text.ESC_SMdisable:0000000000000000 ESC_SMdisable
-     /tmp/cc3f6pAD.s:652    .text.ESC_SMdisable:000000000000001c $d
-     /tmp/cc3f6pAD.s:657    .text.ESC_address:0000000000000000 $t
-     /tmp/cc3f6pAD.s:663    .text.ESC_address:0000000000000000 ESC_address
-     /tmp/cc3f6pAD.s:685    .text.ESC_address:0000000000000010 $d
-     /tmp/cc3f6pAD.s:690    .text.ESC_WDstatus:0000000000000000 $t
-     /tmp/cc3f6pAD.s:696    .text.ESC_WDstatus:0000000000000000 ESC_WDstatus
-     /tmp/cc3f6pAD.s:726    .text.ESC_SYNCactivation:0000000000000000 $t
-     /tmp/cc3f6pAD.s:732    .text.ESC_SYNCactivation:0000000000000000 ESC_SYNCactivation
-     /tmp/cc3f6pAD.s:761    .text.ESC_SYNC0cycletime:0000000000000000 $t
-     /tmp/cc3f6pAD.s:767    .text.ESC_SYNC0cycletime:0000000000000000 ESC_SYNC0cycletime
-     /tmp/cc3f6pAD.s:797    .text.ESC_SYNC1cycletime:0000000000000000 $t
-     /tmp/cc3f6pAD.s:803    .text.ESC_SYNC1cycletime:0000000000000000 ESC_SYNC1cycletime
-     /tmp/cc3f6pAD.s:833    .text.ESC_checkDC:0000000000000000 $t
-     /tmp/cc3f6pAD.s:839    .text.ESC_checkDC:0000000000000000 ESC_checkDC
-     /tmp/cc3f6pAD.s:900    .text.ESC_checkDC:0000000000000028 $d
-     /tmp/cc3f6pAD.s:905    .text.ESC_checkmbx:0000000000000000 $t
-     /tmp/cc3f6pAD.s:911    .text.ESC_checkmbx:0000000000000000 ESC_checkmbx
-     /tmp/cc3f6pAD.s:1056   .text.ESC_checkmbx:00000000000000b4 $d
-     /tmp/cc3f6pAD.s:1062   .text.ESC_startmbx:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1068   .text.ESC_startmbx:0000000000000000 ESC_startmbx
-     /tmp/cc3f6pAD.s:1156   .text.ESC_startmbx:0000000000000064 $d
-     /tmp/cc3f6pAD.s:1161   .text.ESC_startmbxboot:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1167   .text.ESC_startmbxboot:0000000000000000 ESC_startmbxboot
-ARM GAS  /tmp/cc3f6pAD.s 			page 112
+     /tmp/ccrRYh01.s:20     .text.ESC_check_id_request:0000000000000000 $t
+     /tmp/ccrRYh01.s:25     .text.ESC_check_id_request:0000000000000000 ESC_check_id_request
+     /tmp/ccrRYh01.s:118    .text.ESC_ALerror:0000000000000000 $t
+     /tmp/ccrRYh01.s:124    .text.ESC_ALerror:0000000000000000 ESC_ALerror
+     /tmp/ccrRYh01.s:161    .text.ESC_ALerror:0000000000000024 $d
+     /tmp/ccrRYh01.s:166    .text.ESC_load_device_id:0000000000000000 $t
+     /tmp/ccrRYh01.s:171    .text.ESC_load_device_id:0000000000000000 ESC_load_device_id
+     /tmp/ccrRYh01.s:235    .text.ESC_load_device_id:000000000000003c $d
+     /tmp/ccrRYh01.s:240    .text.ESC_ALstatus:0000000000000000 $t
+     /tmp/ccrRYh01.s:246    .text.ESC_ALstatus:0000000000000000 ESC_ALstatus
+     /tmp/ccrRYh01.s:283    .text.ESC_ALstatus:0000000000000024 $d
+     /tmp/ccrRYh01.s:288    .text.ESC_ALeventmaskwrite:0000000000000000 $t
+     /tmp/ccrRYh01.s:294    .text.ESC_ALeventmaskwrite:0000000000000000 ESC_ALeventmaskwrite
+     /tmp/ccrRYh01.s:328    .text.ESC_ALeventmaskread:0000000000000000 $t
+     /tmp/ccrRYh01.s:334    .text.ESC_ALeventmaskread:0000000000000000 ESC_ALeventmaskread
+     /tmp/ccrRYh01.s:363    .text.ESC_ALeventwrite:0000000000000000 $t
+     /tmp/ccrRYh01.s:369    .text.ESC_ALeventwrite:0000000000000000 ESC_ALeventwrite
+     /tmp/ccrRYh01.s:403    .text.ESC_ALeventread:0000000000000000 $t
+     /tmp/ccrRYh01.s:409    .text.ESC_ALeventread:0000000000000000 ESC_ALeventread
+     /tmp/ccrRYh01.s:438    .text.ESC_SMack:0000000000000000 $t
+     /tmp/ccrRYh01.s:444    .text.ESC_SMack:0000000000000000 ESC_SMack
+     /tmp/ccrRYh01.s:477    .text.ESC_SMstatus:0000000000000000 $t
+     /tmp/ccrRYh01.s:483    .text.ESC_SMstatus:0000000000000000 ESC_SMstatus
+     /tmp/ccrRYh01.s:519    .text.ESC_SMstatus:000000000000001c $d
+     /tmp/ccrRYh01.s:524    .text.ESC_SMwritepdi:0000000000000000 $t
+     /tmp/ccrRYh01.s:530    .text.ESC_SMwritepdi:0000000000000000 ESC_SMwritepdi
+     /tmp/ccrRYh01.s:566    .text.ESC_SMwritepdi:000000000000001c $d
+     /tmp/ccrRYh01.s:571    .text.ESC_SMenable:0000000000000000 $t
+     /tmp/ccrRYh01.s:577    .text.ESC_SMenable:0000000000000000 ESC_SMenable
+     /tmp/ccrRYh01.s:609    .text.ESC_SMenable:000000000000001c $d
+     /tmp/ccrRYh01.s:614    .text.ESC_SMdisable:0000000000000000 $t
+     /tmp/ccrRYh01.s:620    .text.ESC_SMdisable:0000000000000000 ESC_SMdisable
+     /tmp/ccrRYh01.s:652    .text.ESC_SMdisable:000000000000001c $d
+     /tmp/ccrRYh01.s:657    .text.ESC_address:0000000000000000 $t
+     /tmp/ccrRYh01.s:663    .text.ESC_address:0000000000000000 ESC_address
+     /tmp/ccrRYh01.s:685    .text.ESC_address:0000000000000010 $d
+     /tmp/ccrRYh01.s:690    .text.ESC_WDstatus:0000000000000000 $t
+     /tmp/ccrRYh01.s:696    .text.ESC_WDstatus:0000000000000000 ESC_WDstatus
+     /tmp/ccrRYh01.s:726    .text.ESC_SYNCactivation:0000000000000000 $t
+     /tmp/ccrRYh01.s:732    .text.ESC_SYNCactivation:0000000000000000 ESC_SYNCactivation
+     /tmp/ccrRYh01.s:761    .text.ESC_SYNC0cycletime:0000000000000000 $t
+     /tmp/ccrRYh01.s:767    .text.ESC_SYNC0cycletime:0000000000000000 ESC_SYNC0cycletime
+     /tmp/ccrRYh01.s:797    .text.ESC_SYNC1cycletime:0000000000000000 $t
+     /tmp/ccrRYh01.s:803    .text.ESC_SYNC1cycletime:0000000000000000 ESC_SYNC1cycletime
+     /tmp/ccrRYh01.s:833    .text.ESC_checkDC:0000000000000000 $t
+     /tmp/ccrRYh01.s:839    .text.ESC_checkDC:0000000000000000 ESC_checkDC
+     /tmp/ccrRYh01.s:900    .text.ESC_checkDC:0000000000000028 $d
+     /tmp/ccrRYh01.s:905    .text.ESC_checkmbx:0000000000000000 $t
+     /tmp/ccrRYh01.s:911    .text.ESC_checkmbx:0000000000000000 ESC_checkmbx
+     /tmp/ccrRYh01.s:1056   .text.ESC_checkmbx:00000000000000b4 $d
+     /tmp/ccrRYh01.s:1062   .text.ESC_startmbx:0000000000000000 $t
+     /tmp/ccrRYh01.s:1068   .text.ESC_startmbx:0000000000000000 ESC_startmbx
+     /tmp/ccrRYh01.s:1156   .text.ESC_startmbx:0000000000000064 $d
+     /tmp/ccrRYh01.s:1161   .text.ESC_startmbxboot:0000000000000000 $t
+     /tmp/ccrRYh01.s:1167   .text.ESC_startmbxboot:0000000000000000 ESC_startmbxboot
+ARM GAS  /tmp/ccrRYh01.s 			page 112
 
 
-     /tmp/cc3f6pAD.s:1255   .text.ESC_startmbxboot:0000000000000068 $d
-     /tmp/cc3f6pAD.s:1260   .text.ESC_stopmbx:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1266   .text.ESC_stopmbx:0000000000000000 ESC_stopmbx
-     /tmp/cc3f6pAD.s:1361   .text.ESC_stopmbx:0000000000000064 $d
-     /tmp/cc3f6pAD.s:1367   .text.ESC_readmbx:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1373   .text.ESC_readmbx:0000000000000000 ESC_readmbx
-     /tmp/cc3f6pAD.s:1464   .text.ESC_readmbx:0000000000000064 $d
-     /tmp/cc3f6pAD.s:1472   .text.ESC_writembx:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1478   .text.ESC_writembx:0000000000000000 ESC_writembx
-     /tmp/cc3f6pAD.s:1564   .text.ESC_writembx:0000000000000054 $d
-     /tmp/cc3f6pAD.s:1570   .text.ESC_ackmbxread:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1576   .text.ESC_ackmbxread:0000000000000000 ESC_ackmbxread
-     /tmp/cc3f6pAD.s:1614   .text.ESC_ackmbxread:0000000000000024 $d
-     /tmp/cc3f6pAD.s:1619   .text.ESC_claimbuffer:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1625   .text.ESC_claimbuffer:0000000000000000 ESC_claimbuffer
-     /tmp/cc3f6pAD.s:1734   .text.ESC_claimbuffer:0000000000000074 $d
-     /tmp/cc3f6pAD.s:1741   .text.ESC_outreqbuffer:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1747   .text.ESC_outreqbuffer:0000000000000000 ESC_outreqbuffer
-     /tmp/cc3f6pAD.s:1786   .text.ESC_outreqbuffer:0000000000000014 $d
-     /tmp/cc3f6pAD.s:1791   .text.MBX_error:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1797   .text.MBX_error:0000000000000000 MBX_error
-     /tmp/cc3f6pAD.s:1865   .text.MBX_error:0000000000000044 $d
-     /tmp/cc3f6pAD.s:1872   .text.ESC_mbxprocess:0000000000000000 $t
-     /tmp/cc3f6pAD.s:1878   .text.ESC_mbxprocess:0000000000000000 ESC_mbxprocess
-     /tmp/cc3f6pAD.s:2213   .text.ESC_mbxprocess:00000000000001c0 $d
-     /tmp/cc3f6pAD.s:2220   .text.ESC_xoeprocess:0000000000000000 $t
-     /tmp/cc3f6pAD.s:2226   .text.ESC_xoeprocess:0000000000000000 ESC_xoeprocess
-     /tmp/cc3f6pAD.s:2294   .text.ESC_xoeprocess:0000000000000044 $d
-     /tmp/cc3f6pAD.s:2301   .text.ESC_checkSM23:0000000000000000 $t
-     /tmp/cc3f6pAD.s:2307   .text.ESC_checkSM23:0000000000000000 ESC_checkSM23
-     /tmp/cc3f6pAD.s:2495   .text.ESC_checkSM23:00000000000000e8 $d
-     /tmp/cc3f6pAD.s:2502   .text.ESC_startinput:0000000000000000 $t
-     /tmp/cc3f6pAD.s:2508   .text.ESC_startinput:0000000000000000 ESC_startinput
-     /tmp/cc3f6pAD.s:2680   .text.ESC_startinput:00000000000000b4 $d
-     /tmp/cc3f6pAD.s:2688   .text.ESC_stopinput:0000000000000000 $t
-     /tmp/cc3f6pAD.s:2694   .text.ESC_stopinput:0000000000000000 ESC_stopinput
-     /tmp/cc3f6pAD.s:2738   .text.ESC_stopinput:0000000000000034 $d
-     /tmp/cc3f6pAD.s:2743   .text.ESC_startoutput:0000000000000000 $t
-     /tmp/cc3f6pAD.s:2749   .text.ESC_startoutput:0000000000000000 ESC_startoutput
-     /tmp/cc3f6pAD.s:2796   .text.ESC_startoutput:0000000000000034 $d
-     /tmp/cc3f6pAD.s:2802   .text.ESC_stopoutput:0000000000000000 $t
-     /tmp/cc3f6pAD.s:2808   .text.ESC_stopoutput:0000000000000000 ESC_stopoutput
-     /tmp/cc3f6pAD.s:2840   .text.ESC_stopoutput:0000000000000028 $d
-     /tmp/cc3f6pAD.s:2845   .text.ESC_ALstatusgotoerror:0000000000000000 $t
-     /tmp/cc3f6pAD.s:2851   .text.ESC_ALstatusgotoerror:0000000000000000 ESC_ALstatusgotoerror
-     /tmp/cc3f6pAD.s:2960   .text.ESC_ALstatusgotoerror:0000000000000074 $d
-     /tmp/cc3f6pAD.s:2966   .text.ESC_sm_act_event:0000000000000000 $t
-     /tmp/cc3f6pAD.s:2972   .text.ESC_sm_act_event:0000000000000000 ESC_sm_act_event
-     /tmp/cc3f6pAD.s:3185   .text.ESC_sm_act_event:000000000000010c $d
-     /tmp/cc3f6pAD.s:3191   .text.ESC_state:0000000000000000 $t
-     /tmp/cc3f6pAD.s:3197   .text.ESC_state:0000000000000000 ESC_state
-     /tmp/cc3f6pAD.s:3300   .text.ESC_state:000000000000008e $d
-     /tmp/cc3f6pAD.s:3420   .text.ESC_state:000000000000017e $t
-     /tmp/cc3f6pAD.s:3633   .text.ESC_state:0000000000000298 $d
-     /tmp/cc3f6pAD.s:3642   .text.ESC_state:00000000000002b0 $t
-     /tmp/cc3f6pAD.s:3822   .text.ESC_state:00000000000003a4 $d
-     /tmp/cc3f6pAD.s:3827   .text.ESC_config:0000000000000000 $t
-ARM GAS  /tmp/cc3f6pAD.s 			page 113
+     /tmp/ccrRYh01.s:1255   .text.ESC_startmbxboot:0000000000000068 $d
+     /tmp/ccrRYh01.s:1260   .text.ESC_stopmbx:0000000000000000 $t
+     /tmp/ccrRYh01.s:1266   .text.ESC_stopmbx:0000000000000000 ESC_stopmbx
+     /tmp/ccrRYh01.s:1361   .text.ESC_stopmbx:0000000000000064 $d
+     /tmp/ccrRYh01.s:1367   .text.ESC_readmbx:0000000000000000 $t
+     /tmp/ccrRYh01.s:1373   .text.ESC_readmbx:0000000000000000 ESC_readmbx
+     /tmp/ccrRYh01.s:1464   .text.ESC_readmbx:0000000000000064 $d
+     /tmp/ccrRYh01.s:1472   .text.ESC_writembx:0000000000000000 $t
+     /tmp/ccrRYh01.s:1478   .text.ESC_writembx:0000000000000000 ESC_writembx
+     /tmp/ccrRYh01.s:1564   .text.ESC_writembx:0000000000000054 $d
+     /tmp/ccrRYh01.s:1570   .text.ESC_ackmbxread:0000000000000000 $t
+     /tmp/ccrRYh01.s:1576   .text.ESC_ackmbxread:0000000000000000 ESC_ackmbxread
+     /tmp/ccrRYh01.s:1614   .text.ESC_ackmbxread:0000000000000024 $d
+     /tmp/ccrRYh01.s:1619   .text.ESC_claimbuffer:0000000000000000 $t
+     /tmp/ccrRYh01.s:1625   .text.ESC_claimbuffer:0000000000000000 ESC_claimbuffer
+     /tmp/ccrRYh01.s:1734   .text.ESC_claimbuffer:0000000000000074 $d
+     /tmp/ccrRYh01.s:1741   .text.ESC_outreqbuffer:0000000000000000 $t
+     /tmp/ccrRYh01.s:1747   .text.ESC_outreqbuffer:0000000000000000 ESC_outreqbuffer
+     /tmp/ccrRYh01.s:1786   .text.ESC_outreqbuffer:0000000000000014 $d
+     /tmp/ccrRYh01.s:1791   .text.MBX_error:0000000000000000 $t
+     /tmp/ccrRYh01.s:1797   .text.MBX_error:0000000000000000 MBX_error
+     /tmp/ccrRYh01.s:1865   .text.MBX_error:0000000000000044 $d
+     /tmp/ccrRYh01.s:1872   .text.ESC_mbxprocess:0000000000000000 $t
+     /tmp/ccrRYh01.s:1878   .text.ESC_mbxprocess:0000000000000000 ESC_mbxprocess
+     /tmp/ccrRYh01.s:2213   .text.ESC_mbxprocess:00000000000001c0 $d
+     /tmp/ccrRYh01.s:2220   .text.ESC_xoeprocess:0000000000000000 $t
+     /tmp/ccrRYh01.s:2226   .text.ESC_xoeprocess:0000000000000000 ESC_xoeprocess
+     /tmp/ccrRYh01.s:2294   .text.ESC_xoeprocess:0000000000000044 $d
+     /tmp/ccrRYh01.s:2301   .text.ESC_checkSM23:0000000000000000 $t
+     /tmp/ccrRYh01.s:2307   .text.ESC_checkSM23:0000000000000000 ESC_checkSM23
+     /tmp/ccrRYh01.s:2495   .text.ESC_checkSM23:00000000000000e8 $d
+     /tmp/ccrRYh01.s:2502   .text.ESC_startinput:0000000000000000 $t
+     /tmp/ccrRYh01.s:2508   .text.ESC_startinput:0000000000000000 ESC_startinput
+     /tmp/ccrRYh01.s:2680   .text.ESC_startinput:00000000000000b4 $d
+     /tmp/ccrRYh01.s:2688   .text.ESC_stopinput:0000000000000000 $t
+     /tmp/ccrRYh01.s:2694   .text.ESC_stopinput:0000000000000000 ESC_stopinput
+     /tmp/ccrRYh01.s:2738   .text.ESC_stopinput:0000000000000034 $d
+     /tmp/ccrRYh01.s:2743   .text.ESC_startoutput:0000000000000000 $t
+     /tmp/ccrRYh01.s:2749   .text.ESC_startoutput:0000000000000000 ESC_startoutput
+     /tmp/ccrRYh01.s:2796   .text.ESC_startoutput:0000000000000034 $d
+     /tmp/ccrRYh01.s:2802   .text.ESC_stopoutput:0000000000000000 $t
+     /tmp/ccrRYh01.s:2808   .text.ESC_stopoutput:0000000000000000 ESC_stopoutput
+     /tmp/ccrRYh01.s:2840   .text.ESC_stopoutput:0000000000000028 $d
+     /tmp/ccrRYh01.s:2845   .text.ESC_ALstatusgotoerror:0000000000000000 $t
+     /tmp/ccrRYh01.s:2851   .text.ESC_ALstatusgotoerror:0000000000000000 ESC_ALstatusgotoerror
+     /tmp/ccrRYh01.s:2960   .text.ESC_ALstatusgotoerror:0000000000000074 $d
+     /tmp/ccrRYh01.s:2966   .text.ESC_sm_act_event:0000000000000000 $t
+     /tmp/ccrRYh01.s:2972   .text.ESC_sm_act_event:0000000000000000 ESC_sm_act_event
+     /tmp/ccrRYh01.s:3185   .text.ESC_sm_act_event:000000000000010c $d
+     /tmp/ccrRYh01.s:3191   .text.ESC_state:0000000000000000 $t
+     /tmp/ccrRYh01.s:3197   .text.ESC_state:0000000000000000 ESC_state
+     /tmp/ccrRYh01.s:3304   .text.ESC_state:0000000000000092 $d
+     /tmp/ccrRYh01.s:3424   .text.ESC_state:0000000000000182 $t
+     /tmp/ccrRYh01.s:3626   .text.ESC_state:0000000000000290 $d
+     /tmp/ccrRYh01.s:3636   .text.ESC_state:00000000000002ac $t
+     /tmp/ccrRYh01.s:3827   .text.ESC_state:00000000000003b0 $d
+     /tmp/ccrRYh01.s:3832   .text.ESC_config:0000000000000000 $t
+ARM GAS  /tmp/ccrRYh01.s 			page 113
 
 
-     /tmp/cc3f6pAD.s:3833   .text.ESC_config:0000000000000000 ESC_config
-     /tmp/cc3f6pAD.s:3975   .text.ESC_config:0000000000000088 $d
-     /tmp/cc3f6pAD.s:3984   .rodata.mb0.3:0000000000000000 $d
-     /tmp/cc3f6pAD.s:3988   .rodata.mb0.3:0000000000000000 mb0.3
-     /tmp/cc3f6pAD.s:3995   .rodata.mb1.2:0000000000000000 $d
-     /tmp/cc3f6pAD.s:3999   .rodata.mb1.2:0000000000000000 mb1.2
-     /tmp/cc3f6pAD.s:4006   .rodata.mbboot0.1:0000000000000000 $d
-     /tmp/cc3f6pAD.s:4010   .rodata.mbboot0.1:0000000000000000 mbboot0.1
-     /tmp/cc3f6pAD.s:4017   .rodata.mbboot1.0:0000000000000000 $d
-     /tmp/cc3f6pAD.s:4021   .rodata.mbboot1.0:0000000000000000 mbboot1.0
+     /tmp/ccrRYh01.s:3838   .text.ESC_config:0000000000000000 ESC_config
+     /tmp/ccrRYh01.s:3980   .text.ESC_config:0000000000000088 $d
+     /tmp/ccrRYh01.s:3993   .bss.as_all:0000000000000000 as_all
+     /tmp/ccrRYh01.s:3994   .bss.as_all:0000000000000000 $d
+     /tmp/ccrRYh01.s:3996   .rodata.mb0.3:0000000000000000 $d
+     /tmp/ccrRYh01.s:4000   .rodata.mb0.3:0000000000000000 mb0.3
+     /tmp/ccrRYh01.s:4007   .rodata.mb1.2:0000000000000000 $d
+     /tmp/ccrRYh01.s:4011   .rodata.mb1.2:0000000000000000 mb1.2
+     /tmp/ccrRYh01.s:4018   .rodata.mbboot0.1:0000000000000000 $d
+     /tmp/ccrRYh01.s:4022   .rodata.mbboot0.1:0000000000000000 mbboot0.1
+     /tmp/ccrRYh01.s:4029   .rodata.mbboot1.0:0000000000000000 $d
+     /tmp/ccrRYh01.s:4033   .rodata.mbboot1.0:0000000000000000 mbboot1.0
 
 UNDEFINED SYMBOLS
 ESC_read

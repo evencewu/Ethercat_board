@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccKMAd9d.s 			page 1
+ARM GAS  /tmp/cc62EnRc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
   27:Core/Src/pdo_override.c **** uint8_t pdo_txbuf[PDO_TR_SIZE + TX_PADDING_SIZE] __attribute__((aligned(8))) = {0};
   28:Core/Src/pdo_override.c **** uint8_t *pdo_spi_txbuf = pdo_txbuf + TX_PADDING_SIZE;
   29:Core/Src/pdo_override.c **** uint8_t *pdo_coe_txbuf = pdo_txbuf + TX_PADDING_SIZE + ADDR_SIZE;
-ARM GAS  /tmp/ccKMAd9d.s 			page 2
+ARM GAS  /tmp/cc62EnRc.s 			page 2
 
 
   30:Core/Src/pdo_override.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
   61              		.loc 1 42 9 is_stmt 1 view .LVU13
   42:Core/Src/pdo_override.c ****     }
   62              		.loc 1 42 36 is_stmt 0 view .LVU14
-ARM GAS  /tmp/ccKMAd9d.s 			page 3
+ARM GAS  /tmp/cc62EnRc.s 			page 3
 
 
   63 0018 0B71     		strb	r3, [r1, #4]
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  102              	.LFB132:
   67:Core/Src/pdo_override.c **** 
   68:Core/Src/pdo_override.c **** void spi_dma_start(void)
-ARM GAS  /tmp/ccKMAd9d.s 			page 4
+ARM GAS  /tmp/cc62EnRc.s 			page 4
 
 
   69:Core/Src/pdo_override.c **** {
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  149              		.cfi_endproc
  150              	.LFE132:
  152              		.section	.text.spi_dma_stop,"ax",%progbits
-ARM GAS  /tmp/ccKMAd9d.s 			page 5
+ARM GAS  /tmp/cc62EnRc.s 			page 5
 
 
  153              		.align	1
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
   87:Core/Src/pdo_override.c ****     spi_dma_prepare_transmission(ESC_SM2_sma, pdo_spi_txbuf, ESC_CMD_READ_WAIT_STATE);
  200              		.loc 1 87 5 view .LVU36
  201 000a 0322     		movs	r2, #3
-ARM GAS  /tmp/ccKMAd9d.s 			page 6
+ARM GAS  /tmp/cc62EnRc.s 			page 6
 
 
  202 000c 054B     		ldr	r3, .L16+4
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  248 0014 08BD     		pop	{r3, pc}
  249              	.L21:
  250 0016 00BF     		.align	2
-ARM GAS  /tmp/ccKMAd9d.s 			page 7
+ARM GAS  /tmp/cc62EnRc.s 			page 7
 
 
  251              	.L20:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  116:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
  117:Core/Src/pdo_override.c **** }
  118:Core/Src/pdo_override.c **** 
-ARM GAS  /tmp/ccKMAd9d.s 			page 8
+ARM GAS  /tmp/cc62EnRc.s 			page 8
 
 
  119:Core/Src/pdo_override.c **** void on_rxpdo_transfer_finished(void)
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  337              	rxpdo_override:
  338              	.LFB137:
  111:Core/Src/pdo_override.c ****     spi_dma_rxpdo_start();
-ARM GAS  /tmp/ccKMAd9d.s 			page 9
+ARM GAS  /tmp/cc62EnRc.s 			page 9
 
 
  339              		.loc 1 111 1 is_stmt 1 view -0
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  134:Core/Src/pdo_override.c ****         COE_pdoPack(pdo_coe_txbuf, ESCvar.sm3mappings, SMmap3);
  135:Core/Src/pdo_override.c ****     }
  136:Core/Src/pdo_override.c **** 
-ARM GAS  /tmp/ccKMAd9d.s 			page 10
+ARM GAS  /tmp/cc62EnRc.s 			page 10
 
 
  137:Core/Src/pdo_override.c ****     spi_dma_txpdo_start();
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  425              		.cfi_def_cfa_offset 8
  426              		.cfi_offset 3, -8
  427              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccKMAd9d.s 			page 11
+ARM GAS  /tmp/cc62EnRc.s 			page 11
 
 
  132:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM3 > 0)
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  473              		.section	.bss.pdi_dma_transmission,"aw",%nobits
  474              		.set	.LANCHOR2,. + 0
  477              	pdi_dma_transmission:
-ARM GAS  /tmp/ccKMAd9d.s 			page 12
+ARM GAS  /tmp/cc62EnRc.s 			page 12
 
 
  478 0000 00       		.space	1
@@ -707,54 +707,54 @@ ARM GAS  /tmp/ccKMAd9d.s 			page 1
  529              		.file 10 "Lib/soes/include/esc.h"
  530              		.file 11 "Core/Inc/pdo_override.h"
  531              		.file 12 "Lib/soes_hal_bsp/include/spi.h"
-ARM GAS  /tmp/ccKMAd9d.s 			page 13
+ARM GAS  /tmp/cc62EnRc.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pdo_override.c
-     /tmp/ccKMAd9d.s:20     .text.spi_dma_prepare_transmission:0000000000000000 $t
-     /tmp/ccKMAd9d.s:26     .text.spi_dma_prepare_transmission:0000000000000000 spi_dma_prepare_transmission
-     /tmp/ccKMAd9d.s:76     .text.spi_dma_setup:0000000000000000 $t
-     /tmp/ccKMAd9d.s:82     .text.spi_dma_setup:0000000000000000 spi_dma_setup
-     /tmp/ccKMAd9d.s:95     .text.spi_dma_start:0000000000000000 $t
-     /tmp/ccKMAd9d.s:101    .text.spi_dma_start:0000000000000000 spi_dma_start
-     /tmp/ccKMAd9d.s:145    .text.spi_dma_start:000000000000002c $d
-     /tmp/ccKMAd9d.s:153    .text.spi_dma_stop:0000000000000000 $t
-     /tmp/ccKMAd9d.s:159    .text.spi_dma_stop:0000000000000000 spi_dma_stop
-     /tmp/ccKMAd9d.s:179    .text.spi_dma_rxpdo_start:0000000000000000 $t
-     /tmp/ccKMAd9d.s:185    .text.spi_dma_rxpdo_start:0000000000000000 spi_dma_rxpdo_start
-     /tmp/ccKMAd9d.s:215    .text.spi_dma_rxpdo_start:0000000000000020 $d
-     /tmp/ccKMAd9d.s:221    .text.spi_dma_txpdo_start:0000000000000000 $t
-     /tmp/ccKMAd9d.s:227    .text.spi_dma_txpdo_start:0000000000000000 spi_dma_txpdo_start
-     /tmp/ccKMAd9d.s:252    .text.spi_dma_txpdo_start:0000000000000018 $d
-     /tmp/ccKMAd9d.s:257    .text.init_override:0000000000000000 $t
-     /tmp/ccKMAd9d.s:263    .text.init_override:0000000000000000 init_override
-     /tmp/ccKMAd9d.s:283    .text.on_rxpdo_transfer_finished:0000000000000000 $t
-     /tmp/ccKMAd9d.s:289    .text.on_rxpdo_transfer_finished:0000000000000000 on_rxpdo_transfer_finished
-     /tmp/ccKMAd9d.s:323    .text.on_rxpdo_transfer_finished:0000000000000024 $d
-     /tmp/ccKMAd9d.s:331    .text.rxpdo_override:0000000000000000 $t
-     /tmp/ccKMAd9d.s:337    .text.rxpdo_override:0000000000000000 rxpdo_override
-     /tmp/ccKMAd9d.s:369    .text.rxpdo_override:0000000000000018 $d
-     /tmp/ccKMAd9d.s:374    .text.on_txpdo_transfer_finished:0000000000000000 $t
-     /tmp/ccKMAd9d.s:380    .text.on_txpdo_transfer_finished:0000000000000000 on_txpdo_transfer_finished
-     /tmp/ccKMAd9d.s:406    .text.on_txpdo_transfer_finished:0000000000000014 $d
-     /tmp/ccKMAd9d.s:412    .text.txpdo_override:0000000000000000 $t
-     /tmp/ccKMAd9d.s:418    .text.txpdo_override:0000000000000000 txpdo_override
-     /tmp/ccKMAd9d.s:459    .text.txpdo_override:0000000000000028 $d
-     /tmp/ccKMAd9d.s:503    .data.pdo_coe_txbuf:0000000000000000 pdo_coe_txbuf
-     /tmp/ccKMAd9d.s:517    .data.pdo_spi_txbuf:0000000000000000 pdo_spi_txbuf
-     /tmp/ccKMAd9d.s:489    .bss.pdo_txbuf:0000000000000000 pdo_txbuf
-     /tmp/ccKMAd9d.s:496    .data.pdo_coe_rxbuf:0000000000000000 pdo_coe_rxbuf
-     /tmp/ccKMAd9d.s:510    .data.pdo_spi_rxbuf:0000000000000000 pdo_spi_rxbuf
-     /tmp/ccKMAd9d.s:483    .bss.pdo_rxbuf:0000000000000000 pdo_rxbuf
-     /tmp/ccKMAd9d.s:477    .bss.pdi_dma_transmission:0000000000000000 pdi_dma_transmission
-     /tmp/ccKMAd9d.s:478    .bss.pdi_dma_transmission:0000000000000000 $d
-     /tmp/ccKMAd9d.s:480    .bss.pdo_rxbuf:0000000000000000 $d
-     /tmp/ccKMAd9d.s:486    .bss.pdo_txbuf:0000000000000000 $d
-     /tmp/ccKMAd9d.s:492    .data.pdo_coe_rxbuf:0000000000000000 $d
-     /tmp/ccKMAd9d.s:499    .data.pdo_coe_txbuf:0000000000000000 $d
-     /tmp/ccKMAd9d.s:506    .data.pdo_spi_rxbuf:0000000000000000 $d
-     /tmp/ccKMAd9d.s:513    .data.pdo_spi_txbuf:0000000000000000 $d
+     /tmp/cc62EnRc.s:20     .text.spi_dma_prepare_transmission:0000000000000000 $t
+     /tmp/cc62EnRc.s:26     .text.spi_dma_prepare_transmission:0000000000000000 spi_dma_prepare_transmission
+     /tmp/cc62EnRc.s:76     .text.spi_dma_setup:0000000000000000 $t
+     /tmp/cc62EnRc.s:82     .text.spi_dma_setup:0000000000000000 spi_dma_setup
+     /tmp/cc62EnRc.s:95     .text.spi_dma_start:0000000000000000 $t
+     /tmp/cc62EnRc.s:101    .text.spi_dma_start:0000000000000000 spi_dma_start
+     /tmp/cc62EnRc.s:145    .text.spi_dma_start:000000000000002c $d
+     /tmp/cc62EnRc.s:153    .text.spi_dma_stop:0000000000000000 $t
+     /tmp/cc62EnRc.s:159    .text.spi_dma_stop:0000000000000000 spi_dma_stop
+     /tmp/cc62EnRc.s:179    .text.spi_dma_rxpdo_start:0000000000000000 $t
+     /tmp/cc62EnRc.s:185    .text.spi_dma_rxpdo_start:0000000000000000 spi_dma_rxpdo_start
+     /tmp/cc62EnRc.s:215    .text.spi_dma_rxpdo_start:0000000000000020 $d
+     /tmp/cc62EnRc.s:221    .text.spi_dma_txpdo_start:0000000000000000 $t
+     /tmp/cc62EnRc.s:227    .text.spi_dma_txpdo_start:0000000000000000 spi_dma_txpdo_start
+     /tmp/cc62EnRc.s:252    .text.spi_dma_txpdo_start:0000000000000018 $d
+     /tmp/cc62EnRc.s:257    .text.init_override:0000000000000000 $t
+     /tmp/cc62EnRc.s:263    .text.init_override:0000000000000000 init_override
+     /tmp/cc62EnRc.s:283    .text.on_rxpdo_transfer_finished:0000000000000000 $t
+     /tmp/cc62EnRc.s:289    .text.on_rxpdo_transfer_finished:0000000000000000 on_rxpdo_transfer_finished
+     /tmp/cc62EnRc.s:323    .text.on_rxpdo_transfer_finished:0000000000000024 $d
+     /tmp/cc62EnRc.s:331    .text.rxpdo_override:0000000000000000 $t
+     /tmp/cc62EnRc.s:337    .text.rxpdo_override:0000000000000000 rxpdo_override
+     /tmp/cc62EnRc.s:369    .text.rxpdo_override:0000000000000018 $d
+     /tmp/cc62EnRc.s:374    .text.on_txpdo_transfer_finished:0000000000000000 $t
+     /tmp/cc62EnRc.s:380    .text.on_txpdo_transfer_finished:0000000000000000 on_txpdo_transfer_finished
+     /tmp/cc62EnRc.s:406    .text.on_txpdo_transfer_finished:0000000000000014 $d
+     /tmp/cc62EnRc.s:412    .text.txpdo_override:0000000000000000 $t
+     /tmp/cc62EnRc.s:418    .text.txpdo_override:0000000000000000 txpdo_override
+     /tmp/cc62EnRc.s:459    .text.txpdo_override:0000000000000028 $d
+     /tmp/cc62EnRc.s:503    .data.pdo_coe_txbuf:0000000000000000 pdo_coe_txbuf
+     /tmp/cc62EnRc.s:517    .data.pdo_spi_txbuf:0000000000000000 pdo_spi_txbuf
+     /tmp/cc62EnRc.s:489    .bss.pdo_txbuf:0000000000000000 pdo_txbuf
+     /tmp/cc62EnRc.s:496    .data.pdo_coe_rxbuf:0000000000000000 pdo_coe_rxbuf
+     /tmp/cc62EnRc.s:510    .data.pdo_spi_rxbuf:0000000000000000 pdo_spi_rxbuf
+     /tmp/cc62EnRc.s:483    .bss.pdo_rxbuf:0000000000000000 pdo_rxbuf
+     /tmp/cc62EnRc.s:477    .bss.pdi_dma_transmission:0000000000000000 pdi_dma_transmission
+     /tmp/cc62EnRc.s:478    .bss.pdi_dma_transmission:0000000000000000 $d
+     /tmp/cc62EnRc.s:480    .bss.pdo_rxbuf:0000000000000000 $d
+     /tmp/cc62EnRc.s:486    .bss.pdo_txbuf:0000000000000000 $d
+     /tmp/cc62EnRc.s:492    .data.pdo_coe_rxbuf:0000000000000000 $d
+     /tmp/cc62EnRc.s:499    .data.pdo_coe_txbuf:0000000000000000 $d
+     /tmp/cc62EnRc.s:506    .data.pdo_spi_rxbuf:0000000000000000 $d
+     /tmp/cc62EnRc.s:513    .data.pdo_spi_txbuf:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 spi_select
@@ -767,7 +767,7 @@ COE_pdoUnpack
 ESCvar
 SMmap2
 COE_pdoPack
-ARM GAS  /tmp/ccKMAd9d.s 			page 14
+ARM GAS  /tmp/cc62EnRc.s 			page 14
 
 
 SMmap3
