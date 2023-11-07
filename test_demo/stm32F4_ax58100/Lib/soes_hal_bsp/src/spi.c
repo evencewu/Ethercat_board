@@ -25,10 +25,10 @@ void spi_unselect(int8_t board)
 
 void spi_write(int8_t board, uint8_t *data, uint8_t size)
 {
-    HAL_SPI_Transmit(&hspi2, data, size, 100);
+    HAL_SPI_Transmit(&hspi2, data, size, 1000);
 }
 
 void spi_bidirectionally_transfer(int8_t board, uint8_t *result, uint8_t *data, uint8_t size)
 {
-    HAL_SPI_TransmitReceive(&hspi2, data, result, size, 100);
+    HAL_SPI_TransmitReceive(&hspi2, data, result, size, 1000);
 }

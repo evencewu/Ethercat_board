@@ -1,0 +1,1655 @@
+ARM GAS  /tmp/ccSE5tt3.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_hash_md5.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.HASH_MD5,"ax",%progbits
+  20              		.align	1
+  21              		.global	HASH_MD5
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	HASH_MD5:
+  27              	.LVL0:
+  28              	.LFB123:
+  29              		.file 1 "Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c"
+   1:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /**
+   2:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   ******************************************************************************
+   3:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @file    stm32f4xx_hash_md5.c
+   4:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @author  MCD Application Team
+   5:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @version V1.6.1
+   6:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @date    21-October-2015
+   7:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @brief   This file provides high level functions to compute the HASH MD5 and
+   8:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *          HMAC MD5 Digest of an input message.
+   9:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *          It uses the stm32f4xx_hash.c/.h drivers to access the STM32F4xx HASH
+  10:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *          peripheral.
+  11:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *
+  12:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** @verbatim
+  13:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****  ===================================================================
+  14:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****                   ##### How to use this driver #####
+  15:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****  ===================================================================
+  16:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****  [..]
+  17:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****    (#) Enable The HASH controller clock using 
+  18:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_HASH, ENABLE); function.
+  19:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   
+  20:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****    (#) Calculate the HASH MD5 Digest using HASH_MD5() function.
+  21:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   
+  22:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****    (#) Calculate the HMAC MD5 Digest using HMAC_MD5() function.
+  23:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   
+  24:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** @endverbatim
+  25:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *
+  26:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   ******************************************************************************
+  27:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @attention
+  28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *
+  29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * <h2><center>&copy; COPYRIGHT 2015 STMicroelectronics</center></h2>
+ARM GAS  /tmp/ccSE5tt3.s 			page 2
+
+
+  30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *
+  31:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  32:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * You may not use this file except in compliance with the License.
+  33:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * You may obtain a copy of the License at:
+  34:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *
+  35:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  36:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *
+  37:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * Unless required by applicable law or agreed to in writing, software 
+  38:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  39:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  40:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * See the License for the specific language governing permissions and
+  41:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * limitations under the License.
+  42:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *
+  43:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   ******************************************************************************
+  44:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   */
+  45:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  46:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /* Includes ------------------------------------------------------------------*/
+  47:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** #include "stm32f4xx_hash.h"
+  48:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  49:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
+  50:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @{
+  51:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   */
+  52:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  53:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /** @defgroup HASH 
+  54:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @brief HASH driver modules
+  55:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @{
+  56:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   */
+  57:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  58:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /* Private typedef -----------------------------------------------------------*/
+  59:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /* Private define ------------------------------------------------------------*/
+  60:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** #define MD5BUSY_TIMEOUT    ((uint32_t) 0x00010000)
+  61:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  62:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /* Private macro -------------------------------------------------------------*/
+  63:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /* Private variables ---------------------------------------------------------*/
+  64:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /* Private function prototypes -----------------------------------------------*/
+  65:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /* Private functions ---------------------------------------------------------*/
+  66:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  67:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /** @defgroup HASH_Private_Functions
+  68:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @{
+  69:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   */ 
+  70:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  71:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /** @defgroup HASH_Group7 High Level MD5 functions
+  72:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****  *  @brief   High Level MD5 Hash and HMAC functions 
+  73:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****  *
+  74:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** @verbatim   
+  75:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****  ===============================================================================
+  76:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****               ##### High Level MD5 Hash and HMAC functions #####
+  77:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****  ===============================================================================
+  78:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  79:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  80:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** @endverbatim
+  81:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @{
+  82:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   */
+  83:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+  84:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /**
+  85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @brief  Compute the HASH MD5 digest.
+  86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @param  Input: pointer to the Input buffer to be treated.
+ARM GAS  /tmp/ccSE5tt3.s 			page 3
+
+
+  87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @param  Ilen: length of the Input buffer.
+  88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @param  Output: the returned digest
+  89:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @retval An ErrorStatus enumeration value:
+  90:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *          - SUCCESS: digest computation done
+  91:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *          - ERROR: digest computation failed
+  92:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   */
+  93:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** ErrorStatus HASH_MD5(uint8_t *Input, uint32_t Ilen, uint8_t Output[16])
+  94:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** {
+  30              		.loc 1 94 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 56
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 94 1 is_stmt 0 view .LVU1
+  35 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  36              		.cfi_def_cfa_offset 20
+  37              		.cfi_offset 4, -20
+  38              		.cfi_offset 5, -16
+  39              		.cfi_offset 6, -12
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 8FB0     		sub	sp, sp, #60
+  43              		.cfi_def_cfa_offset 80
+  44 0004 0F46     		mov	r7, r1
+  45 0006 1646     		mov	r6, r2
+  95:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_InitTypeDef MD5_HASH_InitStructure;
+  46              		.loc 1 95 3 is_stmt 1 view .LVU2
+  96:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_MsgDigest MD5_MessageDigest;
+  47              		.loc 1 96 3 view .LVU3
+  97:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   __IO uint16_t nbvalidbitsdata = 0;
+  48              		.loc 1 97 3 view .LVU4
+  49              		.loc 1 97 17 is_stmt 0 view .LVU5
+  50 0008 0024     		movs	r4, #0
+  51 000a ADF80640 		strh	r4, [sp, #6]	@ movhi
+  98:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t i = 0;
+  52              		.loc 1 98 3 is_stmt 1 view .LVU6
+  53              	.LVL1:
+  99:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   __IO uint32_t counter = 0;
+  54              		.loc 1 99 3 view .LVU7
+  55              		.loc 1 99 17 is_stmt 0 view .LVU8
+  56 000e 0094     		str	r4, [sp]
+ 100:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t busystatus = 0;
+  57              		.loc 1 100 3 is_stmt 1 view .LVU9
+  58              	.LVL2:
+ 101:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   ErrorStatus status = SUCCESS;
+  59              		.loc 1 101 3 view .LVU10
+ 102:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t inputaddr  = (uint32_t)Input;
+  60              		.loc 1 102 3 view .LVU11
+  61              		.loc 1 102 12 is_stmt 0 view .LVU12
+  62 0010 0546     		mov	r5, r0
+  63              	.LVL3:
+ 103:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t outputaddr = (uint32_t)Output;
+  64              		.loc 1 103 3 is_stmt 1 view .LVU13
+ 104:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 105:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 106:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Number of valid bits in last word of the Input data */
+ 107:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   nbvalidbitsdata = 8 * (Ilen % 4);
+  65              		.loc 1 107 3 view .LVU14
+ARM GAS  /tmp/ccSE5tt3.s 			page 4
+
+
+  66              		.loc 1 107 19 is_stmt 0 view .LVU15
+  67 0012 01F00303 		and	r3, r1, #3
+  68 0016 DB00     		lsls	r3, r3, #3
+  69 0018 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 108:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 109:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* HASH peripheral initialization */
+ 110:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_DeInit();
+  70              		.loc 1 110 3 is_stmt 1 view .LVU16
+  71 001c FFF7FEFF 		bl	HASH_DeInit
+  72              	.LVL4:
+ 111:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 112:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* HASH Configuration */
+ 113:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   MD5_HASH_InitStructure.HASH_AlgoSelection = HASH_AlgoSelection_MD5;
+  73              		.loc 1 113 3 view .LVU17
+  74              		.loc 1 113 45 is_stmt 0 view .LVU18
+  75 0020 8023     		movs	r3, #128
+  76 0022 0A93     		str	r3, [sp, #40]
+ 114:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   MD5_HASH_InitStructure.HASH_AlgoMode = HASH_AlgoMode_HASH;
+  77              		.loc 1 114 3 is_stmt 1 view .LVU19
+  78              		.loc 1 114 40 is_stmt 0 view .LVU20
+  79 0024 0B94     		str	r4, [sp, #44]
+ 115:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   MD5_HASH_InitStructure.HASH_DataType = HASH_DataType_8b;
+  80              		.loc 1 115 3 is_stmt 1 view .LVU21
+  81              		.loc 1 115 40 is_stmt 0 view .LVU22
+  82 0026 2023     		movs	r3, #32
+  83 0028 0C93     		str	r3, [sp, #48]
+ 116:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_Init(&MD5_HASH_InitStructure);
+  84              		.loc 1 116 3 is_stmt 1 view .LVU23
+  85 002a 0AA8     		add	r0, sp, #40
+  86 002c FFF7FEFF 		bl	HASH_Init
+  87              	.LVL5:
+ 117:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 118:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Configure the number of valid bits in last word of the data */
+ 119:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_SetLastWordValidBitsNbr(nbvalidbitsdata);
+  88              		.loc 1 119 3 view .LVU24
+  89 0030 BDF80600 		ldrh	r0, [sp, #6]
+  90 0034 80B2     		uxth	r0, r0
+  91 0036 FFF7FEFF 		bl	HASH_SetLastWordValidBitsNbr
+  92              	.LVL6:
+ 120:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 121:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Write the Input block in the IN FIFO */
+ 122:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   for(i=0; i<Ilen; i+=4)
+  93              		.loc 1 122 3 view .LVU25
+  94              		.loc 1 122 3 is_stmt 0 view .LVU26
+  95 003a 04E0     		b	.L2
+  96              	.LVL7:
+  97              	.L3:
+ 123:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 124:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     HASH_DataIn(*(uint32_t*)inputaddr);
+  98              		.loc 1 124 5 is_stmt 1 discriminator 3 view .LVU27
+  99 003c 55F8040B 		ldr	r0, [r5], #4
+ 100              	.LVL8:
+ 101              		.loc 1 124 5 is_stmt 0 discriminator 3 view .LVU28
+ 102 0040 FFF7FEFF 		bl	HASH_DataIn
+ 103              	.LVL9:
+ 125:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     inputaddr+=4;
+ 104              		.loc 1 125 5 is_stmt 1 discriminator 3 view .LVU29
+ARM GAS  /tmp/ccSE5tt3.s 			page 5
+
+
+ 122:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 105              		.loc 1 122 20 discriminator 3 view .LVU30
+ 122:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 106              		.loc 1 122 21 is_stmt 0 discriminator 3 view .LVU31
+ 107 0044 0434     		adds	r4, r4, #4
+ 108              	.LVL10:
+ 109              	.L2:
+ 122:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 110              		.loc 1 122 12 is_stmt 1 discriminator 1 view .LVU32
+ 122:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 111              		.loc 1 122 3 is_stmt 0 discriminator 1 view .LVU33
+ 112 0046 BC42     		cmp	r4, r7
+ 113 0048 F8D3     		bcc	.L3
+ 126:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 127:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 128:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Start the HASH processor */
+ 129:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_StartDigest();
+ 114              		.loc 1 129 3 is_stmt 1 view .LVU34
+ 115 004a FFF7FEFF 		bl	HASH_StartDigest
+ 116              	.LVL11:
+ 117              	.L5:
+ 130:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 131:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* wait until the Busy flag is RESET */
+ 132:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   do
+ 118              		.loc 1 132 3 discriminator 2 view .LVU35
+ 133:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 134:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     busystatus = HASH_GetFlagStatus(HASH_FLAG_BUSY);
+ 119              		.loc 1 134 5 discriminator 2 view .LVU36
+ 120              		.loc 1 134 18 is_stmt 0 discriminator 2 view .LVU37
+ 121 004e 0820     		movs	r0, #8
+ 122 0050 FFF7FEFF 		bl	HASH_GetFlagStatus
+ 123              	.LVL12:
+ 135:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     counter++;
+ 124              		.loc 1 135 5 is_stmt 1 discriminator 2 view .LVU38
+ 125              		.loc 1 135 12 is_stmt 0 discriminator 2 view .LVU39
+ 126 0054 009B     		ldr	r3, [sp]
+ 127 0056 0133     		adds	r3, r3, #1
+ 128 0058 0093     		str	r3, [sp]
+ 136:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+ 129              		.loc 1 136 10 is_stmt 1 discriminator 2 view .LVU40
+ 130              		.loc 1 136 20 is_stmt 0 discriminator 2 view .LVU41
+ 131 005a 009B     		ldr	r3, [sp]
+ 132              		.loc 1 136 3 discriminator 2 view .LVU42
+ 133 005c B3F5803F 		cmp	r3, #65536
+ 134 0060 01D0     		beq	.L4
+ 135              		.loc 1 136 40 discriminator 1 view .LVU43
+ 136 0062 0028     		cmp	r0, #0
+ 137 0064 F3D1     		bne	.L5
+ 138              	.L4:
+ 137:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 138:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   if (busystatus != RESET)
+ 139              		.loc 1 138 3 is_stmt 1 view .LVU44
+ 140              		.loc 1 138 6 is_stmt 0 view .LVU45
+ 141 0066 10B1     		cbz	r0, .L9
+ 139:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 140:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****      status = ERROR;
+ 142              		.loc 1 140 13 view .LVU46
+ARM GAS  /tmp/ccSE5tt3.s 			page 6
+
+
+ 143 0068 0020     		movs	r0, #0
+ 144              	.LVL13:
+ 145              	.L6:
+ 141:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 142:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   else
+ 143:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 144:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     /* Read the message digest */
+ 145:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     HASH_GetDigest(&MD5_MessageDigest);
+ 146:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[0]);
+ 147:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 148:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[1]);
+ 149:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 150:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[2]);
+ 151:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 152:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[3]);
+ 153:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 154:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   return status; 
+ 146              		.loc 1 154 3 is_stmt 1 view .LVU47
+ 155:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** }
+ 147              		.loc 1 155 1 is_stmt 0 view .LVU48
+ 148 006a 0FB0     		add	sp, sp, #60
+ 149              		.cfi_remember_state
+ 150              		.cfi_def_cfa_offset 20
+ 151              		@ sp needed
+ 152 006c F0BD     		pop	{r4, r5, r6, r7, pc}
+ 153              	.LVL14:
+ 154              	.L9:
+ 155              		.cfi_restore_state
+ 145:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[0]);
+ 156              		.loc 1 145 5 is_stmt 1 view .LVU49
+ 157 006e 02A8     		add	r0, sp, #8
+ 158              	.LVL15:
+ 145:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[0]);
+ 159              		.loc 1 145 5 is_stmt 0 view .LVU50
+ 160 0070 FFF7FEFF 		bl	HASH_GetDigest
+ 161              	.LVL16:
+ 146:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 162              		.loc 1 146 5 is_stmt 1 view .LVU51
+ 146:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 163              		.loc 1 146 33 is_stmt 0 view .LVU52
+ 164 0074 029B     		ldr	r3, [sp, #8]
+ 165              	.LVL17:
+ 166              	.LBB18:
+ 167              	.LBI18:
+ 168              		.file 2 "Drivers/CMSIS/Include/core_cmInstr.h"
+   1:Drivers/CMSIS/Include/core_cmInstr.h **** /**************************************************************************//**
+   2:Drivers/CMSIS/Include/core_cmInstr.h ****  * @file     core_cmInstr.h
+   3:Drivers/CMSIS/Include/core_cmInstr.h ****  * @brief    CMSIS Cortex-M Core Instruction Access Header File
+   4:Drivers/CMSIS/Include/core_cmInstr.h ****  * @version  V4.10
+   5:Drivers/CMSIS/Include/core_cmInstr.h ****  * @date     18. March 2015
+   6:Drivers/CMSIS/Include/core_cmInstr.h ****  *
+   7:Drivers/CMSIS/Include/core_cmInstr.h ****  * @note
+   8:Drivers/CMSIS/Include/core_cmInstr.h ****  *
+   9:Drivers/CMSIS/Include/core_cmInstr.h ****  ******************************************************************************/
+  10:Drivers/CMSIS/Include/core_cmInstr.h **** /* Copyright (c) 2009 - 2014 ARM LIMITED
+  11:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  12:Drivers/CMSIS/Include/core_cmInstr.h ****    All rights reserved.
+ARM GAS  /tmp/ccSE5tt3.s 			page 7
+
+
+  13:Drivers/CMSIS/Include/core_cmInstr.h ****    Redistribution and use in source and binary forms, with or without
+  14:Drivers/CMSIS/Include/core_cmInstr.h ****    modification, are permitted provided that the following conditions are met:
+  15:Drivers/CMSIS/Include/core_cmInstr.h ****    - Redistributions of source code must retain the above copyright
+  16:Drivers/CMSIS/Include/core_cmInstr.h ****      notice, this list of conditions and the following disclaimer.
+  17:Drivers/CMSIS/Include/core_cmInstr.h ****    - Redistributions in binary form must reproduce the above copyright
+  18:Drivers/CMSIS/Include/core_cmInstr.h ****      notice, this list of conditions and the following disclaimer in the
+  19:Drivers/CMSIS/Include/core_cmInstr.h ****      documentation and/or other materials provided with the distribution.
+  20:Drivers/CMSIS/Include/core_cmInstr.h ****    - Neither the name of ARM nor the names of its contributors may be used
+  21:Drivers/CMSIS/Include/core_cmInstr.h ****      to endorse or promote products derived from this software without
+  22:Drivers/CMSIS/Include/core_cmInstr.h ****      specific prior written permission.
+  23:Drivers/CMSIS/Include/core_cmInstr.h ****    *
+  24:Drivers/CMSIS/Include/core_cmInstr.h ****    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  25:Drivers/CMSIS/Include/core_cmInstr.h ****    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  26:Drivers/CMSIS/Include/core_cmInstr.h ****    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  27:Drivers/CMSIS/Include/core_cmInstr.h ****    ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+  28:Drivers/CMSIS/Include/core_cmInstr.h ****    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  29:Drivers/CMSIS/Include/core_cmInstr.h ****    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  30:Drivers/CMSIS/Include/core_cmInstr.h ****    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  31:Drivers/CMSIS/Include/core_cmInstr.h ****    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  32:Drivers/CMSIS/Include/core_cmInstr.h ****    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  33:Drivers/CMSIS/Include/core_cmInstr.h ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  34:Drivers/CMSIS/Include/core_cmInstr.h ****    POSSIBILITY OF SUCH DAMAGE.
+  35:Drivers/CMSIS/Include/core_cmInstr.h ****    ---------------------------------------------------------------------------*/
+  36:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  37:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  38:Drivers/CMSIS/Include/core_cmInstr.h **** #ifndef __CORE_CMINSTR_H
+  39:Drivers/CMSIS/Include/core_cmInstr.h **** #define __CORE_CMINSTR_H
+  40:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  41:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  42:Drivers/CMSIS/Include/core_cmInstr.h **** /* ##########################  Core Instruction Access  ######################### */
+  43:Drivers/CMSIS/Include/core_cmInstr.h **** /** \defgroup CMSIS_Core_InstructionInterface CMSIS Core Instruction Interface
+  44:Drivers/CMSIS/Include/core_cmInstr.h ****   Access to dedicated instructions
+  45:Drivers/CMSIS/Include/core_cmInstr.h ****   @{
+  46:Drivers/CMSIS/Include/core_cmInstr.h **** */
+  47:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  48:Drivers/CMSIS/Include/core_cmInstr.h **** #if   defined ( __CC_ARM ) /*------------------RealView Compiler -----------------*/
+  49:Drivers/CMSIS/Include/core_cmInstr.h **** /* ARM armcc specific functions */
+  50:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  51:Drivers/CMSIS/Include/core_cmInstr.h **** #if (__ARMCC_VERSION < 400677)
+  52:Drivers/CMSIS/Include/core_cmInstr.h ****   #error "Please use ARM Compiler Toolchain V4.0.677 or later!"
+  53:Drivers/CMSIS/Include/core_cmInstr.h **** #endif
+  54:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  55:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  56:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  No Operation
+  57:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  58:Drivers/CMSIS/Include/core_cmInstr.h ****     No Operation does nothing. This instruction can be used for code alignment purposes.
+  59:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+  60:Drivers/CMSIS/Include/core_cmInstr.h **** #define __NOP                             __nop
+  61:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  62:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  63:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Wait For Interrupt
+  64:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  65:Drivers/CMSIS/Include/core_cmInstr.h ****     Wait For Interrupt is a hint instruction that suspends execution
+  66:Drivers/CMSIS/Include/core_cmInstr.h ****     until one of a number of events occurs.
+  67:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+  68:Drivers/CMSIS/Include/core_cmInstr.h **** #define __WFI                             __wfi
+  69:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ARM GAS  /tmp/ccSE5tt3.s 			page 8
+
+
+  70:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  71:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Wait For Event
+  72:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  73:Drivers/CMSIS/Include/core_cmInstr.h ****     Wait For Event is a hint instruction that permits the processor to enter
+  74:Drivers/CMSIS/Include/core_cmInstr.h ****     a low-power state until one of a number of events occurs.
+  75:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+  76:Drivers/CMSIS/Include/core_cmInstr.h **** #define __WFE                             __wfe
+  77:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  78:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  79:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Send Event
+  80:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  81:Drivers/CMSIS/Include/core_cmInstr.h ****     Send Event is a hint instruction. It causes an event to be signaled to the CPU.
+  82:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+  83:Drivers/CMSIS/Include/core_cmInstr.h **** #define __SEV                             __sev
+  84:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  85:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  86:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Instruction Synchronization Barrier
+  87:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  88:Drivers/CMSIS/Include/core_cmInstr.h ****     Instruction Synchronization Barrier flushes the pipeline in the processor,
+  89:Drivers/CMSIS/Include/core_cmInstr.h ****     so that all instructions following the ISB are fetched from cache or
+  90:Drivers/CMSIS/Include/core_cmInstr.h ****     memory, after the instruction has been completed.
+  91:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+  92:Drivers/CMSIS/Include/core_cmInstr.h **** #define __ISB() do {\
+  93:Drivers/CMSIS/Include/core_cmInstr.h ****                    __schedule_barrier();\
+  94:Drivers/CMSIS/Include/core_cmInstr.h ****                    __isb(0xF);\
+  95:Drivers/CMSIS/Include/core_cmInstr.h ****                    __schedule_barrier();\
+  96:Drivers/CMSIS/Include/core_cmInstr.h ****                 } while (0)
+  97:Drivers/CMSIS/Include/core_cmInstr.h **** 
+  98:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Data Synchronization Barrier
+  99:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 100:Drivers/CMSIS/Include/core_cmInstr.h ****     This function acts as a special kind of Data Memory Barrier.
+ 101:Drivers/CMSIS/Include/core_cmInstr.h ****     It completes when all explicit memory accesses before this instruction complete.
+ 102:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 103:Drivers/CMSIS/Include/core_cmInstr.h **** #define __DSB() do {\
+ 104:Drivers/CMSIS/Include/core_cmInstr.h ****                    __schedule_barrier();\
+ 105:Drivers/CMSIS/Include/core_cmInstr.h ****                    __dsb(0xF);\
+ 106:Drivers/CMSIS/Include/core_cmInstr.h ****                    __schedule_barrier();\
+ 107:Drivers/CMSIS/Include/core_cmInstr.h ****                 } while (0)
+ 108:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 109:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Data Memory Barrier
+ 110:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 111:Drivers/CMSIS/Include/core_cmInstr.h ****     This function ensures the apparent order of the explicit memory operations before
+ 112:Drivers/CMSIS/Include/core_cmInstr.h ****     and after the instruction, without ensuring their completion.
+ 113:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 114:Drivers/CMSIS/Include/core_cmInstr.h **** #define __DMB() do {\
+ 115:Drivers/CMSIS/Include/core_cmInstr.h ****                    __schedule_barrier();\
+ 116:Drivers/CMSIS/Include/core_cmInstr.h ****                    __dmb(0xF);\
+ 117:Drivers/CMSIS/Include/core_cmInstr.h ****                    __schedule_barrier();\
+ 118:Drivers/CMSIS/Include/core_cmInstr.h ****                 } while (0)
+ 119:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 120:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Reverse byte order (32 bit)
+ 121:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 122:Drivers/CMSIS/Include/core_cmInstr.h ****     This function reverses the byte order in integer value.
+ 123:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 124:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 125:Drivers/CMSIS/Include/core_cmInstr.h ****     \return               Reversed value
+ 126:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ARM GAS  /tmp/ccSE5tt3.s 			page 9
+
+
+ 127:Drivers/CMSIS/Include/core_cmInstr.h **** #define __REV                             __rev
+ 128:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 129:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 130:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Reverse byte order (16 bit)
+ 131:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 132:Drivers/CMSIS/Include/core_cmInstr.h ****     This function reverses the byte order in two unsigned short values.
+ 133:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 134:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 135:Drivers/CMSIS/Include/core_cmInstr.h ****     \return               Reversed value
+ 136:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 137:Drivers/CMSIS/Include/core_cmInstr.h **** #ifndef __NO_EMBEDDED_ASM
+ 138:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((section(".rev16_text"))) __STATIC_INLINE __ASM uint32_t __REV16(uint32_t value)
+ 139:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 140:Drivers/CMSIS/Include/core_cmInstr.h ****   rev16 r0, r0
+ 141:Drivers/CMSIS/Include/core_cmInstr.h ****   bx lr
+ 142:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 143:Drivers/CMSIS/Include/core_cmInstr.h **** #endif
+ 144:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 145:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Reverse byte order in signed short value
+ 146:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 147:Drivers/CMSIS/Include/core_cmInstr.h ****     This function reverses the byte order in a signed short value with sign extension to integer.
+ 148:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 149:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 150:Drivers/CMSIS/Include/core_cmInstr.h ****     \return               Reversed value
+ 151:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 152:Drivers/CMSIS/Include/core_cmInstr.h **** #ifndef __NO_EMBEDDED_ASM
+ 153:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((section(".revsh_text"))) __STATIC_INLINE __ASM int32_t __REVSH(int32_t value)
+ 154:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 155:Drivers/CMSIS/Include/core_cmInstr.h ****   revsh r0, r0
+ 156:Drivers/CMSIS/Include/core_cmInstr.h ****   bx lr
+ 157:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 158:Drivers/CMSIS/Include/core_cmInstr.h **** #endif
+ 159:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 160:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 161:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Rotate Right in unsigned value (32 bit)
+ 162:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 163:Drivers/CMSIS/Include/core_cmInstr.h ****     This function Rotate Right (immediate) provides the value of the contents of a register rotated
+ 164:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 165:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  Value to rotate
+ 166:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  Number of Bits to rotate
+ 167:Drivers/CMSIS/Include/core_cmInstr.h ****     \return               Rotated value
+ 168:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 169:Drivers/CMSIS/Include/core_cmInstr.h **** #define __ROR                             __ror
+ 170:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 171:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 172:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Breakpoint
+ 173:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 174:Drivers/CMSIS/Include/core_cmInstr.h ****     This function causes the processor to enter Debug state.
+ 175:Drivers/CMSIS/Include/core_cmInstr.h ****     Debug tools can use this to investigate system state when the instruction at a particular addre
+ 176:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 177:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  is ignored by the processor.
+ 178:Drivers/CMSIS/Include/core_cmInstr.h ****                    If required, a debugger can use it to store additional information about the bre
+ 179:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 180:Drivers/CMSIS/Include/core_cmInstr.h **** #define __BKPT(value)                       __breakpoint(value)
+ 181:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 182:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 183:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Reverse bit order of value
+ARM GAS  /tmp/ccSE5tt3.s 			page 10
+
+
+ 184:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 185:Drivers/CMSIS/Include/core_cmInstr.h ****     This function reverses the bit order of the given value.
+ 186:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 187:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 188:Drivers/CMSIS/Include/core_cmInstr.h ****     \return               Reversed value
+ 189:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 190:Drivers/CMSIS/Include/core_cmInstr.h **** #if       (__CORTEX_M >= 0x03) || (__CORTEX_SC >= 300)
+ 191:Drivers/CMSIS/Include/core_cmInstr.h ****   #define __RBIT                          __rbit
+ 192:Drivers/CMSIS/Include/core_cmInstr.h **** #else
+ 193:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
+ 194:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 195:Drivers/CMSIS/Include/core_cmInstr.h ****   uint32_t result;
+ 196:Drivers/CMSIS/Include/core_cmInstr.h ****   int32_t s = 4 /*sizeof(v)*/ * 8 - 1; // extra shift needed at end
+ 197:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 198:Drivers/CMSIS/Include/core_cmInstr.h ****   result = value;                      // r will be reversed bits of v; first get LSB of v
+ 199:Drivers/CMSIS/Include/core_cmInstr.h ****   for (value >>= 1; value; value >>= 1)
+ 200:Drivers/CMSIS/Include/core_cmInstr.h ****   {
+ 201:Drivers/CMSIS/Include/core_cmInstr.h ****     result <<= 1;
+ 202:Drivers/CMSIS/Include/core_cmInstr.h ****     result |= value & 1;
+ 203:Drivers/CMSIS/Include/core_cmInstr.h ****     s--;
+ 204:Drivers/CMSIS/Include/core_cmInstr.h ****   }
+ 205:Drivers/CMSIS/Include/core_cmInstr.h ****   result <<= s;                       // shift when v's highest bits are zero
+ 206:Drivers/CMSIS/Include/core_cmInstr.h ****   return(result);
+ 207:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 208:Drivers/CMSIS/Include/core_cmInstr.h **** #endif
+ 209:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 210:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 211:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Count leading zeros
+ 212:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 213:Drivers/CMSIS/Include/core_cmInstr.h ****     This function counts the number of leading zeros of a data value.
+ 214:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 215:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to count the leading zeros
+ 216:Drivers/CMSIS/Include/core_cmInstr.h ****     \return             number of leading zeros in value
+ 217:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 218:Drivers/CMSIS/Include/core_cmInstr.h **** #define __CLZ                             __clz
+ 219:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 220:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 221:Drivers/CMSIS/Include/core_cmInstr.h **** #if       (__CORTEX_M >= 0x03) || (__CORTEX_SC >= 300)
+ 222:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 223:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  LDR Exclusive (8 bit)
+ 224:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 225:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a exclusive LDR instruction for 8 bit value.
+ 226:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 227:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 228:Drivers/CMSIS/Include/core_cmInstr.h ****     \return             value of type uint8_t at (*ptr)
+ 229:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 230:Drivers/CMSIS/Include/core_cmInstr.h **** #define __LDREXB(ptr)                     ((uint8_t ) __ldrex(ptr))
+ 231:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 232:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 233:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  LDR Exclusive (16 bit)
+ 234:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 235:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a exclusive LDR instruction for 16 bit values.
+ 236:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 237:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 238:Drivers/CMSIS/Include/core_cmInstr.h ****     \return        value of type uint16_t at (*ptr)
+ 239:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 240:Drivers/CMSIS/Include/core_cmInstr.h **** #define __LDREXH(ptr)                     ((uint16_t) __ldrex(ptr))
+ARM GAS  /tmp/ccSE5tt3.s 			page 11
+
+
+ 241:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 242:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 243:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  LDR Exclusive (32 bit)
+ 244:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 245:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a exclusive LDR instruction for 32 bit values.
+ 246:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 247:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 248:Drivers/CMSIS/Include/core_cmInstr.h ****     \return        value of type uint32_t at (*ptr)
+ 249:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 250:Drivers/CMSIS/Include/core_cmInstr.h **** #define __LDREXW(ptr)                     ((uint32_t ) __ldrex(ptr))
+ 251:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 252:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 253:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  STR Exclusive (8 bit)
+ 254:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 255:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a exclusive STR instruction for 8 bit values.
+ 256:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 257:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to store
+ 258:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 259:Drivers/CMSIS/Include/core_cmInstr.h ****     \return          0  Function succeeded
+ 260:Drivers/CMSIS/Include/core_cmInstr.h ****     \return          1  Function failed
+ 261:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 262:Drivers/CMSIS/Include/core_cmInstr.h **** #define __STREXB(value, ptr)              __strex(value, ptr)
+ 263:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 264:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 265:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  STR Exclusive (16 bit)
+ 266:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 267:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a exclusive STR instruction for 16 bit values.
+ 268:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 269:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to store
+ 270:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 271:Drivers/CMSIS/Include/core_cmInstr.h ****     \return          0  Function succeeded
+ 272:Drivers/CMSIS/Include/core_cmInstr.h ****     \return          1  Function failed
+ 273:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 274:Drivers/CMSIS/Include/core_cmInstr.h **** #define __STREXH(value, ptr)              __strex(value, ptr)
+ 275:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 276:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 277:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  STR Exclusive (32 bit)
+ 278:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 279:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a exclusive STR instruction for 32 bit values.
+ 280:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 281:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to store
+ 282:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 283:Drivers/CMSIS/Include/core_cmInstr.h ****     \return          0  Function succeeded
+ 284:Drivers/CMSIS/Include/core_cmInstr.h ****     \return          1  Function failed
+ 285:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 286:Drivers/CMSIS/Include/core_cmInstr.h **** #define __STREXW(value, ptr)              __strex(value, ptr)
+ 287:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 288:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 289:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Remove the exclusive lock
+ 290:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 291:Drivers/CMSIS/Include/core_cmInstr.h ****     This function removes the exclusive lock which is created by LDREX.
+ 292:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 293:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 294:Drivers/CMSIS/Include/core_cmInstr.h **** #define __CLREX                           __clrex
+ 295:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 296:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 297:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Signed Saturate
+ARM GAS  /tmp/ccSE5tt3.s 			page 12
+
+
+ 298:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 299:Drivers/CMSIS/Include/core_cmInstr.h ****     This function saturates a signed value.
+ 300:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 301:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to be saturated
+ 302:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    sat  Bit position to saturate to (1..32)
+ 303:Drivers/CMSIS/Include/core_cmInstr.h ****     \return             Saturated value
+ 304:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 305:Drivers/CMSIS/Include/core_cmInstr.h **** #define __SSAT                            __ssat
+ 306:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 307:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 308:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Unsigned Saturate
+ 309:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 310:Drivers/CMSIS/Include/core_cmInstr.h ****     This function saturates an unsigned value.
+ 311:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 312:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to be saturated
+ 313:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    sat  Bit position to saturate to (0..31)
+ 314:Drivers/CMSIS/Include/core_cmInstr.h ****     \return             Saturated value
+ 315:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 316:Drivers/CMSIS/Include/core_cmInstr.h **** #define __USAT                            __usat
+ 317:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 318:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 319:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Rotate Right with Extend (32 bit)
+ 320:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 321:Drivers/CMSIS/Include/core_cmInstr.h ****     This function moves each bit of a bitstring right by one bit.
+ 322:Drivers/CMSIS/Include/core_cmInstr.h ****     The carry input is shifted in at the left end of the bitstring.
+ 323:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 324:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  Value to rotate
+ 325:Drivers/CMSIS/Include/core_cmInstr.h ****     \return               Rotated value
+ 326:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 327:Drivers/CMSIS/Include/core_cmInstr.h **** #ifndef __NO_EMBEDDED_ASM
+ 328:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((section(".rrx_text"))) __STATIC_INLINE __ASM uint32_t __RRX(uint32_t value)
+ 329:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 330:Drivers/CMSIS/Include/core_cmInstr.h ****   rrx r0, r0
+ 331:Drivers/CMSIS/Include/core_cmInstr.h ****   bx lr
+ 332:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 333:Drivers/CMSIS/Include/core_cmInstr.h **** #endif
+ 334:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 335:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 336:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  LDRT Unprivileged (8 bit)
+ 337:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 338:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a Unprivileged LDRT instruction for 8 bit value.
+ 339:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 340:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 341:Drivers/CMSIS/Include/core_cmInstr.h ****     \return             value of type uint8_t at (*ptr)
+ 342:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 343:Drivers/CMSIS/Include/core_cmInstr.h **** #define __LDRBT(ptr)                      ((uint8_t )  __ldrt(ptr))
+ 344:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 345:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 346:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  LDRT Unprivileged (16 bit)
+ 347:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 348:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a Unprivileged LDRT instruction for 16 bit values.
+ 349:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 350:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 351:Drivers/CMSIS/Include/core_cmInstr.h ****     \return        value of type uint16_t at (*ptr)
+ 352:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 353:Drivers/CMSIS/Include/core_cmInstr.h **** #define __LDRHT(ptr)                      ((uint16_t)  __ldrt(ptr))
+ 354:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ARM GAS  /tmp/ccSE5tt3.s 			page 13
+
+
+ 355:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 356:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  LDRT Unprivileged (32 bit)
+ 357:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 358:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a Unprivileged LDRT instruction for 32 bit values.
+ 359:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 360:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 361:Drivers/CMSIS/Include/core_cmInstr.h ****     \return        value of type uint32_t at (*ptr)
+ 362:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 363:Drivers/CMSIS/Include/core_cmInstr.h **** #define __LDRT(ptr)                       ((uint32_t ) __ldrt(ptr))
+ 364:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 365:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 366:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  STRT Unprivileged (8 bit)
+ 367:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 368:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a Unprivileged STRT instruction for 8 bit values.
+ 369:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 370:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to store
+ 371:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 372:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 373:Drivers/CMSIS/Include/core_cmInstr.h **** #define __STRBT(value, ptr)               __strt(value, ptr)
+ 374:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 375:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 376:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  STRT Unprivileged (16 bit)
+ 377:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 378:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a Unprivileged STRT instruction for 16 bit values.
+ 379:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 380:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to store
+ 381:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 382:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 383:Drivers/CMSIS/Include/core_cmInstr.h **** #define __STRHT(value, ptr)               __strt(value, ptr)
+ 384:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 385:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 386:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  STRT Unprivileged (32 bit)
+ 387:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 388:Drivers/CMSIS/Include/core_cmInstr.h ****     This function executes a Unprivileged STRT instruction for 32 bit values.
+ 389:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 390:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]  value  Value to store
+ 391:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 392:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 393:Drivers/CMSIS/Include/core_cmInstr.h **** #define __STRT(value, ptr)                __strt(value, ptr)
+ 394:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 395:Drivers/CMSIS/Include/core_cmInstr.h **** #endif /* (__CORTEX_M >= 0x03) || (__CORTEX_SC >= 300) */
+ 396:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 397:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 398:Drivers/CMSIS/Include/core_cmInstr.h **** #elif defined ( __GNUC__ ) /*------------------ GNU Compiler ---------------------*/
+ 399:Drivers/CMSIS/Include/core_cmInstr.h **** /* GNU gcc specific functions */
+ 400:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 401:Drivers/CMSIS/Include/core_cmInstr.h **** /* Define macros for porting to both thumb1 and thumb2.
+ 402:Drivers/CMSIS/Include/core_cmInstr.h ****  * For thumb1, use low register (r0-r7), specified by constrant "l"
+ 403:Drivers/CMSIS/Include/core_cmInstr.h ****  * Otherwise, use general registers, specified by constrant "r" */
+ 404:Drivers/CMSIS/Include/core_cmInstr.h **** #if defined (__thumb__) && !defined (__thumb2__)
+ 405:Drivers/CMSIS/Include/core_cmInstr.h **** #define __CMSIS_GCC_OUT_REG(r) "=l" (r)
+ 406:Drivers/CMSIS/Include/core_cmInstr.h **** #define __CMSIS_GCC_USE_REG(r) "l" (r)
+ 407:Drivers/CMSIS/Include/core_cmInstr.h **** #else
+ 408:Drivers/CMSIS/Include/core_cmInstr.h **** #define __CMSIS_GCC_OUT_REG(r) "=r" (r)
+ 409:Drivers/CMSIS/Include/core_cmInstr.h **** #define __CMSIS_GCC_USE_REG(r) "r" (r)
+ 410:Drivers/CMSIS/Include/core_cmInstr.h **** #endif
+ 411:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ARM GAS  /tmp/ccSE5tt3.s 			page 14
+
+
+ 412:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  No Operation
+ 413:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 414:Drivers/CMSIS/Include/core_cmInstr.h ****     No Operation does nothing. This instruction can be used for code alignment purposes.
+ 415:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 416:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE void __NOP(void)
+ 417:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 418:Drivers/CMSIS/Include/core_cmInstr.h ****   __ASM volatile ("nop");
+ 419:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 420:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 421:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 422:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Wait For Interrupt
+ 423:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 424:Drivers/CMSIS/Include/core_cmInstr.h ****     Wait For Interrupt is a hint instruction that suspends execution
+ 425:Drivers/CMSIS/Include/core_cmInstr.h ****     until one of a number of events occurs.
+ 426:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 427:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE void __WFI(void)
+ 428:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 429:Drivers/CMSIS/Include/core_cmInstr.h ****   __ASM volatile ("wfi");
+ 430:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 431:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 432:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 433:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Wait For Event
+ 434:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 435:Drivers/CMSIS/Include/core_cmInstr.h ****     Wait For Event is a hint instruction that permits the processor to enter
+ 436:Drivers/CMSIS/Include/core_cmInstr.h ****     a low-power state until one of a number of events occurs.
+ 437:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 438:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE void __WFE(void)
+ 439:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 440:Drivers/CMSIS/Include/core_cmInstr.h ****   __ASM volatile ("wfe");
+ 441:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 442:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 443:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 444:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Send Event
+ 445:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 446:Drivers/CMSIS/Include/core_cmInstr.h ****     Send Event is a hint instruction. It causes an event to be signaled to the CPU.
+ 447:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 448:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE void __SEV(void)
+ 449:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 450:Drivers/CMSIS/Include/core_cmInstr.h ****   __ASM volatile ("sev");
+ 451:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 452:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 453:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 454:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Instruction Synchronization Barrier
+ 455:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 456:Drivers/CMSIS/Include/core_cmInstr.h ****     Instruction Synchronization Barrier flushes the pipeline in the processor,
+ 457:Drivers/CMSIS/Include/core_cmInstr.h ****     so that all instructions following the ISB are fetched from cache or
+ 458:Drivers/CMSIS/Include/core_cmInstr.h ****     memory, after the instruction has been completed.
+ 459:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 460:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE void __ISB(void)
+ 461:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 462:Drivers/CMSIS/Include/core_cmInstr.h ****   __ASM volatile ("isb 0xF":::"memory");
+ 463:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 464:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 465:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 466:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Data Synchronization Barrier
+ 467:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 468:Drivers/CMSIS/Include/core_cmInstr.h ****     This function acts as a special kind of Data Memory Barrier.
+ARM GAS  /tmp/ccSE5tt3.s 			page 15
+
+
+ 469:Drivers/CMSIS/Include/core_cmInstr.h ****     It completes when all explicit memory accesses before this instruction complete.
+ 470:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 471:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE void __DSB(void)
+ 472:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 473:Drivers/CMSIS/Include/core_cmInstr.h ****   __ASM volatile ("dsb 0xF":::"memory");
+ 474:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 475:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 476:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 477:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Data Memory Barrier
+ 478:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 479:Drivers/CMSIS/Include/core_cmInstr.h ****     This function ensures the apparent order of the explicit memory operations before
+ 480:Drivers/CMSIS/Include/core_cmInstr.h ****     and after the instruction, without ensuring their completion.
+ 481:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 482:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE void __DMB(void)
+ 483:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 484:Drivers/CMSIS/Include/core_cmInstr.h ****   __ASM volatile ("dmb 0xF":::"memory");
+ 485:Drivers/CMSIS/Include/core_cmInstr.h **** }
+ 486:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 487:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 488:Drivers/CMSIS/Include/core_cmInstr.h **** /** \brief  Reverse byte order (32 bit)
+ 489:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 490:Drivers/CMSIS/Include/core_cmInstr.h ****     This function reverses the byte order in integer value.
+ 491:Drivers/CMSIS/Include/core_cmInstr.h **** 
+ 492:Drivers/CMSIS/Include/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 493:Drivers/CMSIS/Include/core_cmInstr.h ****     \return               Reversed value
+ 494:Drivers/CMSIS/Include/core_cmInstr.h ****  */
+ 495:Drivers/CMSIS/Include/core_cmInstr.h **** __attribute__((always_inline)) __STATIC_INLINE uint32_t __REV(uint32_t value)
+ 169              		.loc 2 495 57 is_stmt 1 view .LVU53
+ 170              	.LBB19:
+ 496:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 497:Drivers/CMSIS/Include/core_cmInstr.h **** #if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 5)
+ 498:Drivers/CMSIS/Include/core_cmInstr.h ****   return __builtin_bswap32(value);
+ 171              		.loc 2 498 3 view .LVU54
+ 172              		.loc 2 498 10 is_stmt 0 view .LVU55
+ 173 0076 1BBA     		rev	r3, r3
+ 174              	.LVL18:
+ 175              		.loc 2 498 10 view .LVU56
+ 176              	.LBE19:
+ 177              	.LBE18:
+ 146:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 178              		.loc 1 146 31 view .LVU57
+ 179 0078 3360     		str	r3, [r6]
+ 147:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[1]);
+ 180              		.loc 1 147 5 is_stmt 1 view .LVU58
+ 181              	.LVL19:
+ 148:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 182              		.loc 1 148 5 view .LVU59
+ 148:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 183              		.loc 1 148 33 is_stmt 0 view .LVU60
+ 184 007a 039B     		ldr	r3, [sp, #12]
+ 185              	.LVL20:
+ 186              	.LBB20:
+ 187              	.LBI20:
+ 495:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 188              		.loc 2 495 57 is_stmt 1 view .LVU61
+ 189              	.LBB21:
+ 190              		.loc 2 498 3 view .LVU62
+ARM GAS  /tmp/ccSE5tt3.s 			page 16
+
+
+ 191              		.loc 2 498 10 is_stmt 0 view .LVU63
+ 192 007c 1BBA     		rev	r3, r3
+ 193              	.LVL21:
+ 194              		.loc 2 498 10 view .LVU64
+ 195              	.LBE21:
+ 196              	.LBE20:
+ 148:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 197              		.loc 1 148 31 view .LVU65
+ 198 007e 7360     		str	r3, [r6, #4]
+ 149:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[2]);
+ 199              		.loc 1 149 5 is_stmt 1 view .LVU66
+ 200              	.LVL22:
+ 150:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 201              		.loc 1 150 5 view .LVU67
+ 150:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 202              		.loc 1 150 33 is_stmt 0 view .LVU68
+ 203 0080 049B     		ldr	r3, [sp, #16]
+ 204              	.LVL23:
+ 205              	.LBB22:
+ 206              	.LBI22:
+ 495:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 207              		.loc 2 495 57 is_stmt 1 view .LVU69
+ 208              	.LBB23:
+ 209              		.loc 2 498 3 view .LVU70
+ 210              		.loc 2 498 10 is_stmt 0 view .LVU71
+ 211 0082 1BBA     		rev	r3, r3
+ 212              	.LVL24:
+ 213              		.loc 2 498 10 view .LVU72
+ 214              	.LBE23:
+ 215              	.LBE22:
+ 150:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     outputaddr+=4;
+ 216              		.loc 1 150 31 view .LVU73
+ 217 0084 B360     		str	r3, [r6, #8]
+ 151:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[3]);
+ 218              		.loc 1 151 5 is_stmt 1 view .LVU74
+ 219              	.LVL25:
+ 152:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 220              		.loc 1 152 5 view .LVU75
+ 152:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 221              		.loc 1 152 33 is_stmt 0 view .LVU76
+ 222 0086 059B     		ldr	r3, [sp, #20]
+ 223              	.LVL26:
+ 224              	.LBB24:
+ 225              	.LBI24:
+ 495:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 226              		.loc 2 495 57 is_stmt 1 view .LVU77
+ 227              	.LBB25:
+ 228              		.loc 2 498 3 view .LVU78
+ 229              		.loc 2 498 10 is_stmt 0 view .LVU79
+ 230 0088 1BBA     		rev	r3, r3
+ 231              	.LVL27:
+ 232              		.loc 2 498 10 view .LVU80
+ 233              	.LBE25:
+ 234              	.LBE24:
+ 152:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 235              		.loc 1 152 31 view .LVU81
+ 236 008a F360     		str	r3, [r6, #12]
+ARM GAS  /tmp/ccSE5tt3.s 			page 17
+
+
+ 101:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t inputaddr  = (uint32_t)Input;
+ 237              		.loc 1 101 15 view .LVU82
+ 238 008c 0120     		movs	r0, #1
+ 239 008e ECE7     		b	.L6
+ 240              		.cfi_endproc
+ 241              	.LFE123:
+ 243              		.section	.text.HMAC_MD5,"ax",%progbits
+ 244              		.align	1
+ 245              		.global	HMAC_MD5
+ 246              		.syntax unified
+ 247              		.thumb
+ 248              		.thumb_func
+ 250              	HMAC_MD5:
+ 251              	.LVL28:
+ 252              	.LFB124:
+ 156:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 157:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** /**
+ 158:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @brief  Compute the HMAC MD5 digest.
+ 159:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @param  Key: pointer to the Key used for HMAC.
+ 160:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @param  Keylen: length of the Key used for HMAC.
+ 161:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @param  Input: pointer to the Input buffer to be treated.
+ 162:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @param  Ilen: length of the Input buffer.
+ 163:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @param  Output: the returned digest  
+ 164:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   * @retval An ErrorStatus enumeration value:
+ 165:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *          - SUCCESS: digest computation done
+ 166:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   *          - ERROR: digest computation failed
+ 167:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   */
+ 168:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** ErrorStatus HMAC_MD5(uint8_t *Key, uint32_t Keylen, uint8_t *Input, 
+ 169:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****                      uint32_t Ilen, uint8_t Output[16])
+ 170:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** {
+ 253              		.loc 1 170 1 is_stmt 1 view -0
+ 254              		.cfi_startproc
+ 255              		@ args = 4, pretend = 0, frame = 56
+ 256              		@ frame_needed = 0, uses_anonymous_args = 0
+ 257              		.loc 1 170 1 is_stmt 0 view .LVU84
+ 258 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 259              		.cfi_def_cfa_offset 28
+ 260              		.cfi_offset 4, -28
+ 261              		.cfi_offset 5, -24
+ 262              		.cfi_offset 6, -20
+ 263              		.cfi_offset 7, -16
+ 264              		.cfi_offset 8, -12
+ 265              		.cfi_offset 9, -8
+ 266              		.cfi_offset 14, -4
+ 267 0004 8FB0     		sub	sp, sp, #60
+ 268              		.cfi_def_cfa_offset 88
+ 269 0006 8146     		mov	r9, r0
+ 270 0008 0D46     		mov	r5, r1
+ 271 000a 1F46     		mov	r7, r3
+ 171:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_InitTypeDef MD5_HASH_InitStructure;
+ 272              		.loc 1 171 3 is_stmt 1 view .LVU85
+ 172:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_MsgDigest MD5_MessageDigest;
+ 273              		.loc 1 172 3 view .LVU86
+ 173:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   __IO uint16_t nbvalidbitsdata = 0;
+ 274              		.loc 1 173 3 view .LVU87
+ 275              		.loc 1 173 17 is_stmt 0 view .LVU88
+ 276 000c 0023     		movs	r3, #0
+ARM GAS  /tmp/ccSE5tt3.s 			page 18
+
+
+ 277              	.LVL29:
+ 278              		.loc 1 173 17 view .LVU89
+ 279 000e ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 174:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   __IO uint16_t nbvalidbitskey = 0;
+ 280              		.loc 1 174 3 is_stmt 1 view .LVU90
+ 281              		.loc 1 174 17 is_stmt 0 view .LVU91
+ 282 0012 ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 175:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t i = 0;
+ 283              		.loc 1 175 3 is_stmt 1 view .LVU92
+ 284              	.LVL30:
+ 176:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   __IO uint32_t counter = 0;
+ 285              		.loc 1 176 3 view .LVU93
+ 286              		.loc 1 176 17 is_stmt 0 view .LVU94
+ 287 0016 0093     		str	r3, [sp]
+ 177:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t busystatus = 0;
+ 288              		.loc 1 177 3 is_stmt 1 view .LVU95
+ 289              	.LVL31:
+ 178:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   ErrorStatus status = SUCCESS;
+ 290              		.loc 1 178 3 view .LVU96
+ 179:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t keyaddr    = (uint32_t)Key;
+ 291              		.loc 1 179 3 view .LVU97
+ 292              		.loc 1 179 12 is_stmt 0 view .LVU98
+ 293 0018 8046     		mov	r8, r0
+ 294              	.LVL32:
+ 180:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t inputaddr  = (uint32_t)Input;
+ 295              		.loc 1 180 3 is_stmt 1 view .LVU99
+ 296              		.loc 1 180 12 is_stmt 0 view .LVU100
+ 297 001a 1646     		mov	r6, r2
+ 298              	.LVL33:
+ 181:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t outputaddr = (uint32_t)Output;
+ 299              		.loc 1 181 3 is_stmt 1 view .LVU101
+ 182:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 183:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Number of valid bits in last word of the Input data */
+ 184:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   nbvalidbitsdata = 8 * (Ilen % 4);
+ 300              		.loc 1 184 3 view .LVU102
+ 301              		.loc 1 184 19 is_stmt 0 view .LVU103
+ 302 001c 07F00303 		and	r3, r7, #3
+ 303 0020 DB00     		lsls	r3, r3, #3
+ 304 0022 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 185:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 186:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Number of valid bits in last word of the Key */
+ 187:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   nbvalidbitskey = 8 * (Keylen % 4);
+ 305              		.loc 1 187 3 is_stmt 1 view .LVU104
+ 306              		.loc 1 187 18 is_stmt 0 view .LVU105
+ 307 0026 01F00303 		and	r3, r1, #3
+ 308 002a DB00     		lsls	r3, r3, #3
+ 309 002c ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 188:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****    
+ 189:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* HASH peripheral initialization */
+ 190:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_DeInit();
+ 310              		.loc 1 190 3 is_stmt 1 view .LVU106
+ 311 0030 FFF7FEFF 		bl	HASH_DeInit
+ 312              	.LVL34:
+ 191:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 192:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* HASH Configuration */
+ 193:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   MD5_HASH_InitStructure.HASH_AlgoSelection = HASH_AlgoSelection_MD5;
+ 313              		.loc 1 193 3 view .LVU107
+ARM GAS  /tmp/ccSE5tt3.s 			page 19
+
+
+ 314              		.loc 1 193 45 is_stmt 0 view .LVU108
+ 315 0034 8023     		movs	r3, #128
+ 316 0036 0A93     		str	r3, [sp, #40]
+ 194:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   MD5_HASH_InitStructure.HASH_AlgoMode = HASH_AlgoMode_HMAC;
+ 317              		.loc 1 194 3 is_stmt 1 view .LVU109
+ 318              		.loc 1 194 40 is_stmt 0 view .LVU110
+ 319 0038 4023     		movs	r3, #64
+ 320 003a 0B93     		str	r3, [sp, #44]
+ 195:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   MD5_HASH_InitStructure.HASH_DataType = HASH_DataType_8b;
+ 321              		.loc 1 195 3 is_stmt 1 view .LVU111
+ 322              		.loc 1 195 40 is_stmt 0 view .LVU112
+ 323 003c 2023     		movs	r3, #32
+ 324 003e 0C93     		str	r3, [sp, #48]
+ 196:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   if(Keylen > 64)
+ 325              		.loc 1 196 3 is_stmt 1 view .LVU113
+ 326              		.loc 1 196 5 is_stmt 0 view .LVU114
+ 327 0040 402D     		cmp	r5, #64
+ 328 0042 0CD9     		bls	.L11
+ 197:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 198:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     /* HMAC long Key */
+ 199:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     MD5_HASH_InitStructure.HASH_HMACKeyType = HASH_HMACKeyType_LongKey;
+ 329              		.loc 1 199 5 is_stmt 1 view .LVU115
+ 330              		.loc 1 199 45 is_stmt 0 view .LVU116
+ 331 0044 4FF48033 		mov	r3, #65536
+ 332 0048 0D93     		str	r3, [sp, #52]
+ 333              	.L12:
+ 200:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 201:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   else
+ 202:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 203:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     /* HMAC short Key */
+ 204:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     MD5_HASH_InitStructure.HASH_HMACKeyType = HASH_HMACKeyType_ShortKey;
+ 205:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 206:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_Init(&MD5_HASH_InitStructure);
+ 334              		.loc 1 206 3 is_stmt 1 view .LVU117
+ 335 004a 0AA8     		add	r0, sp, #40
+ 336 004c FFF7FEFF 		bl	HASH_Init
+ 337              	.LVL35:
+ 207:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 208:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Configure the number of valid bits in last word of the Key */
+ 209:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_SetLastWordValidBitsNbr(nbvalidbitskey);
+ 338              		.loc 1 209 3 view .LVU118
+ 339 0050 BDF80400 		ldrh	r0, [sp, #4]
+ 340 0054 80B2     		uxth	r0, r0
+ 341 0056 FFF7FEFF 		bl	HASH_SetLastWordValidBitsNbr
+ 342              	.LVL36:
+ 210:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 211:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Write the Key */
+ 212:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   for(i=0; i<Keylen; i+=4)
+ 343              		.loc 1 212 3 view .LVU119
+ 344              		.loc 1 212 8 is_stmt 0 view .LVU120
+ 345 005a 0024     		movs	r4, #0
+ 346              		.loc 1 212 3 view .LVU121
+ 347 005c 07E0     		b	.L13
+ 348              	.L11:
+ 204:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 349              		.loc 1 204 5 is_stmt 1 view .LVU122
+ 204:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ARM GAS  /tmp/ccSE5tt3.s 			page 20
+
+
+ 350              		.loc 1 204 45 is_stmt 0 view .LVU123
+ 351 005e 0023     		movs	r3, #0
+ 352 0060 0D93     		str	r3, [sp, #52]
+ 353 0062 F2E7     		b	.L12
+ 354              	.LVL37:
+ 355              	.L14:
+ 213:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 214:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     HASH_DataIn(*(uint32_t*)keyaddr);
+ 356              		.loc 1 214 5 is_stmt 1 discriminator 3 view .LVU124
+ 357 0064 59F8040B 		ldr	r0, [r9], #4
+ 358              	.LVL38:
+ 359              		.loc 1 214 5 is_stmt 0 discriminator 3 view .LVU125
+ 360 0068 FFF7FEFF 		bl	HASH_DataIn
+ 361              	.LVL39:
+ 215:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     keyaddr+=4;
+ 362              		.loc 1 215 5 is_stmt 1 discriminator 3 view .LVU126
+ 212:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 363              		.loc 1 212 22 discriminator 3 view .LVU127
+ 212:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 364              		.loc 1 212 23 is_stmt 0 discriminator 3 view .LVU128
+ 365 006c 0434     		adds	r4, r4, #4
+ 366              	.LVL40:
+ 367              	.L13:
+ 212:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 368              		.loc 1 212 12 is_stmt 1 discriminator 1 view .LVU129
+ 212:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 369              		.loc 1 212 3 is_stmt 0 discriminator 1 view .LVU130
+ 370 006e AC42     		cmp	r4, r5
+ 371 0070 F8D3     		bcc	.L14
+ 216:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 217:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   
+ 218:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* Start the HASH processor */
+ 219:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   HASH_StartDigest();
+ 372              		.loc 1 219 3 is_stmt 1 view .LVU131
+ 373 0072 FFF7FEFF 		bl	HASH_StartDigest
+ 374              	.LVL41:
+ 375              	.L16:
+ 220:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 221:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   /* wait until the Busy flag is RESET */
+ 222:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   do
+ 376              		.loc 1 222 3 discriminator 2 view .LVU132
+ 223:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 224:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     busystatus = HASH_GetFlagStatus(HASH_FLAG_BUSY);
+ 377              		.loc 1 224 5 discriminator 2 view .LVU133
+ 378              		.loc 1 224 18 is_stmt 0 discriminator 2 view .LVU134
+ 379 0076 0820     		movs	r0, #8
+ 380 0078 FFF7FEFF 		bl	HASH_GetFlagStatus
+ 381              	.LVL42:
+ 382              		.loc 1 224 16 discriminator 2 view .LVU135
+ 383 007c 8146     		mov	r9, r0
+ 384              	.LVL43:
+ 225:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     counter++;
+ 385              		.loc 1 225 5 is_stmt 1 discriminator 2 view .LVU136
+ 386              		.loc 1 225 12 is_stmt 0 discriminator 2 view .LVU137
+ 387 007e 009C     		ldr	r4, [sp]
+ 388 0080 0134     		adds	r4, r4, #1
+ 389 0082 0094     		str	r4, [sp]
+ARM GAS  /tmp/ccSE5tt3.s 			page 21
+
+
+ 226:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+ 390              		.loc 1 226 10 is_stmt 1 discriminator 2 view .LVU138
+ 391              		.loc 1 226 20 is_stmt 0 discriminator 2 view .LVU139
+ 392 0084 009B     		ldr	r3, [sp]
+ 393              		.loc 1 226 3 discriminator 2 view .LVU140
+ 394 0086 B3F5803F 		cmp	r3, #65536
+ 395 008a 01D0     		beq	.L15
+ 396              		.loc 1 226 40 discriminator 1 view .LVU141
+ 397 008c 0028     		cmp	r0, #0
+ 398 008e F2D1     		bne	.L16
+ 399              	.L15:
+ 227:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 228:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   if (busystatus != RESET)
+ 400              		.loc 1 228 3 is_stmt 1 view .LVU142
+ 401              		.loc 1 228 6 is_stmt 0 view .LVU143
+ 402 0090 B9F1000F 		cmp	r9, #0
+ 403 0094 03D0     		beq	.L30
+ 229:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 230:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****      status = ERROR;
+ 404              		.loc 1 230 13 view .LVU144
+ 405 0096 0020     		movs	r0, #0
+ 406              	.LVL44:
+ 407              	.L17:
+ 231:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 232:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   else
+ 233:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   {
+ 234:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     /* Configure the number of valid bits in last word of the Input data */
+ 235:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     HASH_SetLastWordValidBitsNbr(nbvalidbitsdata);
+ 236:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 237:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     /* Write the Input block in the IN FIFO */
+ 238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     for(i=0; i<Ilen; i+=4)
+ 239:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 240:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       HASH_DataIn(*(uint32_t*)inputaddr);
+ 241:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       inputaddr+=4;
+ 242:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }
+ 243:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 244:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     /* Start the HASH processor */
+ 245:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     HASH_StartDigest();
+ 246:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 247:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     /* wait until the Busy flag is RESET */
+ 248:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     counter =0;
+ 249:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     do
+ 250:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 251:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        busystatus = HASH_GetFlagStatus(HASH_FLAG_BUSY);
+ 252:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        counter++;
+ 253:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+ 254:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 255:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     if (busystatus != RESET)
+ 256:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 257:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       status = ERROR;
+ 258:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }
+ 259:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     else
+ 260:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {  
+ 261:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       /* Configure the number of valid bits in last word of the Key */
+ 262:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       HASH_SetLastWordValidBitsNbr(nbvalidbitskey);
+ 263:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 264:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       /* Write the Key */
+ARM GAS  /tmp/ccSE5tt3.s 			page 22
+
+
+ 265:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       keyaddr = (uint32_t)Key;
+ 266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       for(i=0; i<Keylen; i+=4)
+ 267:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 268:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****         HASH_DataIn(*(uint32_t*)keyaddr);
+ 269:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****         keyaddr+=4;
+ 270:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ 271:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   
+ 272:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        /* Start the HASH processor */
+ 273:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        HASH_StartDigest();
+ 274:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 275:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        /* wait until the Busy flag is RESET */
+ 276:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        counter =0;
+ 277:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        do
+ 278:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        {
+ 279:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****           busystatus = HASH_GetFlagStatus(HASH_FLAG_BUSY);
+ 280:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****           counter++;
+ 281:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+ 282:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 283:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       if (busystatus != RESET)
+ 284:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 285:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          status = ERROR;
+ 286:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ 287:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       else
+ 288:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 289:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          /* Read the message digest */
+ 290:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          HASH_GetDigest(&MD5_MessageDigest);
+ 291:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[0]);
+ 292:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 293:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[1]);
+ 294:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 295:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[2]);
+ 296:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 297:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[3]);
+ 298:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ 299:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }
+ 300:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   }
+ 301:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   return status;  
+ 408              		.loc 1 301 3 is_stmt 1 view .LVU145
+ 302:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** }
+ 409              		.loc 1 302 1 is_stmt 0 view .LVU146
+ 410 0098 0FB0     		add	sp, sp, #60
+ 411              		.cfi_remember_state
+ 412              		.cfi_def_cfa_offset 28
+ 413              		@ sp needed
+ 414 009a BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 415              	.LVL45:
+ 416              	.L30:
+ 417              		.cfi_restore_state
+ 235:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 418              		.loc 1 235 5 is_stmt 1 view .LVU147
+ 419 009e BDF80600 		ldrh	r0, [sp, #6]
+ 420              	.LVL46:
+ 235:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 421              		.loc 1 235 5 is_stmt 0 view .LVU148
+ 422 00a2 80B2     		uxth	r0, r0
+ 423 00a4 FFF7FEFF 		bl	HASH_SetLastWordValidBitsNbr
+ 424              	.LVL47:
+ARM GAS  /tmp/ccSE5tt3.s 			page 23
+
+
+ 238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 425              		.loc 1 238 5 is_stmt 1 view .LVU149
+ 238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 426              		.loc 1 238 5 is_stmt 0 view .LVU150
+ 427 00a8 05E0     		b	.L18
+ 428              	.LVL48:
+ 429              	.L19:
+ 240:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       inputaddr+=4;
+ 430              		.loc 1 240 7 is_stmt 1 discriminator 3 view .LVU151
+ 431 00aa 56F8040B 		ldr	r0, [r6], #4
+ 432              	.LVL49:
+ 240:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       inputaddr+=4;
+ 433              		.loc 1 240 7 is_stmt 0 discriminator 3 view .LVU152
+ 434 00ae FFF7FEFF 		bl	HASH_DataIn
+ 435              	.LVL50:
+ 241:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }
+ 436              		.loc 1 241 7 is_stmt 1 discriminator 3 view .LVU153
+ 238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 437              		.loc 1 238 22 discriminator 3 view .LVU154
+ 238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 438              		.loc 1 238 23 is_stmt 0 discriminator 3 view .LVU155
+ 439 00b2 09F10409 		add	r9, r9, #4
+ 440              	.LVL51:
+ 441              	.L18:
+ 238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 442              		.loc 1 238 14 is_stmt 1 discriminator 1 view .LVU156
+ 238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 443              		.loc 1 238 5 is_stmt 0 discriminator 1 view .LVU157
+ 444 00b6 B945     		cmp	r9, r7
+ 445 00b8 F7D3     		bcc	.L19
+ 245:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 446              		.loc 1 245 5 is_stmt 1 view .LVU158
+ 447 00ba FFF7FEFF 		bl	HASH_StartDigest
+ 448              	.LVL52:
+ 248:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     do
+ 449              		.loc 1 248 5 view .LVU159
+ 248:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     do
+ 450              		.loc 1 248 13 is_stmt 0 view .LVU160
+ 451 00be 0023     		movs	r3, #0
+ 452 00c0 0093     		str	r3, [sp]
+ 453              	.L21:
+ 249:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 454              		.loc 1 249 5 is_stmt 1 discriminator 2 view .LVU161
+ 251:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        counter++;
+ 455              		.loc 1 251 8 discriminator 2 view .LVU162
+ 251:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        counter++;
+ 456              		.loc 1 251 21 is_stmt 0 discriminator 2 view .LVU163
+ 457 00c2 0820     		movs	r0, #8
+ 458 00c4 FFF7FEFF 		bl	HASH_GetFlagStatus
+ 459              	.LVL53:
+ 251:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        counter++;
+ 460              		.loc 1 251 19 discriminator 2 view .LVU164
+ 461 00c8 0446     		mov	r4, r0
+ 462              	.LVL54:
+ 252:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+ 463              		.loc 1 252 8 is_stmt 1 discriminator 2 view .LVU165
+ 252:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+ARM GAS  /tmp/ccSE5tt3.s 			page 24
+
+
+ 464              		.loc 1 252 15 is_stmt 0 discriminator 2 view .LVU166
+ 465 00ca 009B     		ldr	r3, [sp]
+ 466 00cc 0133     		adds	r3, r3, #1
+ 467 00ce 0093     		str	r3, [sp]
+ 253:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 468              		.loc 1 253 12 is_stmt 1 discriminator 2 view .LVU167
+ 253:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 469              		.loc 1 253 22 is_stmt 0 discriminator 2 view .LVU168
+ 470 00d0 009B     		ldr	r3, [sp]
+ 253:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 471              		.loc 1 253 5 discriminator 2 view .LVU169
+ 472 00d2 B3F5803F 		cmp	r3, #65536
+ 473 00d6 01D0     		beq	.L20
+ 253:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 474              		.loc 1 253 42 discriminator 1 view .LVU170
+ 475 00d8 0028     		cmp	r0, #0
+ 476 00da F2D1     		bne	.L21
+ 477              	.L20:
+ 255:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 478              		.loc 1 255 5 is_stmt 1 view .LVU171
+ 255:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     {
+ 479              		.loc 1 255 8 is_stmt 0 view .LVU172
+ 480 00dc 0CB1     		cbz	r4, .L31
+ 257:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }
+ 481              		.loc 1 257 14 view .LVU173
+ 482 00de 0020     		movs	r0, #0
+ 483              	.LVL55:
+ 257:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****     }
+ 484              		.loc 1 257 14 view .LVU174
+ 485 00e0 DAE7     		b	.L17
+ 486              	.LVL56:
+ 487              	.L31:
+ 262:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 488              		.loc 1 262 7 is_stmt 1 view .LVU175
+ 489 00e2 BDF80400 		ldrh	r0, [sp, #4]
+ 490              	.LVL57:
+ 262:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 491              		.loc 1 262 7 is_stmt 0 view .LVU176
+ 492 00e6 80B2     		uxth	r0, r0
+ 493 00e8 FFF7FEFF 		bl	HASH_SetLastWordValidBitsNbr
+ 494              	.LVL58:
+ 265:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       for(i=0; i<Keylen; i+=4)
+ 495              		.loc 1 265 7 is_stmt 1 view .LVU177
+ 266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 496              		.loc 1 266 7 view .LVU178
+ 266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 497              		.loc 1 266 7 is_stmt 0 view .LVU179
+ 498 00ec 04E0     		b	.L22
+ 499              	.LVL59:
+ 500              	.L23:
+ 268:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****         keyaddr+=4;
+ 501              		.loc 1 268 9 is_stmt 1 discriminator 3 view .LVU180
+ 502 00ee 58F8040B 		ldr	r0, [r8], #4
+ 503              	.LVL60:
+ 268:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****         keyaddr+=4;
+ 504              		.loc 1 268 9 is_stmt 0 discriminator 3 view .LVU181
+ 505 00f2 FFF7FEFF 		bl	HASH_DataIn
+ARM GAS  /tmp/ccSE5tt3.s 			page 25
+
+
+ 506              	.LVL61:
+ 269:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ 507              		.loc 1 269 9 is_stmt 1 discriminator 3 view .LVU182
+ 266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 508              		.loc 1 266 26 discriminator 3 view .LVU183
+ 266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 509              		.loc 1 266 27 is_stmt 0 discriminator 3 view .LVU184
+ 510 00f6 0434     		adds	r4, r4, #4
+ 511              	.LVL62:
+ 512              	.L22:
+ 266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 513              		.loc 1 266 16 is_stmt 1 discriminator 1 view .LVU185
+ 266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 514              		.loc 1 266 7 is_stmt 0 discriminator 1 view .LVU186
+ 515 00f8 AC42     		cmp	r4, r5
+ 516 00fa F8D3     		bcc	.L23
+ 273:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 517              		.loc 1 273 8 is_stmt 1 view .LVU187
+ 518 00fc FFF7FEFF 		bl	HASH_StartDigest
+ 519              	.LVL63:
+ 276:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        do
+ 520              		.loc 1 276 8 view .LVU188
+ 276:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        do
+ 521              		.loc 1 276 16 is_stmt 0 view .LVU189
+ 522 0100 0023     		movs	r3, #0
+ 523 0102 0093     		str	r3, [sp]
+ 524              	.L25:
+ 277:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****        {
+ 525              		.loc 1 277 8 is_stmt 1 discriminator 2 view .LVU190
+ 279:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****           counter++;
+ 526              		.loc 1 279 11 discriminator 2 view .LVU191
+ 279:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****           counter++;
+ 527              		.loc 1 279 24 is_stmt 0 discriminator 2 view .LVU192
+ 528 0104 0820     		movs	r0, #8
+ 529 0106 FFF7FEFF 		bl	HASH_GetFlagStatus
+ 530              	.LVL64:
+ 280:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+ 531              		.loc 1 280 11 is_stmt 1 discriminator 2 view .LVU193
+ 280:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+ 532              		.loc 1 280 18 is_stmt 0 discriminator 2 view .LVU194
+ 533 010a 009B     		ldr	r3, [sp]
+ 534 010c 0133     		adds	r3, r3, #1
+ 535 010e 0093     		str	r3, [sp]
+ 281:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 536              		.loc 1 281 14 is_stmt 1 discriminator 2 view .LVU195
+ 281:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 537              		.loc 1 281 24 is_stmt 0 discriminator 2 view .LVU196
+ 538 0110 009B     		ldr	r3, [sp]
+ 281:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 539              		.loc 1 281 7 discriminator 2 view .LVU197
+ 540 0112 B3F5803F 		cmp	r3, #65536
+ 541 0116 01D0     		beq	.L24
+ 281:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c **** 
+ 542              		.loc 1 281 44 discriminator 1 view .LVU198
+ 543 0118 0028     		cmp	r0, #0
+ 544 011a F3D1     		bne	.L25
+ 545              	.L24:
+ARM GAS  /tmp/ccSE5tt3.s 			page 26
+
+
+ 283:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 546              		.loc 1 283 7 is_stmt 1 view .LVU199
+ 283:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       {
+ 547              		.loc 1 283 10 is_stmt 0 view .LVU200
+ 548 011c 08B1     		cbz	r0, .L32
+ 285:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ 549              		.loc 1 285 17 view .LVU201
+ 550 011e 0020     		movs	r0, #0
+ 551              	.LVL65:
+ 285:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ 552              		.loc 1 285 17 view .LVU202
+ 553 0120 BAE7     		b	.L17
+ 554              	.LVL66:
+ 555              	.L32:
+ 290:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[0]);
+ 556              		.loc 1 290 10 is_stmt 1 view .LVU203
+ 557 0122 02A8     		add	r0, sp, #8
+ 558              	.LVL67:
+ 290:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[0]);
+ 559              		.loc 1 290 10 is_stmt 0 view .LVU204
+ 560 0124 FFF7FEFF 		bl	HASH_GetDigest
+ 561              	.LVL68:
+ 291:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 562              		.loc 1 291 10 is_stmt 1 view .LVU205
+ 291:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 563              		.loc 1 291 38 is_stmt 0 view .LVU206
+ 564 0128 029B     		ldr	r3, [sp, #8]
+ 565              	.LVL69:
+ 566              	.LBB26:
+ 567              	.LBI26:
+ 495:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 568              		.loc 2 495 57 is_stmt 1 view .LVU207
+ 569              	.LBB27:
+ 570              		.loc 2 498 3 view .LVU208
+ 571              		.loc 2 498 10 is_stmt 0 view .LVU209
+ 572 012a 1BBA     		rev	r3, r3
+ 573              	.LVL70:
+ 574              		.loc 2 498 10 view .LVU210
+ 575              	.LBE27:
+ 576              	.LBE26:
+ 291:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 577              		.loc 1 291 36 view .LVU211
+ 578 012c 169A     		ldr	r2, [sp, #88]
+ 579 012e 1360     		str	r3, [r2]
+ 292:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[1]);
+ 580              		.loc 1 292 10 is_stmt 1 view .LVU212
+ 581              	.LVL71:
+ 293:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 582              		.loc 1 293 10 view .LVU213
+ 293:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 583              		.loc 1 293 38 is_stmt 0 view .LVU214
+ 584 0130 039B     		ldr	r3, [sp, #12]
+ 585              	.LVL72:
+ 586              	.LBB28:
+ 587              	.LBI28:
+ 495:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 588              		.loc 2 495 57 is_stmt 1 view .LVU215
+ARM GAS  /tmp/ccSE5tt3.s 			page 27
+
+
+ 589              	.LBB29:
+ 590              		.loc 2 498 3 view .LVU216
+ 591              		.loc 2 498 10 is_stmt 0 view .LVU217
+ 592 0132 1BBA     		rev	r3, r3
+ 593              	.LVL73:
+ 594              		.loc 2 498 10 view .LVU218
+ 595              	.LBE29:
+ 596              	.LBE28:
+ 293:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 597              		.loc 1 293 36 view .LVU219
+ 598 0134 5360     		str	r3, [r2, #4]
+ 294:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[2]);
+ 599              		.loc 1 294 10 is_stmt 1 view .LVU220
+ 600              	.LVL74:
+ 295:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 601              		.loc 1 295 10 view .LVU221
+ 295:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 602              		.loc 1 295 38 is_stmt 0 view .LVU222
+ 603 0136 049B     		ldr	r3, [sp, #16]
+ 604              	.LVL75:
+ 605              	.LBB30:
+ 606              	.LBI30:
+ 495:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 607              		.loc 2 495 57 is_stmt 1 view .LVU223
+ 608              	.LBB31:
+ 609              		.loc 2 498 3 view .LVU224
+ 610              		.loc 2 498 10 is_stmt 0 view .LVU225
+ 611 0138 1BBA     		rev	r3, r3
+ 612              	.LVL76:
+ 613              		.loc 2 498 10 view .LVU226
+ 614              	.LBE31:
+ 615              	.LBE30:
+ 295:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          outputaddr+=4;
+ 616              		.loc 1 295 36 view .LVU227
+ 617 013a 9360     		str	r3, [r2, #8]
+ 296:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****          *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[3]);
+ 618              		.loc 1 296 10 is_stmt 1 view .LVU228
+ 619              	.LVL77:
+ 297:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ 620              		.loc 1 297 10 view .LVU229
+ 297:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ 621              		.loc 1 297 38 is_stmt 0 view .LVU230
+ 622 013c 059B     		ldr	r3, [sp, #20]
+ 623              	.LVL78:
+ 624              	.LBB32:
+ 625              	.LBI32:
+ 495:Drivers/CMSIS/Include/core_cmInstr.h **** {
+ 626              		.loc 2 495 57 is_stmt 1 view .LVU231
+ 627              	.LBB33:
+ 628              		.loc 2 498 3 view .LVU232
+ 629              		.loc 2 498 10 is_stmt 0 view .LVU233
+ 630 013e 1BBA     		rev	r3, r3
+ 631              	.LVL79:
+ 632              		.loc 2 498 10 view .LVU234
+ 633              	.LBE33:
+ 634              	.LBE32:
+ 297:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****       }
+ARM GAS  /tmp/ccSE5tt3.s 			page 28
+
+
+ 635              		.loc 1 297 36 view .LVU235
+ 636 0140 D360     		str	r3, [r2, #12]
+ 178:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c ****   uint32_t keyaddr    = (uint32_t)Key;
+ 637              		.loc 1 178 15 view .LVU236
+ 638 0142 0120     		movs	r0, #1
+ 639 0144 A8E7     		b	.L17
+ 640              		.cfi_endproc
+ 641              	.LFE124:
+ 643              		.text
+ 644              	.Letext0:
+ 645              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 646              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 647              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 648              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_hash.h"
+ARM GAS  /tmp/ccSE5tt3.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4xx_hash_md5.c
+     /tmp/ccSE5tt3.s:20     .text.HASH_MD5:0000000000000000 $t
+     /tmp/ccSE5tt3.s:26     .text.HASH_MD5:0000000000000000 HASH_MD5
+     /tmp/ccSE5tt3.s:244    .text.HMAC_MD5:0000000000000000 $t
+     /tmp/ccSE5tt3.s:250    .text.HMAC_MD5:0000000000000000 HMAC_MD5
+
+UNDEFINED SYMBOLS
+HASH_DeInit
+HASH_Init
+HASH_SetLastWordValidBitsNbr
+HASH_DataIn
+HASH_StartDigest
+HASH_GetFlagStatus
+HASH_GetDigest

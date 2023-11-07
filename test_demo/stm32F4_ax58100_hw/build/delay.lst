@@ -1,0 +1,496 @@
+ARM GAS  /tmp/ccM8Dx0t.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"delay.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.SysTick_Handler,"ax",%progbits
+  20              		.align	1
+  21              		.global	SysTick_Handler
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	SysTick_Handler:
+  27              	.LFB123:
+  28              		.file 1 "Lib/bsp/src/delay.c"
+   1:Lib/bsp/src/delay.c **** #include "delay.h"
+   2:Lib/bsp/src/delay.c **** 
+   3:Lib/bsp/src/delay.c **** 
+   4:Lib/bsp/src/delay.c **** static uint32_t ticksPerUs = MAX_FREQ_TICKS_PER_US;  // max STM32F40x freq by default
+   5:Lib/bsp/src/delay.c **** volatile uint32_t timer_ms = 0;
+   6:Lib/bsp/src/delay.c **** 
+   7:Lib/bsp/src/delay.c **** 
+   8:Lib/bsp/src/delay.c **** void SysTick_Handler()
+   9:Lib/bsp/src/delay.c **** {
+  29              		.loc 1 9 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  10:Lib/bsp/src/delay.c ****     timer_ms++;
+  34              		.loc 1 10 5 view .LVU1
+  35              		.loc 1 10 13 is_stmt 0 view .LVU2
+  36 0000 024A     		ldr	r2, .L2
+  37 0002 1368     		ldr	r3, [r2]
+  38 0004 0133     		adds	r3, r3, #1
+  39 0006 1360     		str	r3, [r2]
+  11:Lib/bsp/src/delay.c **** }
+  40              		.loc 1 11 1 view .LVU3
+  41 0008 7047     		bx	lr
+  42              	.L3:
+  43 000a 00BF     		.align	2
+  44              	.L2:
+  45 000c 00000000 		.word	.LANCHOR0
+  46              		.cfi_endproc
+  47              	.LFE123:
+ARM GAS  /tmp/ccM8Dx0t.s 			page 2
+
+
+  49              		.section	.text.delay_init,"ax",%progbits
+  50              		.align	1
+  51              		.global	delay_init
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+  56              	delay_init:
+  57              	.LFB124:
+  12:Lib/bsp/src/delay.c **** 
+  13:Lib/bsp/src/delay.c **** 
+  14:Lib/bsp/src/delay.c **** uint32_t delay_init(void) {
+  58              		.loc 1 14 27 is_stmt 1 view -0
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              		@ link register save eliminated.
+  15:Lib/bsp/src/delay.c **** 	uint32_t c;
+  63              		.loc 1 15 2 view .LVU5
+  16:Lib/bsp/src/delay.c ****     
+  17:Lib/bsp/src/delay.c ****     /* Calculate ticks per us factor */
+  18:Lib/bsp/src/delay.c ****     ticksPerUs = (SystemCoreClock / 1000000);
+  64              		.loc 1 18 5 view .LVU6
+  65              		.loc 1 18 35 is_stmt 0 view .LVU7
+  66 0000 134B     		ldr	r3, .L5
+  67 0002 1B68     		ldr	r3, [r3]
+  68 0004 134A     		ldr	r2, .L5+4
+  69 0006 A2FB0323 		umull	r2, r3, r2, r3
+  70 000a 9B0C     		lsrs	r3, r3, #18
+  71              		.loc 1 18 16 view .LVU8
+  72 000c 124A     		ldr	r2, .L5+8
+  73 000e 1360     		str	r3, [r2]
+  19:Lib/bsp/src/delay.c **** 	
+  20:Lib/bsp/src/delay.c ****     /* Enable TRC */
+  21:Lib/bsp/src/delay.c ****     CoreDebug->DEMCR &= ~0x01000000;
+  74              		.loc 1 21 5 is_stmt 1 view .LVU9
+  75              		.loc 1 21 22 is_stmt 0 view .LVU10
+  76 0010 124B     		ldr	r3, .L5+12
+  77 0012 D3F8FC20 		ldr	r2, [r3, #252]
+  78 0016 22F08072 		bic	r2, r2, #16777216
+  79 001a C3F8FC20 		str	r2, [r3, #252]
+  22:Lib/bsp/src/delay.c ****     CoreDebug->DEMCR |=  0x01000000;
+  80              		.loc 1 22 5 is_stmt 1 view .LVU11
+  81              		.loc 1 22 22 is_stmt 0 view .LVU12
+  82 001e D3F8FC20 		ldr	r2, [r3, #252]
+  83 0022 42F08072 		orr	r2, r2, #16777216
+  84 0026 C3F8FC20 		str	r2, [r3, #252]
+  23:Lib/bsp/src/delay.c **** 	
+  24:Lib/bsp/src/delay.c ****     /* Enable counter */
+  25:Lib/bsp/src/delay.c ****     DWT->CTRL &= ~0x00000001;
+  85              		.loc 1 25 5 is_stmt 1 view .LVU13
+  86              		.loc 1 25 15 is_stmt 0 view .LVU14
+  87 002a A3F55D43 		sub	r3, r3, #56576
+  88 002e 1A68     		ldr	r2, [r3]
+  89 0030 22F00102 		bic	r2, r2, #1
+  90 0034 1A60     		str	r2, [r3]
+  26:Lib/bsp/src/delay.c ****     DWT->CTRL |=  0x00000001;
+  91              		.loc 1 26 5 is_stmt 1 view .LVU15
+ARM GAS  /tmp/ccM8Dx0t.s 			page 3
+
+
+  92              		.loc 1 26 15 is_stmt 0 view .LVU16
+  93 0036 1A68     		ldr	r2, [r3]
+  94 0038 42F00102 		orr	r2, r2, #1
+  95 003c 1A60     		str	r2, [r3]
+  27:Lib/bsp/src/delay.c **** 	
+  28:Lib/bsp/src/delay.c ****     /* Reset counter */
+  29:Lib/bsp/src/delay.c ****     DWT->CYCCNT = 0;
+  96              		.loc 1 29 5 is_stmt 1 view .LVU17
+  97              		.loc 1 29 17 is_stmt 0 view .LVU18
+  98 003e 0022     		movs	r2, #0
+  99 0040 5A60     		str	r2, [r3, #4]
+  30:Lib/bsp/src/delay.c **** 	
+  31:Lib/bsp/src/delay.c **** 	/* Check if DWT has started */
+  32:Lib/bsp/src/delay.c **** 	c = DWT->CYCCNT;
+ 100              		.loc 1 32 2 is_stmt 1 view .LVU19
+ 101              		.loc 1 32 4 is_stmt 0 view .LVU20
+ 102 0042 5A68     		ldr	r2, [r3, #4]
+ 103              	.LVL0:
+  33:Lib/bsp/src/delay.c **** 	
+  34:Lib/bsp/src/delay.c **** 	/* 2 dummys */
+  35:Lib/bsp/src/delay.c **** 	__ASM volatile ("NOP");
+ 104              		.loc 1 35 2 is_stmt 1 view .LVU21
+ 105              		.syntax unified
+ 106              	@ 35 "Lib/bsp/src/delay.c" 1
+ 107 0044 00BF     		NOP
+ 108              	@ 0 "" 2
+  36:Lib/bsp/src/delay.c **** 	__ASM volatile ("NOP");
+ 109              		.loc 1 36 2 view .LVU22
+ 110              	@ 36 "Lib/bsp/src/delay.c" 1
+ 111 0046 00BF     		NOP
+ 112              	@ 0 "" 2
+  37:Lib/bsp/src/delay.c **** 	
+  38:Lib/bsp/src/delay.c **** 	/* Return difference, if result is zero, DWT has not started */
+  39:Lib/bsp/src/delay.c **** 	return (DWT->CYCCNT - c);
+ 113              		.loc 1 39 2 view .LVU23
+ 114              		.loc 1 39 13 is_stmt 0 view .LVU24
+ 115              		.thumb
+ 116              		.syntax unified
+ 117 0048 5868     		ldr	r0, [r3, #4]
+  40:Lib/bsp/src/delay.c **** }
+ 118              		.loc 1 40 1 view .LVU25
+ 119 004a 801A     		subs	r0, r0, r2
+ 120 004c 7047     		bx	lr
+ 121              	.L6:
+ 122 004e 00BF     		.align	2
+ 123              	.L5:
+ 124 0050 00000000 		.word	SystemCoreClock
+ 125 0054 83DE1B43 		.word	1125899907
+ 126 0058 00000000 		.word	.LANCHOR1
+ 127 005c 00ED00E0 		.word	-536810240
+ 128              		.cfi_endproc
+ 129              	.LFE124:
+ 131              		.section	.text.millis,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	millis
+ 134              		.syntax unified
+ 135              		.thumb
+ARM GAS  /tmp/ccM8Dx0t.s 			page 4
+
+
+ 136              		.thumb_func
+ 138              	millis:
+ 139              	.LFB125:
+  41:Lib/bsp/src/delay.c **** 
+  42:Lib/bsp/src/delay.c **** 
+  43:Lib/bsp/src/delay.c **** uint32_t millis() 
+  44:Lib/bsp/src/delay.c **** {
+ 140              		.loc 1 44 1 is_stmt 1 view -0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+  45:Lib/bsp/src/delay.c ****     return timer_ms;
+ 145              		.loc 1 45 5 view .LVU27
+ 146              		.loc 1 45 12 is_stmt 0 view .LVU28
+ 147 0000 014B     		ldr	r3, .L8
+ 148 0002 1868     		ldr	r0, [r3]
+  46:Lib/bsp/src/delay.c **** }
+ 149              		.loc 1 46 1 view .LVU29
+ 150 0004 7047     		bx	lr
+ 151              	.L9:
+ 152 0006 00BF     		.align	2
+ 153              	.L8:
+ 154 0008 00000000 		.word	.LANCHOR0
+ 155              		.cfi_endproc
+ 156              	.LFE125:
+ 158              		.section	.text.delay_ms,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	delay_ms
+ 161              		.syntax unified
+ 162              		.thumb
+ 163              		.thumb_func
+ 165              	delay_ms:
+ 166              	.LVL1:
+ 167              	.LFB126:
+  47:Lib/bsp/src/delay.c **** 
+  48:Lib/bsp/src/delay.c **** 
+  49:Lib/bsp/src/delay.c **** void delay_ms(int time)
+  50:Lib/bsp/src/delay.c **** {
+ 168              		.loc 1 50 1 is_stmt 1 view -0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172              		.loc 1 50 1 is_stmt 0 view .LVU31
+ 173 0000 10B5     		push	{r4, lr}
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 4, -8
+ 176              		.cfi_offset 14, -4
+ 177 0002 0446     		mov	r4, r0
+  51:Lib/bsp/src/delay.c ****     uint32_t timer_end = millis() + time;
+ 178              		.loc 1 51 5 is_stmt 1 view .LVU32
+ 179              		.loc 1 51 26 is_stmt 0 view .LVU33
+ 180 0004 FFF7FEFF 		bl	millis
+ 181              	.LVL2:
+ 182              		.loc 1 51 14 view .LVU34
+ 183 0008 0444     		add	r4, r4, r0
+ 184              	.LVL3:
+ARM GAS  /tmp/ccM8Dx0t.s 			page 5
+
+
+  52:Lib/bsp/src/delay.c ****     while(millis() < timer_end);
+ 185              		.loc 1 52 5 is_stmt 1 view .LVU35
+ 186              	.L11:
+ 187              		.loc 1 52 32 discriminator 1 view .LVU36
+ 188              		.loc 1 52 10 discriminator 1 view .LVU37
+ 189              		.loc 1 52 11 is_stmt 0 discriminator 1 view .LVU38
+ 190 000a FFF7FEFF 		bl	millis
+ 191              	.LVL4:
+ 192              		.loc 1 52 10 discriminator 1 view .LVU39
+ 193 000e A042     		cmp	r0, r4
+ 194 0010 FBD3     		bcc	.L11
+  53:Lib/bsp/src/delay.c **** }
+ 195              		.loc 1 53 1 view .LVU40
+ 196 0012 10BD     		pop	{r4, pc}
+ 197              		.loc 1 53 1 view .LVU41
+ 198              		.cfi_endproc
+ 199              	.LFE126:
+ 201              		.section	.text.stopwatch_start,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	stopwatch_start
+ 204              		.syntax unified
+ 205              		.thumb
+ 206              		.thumb_func
+ 208              	stopwatch_start:
+ 209              	.LVL5:
+ 210              	.LFB127:
+  54:Lib/bsp/src/delay.c **** 
+  55:Lib/bsp/src/delay.c **** 
+  56:Lib/bsp/src/delay.c **** void stopwatch_start(stopwatch_t * stopwatch)
+  57:Lib/bsp/src/delay.c **** {
+ 211              		.loc 1 57 1 is_stmt 1 view -0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 0
+ 214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 215              		@ link register save eliminated.
+  58:Lib/bsp/src/delay.c ****     stopwatch->start = DWT->CYCCNT;
+ 216              		.loc 1 58 5 view .LVU43
+ 217              		.loc 1 58 27 is_stmt 0 view .LVU44
+ 218 0000 014B     		ldr	r3, .L14
+ 219 0002 5B68     		ldr	r3, [r3, #4]
+ 220              		.loc 1 58 22 view .LVU45
+ 221 0004 0360     		str	r3, [r0]
+  59:Lib/bsp/src/delay.c **** }
+ 222              		.loc 1 59 1 view .LVU46
+ 223 0006 7047     		bx	lr
+ 224              	.L15:
+ 225              		.align	2
+ 226              	.L14:
+ 227 0008 001000E0 		.word	-536866816
+ 228              		.cfi_endproc
+ 229              	.LFE127:
+ 231              		.section	.text.stopwatch_now_us,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	stopwatch_now_us
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ARM GAS  /tmp/ccM8Dx0t.s 			page 6
+
+
+ 238              	stopwatch_now_us:
+ 239              	.LVL6:
+ 240              	.LFB128:
+  60:Lib/bsp/src/delay.c **** 
+  61:Lib/bsp/src/delay.c **** 
+  62:Lib/bsp/src/delay.c **** uint32_t stopwatch_now_us(stopwatch_t * stopwatch)
+  63:Lib/bsp/src/delay.c **** {
+ 241              		.loc 1 63 1 is_stmt 1 view -0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245              		@ link register save eliminated.
+  64:Lib/bsp/src/delay.c ****     return (DWT->CYCCNT - stopwatch->start) / ticksPerUs;
+ 246              		.loc 1 64 5 view .LVU48
+ 247              		.loc 1 64 16 is_stmt 0 view .LVU49
+ 248 0000 044B     		ldr	r3, .L17
+ 249 0002 5B68     		ldr	r3, [r3, #4]
+ 250              		.loc 1 64 36 view .LVU50
+ 251 0004 0068     		ldr	r0, [r0]
+ 252              	.LVL7:
+ 253              		.loc 1 64 25 view .LVU51
+ 254 0006 1B1A     		subs	r3, r3, r0
+ 255              		.loc 1 64 45 view .LVU52
+ 256 0008 034A     		ldr	r2, .L17+4
+ 257 000a 1068     		ldr	r0, [r2]
+  65:Lib/bsp/src/delay.c **** }
+ 258              		.loc 1 65 1 view .LVU53
+ 259 000c B3FBF0F0 		udiv	r0, r3, r0
+ 260 0010 7047     		bx	lr
+ 261              	.L18:
+ 262 0012 00BF     		.align	2
+ 263              	.L17:
+ 264 0014 001000E0 		.word	-536866816
+ 265 0018 00000000 		.word	.LANCHOR1
+ 266              		.cfi_endproc
+ 267              	.LFE128:
+ 269              		.section	.text.test_stopwatch,"ax",%progbits
+ 270              		.align	1
+ 271              		.global	test_stopwatch
+ 272              		.syntax unified
+ 273              		.thumb
+ 274              		.thumb_func
+ 276              	test_stopwatch:
+ 277              	.LFB129:
+  66:Lib/bsp/src/delay.c **** 
+  67:Lib/bsp/src/delay.c **** 
+  68:Lib/bsp/src/delay.c **** int8_t test_stopwatch() {
+ 278              		.loc 1 68 25 is_stmt 1 view -0
+ 279              		.cfi_startproc
+ 280              		@ args = 0, pretend = 0, frame = 16
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282 0000 00B5     		push	{lr}
+ 283              		.cfi_def_cfa_offset 4
+ 284              		.cfi_offset 14, -4
+ 285 0002 85B0     		sub	sp, sp, #20
+ 286              		.cfi_def_cfa_offset 24
+  69:Lib/bsp/src/delay.c ****     delay_init();
+ARM GAS  /tmp/ccM8Dx0t.s 			page 7
+
+
+ 287              		.loc 1 69 5 view .LVU55
+ 288 0004 FFF7FEFF 		bl	delay_init
+ 289              	.LVL8:
+  70:Lib/bsp/src/delay.c ****     stopwatch_t st01, st02;
+ 290              		.loc 1 70 5 view .LVU56
+  71:Lib/bsp/src/delay.c **** 
+  72:Lib/bsp/src/delay.c ****     stopwatch_start(&st01);
+ 291              		.loc 1 72 5 view .LVU57
+ 292 0008 03A8     		add	r0, sp, #12
+ 293 000a FFF7FEFF 		bl	stopwatch_start
+ 294              	.LVL9:
+  73:Lib/bsp/src/delay.c ****     delay_ms(1);
+ 295              		.loc 1 73 5 view .LVU58
+ 296 000e 0120     		movs	r0, #1
+ 297 0010 FFF7FEFF 		bl	delay_ms
+ 298              	.LVL10:
+  74:Lib/bsp/src/delay.c ****     stopwatch_start(&st02);
+ 299              		.loc 1 74 5 view .LVU59
+ 300 0014 02A8     		add	r0, sp, #8
+ 301 0016 FFF7FEFF 		bl	stopwatch_start
+ 302              	.LVL11:
+  75:Lib/bsp/src/delay.c ****     delay_ms(1);
+ 303              		.loc 1 75 5 view .LVU60
+ 304 001a 0120     		movs	r0, #1
+ 305 001c FFF7FEFF 		bl	delay_ms
+ 306              	.LVL12:
+  76:Lib/bsp/src/delay.c ****     volatile uint32_t elapsed_02_us = stopwatch_now_us(&st02);
+ 307              		.loc 1 76 5 view .LVU61
+ 308              		.loc 1 76 39 is_stmt 0 view .LVU62
+ 309 0020 02A8     		add	r0, sp, #8
+ 310 0022 FFF7FEFF 		bl	stopwatch_now_us
+ 311              	.LVL13:
+ 312              		.loc 1 76 23 view .LVU63
+ 313 0026 0190     		str	r0, [sp, #4]
+  77:Lib/bsp/src/delay.c ****     delay_ms(1);
+ 314              		.loc 1 77 5 is_stmt 1 view .LVU64
+ 315 0028 0120     		movs	r0, #1
+ 316 002a FFF7FEFF 		bl	delay_ms
+ 317              	.LVL14:
+  78:Lib/bsp/src/delay.c ****     volatile uint32_t elapsed_01_us = stopwatch_now_us(&st02);
+ 318              		.loc 1 78 5 view .LVU65
+ 319              		.loc 1 78 39 is_stmt 0 view .LVU66
+ 320 002e 02A8     		add	r0, sp, #8
+ 321 0030 FFF7FEFF 		bl	stopwatch_now_us
+ 322              	.LVL15:
+ 323              		.loc 1 78 23 view .LVU67
+ 324 0034 0090     		str	r0, [sp]
+  79:Lib/bsp/src/delay.c **** 
+  80:Lib/bsp/src/delay.c ****     if (elapsed_02_us >= elapsed_01_us)
+ 325              		.loc 1 80 5 is_stmt 1 view .LVU68
+ 326              		.loc 1 80 23 is_stmt 0 view .LVU69
+ 327 0036 019A     		ldr	r2, [sp, #4]
+ 328 0038 009B     		ldr	r3, [sp]
+ 329              		.loc 1 80 8 view .LVU70
+ 330 003a 9A42     		cmp	r2, r3
+ 331 003c 03D2     		bcs	.L23
+  81:Lib/bsp/src/delay.c ****     {
+ARM GAS  /tmp/ccM8Dx0t.s 			page 8
+
+
+  82:Lib/bsp/src/delay.c ****         return -1;
+  83:Lib/bsp/src/delay.c ****     } 
+  84:Lib/bsp/src/delay.c ****     else
+  85:Lib/bsp/src/delay.c ****     {
+  86:Lib/bsp/src/delay.c ****         return 0;
+ 332              		.loc 1 86 16 view .LVU71
+ 333 003e 0020     		movs	r0, #0
+ 334              	.L20:
+  87:Lib/bsp/src/delay.c ****     }    
+  88:Lib/bsp/src/delay.c **** }
+ 335              		.loc 1 88 1 view .LVU72
+ 336 0040 05B0     		add	sp, sp, #20
+ 337              		.cfi_remember_state
+ 338              		.cfi_def_cfa_offset 4
+ 339              		@ sp needed
+ 340 0042 5DF804FB 		ldr	pc, [sp], #4
+ 341              	.L23:
+ 342              		.cfi_restore_state
+  82:Lib/bsp/src/delay.c ****     } 
+ 343              		.loc 1 82 16 view .LVU73
+ 344 0046 4FF0FF30 		mov	r0, #-1
+ 345 004a F9E7     		b	.L20
+ 346              		.cfi_endproc
+ 347              	.LFE129:
+ 349              		.global	timer_ms
+ 350              		.section	.bss.timer_ms,"aw",%nobits
+ 351              		.align	2
+ 352              		.set	.LANCHOR0,. + 0
+ 355              	timer_ms:
+ 356 0000 00000000 		.space	4
+ 357              		.section	.data.ticksPerUs,"aw"
+ 358              		.align	2
+ 359              		.set	.LANCHOR1,. + 0
+ 362              	ticksPerUs:
+ 363 0000 A8000000 		.word	168
+ 364              		.text
+ 365              	.Letext0:
+ 366              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 367              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 368              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 369              		.file 5 "Lib/bsp/Inc/delay.h"
+ 370              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ARM GAS  /tmp/ccM8Dx0t.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 delay.c
+     /tmp/ccM8Dx0t.s:20     .text.SysTick_Handler:0000000000000000 $t
+     /tmp/ccM8Dx0t.s:26     .text.SysTick_Handler:0000000000000000 SysTick_Handler
+     /tmp/ccM8Dx0t.s:45     .text.SysTick_Handler:000000000000000c $d
+     /tmp/ccM8Dx0t.s:50     .text.delay_init:0000000000000000 $t
+     /tmp/ccM8Dx0t.s:56     .text.delay_init:0000000000000000 delay_init
+     /tmp/ccM8Dx0t.s:124    .text.delay_init:0000000000000050 $d
+     /tmp/ccM8Dx0t.s:132    .text.millis:0000000000000000 $t
+     /tmp/ccM8Dx0t.s:138    .text.millis:0000000000000000 millis
+     /tmp/ccM8Dx0t.s:154    .text.millis:0000000000000008 $d
+     /tmp/ccM8Dx0t.s:159    .text.delay_ms:0000000000000000 $t
+     /tmp/ccM8Dx0t.s:165    .text.delay_ms:0000000000000000 delay_ms
+     /tmp/ccM8Dx0t.s:202    .text.stopwatch_start:0000000000000000 $t
+     /tmp/ccM8Dx0t.s:208    .text.stopwatch_start:0000000000000000 stopwatch_start
+     /tmp/ccM8Dx0t.s:227    .text.stopwatch_start:0000000000000008 $d
+     /tmp/ccM8Dx0t.s:232    .text.stopwatch_now_us:0000000000000000 $t
+     /tmp/ccM8Dx0t.s:238    .text.stopwatch_now_us:0000000000000000 stopwatch_now_us
+     /tmp/ccM8Dx0t.s:264    .text.stopwatch_now_us:0000000000000014 $d
+     /tmp/ccM8Dx0t.s:270    .text.test_stopwatch:0000000000000000 $t
+     /tmp/ccM8Dx0t.s:276    .text.test_stopwatch:0000000000000000 test_stopwatch
+     /tmp/ccM8Dx0t.s:355    .bss.timer_ms:0000000000000000 timer_ms
+     /tmp/ccM8Dx0t.s:351    .bss.timer_ms:0000000000000000 $d
+     /tmp/ccM8Dx0t.s:358    .data.ticksPerUs:0000000000000000 $d
+     /tmp/ccM8Dx0t.s:362    .data.ticksPerUs:0000000000000000 ticksPerUs
+
+UNDEFINED SYMBOLS
+SystemCoreClock

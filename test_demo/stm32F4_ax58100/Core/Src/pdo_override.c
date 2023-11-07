@@ -61,8 +61,6 @@ void spi_dma_prepare_transmission(uint16_t address, uint8_t *tx_buffer, uint8_t 
 
 void spi_dma_setup(void)
 {
-    // hal
-    // todo 配置DMA本地存储地址
 }
 
 void spi_dma_start(void)
@@ -70,7 +68,8 @@ void spi_dma_start(void)
     // HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
     spi_select(et1100);
     HAL_SPI_TransmitReceive_DMA(&hspi2, (uint8_t *)pdo_spi_txbuf, (uint8_t *)pdo_spi_rxbuf, sizeof(*pdo_spi_txbuf));
-    while((HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY));
+    //while ((HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY))
+    //    ;
 
     pdi_dma_transmission = IN_PROGRESS;
 }
@@ -78,7 +77,7 @@ void spi_dma_start(void)
 void spi_dma_stop(void)
 {
     spi_unselect(et1100);
-    //HAL_SPI_DMAStop(&hspi2);
+    // HAL_SPI_DMAStop(&hspi2);
 }
 
 void spi_dma_rxpdo_start(void)

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc62EnRc.s 			page 1
+ARM GAS  /tmp/ccvC9ew0.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc62EnRc.s 			page 1
   27:Core/Src/pdo_override.c **** uint8_t pdo_txbuf[PDO_TR_SIZE + TX_PADDING_SIZE] __attribute__((aligned(8))) = {0};
   28:Core/Src/pdo_override.c **** uint8_t *pdo_spi_txbuf = pdo_txbuf + TX_PADDING_SIZE;
   29:Core/Src/pdo_override.c **** uint8_t *pdo_coe_txbuf = pdo_txbuf + TX_PADDING_SIZE + ADDR_SIZE;
-ARM GAS  /tmp/cc62EnRc.s 			page 2
+ARM GAS  /tmp/ccvC9ew0.s 			page 2
 
 
   30:Core/Src/pdo_override.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc62EnRc.s 			page 1
   61              		.loc 1 42 9 is_stmt 1 view .LVU13
   42:Core/Src/pdo_override.c ****     }
   62              		.loc 1 42 36 is_stmt 0 view .LVU14
-ARM GAS  /tmp/cc62EnRc.s 			page 3
+ARM GAS  /tmp/ccvC9ew0.s 			page 3
 
 
   63 0018 0B71     		strb	r3, [r1, #4]
@@ -161,10 +161,8 @@ ARM GAS  /tmp/cc62EnRc.s 			page 1
   86              		@ args = 0, pretend = 0, frame = 0
   87              		@ frame_needed = 0, uses_anonymous_args = 0
   88              		@ link register save eliminated.
-  64:Core/Src/pdo_override.c ****     // hal
-  65:Core/Src/pdo_override.c ****     // todo 配置DMA本地存储地址
-  66:Core/Src/pdo_override.c **** }
-  89              		.loc 1 66 1 view .LVU19
+  64:Core/Src/pdo_override.c **** }
+  89              		.loc 1 64 1 view .LVU19
   90 0000 7047     		bx	lr
   91              		.cfi_endproc
   92              	.LFE131:
@@ -176,13 +174,13 @@ ARM GAS  /tmp/cc62EnRc.s 			page 1
   99              		.thumb_func
  101              	spi_dma_start:
  102              	.LFB132:
-  67:Core/Src/pdo_override.c **** 
-  68:Core/Src/pdo_override.c **** void spi_dma_start(void)
-ARM GAS  /tmp/cc62EnRc.s 			page 4
+  65:Core/Src/pdo_override.c **** 
+  66:Core/Src/pdo_override.c **** void spi_dma_start(void)
+  67:Core/Src/pdo_override.c **** {
+ 103              		.loc 1 67 1 view -0
+ARM GAS  /tmp/ccvC9ew0.s 			page 4
 
 
-  69:Core/Src/pdo_override.c **** {
- 103              		.loc 1 69 1 view -0
  104              		.cfi_startproc
  105              		@ args = 0, pretend = 0, frame = 0
  106              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -190,576 +188,565 @@ ARM GAS  /tmp/cc62EnRc.s 			page 1
  108              		.cfi_def_cfa_offset 8
  109              		.cfi_offset 3, -8
  110              		.cfi_offset 14, -4
-  70:Core/Src/pdo_override.c ****     // HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
-  71:Core/Src/pdo_override.c ****     spi_select(et1100);
- 111              		.loc 1 71 5 view .LVU21
+  68:Core/Src/pdo_override.c ****     // HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
+  69:Core/Src/pdo_override.c ****     spi_select(et1100);
+ 111              		.loc 1 69 5 view .LVU21
  112 0002 0120     		movs	r0, #1
  113 0004 FFF7FEFF 		bl	spi_select
  114              	.LVL2:
-  72:Core/Src/pdo_override.c ****     HAL_SPI_TransmitReceive_DMA(&hspi2, (uint8_t *)pdo_spi_txbuf, (uint8_t *)pdo_spi_rxbuf, sizeof(
- 115              		.loc 1 72 5 view .LVU22
+  70:Core/Src/pdo_override.c ****     HAL_SPI_TransmitReceive_DMA(&hspi2, (uint8_t *)pdo_spi_txbuf, (uint8_t *)pdo_spi_rxbuf, sizeof(
+ 115              		.loc 1 70 5 view .LVU22
  116 0008 0123     		movs	r3, #1
- 117 000a 084A     		ldr	r2, .L10
+ 117 000a 054A     		ldr	r2, .L9
  118 000c 1268     		ldr	r2, [r2]
- 119 000e 0849     		ldr	r1, .L10+4
+ 119 000e 0549     		ldr	r1, .L9+4
  120 0010 0968     		ldr	r1, [r1]
- 121 0012 0848     		ldr	r0, .L10+8
+ 121 0012 0548     		ldr	r0, .L9+8
  122 0014 FFF7FEFF 		bl	HAL_SPI_TransmitReceive_DMA
  123              	.LVL3:
-  73:Core/Src/pdo_override.c ****     while((HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY));
- 124              		.loc 1 73 5 view .LVU23
- 125              	.L8:
- 126              		.loc 1 73 61 discriminator 1 view .LVU24
- 127              		.loc 1 73 10 discriminator 1 view .LVU25
- 128              		.loc 1 73 12 is_stmt 0 discriminator 1 view .LVU26
- 129 0018 0648     		ldr	r0, .L10+8
- 130 001a FFF7FEFF 		bl	HAL_SPI_GetState
- 131              	.LVL4:
- 132              		.loc 1 73 10 discriminator 1 view .LVU27
- 133 001e 0128     		cmp	r0, #1
- 134 0020 FAD1     		bne	.L8
-  74:Core/Src/pdo_override.c **** 
-  75:Core/Src/pdo_override.c ****     pdi_dma_transmission = IN_PROGRESS;
- 135              		.loc 1 75 5 is_stmt 1 view .LVU28
- 136              		.loc 1 75 26 is_stmt 0 view .LVU29
- 137 0022 054B     		ldr	r3, .L10+12
- 138 0024 0122     		movs	r2, #1
- 139 0026 1A70     		strb	r2, [r3]
-  76:Core/Src/pdo_override.c **** }
- 140              		.loc 1 76 1 view .LVU30
- 141 0028 08BD     		pop	{r3, pc}
- 142              	.L11:
- 143 002a 00BF     		.align	2
- 144              	.L10:
- 145 002c 00000000 		.word	.LANCHOR0
- 146 0030 00000000 		.word	.LANCHOR1
- 147 0034 00000000 		.word	hspi2
- 148 0038 00000000 		.word	.LANCHOR2
- 149              		.cfi_endproc
- 150              	.LFE132:
- 152              		.section	.text.spi_dma_stop,"ax",%progbits
-ARM GAS  /tmp/cc62EnRc.s 			page 5
+  71:Core/Src/pdo_override.c ****     //while ((HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY))
+  72:Core/Src/pdo_override.c ****     //    ;
+  73:Core/Src/pdo_override.c **** 
+  74:Core/Src/pdo_override.c ****     pdi_dma_transmission = IN_PROGRESS;
+ 124              		.loc 1 74 5 view .LVU23
+ 125              		.loc 1 74 26 is_stmt 0 view .LVU24
+ 126 0018 044B     		ldr	r3, .L9+12
+ 127 001a 0122     		movs	r2, #1
+ 128 001c 1A70     		strb	r2, [r3]
+  75:Core/Src/pdo_override.c **** }
+ 129              		.loc 1 75 1 view .LVU25
+ 130 001e 08BD     		pop	{r3, pc}
+ 131              	.L10:
+ 132              		.align	2
+ 133              	.L9:
+ 134 0020 00000000 		.word	.LANCHOR0
+ 135 0024 00000000 		.word	.LANCHOR1
+ 136 0028 00000000 		.word	hspi2
+ 137 002c 00000000 		.word	.LANCHOR2
+ 138              		.cfi_endproc
+ 139              	.LFE132:
+ 141              		.section	.text.spi_dma_stop,"ax",%progbits
+ 142              		.align	1
+ 143              		.global	spi_dma_stop
+ 144              		.syntax unified
+ 145              		.thumb
+ 146              		.thumb_func
+ 148              	spi_dma_stop:
+ 149              	.LFB133:
+  76:Core/Src/pdo_override.c **** 
+  77:Core/Src/pdo_override.c **** void spi_dma_stop(void)
+  78:Core/Src/pdo_override.c **** {
+ 150              		.loc 1 78 1 is_stmt 1 view -0
+ 151              		.cfi_startproc
+ARM GAS  /tmp/ccvC9ew0.s 			page 5
 
 
- 153              		.align	1
- 154              		.global	spi_dma_stop
- 155              		.syntax unified
- 156              		.thumb
- 157              		.thumb_func
- 159              	spi_dma_stop:
- 160              	.LFB133:
-  77:Core/Src/pdo_override.c **** 
-  78:Core/Src/pdo_override.c **** void spi_dma_stop(void)
-  79:Core/Src/pdo_override.c **** {
- 161              		.loc 1 79 1 is_stmt 1 view -0
- 162              		.cfi_startproc
- 163              		@ args = 0, pretend = 0, frame = 0
- 164              		@ frame_needed = 0, uses_anonymous_args = 0
- 165 0000 08B5     		push	{r3, lr}
- 166              		.cfi_def_cfa_offset 8
- 167              		.cfi_offset 3, -8
- 168              		.cfi_offset 14, -4
-  80:Core/Src/pdo_override.c ****     spi_unselect(et1100);
- 169              		.loc 1 80 5 view .LVU32
- 170 0002 0120     		movs	r0, #1
- 171 0004 FFF7FEFF 		bl	spi_unselect
- 172              	.LVL5:
-  81:Core/Src/pdo_override.c ****     //HAL_SPI_DMAStop(&hspi2);
-  82:Core/Src/pdo_override.c **** }
- 173              		.loc 1 82 1 is_stmt 0 view .LVU33
- 174 0008 08BD     		pop	{r3, pc}
- 175              		.cfi_endproc
- 176              	.LFE133:
- 178              		.section	.text.spi_dma_rxpdo_start,"ax",%progbits
- 179              		.align	1
- 180              		.global	spi_dma_rxpdo_start
- 181              		.syntax unified
- 182              		.thumb
- 183              		.thumb_func
- 185              	spi_dma_rxpdo_start:
- 186              	.LFB134:
-  83:Core/Src/pdo_override.c **** 
-  84:Core/Src/pdo_override.c **** void spi_dma_rxpdo_start(void)
-  85:Core/Src/pdo_override.c **** {
- 187              		.loc 1 85 1 is_stmt 1 view -0
- 188              		.cfi_startproc
- 189              		@ args = 0, pretend = 0, frame = 0
- 190              		@ frame_needed = 0, uses_anonymous_args = 0
- 191 0000 08B5     		push	{r3, lr}
- 192              		.cfi_def_cfa_offset 8
- 193              		.cfi_offset 3, -8
- 194              		.cfi_offset 14, -4
-  86:Core/Src/pdo_override.c ****     memset(pdo_coe_txbuf, 0, PDO_SIZE); /* make sure TX buffer is filled with 0s, no read end byte 
- 195              		.loc 1 86 5 view .LVU35
- 196 0002 074B     		ldr	r3, .L16
- 197 0004 1B68     		ldr	r3, [r3]
- 198 0006 0022     		movs	r2, #0
- 199 0008 1A80     		strh	r2, [r3]	@ unaligned
-  87:Core/Src/pdo_override.c ****     spi_dma_prepare_transmission(ESC_SM2_sma, pdo_spi_txbuf, ESC_CMD_READ_WAIT_STATE);
- 200              		.loc 1 87 5 view .LVU36
- 201 000a 0322     		movs	r2, #3
-ARM GAS  /tmp/cc62EnRc.s 			page 6
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154 0000 08B5     		push	{r3, lr}
+ 155              		.cfi_def_cfa_offset 8
+ 156              		.cfi_offset 3, -8
+ 157              		.cfi_offset 14, -4
+  79:Core/Src/pdo_override.c ****     spi_unselect(et1100);
+ 158              		.loc 1 79 5 view .LVU27
+ 159 0002 0120     		movs	r0, #1
+ 160 0004 FFF7FEFF 		bl	spi_unselect
+ 161              	.LVL4:
+  80:Core/Src/pdo_override.c ****     // HAL_SPI_DMAStop(&hspi2);
+  81:Core/Src/pdo_override.c **** }
+ 162              		.loc 1 81 1 is_stmt 0 view .LVU28
+ 163 0008 08BD     		pop	{r3, pc}
+ 164              		.cfi_endproc
+ 165              	.LFE133:
+ 167              		.section	.text.spi_dma_rxpdo_start,"ax",%progbits
+ 168              		.align	1
+ 169              		.global	spi_dma_rxpdo_start
+ 170              		.syntax unified
+ 171              		.thumb
+ 172              		.thumb_func
+ 174              	spi_dma_rxpdo_start:
+ 175              	.LFB134:
+  82:Core/Src/pdo_override.c **** 
+  83:Core/Src/pdo_override.c **** void spi_dma_rxpdo_start(void)
+  84:Core/Src/pdo_override.c **** {
+ 176              		.loc 1 84 1 is_stmt 1 view -0
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180 0000 08B5     		push	{r3, lr}
+ 181              		.cfi_def_cfa_offset 8
+ 182              		.cfi_offset 3, -8
+ 183              		.cfi_offset 14, -4
+  85:Core/Src/pdo_override.c ****     memset(pdo_coe_txbuf, 0, PDO_SIZE); /* make sure TX buffer is filled with 0s, no read end byte 
+ 184              		.loc 1 85 5 view .LVU30
+ 185 0002 074B     		ldr	r3, .L15
+ 186 0004 1B68     		ldr	r3, [r3]
+ 187 0006 0022     		movs	r2, #0
+ 188 0008 1A80     		strh	r2, [r3]	@ unaligned
+  86:Core/Src/pdo_override.c ****     spi_dma_prepare_transmission(ESC_SM2_sma, pdo_spi_txbuf, ESC_CMD_READ_WAIT_STATE);
+ 189              		.loc 1 86 5 view .LVU31
+ 190 000a 0322     		movs	r2, #3
+ 191 000c 054B     		ldr	r3, .L15+4
+ 192 000e 1968     		ldr	r1, [r3]
+ 193 0010 4FF4B050 		mov	r0, #5632
+ 194 0014 FFF7FEFF 		bl	spi_dma_prepare_transmission
+ 195              	.LVL5:
+  87:Core/Src/pdo_override.c **** 
+  88:Core/Src/pdo_override.c ****     spi_dma_start();
+ 196              		.loc 1 88 5 view .LVU32
+ 197 0018 FFF7FEFF 		bl	spi_dma_start
+ 198              	.LVL6:
+  89:Core/Src/pdo_override.c **** }
+ 199              		.loc 1 89 1 is_stmt 0 view .LVU33
+ARM GAS  /tmp/ccvC9ew0.s 			page 6
 
 
- 202 000c 054B     		ldr	r3, .L16+4
- 203 000e 1968     		ldr	r1, [r3]
- 204 0010 4FF4B050 		mov	r0, #5632
- 205 0014 FFF7FEFF 		bl	spi_dma_prepare_transmission
- 206              	.LVL6:
-  88:Core/Src/pdo_override.c **** 
-  89:Core/Src/pdo_override.c ****     spi_dma_start();
- 207              		.loc 1 89 5 view .LVU37
- 208 0018 FFF7FEFF 		bl	spi_dma_start
- 209              	.LVL7:
-  90:Core/Src/pdo_override.c **** }
- 210              		.loc 1 90 1 is_stmt 0 view .LVU38
- 211 001c 08BD     		pop	{r3, pc}
- 212              	.L17:
- 213 001e 00BF     		.align	2
- 214              	.L16:
- 215 0020 00000000 		.word	.LANCHOR3
- 216 0024 00000000 		.word	.LANCHOR1
- 217              		.cfi_endproc
- 218              	.LFE134:
- 220              		.section	.text.spi_dma_txpdo_start,"ax",%progbits
- 221              		.align	1
- 222              		.global	spi_dma_txpdo_start
- 223              		.syntax unified
- 224              		.thumb
- 225              		.thumb_func
- 227              	spi_dma_txpdo_start:
- 228              	.LFB135:
-  91:Core/Src/pdo_override.c **** 
-  92:Core/Src/pdo_override.c **** void spi_dma_txpdo_start()
-  93:Core/Src/pdo_override.c **** {
- 229              		.loc 1 93 1 is_stmt 1 view -0
- 230              		.cfi_startproc
- 231              		@ args = 0, pretend = 0, frame = 0
- 232              		@ frame_needed = 0, uses_anonymous_args = 0
- 233 0000 08B5     		push	{r3, lr}
- 234              		.cfi_def_cfa_offset 8
- 235              		.cfi_offset 3, -8
- 236              		.cfi_offset 14, -4
-  94:Core/Src/pdo_override.c ****     spi_dma_prepare_transmission(ESC_SM3_sma, pdo_spi_txbuf, ESC_CMD_WRITE);
- 237              		.loc 1 94 5 view .LVU40
- 238 0002 0422     		movs	r2, #4
- 239 0004 044B     		ldr	r3, .L20
- 240 0006 1968     		ldr	r1, [r3]
- 241 0008 4FF4D050 		mov	r0, #6656
- 242 000c FFF7FEFF 		bl	spi_dma_prepare_transmission
- 243              	.LVL8:
-  95:Core/Src/pdo_override.c **** 
-  96:Core/Src/pdo_override.c ****     spi_dma_start();
- 244              		.loc 1 96 5 view .LVU41
- 245 0010 FFF7FEFF 		bl	spi_dma_start
- 246              	.LVL9:
-  97:Core/Src/pdo_override.c **** }
- 247              		.loc 1 97 1 is_stmt 0 view .LVU42
- 248 0014 08BD     		pop	{r3, pc}
- 249              	.L21:
- 250 0016 00BF     		.align	2
-ARM GAS  /tmp/cc62EnRc.s 			page 7
+ 200 001c 08BD     		pop	{r3, pc}
+ 201              	.L16:
+ 202 001e 00BF     		.align	2
+ 203              	.L15:
+ 204 0020 00000000 		.word	.LANCHOR3
+ 205 0024 00000000 		.word	.LANCHOR1
+ 206              		.cfi_endproc
+ 207              	.LFE134:
+ 209              		.section	.text.spi_dma_txpdo_start,"ax",%progbits
+ 210              		.align	1
+ 211              		.global	spi_dma_txpdo_start
+ 212              		.syntax unified
+ 213              		.thumb
+ 214              		.thumb_func
+ 216              	spi_dma_txpdo_start:
+ 217              	.LFB135:
+  90:Core/Src/pdo_override.c **** 
+  91:Core/Src/pdo_override.c **** void spi_dma_txpdo_start()
+  92:Core/Src/pdo_override.c **** {
+ 218              		.loc 1 92 1 is_stmt 1 view -0
+ 219              		.cfi_startproc
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222 0000 08B5     		push	{r3, lr}
+ 223              		.cfi_def_cfa_offset 8
+ 224              		.cfi_offset 3, -8
+ 225              		.cfi_offset 14, -4
+  93:Core/Src/pdo_override.c ****     spi_dma_prepare_transmission(ESC_SM3_sma, pdo_spi_txbuf, ESC_CMD_WRITE);
+ 226              		.loc 1 93 5 view .LVU35
+ 227 0002 0422     		movs	r2, #4
+ 228 0004 044B     		ldr	r3, .L19
+ 229 0006 1968     		ldr	r1, [r3]
+ 230 0008 4FF4D050 		mov	r0, #6656
+ 231 000c FFF7FEFF 		bl	spi_dma_prepare_transmission
+ 232              	.LVL7:
+  94:Core/Src/pdo_override.c **** 
+  95:Core/Src/pdo_override.c ****     spi_dma_start();
+ 233              		.loc 1 95 5 view .LVU36
+ 234 0010 FFF7FEFF 		bl	spi_dma_start
+ 235              	.LVL8:
+  96:Core/Src/pdo_override.c **** }
+ 236              		.loc 1 96 1 is_stmt 0 view .LVU37
+ 237 0014 08BD     		pop	{r3, pc}
+ 238              	.L20:
+ 239 0016 00BF     		.align	2
+ 240              	.L19:
+ 241 0018 00000000 		.word	.LANCHOR1
+ 242              		.cfi_endproc
+ 243              	.LFE135:
+ 245              		.section	.text.init_override,"ax",%progbits
+ 246              		.align	1
+ 247              		.global	init_override
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 252              	init_override:
+ 253              	.LFB136:
+ARM GAS  /tmp/ccvC9ew0.s 			page 7
 
 
- 251              	.L20:
- 252 0018 00000000 		.word	.LANCHOR1
- 253              		.cfi_endproc
- 254              	.LFE135:
- 256              		.section	.text.init_override,"ax",%progbits
- 257              		.align	1
- 258              		.global	init_override
- 259              		.syntax unified
- 260              		.thumb
- 261              		.thumb_func
- 263              	init_override:
- 264              	.LFB136:
-  98:Core/Src/pdo_override.c **** 
-  99:Core/Src/pdo_override.c **** void init_override(void)
- 100:Core/Src/pdo_override.c **** {
- 265              		.loc 1 100 1 is_stmt 1 view -0
- 266              		.cfi_startproc
- 267              		@ args = 0, pretend = 0, frame = 0
- 268              		@ frame_needed = 0, uses_anonymous_args = 0
- 269 0000 08B5     		push	{r3, lr}
- 270              		.cfi_def_cfa_offset 8
- 271              		.cfi_offset 3, -8
- 272              		.cfi_offset 14, -4
- 101:Core/Src/pdo_override.c ****     spi_dma_setup();
- 273              		.loc 1 101 5 view .LVU44
- 102:Core/Src/pdo_override.c ****     spi_setup();
- 274              		.loc 1 102 5 view .LVU45
- 275 0002 FFF7FEFF 		bl	spi_setup
- 276              	.LVL10:
- 103:Core/Src/pdo_override.c **** 
- 104:Core/Src/pdo_override.c ****     /* SMx_sml are calculated at runtime on PREOP_TO_SAFEOP, buffer size is needed on compilation
- 105:Core/Src/pdo_override.c ****         TODO test if they match, when ESC is OP */
- 106:Core/Src/pdo_override.c ****     // CC_ASSERT (ESCvar.ESC_SM2_sml == PDO_SIZE);
- 107:Core/Src/pdo_override.c ****     // CC_ASSERT (ESCvar.ESC_SM3_sml == PDO_SIZE);
- 108:Core/Src/pdo_override.c **** }
- 277              		.loc 1 108 1 is_stmt 0 view .LVU46
- 278 0006 08BD     		pop	{r3, pc}
- 279              		.cfi_endproc
- 280              	.LFE136:
- 282              		.section	.text.on_rxpdo_transfer_finished,"ax",%progbits
- 283              		.align	1
- 284              		.global	on_rxpdo_transfer_finished
- 285              		.syntax unified
- 286              		.thumb
- 287              		.thumb_func
- 289              	on_rxpdo_transfer_finished:
- 290              	.LFB138:
- 109:Core/Src/pdo_override.c **** 
- 110:Core/Src/pdo_override.c **** void rxpdo_override(void)
- 111:Core/Src/pdo_override.c **** {
- 112:Core/Src/pdo_override.c ****     spi_dma_rxpdo_start();
- 113:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
- 114:Core/Src/pdo_override.c ****     {
- 115:Core/Src/pdo_override.c ****     } /* polling for "end of transfer" flag */
- 116:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
- 117:Core/Src/pdo_override.c **** }
- 118:Core/Src/pdo_override.c **** 
-ARM GAS  /tmp/cc62EnRc.s 			page 8
-
-
- 119:Core/Src/pdo_override.c **** void on_rxpdo_transfer_finished(void)
- 120:Core/Src/pdo_override.c **** {
- 291              		.loc 1 120 1 is_stmt 1 view -0
- 292              		.cfi_startproc
- 293              		@ args = 0, pretend = 0, frame = 0
- 294              		@ frame_needed = 0, uses_anonymous_args = 0
- 295 0000 08B5     		push	{r3, lr}
- 296              		.cfi_def_cfa_offset 8
- 297              		.cfi_offset 3, -8
- 298              		.cfi_offset 14, -4
- 121:Core/Src/pdo_override.c ****     spi_dma_stop();
- 299              		.loc 1 121 5 view .LVU48
- 300 0002 FFF7FEFF 		bl	spi_dma_stop
- 301              	.LVL11:
- 122:Core/Src/pdo_override.c ****     ESCvar.ALevent = etohs((uint16_t)*pdo_spi_rxbuf);
- 302              		.loc 1 122 5 view .LVU49
- 303              		.loc 1 122 22 is_stmt 0 view .LVU50
- 304 0006 074B     		ldr	r3, .L26
- 305 0008 1B68     		ldr	r3, [r3]
- 306 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 307              		.loc 1 122 20 view .LVU51
- 308 000c 064B     		ldr	r3, .L26+4
- 309 000e C3F8E420 		str	r2, [r3, #228]
- 123:Core/Src/pdo_override.c **** 
- 124:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM2 > 0)
- 310              		.loc 1 124 5 is_stmt 1 view .LVU52
- 125:Core/Src/pdo_override.c ****     {
- 126:Core/Src/pdo_override.c ****         COE_pdoUnpack(pdo_coe_rxbuf, ESCvar.sm2mappings, SMmap2);
- 311              		.loc 1 126 9 view .LVU53
- 312 0012 064A     		ldr	r2, .L26+8
- 313 0014 D3F8AC10 		ldr	r1, [r3, #172]
- 314 0018 054B     		ldr	r3, .L26+12
- 315 001a 1868     		ldr	r0, [r3]
- 316 001c FFF7FEFF 		bl	COE_pdoUnpack
- 317              	.LVL12:
- 127:Core/Src/pdo_override.c ****     }
- 128:Core/Src/pdo_override.c **** }
- 318              		.loc 1 128 1 is_stmt 0 view .LVU54
- 319 0020 08BD     		pop	{r3, pc}
- 320              	.L27:
- 321 0022 00BF     		.align	2
- 322              	.L26:
- 323 0024 00000000 		.word	.LANCHOR0
- 324 0028 00000000 		.word	ESCvar
- 325 002c 00000000 		.word	SMmap2
- 326 0030 00000000 		.word	.LANCHOR4
- 327              		.cfi_endproc
- 328              	.LFE138:
- 330              		.section	.text.rxpdo_override,"ax",%progbits
- 331              		.align	1
- 332              		.global	rxpdo_override
- 333              		.syntax unified
- 334              		.thumb
- 335              		.thumb_func
- 337              	rxpdo_override:
- 338              	.LFB137:
+  97:Core/Src/pdo_override.c **** 
+  98:Core/Src/pdo_override.c **** void init_override(void)
+  99:Core/Src/pdo_override.c **** {
+ 254              		.loc 1 99 1 is_stmt 1 view -0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258 0000 08B5     		push	{r3, lr}
+ 259              		.cfi_def_cfa_offset 8
+ 260              		.cfi_offset 3, -8
+ 261              		.cfi_offset 14, -4
+ 100:Core/Src/pdo_override.c ****     spi_dma_setup();
+ 262              		.loc 1 100 5 view .LVU39
+ 101:Core/Src/pdo_override.c ****     spi_setup();
+ 263              		.loc 1 101 5 view .LVU40
+ 264 0002 FFF7FEFF 		bl	spi_setup
+ 265              	.LVL9:
+ 102:Core/Src/pdo_override.c **** 
+ 103:Core/Src/pdo_override.c ****     /* SMx_sml are calculated at runtime on PREOP_TO_SAFEOP, buffer size is needed on compilation
+ 104:Core/Src/pdo_override.c ****         TODO test if they match, when ESC is OP */
+ 105:Core/Src/pdo_override.c ****     // CC_ASSERT (ESCvar.ESC_SM2_sml == PDO_SIZE);
+ 106:Core/Src/pdo_override.c ****     // CC_ASSERT (ESCvar.ESC_SM3_sml == PDO_SIZE);
+ 107:Core/Src/pdo_override.c **** }
+ 266              		.loc 1 107 1 is_stmt 0 view .LVU41
+ 267 0006 08BD     		pop	{r3, pc}
+ 268              		.cfi_endproc
+ 269              	.LFE136:
+ 271              		.section	.text.on_rxpdo_transfer_finished,"ax",%progbits
+ 272              		.align	1
+ 273              		.global	on_rxpdo_transfer_finished
+ 274              		.syntax unified
+ 275              		.thumb
+ 276              		.thumb_func
+ 278              	on_rxpdo_transfer_finished:
+ 279              	.LFB138:
+ 108:Core/Src/pdo_override.c **** 
+ 109:Core/Src/pdo_override.c **** void rxpdo_override(void)
+ 110:Core/Src/pdo_override.c **** {
  111:Core/Src/pdo_override.c ****     spi_dma_rxpdo_start();
-ARM GAS  /tmp/cc62EnRc.s 			page 9
-
-
- 339              		.loc 1 111 1 is_stmt 1 view -0
- 340              		.cfi_startproc
- 341              		@ args = 0, pretend = 0, frame = 0
- 342              		@ frame_needed = 0, uses_anonymous_args = 0
- 343 0000 08B5     		push	{r3, lr}
- 344              		.cfi_def_cfa_offset 8
- 345              		.cfi_offset 3, -8
- 346              		.cfi_offset 14, -4
  112:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
- 347              		.loc 1 112 5 view .LVU56
- 348 0002 FFF7FEFF 		bl	spi_dma_rxpdo_start
- 349              	.LVL13:
  113:Core/Src/pdo_override.c ****     {
- 350              		.loc 1 113 5 view .LVU57
- 351              	.L29:
+ 114:Core/Src/pdo_override.c ****     } /* polling for "end of transfer" flag */
  115:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
- 352              		.loc 1 115 5 discriminator 1 view .LVU58
- 113:Core/Src/pdo_override.c ****     {
- 353              		.loc 1 113 11 discriminator 1 view .LVU59
- 113:Core/Src/pdo_override.c ****     {
- 354              		.loc 1 113 33 is_stmt 0 discriminator 1 view .LVU60
- 355 0006 044B     		ldr	r3, .L31
- 356 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 357 000a DBB2     		uxtb	r3, r3
- 113:Core/Src/pdo_override.c ****     {
- 358              		.loc 1 113 11 discriminator 1 view .LVU61
- 359 000c 012B     		cmp	r3, #1
- 360 000e FAD0     		beq	.L29
  116:Core/Src/pdo_override.c **** }
- 361              		.loc 1 116 5 is_stmt 1 view .LVU62
- 362 0010 FFF7FEFF 		bl	on_rxpdo_transfer_finished
- 363              	.LVL14:
  117:Core/Src/pdo_override.c **** 
- 364              		.loc 1 117 1 is_stmt 0 view .LVU63
- 365 0014 08BD     		pop	{r3, pc}
- 366              	.L32:
- 367 0016 00BF     		.align	2
- 368              	.L31:
- 369 0018 00000000 		.word	.LANCHOR2
- 370              		.cfi_endproc
- 371              	.LFE137:
- 373              		.section	.text.on_txpdo_transfer_finished,"ax",%progbits
- 374              		.align	1
- 375              		.global	on_txpdo_transfer_finished
- 376              		.syntax unified
- 377              		.thumb
- 378              		.thumb_func
- 380              	on_txpdo_transfer_finished:
- 381              	.LFB140:
- 129:Core/Src/pdo_override.c **** 
- 130:Core/Src/pdo_override.c **** void txpdo_override(void)
- 131:Core/Src/pdo_override.c **** {
- 132:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM3 > 0)
- 133:Core/Src/pdo_override.c ****     {
- 134:Core/Src/pdo_override.c ****         COE_pdoPack(pdo_coe_txbuf, ESCvar.sm3mappings, SMmap3);
- 135:Core/Src/pdo_override.c ****     }
- 136:Core/Src/pdo_override.c **** 
-ARM GAS  /tmp/cc62EnRc.s 			page 10
+ 118:Core/Src/pdo_override.c **** void on_rxpdo_transfer_finished(void)
+ 119:Core/Src/pdo_override.c **** {
+ 280              		.loc 1 119 1 is_stmt 1 view -0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284 0000 08B5     		push	{r3, lr}
+ 285              		.cfi_def_cfa_offset 8
+ 286              		.cfi_offset 3, -8
+ 287              		.cfi_offset 14, -4
+ 120:Core/Src/pdo_override.c ****     spi_dma_stop();
+ 288              		.loc 1 120 5 view .LVU43
+ARM GAS  /tmp/ccvC9ew0.s 			page 8
 
 
- 137:Core/Src/pdo_override.c ****     spi_dma_txpdo_start();
- 138:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
- 139:Core/Src/pdo_override.c ****     {
- 140:Core/Src/pdo_override.c ****     } /* polling to end of transfer flag */
- 141:Core/Src/pdo_override.c ****     on_txpdo_transfer_finished();
- 142:Core/Src/pdo_override.c **** }
- 143:Core/Src/pdo_override.c **** 
- 144:Core/Src/pdo_override.c **** void on_txpdo_transfer_finished(void)
- 145:Core/Src/pdo_override.c **** {
- 382              		.loc 1 145 1 is_stmt 1 view -0
- 383              		.cfi_startproc
- 384              		@ args = 0, pretend = 0, frame = 0
- 385              		@ frame_needed = 0, uses_anonymous_args = 0
- 386 0000 08B5     		push	{r3, lr}
- 387              		.cfi_def_cfa_offset 8
- 388              		.cfi_offset 3, -8
- 389              		.cfi_offset 14, -4
- 146:Core/Src/pdo_override.c ****     spi_dma_stop();
- 390              		.loc 1 146 5 view .LVU65
- 391 0002 FFF7FEFF 		bl	spi_dma_stop
- 392              	.LVL15:
- 147:Core/Src/pdo_override.c ****     ESCvar.ALevent = etohs((uint16_t)*pdo_spi_rxbuf);
- 393              		.loc 1 147 5 view .LVU66
- 394              		.loc 1 147 22 is_stmt 0 view .LVU67
- 395 0006 034B     		ldr	r3, .L35
- 396 0008 1B68     		ldr	r3, [r3]
- 397 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 398              		.loc 1 147 20 view .LVU68
- 399 000c 024B     		ldr	r3, .L35+4
- 400 000e C3F8E420 		str	r2, [r3, #228]
- 148:Core/Src/pdo_override.c **** }...
- 401              		.loc 1 148 1 view .LVU69
- 402 0012 08BD     		pop	{r3, pc}
- 403              	.L36:
- 404              		.align	2
- 405              	.L35:
- 406 0014 00000000 		.word	.LANCHOR0
- 407 0018 00000000 		.word	ESCvar
- 408              		.cfi_endproc
- 409              	.LFE140:
- 411              		.section	.text.txpdo_override,"ax",%progbits
- 412              		.align	1
- 413              		.global	txpdo_override
- 414              		.syntax unified
- 415              		.thumb
- 416              		.thumb_func
- 418              	txpdo_override:
- 419              	.LFB139:
- 131:Core/Src/pdo_override.c **** {
- 420              		.loc 1 131 1 is_stmt 1 view -0
- 421              		.cfi_startproc
- 422              		@ args = 0, pretend = 0, frame = 0
- 423              		@ frame_needed = 0, uses_anonymous_args = 0
- 424 0000 08B5     		push	{r3, lr}
- 425              		.cfi_def_cfa_offset 8
- 426              		.cfi_offset 3, -8
- 427              		.cfi_offset 14, -4
-ARM GAS  /tmp/cc62EnRc.s 			page 11
+ 289 0002 FFF7FEFF 		bl	spi_dma_stop
+ 290              	.LVL10:
+ 121:Core/Src/pdo_override.c ****     ESCvar.ALevent = etohs((uint16_t)*pdo_spi_rxbuf);
+ 291              		.loc 1 121 5 view .LVU44
+ 292              		.loc 1 121 22 is_stmt 0 view .LVU45
+ 293 0006 074B     		ldr	r3, .L25
+ 294 0008 1B68     		ldr	r3, [r3]
+ 295 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 296              		.loc 1 121 20 view .LVU46
+ 297 000c 064B     		ldr	r3, .L25+4
+ 298 000e C3F8E420 		str	r2, [r3, #228]
+ 122:Core/Src/pdo_override.c **** 
+ 123:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM2 > 0)
+ 299              		.loc 1 123 5 is_stmt 1 view .LVU47
+ 124:Core/Src/pdo_override.c ****     {
+ 125:Core/Src/pdo_override.c ****         COE_pdoUnpack(pdo_coe_rxbuf, ESCvar.sm2mappings, SMmap2);
+ 300              		.loc 1 125 9 view .LVU48
+ 301 0012 064A     		ldr	r2, .L25+8
+ 302 0014 D3F8AC10 		ldr	r1, [r3, #172]
+ 303 0018 054B     		ldr	r3, .L25+12
+ 304 001a 1868     		ldr	r0, [r3]
+ 305 001c FFF7FEFF 		bl	COE_pdoUnpack
+ 306              	.LVL11:
+ 126:Core/Src/pdo_override.c ****     }
+ 127:Core/Src/pdo_override.c **** }
+ 307              		.loc 1 127 1 is_stmt 0 view .LVU49
+ 308 0020 08BD     		pop	{r3, pc}
+ 309              	.L26:
+ 310 0022 00BF     		.align	2
+ 311              	.L25:
+ 312 0024 00000000 		.word	.LANCHOR0
+ 313 0028 00000000 		.word	ESCvar
+ 314 002c 00000000 		.word	SMmap2
+ 315 0030 00000000 		.word	.LANCHOR4
+ 316              		.cfi_endproc
+ 317              	.LFE138:
+ 319              		.section	.text.rxpdo_override,"ax",%progbits
+ 320              		.align	1
+ 321              		.global	rxpdo_override
+ 322              		.syntax unified
+ 323              		.thumb
+ 324              		.thumb_func
+ 326              	rxpdo_override:
+ 327              	.LFB137:
+ 110:Core/Src/pdo_override.c ****     spi_dma_rxpdo_start();
+ 328              		.loc 1 110 1 is_stmt 1 view -0
+ 329              		.cfi_startproc
+ 330              		@ args = 0, pretend = 0, frame = 0
+ 331              		@ frame_needed = 0, uses_anonymous_args = 0
+ 332 0000 08B5     		push	{r3, lr}
+ 333              		.cfi_def_cfa_offset 8
+ 334              		.cfi_offset 3, -8
+ 335              		.cfi_offset 14, -4
+ 111:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
+ 336              		.loc 1 111 5 view .LVU51
+ 337 0002 FFF7FEFF 		bl	spi_dma_rxpdo_start
+ 338              	.LVL12:
+ARM GAS  /tmp/ccvC9ew0.s 			page 9
 
 
- 132:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM3 > 0)
- 428              		.loc 1 132 5 view .LVU71
- 134:Core/Src/pdo_override.c ****         COE_pdoPack(pdo_coe_txbuf, ESCvar.sm3mappings, SMmap3);
- 429              		.loc 1 134 9 view .LVU72
- 430 0002 094A     		ldr	r2, .L40
- 431 0004 094B     		ldr	r3, .L40+4
- 432 0006 D3F8B010 		ldr	r1, [r3, #176]
- 433 000a 094B     		ldr	r3, .L40+8
- 434 000c 1868     		ldr	r0, [r3]
- 435 000e FFF7FEFF 		bl	COE_pdoPack
- 436              	.LVL16:
- 137:Core/Src/pdo_override.c ****     spi_dma_txpdo_start();
- 437              		.loc 1 137 5 view .LVU73
- 438 0012 FFF7FEFF 		bl	spi_dma_txpdo_start
- 439              	.LVL17:
- 138:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
- 440              		.loc 1 138 5 view .LVU74
- 441              	.L38:
- 140:Core/Src/pdo_override.c ****     } /* polling to end of transfer flag */
- 442              		.loc 1 140 5 discriminator 1 view .LVU75
- 138:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
- 443              		.loc 1 138 11 discriminator 1 view .LVU76
- 138:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
- 444              		.loc 1 138 33 is_stmt 0 discriminator 1 view .LVU77
- 445 0016 074B     		ldr	r3, .L40+12
- 446 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 447 001a DBB2     		uxtb	r3, r3
- 138:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
- 448              		.loc 1 138 11 discriminator 1 view .LVU78
- 449 001c 012B     		cmp	r3, #1
- 450 001e FAD0     		beq	.L38
- 141:Core/Src/pdo_override.c ****     on_txpdo_transfer_finished();
- 451              		.loc 1 141 5 is_stmt 1 view .LVU79
- 452 0020 FFF7FEFF 		bl	on_txpdo_transfer_finished
- 453              	.LVL18:
- 142:Core/Src/pdo_override.c **** }
- 454              		.loc 1 142 1 is_stmt 0 view .LVU80
- 455 0024 08BD     		pop	{r3, pc}
- 456              	.L41:
- 457 0026 00BF     		.align	2
- 458              	.L40:
- 459 0028 00000000 		.word	SMmap3
- 460 002c 00000000 		.word	ESCvar
- 461 0030 00000000 		.word	.LANCHOR3
- 462 0034 00000000 		.word	.LANCHOR2
- 463              		.cfi_endproc
- 464              	.LFE139:
- 466              		.global	pdo_coe_txbuf
- 467              		.global	pdo_spi_txbuf
- 468              		.global	pdo_txbuf
- 469              		.global	pdo_coe_rxbuf
- 470              		.global	pdo_spi_rxbuf
- 471              		.global	pdo_rxbuf
- 472              		.global	pdi_dma_transmission
- 473              		.section	.bss.pdi_dma_transmission,"aw",%nobits
- 474              		.set	.LANCHOR2,. + 0
- 477              	pdi_dma_transmission:
-ARM GAS  /tmp/cc62EnRc.s 			page 12
+ 112:Core/Src/pdo_override.c ****     {
+ 339              		.loc 1 112 5 view .LVU52
+ 340              	.L28:
+ 114:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
+ 341              		.loc 1 114 5 discriminator 1 view .LVU53
+ 112:Core/Src/pdo_override.c ****     {
+ 342              		.loc 1 112 11 discriminator 1 view .LVU54
+ 112:Core/Src/pdo_override.c ****     {
+ 343              		.loc 1 112 33 is_stmt 0 discriminator 1 view .LVU55
+ 344 0006 044B     		ldr	r3, .L30
+ 345 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 346 000a DBB2     		uxtb	r3, r3
+ 112:Core/Src/pdo_override.c ****     {
+ 347              		.loc 1 112 11 discriminator 1 view .LVU56
+ 348 000c 012B     		cmp	r3, #1
+ 349 000e FAD0     		beq	.L28
+ 115:Core/Src/pdo_override.c **** }
+ 350              		.loc 1 115 5 is_stmt 1 view .LVU57
+ 351 0010 FFF7FEFF 		bl	on_rxpdo_transfer_finished
+ 352              	.LVL13:
+ 116:Core/Src/pdo_override.c **** 
+ 353              		.loc 1 116 1 is_stmt 0 view .LVU58
+ 354 0014 08BD     		pop	{r3, pc}
+ 355              	.L31:
+ 356 0016 00BF     		.align	2
+ 357              	.L30:
+ 358 0018 00000000 		.word	.LANCHOR2
+ 359              		.cfi_endproc
+ 360              	.LFE137:
+ 362              		.section	.text.on_txpdo_transfer_finished,"ax",%progbits
+ 363              		.align	1
+ 364              		.global	on_txpdo_transfer_finished
+ 365              		.syntax unified
+ 366              		.thumb
+ 367              		.thumb_func
+ 369              	on_txpdo_transfer_finished:
+ 370              	.LFB140:
+ 128:Core/Src/pdo_override.c **** 
+ 129:Core/Src/pdo_override.c **** void txpdo_override(void)
+ 130:Core/Src/pdo_override.c **** {
+ 131:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM3 > 0)
+ 132:Core/Src/pdo_override.c ****     {
+ 133:Core/Src/pdo_override.c ****         COE_pdoPack(pdo_coe_txbuf, ESCvar.sm3mappings, SMmap3);
+ 134:Core/Src/pdo_override.c ****     }
+ 135:Core/Src/pdo_override.c **** 
+ 136:Core/Src/pdo_override.c ****     spi_dma_txpdo_start();
+ 137:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
+ 138:Core/Src/pdo_override.c ****     {
+ 139:Core/Src/pdo_override.c ****     } /* polling to end of transfer flag */
+ 140:Core/Src/pdo_override.c ****     on_txpdo_transfer_finished();
+ 141:Core/Src/pdo_override.c **** }
+ 142:Core/Src/pdo_override.c **** 
+ 143:Core/Src/pdo_override.c **** void on_txpdo_transfer_finished(void)
+ 144:Core/Src/pdo_override.c **** {
+ 371              		.loc 1 144 1 is_stmt 1 view -0
+ 372              		.cfi_startproc
+ 373              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccvC9ew0.s 			page 10
 
 
- 478 0000 00       		.space	1
- 479              		.section	.bss.pdo_rxbuf,"aw",%nobits
- 480              		.align	3
- 483              	pdo_rxbuf:
- 484 0000 00000000 		.space	10
- 484      00000000 
- 484      0000
- 485              		.section	.bss.pdo_txbuf,"aw",%nobits
- 486              		.align	3
- 489              	pdo_txbuf:
- 490 0000 00000000 		.space	11
- 490      00000000 
- 490      000000
- 491              		.section	.data.pdo_coe_rxbuf,"aw"
- 492              		.align	2
- 493              		.set	.LANCHOR4,. + 0
- 496              	pdo_coe_rxbuf:
- 497 0000 08000000 		.word	pdo_rxbuf+8
- 498              		.section	.data.pdo_coe_txbuf,"aw"
- 499              		.align	2
- 500              		.set	.LANCHOR3,. + 0
- 503              	pdo_coe_txbuf:
- 504 0000 08000000 		.word	pdo_txbuf+8
- 505              		.section	.data.pdo_spi_rxbuf,"aw"
- 506              		.align	2
- 507              		.set	.LANCHOR0,. + 0
- 510              	pdo_spi_rxbuf:
- 511 0000 05000000 		.word	pdo_rxbuf+5
- 512              		.section	.data.pdo_spi_txbuf,"aw"
- 513              		.align	2
- 514              		.set	.LANCHOR1,. + 0
- 517              	pdo_spi_txbuf:
- 518 0000 06000000 		.word	pdo_txbuf+6
- 519              		.text
- 520              	.Letext0:
- 521              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 522              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 523              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 524              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 525              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 526              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 527              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
- 528              		.file 9 "Lib/soes/include/esc_coe.h"
- 529              		.file 10 "Lib/soes/include/esc.h"
- 530              		.file 11 "Core/Inc/pdo_override.h"
- 531              		.file 12 "Lib/soes_hal_bsp/include/spi.h"
-ARM GAS  /tmp/cc62EnRc.s 			page 13
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375 0000 08B5     		push	{r3, lr}
+ 376              		.cfi_def_cfa_offset 8
+ 377              		.cfi_offset 3, -8
+ 378              		.cfi_offset 14, -4
+ 145:Core/Src/pdo_override.c ****     spi_dma_stop();
+ 379              		.loc 1 145 5 view .LVU60
+ 380 0002 FFF7FEFF 		bl	spi_dma_stop
+ 381              	.LVL14:
+ 146:Core/Src/pdo_override.c ****     ESCvar.ALevent = etohs((uint16_t)*pdo_spi_rxbuf);
+ 382              		.loc 1 146 5 view .LVU61
+ 383              		.loc 1 146 22 is_stmt 0 view .LVU62
+ 384 0006 034B     		ldr	r3, .L34
+ 385 0008 1B68     		ldr	r3, [r3]
+ 386 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 387              		.loc 1 146 20 view .LVU63
+ 388 000c 024B     		ldr	r3, .L34+4
+ 389 000e C3F8E420 		str	r2, [r3, #228]
+ 147:Core/Src/pdo_override.c **** }...
+ 390              		.loc 1 147 1 view .LVU64
+ 391 0012 08BD     		pop	{r3, pc}
+ 392              	.L35:
+ 393              		.align	2
+ 394              	.L34:
+ 395 0014 00000000 		.word	.LANCHOR0
+ 396 0018 00000000 		.word	ESCvar
+ 397              		.cfi_endproc
+ 398              	.LFE140:
+ 400              		.section	.text.txpdo_override,"ax",%progbits
+ 401              		.align	1
+ 402              		.global	txpdo_override
+ 403              		.syntax unified
+ 404              		.thumb
+ 405              		.thumb_func
+ 407              	txpdo_override:
+ 408              	.LFB139:
+ 130:Core/Src/pdo_override.c **** {
+ 409              		.loc 1 130 1 is_stmt 1 view -0
+ 410              		.cfi_startproc
+ 411              		@ args = 0, pretend = 0, frame = 0
+ 412              		@ frame_needed = 0, uses_anonymous_args = 0
+ 413 0000 08B5     		push	{r3, lr}
+ 414              		.cfi_def_cfa_offset 8
+ 415              		.cfi_offset 3, -8
+ 416              		.cfi_offset 14, -4
+ 131:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM3 > 0)
+ 417              		.loc 1 131 5 view .LVU66
+ 133:Core/Src/pdo_override.c ****         COE_pdoPack(pdo_coe_txbuf, ESCvar.sm3mappings, SMmap3);
+ 418              		.loc 1 133 9 view .LVU67
+ 419 0002 094A     		ldr	r2, .L39
+ 420 0004 094B     		ldr	r3, .L39+4
+ 421 0006 D3F8B010 		ldr	r1, [r3, #176]
+ 422 000a 094B     		ldr	r3, .L39+8
+ 423 000c 1868     		ldr	r0, [r3]
+ 424 000e FFF7FEFF 		bl	COE_pdoPack
+ 425              	.LVL15:
+ 136:Core/Src/pdo_override.c ****     spi_dma_txpdo_start();
+ARM GAS  /tmp/ccvC9ew0.s 			page 11
+
+
+ 426              		.loc 1 136 5 view .LVU68
+ 427 0012 FFF7FEFF 		bl	spi_dma_txpdo_start
+ 428              	.LVL16:
+ 137:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
+ 429              		.loc 1 137 5 view .LVU69
+ 430              	.L37:
+ 139:Core/Src/pdo_override.c ****     } /* polling to end of transfer flag */
+ 431              		.loc 1 139 5 discriminator 1 view .LVU70
+ 137:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
+ 432              		.loc 1 137 11 discriminator 1 view .LVU71
+ 137:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
+ 433              		.loc 1 137 33 is_stmt 0 discriminator 1 view .LVU72
+ 434 0016 074B     		ldr	r3, .L39+12
+ 435 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 436 001a DBB2     		uxtb	r3, r3
+ 137:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS)
+ 437              		.loc 1 137 11 discriminator 1 view .LVU73
+ 438 001c 012B     		cmp	r3, #1
+ 439 001e FAD0     		beq	.L37
+ 140:Core/Src/pdo_override.c ****     on_txpdo_transfer_finished();
+ 440              		.loc 1 140 5 is_stmt 1 view .LVU74
+ 441 0020 FFF7FEFF 		bl	on_txpdo_transfer_finished
+ 442              	.LVL17:
+ 141:Core/Src/pdo_override.c **** }
+ 443              		.loc 1 141 1 is_stmt 0 view .LVU75
+ 444 0024 08BD     		pop	{r3, pc}
+ 445              	.L40:
+ 446 0026 00BF     		.align	2
+ 447              	.L39:
+ 448 0028 00000000 		.word	SMmap3
+ 449 002c 00000000 		.word	ESCvar
+ 450 0030 00000000 		.word	.LANCHOR3
+ 451 0034 00000000 		.word	.LANCHOR2
+ 452              		.cfi_endproc
+ 453              	.LFE139:
+ 455              		.global	pdo_coe_txbuf
+ 456              		.global	pdo_spi_txbuf
+ 457              		.global	pdo_txbuf
+ 458              		.global	pdo_coe_rxbuf
+ 459              		.global	pdo_spi_rxbuf
+ 460              		.global	pdo_rxbuf
+ 461              		.global	pdi_dma_transmission
+ 462              		.section	.bss.pdi_dma_transmission,"aw",%nobits
+ 463              		.set	.LANCHOR2,. + 0
+ 466              	pdi_dma_transmission:
+ 467 0000 00       		.space	1
+ 468              		.section	.bss.pdo_rxbuf,"aw",%nobits
+ 469              		.align	3
+ 472              	pdo_rxbuf:
+ 473 0000 00000000 		.space	10
+ 473      00000000 
+ 473      0000
+ 474              		.section	.bss.pdo_txbuf,"aw",%nobits
+ 475              		.align	3
+ 478              	pdo_txbuf:
+ 479 0000 00000000 		.space	11
+ 479      00000000 
+ARM GAS  /tmp/ccvC9ew0.s 			page 12
+
+
+ 479      000000
+ 480              		.section	.data.pdo_coe_rxbuf,"aw"
+ 481              		.align	2
+ 482              		.set	.LANCHOR4,. + 0
+ 485              	pdo_coe_rxbuf:
+ 486 0000 08000000 		.word	pdo_rxbuf+8
+ 487              		.section	.data.pdo_coe_txbuf,"aw"
+ 488              		.align	2
+ 489              		.set	.LANCHOR3,. + 0
+ 492              	pdo_coe_txbuf:
+ 493 0000 08000000 		.word	pdo_txbuf+8
+ 494              		.section	.data.pdo_spi_rxbuf,"aw"
+ 495              		.align	2
+ 496              		.set	.LANCHOR0,. + 0
+ 499              	pdo_spi_rxbuf:
+ 500 0000 05000000 		.word	pdo_rxbuf+5
+ 501              		.section	.data.pdo_spi_txbuf,"aw"
+ 502              		.align	2
+ 503              		.set	.LANCHOR1,. + 0
+ 506              	pdo_spi_txbuf:
+ 507 0000 06000000 		.word	pdo_txbuf+6
+ 508              		.text
+ 509              	.Letext0:
+ 510              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 511              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 512              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 513              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 514              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 515              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 516              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 517              		.file 9 "Lib/soes/include/esc_coe.h"
+ 518              		.file 10 "Lib/soes/include/esc.h"
+ 519              		.file 11 "Core/Inc/pdo_override.h"
+ 520              		.file 12 "Lib/soes_hal_bsp/include/spi.h"
+ARM GAS  /tmp/ccvC9ew0.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pdo_override.c
-     /tmp/cc62EnRc.s:20     .text.spi_dma_prepare_transmission:0000000000000000 $t
-     /tmp/cc62EnRc.s:26     .text.spi_dma_prepare_transmission:0000000000000000 spi_dma_prepare_transmission
-     /tmp/cc62EnRc.s:76     .text.spi_dma_setup:0000000000000000 $t
-     /tmp/cc62EnRc.s:82     .text.spi_dma_setup:0000000000000000 spi_dma_setup
-     /tmp/cc62EnRc.s:95     .text.spi_dma_start:0000000000000000 $t
-     /tmp/cc62EnRc.s:101    .text.spi_dma_start:0000000000000000 spi_dma_start
-     /tmp/cc62EnRc.s:145    .text.spi_dma_start:000000000000002c $d
-     /tmp/cc62EnRc.s:153    .text.spi_dma_stop:0000000000000000 $t
-     /tmp/cc62EnRc.s:159    .text.spi_dma_stop:0000000000000000 spi_dma_stop
-     /tmp/cc62EnRc.s:179    .text.spi_dma_rxpdo_start:0000000000000000 $t
-     /tmp/cc62EnRc.s:185    .text.spi_dma_rxpdo_start:0000000000000000 spi_dma_rxpdo_start
-     /tmp/cc62EnRc.s:215    .text.spi_dma_rxpdo_start:0000000000000020 $d
-     /tmp/cc62EnRc.s:221    .text.spi_dma_txpdo_start:0000000000000000 $t
-     /tmp/cc62EnRc.s:227    .text.spi_dma_txpdo_start:0000000000000000 spi_dma_txpdo_start
-     /tmp/cc62EnRc.s:252    .text.spi_dma_txpdo_start:0000000000000018 $d
-     /tmp/cc62EnRc.s:257    .text.init_override:0000000000000000 $t
-     /tmp/cc62EnRc.s:263    .text.init_override:0000000000000000 init_override
-     /tmp/cc62EnRc.s:283    .text.on_rxpdo_transfer_finished:0000000000000000 $t
-     /tmp/cc62EnRc.s:289    .text.on_rxpdo_transfer_finished:0000000000000000 on_rxpdo_transfer_finished
-     /tmp/cc62EnRc.s:323    .text.on_rxpdo_transfer_finished:0000000000000024 $d
-     /tmp/cc62EnRc.s:331    .text.rxpdo_override:0000000000000000 $t
-     /tmp/cc62EnRc.s:337    .text.rxpdo_override:0000000000000000 rxpdo_override
-     /tmp/cc62EnRc.s:369    .text.rxpdo_override:0000000000000018 $d
-     /tmp/cc62EnRc.s:374    .text.on_txpdo_transfer_finished:0000000000000000 $t
-     /tmp/cc62EnRc.s:380    .text.on_txpdo_transfer_finished:0000000000000000 on_txpdo_transfer_finished
-     /tmp/cc62EnRc.s:406    .text.on_txpdo_transfer_finished:0000000000000014 $d
-     /tmp/cc62EnRc.s:412    .text.txpdo_override:0000000000000000 $t
-     /tmp/cc62EnRc.s:418    .text.txpdo_override:0000000000000000 txpdo_override
-     /tmp/cc62EnRc.s:459    .text.txpdo_override:0000000000000028 $d
-     /tmp/cc62EnRc.s:503    .data.pdo_coe_txbuf:0000000000000000 pdo_coe_txbuf
-     /tmp/cc62EnRc.s:517    .data.pdo_spi_txbuf:0000000000000000 pdo_spi_txbuf
-     /tmp/cc62EnRc.s:489    .bss.pdo_txbuf:0000000000000000 pdo_txbuf
-     /tmp/cc62EnRc.s:496    .data.pdo_coe_rxbuf:0000000000000000 pdo_coe_rxbuf
-     /tmp/cc62EnRc.s:510    .data.pdo_spi_rxbuf:0000000000000000 pdo_spi_rxbuf
-     /tmp/cc62EnRc.s:483    .bss.pdo_rxbuf:0000000000000000 pdo_rxbuf
-     /tmp/cc62EnRc.s:477    .bss.pdi_dma_transmission:0000000000000000 pdi_dma_transmission
-     /tmp/cc62EnRc.s:478    .bss.pdi_dma_transmission:0000000000000000 $d
-     /tmp/cc62EnRc.s:480    .bss.pdo_rxbuf:0000000000000000 $d
-     /tmp/cc62EnRc.s:486    .bss.pdo_txbuf:0000000000000000 $d
-     /tmp/cc62EnRc.s:492    .data.pdo_coe_rxbuf:0000000000000000 $d
-     /tmp/cc62EnRc.s:499    .data.pdo_coe_txbuf:0000000000000000 $d
-     /tmp/cc62EnRc.s:506    .data.pdo_spi_rxbuf:0000000000000000 $d
-     /tmp/cc62EnRc.s:513    .data.pdo_spi_txbuf:0000000000000000 $d
+     /tmp/ccvC9ew0.s:20     .text.spi_dma_prepare_transmission:0000000000000000 $t
+     /tmp/ccvC9ew0.s:26     .text.spi_dma_prepare_transmission:0000000000000000 spi_dma_prepare_transmission
+     /tmp/ccvC9ew0.s:76     .text.spi_dma_setup:0000000000000000 $t
+     /tmp/ccvC9ew0.s:82     .text.spi_dma_setup:0000000000000000 spi_dma_setup
+     /tmp/ccvC9ew0.s:95     .text.spi_dma_start:0000000000000000 $t
+     /tmp/ccvC9ew0.s:101    .text.spi_dma_start:0000000000000000 spi_dma_start
+     /tmp/ccvC9ew0.s:134    .text.spi_dma_start:0000000000000020 $d
+     /tmp/ccvC9ew0.s:142    .text.spi_dma_stop:0000000000000000 $t
+     /tmp/ccvC9ew0.s:148    .text.spi_dma_stop:0000000000000000 spi_dma_stop
+     /tmp/ccvC9ew0.s:168    .text.spi_dma_rxpdo_start:0000000000000000 $t
+     /tmp/ccvC9ew0.s:174    .text.spi_dma_rxpdo_start:0000000000000000 spi_dma_rxpdo_start
+     /tmp/ccvC9ew0.s:204    .text.spi_dma_rxpdo_start:0000000000000020 $d
+     /tmp/ccvC9ew0.s:210    .text.spi_dma_txpdo_start:0000000000000000 $t
+     /tmp/ccvC9ew0.s:216    .text.spi_dma_txpdo_start:0000000000000000 spi_dma_txpdo_start
+     /tmp/ccvC9ew0.s:241    .text.spi_dma_txpdo_start:0000000000000018 $d
+     /tmp/ccvC9ew0.s:246    .text.init_override:0000000000000000 $t
+     /tmp/ccvC9ew0.s:252    .text.init_override:0000000000000000 init_override
+     /tmp/ccvC9ew0.s:272    .text.on_rxpdo_transfer_finished:0000000000000000 $t
+     /tmp/ccvC9ew0.s:278    .text.on_rxpdo_transfer_finished:0000000000000000 on_rxpdo_transfer_finished
+     /tmp/ccvC9ew0.s:312    .text.on_rxpdo_transfer_finished:0000000000000024 $d
+     /tmp/ccvC9ew0.s:320    .text.rxpdo_override:0000000000000000 $t
+     /tmp/ccvC9ew0.s:326    .text.rxpdo_override:0000000000000000 rxpdo_override
+     /tmp/ccvC9ew0.s:358    .text.rxpdo_override:0000000000000018 $d
+     /tmp/ccvC9ew0.s:363    .text.on_txpdo_transfer_finished:0000000000000000 $t
+     /tmp/ccvC9ew0.s:369    .text.on_txpdo_transfer_finished:0000000000000000 on_txpdo_transfer_finished
+     /tmp/ccvC9ew0.s:395    .text.on_txpdo_transfer_finished:0000000000000014 $d
+     /tmp/ccvC9ew0.s:401    .text.txpdo_override:0000000000000000 $t
+     /tmp/ccvC9ew0.s:407    .text.txpdo_override:0000000000000000 txpdo_override
+     /tmp/ccvC9ew0.s:448    .text.txpdo_override:0000000000000028 $d
+     /tmp/ccvC9ew0.s:492    .data.pdo_coe_txbuf:0000000000000000 pdo_coe_txbuf
+     /tmp/ccvC9ew0.s:506    .data.pdo_spi_txbuf:0000000000000000 pdo_spi_txbuf
+     /tmp/ccvC9ew0.s:478    .bss.pdo_txbuf:0000000000000000 pdo_txbuf
+     /tmp/ccvC9ew0.s:485    .data.pdo_coe_rxbuf:0000000000000000 pdo_coe_rxbuf
+     /tmp/ccvC9ew0.s:499    .data.pdo_spi_rxbuf:0000000000000000 pdo_spi_rxbuf
+     /tmp/ccvC9ew0.s:472    .bss.pdo_rxbuf:0000000000000000 pdo_rxbuf
+     /tmp/ccvC9ew0.s:466    .bss.pdi_dma_transmission:0000000000000000 pdi_dma_transmission
+     /tmp/ccvC9ew0.s:467    .bss.pdi_dma_transmission:0000000000000000 $d
+     /tmp/ccvC9ew0.s:469    .bss.pdo_rxbuf:0000000000000000 $d
+     /tmp/ccvC9ew0.s:475    .bss.pdo_txbuf:0000000000000000 $d
+     /tmp/ccvC9ew0.s:481    .data.pdo_coe_rxbuf:0000000000000000 $d
+     /tmp/ccvC9ew0.s:488    .data.pdo_coe_txbuf:0000000000000000 $d
+     /tmp/ccvC9ew0.s:495    .data.pdo_spi_rxbuf:0000000000000000 $d
+     /tmp/ccvC9ew0.s:502    .data.pdo_spi_txbuf:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 spi_select
 HAL_SPI_TransmitReceive_DMA
-HAL_SPI_GetState
 hspi2
 spi_unselect
 spi_setup
@@ -767,7 +754,7 @@ COE_pdoUnpack
 ESCvar
 SMmap2
 COE_pdoPack
-ARM GAS  /tmp/cc62EnRc.s 			page 14
-
-
 SMmap3
+ARM GAS  /tmp/ccvC9ew0.s 			page 14
+
+

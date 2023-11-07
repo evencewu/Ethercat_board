@@ -1,0 +1,680 @@
+ARM GAS  /tmp/cc0MzhOX.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ecatapp.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ecatapp,"ax",%progbits
+  20              		.align	1
+  21              		.global	ecatapp
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	ecatapp:
+  27              	.LFB127:
+  28              		.file 1 "Core/Src/ecatapp.c"
+   1:Core/Src/ecatapp.c **** #include "esc.h"
+   2:Core/Src/ecatapp.c **** #include "ecat_slv.h"
+   3:Core/Src/ecatapp.c **** #include "utypes.h"
+   4:Core/Src/ecatapp.c **** 
+   5:Core/Src/ecatapp.c **** #include "esc_irq.h"
+   6:Core/Src/ecatapp.c **** #include "pdo_override.h"
+   7:Core/Src/ecatapp.c **** #include "ecatapp.h"
+   8:Core/Src/ecatapp.c **** #include "stm32f4xx.h"
+   9:Core/Src/ecatapp.c **** 
+  10:Core/Src/ecatapp.c **** 
+  11:Core/Src/ecatapp.c **** /* CANopen Object Dictionary */
+  12:Core/Src/ecatapp.c **** _Objects    Obj;
+  13:Core/Src/ecatapp.c **** 
+  14:Core/Src/ecatapp.c **** 
+  15:Core/Src/ecatapp.c **** /* Application hook declaration */
+  16:Core/Src/ecatapp.c **** void ecatapp(void);
+  17:Core/Src/ecatapp.c **** uint16_t check_dc_handler(void);
+  18:Core/Src/ecatapp.c **** 
+  19:Core/Src/ecatapp.c **** /* CiA402 hooks declarations */
+  20:Core/Src/ecatapp.c **** void app_cia402_init(void);
+  21:Core/Src/ecatapp.c **** void app_cia402_mc(void);
+  22:Core/Src/ecatapp.c **** 
+  23:Core/Src/ecatapp.c **** 
+  24:Core/Src/ecatapp.c **** /* SOES configuration */
+  25:Core/Src/ecatapp.c **** static esc_cfg_t config = { 
+  26:Core/Src/ecatapp.c ****     .user_arg                  = "ax58100",
+  27:Core/Src/ecatapp.c ****     .use_interrupt             = 1,
+  28:Core/Src/ecatapp.c ****     .watchdog_cnt              = INT32_MAX,
+  29:Core/Src/ecatapp.c ****     .set_defaults_hook         = NULL,
+  30:Core/Src/ecatapp.c ****     .pre_state_change_hook     = NULL,
+ARM GAS  /tmp/cc0MzhOX.s 			page 2
+
+
+  31:Core/Src/ecatapp.c ****     .post_state_change_hook    = NULL,
+  32:Core/Src/ecatapp.c ****     .application_hook          = ecatapp,
+  33:Core/Src/ecatapp.c ****     .safeoutput_override       = NULL,
+  34:Core/Src/ecatapp.c ****     .pre_object_download_hook  = NULL,
+  35:Core/Src/ecatapp.c ****     .post_object_download_hook = NULL,
+  36:Core/Src/ecatapp.c ****     .rxpdo_override            = rxpdo_override,
+  37:Core/Src/ecatapp.c ****     .txpdo_override            = txpdo_override,
+  38:Core/Src/ecatapp.c ****     .esc_hw_interrupt_enable   = ESC_interrupt_enable,
+  39:Core/Src/ecatapp.c ****     .esc_hw_interrupt_disable  = ESC_interrupt_disable,
+  40:Core/Src/ecatapp.c ****     .esc_hw_eep_handler        = NULL,
+  41:Core/Src/ecatapp.c ****     .esc_check_dc_handler      = check_dc_handler,
+  42:Core/Src/ecatapp.c **** };
+  43:Core/Src/ecatapp.c **** 
+  44:Core/Src/ecatapp.c **** /* CiA402 motion control configuration */
+  45:Core/Src/ecatapp.c **** 
+  46:Core/Src/ecatapp.c **** // **************************************************************
+  47:Core/Src/ecatapp.c **** 
+  48:Core/Src/ecatapp.c **** static uint8_t sync0_irq_flag = 0;
+  49:Core/Src/ecatapp.c **** 
+  50:Core/Src/ecatapp.c **** void EXTI1_IRQHandler(void)
+  51:Core/Src/ecatapp.c **** {
+  52:Core/Src/ecatapp.c ****     if(EXTI_GetITStatus(EXTI_Line1) != RESET)
+  53:Core/Src/ecatapp.c ****     {
+  54:Core/Src/ecatapp.c ****         EXTI_ClearITPendingBit(EXTI_Line1);
+  55:Core/Src/ecatapp.c ****         sync0_irq_flag = 1;
+  56:Core/Src/ecatapp.c ****     }
+  57:Core/Src/ecatapp.c **** }
+  58:Core/Src/ecatapp.c **** 
+  59:Core/Src/ecatapp.c **** static uint8_t pdi_irq_flag = 0;
+  60:Core/Src/ecatapp.c **** 
+  61:Core/Src/ecatapp.c **** void EXTI3_IRQHandler(void)
+  62:Core/Src/ecatapp.c **** {
+  63:Core/Src/ecatapp.c ****     if(EXTI_GetITStatus(EXTI_Line3) != RESET)
+  64:Core/Src/ecatapp.c ****     {
+  65:Core/Src/ecatapp.c ****         EXTI_ClearITPendingBit(EXTI_Line3);
+  66:Core/Src/ecatapp.c ****         pdi_irq_flag = 1;
+  67:Core/Src/ecatapp.c ****     }
+  68:Core/Src/ecatapp.c **** }
+  69:Core/Src/ecatapp.c **** // **************************************************************
+  70:Core/Src/ecatapp.c **** 
+  71:Core/Src/ecatapp.c **** void ecatapp_init(void) {
+  72:Core/Src/ecatapp.c ****     ecat_slv_init(&config);
+  73:Core/Src/ecatapp.c **** 	init_override();
+  74:Core/Src/ecatapp.c **** }
+  75:Core/Src/ecatapp.c **** 
+  76:Core/Src/ecatapp.c **** uint16_t check_dc_handler (void)
+  77:Core/Src/ecatapp.c **** {
+  78:Core/Src/ecatapp.c ****     // minimum watchdog value is 1 ms, in nanoseconds
+  79:Core/Src/ecatapp.c ****     #define MIN_WATCHDOG_VALUE_NS      1000000
+  80:Core/Src/ecatapp.c **** 
+  81:Core/Src/ecatapp.c ****     /* Indicate we run DC */
+  82:Core/Src/ecatapp.c ****     ESCvar.dcsync = 1;
+  83:Core/Src/ecatapp.c ****     /* Fetch the sync counter limit (SDO10F1) */
+  84:Core/Src/ecatapp.c ****     ESCvar.synccounterlimit = Obj.Error_Settings.SyncErrorCounterLimit;
+  85:Core/Src/ecatapp.c **** 
+  86:Core/Src/ecatapp.c ****     uint32_t sync0cycleTime = ESC_enable_DC();
+  87:Core/Src/ecatapp.c ****     Obj.Sync_Manager_2_Parameters.CycleTime = sync0cycleTime;
+ARM GAS  /tmp/cc0MzhOX.s 			page 3
+
+
+  88:Core/Src/ecatapp.c ****     // Obj.Sync_Manager_3_Parameters.CycleTime = sync0cycleTime;
+  89:Core/Src/ecatapp.c ****     // calculate watchdog value as 2 x SYNC0 cycle time
+  90:Core/Src/ecatapp.c ****     int watchdog_value = 2 * sync0cycleTime;
+  91:Core/Src/ecatapp.c ****     if (watchdog_value < MIN_WATCHDOG_VALUE_NS) {
+  92:Core/Src/ecatapp.c ****         watchdog_value = MIN_WATCHDOG_VALUE_NS;
+  93:Core/Src/ecatapp.c ****     }
+  94:Core/Src/ecatapp.c ****     APP_setwatchdog(watchdog_value);
+  95:Core/Src/ecatapp.c **** 
+  96:Core/Src/ecatapp.c ****     return 0;
+  97:Core/Src/ecatapp.c **** }
+  98:Core/Src/ecatapp.c **** 
+  99:Core/Src/ecatapp.c **** void ecatapp()
+ 100:Core/Src/ecatapp.c **** {
+  29              		.loc 1 100 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+ 101:Core/Src/ecatapp.c **** 
+ 102:Core/Src/ecatapp.c **** }
+  34              		.loc 1 102 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE127:
+  39              		.section	.text.check_dc_handler,"ax",%progbits
+  40              		.align	1
+  41              		.global	check_dc_handler
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	check_dc_handler:
+  47              	.LFB126:
+  77:Core/Src/ecatapp.c ****     // minimum watchdog value is 1 ms, in nanoseconds
+  48              		.loc 1 77 1 view -0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52 0000 10B5     		push	{r4, lr}
+  53              		.cfi_def_cfa_offset 8
+  54              		.cfi_offset 4, -8
+  55              		.cfi_offset 14, -4
+  82:Core/Src/ecatapp.c ****     /* Fetch the sync counter limit (SDO10F1) */
+  56              		.loc 1 82 5 view .LVU3
+  82:Core/Src/ecatapp.c ****     /* Fetch the sync counter limit (SDO10F1) */
+  57              		.loc 1 82 19 is_stmt 0 view .LVU4
+  58 0002 0B4B     		ldr	r3, .L6
+  59 0004 0122     		movs	r2, #1
+  60 0006 83F87C20 		strb	r2, [r3, #124]
+  84:Core/Src/ecatapp.c **** 
+  61              		.loc 1 84 5 is_stmt 1 view .LVU5
+  84:Core/Src/ecatapp.c **** 
+  62              		.loc 1 84 49 is_stmt 0 view .LVU6
+  63 000a 0A4C     		ldr	r4, .L6+4
+  64 000c 2269     		ldr	r2, [r4, #16]
+  84:Core/Src/ecatapp.c **** 
+  65              		.loc 1 84 29 view .LVU7
+  66 000e A3F87E20 		strh	r2, [r3, #126]	@ movhi
+ARM GAS  /tmp/cc0MzhOX.s 			page 4
+
+
+  86:Core/Src/ecatapp.c ****     Obj.Sync_Manager_2_Parameters.CycleTime = sync0cycleTime;
+  67              		.loc 1 86 5 is_stmt 1 view .LVU8
+  86:Core/Src/ecatapp.c ****     Obj.Sync_Manager_2_Parameters.CycleTime = sync0cycleTime;
+  68              		.loc 1 86 31 is_stmt 0 view .LVU9
+  69 0012 FFF7FEFF 		bl	ESC_enable_DC
+  70              	.LVL0:
+  71 0016 0346     		mov	r3, r0
+  72              	.LVL1:
+  87:Core/Src/ecatapp.c ****     // Obj.Sync_Manager_3_Parameters.CycleTime = sync0cycleTime;
+  73              		.loc 1 87 5 is_stmt 1 view .LVU10
+  87:Core/Src/ecatapp.c ****     // Obj.Sync_Manager_3_Parameters.CycleTime = sync0cycleTime;
+  74              		.loc 1 87 45 is_stmt 0 view .LVU11
+  75 0018 A061     		str	r0, [r4, #24]
+  90:Core/Src/ecatapp.c ****     if (watchdog_value < MIN_WATCHDOG_VALUE_NS) {
+  76              		.loc 1 90 5 is_stmt 1 view .LVU12
+  90:Core/Src/ecatapp.c ****     if (watchdog_value < MIN_WATCHDOG_VALUE_NS) {
+  77              		.loc 1 90 28 is_stmt 0 view .LVU13
+  78 001a 4000     		lsls	r0, r0, #1
+  79              	.LVL2:
+  91:Core/Src/ecatapp.c ****         watchdog_value = MIN_WATCHDOG_VALUE_NS;
+  80              		.loc 1 91 5 is_stmt 1 view .LVU14
+  91:Core/Src/ecatapp.c ****         watchdog_value = MIN_WATCHDOG_VALUE_NS;
+  81              		.loc 1 91 8 is_stmt 0 view .LVU15
+  82 001c 064A     		ldr	r2, .L6+8
+  83 001e B2EB430F 		cmp	r2, r3, lsl #1
+  84 0022 00DB     		blt	.L3
+  92:Core/Src/ecatapp.c ****     }
+  85              		.loc 1 92 24 view .LVU16
+  86 0024 0548     		ldr	r0, .L6+12
+  87              	.LVL3:
+  88              	.L3:
+  94:Core/Src/ecatapp.c **** 
+  89              		.loc 1 94 5 is_stmt 1 view .LVU17
+  90 0026 FFF7FEFF 		bl	APP_setwatchdog
+  91              	.LVL4:
+  96:Core/Src/ecatapp.c **** }
+  92              		.loc 1 96 5 view .LVU18
+  97:Core/Src/ecatapp.c **** 
+  93              		.loc 1 97 1 is_stmt 0 view .LVU19
+  94 002a 0020     		movs	r0, #0
+  95 002c 10BD     		pop	{r4, pc}
+  96              	.L7:
+  97 002e 00BF     		.align	2
+  98              	.L6:
+  99 0030 00000000 		.word	ESCvar
+ 100 0034 00000000 		.word	.LANCHOR0
+ 101 0038 3F420F00 		.word	999999
+ 102 003c 40420F00 		.word	1000000
+ 103              		.cfi_endproc
+ 104              	.LFE126:
+ 106              		.section	.text.EXTI1_IRQHandler,"ax",%progbits
+ 107              		.align	1
+ 108              		.global	EXTI1_IRQHandler
+ 109              		.syntax unified
+ 110              		.thumb
+ 111              		.thumb_func
+ 113              	EXTI1_IRQHandler:
+ARM GAS  /tmp/cc0MzhOX.s 			page 5
+
+
+ 114              	.LFB123:
+  51:Core/Src/ecatapp.c ****     if(EXTI_GetITStatus(EXTI_Line1) != RESET)
+ 115              		.loc 1 51 1 is_stmt 1 view -0
+ 116              		.cfi_startproc
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119 0000 08B5     		push	{r3, lr}
+ 120              		.cfi_def_cfa_offset 8
+ 121              		.cfi_offset 3, -8
+ 122              		.cfi_offset 14, -4
+  52:Core/Src/ecatapp.c ****     {
+ 123              		.loc 1 52 5 view .LVU21
+  52:Core/Src/ecatapp.c ****     {
+ 124              		.loc 1 52 8 is_stmt 0 view .LVU22
+ 125 0002 0220     		movs	r0, #2
+ 126 0004 FFF7FEFF 		bl	EXTI_GetITStatus
+ 127              	.LVL5:
+  52:Core/Src/ecatapp.c ****     {
+ 128              		.loc 1 52 7 view .LVU23
+ 129 0008 00B9     		cbnz	r0, .L11
+ 130              	.L8:
+  57:Core/Src/ecatapp.c **** 
+ 131              		.loc 1 57 1 view .LVU24
+ 132 000a 08BD     		pop	{r3, pc}
+ 133              	.L11:
+  54:Core/Src/ecatapp.c ****         sync0_irq_flag = 1;
+ 134              		.loc 1 54 9 is_stmt 1 view .LVU25
+ 135 000c 0220     		movs	r0, #2
+ 136 000e FFF7FEFF 		bl	EXTI_ClearITPendingBit
+ 137              	.LVL6:
+  55:Core/Src/ecatapp.c ****     }
+ 138              		.loc 1 55 9 view .LVU26
+  55:Core/Src/ecatapp.c ****     }
+ 139              		.loc 1 55 24 is_stmt 0 view .LVU27
+ 140 0012 024B     		ldr	r3, .L12
+ 141 0014 0122     		movs	r2, #1
+ 142 0016 1A70     		strb	r2, [r3]
+  57:Core/Src/ecatapp.c **** 
+ 143              		.loc 1 57 1 view .LVU28
+ 144 0018 F7E7     		b	.L8
+ 145              	.L13:
+ 146 001a 00BF     		.align	2
+ 147              	.L12:
+ 148 001c 00000000 		.word	.LANCHOR1
+ 149              		.cfi_endproc
+ 150              	.LFE123:
+ 152              		.section	.text.EXTI3_IRQHandler,"ax",%progbits
+ 153              		.align	1
+ 154              		.global	EXTI3_IRQHandler
+ 155              		.syntax unified
+ 156              		.thumb
+ 157              		.thumb_func
+ 159              	EXTI3_IRQHandler:
+ 160              	.LFB124:
+  62:Core/Src/ecatapp.c ****     if(EXTI_GetITStatus(EXTI_Line3) != RESET)
+ 161              		.loc 1 62 1 is_stmt 1 view -0
+ 162              		.cfi_startproc
+ARM GAS  /tmp/cc0MzhOX.s 			page 6
+
+
+ 163              		@ args = 0, pretend = 0, frame = 0
+ 164              		@ frame_needed = 0, uses_anonymous_args = 0
+ 165 0000 08B5     		push	{r3, lr}
+ 166              		.cfi_def_cfa_offset 8
+ 167              		.cfi_offset 3, -8
+ 168              		.cfi_offset 14, -4
+  63:Core/Src/ecatapp.c ****     {
+ 169              		.loc 1 63 5 view .LVU30
+  63:Core/Src/ecatapp.c ****     {
+ 170              		.loc 1 63 8 is_stmt 0 view .LVU31
+ 171 0002 0820     		movs	r0, #8
+ 172 0004 FFF7FEFF 		bl	EXTI_GetITStatus
+ 173              	.LVL7:
+  63:Core/Src/ecatapp.c ****     {
+ 174              		.loc 1 63 7 view .LVU32
+ 175 0008 00B9     		cbnz	r0, .L17
+ 176              	.L14:
+  68:Core/Src/ecatapp.c **** // **************************************************************
+ 177              		.loc 1 68 1 view .LVU33
+ 178 000a 08BD     		pop	{r3, pc}
+ 179              	.L17:
+  65:Core/Src/ecatapp.c ****         pdi_irq_flag = 1;
+ 180              		.loc 1 65 9 is_stmt 1 view .LVU34
+ 181 000c 0820     		movs	r0, #8
+ 182 000e FFF7FEFF 		bl	EXTI_ClearITPendingBit
+ 183              	.LVL8:
+  66:Core/Src/ecatapp.c ****     }
+ 184              		.loc 1 66 9 view .LVU35
+  66:Core/Src/ecatapp.c ****     }
+ 185              		.loc 1 66 22 is_stmt 0 view .LVU36
+ 186 0012 024B     		ldr	r3, .L18
+ 187 0014 0122     		movs	r2, #1
+ 188 0016 1A70     		strb	r2, [r3]
+  68:Core/Src/ecatapp.c **** // **************************************************************
+ 189              		.loc 1 68 1 view .LVU37
+ 190 0018 F7E7     		b	.L14
+ 191              	.L19:
+ 192 001a 00BF     		.align	2
+ 193              	.L18:
+ 194 001c 00000000 		.word	.LANCHOR2
+ 195              		.cfi_endproc
+ 196              	.LFE124:
+ 198              		.section	.text.ecatapp_init,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	ecatapp_init
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	ecatapp_init:
+ 206              	.LFB125:
+  71:Core/Src/ecatapp.c ****     ecat_slv_init(&config);
+ 207              		.loc 1 71 25 is_stmt 1 view -0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211 0000 08B5     		push	{r3, lr}
+ 212              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/cc0MzhOX.s 			page 7
+
+
+ 213              		.cfi_offset 3, -8
+ 214              		.cfi_offset 14, -4
+  72:Core/Src/ecatapp.c **** 	init_override();
+ 215              		.loc 1 72 5 view .LVU39
+ 216 0002 0348     		ldr	r0, .L22
+ 217 0004 FFF7FEFF 		bl	ecat_slv_init
+ 218              	.LVL9:
+  73:Core/Src/ecatapp.c **** }
+ 219              		.loc 1 73 2 view .LVU40
+ 220 0008 FFF7FEFF 		bl	init_override
+ 221              	.LVL10:
+  74:Core/Src/ecatapp.c **** 
+ 222              		.loc 1 74 1 is_stmt 0 view .LVU41
+ 223 000c 08BD     		pop	{r3, pc}
+ 224              	.L23:
+ 225 000e 00BF     		.align	2
+ 226              	.L22:
+ 227 0010 00000000 		.word	.LANCHOR3
+ 228              		.cfi_endproc
+ 229              	.LFE125:
+ 231              		.section	.text.cb_get_inputs,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	cb_get_inputs
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 238              	cb_get_inputs:
+ 239              	.LFB128:
+ 103:Core/Src/ecatapp.c **** 
+ 104:Core/Src/ecatapp.c **** 
+ 105:Core/Src/ecatapp.c **** void cb_get_inputs()
+ 106:Core/Src/ecatapp.c **** {
+ 240              		.loc 1 106 1 is_stmt 1 view -0
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 0
+ 243              		@ frame_needed = 0, uses_anonymous_args = 0
+ 244              		@ link register save eliminated.
+ 107:Core/Src/ecatapp.c ****     /* SOES reqires this function but nothing to do here in CiA402 app */
+ 108:Core/Src/ecatapp.c **** }
+ 245              		.loc 1 108 1 view .LVU43
+ 246 0000 7047     		bx	lr
+ 247              		.cfi_endproc
+ 248              	.LFE128:
+ 250              		.section	.text.cb_set_outputs,"ax",%progbits
+ 251              		.align	1
+ 252              		.global	cb_set_outputs
+ 253              		.syntax unified
+ 254              		.thumb
+ 255              		.thumb_func
+ 257              	cb_set_outputs:
+ 258              	.LFB129:
+ 109:Core/Src/ecatapp.c **** 
+ 110:Core/Src/ecatapp.c **** 
+ 111:Core/Src/ecatapp.c **** void cb_set_outputs()
+ 112:Core/Src/ecatapp.c **** {
+ 259              		.loc 1 112 1 view -0
+ 260              		.cfi_startproc
+ARM GAS  /tmp/cc0MzhOX.s 			page 8
+
+
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 113:Core/Src/ecatapp.c ****     /* SOES reqires this function but nothing to do here in CiA402 app */
+ 114:Core/Src/ecatapp.c **** }
+ 264              		.loc 1 114 1 view .LVU45
+ 265 0000 7047     		bx	lr
+ 266              		.cfi_endproc
+ 267              	.LFE129:
+ 269              		.section	.text.ecatapp_loop,"ax",%progbits
+ 270              		.align	1
+ 271              		.global	ecatapp_loop
+ 272              		.syntax unified
+ 273              		.thumb
+ 274              		.thumb_func
+ 276              	ecatapp_loop:
+ 277              	.LFB130:
+ 115:Core/Src/ecatapp.c ****  
+ 116:Core/Src/ecatapp.c **** void ecatapp_loop(void)
+ 117:Core/Src/ecatapp.c **** {
+ 278              		.loc 1 117 1 view -0
+ 279              		.cfi_startproc
+ 280              		@ args = 0, pretend = 0, frame = 0
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282 0000 10B5     		push	{r4, lr}
+ 283              		.cfi_def_cfa_offset 8
+ 284              		.cfi_offset 4, -8
+ 285              		.cfi_offset 14, -4
+ 118:Core/Src/ecatapp.c ****     // stack in mixed mode
+ 119:Core/Src/ecatapp.c ****     if (sync0_irq_flag) {
+ 286              		.loc 1 119 5 view .LVU47
+ 287              		.loc 1 119 9 is_stmt 0 view .LVU48
+ 288 0002 174B     		ldr	r3, .L34
+ 289 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 290              		.loc 1 119 8 view .LVU49
+ 291 0006 9BB9     		cbnz	r3, .L33
+ 292              	.L27:
+ 120:Core/Src/ecatapp.c ****         ESC_updateALevent();        
+ 121:Core/Src/ecatapp.c ****         DIG_process (DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
+ 122:Core/Src/ecatapp.c ****         sync0_irq_flag = 0;
+ 123:Core/Src/ecatapp.c ****     }
+ 124:Core/Src/ecatapp.c ****     if (pdi_irq_flag) {
+ 293              		.loc 1 124 5 is_stmt 1 view .LVU50
+ 294              		.loc 1 124 9 is_stmt 0 view .LVU51
+ 295 0008 164B     		ldr	r3, .L34+4
+ 296 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 297              		.loc 1 124 8 view .LVU52
+ 298 000c 0BB3     		cbz	r3, .L28
+ 125:Core/Src/ecatapp.c ****         ESC_updateALevent();
+ 299              		.loc 1 125 9 is_stmt 1 view .LVU53
+ 300 000e 164C     		ldr	r4, .L34+8
+ 301 0010 0422     		movs	r2, #4
+ 302 0012 2146     		mov	r1, r4
+ 303 0014 4FF41160 		mov	r0, #2320
+ 304 0018 FFF7FEFF 		bl	ESC_read
+ 305              	.LVL11:
+ 306              		.loc 1 125 28 view .LVU54
+ARM GAS  /tmp/cc0MzhOX.s 			page 9
+
+
+ 126:Core/Src/ecatapp.c ****         if (ESCvar.dcsync) {
+ 307              		.loc 1 126 9 view .LVU55
+ 308              		.loc 1 126 19 is_stmt 0 view .LVU56
+ 309 001c 14F8643C 		ldrb	r3, [r4, #-100]	@ zero_extendqisi2
+ 310              		.loc 1 126 12 view .LVU57
+ 311 0020 9BB1     		cbz	r3, .L29
+ 127:Core/Src/ecatapp.c ****             DIG_process (DIG_PROCESS_OUTPUTS_FLAG);    
+ 312              		.loc 1 127 13 is_stmt 1 view .LVU58
+ 313 0022 0220     		movs	r0, #2
+ 314 0024 FFF7FEFF 		bl	DIG_process
+ 315              	.LVL12:
+ 316              	.L30:
+ 128:Core/Src/ecatapp.c ****         } else {
+ 129:Core/Src/ecatapp.c ****             DIG_process (DIG_PROCESS_OUTPUTS_FLAG | DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_
+ 130:Core/Src/ecatapp.c ****         }
+ 131:Core/Src/ecatapp.c ****         pdi_irq_flag = 0;
+ 317              		.loc 1 131 9 view .LVU59
+ 318              		.loc 1 131 22 is_stmt 0 view .LVU60
+ 319 0028 0E4B     		ldr	r3, .L34+4
+ 320 002a 0022     		movs	r2, #0
+ 321 002c 1A70     		strb	r2, [r3]
+ 322              	.L26:
+ 132:Core/Src/ecatapp.c ****     } else {
+ 133:Core/Src/ecatapp.c ****         // ecat_slv_worker(ESCREG_ALEVENT_CONTROL | ESCREG_ALEVENT_SMCHANGE
+ 134:Core/Src/ecatapp.c ****         //                 | ESCREG_ALEVENT_SM0 | ESCREG_ALEVENT_SM1);
+ 135:Core/Src/ecatapp.c ****         ecat_slv_poll();
+ 136:Core/Src/ecatapp.c ****         DIG_process(DIG_PROCESS_WD_FLAG);
+ 137:Core/Src/ecatapp.c ****     }
+ 138:Core/Src/ecatapp.c **** }
+ 323              		.loc 1 138 1 view .LVU61
+ 324 002e 10BD     		pop	{r4, pc}
+ 325              	.L33:
+ 120:Core/Src/ecatapp.c ****         DIG_process (DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
+ 326              		.loc 1 120 9 is_stmt 1 view .LVU62
+ 327 0030 0422     		movs	r2, #4
+ 328 0032 0D49     		ldr	r1, .L34+8
+ 329 0034 4FF41160 		mov	r0, #2320
+ 330 0038 FFF7FEFF 		bl	ESC_read
+ 331              	.LVL13:
+ 120:Core/Src/ecatapp.c ****         DIG_process (DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
+ 332              		.loc 1 120 28 view .LVU63
+ 121:Core/Src/ecatapp.c ****         sync0_irq_flag = 0;
+ 333              		.loc 1 121 9 view .LVU64
+ 334 003c 0920     		movs	r0, #9
+ 335 003e FFF7FEFF 		bl	DIG_process
+ 336              	.LVL14:
+ 122:Core/Src/ecatapp.c ****     }
+ 337              		.loc 1 122 9 view .LVU65
+ 122:Core/Src/ecatapp.c ****     }
+ 338              		.loc 1 122 24 is_stmt 0 view .LVU66
+ 339 0042 074B     		ldr	r3, .L34
+ 340 0044 0022     		movs	r2, #0
+ 341 0046 1A70     		strb	r2, [r3]
+ 342 0048 DEE7     		b	.L27
+ 343              	.L29:
+ 129:Core/Src/ecatapp.c ****         }
+ 344              		.loc 1 129 13 is_stmt 1 view .LVU67
+ARM GAS  /tmp/cc0MzhOX.s 			page 10
+
+
+ 345 004a 0B20     		movs	r0, #11
+ 346 004c FFF7FEFF 		bl	DIG_process
+ 347              	.LVL15:
+ 348 0050 EAE7     		b	.L30
+ 349              	.L28:
+ 135:Core/Src/ecatapp.c ****         DIG_process(DIG_PROCESS_WD_FLAG);
+ 350              		.loc 1 135 9 view .LVU68
+ 351 0052 FFF7FEFF 		bl	ecat_slv_poll
+ 352              	.LVL16:
+ 136:Core/Src/ecatapp.c ****     }
+ 353              		.loc 1 136 9 view .LVU69
+ 354 0056 0420     		movs	r0, #4
+ 355 0058 FFF7FEFF 		bl	DIG_process
+ 356              	.LVL17:
+ 357              		.loc 1 138 1 is_stmt 0 view .LVU70
+ 358 005c E7E7     		b	.L26
+ 359              	.L35:
+ 360 005e 00BF     		.align	2
+ 361              	.L34:
+ 362 0060 00000000 		.word	.LANCHOR1
+ 363 0064 00000000 		.word	.LANCHOR2
+ 364 0068 E0000000 		.word	ESCvar+224
+ 365              		.cfi_endproc
+ 366              	.LFE130:
+ 368              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 369              		.align	2
+ 370              	.LC0:
+ 371 0000 61783538 		.ascii	"ax58100\000"
+ 371      31303000 
+ 372              		.global	Obj
+ 373              		.section	.bss.Obj,"aw",%nobits
+ 374              		.align	2
+ 375              		.set	.LANCHOR0,. + 0
+ 378              	Obj:
+ 379 0000 00000000 		.space	68
+ 379      00000000 
+ 379      00000000 
+ 379      00000000 
+ 379      00000000 
+ 380              		.section	.bss.pdi_irq_flag,"aw",%nobits
+ 381              		.set	.LANCHOR2,. + 0
+ 384              	pdi_irq_flag:
+ 385 0000 00       		.space	1
+ 386              		.section	.bss.sync0_irq_flag,"aw",%nobits
+ 387              		.set	.LANCHOR1,. + 0
+ 390              	sync0_irq_flag:
+ 391 0000 00       		.space	1
+ 392              		.section	.data.config,"aw"
+ 393              		.align	2
+ 394              		.set	.LANCHOR3,. + 0
+ 397              	config:
+ 398 0000 00000000 		.word	.LC0
+ 399 0004 01000000 		.word	1
+ 400 0008 FFFFFF7F 		.word	2147483647
+ 401 000c 00000000 		.space	4
+ 402 0010 00000000 		.word	0
+ 403 0014 00000000 		.word	0
+ARM GAS  /tmp/cc0MzhOX.s 			page 11
+
+
+ 404 0018 00000000 		.word	0
+ 405 001c 00000000 		.word	ecatapp
+ 406 0020 00000000 		.word	0
+ 407 0024 00000000 		.word	0
+ 408 0028 00000000 		.word	0
+ 409 002c 00000000 		.space	8
+ 409      00000000 
+ 410 0034 00000000 		.word	rxpdo_override
+ 411 0038 00000000 		.word	txpdo_override
+ 412 003c 00000000 		.word	ESC_interrupt_enable
+ 413 0040 00000000 		.word	ESC_interrupt_disable
+ 414 0044 00000000 		.word	0
+ 415 0048 00000000 		.word	check_dc_handler
+ 416 004c 00000000 		.space	4
+ 417              		.text
+ 418              	.Letext0:
+ 419              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 420              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 421              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 422              		.file 5 "Lib/soes/inc/esc.h"
+ 423              		.file 6 "Lib/soes-esi/utypes.h"
+ 424              		.file 7 "Lib/soes/inc/ecat_slv.h"
+ 425              		.file 8 "Lib/soes_hal_bsp/inc/esc_irq.h"
+ 426              		.file 9 "Core/Inc/pdo_override.h"
+ 427              		.file 10 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h"
+ 428              		.file 11 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ARM GAS  /tmp/cc0MzhOX.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 ecatapp.c
+     /tmp/cc0MzhOX.s:20     .text.ecatapp:0000000000000000 $t
+     /tmp/cc0MzhOX.s:26     .text.ecatapp:0000000000000000 ecatapp
+     /tmp/cc0MzhOX.s:40     .text.check_dc_handler:0000000000000000 $t
+     /tmp/cc0MzhOX.s:46     .text.check_dc_handler:0000000000000000 check_dc_handler
+     /tmp/cc0MzhOX.s:99     .text.check_dc_handler:0000000000000030 $d
+     /tmp/cc0MzhOX.s:107    .text.EXTI1_IRQHandler:0000000000000000 $t
+     /tmp/cc0MzhOX.s:113    .text.EXTI1_IRQHandler:0000000000000000 EXTI1_IRQHandler
+     /tmp/cc0MzhOX.s:148    .text.EXTI1_IRQHandler:000000000000001c $d
+     /tmp/cc0MzhOX.s:153    .text.EXTI3_IRQHandler:0000000000000000 $t
+     /tmp/cc0MzhOX.s:159    .text.EXTI3_IRQHandler:0000000000000000 EXTI3_IRQHandler
+     /tmp/cc0MzhOX.s:194    .text.EXTI3_IRQHandler:000000000000001c $d
+     /tmp/cc0MzhOX.s:199    .text.ecatapp_init:0000000000000000 $t
+     /tmp/cc0MzhOX.s:205    .text.ecatapp_init:0000000000000000 ecatapp_init
+     /tmp/cc0MzhOX.s:227    .text.ecatapp_init:0000000000000010 $d
+     /tmp/cc0MzhOX.s:232    .text.cb_get_inputs:0000000000000000 $t
+     /tmp/cc0MzhOX.s:238    .text.cb_get_inputs:0000000000000000 cb_get_inputs
+     /tmp/cc0MzhOX.s:251    .text.cb_set_outputs:0000000000000000 $t
+     /tmp/cc0MzhOX.s:257    .text.cb_set_outputs:0000000000000000 cb_set_outputs
+     /tmp/cc0MzhOX.s:270    .text.ecatapp_loop:0000000000000000 $t
+     /tmp/cc0MzhOX.s:276    .text.ecatapp_loop:0000000000000000 ecatapp_loop
+     /tmp/cc0MzhOX.s:362    .text.ecatapp_loop:0000000000000060 $d
+     /tmp/cc0MzhOX.s:369    .rodata.str1.4:0000000000000000 $d
+     /tmp/cc0MzhOX.s:378    .bss.Obj:0000000000000000 Obj
+     /tmp/cc0MzhOX.s:374    .bss.Obj:0000000000000000 $d
+     /tmp/cc0MzhOX.s:384    .bss.pdi_irq_flag:0000000000000000 pdi_irq_flag
+     /tmp/cc0MzhOX.s:385    .bss.pdi_irq_flag:0000000000000000 $d
+     /tmp/cc0MzhOX.s:390    .bss.sync0_irq_flag:0000000000000000 sync0_irq_flag
+     /tmp/cc0MzhOX.s:391    .bss.sync0_irq_flag:0000000000000000 $d
+     /tmp/cc0MzhOX.s:393    .data.config:0000000000000000 $d
+     /tmp/cc0MzhOX.s:397    .data.config:0000000000000000 config
+
+UNDEFINED SYMBOLS
+ESC_enable_DC
+APP_setwatchdog
+ESCvar
+EXTI_GetITStatus
+EXTI_ClearITPendingBit
+ecat_slv_init
+init_override
+ESC_read
+DIG_process
+ecat_slv_poll
+rxpdo_override
+txpdo_override
+ESC_interrupt_enable
+ESC_interrupt_disable

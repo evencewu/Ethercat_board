@@ -1,0 +1,344 @@
+ARM GAS  /tmp/ccU67mQU.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"rst.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.rst_low,"ax",%progbits
+  20              		.align	1
+  21              		.global	rst_low
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	rst_low:
+  27              	.LFB124:
+  28              		.file 1 "Lib/soes_hal_bsp/src/rst.c"
+   1:Lib/soes_hal_bsp/src/rst.c **** #include "rst.h"
+   2:Lib/soes_hal_bsp/src/rst.c **** 
+   3:Lib/soes_hal_bsp/src/rst.c **** 
+   4:Lib/soes_hal_bsp/src/rst.c **** void rst_setup(void)
+   5:Lib/soes_hal_bsp/src/rst.c **** {
+   6:Lib/soes_hal_bsp/src/rst.c ****     /* Setup NRST as GPIO out and pull it high */
+   7:Lib/soes_hal_bsp/src/rst.c ****     GPIO_InitTypeDef gpio;
+   8:Lib/soes_hal_bsp/src/rst.c ****  
+   9:Lib/soes_hal_bsp/src/rst.c ****     RCC_AHB1PeriphClockCmd(ESC_RCC_APB1PERIPH_GPIOX_RSTN, ENABLE);
+  10:Lib/soes_hal_bsp/src/rst.c **** 
+  11:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Pin   = ESC_GPIO_Pin_RSTN; 
+  12:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Mode  = GPIO_Mode_OUT;
+  13:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Speed = GPIO_Speed_50MHz;
+  14:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_OType = GPIO_OType_PP;
+  15:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_PuPd  = GPIO_PuPd_UP;
+  16:Lib/soes_hal_bsp/src/rst.c ****     GPIO_Init(ESC_GPIOX_RSTN, &gpio);
+  17:Lib/soes_hal_bsp/src/rst.c ****     
+  18:Lib/soes_hal_bsp/src/rst.c ****     rst_high();
+  19:Lib/soes_hal_bsp/src/rst.c **** }
+  20:Lib/soes_hal_bsp/src/rst.c **** 
+  21:Lib/soes_hal_bsp/src/rst.c **** void rst_low(void)
+  22:Lib/soes_hal_bsp/src/rst.c **** {    /* Set RSTN line low */
+  29              		.loc 1 22 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+ARM GAS  /tmp/ccU67mQU.s 			page 2
+
+
+  23:Lib/soes_hal_bsp/src/rst.c ****     GPIO_ResetBits(ESC_GPIOX_RSTN, ESC_GPIO_Pin_RSTN);
+  37              		.loc 1 23 5 view .LVU1
+  38 0002 0421     		movs	r1, #4
+  39 0004 0148     		ldr	r0, .L3
+  40 0006 FFF7FEFF 		bl	GPIO_ResetBits
+  41              	.LVL0:
+  24:Lib/soes_hal_bsp/src/rst.c **** }
+  42              		.loc 1 24 1 is_stmt 0 view .LVU2
+  43 000a 08BD     		pop	{r3, pc}
+  44              	.L4:
+  45              		.align	2
+  46              	.L3:
+  47 000c 00000240 		.word	1073872896
+  48              		.cfi_endproc
+  49              	.LFE124:
+  51              		.section	.text.rst_high,"ax",%progbits
+  52              		.align	1
+  53              		.global	rst_high
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	rst_high:
+  59              	.LFB125:
+  25:Lib/soes_hal_bsp/src/rst.c **** 
+  26:Lib/soes_hal_bsp/src/rst.c **** void rst_high(void)
+  27:Lib/soes_hal_bsp/src/rst.c **** {
+  60              		.loc 1 27 1 is_stmt 1 view -0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64 0000 08B5     		push	{r3, lr}
+  65              		.cfi_def_cfa_offset 8
+  66              		.cfi_offset 3, -8
+  67              		.cfi_offset 14, -4
+  28:Lib/soes_hal_bsp/src/rst.c ****     /* Set RSTN line high */
+  29:Lib/soes_hal_bsp/src/rst.c ****     GPIO_SetBits(ESC_GPIOX_RSTN, ESC_GPIO_Pin_RSTN);
+  68              		.loc 1 29 5 view .LVU4
+  69 0002 0421     		movs	r1, #4
+  70 0004 0148     		ldr	r0, .L7
+  71 0006 FFF7FEFF 		bl	GPIO_SetBits
+  72              	.LVL1:
+  30:Lib/soes_hal_bsp/src/rst.c **** }
+  73              		.loc 1 30 1 is_stmt 0 view .LVU5
+  74 000a 08BD     		pop	{r3, pc}
+  75              	.L8:
+  76              		.align	2
+  77              	.L7:
+  78 000c 00000240 		.word	1073872896
+  79              		.cfi_endproc
+  80              	.LFE125:
+  82              		.section	.text.rst_setup,"ax",%progbits
+  83              		.align	1
+  84              		.global	rst_setup
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  89              	rst_setup:
+ARM GAS  /tmp/ccU67mQU.s 			page 3
+
+
+  90              	.LFB123:
+   5:Lib/soes_hal_bsp/src/rst.c ****     GPIO_InitTypeDef gpio;
+  91              		.loc 1 5 1 is_stmt 1 view -0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 8
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95 0000 00B5     		push	{lr}
+  96              		.cfi_def_cfa_offset 4
+  97              		.cfi_offset 14, -4
+  98 0002 83B0     		sub	sp, sp, #12
+  99              		.cfi_def_cfa_offset 16
+   7:Lib/soes_hal_bsp/src/rst.c ****  
+ 100              		.loc 1 7 5 view .LVU7
+   9:Lib/soes_hal_bsp/src/rst.c **** 
+ 101              		.loc 1 9 5 view .LVU8
+ 102 0004 0121     		movs	r1, #1
+ 103 0006 0846     		mov	r0, r1
+ 104 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+ 105              	.LVL2:
+  11:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Mode  = GPIO_Mode_OUT;
+ 106              		.loc 1 11 5 view .LVU9
+  11:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Mode  = GPIO_Mode_OUT;
+ 107              		.loc 1 11 21 is_stmt 0 view .LVU10
+ 108 000c 0423     		movs	r3, #4
+ 109 000e 0093     		str	r3, [sp]
+  12:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Speed = GPIO_Speed_50MHz;
+ 110              		.loc 1 12 5 is_stmt 1 view .LVU11
+  12:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Speed = GPIO_Speed_50MHz;
+ 111              		.loc 1 12 21 is_stmt 0 view .LVU12
+ 112 0010 0123     		movs	r3, #1
+ 113 0012 8DF80430 		strb	r3, [sp, #4]
+  13:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_OType = GPIO_OType_PP;
+ 114              		.loc 1 13 5 is_stmt 1 view .LVU13
+  13:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_OType = GPIO_OType_PP;
+ 115              		.loc 1 13 21 is_stmt 0 view .LVU14
+ 116 0016 0222     		movs	r2, #2
+ 117 0018 8DF80520 		strb	r2, [sp, #5]
+  14:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_PuPd  = GPIO_PuPd_UP;
+ 118              		.loc 1 14 5 is_stmt 1 view .LVU15
+  14:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_PuPd  = GPIO_PuPd_UP;
+ 119              		.loc 1 14 21 is_stmt 0 view .LVU16
+ 120 001c 0022     		movs	r2, #0
+ 121 001e 8DF80620 		strb	r2, [sp, #6]
+  15:Lib/soes_hal_bsp/src/rst.c ****     GPIO_Init(ESC_GPIOX_RSTN, &gpio);
+ 122              		.loc 1 15 5 is_stmt 1 view .LVU17
+  15:Lib/soes_hal_bsp/src/rst.c ****     GPIO_Init(ESC_GPIOX_RSTN, &gpio);
+ 123              		.loc 1 15 21 is_stmt 0 view .LVU18
+ 124 0022 8DF80730 		strb	r3, [sp, #7]
+  16:Lib/soes_hal_bsp/src/rst.c ****     
+ 125              		.loc 1 16 5 is_stmt 1 view .LVU19
+ 126 0026 6946     		mov	r1, sp
+ 127 0028 0348     		ldr	r0, .L11
+ 128 002a FFF7FEFF 		bl	GPIO_Init
+ 129              	.LVL3:
+  18:Lib/soes_hal_bsp/src/rst.c **** }
+ 130              		.loc 1 18 5 view .LVU20
+ 131 002e FFF7FEFF 		bl	rst_high
+ARM GAS  /tmp/ccU67mQU.s 			page 4
+
+
+ 132              	.LVL4:
+  19:Lib/soes_hal_bsp/src/rst.c **** 
+ 133              		.loc 1 19 1 is_stmt 0 view .LVU21
+ 134 0032 03B0     		add	sp, sp, #12
+ 135              		.cfi_def_cfa_offset 4
+ 136              		@ sp needed
+ 137 0034 5DF804FB 		ldr	pc, [sp], #4
+ 138              	.L12:
+ 139              		.align	2
+ 140              	.L11:
+ 141 0038 00000240 		.word	1073872896
+ 142              		.cfi_endproc
+ 143              	.LFE123:
+ 145              		.section	.text.rst_check_start,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	rst_check_start
+ 148              		.syntax unified
+ 149              		.thumb
+ 150              		.thumb_func
+ 152              	rst_check_start:
+ 153              	.LFB126:
+  31:Lib/soes_hal_bsp/src/rst.c **** 
+  32:Lib/soes_hal_bsp/src/rst.c **** void rst_check_start(void)
+  33:Lib/soes_hal_bsp/src/rst.c **** {
+ 154              		.loc 1 33 1 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 8
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158 0000 00B5     		push	{lr}
+ 159              		.cfi_def_cfa_offset 4
+ 160              		.cfi_offset 14, -4
+ 161 0002 83B0     		sub	sp, sp, #12
+ 162              		.cfi_def_cfa_offset 16
+  34:Lib/soes_hal_bsp/src/rst.c ****     /* Setup NRST as GPIO input and pull it high */
+  35:Lib/soes_hal_bsp/src/rst.c ****     GPIO_InitTypeDef gpio;
+ 163              		.loc 1 35 5 view .LVU23
+  36:Lib/soes_hal_bsp/src/rst.c ****  
+  37:Lib/soes_hal_bsp/src/rst.c ****     RCC_AHB1PeriphClockCmd(ESC_RCC_APB1PERIPH_GPIOX_RSTN, ENABLE);
+ 164              		.loc 1 37 5 view .LVU24
+ 165 0004 0121     		movs	r1, #1
+ 166 0006 0846     		mov	r0, r1
+ 167 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+ 168              	.LVL5:
+  38:Lib/soes_hal_bsp/src/rst.c **** 
+  39:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Pin   = ESC_GPIO_Pin_RSTN; 
+ 169              		.loc 1 39 5 view .LVU25
+ 170              		.loc 1 39 21 is_stmt 0 view .LVU26
+ 171 000c 0423     		movs	r3, #4
+ 172 000e 0093     		str	r3, [sp]
+  40:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Mode  = GPIO_Mode_IN;
+ 173              		.loc 1 40 5 is_stmt 1 view .LVU27
+ 174              		.loc 1 40 21 is_stmt 0 view .LVU28
+ 175 0010 0023     		movs	r3, #0
+ 176 0012 8DF80430 		strb	r3, [sp, #4]
+  41:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_Speed = GPIO_Speed_50MHz;
+ 177              		.loc 1 41 5 is_stmt 1 view .LVU29
+ 178              		.loc 1 41 21 is_stmt 0 view .LVU30
+ARM GAS  /tmp/ccU67mQU.s 			page 5
+
+
+ 179 0016 0222     		movs	r2, #2
+ 180 0018 8DF80520 		strb	r2, [sp, #5]
+  42:Lib/soes_hal_bsp/src/rst.c ****     gpio.GPIO_PuPd  = GPIO_PuPd_NOPULL;
+ 181              		.loc 1 42 5 is_stmt 1 view .LVU31
+ 182              		.loc 1 42 21 is_stmt 0 view .LVU32
+ 183 001c 8DF80730 		strb	r3, [sp, #7]
+  43:Lib/soes_hal_bsp/src/rst.c ****     GPIO_Init(ESC_GPIOX_RSTN, &gpio);
+ 184              		.loc 1 43 5 is_stmt 1 view .LVU33
+ 185 0020 6946     		mov	r1, sp
+ 186 0022 0348     		ldr	r0, .L15
+ 187 0024 FFF7FEFF 		bl	GPIO_Init
+ 188              	.LVL6:
+  44:Lib/soes_hal_bsp/src/rst.c **** }
+ 189              		.loc 1 44 1 is_stmt 0 view .LVU34
+ 190 0028 03B0     		add	sp, sp, #12
+ 191              		.cfi_def_cfa_offset 4
+ 192              		@ sp needed
+ 193 002a 5DF804FB 		ldr	pc, [sp], #4
+ 194              	.L16:
+ 195 002e 00BF     		.align	2
+ 196              	.L15:
+ 197 0030 00000240 		.word	1073872896
+ 198              		.cfi_endproc
+ 199              	.LFE126:
+ 201              		.section	.text.is_esc_reset,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	is_esc_reset
+ 204              		.syntax unified
+ 205              		.thumb
+ 206              		.thumb_func
+ 208              	is_esc_reset:
+ 209              	.LFB127:
+  45:Lib/soes_hal_bsp/src/rst.c **** 
+  46:Lib/soes_hal_bsp/src/rst.c **** uint8_t is_esc_reset(void)
+  47:Lib/soes_hal_bsp/src/rst.c **** {
+ 210              		.loc 1 47 1 is_stmt 1 view -0
+ 211              		.cfi_startproc
+ 212              		@ args = 0, pretend = 0, frame = 0
+ 213              		@ frame_needed = 0, uses_anonymous_args = 0
+ 214 0000 08B5     		push	{r3, lr}
+ 215              		.cfi_def_cfa_offset 8
+ 216              		.cfi_offset 3, -8
+ 217              		.cfi_offset 14, -4
+  48:Lib/soes_hal_bsp/src/rst.c ****     /* Check if ESC pulled RSTN line up */ 
+  49:Lib/soes_hal_bsp/src/rst.c ****     return GPIO_ReadInputDataBit(ESC_GPIOX_RSTN, ESC_GPIO_Pin_RSTN) == Bit_SET;
+ 218              		.loc 1 49 5 view .LVU36
+ 219              		.loc 1 49 12 is_stmt 0 view .LVU37
+ 220 0002 0421     		movs	r1, #4
+ 221 0004 0348     		ldr	r0, .L19
+ 222 0006 FFF7FEFF 		bl	GPIO_ReadInputDataBit
+ 223              	.LVL7:
+  50:Lib/soes_hal_bsp/src/rst.c **** }
+ 224              		.loc 1 50 1 view .LVU38
+ 225 000a 0128     		cmp	r0, #1
+ 226 000c 14BF     		ite	ne
+ 227 000e 0020     		movne	r0, #0
+ 228 0010 0120     		moveq	r0, #1
+ARM GAS  /tmp/ccU67mQU.s 			page 6
+
+
+ 229 0012 08BD     		pop	{r3, pc}
+ 230              	.L20:
+ 231              		.align	2
+ 232              	.L19:
+ 233 0014 00000240 		.word	1073872896
+ 234              		.cfi_endproc
+ 235              	.LFE127:
+ 237              		.text
+ 238              	.Letext0:
+ 239              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 240              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 241              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 242              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h"
+ 243              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ARM GAS  /tmp/ccU67mQU.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 rst.c
+     /tmp/ccU67mQU.s:20     .text.rst_low:0000000000000000 $t
+     /tmp/ccU67mQU.s:26     .text.rst_low:0000000000000000 rst_low
+     /tmp/ccU67mQU.s:47     .text.rst_low:000000000000000c $d
+     /tmp/ccU67mQU.s:52     .text.rst_high:0000000000000000 $t
+     /tmp/ccU67mQU.s:58     .text.rst_high:0000000000000000 rst_high
+     /tmp/ccU67mQU.s:78     .text.rst_high:000000000000000c $d
+     /tmp/ccU67mQU.s:83     .text.rst_setup:0000000000000000 $t
+     /tmp/ccU67mQU.s:89     .text.rst_setup:0000000000000000 rst_setup
+     /tmp/ccU67mQU.s:141    .text.rst_setup:0000000000000038 $d
+     /tmp/ccU67mQU.s:146    .text.rst_check_start:0000000000000000 $t
+     /tmp/ccU67mQU.s:152    .text.rst_check_start:0000000000000000 rst_check_start
+     /tmp/ccU67mQU.s:197    .text.rst_check_start:0000000000000030 $d
+     /tmp/ccU67mQU.s:202    .text.is_esc_reset:0000000000000000 $t
+     /tmp/ccU67mQU.s:208    .text.is_esc_reset:0000000000000000 is_esc_reset
+     /tmp/ccU67mQU.s:233    .text.is_esc_reset:0000000000000014 $d
+
+UNDEFINED SYMBOLS
+GPIO_ResetBits
+GPIO_SetBits
+RCC_AHB1PeriphClockCmd
+GPIO_Init
+GPIO_ReadInputDataBit

@@ -13,8 +13,8 @@ _Objects Obj;
 
 extern int led_flag;
 
-uint8_t led_1 = 0;
-uint8_t led_2 = 0;
+extern uint8_t led_1;
+extern uint8_t led_2;
 
 uint8_t sync0_irq_flag = 0;
 uint8_t pdi_irq_flag = 0;
@@ -80,14 +80,13 @@ void ecatapp()
 
 void cb_get_inputs()
 {
-    led_1 = Obj.led_tx.led1_tx;
-    led_2 = Obj.led_tx.led2_tx;
+    led_1 = Obj.led_rx.led1_rx;
+    led_2 = Obj.led_rx.led2_rx;
     /* SOES reqires this function but nothing to do here in CiA402 app */
 }
 
 void cb_set_outputs()
 {
-
     /* SOES reqires this function but nothing to do here in CiA402 app */
 }
 

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccNE8TdQ.s 			page 1
+ARM GAS  /tmp/cc7OFT8p.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccNE8TdQ.s 			page 1
   11:Lib/soes_hal_bsp/src/spi.c **** void spi_setup(void)
   12:Lib/soes_hal_bsp/src/spi.c **** {
   48              		.loc 1 12 1 view -0
-ARM GAS  /tmp/ccNE8TdQ.s 			page 2
+ARM GAS  /tmp/cc7OFT8p.s 			page 2
 
 
   49              		.cfi_startproc
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccNE8TdQ.s 			page 1
   99              		.thumb_func
  101              	spi_unselect:
  102              	.LVL3:
-ARM GAS  /tmp/ccNE8TdQ.s 			page 3
+ARM GAS  /tmp/cc7OFT8p.s 			page 3
 
 
  103              	.LFB133:
@@ -173,24 +173,24 @@ ARM GAS  /tmp/ccNE8TdQ.s 			page 1
  146              		.cfi_def_cfa_offset 8
  147              		.cfi_offset 3, -8
  148              		.cfi_offset 14, -4
-  28:Lib/soes_hal_bsp/src/spi.c ****     HAL_SPI_Transmit(&hspi2, data, size, 100);
+  28:Lib/soes_hal_bsp/src/spi.c ****     HAL_SPI_Transmit(&hspi2, data, size, 1000);
  149              		.loc 1 28 5 is_stmt 1 view .LVU16
- 150 0002 6423     		movs	r3, #100
- 151 0004 0148     		ldr	r0, .L13
+ 150 0002 4FF47A73 		mov	r3, #1000
+ 151 0006 0248     		ldr	r0, .L13
  152              	.LVL7:
-ARM GAS  /tmp/ccNE8TdQ.s 			page 4
+ARM GAS  /tmp/cc7OFT8p.s 			page 4
 
 
  153              		.loc 1 28 5 is_stmt 0 view .LVU17
- 154 0006 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 154 0008 FFF7FEFF 		bl	HAL_SPI_Transmit
  155              	.LVL8:
   29:Lib/soes_hal_bsp/src/spi.c **** }
  156              		.loc 1 29 1 view .LVU18
- 157 000a 08BD     		pop	{r3, pc}
+ 157 000c 08BD     		pop	{r3, pc}
  158              	.L14:
- 159              		.align	2
+ 159 000e 00BF     		.align	2
  160              	.L13:
- 161 000c 00000000 		.word	hspi2
+ 161 0010 00000000 		.word	hspi2
  162              		.cfi_endproc
  163              	.LFE134:
  165              		.section	.text.spi_bidirectionally_transfer,"ax",%progbits
@@ -220,29 +220,29 @@ ARM GAS  /tmp/ccNE8TdQ.s 			page 1
  187              		.loc 1 32 1 view .LVU21
  188 0006 1146     		mov	r1, r2
  189              	.LVL11:
-  33:Lib/soes_hal_bsp/src/spi.c ****     HAL_SPI_TransmitReceive(&hspi2, data, result, size, 100);
+  33:Lib/soes_hal_bsp/src/spi.c ****     HAL_SPI_TransmitReceive(&hspi2, data, result, size, 1000);
  190              		.loc 1 33 5 is_stmt 1 view .LVU22
- 191 0008 6422     		movs	r2, #100
+ 191 0008 4FF47A72 		mov	r2, #1000
  192              	.LVL12:
  193              		.loc 1 33 5 is_stmt 0 view .LVU23
- 194 000a 0092     		str	r2, [sp]
- 195 000c 0246     		mov	r2, r0
- 196 000e 0348     		ldr	r0, .L17
+ 194 000c 0092     		str	r2, [sp]
+ 195 000e 0246     		mov	r2, r0
+ 196 0010 0248     		ldr	r0, .L17
  197              	.LVL13:
  198              		.loc 1 33 5 view .LVU24
- 199 0010 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 199 0012 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
  200              	.LVL14:
   34:Lib/soes_hal_bsp/src/spi.c **** }
  201              		.loc 1 34 1 view .LVU25
- 202 0014 03B0     		add	sp, sp, #12
+ 202 0016 03B0     		add	sp, sp, #12
  203              		.cfi_def_cfa_offset 4
  204              		@ sp needed
- 205 0016 5DF804FB 		ldr	pc, [sp], #4
-ARM GAS  /tmp/ccNE8TdQ.s 			page 5
+ 205 0018 5DF804FB 		ldr	pc, [sp], #4
+ARM GAS  /tmp/cc7OFT8p.s 			page 5
 
 
  206              	.L18:
- 207 001a 00BF     		.align	2
+ 207              		.align	2
  208              	.L17:
  209 001c 00000000 		.word	hspi2
  210              		.cfi_endproc
@@ -256,27 +256,27 @@ ARM GAS  /tmp/ccNE8TdQ.s 			page 1
  219              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
  220              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  221              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
-ARM GAS  /tmp/ccNE8TdQ.s 			page 6
+ARM GAS  /tmp/cc7OFT8p.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 spi.c
-     /tmp/ccNE8TdQ.s:20     .text.spi_gpio_setup:0000000000000000 $t
-     /tmp/ccNE8TdQ.s:26     .text.spi_gpio_setup:0000000000000000 spi_gpio_setup
-     /tmp/ccNE8TdQ.s:40     .text.spi_setup:0000000000000000 $t
-     /tmp/ccNE8TdQ.s:46     .text.spi_setup:0000000000000000 spi_setup
-     /tmp/ccNE8TdQ.s:59     .text.spi_select:0000000000000000 $t
-     /tmp/ccNE8TdQ.s:65     .text.spi_select:0000000000000000 spi_select
-     /tmp/ccNE8TdQ.s:90     .text.spi_select:0000000000000010 $d
-     /tmp/ccNE8TdQ.s:95     .text.spi_unselect:0000000000000000 $t
-     /tmp/ccNE8TdQ.s:101    .text.spi_unselect:0000000000000000 spi_unselect
-     /tmp/ccNE8TdQ.s:126    .text.spi_unselect:0000000000000010 $d
-     /tmp/ccNE8TdQ.s:131    .text.spi_write:0000000000000000 $t
-     /tmp/ccNE8TdQ.s:137    .text.spi_write:0000000000000000 spi_write
-     /tmp/ccNE8TdQ.s:161    .text.spi_write:000000000000000c $d
-     /tmp/ccNE8TdQ.s:166    .text.spi_bidirectionally_transfer:0000000000000000 $t
-     /tmp/ccNE8TdQ.s:172    .text.spi_bidirectionally_transfer:0000000000000000 spi_bidirectionally_transfer
-     /tmp/ccNE8TdQ.s:209    .text.spi_bidirectionally_transfer:000000000000001c $d
+     /tmp/cc7OFT8p.s:20     .text.spi_gpio_setup:0000000000000000 $t
+     /tmp/cc7OFT8p.s:26     .text.spi_gpio_setup:0000000000000000 spi_gpio_setup
+     /tmp/cc7OFT8p.s:40     .text.spi_setup:0000000000000000 $t
+     /tmp/cc7OFT8p.s:46     .text.spi_setup:0000000000000000 spi_setup
+     /tmp/cc7OFT8p.s:59     .text.spi_select:0000000000000000 $t
+     /tmp/cc7OFT8p.s:65     .text.spi_select:0000000000000000 spi_select
+     /tmp/cc7OFT8p.s:90     .text.spi_select:0000000000000010 $d
+     /tmp/cc7OFT8p.s:95     .text.spi_unselect:0000000000000000 $t
+     /tmp/cc7OFT8p.s:101    .text.spi_unselect:0000000000000000 spi_unselect
+     /tmp/cc7OFT8p.s:126    .text.spi_unselect:0000000000000010 $d
+     /tmp/cc7OFT8p.s:131    .text.spi_write:0000000000000000 $t
+     /tmp/cc7OFT8p.s:137    .text.spi_write:0000000000000000 spi_write
+     /tmp/cc7OFT8p.s:161    .text.spi_write:0000000000000010 $d
+     /tmp/cc7OFT8p.s:166    .text.spi_bidirectionally_transfer:0000000000000000 $t
+     /tmp/cc7OFT8p.s:172    .text.spi_bidirectionally_transfer:0000000000000000 spi_bidirectionally_transfer
+     /tmp/cc7OFT8p.s:209    .text.spi_bidirectionally_transfer:000000000000001c $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

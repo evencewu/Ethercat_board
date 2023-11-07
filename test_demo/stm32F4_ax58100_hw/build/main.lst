@@ -1,0 +1,2034 @@
+ARM GAS  /tmp/ccTVGe6C.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	1
+  21              		.global	main
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	main:
+  27              	.LFB123:
+  28              		.file 1 "Core/Src/main.c"
+   1:Core/Src/main.c **** #include "stm32f4xx.h"
+   2:Core/Src/main.c **** #include "delay.h"
+   3:Core/Src/main.c **** 
+   4:Core/Src/main.c **** #include "esc.h"
+   5:Core/Src/main.c **** #include "ecat_slv.h"
+   6:Core/Src/main.c **** #include "ecatapp.h"
+   7:Core/Src/main.c **** 
+   8:Core/Src/main.c **** 
+   9:Core/Src/main.c **** // uint32_t ecatapp_benchmark_us(void);
+  10:Core/Src/main.c **** 
+  11:Core/Src/main.c **** 
+  12:Core/Src/main.c **** int main(void)
+  13:Core/Src/main.c **** {
+  29              		.loc 1 13 1 view -0
+  30              		.cfi_startproc
+  31              		@ Volatile: function does not return.
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34 0000 08B5     		push	{r3, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  14:Core/Src/main.c ****   	SysTick_Config(SystemCoreClock / 1000);
+  38              		.loc 1 14 4 view .LVU1
+  39 0002 0E4B     		ldr	r3, .L5
+  40 0004 1B68     		ldr	r3, [r3]
+  41 0006 0E4A     		ldr	r2, .L5+4
+  42 0008 A2FB0323 		umull	r2, r3, r2, r3
+  43 000c 9B09     		lsrs	r3, r3, #6
+  44              	.LVL0:
+ARM GAS  /tmp/ccTVGe6C.s 			page 2
+
+
+  45              	.LBB8:
+  46              	.LBI8:
+  47              		.file 2 "Drivers/CMSIS/Include/core_cm4.h"
+   1:Drivers/CMSIS/Include/core_cm4.h **** /**************************************************************************//**
+   2:Drivers/CMSIS/Include/core_cm4.h ****  * @file     core_cm4.h
+   3:Drivers/CMSIS/Include/core_cm4.h ****  * @brief    CMSIS Cortex-M4 Core Peripheral Access Layer Header File
+   4:Drivers/CMSIS/Include/core_cm4.h ****  * @version  V4.10
+   5:Drivers/CMSIS/Include/core_cm4.h ****  * @date     18. March 2015
+   6:Drivers/CMSIS/Include/core_cm4.h ****  *
+   7:Drivers/CMSIS/Include/core_cm4.h ****  * @note
+   8:Drivers/CMSIS/Include/core_cm4.h ****  *
+   9:Drivers/CMSIS/Include/core_cm4.h ****  ******************************************************************************/
+  10:Drivers/CMSIS/Include/core_cm4.h **** /* Copyright (c) 2009 - 2015 ARM LIMITED
+  11:Drivers/CMSIS/Include/core_cm4.h **** 
+  12:Drivers/CMSIS/Include/core_cm4.h ****    All rights reserved.
+  13:Drivers/CMSIS/Include/core_cm4.h ****    Redistribution and use in source and binary forms, with or without
+  14:Drivers/CMSIS/Include/core_cm4.h ****    modification, are permitted provided that the following conditions are met:
+  15:Drivers/CMSIS/Include/core_cm4.h ****    - Redistributions of source code must retain the above copyright
+  16:Drivers/CMSIS/Include/core_cm4.h ****      notice, this list of conditions and the following disclaimer.
+  17:Drivers/CMSIS/Include/core_cm4.h ****    - Redistributions in binary form must reproduce the above copyright
+  18:Drivers/CMSIS/Include/core_cm4.h ****      notice, this list of conditions and the following disclaimer in the
+  19:Drivers/CMSIS/Include/core_cm4.h ****      documentation and/or other materials provided with the distribution.
+  20:Drivers/CMSIS/Include/core_cm4.h ****    - Neither the name of ARM nor the names of its contributors may be used
+  21:Drivers/CMSIS/Include/core_cm4.h ****      to endorse or promote products derived from this software without
+  22:Drivers/CMSIS/Include/core_cm4.h ****      specific prior written permission.
+  23:Drivers/CMSIS/Include/core_cm4.h ****    *
+  24:Drivers/CMSIS/Include/core_cm4.h ****    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  25:Drivers/CMSIS/Include/core_cm4.h ****    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  26:Drivers/CMSIS/Include/core_cm4.h ****    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  27:Drivers/CMSIS/Include/core_cm4.h ****    ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+  28:Drivers/CMSIS/Include/core_cm4.h ****    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  29:Drivers/CMSIS/Include/core_cm4.h ****    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  30:Drivers/CMSIS/Include/core_cm4.h ****    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  31:Drivers/CMSIS/Include/core_cm4.h ****    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  32:Drivers/CMSIS/Include/core_cm4.h ****    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  33:Drivers/CMSIS/Include/core_cm4.h ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  34:Drivers/CMSIS/Include/core_cm4.h ****    POSSIBILITY OF SUCH DAMAGE.
+  35:Drivers/CMSIS/Include/core_cm4.h ****    ---------------------------------------------------------------------------*/
+  36:Drivers/CMSIS/Include/core_cm4.h **** 
+  37:Drivers/CMSIS/Include/core_cm4.h **** 
+  38:Drivers/CMSIS/Include/core_cm4.h **** #if defined ( __ICCARM__ )
+  39:Drivers/CMSIS/Include/core_cm4.h ****  #pragma system_include  /* treat file as system include file for MISRA check */
+  40:Drivers/CMSIS/Include/core_cm4.h **** #endif
+  41:Drivers/CMSIS/Include/core_cm4.h **** 
+  42:Drivers/CMSIS/Include/core_cm4.h **** #ifndef __CORE_CM4_H_GENERIC
+  43:Drivers/CMSIS/Include/core_cm4.h **** #define __CORE_CM4_H_GENERIC
+  44:Drivers/CMSIS/Include/core_cm4.h **** 
+  45:Drivers/CMSIS/Include/core_cm4.h **** #ifdef __cplusplus
+  46:Drivers/CMSIS/Include/core_cm4.h ****  extern "C" {
+  47:Drivers/CMSIS/Include/core_cm4.h **** #endif
+  48:Drivers/CMSIS/Include/core_cm4.h **** 
+  49:Drivers/CMSIS/Include/core_cm4.h **** /** \page CMSIS_MISRA_Exceptions  MISRA-C:2004 Compliance Exceptions
+  50:Drivers/CMSIS/Include/core_cm4.h ****   CMSIS violates the following MISRA-C:2004 rules:
+  51:Drivers/CMSIS/Include/core_cm4.h **** 
+  52:Drivers/CMSIS/Include/core_cm4.h ****    \li Required Rule 8.5, object/function definition in header file.<br>
+  53:Drivers/CMSIS/Include/core_cm4.h ****      Function definitions in header files are used to allow 'inlining'.
+  54:Drivers/CMSIS/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccTVGe6C.s 			page 3
+
+
+  55:Drivers/CMSIS/Include/core_cm4.h ****    \li Required Rule 18.4, declaration of union type or object of union type: '{...}'.<br>
+  56:Drivers/CMSIS/Include/core_cm4.h ****      Unions are used for effective representation of core registers.
+  57:Drivers/CMSIS/Include/core_cm4.h **** 
+  58:Drivers/CMSIS/Include/core_cm4.h ****    \li Advisory Rule 19.7, Function-like macro defined.<br>
+  59:Drivers/CMSIS/Include/core_cm4.h ****      Function-like macros are used to allow more efficient code.
+  60:Drivers/CMSIS/Include/core_cm4.h ****  */
+  61:Drivers/CMSIS/Include/core_cm4.h **** 
+  62:Drivers/CMSIS/Include/core_cm4.h **** 
+  63:Drivers/CMSIS/Include/core_cm4.h **** /*******************************************************************************
+  64:Drivers/CMSIS/Include/core_cm4.h ****  *                 CMSIS definitions
+  65:Drivers/CMSIS/Include/core_cm4.h ****  ******************************************************************************/
+  66:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup Cortex_M4
+  67:Drivers/CMSIS/Include/core_cm4.h ****   @{
+  68:Drivers/CMSIS/Include/core_cm4.h ****  */
+  69:Drivers/CMSIS/Include/core_cm4.h **** 
+  70:Drivers/CMSIS/Include/core_cm4.h **** /*  CMSIS CM4 definitions */
+  71:Drivers/CMSIS/Include/core_cm4.h **** #define __CM4_CMSIS_VERSION_MAIN  (0x04)                                   /*!< [31:16] CMSIS HAL m
+  72:Drivers/CMSIS/Include/core_cm4.h **** #define __CM4_CMSIS_VERSION_SUB   (0x00)                                   /*!< [15:0]  CMSIS HAL s
+  73:Drivers/CMSIS/Include/core_cm4.h **** #define __CM4_CMSIS_VERSION       ((__CM4_CMSIS_VERSION_MAIN << 16) | \
+  74:Drivers/CMSIS/Include/core_cm4.h ****                                     __CM4_CMSIS_VERSION_SUB          )     /*!< CMSIS HAL version n
+  75:Drivers/CMSIS/Include/core_cm4.h **** 
+  76:Drivers/CMSIS/Include/core_cm4.h **** #define __CORTEX_M                (0x04)                                   /*!< Cortex-M Core      
+  77:Drivers/CMSIS/Include/core_cm4.h **** 
+  78:Drivers/CMSIS/Include/core_cm4.h **** 
+  79:Drivers/CMSIS/Include/core_cm4.h **** #if   defined ( __CC_ARM )
+  80:Drivers/CMSIS/Include/core_cm4.h ****   #define __ASM            __asm                                      /*!< asm keyword for ARM Comp
+  81:Drivers/CMSIS/Include/core_cm4.h ****   #define __INLINE         __inline                                   /*!< inline keyword for ARM C
+  82:Drivers/CMSIS/Include/core_cm4.h ****   #define __STATIC_INLINE  static __inline
+  83:Drivers/CMSIS/Include/core_cm4.h **** 
+  84:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __GNUC__ )
+  85:Drivers/CMSIS/Include/core_cm4.h ****   #define __ASM            __asm                                      /*!< asm keyword for GNU Comp
+  86:Drivers/CMSIS/Include/core_cm4.h ****   #define __INLINE         inline                                     /*!< inline keyword for GNU C
+  87:Drivers/CMSIS/Include/core_cm4.h ****   #define __STATIC_INLINE  static inline
+  88:Drivers/CMSIS/Include/core_cm4.h **** 
+  89:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __ICCARM__ )
+  90:Drivers/CMSIS/Include/core_cm4.h ****   #define __ASM            __asm                                      /*!< asm keyword for IAR Comp
+  91:Drivers/CMSIS/Include/core_cm4.h ****   #define __INLINE         inline                                     /*!< inline keyword for IAR C
+  92:Drivers/CMSIS/Include/core_cm4.h ****   #define __STATIC_INLINE  static inline
+  93:Drivers/CMSIS/Include/core_cm4.h **** 
+  94:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __TMS470__ )
+  95:Drivers/CMSIS/Include/core_cm4.h ****   #define __ASM            __asm                                      /*!< asm keyword for TI CCS C
+  96:Drivers/CMSIS/Include/core_cm4.h ****   #define __STATIC_INLINE  static inline
+  97:Drivers/CMSIS/Include/core_cm4.h **** 
+  98:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __TASKING__ )
+  99:Drivers/CMSIS/Include/core_cm4.h ****   #define __ASM            __asm                                      /*!< asm keyword for TASKING 
+ 100:Drivers/CMSIS/Include/core_cm4.h ****   #define __INLINE         inline                                     /*!< inline keyword for TASKI
+ 101:Drivers/CMSIS/Include/core_cm4.h ****   #define __STATIC_INLINE  static inline
+ 102:Drivers/CMSIS/Include/core_cm4.h **** 
+ 103:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __CSMC__ )
+ 104:Drivers/CMSIS/Include/core_cm4.h ****   #define __packed
+ 105:Drivers/CMSIS/Include/core_cm4.h ****   #define __ASM            _asm                                      /*!< asm keyword for COSMIC Co
+ 106:Drivers/CMSIS/Include/core_cm4.h ****   #define __INLINE         inline                                    /*use -pc99 on compile line !<
+ 107:Drivers/CMSIS/Include/core_cm4.h ****   #define __STATIC_INLINE  static inline
+ 108:Drivers/CMSIS/Include/core_cm4.h **** 
+ 109:Drivers/CMSIS/Include/core_cm4.h **** #endif
+ 110:Drivers/CMSIS/Include/core_cm4.h **** 
+ 111:Drivers/CMSIS/Include/core_cm4.h **** /** __FPU_USED indicates whether an FPU is used or not.
+ARM GAS  /tmp/ccTVGe6C.s 			page 4
+
+
+ 112:Drivers/CMSIS/Include/core_cm4.h ****     For this, __FPU_PRESENT has to be checked prior to making use of FPU specific registers and fun
+ 113:Drivers/CMSIS/Include/core_cm4.h **** */
+ 114:Drivers/CMSIS/Include/core_cm4.h **** #if defined ( __CC_ARM )
+ 115:Drivers/CMSIS/Include/core_cm4.h ****   #if defined __TARGET_FPU_VFP
+ 116:Drivers/CMSIS/Include/core_cm4.h ****     #if (__FPU_PRESENT == 1)
+ 117:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       1
+ 118:Drivers/CMSIS/Include/core_cm4.h ****     #else
+ 119:Drivers/CMSIS/Include/core_cm4.h ****       #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESEN
+ 120:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       0
+ 121:Drivers/CMSIS/Include/core_cm4.h ****     #endif
+ 122:Drivers/CMSIS/Include/core_cm4.h ****   #else
+ 123:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_USED         0
+ 124:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 125:Drivers/CMSIS/Include/core_cm4.h **** 
+ 126:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __GNUC__ )
+ 127:Drivers/CMSIS/Include/core_cm4.h ****   #if defined (__VFP_FP__) && !defined(__SOFTFP__)
+ 128:Drivers/CMSIS/Include/core_cm4.h ****     #if (__FPU_PRESENT == 1)
+ 129:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       1
+ 130:Drivers/CMSIS/Include/core_cm4.h ****     #else
+ 131:Drivers/CMSIS/Include/core_cm4.h ****       #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESEN
+ 132:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       0
+ 133:Drivers/CMSIS/Include/core_cm4.h ****     #endif
+ 134:Drivers/CMSIS/Include/core_cm4.h ****   #else
+ 135:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_USED         0
+ 136:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 137:Drivers/CMSIS/Include/core_cm4.h **** 
+ 138:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __ICCARM__ )
+ 139:Drivers/CMSIS/Include/core_cm4.h ****   #if defined __ARMVFP__
+ 140:Drivers/CMSIS/Include/core_cm4.h ****     #if (__FPU_PRESENT == 1)
+ 141:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       1
+ 142:Drivers/CMSIS/Include/core_cm4.h ****     #else
+ 143:Drivers/CMSIS/Include/core_cm4.h ****       #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESEN
+ 144:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       0
+ 145:Drivers/CMSIS/Include/core_cm4.h ****     #endif
+ 146:Drivers/CMSIS/Include/core_cm4.h ****   #else
+ 147:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_USED         0
+ 148:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 149:Drivers/CMSIS/Include/core_cm4.h **** 
+ 150:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __TMS470__ )
+ 151:Drivers/CMSIS/Include/core_cm4.h ****   #if defined __TI_VFP_SUPPORT__
+ 152:Drivers/CMSIS/Include/core_cm4.h ****     #if (__FPU_PRESENT == 1)
+ 153:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       1
+ 154:Drivers/CMSIS/Include/core_cm4.h ****     #else
+ 155:Drivers/CMSIS/Include/core_cm4.h ****       #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESEN
+ 156:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       0
+ 157:Drivers/CMSIS/Include/core_cm4.h ****     #endif
+ 158:Drivers/CMSIS/Include/core_cm4.h ****   #else
+ 159:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_USED         0
+ 160:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 161:Drivers/CMSIS/Include/core_cm4.h **** 
+ 162:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __TASKING__ )
+ 163:Drivers/CMSIS/Include/core_cm4.h ****   #if defined __FPU_VFP__
+ 164:Drivers/CMSIS/Include/core_cm4.h ****     #if (__FPU_PRESENT == 1)
+ 165:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       1
+ 166:Drivers/CMSIS/Include/core_cm4.h ****     #else
+ 167:Drivers/CMSIS/Include/core_cm4.h ****       #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)
+ 168:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       0
+ARM GAS  /tmp/ccTVGe6C.s 			page 5
+
+
+ 169:Drivers/CMSIS/Include/core_cm4.h ****     #endif
+ 170:Drivers/CMSIS/Include/core_cm4.h ****   #else
+ 171:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_USED         0
+ 172:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 173:Drivers/CMSIS/Include/core_cm4.h **** 
+ 174:Drivers/CMSIS/Include/core_cm4.h **** #elif defined ( __CSMC__ )		/* Cosmic */
+ 175:Drivers/CMSIS/Include/core_cm4.h ****   #if ( __CSMC__ & 0x400)		// FPU present for parser
+ 176:Drivers/CMSIS/Include/core_cm4.h ****     #if (__FPU_PRESENT == 1)
+ 177:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       1
+ 178:Drivers/CMSIS/Include/core_cm4.h ****     #else
+ 179:Drivers/CMSIS/Include/core_cm4.h ****       #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)
+ 180:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       0
+ 181:Drivers/CMSIS/Include/core_cm4.h ****     #endif
+ 182:Drivers/CMSIS/Include/core_cm4.h ****   #else
+ 183:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_USED         0
+ 184:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 185:Drivers/CMSIS/Include/core_cm4.h **** #endif
+ 186:Drivers/CMSIS/Include/core_cm4.h **** 
+ 187:Drivers/CMSIS/Include/core_cm4.h **** #include <stdint.h>                      /* standard types definitions                      */
+ 188:Drivers/CMSIS/Include/core_cm4.h **** #include <core_cmInstr.h>                /* Core Instruction Access                         */
+ 189:Drivers/CMSIS/Include/core_cm4.h **** #include <core_cmFunc.h>                 /* Core Function Access                            */
+ 190:Drivers/CMSIS/Include/core_cm4.h **** #include <core_cmSimd.h>                 /* Compiler specific SIMD Intrinsics               */
+ 191:Drivers/CMSIS/Include/core_cm4.h **** 
+ 192:Drivers/CMSIS/Include/core_cm4.h **** #ifdef __cplusplus
+ 193:Drivers/CMSIS/Include/core_cm4.h **** }
+ 194:Drivers/CMSIS/Include/core_cm4.h **** #endif
+ 195:Drivers/CMSIS/Include/core_cm4.h **** 
+ 196:Drivers/CMSIS/Include/core_cm4.h **** #endif /* __CORE_CM4_H_GENERIC */
+ 197:Drivers/CMSIS/Include/core_cm4.h **** 
+ 198:Drivers/CMSIS/Include/core_cm4.h **** #ifndef __CMSIS_GENERIC
+ 199:Drivers/CMSIS/Include/core_cm4.h **** 
+ 200:Drivers/CMSIS/Include/core_cm4.h **** #ifndef __CORE_CM4_H_DEPENDANT
+ 201:Drivers/CMSIS/Include/core_cm4.h **** #define __CORE_CM4_H_DEPENDANT
+ 202:Drivers/CMSIS/Include/core_cm4.h **** 
+ 203:Drivers/CMSIS/Include/core_cm4.h **** #ifdef __cplusplus
+ 204:Drivers/CMSIS/Include/core_cm4.h ****  extern "C" {
+ 205:Drivers/CMSIS/Include/core_cm4.h **** #endif
+ 206:Drivers/CMSIS/Include/core_cm4.h **** 
+ 207:Drivers/CMSIS/Include/core_cm4.h **** /* check device defines and use defaults */
+ 208:Drivers/CMSIS/Include/core_cm4.h **** #if defined __CHECK_DEVICE_DEFINES
+ 209:Drivers/CMSIS/Include/core_cm4.h ****   #ifndef __CM4_REV
+ 210:Drivers/CMSIS/Include/core_cm4.h ****     #define __CM4_REV               0x0000
+ 211:Drivers/CMSIS/Include/core_cm4.h ****     #warning "__CM4_REV not defined in device header file; using default!"
+ 212:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 213:Drivers/CMSIS/Include/core_cm4.h **** 
+ 214:Drivers/CMSIS/Include/core_cm4.h ****   #ifndef __FPU_PRESENT
+ 215:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_PRESENT             0
+ 216:Drivers/CMSIS/Include/core_cm4.h ****     #warning "__FPU_PRESENT not defined in device header file; using default!"
+ 217:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 218:Drivers/CMSIS/Include/core_cm4.h **** 
+ 219:Drivers/CMSIS/Include/core_cm4.h ****   #ifndef __MPU_PRESENT
+ 220:Drivers/CMSIS/Include/core_cm4.h ****     #define __MPU_PRESENT             0
+ 221:Drivers/CMSIS/Include/core_cm4.h ****     #warning "__MPU_PRESENT not defined in device header file; using default!"
+ 222:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 223:Drivers/CMSIS/Include/core_cm4.h **** 
+ 224:Drivers/CMSIS/Include/core_cm4.h ****   #ifndef __NVIC_PRIO_BITS
+ 225:Drivers/CMSIS/Include/core_cm4.h ****     #define __NVIC_PRIO_BITS          4
+ARM GAS  /tmp/ccTVGe6C.s 			page 6
+
+
+ 226:Drivers/CMSIS/Include/core_cm4.h ****     #warning "__NVIC_PRIO_BITS not defined in device header file; using default!"
+ 227:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 228:Drivers/CMSIS/Include/core_cm4.h **** 
+ 229:Drivers/CMSIS/Include/core_cm4.h ****   #ifndef __Vendor_SysTickConfig
+ 230:Drivers/CMSIS/Include/core_cm4.h ****     #define __Vendor_SysTickConfig    0
+ 231:Drivers/CMSIS/Include/core_cm4.h ****     #warning "__Vendor_SysTickConfig not defined in device header file; using default!"
+ 232:Drivers/CMSIS/Include/core_cm4.h ****   #endif
+ 233:Drivers/CMSIS/Include/core_cm4.h **** #endif
+ 234:Drivers/CMSIS/Include/core_cm4.h **** 
+ 235:Drivers/CMSIS/Include/core_cm4.h **** /* IO definitions (access restrictions to peripheral registers) */
+ 236:Drivers/CMSIS/Include/core_cm4.h **** /**
+ 237:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_glob_defs CMSIS Global Defines
+ 238:Drivers/CMSIS/Include/core_cm4.h **** 
+ 239:Drivers/CMSIS/Include/core_cm4.h ****     <strong>IO Type Qualifiers</strong> are used
+ 240:Drivers/CMSIS/Include/core_cm4.h ****     \li to specify the access to peripheral variables.
+ 241:Drivers/CMSIS/Include/core_cm4.h ****     \li for automatic generation of peripheral register debug information.
+ 242:Drivers/CMSIS/Include/core_cm4.h **** */
+ 243:Drivers/CMSIS/Include/core_cm4.h **** #ifdef __cplusplus
+ 244:Drivers/CMSIS/Include/core_cm4.h ****   #define   __I     volatile             /*!< Defines 'read only' permissions                 */
+ 245:Drivers/CMSIS/Include/core_cm4.h **** #else
+ 246:Drivers/CMSIS/Include/core_cm4.h ****   #define   __I     volatile const       /*!< Defines 'read only' permissions                 */
+ 247:Drivers/CMSIS/Include/core_cm4.h **** #endif
+ 248:Drivers/CMSIS/Include/core_cm4.h **** #define     __O     volatile             /*!< Defines 'write only' permissions                */
+ 249:Drivers/CMSIS/Include/core_cm4.h **** #define     __IO    volatile             /*!< Defines 'read / write' permissions              */
+ 250:Drivers/CMSIS/Include/core_cm4.h **** 
+ 251:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group Cortex_M4 */
+ 252:Drivers/CMSIS/Include/core_cm4.h **** 
+ 253:Drivers/CMSIS/Include/core_cm4.h **** 
+ 254:Drivers/CMSIS/Include/core_cm4.h **** 
+ 255:Drivers/CMSIS/Include/core_cm4.h **** /*******************************************************************************
+ 256:Drivers/CMSIS/Include/core_cm4.h ****  *                 Register Abstraction
+ 257:Drivers/CMSIS/Include/core_cm4.h ****   Core Register contain:
+ 258:Drivers/CMSIS/Include/core_cm4.h ****   - Core Register
+ 259:Drivers/CMSIS/Include/core_cm4.h ****   - Core NVIC Register
+ 260:Drivers/CMSIS/Include/core_cm4.h ****   - Core SCB Register
+ 261:Drivers/CMSIS/Include/core_cm4.h ****   - Core SysTick Register
+ 262:Drivers/CMSIS/Include/core_cm4.h ****   - Core Debug Register
+ 263:Drivers/CMSIS/Include/core_cm4.h ****   - Core MPU Register
+ 264:Drivers/CMSIS/Include/core_cm4.h ****   - Core FPU Register
+ 265:Drivers/CMSIS/Include/core_cm4.h ****  ******************************************************************************/
+ 266:Drivers/CMSIS/Include/core_cm4.h **** /** \defgroup CMSIS_core_register Defines and Type Definitions
+ 267:Drivers/CMSIS/Include/core_cm4.h ****     \brief Type definitions and defines for Cortex-M processor based devices.
+ 268:Drivers/CMSIS/Include/core_cm4.h **** */
+ 269:Drivers/CMSIS/Include/core_cm4.h **** 
+ 270:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup    CMSIS_core_register
+ 271:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup   CMSIS_CORE  Status and Control Registers
+ 272:Drivers/CMSIS/Include/core_cm4.h ****     \brief  Core Register type definitions.
+ 273:Drivers/CMSIS/Include/core_cm4.h ****   @{
+ 274:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 275:Drivers/CMSIS/Include/core_cm4.h **** 
+ 276:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Union type to access the Application Program Status Register (APSR).
+ 277:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 278:Drivers/CMSIS/Include/core_cm4.h **** typedef union
+ 279:Drivers/CMSIS/Include/core_cm4.h **** {
+ 280:Drivers/CMSIS/Include/core_cm4.h ****   struct
+ 281:Drivers/CMSIS/Include/core_cm4.h ****   {
+ 282:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t _reserved0:16;              /*!< bit:  0..15  Reserved                           */
+ARM GAS  /tmp/ccTVGe6C.s 			page 7
+
+
+ 283:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t GE:4;                       /*!< bit: 16..19  Greater than or Equal flags        */
+ 284:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t _reserved1:7;               /*!< bit: 20..26  Reserved                           */
+ 285:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t Q:1;                        /*!< bit:     27  Saturation condition flag          */
+ 286:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag       */
+ 287:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t C:1;                        /*!< bit:     29  Carry condition code flag          */
+ 288:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag           */
+ 289:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t N:1;                        /*!< bit:     31  Negative condition code flag       */
+ 290:Drivers/CMSIS/Include/core_cm4.h ****   } b;                                   /*!< Structure used for bit  access                  */
+ 291:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t w;                            /*!< Type      used for word access                  */
+ 292:Drivers/CMSIS/Include/core_cm4.h **** } APSR_Type;
+ 293:Drivers/CMSIS/Include/core_cm4.h **** 
+ 294:Drivers/CMSIS/Include/core_cm4.h **** /* APSR Register Definitions */
+ 295:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_N_Pos                         31                                             /*!< APSR
+ 296:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_N_Msk                         (1UL << APSR_N_Pos)                            /*!< APSR
+ 297:Drivers/CMSIS/Include/core_cm4.h **** 
+ 298:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_Z_Pos                         30                                             /*!< APSR
+ 299:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_Z_Msk                         (1UL << APSR_Z_Pos)                            /*!< APSR
+ 300:Drivers/CMSIS/Include/core_cm4.h **** 
+ 301:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_C_Pos                         29                                             /*!< APSR
+ 302:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_C_Msk                         (1UL << APSR_C_Pos)                            /*!< APSR
+ 303:Drivers/CMSIS/Include/core_cm4.h **** 
+ 304:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_V_Pos                         28                                             /*!< APSR
+ 305:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_V_Msk                         (1UL << APSR_V_Pos)                            /*!< APSR
+ 306:Drivers/CMSIS/Include/core_cm4.h **** 
+ 307:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_Q_Pos                         27                                             /*!< APSR
+ 308:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_Q_Msk                         (1UL << APSR_Q_Pos)                            /*!< APSR
+ 309:Drivers/CMSIS/Include/core_cm4.h **** 
+ 310:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_GE_Pos                        16                                             /*!< APSR
+ 311:Drivers/CMSIS/Include/core_cm4.h **** #define APSR_GE_Msk                        (0xFUL << APSR_GE_Pos)                         /*!< APSR
+ 312:Drivers/CMSIS/Include/core_cm4.h **** 
+ 313:Drivers/CMSIS/Include/core_cm4.h **** 
+ 314:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Union type to access the Interrupt Program Status Register (IPSR).
+ 315:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 316:Drivers/CMSIS/Include/core_cm4.h **** typedef union
+ 317:Drivers/CMSIS/Include/core_cm4.h **** {
+ 318:Drivers/CMSIS/Include/core_cm4.h ****   struct
+ 319:Drivers/CMSIS/Include/core_cm4.h ****   {
+ 320:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t ISR:9;                      /*!< bit:  0.. 8  Exception number                   */
+ 321:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t _reserved0:23;              /*!< bit:  9..31  Reserved                           */
+ 322:Drivers/CMSIS/Include/core_cm4.h ****   } b;                                   /*!< Structure used for bit  access                  */
+ 323:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t w;                            /*!< Type      used for word access                  */
+ 324:Drivers/CMSIS/Include/core_cm4.h **** } IPSR_Type;
+ 325:Drivers/CMSIS/Include/core_cm4.h **** 
+ 326:Drivers/CMSIS/Include/core_cm4.h **** /* IPSR Register Definitions */
+ 327:Drivers/CMSIS/Include/core_cm4.h **** #define IPSR_ISR_Pos                        0                                             /*!< IPSR
+ 328:Drivers/CMSIS/Include/core_cm4.h **** #define IPSR_ISR_Msk                       (0x1FFUL /*<< IPSR_ISR_Pos*/)                  /*!< IPSR
+ 329:Drivers/CMSIS/Include/core_cm4.h **** 
+ 330:Drivers/CMSIS/Include/core_cm4.h **** 
+ 331:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Union type to access the Special-Purpose Program Status Registers (xPSR).
+ 332:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 333:Drivers/CMSIS/Include/core_cm4.h **** typedef union
+ 334:Drivers/CMSIS/Include/core_cm4.h **** {
+ 335:Drivers/CMSIS/Include/core_cm4.h ****   struct
+ 336:Drivers/CMSIS/Include/core_cm4.h ****   {
+ 337:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t ISR:9;                      /*!< bit:  0.. 8  Exception number                   */
+ 338:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t _reserved0:7;               /*!< bit:  9..15  Reserved                           */
+ 339:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t GE:4;                       /*!< bit: 16..19  Greater than or Equal flags        */
+ARM GAS  /tmp/ccTVGe6C.s 			page 8
+
+
+ 340:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t _reserved1:4;               /*!< bit: 20..23  Reserved                           */
+ 341:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t T:1;                        /*!< bit:     24  Thumb bit        (read 0)          */
+ 342:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t IT:2;                       /*!< bit: 25..26  saved IT state   (read 0)          */
+ 343:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t Q:1;                        /*!< bit:     27  Saturation condition flag          */
+ 344:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag       */
+ 345:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t C:1;                        /*!< bit:     29  Carry condition code flag          */
+ 346:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag           */
+ 347:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t N:1;                        /*!< bit:     31  Negative condition code flag       */
+ 348:Drivers/CMSIS/Include/core_cm4.h ****   } b;                                   /*!< Structure used for bit  access                  */
+ 349:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t w;                            /*!< Type      used for word access                  */
+ 350:Drivers/CMSIS/Include/core_cm4.h **** } xPSR_Type;
+ 351:Drivers/CMSIS/Include/core_cm4.h **** 
+ 352:Drivers/CMSIS/Include/core_cm4.h **** /* xPSR Register Definitions */
+ 353:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_N_Pos                         31                                             /*!< xPSR
+ 354:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_N_Msk                         (1UL << xPSR_N_Pos)                            /*!< xPSR
+ 355:Drivers/CMSIS/Include/core_cm4.h **** 
+ 356:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_Z_Pos                         30                                             /*!< xPSR
+ 357:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_Z_Msk                         (1UL << xPSR_Z_Pos)                            /*!< xPSR
+ 358:Drivers/CMSIS/Include/core_cm4.h **** 
+ 359:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_C_Pos                         29                                             /*!< xPSR
+ 360:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_C_Msk                         (1UL << xPSR_C_Pos)                            /*!< xPSR
+ 361:Drivers/CMSIS/Include/core_cm4.h **** 
+ 362:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_V_Pos                         28                                             /*!< xPSR
+ 363:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_V_Msk                         (1UL << xPSR_V_Pos)                            /*!< xPSR
+ 364:Drivers/CMSIS/Include/core_cm4.h **** 
+ 365:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_Q_Pos                         27                                             /*!< xPSR
+ 366:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_Q_Msk                         (1UL << xPSR_Q_Pos)                            /*!< xPSR
+ 367:Drivers/CMSIS/Include/core_cm4.h **** 
+ 368:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_IT_Pos                        25                                             /*!< xPSR
+ 369:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_IT_Msk                        (3UL << xPSR_IT_Pos)                           /*!< xPSR
+ 370:Drivers/CMSIS/Include/core_cm4.h **** 
+ 371:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_T_Pos                         24                                             /*!< xPSR
+ 372:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_T_Msk                         (1UL << xPSR_T_Pos)                            /*!< xPSR
+ 373:Drivers/CMSIS/Include/core_cm4.h **** 
+ 374:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_GE_Pos                        16                                             /*!< xPSR
+ 375:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_GE_Msk                        (0xFUL << xPSR_GE_Pos)                         /*!< xPSR
+ 376:Drivers/CMSIS/Include/core_cm4.h **** 
+ 377:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_ISR_Pos                        0                                             /*!< xPSR
+ 378:Drivers/CMSIS/Include/core_cm4.h **** #define xPSR_ISR_Msk                       (0x1FFUL /*<< xPSR_ISR_Pos*/)                  /*!< xPSR
+ 379:Drivers/CMSIS/Include/core_cm4.h **** 
+ 380:Drivers/CMSIS/Include/core_cm4.h **** 
+ 381:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Union type to access the Control Registers (CONTROL).
+ 382:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 383:Drivers/CMSIS/Include/core_cm4.h **** typedef union
+ 384:Drivers/CMSIS/Include/core_cm4.h **** {
+ 385:Drivers/CMSIS/Include/core_cm4.h ****   struct
+ 386:Drivers/CMSIS/Include/core_cm4.h ****   {
+ 387:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t nPRIV:1;                    /*!< bit:      0  Execution privilege in Thread mode */
+ 388:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t SPSEL:1;                    /*!< bit:      1  Stack to be used                   */
+ 389:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t FPCA:1;                     /*!< bit:      2  FP extension active flag           */
+ 390:Drivers/CMSIS/Include/core_cm4.h ****     uint32_t _reserved0:29;              /*!< bit:  3..31  Reserved                           */
+ 391:Drivers/CMSIS/Include/core_cm4.h ****   } b;                                   /*!< Structure used for bit  access                  */
+ 392:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t w;                            /*!< Type      used for word access                  */
+ 393:Drivers/CMSIS/Include/core_cm4.h **** } CONTROL_Type;
+ 394:Drivers/CMSIS/Include/core_cm4.h **** 
+ 395:Drivers/CMSIS/Include/core_cm4.h **** /* CONTROL Register Definitions */
+ 396:Drivers/CMSIS/Include/core_cm4.h **** #define CONTROL_FPCA_Pos                    2                                             /*!< CONT
+ARM GAS  /tmp/ccTVGe6C.s 			page 9
+
+
+ 397:Drivers/CMSIS/Include/core_cm4.h **** #define CONTROL_FPCA_Msk                   (1UL << CONTROL_FPCA_Pos)                      /*!< CONT
+ 398:Drivers/CMSIS/Include/core_cm4.h **** 
+ 399:Drivers/CMSIS/Include/core_cm4.h **** #define CONTROL_SPSEL_Pos                   1                                             /*!< CONT
+ 400:Drivers/CMSIS/Include/core_cm4.h **** #define CONTROL_SPSEL_Msk                  (1UL << CONTROL_SPSEL_Pos)                     /*!< CONT
+ 401:Drivers/CMSIS/Include/core_cm4.h **** 
+ 402:Drivers/CMSIS/Include/core_cm4.h **** #define CONTROL_nPRIV_Pos                   0                                             /*!< CONT
+ 403:Drivers/CMSIS/Include/core_cm4.h **** #define CONTROL_nPRIV_Msk                  (1UL /*<< CONTROL_nPRIV_Pos*/)                 /*!< CONT
+ 404:Drivers/CMSIS/Include/core_cm4.h **** 
+ 405:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group CMSIS_CORE */
+ 406:Drivers/CMSIS/Include/core_cm4.h **** 
+ 407:Drivers/CMSIS/Include/core_cm4.h **** 
+ 408:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup    CMSIS_core_register
+ 409:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup   CMSIS_NVIC  Nested Vectored Interrupt Controller (NVIC)
+ 410:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the NVIC Registers
+ 411:Drivers/CMSIS/Include/core_cm4.h ****   @{
+ 412:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 413:Drivers/CMSIS/Include/core_cm4.h **** 
+ 414:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the Nested Vectored Interrupt Controller (NVIC).
+ 415:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 416:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+ 417:Drivers/CMSIS/Include/core_cm4.h **** {
+ 418:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t ISER[8];                 /*!< Offset: 0x000 (R/W)  Interrupt Set Enable Register   
+ 419:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED0[24];
+ 420:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t ICER[8];                 /*!< Offset: 0x080 (R/W)  Interrupt Clear Enable Register 
+ 421:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RSERVED1[24];
+ 422:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t ISPR[8];                 /*!< Offset: 0x100 (R/W)  Interrupt Set Pending Register  
+ 423:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED2[24];
+ 424:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t ICPR[8];                 /*!< Offset: 0x180 (R/W)  Interrupt Clear Pending Register
+ 425:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED3[24];
+ 426:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t IABR[8];                 /*!< Offset: 0x200 (R/W)  Interrupt Active bit Register   
+ 427:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED4[56];
+ 428:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint8_t  IP[240];                 /*!< Offset: 0x300 (R/W)  Interrupt Priority Register (8Bi
+ 429:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED5[644];
+ 430:Drivers/CMSIS/Include/core_cm4.h ****   __O  uint32_t STIR;                    /*!< Offset: 0xE00 ( /W)  Software Trigger Interrupt Regis
+ 431:Drivers/CMSIS/Include/core_cm4.h **** }  NVIC_Type;
+ 432:Drivers/CMSIS/Include/core_cm4.h **** 
+ 433:Drivers/CMSIS/Include/core_cm4.h **** /* Software Triggered Interrupt Register Definitions */
+ 434:Drivers/CMSIS/Include/core_cm4.h **** #define NVIC_STIR_INTID_Pos                 0                                          /*!< STIR: I
+ 435:Drivers/CMSIS/Include/core_cm4.h **** #define NVIC_STIR_INTID_Msk                (0x1FFUL /*<< NVIC_STIR_INTID_Pos*/)        /*!< STIR: I
+ 436:Drivers/CMSIS/Include/core_cm4.h **** 
+ 437:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group CMSIS_NVIC */
+ 438:Drivers/CMSIS/Include/core_cm4.h **** 
+ 439:Drivers/CMSIS/Include/core_cm4.h **** 
+ 440:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+ 441:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_SCB     System Control Block (SCB)
+ 442:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the System Control Block Registers
+ 443:Drivers/CMSIS/Include/core_cm4.h ****   @{
+ 444:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 445:Drivers/CMSIS/Include/core_cm4.h **** 
+ 446:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the System Control Block (SCB).
+ 447:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 448:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+ 449:Drivers/CMSIS/Include/core_cm4.h **** {
+ 450:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t CPUID;                   /*!< Offset: 0x000 (R/ )  CPUID Base Register             
+ 451:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t ICSR;                    /*!< Offset: 0x004 (R/W)  Interrupt Control and State Regi
+ 452:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t VTOR;                    /*!< Offset: 0x008 (R/W)  Vector Table Offset Register    
+ 453:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t AIRCR;                   /*!< Offset: 0x00C (R/W)  Application Interrupt and Reset 
+ARM GAS  /tmp/ccTVGe6C.s 			page 10
+
+
+ 454:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t SCR;                     /*!< Offset: 0x010 (R/W)  System Control Register         
+ 455:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CCR;                     /*!< Offset: 0x014 (R/W)  Configuration Control Register  
+ 456:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint8_t  SHP[12];                 /*!< Offset: 0x018 (R/W)  System Handlers Priority Registe
+ 457:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t SHCSR;                   /*!< Offset: 0x024 (R/W)  System Handler Control and State
+ 458:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CFSR;                    /*!< Offset: 0x028 (R/W)  Configurable Fault Status Regist
+ 459:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t HFSR;                    /*!< Offset: 0x02C (R/W)  HardFault Status Register       
+ 460:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t DFSR;                    /*!< Offset: 0x030 (R/W)  Debug Fault Status Register     
+ 461:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t MMFAR;                   /*!< Offset: 0x034 (R/W)  MemManage Fault Address Register
+ 462:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t BFAR;                    /*!< Offset: 0x038 (R/W)  BusFault Address Register       
+ 463:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t AFSR;                    /*!< Offset: 0x03C (R/W)  Auxiliary Fault Status Register 
+ 464:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PFR[2];                  /*!< Offset: 0x040 (R/ )  Processor Feature Register      
+ 465:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t DFR;                     /*!< Offset: 0x048 (R/ )  Debug Feature Register          
+ 466:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t ADR;                     /*!< Offset: 0x04C (R/ )  Auxiliary Feature Register      
+ 467:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t MMFR[4];                 /*!< Offset: 0x050 (R/ )  Memory Model Feature Register   
+ 468:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t ISAR[5];                 /*!< Offset: 0x060 (R/ )  Instruction Set Attributes Regis
+ 469:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED0[5];
+ 470:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CPACR;                   /*!< Offset: 0x088 (R/W)  Coprocessor Access Control Regis
+ 471:Drivers/CMSIS/Include/core_cm4.h **** } SCB_Type;
+ 472:Drivers/CMSIS/Include/core_cm4.h **** 
+ 473:Drivers/CMSIS/Include/core_cm4.h **** /* SCB CPUID Register Definitions */
+ 474:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_IMPLEMENTER_Pos          24                                             /*!< SCB 
+ 475:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_IMPLEMENTER_Msk          (0xFFUL << SCB_CPUID_IMPLEMENTER_Pos)          /*!< SCB 
+ 476:Drivers/CMSIS/Include/core_cm4.h **** 
+ 477:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_VARIANT_Pos              20                                             /*!< SCB 
+ 478:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_VARIANT_Msk              (0xFUL << SCB_CPUID_VARIANT_Pos)               /*!< SCB 
+ 479:Drivers/CMSIS/Include/core_cm4.h **** 
+ 480:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_ARCHITECTURE_Pos         16                                             /*!< SCB 
+ 481:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_ARCHITECTURE_Msk         (0xFUL << SCB_CPUID_ARCHITECTURE_Pos)          /*!< SCB 
+ 482:Drivers/CMSIS/Include/core_cm4.h **** 
+ 483:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_PARTNO_Pos                4                                             /*!< SCB 
+ 484:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_PARTNO_Msk               (0xFFFUL << SCB_CPUID_PARTNO_Pos)              /*!< SCB 
+ 485:Drivers/CMSIS/Include/core_cm4.h **** 
+ 486:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_REVISION_Pos              0                                             /*!< SCB 
+ 487:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CPUID_REVISION_Msk             (0xFUL /*<< SCB_CPUID_REVISION_Pos*/)          /*!< SCB 
+ 488:Drivers/CMSIS/Include/core_cm4.h **** 
+ 489:Drivers/CMSIS/Include/core_cm4.h **** /* SCB Interrupt Control State Register Definitions */
+ 490:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_NMIPENDSET_Pos            31                                             /*!< SCB 
+ 491:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_NMIPENDSET_Msk            (1UL << SCB_ICSR_NMIPENDSET_Pos)               /*!< SCB 
+ 492:Drivers/CMSIS/Include/core_cm4.h **** 
+ 493:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVSET_Pos             28                                             /*!< SCB 
+ 494:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVSET_Msk             (1UL << SCB_ICSR_PENDSVSET_Pos)                /*!< SCB 
+ 495:Drivers/CMSIS/Include/core_cm4.h **** 
+ 496:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVCLR_Pos             27                                             /*!< SCB 
+ 497:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVCLR_Msk             (1UL << SCB_ICSR_PENDSVCLR_Pos)                /*!< SCB 
+ 498:Drivers/CMSIS/Include/core_cm4.h **** 
+ 499:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSTSET_Pos             26                                             /*!< SCB 
+ 500:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSTSET_Msk             (1UL << SCB_ICSR_PENDSTSET_Pos)                /*!< SCB 
+ 501:Drivers/CMSIS/Include/core_cm4.h **** 
+ 502:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSTCLR_Pos             25                                             /*!< SCB 
+ 503:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSTCLR_Msk             (1UL << SCB_ICSR_PENDSTCLR_Pos)                /*!< SCB 
+ 504:Drivers/CMSIS/Include/core_cm4.h **** 
+ 505:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_ISRPREEMPT_Pos            23                                             /*!< SCB 
+ 506:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_ISRPREEMPT_Msk            (1UL << SCB_ICSR_ISRPREEMPT_Pos)               /*!< SCB 
+ 507:Drivers/CMSIS/Include/core_cm4.h **** 
+ 508:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_ISRPENDING_Pos            22                                             /*!< SCB 
+ 509:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_ISRPENDING_Msk            (1UL << SCB_ICSR_ISRPENDING_Pos)               /*!< SCB 
+ 510:Drivers/CMSIS/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccTVGe6C.s 			page 11
+
+
+ 511:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_VECTPENDING_Pos           12                                             /*!< SCB 
+ 512:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_VECTPENDING_Msk           (0x1FFUL << SCB_ICSR_VECTPENDING_Pos)          /*!< SCB 
+ 513:Drivers/CMSIS/Include/core_cm4.h **** 
+ 514:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_RETTOBASE_Pos             11                                             /*!< SCB 
+ 515:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_RETTOBASE_Msk             (1UL << SCB_ICSR_RETTOBASE_Pos)                /*!< SCB 
+ 516:Drivers/CMSIS/Include/core_cm4.h **** 
+ 517:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_VECTACTIVE_Pos             0                                             /*!< SCB 
+ 518:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_VECTACTIVE_Msk            (0x1FFUL /*<< SCB_ICSR_VECTACTIVE_Pos*/)       /*!< SCB 
+ 519:Drivers/CMSIS/Include/core_cm4.h **** 
+ 520:Drivers/CMSIS/Include/core_cm4.h **** /* SCB Vector Table Offset Register Definitions */
+ 521:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_VTOR_TBLOFF_Pos                 7                                             /*!< SCB 
+ 522:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_VTOR_TBLOFF_Msk                (0x1FFFFFFUL << SCB_VTOR_TBLOFF_Pos)           /*!< SCB 
+ 523:Drivers/CMSIS/Include/core_cm4.h **** 
+ 524:Drivers/CMSIS/Include/core_cm4.h **** /* SCB Application Interrupt and Reset Control Register Definitions */
+ 525:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_VECTKEY_Pos              16                                             /*!< SCB 
+ 526:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_VECTKEY_Msk              (0xFFFFUL << SCB_AIRCR_VECTKEY_Pos)            /*!< SCB 
+ 527:Drivers/CMSIS/Include/core_cm4.h **** 
+ 528:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_VECTKEYSTAT_Pos          16                                             /*!< SCB 
+ 529:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_VECTKEYSTAT_Msk          (0xFFFFUL << SCB_AIRCR_VECTKEYSTAT_Pos)        /*!< SCB 
+ 530:Drivers/CMSIS/Include/core_cm4.h **** 
+ 531:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_ENDIANESS_Pos            15                                             /*!< SCB 
+ 532:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_ENDIANESS_Msk            (1UL << SCB_AIRCR_ENDIANESS_Pos)               /*!< SCB 
+ 533:Drivers/CMSIS/Include/core_cm4.h **** 
+ 534:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_PRIGROUP_Pos              8                                             /*!< SCB 
+ 535:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_PRIGROUP_Msk             (7UL << SCB_AIRCR_PRIGROUP_Pos)                /*!< SCB 
+ 536:Drivers/CMSIS/Include/core_cm4.h **** 
+ 537:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_SYSRESETREQ_Pos           2                                             /*!< SCB 
+ 538:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_SYSRESETREQ_Msk          (1UL << SCB_AIRCR_SYSRESETREQ_Pos)             /*!< SCB 
+ 539:Drivers/CMSIS/Include/core_cm4.h **** 
+ 540:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_VECTCLRACTIVE_Pos         1                                             /*!< SCB 
+ 541:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_VECTCLRACTIVE_Msk        (1UL << SCB_AIRCR_VECTCLRACTIVE_Pos)           /*!< SCB 
+ 542:Drivers/CMSIS/Include/core_cm4.h **** 
+ 543:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_VECTRESET_Pos             0                                             /*!< SCB 
+ 544:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_AIRCR_VECTRESET_Msk            (1UL /*<< SCB_AIRCR_VECTRESET_Pos*/)           /*!< SCB 
+ 545:Drivers/CMSIS/Include/core_cm4.h **** 
+ 546:Drivers/CMSIS/Include/core_cm4.h **** /* SCB System Control Register Definitions */
+ 547:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SEVONPEND_Pos               4                                             /*!< SCB 
+ 548:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SEVONPEND_Msk              (1UL << SCB_SCR_SEVONPEND_Pos)                 /*!< SCB 
+ 549:Drivers/CMSIS/Include/core_cm4.h **** 
+ 550:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPDEEP_Pos               2                                             /*!< SCB 
+ 551:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPDEEP_Msk              (1UL << SCB_SCR_SLEEPDEEP_Pos)                 /*!< SCB 
+ 552:Drivers/CMSIS/Include/core_cm4.h **** 
+ 553:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPONEXIT_Pos             1                                             /*!< SCB 
+ 554:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPONEXIT_Msk            (1UL << SCB_SCR_SLEEPONEXIT_Pos)               /*!< SCB 
+ 555:Drivers/CMSIS/Include/core_cm4.h **** 
+ 556:Drivers/CMSIS/Include/core_cm4.h **** /* SCB Configuration Control Register Definitions */
+ 557:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_STKALIGN_Pos                9                                             /*!< SCB 
+ 558:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_STKALIGN_Msk               (1UL << SCB_CCR_STKALIGN_Pos)                  /*!< SCB 
+ 559:Drivers/CMSIS/Include/core_cm4.h **** 
+ 560:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_BFHFNMIGN_Pos               8                                             /*!< SCB 
+ 561:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_BFHFNMIGN_Msk              (1UL << SCB_CCR_BFHFNMIGN_Pos)                 /*!< SCB 
+ 562:Drivers/CMSIS/Include/core_cm4.h **** 
+ 563:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_DIV_0_TRP_Pos               4                                             /*!< SCB 
+ 564:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_DIV_0_TRP_Msk              (1UL << SCB_CCR_DIV_0_TRP_Pos)                 /*!< SCB 
+ 565:Drivers/CMSIS/Include/core_cm4.h **** 
+ 566:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_UNALIGN_TRP_Pos             3                                             /*!< SCB 
+ 567:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_UNALIGN_TRP_Msk            (1UL << SCB_CCR_UNALIGN_TRP_Pos)               /*!< SCB 
+ARM GAS  /tmp/ccTVGe6C.s 			page 12
+
+
+ 568:Drivers/CMSIS/Include/core_cm4.h **** 
+ 569:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_USERSETMPEND_Pos            1                                             /*!< SCB 
+ 570:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_USERSETMPEND_Msk           (1UL << SCB_CCR_USERSETMPEND_Pos)              /*!< SCB 
+ 571:Drivers/CMSIS/Include/core_cm4.h **** 
+ 572:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_NONBASETHRDENA_Pos          0                                             /*!< SCB 
+ 573:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CCR_NONBASETHRDENA_Msk         (1UL /*<< SCB_CCR_NONBASETHRDENA_Pos*/)        /*!< SCB 
+ 574:Drivers/CMSIS/Include/core_cm4.h **** 
+ 575:Drivers/CMSIS/Include/core_cm4.h **** /* SCB System Handler Control and State Register Definitions */
+ 576:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTENA_Pos          18                                             /*!< SCB 
+ 577:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTENA_Msk          (1UL << SCB_SHCSR_USGFAULTENA_Pos)             /*!< SCB 
+ 578:Drivers/CMSIS/Include/core_cm4.h **** 
+ 579:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_BUSFAULTENA_Pos          17                                             /*!< SCB 
+ 580:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_BUSFAULTENA_Msk          (1UL << SCB_SHCSR_BUSFAULTENA_Pos)             /*!< SCB 
+ 581:Drivers/CMSIS/Include/core_cm4.h **** 
+ 582:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_MEMFAULTENA_Pos          16                                             /*!< SCB 
+ 583:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_MEMFAULTENA_Msk          (1UL << SCB_SHCSR_MEMFAULTENA_Pos)             /*!< SCB 
+ 584:Drivers/CMSIS/Include/core_cm4.h **** 
+ 585:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_SVCALLPENDED_Pos         15                                             /*!< SCB 
+ 586:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_SVCALLPENDED_Msk         (1UL << SCB_SHCSR_SVCALLPENDED_Pos)            /*!< SCB 
+ 587:Drivers/CMSIS/Include/core_cm4.h **** 
+ 588:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_BUSFAULTPENDED_Pos       14                                             /*!< SCB 
+ 589:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_BUSFAULTPENDED_Msk       (1UL << SCB_SHCSR_BUSFAULTPENDED_Pos)          /*!< SCB 
+ 590:Drivers/CMSIS/Include/core_cm4.h **** 
+ 591:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_MEMFAULTPENDED_Pos       13                                             /*!< SCB 
+ 592:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_MEMFAULTPENDED_Msk       (1UL << SCB_SHCSR_MEMFAULTPENDED_Pos)          /*!< SCB 
+ 593:Drivers/CMSIS/Include/core_cm4.h **** 
+ 594:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTPENDED_Pos       12                                             /*!< SCB 
+ 595:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTPENDED_Msk       (1UL << SCB_SHCSR_USGFAULTPENDED_Pos)          /*!< SCB 
+ 596:Drivers/CMSIS/Include/core_cm4.h **** 
+ 597:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_SYSTICKACT_Pos           11                                             /*!< SCB 
+ 598:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_SYSTICKACT_Msk           (1UL << SCB_SHCSR_SYSTICKACT_Pos)              /*!< SCB 
+ 599:Drivers/CMSIS/Include/core_cm4.h **** 
+ 600:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_PENDSVACT_Pos            10                                             /*!< SCB 
+ 601:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_PENDSVACT_Msk            (1UL << SCB_SHCSR_PENDSVACT_Pos)               /*!< SCB 
+ 602:Drivers/CMSIS/Include/core_cm4.h **** 
+ 603:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_MONITORACT_Pos            8                                             /*!< SCB 
+ 604:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_MONITORACT_Msk           (1UL << SCB_SHCSR_MONITORACT_Pos)              /*!< SCB 
+ 605:Drivers/CMSIS/Include/core_cm4.h **** 
+ 606:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_SVCALLACT_Pos             7                                             /*!< SCB 
+ 607:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_SVCALLACT_Msk            (1UL << SCB_SHCSR_SVCALLACT_Pos)               /*!< SCB 
+ 608:Drivers/CMSIS/Include/core_cm4.h **** 
+ 609:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTACT_Pos           3                                             /*!< SCB 
+ 610:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTACT_Msk          (1UL << SCB_SHCSR_USGFAULTACT_Pos)             /*!< SCB 
+ 611:Drivers/CMSIS/Include/core_cm4.h **** 
+ 612:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_BUSFAULTACT_Pos           1                                             /*!< SCB 
+ 613:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_BUSFAULTACT_Msk          (1UL << SCB_SHCSR_BUSFAULTACT_Pos)             /*!< SCB 
+ 614:Drivers/CMSIS/Include/core_cm4.h **** 
+ 615:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_MEMFAULTACT_Pos           0                                             /*!< SCB 
+ 616:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_MEMFAULTACT_Msk          (1UL /*<< SCB_SHCSR_MEMFAULTACT_Pos*/)         /*!< SCB 
+ 617:Drivers/CMSIS/Include/core_cm4.h **** 
+ 618:Drivers/CMSIS/Include/core_cm4.h **** /* SCB Configurable Fault Status Registers Definitions */
+ 619:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_USGFAULTSR_Pos            16                                             /*!< SCB 
+ 620:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_USGFAULTSR_Msk            (0xFFFFUL << SCB_CFSR_USGFAULTSR_Pos)          /*!< SCB 
+ 621:Drivers/CMSIS/Include/core_cm4.h **** 
+ 622:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_BUSFAULTSR_Pos             8                                             /*!< SCB 
+ 623:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_BUSFAULTSR_Msk            (0xFFUL << SCB_CFSR_BUSFAULTSR_Pos)            /*!< SCB 
+ 624:Drivers/CMSIS/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccTVGe6C.s 			page 13
+
+
+ 625:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_MEMFAULTSR_Pos             0                                             /*!< SCB 
+ 626:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_MEMFAULTSR_Msk            (0xFFUL /*<< SCB_CFSR_MEMFAULTSR_Pos*/)        /*!< SCB 
+ 627:Drivers/CMSIS/Include/core_cm4.h **** 
+ 628:Drivers/CMSIS/Include/core_cm4.h **** /* SCB Hard Fault Status Registers Definitions */
+ 629:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_HFSR_DEBUGEVT_Pos              31                                             /*!< SCB 
+ 630:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_HFSR_DEBUGEVT_Msk              (1UL << SCB_HFSR_DEBUGEVT_Pos)                 /*!< SCB 
+ 631:Drivers/CMSIS/Include/core_cm4.h **** 
+ 632:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_HFSR_FORCED_Pos                30                                             /*!< SCB 
+ 633:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_HFSR_FORCED_Msk                (1UL << SCB_HFSR_FORCED_Pos)                   /*!< SCB 
+ 634:Drivers/CMSIS/Include/core_cm4.h **** 
+ 635:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_HFSR_VECTTBL_Pos                1                                             /*!< SCB 
+ 636:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_HFSR_VECTTBL_Msk               (1UL << SCB_HFSR_VECTTBL_Pos)                  /*!< SCB 
+ 637:Drivers/CMSIS/Include/core_cm4.h **** 
+ 638:Drivers/CMSIS/Include/core_cm4.h **** /* SCB Debug Fault Status Register Definitions */
+ 639:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_EXTERNAL_Pos               4                                             /*!< SCB 
+ 640:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_EXTERNAL_Msk              (1UL << SCB_DFSR_EXTERNAL_Pos)                 /*!< SCB 
+ 641:Drivers/CMSIS/Include/core_cm4.h **** 
+ 642:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_VCATCH_Pos                 3                                             /*!< SCB 
+ 643:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_VCATCH_Msk                (1UL << SCB_DFSR_VCATCH_Pos)                   /*!< SCB 
+ 644:Drivers/CMSIS/Include/core_cm4.h **** 
+ 645:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_DWTTRAP_Pos                2                                             /*!< SCB 
+ 646:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_DWTTRAP_Msk               (1UL << SCB_DFSR_DWTTRAP_Pos)                  /*!< SCB 
+ 647:Drivers/CMSIS/Include/core_cm4.h **** 
+ 648:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_BKPT_Pos                   1                                             /*!< SCB 
+ 649:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_BKPT_Msk                  (1UL << SCB_DFSR_BKPT_Pos)                     /*!< SCB 
+ 650:Drivers/CMSIS/Include/core_cm4.h **** 
+ 651:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_HALTED_Pos                 0                                             /*!< SCB 
+ 652:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_DFSR_HALTED_Msk                (1UL /*<< SCB_DFSR_HALTED_Pos*/)               /*!< SCB 
+ 653:Drivers/CMSIS/Include/core_cm4.h **** 
+ 654:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group CMSIS_SCB */
+ 655:Drivers/CMSIS/Include/core_cm4.h **** 
+ 656:Drivers/CMSIS/Include/core_cm4.h **** 
+ 657:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+ 658:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_SCnSCB System Controls not in SCB (SCnSCB)
+ 659:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the System Control and ID Register not in the SCB
+ 660:Drivers/CMSIS/Include/core_cm4.h ****   @{
+ 661:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 662:Drivers/CMSIS/Include/core_cm4.h **** 
+ 663:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the System Control and ID Register not in the SCB.
+ 664:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 665:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+ 666:Drivers/CMSIS/Include/core_cm4.h **** {
+ 667:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED0[1];
+ 668:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t ICTR;                    /*!< Offset: 0x004 (R/ )  Interrupt Controller Type Regist
+ 669:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t ACTLR;                   /*!< Offset: 0x008 (R/W)  Auxiliary Control Register      
+ 670:Drivers/CMSIS/Include/core_cm4.h **** } SCnSCB_Type;
+ 671:Drivers/CMSIS/Include/core_cm4.h **** 
+ 672:Drivers/CMSIS/Include/core_cm4.h **** /* Interrupt Controller Type Register Definitions */
+ 673:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ICTR_INTLINESNUM_Pos         0                                          /*!< ICTR: I
+ 674:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ICTR_INTLINESNUM_Msk        (0xFUL /*<< SCnSCB_ICTR_INTLINESNUM_Pos*/)  /*!< ICTR: I
+ 675:Drivers/CMSIS/Include/core_cm4.h **** 
+ 676:Drivers/CMSIS/Include/core_cm4.h **** /* Auxiliary Control Register Definitions */
+ 677:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISOOFP_Pos            9                                          /*!< ACTLR: 
+ 678:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISOOFP_Msk           (1UL << SCnSCB_ACTLR_DISOOFP_Pos)           /*!< ACTLR: 
+ 679:Drivers/CMSIS/Include/core_cm4.h **** 
+ 680:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISFPCA_Pos            8                                          /*!< ACTLR: 
+ 681:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISFPCA_Msk           (1UL << SCnSCB_ACTLR_DISFPCA_Pos)           /*!< ACTLR: 
+ARM GAS  /tmp/ccTVGe6C.s 			page 14
+
+
+ 682:Drivers/CMSIS/Include/core_cm4.h **** 
+ 683:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISFOLD_Pos            2                                          /*!< ACTLR: 
+ 684:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISFOLD_Msk           (1UL << SCnSCB_ACTLR_DISFOLD_Pos)           /*!< ACTLR: 
+ 685:Drivers/CMSIS/Include/core_cm4.h **** 
+ 686:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISDEFWBUF_Pos         1                                          /*!< ACTLR: 
+ 687:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISDEFWBUF_Msk        (1UL << SCnSCB_ACTLR_DISDEFWBUF_Pos)        /*!< ACTLR: 
+ 688:Drivers/CMSIS/Include/core_cm4.h **** 
+ 689:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISMCYCINT_Pos         0                                          /*!< ACTLR: 
+ 690:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB_ACTLR_DISMCYCINT_Msk        (1UL /*<< SCnSCB_ACTLR_DISMCYCINT_Pos*/)    /*!< ACTLR: 
+ 691:Drivers/CMSIS/Include/core_cm4.h **** 
+ 692:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group CMSIS_SCnotSCB */
+ 693:Drivers/CMSIS/Include/core_cm4.h **** 
+ 694:Drivers/CMSIS/Include/core_cm4.h **** 
+ 695:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+ 696:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_SysTick     System Tick Timer (SysTick)
+ 697:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the System Timer Registers.
+ 698:Drivers/CMSIS/Include/core_cm4.h ****   @{
+ 699:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 700:Drivers/CMSIS/Include/core_cm4.h **** 
+ 701:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the System Timer (SysTick).
+ 702:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 703:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+ 704:Drivers/CMSIS/Include/core_cm4.h **** {
+ 705:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CTRL;                    /*!< Offset: 0x000 (R/W)  SysTick Control and Status Regis
+ 706:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t LOAD;                    /*!< Offset: 0x004 (R/W)  SysTick Reload Value Register   
+ 707:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t VAL;                     /*!< Offset: 0x008 (R/W)  SysTick Current Value Register  
+ 708:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t CALIB;                   /*!< Offset: 0x00C (R/ )  SysTick Calibration Register    
+ 709:Drivers/CMSIS/Include/core_cm4.h **** } SysTick_Type;
+ 710:Drivers/CMSIS/Include/core_cm4.h **** 
+ 711:Drivers/CMSIS/Include/core_cm4.h **** /* SysTick Control / Status Register Definitions */
+ 712:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_COUNTFLAG_Pos         16                                             /*!< SysT
+ 713:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_COUNTFLAG_Msk         (1UL << SysTick_CTRL_COUNTFLAG_Pos)            /*!< SysT
+ 714:Drivers/CMSIS/Include/core_cm4.h **** 
+ 715:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_CLKSOURCE_Pos          2                                             /*!< SysT
+ 716:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_CLKSOURCE_Msk         (1UL << SysTick_CTRL_CLKSOURCE_Pos)            /*!< SysT
+ 717:Drivers/CMSIS/Include/core_cm4.h **** 
+ 718:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_TICKINT_Pos            1                                             /*!< SysT
+ 719:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_TICKINT_Msk           (1UL << SysTick_CTRL_TICKINT_Pos)              /*!< SysT
+ 720:Drivers/CMSIS/Include/core_cm4.h **** 
+ 721:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_ENABLE_Pos             0                                             /*!< SysT
+ 722:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_ENABLE_Msk            (1UL /*<< SysTick_CTRL_ENABLE_Pos*/)           /*!< SysT
+ 723:Drivers/CMSIS/Include/core_cm4.h **** 
+ 724:Drivers/CMSIS/Include/core_cm4.h **** /* SysTick Reload Register Definitions */
+ 725:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_LOAD_RELOAD_Pos             0                                             /*!< SysT
+ 726:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_LOAD_RELOAD_Msk            (0xFFFFFFUL /*<< SysTick_LOAD_RELOAD_Pos*/)    /*!< SysT
+ 727:Drivers/CMSIS/Include/core_cm4.h **** 
+ 728:Drivers/CMSIS/Include/core_cm4.h **** /* SysTick Current Register Definitions */
+ 729:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_VAL_CURRENT_Pos             0                                             /*!< SysT
+ 730:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_VAL_CURRENT_Msk            (0xFFFFFFUL /*<< SysTick_VAL_CURRENT_Pos*/)    /*!< SysT
+ 731:Drivers/CMSIS/Include/core_cm4.h **** 
+ 732:Drivers/CMSIS/Include/core_cm4.h **** /* SysTick Calibration Register Definitions */
+ 733:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CALIB_NOREF_Pos            31                                             /*!< SysT
+ 734:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CALIB_NOREF_Msk            (1UL << SysTick_CALIB_NOREF_Pos)               /*!< SysT
+ 735:Drivers/CMSIS/Include/core_cm4.h **** 
+ 736:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CALIB_SKEW_Pos             30                                             /*!< SysT
+ 737:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CALIB_SKEW_Msk             (1UL << SysTick_CALIB_SKEW_Pos)                /*!< SysT
+ 738:Drivers/CMSIS/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccTVGe6C.s 			page 15
+
+
+ 739:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CALIB_TENMS_Pos             0                                             /*!< SysT
+ 740:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CALIB_TENMS_Msk            (0xFFFFFFUL /*<< SysTick_CALIB_TENMS_Pos*/)    /*!< SysT
+ 741:Drivers/CMSIS/Include/core_cm4.h **** 
+ 742:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group CMSIS_SysTick */
+ 743:Drivers/CMSIS/Include/core_cm4.h **** 
+ 744:Drivers/CMSIS/Include/core_cm4.h **** 
+ 745:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+ 746:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_ITM     Instrumentation Trace Macrocell (ITM)
+ 747:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the Instrumentation Trace Macrocell (ITM)
+ 748:Drivers/CMSIS/Include/core_cm4.h ****   @{
+ 749:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 750:Drivers/CMSIS/Include/core_cm4.h **** 
+ 751:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the Instrumentation Trace Macrocell Register (ITM).
+ 752:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 753:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+ 754:Drivers/CMSIS/Include/core_cm4.h **** {
+ 755:Drivers/CMSIS/Include/core_cm4.h ****   __O  union
+ 756:Drivers/CMSIS/Include/core_cm4.h ****   {
+ 757:Drivers/CMSIS/Include/core_cm4.h ****     __O  uint8_t    u8;                  /*!< Offset: 0x000 ( /W)  ITM Stimulus Port 8-bit         
+ 758:Drivers/CMSIS/Include/core_cm4.h ****     __O  uint16_t   u16;                 /*!< Offset: 0x000 ( /W)  ITM Stimulus Port 16-bit        
+ 759:Drivers/CMSIS/Include/core_cm4.h ****     __O  uint32_t   u32;                 /*!< Offset: 0x000 ( /W)  ITM Stimulus Port 32-bit        
+ 760:Drivers/CMSIS/Include/core_cm4.h ****   }  PORT [32];                          /*!< Offset: 0x000 ( /W)  ITM Stimulus Port Registers     
+ 761:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED0[864];
+ 762:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t TER;                     /*!< Offset: 0xE00 (R/W)  ITM Trace Enable Register       
+ 763:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED1[15];
+ 764:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t TPR;                     /*!< Offset: 0xE40 (R/W)  ITM Trace Privilege Register    
+ 765:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED2[15];
+ 766:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t TCR;                     /*!< Offset: 0xE80 (R/W)  ITM Trace Control Register      
+ 767:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED3[29];
+ 768:Drivers/CMSIS/Include/core_cm4.h ****   __O  uint32_t IWR;                     /*!< Offset: 0xEF8 ( /W)  ITM Integration Write Register  
+ 769:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t IRR;                     /*!< Offset: 0xEFC (R/ )  ITM Integration Read Register   
+ 770:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t IMCR;                    /*!< Offset: 0xF00 (R/W)  ITM Integration Mode Control Reg
+ 771:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED4[43];
+ 772:Drivers/CMSIS/Include/core_cm4.h ****   __O  uint32_t LAR;                     /*!< Offset: 0xFB0 ( /W)  ITM Lock Access Register        
+ 773:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t LSR;                     /*!< Offset: 0xFB4 (R/ )  ITM Lock Status Register        
+ 774:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED5[6];
+ 775:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PID4;                    /*!< Offset: 0xFD0 (R/ )  ITM Peripheral Identification Re
+ 776:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PID5;                    /*!< Offset: 0xFD4 (R/ )  ITM Peripheral Identification Re
+ 777:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PID6;                    /*!< Offset: 0xFD8 (R/ )  ITM Peripheral Identification Re
+ 778:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PID7;                    /*!< Offset: 0xFDC (R/ )  ITM Peripheral Identification Re
+ 779:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PID0;                    /*!< Offset: 0xFE0 (R/ )  ITM Peripheral Identification Re
+ 780:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PID1;                    /*!< Offset: 0xFE4 (R/ )  ITM Peripheral Identification Re
+ 781:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PID2;                    /*!< Offset: 0xFE8 (R/ )  ITM Peripheral Identification Re
+ 782:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PID3;                    /*!< Offset: 0xFEC (R/ )  ITM Peripheral Identification Re
+ 783:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t CID0;                    /*!< Offset: 0xFF0 (R/ )  ITM Component  Identification Re
+ 784:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t CID1;                    /*!< Offset: 0xFF4 (R/ )  ITM Component  Identification Re
+ 785:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t CID2;                    /*!< Offset: 0xFF8 (R/ )  ITM Component  Identification Re
+ 786:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t CID3;                    /*!< Offset: 0xFFC (R/ )  ITM Component  Identification Re
+ 787:Drivers/CMSIS/Include/core_cm4.h **** } ITM_Type;
+ 788:Drivers/CMSIS/Include/core_cm4.h **** 
+ 789:Drivers/CMSIS/Include/core_cm4.h **** /* ITM Trace Privilege Register Definitions */
+ 790:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TPR_PRIVMASK_Pos                0                                             /*!< ITM 
+ 791:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TPR_PRIVMASK_Msk               (0xFUL /*<< ITM_TPR_PRIVMASK_Pos*/)            /*!< ITM 
+ 792:Drivers/CMSIS/Include/core_cm4.h **** 
+ 793:Drivers/CMSIS/Include/core_cm4.h **** /* ITM Trace Control Register Definitions */
+ 794:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_BUSY_Pos                   23                                             /*!< ITM 
+ 795:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_BUSY_Msk                   (1UL << ITM_TCR_BUSY_Pos)                      /*!< ITM 
+ARM GAS  /tmp/ccTVGe6C.s 			page 16
+
+
+ 796:Drivers/CMSIS/Include/core_cm4.h **** 
+ 797:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_TraceBusID_Pos             16                                             /*!< ITM 
+ 798:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_TraceBusID_Msk             (0x7FUL << ITM_TCR_TraceBusID_Pos)             /*!< ITM 
+ 799:Drivers/CMSIS/Include/core_cm4.h **** 
+ 800:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_GTSFREQ_Pos                10                                             /*!< ITM 
+ 801:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_GTSFREQ_Msk                (3UL << ITM_TCR_GTSFREQ_Pos)                   /*!< ITM 
+ 802:Drivers/CMSIS/Include/core_cm4.h **** 
+ 803:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_TSPrescale_Pos              8                                             /*!< ITM 
+ 804:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_TSPrescale_Msk             (3UL << ITM_TCR_TSPrescale_Pos)                /*!< ITM 
+ 805:Drivers/CMSIS/Include/core_cm4.h **** 
+ 806:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_SWOENA_Pos                  4                                             /*!< ITM 
+ 807:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_SWOENA_Msk                 (1UL << ITM_TCR_SWOENA_Pos)                    /*!< ITM 
+ 808:Drivers/CMSIS/Include/core_cm4.h **** 
+ 809:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_DWTENA_Pos                  3                                             /*!< ITM 
+ 810:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_DWTENA_Msk                 (1UL << ITM_TCR_DWTENA_Pos)                    /*!< ITM 
+ 811:Drivers/CMSIS/Include/core_cm4.h **** 
+ 812:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_SYNCENA_Pos                 2                                             /*!< ITM 
+ 813:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_SYNCENA_Msk                (1UL << ITM_TCR_SYNCENA_Pos)                   /*!< ITM 
+ 814:Drivers/CMSIS/Include/core_cm4.h **** 
+ 815:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_TSENA_Pos                   1                                             /*!< ITM 
+ 816:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_TSENA_Msk                  (1UL << ITM_TCR_TSENA_Pos)                     /*!< ITM 
+ 817:Drivers/CMSIS/Include/core_cm4.h **** 
+ 818:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_ITMENA_Pos                  0                                             /*!< ITM 
+ 819:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_TCR_ITMENA_Msk                 (1UL /*<< ITM_TCR_ITMENA_Pos*/)                /*!< ITM 
+ 820:Drivers/CMSIS/Include/core_cm4.h **** 
+ 821:Drivers/CMSIS/Include/core_cm4.h **** /* ITM Integration Write Register Definitions */
+ 822:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IWR_ATVALIDM_Pos                0                                             /*!< ITM 
+ 823:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IWR_ATVALIDM_Msk               (1UL /*<< ITM_IWR_ATVALIDM_Pos*/)              /*!< ITM 
+ 824:Drivers/CMSIS/Include/core_cm4.h **** 
+ 825:Drivers/CMSIS/Include/core_cm4.h **** /* ITM Integration Read Register Definitions */
+ 826:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IRR_ATREADYM_Pos                0                                             /*!< ITM 
+ 827:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IRR_ATREADYM_Msk               (1UL /*<< ITM_IRR_ATREADYM_Pos*/)              /*!< ITM 
+ 828:Drivers/CMSIS/Include/core_cm4.h **** 
+ 829:Drivers/CMSIS/Include/core_cm4.h **** /* ITM Integration Mode Control Register Definitions */
+ 830:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IMCR_INTEGRATION_Pos            0                                             /*!< ITM 
+ 831:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IMCR_INTEGRATION_Msk           (1UL /*<< ITM_IMCR_INTEGRATION_Pos*/)          /*!< ITM 
+ 832:Drivers/CMSIS/Include/core_cm4.h **** 
+ 833:Drivers/CMSIS/Include/core_cm4.h **** /* ITM Lock Status Register Definitions */
+ 834:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_LSR_ByteAcc_Pos                 2                                             /*!< ITM 
+ 835:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_LSR_ByteAcc_Msk                (1UL << ITM_LSR_ByteAcc_Pos)                   /*!< ITM 
+ 836:Drivers/CMSIS/Include/core_cm4.h **** 
+ 837:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_LSR_Access_Pos                  1                                             /*!< ITM 
+ 838:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_LSR_Access_Msk                 (1UL << ITM_LSR_Access_Pos)                    /*!< ITM 
+ 839:Drivers/CMSIS/Include/core_cm4.h **** 
+ 840:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_LSR_Present_Pos                 0                                             /*!< ITM 
+ 841:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_LSR_Present_Msk                (1UL /*<< ITM_LSR_Present_Pos*/)               /*!< ITM 
+ 842:Drivers/CMSIS/Include/core_cm4.h **** 
+ 843:Drivers/CMSIS/Include/core_cm4.h **** /*@}*/ /* end of group CMSIS_ITM */
+ 844:Drivers/CMSIS/Include/core_cm4.h **** 
+ 845:Drivers/CMSIS/Include/core_cm4.h **** 
+ 846:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+ 847:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_DWT     Data Watchpoint and Trace (DWT)
+ 848:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the Data Watchpoint and Trace (DWT)
+ 849:Drivers/CMSIS/Include/core_cm4.h ****   @{
+ 850:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 851:Drivers/CMSIS/Include/core_cm4.h **** 
+ 852:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the Data Watchpoint and Trace Register (DWT).
+ARM GAS  /tmp/ccTVGe6C.s 			page 17
+
+
+ 853:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 854:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+ 855:Drivers/CMSIS/Include/core_cm4.h **** {
+ 856:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CTRL;                    /*!< Offset: 0x000 (R/W)  Control Register                
+ 857:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CYCCNT;                  /*!< Offset: 0x004 (R/W)  Cycle Count Register            
+ 858:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CPICNT;                  /*!< Offset: 0x008 (R/W)  CPI Count Register              
+ 859:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t EXCCNT;                  /*!< Offset: 0x00C (R/W)  Exception Overhead Count Registe
+ 860:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t SLEEPCNT;                /*!< Offset: 0x010 (R/W)  Sleep Count Register            
+ 861:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t LSUCNT;                  /*!< Offset: 0x014 (R/W)  LSU Count Register              
+ 862:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FOLDCNT;                 /*!< Offset: 0x018 (R/W)  Folded-instruction Count Registe
+ 863:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t PCSR;                    /*!< Offset: 0x01C (R/ )  Program Counter Sample Register 
+ 864:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t COMP0;                   /*!< Offset: 0x020 (R/W)  Comparator Register 0           
+ 865:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t MASK0;                   /*!< Offset: 0x024 (R/W)  Mask Register 0                 
+ 866:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FUNCTION0;               /*!< Offset: 0x028 (R/W)  Function Register 0             
+ 867:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED0[1];
+ 868:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t COMP1;                   /*!< Offset: 0x030 (R/W)  Comparator Register 1           
+ 869:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t MASK1;                   /*!< Offset: 0x034 (R/W)  Mask Register 1                 
+ 870:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FUNCTION1;               /*!< Offset: 0x038 (R/W)  Function Register 1             
+ 871:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED1[1];
+ 872:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t COMP2;                   /*!< Offset: 0x040 (R/W)  Comparator Register 2           
+ 873:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t MASK2;                   /*!< Offset: 0x044 (R/W)  Mask Register 2                 
+ 874:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FUNCTION2;               /*!< Offset: 0x048 (R/W)  Function Register 2             
+ 875:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED2[1];
+ 876:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t COMP3;                   /*!< Offset: 0x050 (R/W)  Comparator Register 3           
+ 877:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t MASK3;                   /*!< Offset: 0x054 (R/W)  Mask Register 3                 
+ 878:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FUNCTION3;               /*!< Offset: 0x058 (R/W)  Function Register 3             
+ 879:Drivers/CMSIS/Include/core_cm4.h **** } DWT_Type;
+ 880:Drivers/CMSIS/Include/core_cm4.h **** 
+ 881:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Control Register Definitions */
+ 882:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NUMCOMP_Pos               28                                          /*!< DWT CTR
+ 883:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NUMCOMP_Msk               (0xFUL << DWT_CTRL_NUMCOMP_Pos)             /*!< DWT CTR
+ 884:Drivers/CMSIS/Include/core_cm4.h **** 
+ 885:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOTRCPKT_Pos              27                                          /*!< DWT CTR
+ 886:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOTRCPKT_Msk              (0x1UL << DWT_CTRL_NOTRCPKT_Pos)            /*!< DWT CTR
+ 887:Drivers/CMSIS/Include/core_cm4.h **** 
+ 888:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOEXTTRIG_Pos             26                                          /*!< DWT CTR
+ 889:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOEXTTRIG_Msk             (0x1UL << DWT_CTRL_NOEXTTRIG_Pos)           /*!< DWT CTR
+ 890:Drivers/CMSIS/Include/core_cm4.h **** 
+ 891:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOCYCCNT_Pos              25                                          /*!< DWT CTR
+ 892:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOCYCCNT_Msk              (0x1UL << DWT_CTRL_NOCYCCNT_Pos)            /*!< DWT CTR
+ 893:Drivers/CMSIS/Include/core_cm4.h **** 
+ 894:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOPRFCNT_Pos              24                                          /*!< DWT CTR
+ 895:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOPRFCNT_Msk              (0x1UL << DWT_CTRL_NOPRFCNT_Pos)            /*!< DWT CTR
+ 896:Drivers/CMSIS/Include/core_cm4.h **** 
+ 897:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_CYCEVTENA_Pos             22                                          /*!< DWT CTR
+ 898:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_CYCEVTENA_Msk             (0x1UL << DWT_CTRL_CYCEVTENA_Pos)           /*!< DWT CTR
+ 899:Drivers/CMSIS/Include/core_cm4.h **** 
+ 900:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_FOLDEVTENA_Pos            21                                          /*!< DWT CTR
+ 901:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_FOLDEVTENA_Msk            (0x1UL << DWT_CTRL_FOLDEVTENA_Pos)          /*!< DWT CTR
+ 902:Drivers/CMSIS/Include/core_cm4.h **** 
+ 903:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_LSUEVTENA_Pos             20                                          /*!< DWT CTR
+ 904:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_LSUEVTENA_Msk             (0x1UL << DWT_CTRL_LSUEVTENA_Pos)           /*!< DWT CTR
+ 905:Drivers/CMSIS/Include/core_cm4.h **** 
+ 906:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_SLEEPEVTENA_Pos           19                                          /*!< DWT CTR
+ 907:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_SLEEPEVTENA_Msk           (0x1UL << DWT_CTRL_SLEEPEVTENA_Pos)         /*!< DWT CTR
+ 908:Drivers/CMSIS/Include/core_cm4.h **** 
+ 909:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_EXCEVTENA_Pos             18                                          /*!< DWT CTR
+ARM GAS  /tmp/ccTVGe6C.s 			page 18
+
+
+ 910:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_EXCEVTENA_Msk             (0x1UL << DWT_CTRL_EXCEVTENA_Pos)           /*!< DWT CTR
+ 911:Drivers/CMSIS/Include/core_cm4.h **** 
+ 912:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_CPIEVTENA_Pos             17                                          /*!< DWT CTR
+ 913:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_CPIEVTENA_Msk             (0x1UL << DWT_CTRL_CPIEVTENA_Pos)           /*!< DWT CTR
+ 914:Drivers/CMSIS/Include/core_cm4.h **** 
+ 915:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_EXCTRCENA_Pos             16                                          /*!< DWT CTR
+ 916:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_EXCTRCENA_Msk             (0x1UL << DWT_CTRL_EXCTRCENA_Pos)           /*!< DWT CTR
+ 917:Drivers/CMSIS/Include/core_cm4.h **** 
+ 918:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_PCSAMPLENA_Pos            12                                          /*!< DWT CTR
+ 919:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_PCSAMPLENA_Msk            (0x1UL << DWT_CTRL_PCSAMPLENA_Pos)          /*!< DWT CTR
+ 920:Drivers/CMSIS/Include/core_cm4.h **** 
+ 921:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_SYNCTAP_Pos               10                                          /*!< DWT CTR
+ 922:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_SYNCTAP_Msk               (0x3UL << DWT_CTRL_SYNCTAP_Pos)             /*!< DWT CTR
+ 923:Drivers/CMSIS/Include/core_cm4.h **** 
+ 924:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_CYCTAP_Pos                 9                                          /*!< DWT CTR
+ 925:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_CYCTAP_Msk                (0x1UL << DWT_CTRL_CYCTAP_Pos)              /*!< DWT CTR
+ 926:Drivers/CMSIS/Include/core_cm4.h **** 
+ 927:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_POSTINIT_Pos               5                                          /*!< DWT CTR
+ 928:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_POSTINIT_Msk              (0xFUL << DWT_CTRL_POSTINIT_Pos)            /*!< DWT CTR
+ 929:Drivers/CMSIS/Include/core_cm4.h **** 
+ 930:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_POSTPRESET_Pos             1                                          /*!< DWT CTR
+ 931:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_POSTPRESET_Msk            (0xFUL << DWT_CTRL_POSTPRESET_Pos)          /*!< DWT CTR
+ 932:Drivers/CMSIS/Include/core_cm4.h **** 
+ 933:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_CYCCNTENA_Pos              0                                          /*!< DWT CTR
+ 934:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_CYCCNTENA_Msk             (0x1UL /*<< DWT_CTRL_CYCCNTENA_Pos*/)       /*!< DWT CTR
+ 935:Drivers/CMSIS/Include/core_cm4.h **** 
+ 936:Drivers/CMSIS/Include/core_cm4.h **** /* DWT CPI Count Register Definitions */
+ 937:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CPICNT_CPICNT_Pos               0                                          /*!< DWT CPI
+ 938:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CPICNT_CPICNT_Msk              (0xFFUL /*<< DWT_CPICNT_CPICNT_Pos*/)       /*!< DWT CPI
+ 939:Drivers/CMSIS/Include/core_cm4.h **** 
+ 940:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Exception Overhead Count Register Definitions */
+ 941:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_EXCCNT_EXCCNT_Pos               0                                          /*!< DWT EXC
+ 942:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_EXCCNT_EXCCNT_Msk              (0xFFUL /*<< DWT_EXCCNT_EXCCNT_Pos*/)       /*!< DWT EXC
+ 943:Drivers/CMSIS/Include/core_cm4.h **** 
+ 944:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Sleep Count Register Definitions */
+ 945:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_SLEEPCNT_SLEEPCNT_Pos           0                                          /*!< DWT SLE
+ 946:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_SLEEPCNT_SLEEPCNT_Msk          (0xFFUL /*<< DWT_SLEEPCNT_SLEEPCNT_Pos*/)   /*!< DWT SLE
+ 947:Drivers/CMSIS/Include/core_cm4.h **** 
+ 948:Drivers/CMSIS/Include/core_cm4.h **** /* DWT LSU Count Register Definitions */
+ 949:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_LSUCNT_LSUCNT_Pos               0                                          /*!< DWT LSU
+ 950:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_LSUCNT_LSUCNT_Msk              (0xFFUL /*<< DWT_LSUCNT_LSUCNT_Pos*/)       /*!< DWT LSU
+ 951:Drivers/CMSIS/Include/core_cm4.h **** 
+ 952:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Folded-instruction Count Register Definitions */
+ 953:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FOLDCNT_FOLDCNT_Pos             0                                          /*!< DWT FOL
+ 954:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FOLDCNT_FOLDCNT_Msk            (0xFFUL /*<< DWT_FOLDCNT_FOLDCNT_Pos*/)     /*!< DWT FOL
+ 955:Drivers/CMSIS/Include/core_cm4.h **** 
+ 956:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Comparator Mask Register Definitions */
+ 957:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_MASK_MASK_Pos                   0                                          /*!< DWT MAS
+ 958:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_MASK_MASK_Msk                  (0x1FUL /*<< DWT_MASK_MASK_Pos*/)           /*!< DWT MAS
+ 959:Drivers/CMSIS/Include/core_cm4.h **** 
+ 960:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Comparator Function Register Definitions */
+ 961:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_MATCHED_Pos           24                                          /*!< DWT FUN
+ 962:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_MATCHED_Msk           (0x1UL << DWT_FUNCTION_MATCHED_Pos)         /*!< DWT FUN
+ 963:Drivers/CMSIS/Include/core_cm4.h **** 
+ 964:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_DATAVADDR1_Pos        16                                          /*!< DWT FUN
+ 965:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_DATAVADDR1_Msk        (0xFUL << DWT_FUNCTION_DATAVADDR1_Pos)      /*!< DWT FUN
+ 966:Drivers/CMSIS/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccTVGe6C.s 			page 19
+
+
+ 967:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_DATAVADDR0_Pos        12                                          /*!< DWT FUN
+ 968:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_DATAVADDR0_Msk        (0xFUL << DWT_FUNCTION_DATAVADDR0_Pos)      /*!< DWT FUN
+ 969:Drivers/CMSIS/Include/core_cm4.h **** 
+ 970:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_DATAVSIZE_Pos         10                                          /*!< DWT FUN
+ 971:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_DATAVSIZE_Msk         (0x3UL << DWT_FUNCTION_DATAVSIZE_Pos)       /*!< DWT FUN
+ 972:Drivers/CMSIS/Include/core_cm4.h **** 
+ 973:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_LNK1ENA_Pos            9                                          /*!< DWT FUN
+ 974:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_LNK1ENA_Msk           (0x1UL << DWT_FUNCTION_LNK1ENA_Pos)         /*!< DWT FUN
+ 975:Drivers/CMSIS/Include/core_cm4.h **** 
+ 976:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_DATAVMATCH_Pos         8                                          /*!< DWT FUN
+ 977:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_DATAVMATCH_Msk        (0x1UL << DWT_FUNCTION_DATAVMATCH_Pos)      /*!< DWT FUN
+ 978:Drivers/CMSIS/Include/core_cm4.h **** 
+ 979:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_CYCMATCH_Pos           7                                          /*!< DWT FUN
+ 980:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_CYCMATCH_Msk          (0x1UL << DWT_FUNCTION_CYCMATCH_Pos)        /*!< DWT FUN
+ 981:Drivers/CMSIS/Include/core_cm4.h **** 
+ 982:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_EMITRANGE_Pos          5                                          /*!< DWT FUN
+ 983:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_EMITRANGE_Msk         (0x1UL << DWT_FUNCTION_EMITRANGE_Pos)       /*!< DWT FUN
+ 984:Drivers/CMSIS/Include/core_cm4.h **** 
+ 985:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_FUNCTION_Pos           0                                          /*!< DWT FUN
+ 986:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_FUNCTION_FUNCTION_Msk          (0xFUL /*<< DWT_FUNCTION_FUNCTION_Pos*/)    /*!< DWT FUN
+ 987:Drivers/CMSIS/Include/core_cm4.h **** 
+ 988:Drivers/CMSIS/Include/core_cm4.h **** /*@}*/ /* end of group CMSIS_DWT */
+ 989:Drivers/CMSIS/Include/core_cm4.h **** 
+ 990:Drivers/CMSIS/Include/core_cm4.h **** 
+ 991:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+ 992:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_TPI     Trace Port Interface (TPI)
+ 993:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the Trace Port Interface (TPI)
+ 994:Drivers/CMSIS/Include/core_cm4.h ****   @{
+ 995:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 996:Drivers/CMSIS/Include/core_cm4.h **** 
+ 997:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the Trace Port Interface Register (TPI).
+ 998:Drivers/CMSIS/Include/core_cm4.h ****  */
+ 999:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+1000:Drivers/CMSIS/Include/core_cm4.h **** {
+1001:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t SSPSR;                   /*!< Offset: 0x000 (R/ )  Supported Parallel Port Size Reg
+1002:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CSPSR;                   /*!< Offset: 0x004 (R/W)  Current Parallel Port Size Regis
+1003:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED0[2];
+1004:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t ACPR;                    /*!< Offset: 0x010 (R/W)  Asynchronous Clock Prescaler Reg
+1005:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED1[55];
+1006:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t SPPR;                    /*!< Offset: 0x0F0 (R/W)  Selected Pin Protocol Register *
+1007:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED2[131];
+1008:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t FFSR;                    /*!< Offset: 0x300 (R/ )  Formatter and Flush Status Regis
+1009:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FFCR;                    /*!< Offset: 0x304 (R/W)  Formatter and Flush Control Regi
+1010:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t FSCR;                    /*!< Offset: 0x308 (R/ )  Formatter Synchronization Counte
+1011:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED3[759];
+1012:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t TRIGGER;                 /*!< Offset: 0xEE8 (R/ )  TRIGGER */
+1013:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t FIFO0;                   /*!< Offset: 0xEEC (R/ )  Integration ETM Data */
+1014:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t ITATBCTR2;               /*!< Offset: 0xEF0 (R/ )  ITATBCTR2 */
+1015:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED4[1];
+1016:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t ITATBCTR0;               /*!< Offset: 0xEF8 (R/ )  ITATBCTR0 */
+1017:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t FIFO1;                   /*!< Offset: 0xEFC (R/ )  Integration ITM Data */
+1018:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t ITCTRL;                  /*!< Offset: 0xF00 (R/W)  Integration Mode Control */
+1019:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED5[39];
+1020:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CLAIMSET;                /*!< Offset: 0xFA0 (R/W)  Claim tag set */
+1021:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CLAIMCLR;                /*!< Offset: 0xFA4 (R/W)  Claim tag clear */
+1022:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED7[8];
+1023:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t DEVID;                   /*!< Offset: 0xFC8 (R/ )  TPIU_DEVID */
+ARM GAS  /tmp/ccTVGe6C.s 			page 20
+
+
+1024:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t DEVTYPE;                 /*!< Offset: 0xFCC (R/ )  TPIU_DEVTYPE */
+1025:Drivers/CMSIS/Include/core_cm4.h **** } TPI_Type;
+1026:Drivers/CMSIS/Include/core_cm4.h **** 
+1027:Drivers/CMSIS/Include/core_cm4.h **** /* TPI Asynchronous Clock Prescaler Register Definitions */
+1028:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ACPR_PRESCALER_Pos              0                                          /*!< TPI ACP
+1029:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ACPR_PRESCALER_Msk             (0x1FFFUL /*<< TPI_ACPR_PRESCALER_Pos*/)    /*!< TPI ACP
+1030:Drivers/CMSIS/Include/core_cm4.h **** 
+1031:Drivers/CMSIS/Include/core_cm4.h **** /* TPI Selected Pin Protocol Register Definitions */
+1032:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_SPPR_TXMODE_Pos                 0                                          /*!< TPI SPP
+1033:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_SPPR_TXMODE_Msk                (0x3UL /*<< TPI_SPPR_TXMODE_Pos*/)          /*!< TPI SPP
+1034:Drivers/CMSIS/Include/core_cm4.h **** 
+1035:Drivers/CMSIS/Include/core_cm4.h **** /* TPI Formatter and Flush Status Register Definitions */
+1036:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFSR_FtNonStop_Pos              3                                          /*!< TPI FFS
+1037:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFSR_FtNonStop_Msk             (0x1UL << TPI_FFSR_FtNonStop_Pos)           /*!< TPI FFS
+1038:Drivers/CMSIS/Include/core_cm4.h **** 
+1039:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFSR_TCPresent_Pos              2                                          /*!< TPI FFS
+1040:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFSR_TCPresent_Msk             (0x1UL << TPI_FFSR_TCPresent_Pos)           /*!< TPI FFS
+1041:Drivers/CMSIS/Include/core_cm4.h **** 
+1042:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFSR_FtStopped_Pos              1                                          /*!< TPI FFS
+1043:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFSR_FtStopped_Msk             (0x1UL << TPI_FFSR_FtStopped_Pos)           /*!< TPI FFS
+1044:Drivers/CMSIS/Include/core_cm4.h **** 
+1045:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFSR_FlInProg_Pos               0                                          /*!< TPI FFS
+1046:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFSR_FlInProg_Msk              (0x1UL /*<< TPI_FFSR_FlInProg_Pos*/)        /*!< TPI FFS
+1047:Drivers/CMSIS/Include/core_cm4.h **** 
+1048:Drivers/CMSIS/Include/core_cm4.h **** /* TPI Formatter and Flush Control Register Definitions */
+1049:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFCR_TrigIn_Pos                 8                                          /*!< TPI FFC
+1050:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFCR_TrigIn_Msk                (0x1UL << TPI_FFCR_TrigIn_Pos)              /*!< TPI FFC
+1051:Drivers/CMSIS/Include/core_cm4.h **** 
+1052:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFCR_EnFCont_Pos                1                                          /*!< TPI FFC
+1053:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFCR_EnFCont_Msk               (0x1UL << TPI_FFCR_EnFCont_Pos)             /*!< TPI FFC
+1054:Drivers/CMSIS/Include/core_cm4.h **** 
+1055:Drivers/CMSIS/Include/core_cm4.h **** /* TPI TRIGGER Register Definitions */
+1056:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_TRIGGER_TRIGGER_Pos             0                                          /*!< TPI TRI
+1057:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_TRIGGER_TRIGGER_Msk            (0x1UL /*<< TPI_TRIGGER_TRIGGER_Pos*/)      /*!< TPI TRI
+1058:Drivers/CMSIS/Include/core_cm4.h **** 
+1059:Drivers/CMSIS/Include/core_cm4.h **** /* TPI Integration ETM Data Register Definitions (FIFO0) */
+1060:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ITM_ATVALID_Pos          29                                          /*!< TPI FIF
+1061:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ITM_ATVALID_Msk          (0x3UL << TPI_FIFO0_ITM_ATVALID_Pos)        /*!< TPI FIF
+1062:Drivers/CMSIS/Include/core_cm4.h **** 
+1063:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ITM_bytecount_Pos        27                                          /*!< TPI FIF
+1064:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ITM_bytecount_Msk        (0x3UL << TPI_FIFO0_ITM_bytecount_Pos)      /*!< TPI FIF
+1065:Drivers/CMSIS/Include/core_cm4.h **** 
+1066:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM_ATVALID_Pos          26                                          /*!< TPI FIF
+1067:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM_ATVALID_Msk          (0x3UL << TPI_FIFO0_ETM_ATVALID_Pos)        /*!< TPI FIF
+1068:Drivers/CMSIS/Include/core_cm4.h **** 
+1069:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM_bytecount_Pos        24                                          /*!< TPI FIF
+1070:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM_bytecount_Msk        (0x3UL << TPI_FIFO0_ETM_bytecount_Pos)      /*!< TPI FIF
+1071:Drivers/CMSIS/Include/core_cm4.h **** 
+1072:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM2_Pos                 16                                          /*!< TPI FIF
+1073:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM2_Msk                 (0xFFUL << TPI_FIFO0_ETM2_Pos)              /*!< TPI FIF
+1074:Drivers/CMSIS/Include/core_cm4.h **** 
+1075:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM1_Pos                  8                                          /*!< TPI FIF
+1076:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM1_Msk                 (0xFFUL << TPI_FIFO0_ETM1_Pos)              /*!< TPI FIF
+1077:Drivers/CMSIS/Include/core_cm4.h **** 
+1078:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM0_Pos                  0                                          /*!< TPI FIF
+1079:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO0_ETM0_Msk                 (0xFFUL /*<< TPI_FIFO0_ETM0_Pos*/)          /*!< TPI FIF
+1080:Drivers/CMSIS/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccTVGe6C.s 			page 21
+
+
+1081:Drivers/CMSIS/Include/core_cm4.h **** /* TPI ITATBCTR2 Register Definitions */
+1082:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ITATBCTR2_ATREADY_Pos           0                                          /*!< TPI ITA
+1083:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ITATBCTR2_ATREADY_Msk          (0x1UL /*<< TPI_ITATBCTR2_ATREADY_Pos*/)    /*!< TPI ITA
+1084:Drivers/CMSIS/Include/core_cm4.h **** 
+1085:Drivers/CMSIS/Include/core_cm4.h **** /* TPI Integration ITM Data Register Definitions (FIFO1) */
+1086:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM_ATVALID_Pos          29                                          /*!< TPI FIF
+1087:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM_ATVALID_Msk          (0x3UL << TPI_FIFO1_ITM_ATVALID_Pos)        /*!< TPI FIF
+1088:Drivers/CMSIS/Include/core_cm4.h **** 
+1089:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM_bytecount_Pos        27                                          /*!< TPI FIF
+1090:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM_bytecount_Msk        (0x3UL << TPI_FIFO1_ITM_bytecount_Pos)      /*!< TPI FIF
+1091:Drivers/CMSIS/Include/core_cm4.h **** 
+1092:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ETM_ATVALID_Pos          26                                          /*!< TPI FIF
+1093:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ETM_ATVALID_Msk          (0x3UL << TPI_FIFO1_ETM_ATVALID_Pos)        /*!< TPI FIF
+1094:Drivers/CMSIS/Include/core_cm4.h **** 
+1095:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ETM_bytecount_Pos        24                                          /*!< TPI FIF
+1096:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ETM_bytecount_Msk        (0x3UL << TPI_FIFO1_ETM_bytecount_Pos)      /*!< TPI FIF
+1097:Drivers/CMSIS/Include/core_cm4.h **** 
+1098:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM2_Pos                 16                                          /*!< TPI FIF
+1099:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM2_Msk                 (0xFFUL << TPI_FIFO1_ITM2_Pos)              /*!< TPI FIF
+1100:Drivers/CMSIS/Include/core_cm4.h **** 
+1101:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM1_Pos                  8                                          /*!< TPI FIF
+1102:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM1_Msk                 (0xFFUL << TPI_FIFO1_ITM1_Pos)              /*!< TPI FIF
+1103:Drivers/CMSIS/Include/core_cm4.h **** 
+1104:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM0_Pos                  0                                          /*!< TPI FIF
+1105:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM0_Msk                 (0xFFUL /*<< TPI_FIFO1_ITM0_Pos*/)          /*!< TPI FIF
+1106:Drivers/CMSIS/Include/core_cm4.h **** 
+1107:Drivers/CMSIS/Include/core_cm4.h **** /* TPI ITATBCTR0 Register Definitions */
+1108:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ITATBCTR0_ATREADY_Pos           0                                          /*!< TPI ITA
+1109:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ITATBCTR0_ATREADY_Msk          (0x1UL /*<< TPI_ITATBCTR0_ATREADY_Pos*/)    /*!< TPI ITA
+1110:Drivers/CMSIS/Include/core_cm4.h **** 
+1111:Drivers/CMSIS/Include/core_cm4.h **** /* TPI Integration Mode Control Register Definitions */
+1112:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ITCTRL_Mode_Pos                 0                                          /*!< TPI ITC
+1113:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ITCTRL_Mode_Msk                (0x1UL /*<< TPI_ITCTRL_Mode_Pos*/)          /*!< TPI ITC
+1114:Drivers/CMSIS/Include/core_cm4.h **** 
+1115:Drivers/CMSIS/Include/core_cm4.h **** /* TPI DEVID Register Definitions */
+1116:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_NRZVALID_Pos             11                                          /*!< TPI DEV
+1117:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_NRZVALID_Msk             (0x1UL << TPI_DEVID_NRZVALID_Pos)           /*!< TPI DEV
+1118:Drivers/CMSIS/Include/core_cm4.h **** 
+1119:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_MANCVALID_Pos            10                                          /*!< TPI DEV
+1120:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_MANCVALID_Msk            (0x1UL << TPI_DEVID_MANCVALID_Pos)          /*!< TPI DEV
+1121:Drivers/CMSIS/Include/core_cm4.h **** 
+1122:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_PTINVALID_Pos             9                                          /*!< TPI DEV
+1123:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_PTINVALID_Msk            (0x1UL << TPI_DEVID_PTINVALID_Pos)          /*!< TPI DEV
+1124:Drivers/CMSIS/Include/core_cm4.h **** 
+1125:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_MinBufSz_Pos              6                                          /*!< TPI DEV
+1126:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_MinBufSz_Msk             (0x7UL << TPI_DEVID_MinBufSz_Pos)           /*!< TPI DEV
+1127:Drivers/CMSIS/Include/core_cm4.h **** 
+1128:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_AsynClkIn_Pos             5                                          /*!< TPI DEV
+1129:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_AsynClkIn_Msk            (0x1UL << TPI_DEVID_AsynClkIn_Pos)          /*!< TPI DEV
+1130:Drivers/CMSIS/Include/core_cm4.h **** 
+1131:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_NrTraceInput_Pos          0                                          /*!< TPI DEV
+1132:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVID_NrTraceInput_Msk         (0x1FUL /*<< TPI_DEVID_NrTraceInput_Pos*/)  /*!< TPI DEV
+1133:Drivers/CMSIS/Include/core_cm4.h **** 
+1134:Drivers/CMSIS/Include/core_cm4.h **** /* TPI DEVTYPE Register Definitions */
+1135:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVTYPE_MajorType_Pos           4                                          /*!< TPI DEV
+1136:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVTYPE_MajorType_Msk          (0xFUL << TPI_DEVTYPE_MajorType_Pos)        /*!< TPI DEV
+1137:Drivers/CMSIS/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccTVGe6C.s 			page 22
+
+
+1138:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVTYPE_SubType_Pos             0                                          /*!< TPI DEV
+1139:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_DEVTYPE_SubType_Msk            (0xFUL /*<< TPI_DEVTYPE_SubType_Pos*/)      /*!< TPI DEV
+1140:Drivers/CMSIS/Include/core_cm4.h **** 
+1141:Drivers/CMSIS/Include/core_cm4.h **** /*@}*/ /* end of group CMSIS_TPI */
+1142:Drivers/CMSIS/Include/core_cm4.h **** 
+1143:Drivers/CMSIS/Include/core_cm4.h **** 
+1144:Drivers/CMSIS/Include/core_cm4.h **** #if (__MPU_PRESENT == 1)
+1145:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+1146:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_MPU     Memory Protection Unit (MPU)
+1147:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the Memory Protection Unit (MPU)
+1148:Drivers/CMSIS/Include/core_cm4.h ****   @{
+1149:Drivers/CMSIS/Include/core_cm4.h ****  */
+1150:Drivers/CMSIS/Include/core_cm4.h **** 
+1151:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the Memory Protection Unit (MPU).
+1152:Drivers/CMSIS/Include/core_cm4.h ****  */
+1153:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+1154:Drivers/CMSIS/Include/core_cm4.h **** {
+1155:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t TYPE;                    /*!< Offset: 0x000 (R/ )  MPU Type Register               
+1156:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t CTRL;                    /*!< Offset: 0x004 (R/W)  MPU Control Register            
+1157:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RNR;                     /*!< Offset: 0x008 (R/W)  MPU Region RNRber Register      
+1158:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RBAR;                    /*!< Offset: 0x00C (R/W)  MPU Region Base Address Register
+1159:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RASR;                    /*!< Offset: 0x010 (R/W)  MPU Region Attribute and Size Re
+1160:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RBAR_A1;                 /*!< Offset: 0x014 (R/W)  MPU Alias 1 Region Base Address 
+1161:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RASR_A1;                 /*!< Offset: 0x018 (R/W)  MPU Alias 1 Region Attribute and
+1162:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RBAR_A2;                 /*!< Offset: 0x01C (R/W)  MPU Alias 2 Region Base Address 
+1163:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RASR_A2;                 /*!< Offset: 0x020 (R/W)  MPU Alias 2 Region Attribute and
+1164:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RBAR_A3;                 /*!< Offset: 0x024 (R/W)  MPU Alias 3 Region Base Address 
+1165:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t RASR_A3;                 /*!< Offset: 0x028 (R/W)  MPU Alias 3 Region Attribute and
+1166:Drivers/CMSIS/Include/core_cm4.h **** } MPU_Type;
+1167:Drivers/CMSIS/Include/core_cm4.h **** 
+1168:Drivers/CMSIS/Include/core_cm4.h **** /* MPU Type Register */
+1169:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_TYPE_IREGION_Pos               16                                             /*!< MPU 
+1170:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_TYPE_IREGION_Msk               (0xFFUL << MPU_TYPE_IREGION_Pos)               /*!< MPU 
+1171:Drivers/CMSIS/Include/core_cm4.h **** 
+1172:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_TYPE_DREGION_Pos                8                                             /*!< MPU 
+1173:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_TYPE_DREGION_Msk               (0xFFUL << MPU_TYPE_DREGION_Pos)               /*!< MPU 
+1174:Drivers/CMSIS/Include/core_cm4.h **** 
+1175:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_TYPE_SEPARATE_Pos               0                                             /*!< MPU 
+1176:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_TYPE_SEPARATE_Msk              (1UL /*<< MPU_TYPE_SEPARATE_Pos*/)             /*!< MPU 
+1177:Drivers/CMSIS/Include/core_cm4.h **** 
+1178:Drivers/CMSIS/Include/core_cm4.h **** /* MPU Control Register */
+1179:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_CTRL_PRIVDEFENA_Pos             2                                             /*!< MPU 
+1180:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_CTRL_PRIVDEFENA_Msk            (1UL << MPU_CTRL_PRIVDEFENA_Pos)               /*!< MPU 
+1181:Drivers/CMSIS/Include/core_cm4.h **** 
+1182:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_CTRL_HFNMIENA_Pos               1                                             /*!< MPU 
+1183:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_CTRL_HFNMIENA_Msk              (1UL << MPU_CTRL_HFNMIENA_Pos)                 /*!< MPU 
+1184:Drivers/CMSIS/Include/core_cm4.h **** 
+1185:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_CTRL_ENABLE_Pos                 0                                             /*!< MPU 
+1186:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_CTRL_ENABLE_Msk                (1UL /*<< MPU_CTRL_ENABLE_Pos*/)               /*!< MPU 
+1187:Drivers/CMSIS/Include/core_cm4.h **** 
+1188:Drivers/CMSIS/Include/core_cm4.h **** /* MPU Region Number Register */
+1189:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RNR_REGION_Pos                  0                                             /*!< MPU 
+1190:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RNR_REGION_Msk                 (0xFFUL /*<< MPU_RNR_REGION_Pos*/)             /*!< MPU 
+1191:Drivers/CMSIS/Include/core_cm4.h **** 
+1192:Drivers/CMSIS/Include/core_cm4.h **** /* MPU Region Base Address Register */
+1193:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RBAR_ADDR_Pos                   5                                             /*!< MPU 
+1194:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RBAR_ADDR_Msk                  (0x7FFFFFFUL << MPU_RBAR_ADDR_Pos)             /*!< MPU 
+ARM GAS  /tmp/ccTVGe6C.s 			page 23
+
+
+1195:Drivers/CMSIS/Include/core_cm4.h **** 
+1196:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RBAR_VALID_Pos                  4                                             /*!< MPU 
+1197:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RBAR_VALID_Msk                 (1UL << MPU_RBAR_VALID_Pos)                    /*!< MPU 
+1198:Drivers/CMSIS/Include/core_cm4.h **** 
+1199:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RBAR_REGION_Pos                 0                                             /*!< MPU 
+1200:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RBAR_REGION_Msk                (0xFUL /*<< MPU_RBAR_REGION_Pos*/)             /*!< MPU 
+1201:Drivers/CMSIS/Include/core_cm4.h **** 
+1202:Drivers/CMSIS/Include/core_cm4.h **** /* MPU Region Attribute and Size Register */
+1203:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_ATTRS_Pos                 16                                             /*!< MPU 
+1204:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_ATTRS_Msk                 (0xFFFFUL << MPU_RASR_ATTRS_Pos)               /*!< MPU 
+1205:Drivers/CMSIS/Include/core_cm4.h **** 
+1206:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_XN_Pos                    28                                             /*!< MPU 
+1207:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_XN_Msk                    (1UL << MPU_RASR_XN_Pos)                       /*!< MPU 
+1208:Drivers/CMSIS/Include/core_cm4.h **** 
+1209:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_AP_Pos                    24                                             /*!< MPU 
+1210:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_AP_Msk                    (0x7UL << MPU_RASR_AP_Pos)                     /*!< MPU 
+1211:Drivers/CMSIS/Include/core_cm4.h **** 
+1212:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_TEX_Pos                   19                                             /*!< MPU 
+1213:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_TEX_Msk                   (0x7UL << MPU_RASR_TEX_Pos)                    /*!< MPU 
+1214:Drivers/CMSIS/Include/core_cm4.h **** 
+1215:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_S_Pos                     18                                             /*!< MPU 
+1216:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_S_Msk                     (1UL << MPU_RASR_S_Pos)                        /*!< MPU 
+1217:Drivers/CMSIS/Include/core_cm4.h **** 
+1218:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_C_Pos                     17                                             /*!< MPU 
+1219:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_C_Msk                     (1UL << MPU_RASR_C_Pos)                        /*!< MPU 
+1220:Drivers/CMSIS/Include/core_cm4.h **** 
+1221:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_B_Pos                     16                                             /*!< MPU 
+1222:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_B_Msk                     (1UL << MPU_RASR_B_Pos)                        /*!< MPU 
+1223:Drivers/CMSIS/Include/core_cm4.h **** 
+1224:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_SRD_Pos                    8                                             /*!< MPU 
+1225:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_SRD_Msk                   (0xFFUL << MPU_RASR_SRD_Pos)                   /*!< MPU 
+1226:Drivers/CMSIS/Include/core_cm4.h **** 
+1227:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_SIZE_Pos                   1                                             /*!< MPU 
+1228:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_SIZE_Msk                  (0x1FUL << MPU_RASR_SIZE_Pos)                  /*!< MPU 
+1229:Drivers/CMSIS/Include/core_cm4.h **** 
+1230:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_ENABLE_Pos                 0                                             /*!< MPU 
+1231:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_ENABLE_Msk                (1UL /*<< MPU_RASR_ENABLE_Pos*/)               /*!< MPU 
+1232:Drivers/CMSIS/Include/core_cm4.h **** 
+1233:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group CMSIS_MPU */
+1234:Drivers/CMSIS/Include/core_cm4.h **** #endif
+1235:Drivers/CMSIS/Include/core_cm4.h **** 
+1236:Drivers/CMSIS/Include/core_cm4.h **** 
+1237:Drivers/CMSIS/Include/core_cm4.h **** #if (__FPU_PRESENT == 1)
+1238:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+1239:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_FPU     Floating Point Unit (FPU)
+1240:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the Floating Point Unit (FPU)
+1241:Drivers/CMSIS/Include/core_cm4.h ****   @{
+1242:Drivers/CMSIS/Include/core_cm4.h ****  */
+1243:Drivers/CMSIS/Include/core_cm4.h **** 
+1244:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the Floating Point Unit (FPU).
+1245:Drivers/CMSIS/Include/core_cm4.h ****  */
+1246:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+1247:Drivers/CMSIS/Include/core_cm4.h **** {
+1248:Drivers/CMSIS/Include/core_cm4.h ****        uint32_t RESERVED0[1];
+1249:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FPCCR;                   /*!< Offset: 0x004 (R/W)  Floating-Point Context Control R
+1250:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FPCAR;                   /*!< Offset: 0x008 (R/W)  Floating-Point Context Address R
+1251:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t FPDSCR;                  /*!< Offset: 0x00C (R/W)  Floating-Point Default Status Co
+ARM GAS  /tmp/ccTVGe6C.s 			page 24
+
+
+1252:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t MVFR0;                   /*!< Offset: 0x010 (R/ )  Media and FP Feature Register 0 
+1253:Drivers/CMSIS/Include/core_cm4.h ****   __I  uint32_t MVFR1;                   /*!< Offset: 0x014 (R/ )  Media and FP Feature Register 1 
+1254:Drivers/CMSIS/Include/core_cm4.h **** } FPU_Type;
+1255:Drivers/CMSIS/Include/core_cm4.h **** 
+1256:Drivers/CMSIS/Include/core_cm4.h **** /* Floating-Point Context Control Register */
+1257:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_ASPEN_Pos                31                                             /*!< FPCC
+1258:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_ASPEN_Msk                (1UL << FPU_FPCCR_ASPEN_Pos)                   /*!< FPCC
+1259:Drivers/CMSIS/Include/core_cm4.h **** 
+1260:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_LSPEN_Pos                30                                             /*!< FPCC
+1261:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_LSPEN_Msk                (1UL << FPU_FPCCR_LSPEN_Pos)                   /*!< FPCC
+1262:Drivers/CMSIS/Include/core_cm4.h **** 
+1263:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_MONRDY_Pos                8                                             /*!< FPCC
+1264:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_MONRDY_Msk               (1UL << FPU_FPCCR_MONRDY_Pos)                  /*!< FPCC
+1265:Drivers/CMSIS/Include/core_cm4.h **** 
+1266:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_BFRDY_Pos                 6                                             /*!< FPCC
+1267:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_BFRDY_Msk                (1UL << FPU_FPCCR_BFRDY_Pos)                   /*!< FPCC
+1268:Drivers/CMSIS/Include/core_cm4.h **** 
+1269:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_MMRDY_Pos                 5                                             /*!< FPCC
+1270:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_MMRDY_Msk                (1UL << FPU_FPCCR_MMRDY_Pos)                   /*!< FPCC
+1271:Drivers/CMSIS/Include/core_cm4.h **** 
+1272:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_HFRDY_Pos                 4                                             /*!< FPCC
+1273:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_HFRDY_Msk                (1UL << FPU_FPCCR_HFRDY_Pos)                   /*!< FPCC
+1274:Drivers/CMSIS/Include/core_cm4.h **** 
+1275:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_THREAD_Pos                3                                             /*!< FPCC
+1276:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_THREAD_Msk               (1UL << FPU_FPCCR_THREAD_Pos)                  /*!< FPCC
+1277:Drivers/CMSIS/Include/core_cm4.h **** 
+1278:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_USER_Pos                  1                                             /*!< FPCC
+1279:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_USER_Msk                 (1UL << FPU_FPCCR_USER_Pos)                    /*!< FPCC
+1280:Drivers/CMSIS/Include/core_cm4.h **** 
+1281:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_LSPACT_Pos                0                                             /*!< FPCC
+1282:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_LSPACT_Msk               (1UL /*<< FPU_FPCCR_LSPACT_Pos*/)              /*!< FPCC
+1283:Drivers/CMSIS/Include/core_cm4.h **** 
+1284:Drivers/CMSIS/Include/core_cm4.h **** /* Floating-Point Context Address Register */
+1285:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCAR_ADDRESS_Pos               3                                             /*!< FPCA
+1286:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCAR_ADDRESS_Msk              (0x1FFFFFFFUL << FPU_FPCAR_ADDRESS_Pos)        /*!< FPCA
+1287:Drivers/CMSIS/Include/core_cm4.h **** 
+1288:Drivers/CMSIS/Include/core_cm4.h **** /* Floating-Point Default Status Control Register */
+1289:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPDSCR_AHP_Pos                 26                                             /*!< FPDS
+1290:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPDSCR_AHP_Msk                 (1UL << FPU_FPDSCR_AHP_Pos)                    /*!< FPDS
+1291:Drivers/CMSIS/Include/core_cm4.h **** 
+1292:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPDSCR_DN_Pos                  25                                             /*!< FPDS
+1293:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPDSCR_DN_Msk                  (1UL << FPU_FPDSCR_DN_Pos)                     /*!< FPDS
+1294:Drivers/CMSIS/Include/core_cm4.h **** 
+1295:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPDSCR_FZ_Pos                  24                                             /*!< FPDS
+1296:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPDSCR_FZ_Msk                  (1UL << FPU_FPDSCR_FZ_Pos)                     /*!< FPDS
+1297:Drivers/CMSIS/Include/core_cm4.h **** 
+1298:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPDSCR_RMode_Pos               22                                             /*!< FPDS
+1299:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPDSCR_RMode_Msk               (3UL << FPU_FPDSCR_RMode_Pos)                  /*!< FPDS
+1300:Drivers/CMSIS/Include/core_cm4.h **** 
+1301:Drivers/CMSIS/Include/core_cm4.h **** /* Media and FP Feature Register 0 */
+1302:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_FP_rounding_modes_Pos    28                                             /*!< MVFR
+1303:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_FP_rounding_modes_Msk    (0xFUL << FPU_MVFR0_FP_rounding_modes_Pos)     /*!< MVFR
+1304:Drivers/CMSIS/Include/core_cm4.h **** 
+1305:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Short_vectors_Pos        24                                             /*!< MVFR
+1306:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Short_vectors_Msk        (0xFUL << FPU_MVFR0_Short_vectors_Pos)         /*!< MVFR
+1307:Drivers/CMSIS/Include/core_cm4.h **** 
+1308:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Square_root_Pos          20                                             /*!< MVFR
+ARM GAS  /tmp/ccTVGe6C.s 			page 25
+
+
+1309:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Square_root_Msk          (0xFUL << FPU_MVFR0_Square_root_Pos)           /*!< MVFR
+1310:Drivers/CMSIS/Include/core_cm4.h **** 
+1311:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Divide_Pos               16                                             /*!< MVFR
+1312:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Divide_Msk               (0xFUL << FPU_MVFR0_Divide_Pos)                /*!< MVFR
+1313:Drivers/CMSIS/Include/core_cm4.h **** 
+1314:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_FP_excep_trapping_Pos    12                                             /*!< MVFR
+1315:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_FP_excep_trapping_Msk    (0xFUL << FPU_MVFR0_FP_excep_trapping_Pos)     /*!< MVFR
+1316:Drivers/CMSIS/Include/core_cm4.h **** 
+1317:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Double_precision_Pos      8                                             /*!< MVFR
+1318:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Double_precision_Msk     (0xFUL << FPU_MVFR0_Double_precision_Pos)      /*!< MVFR
+1319:Drivers/CMSIS/Include/core_cm4.h **** 
+1320:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Single_precision_Pos      4                                             /*!< MVFR
+1321:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_Single_precision_Msk     (0xFUL << FPU_MVFR0_Single_precision_Pos)      /*!< MVFR
+1322:Drivers/CMSIS/Include/core_cm4.h **** 
+1323:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_A_SIMD_registers_Pos      0                                             /*!< MVFR
+1324:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_A_SIMD_registers_Msk     (0xFUL /*<< FPU_MVFR0_A_SIMD_registers_Pos*/)  /*!< MVFR
+1325:Drivers/CMSIS/Include/core_cm4.h **** 
+1326:Drivers/CMSIS/Include/core_cm4.h **** /* Media and FP Feature Register 1 */
+1327:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FP_fused_MAC_Pos         28                                             /*!< MVFR
+1328:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FP_fused_MAC_Msk         (0xFUL << FPU_MVFR1_FP_fused_MAC_Pos)          /*!< MVFR
+1329:Drivers/CMSIS/Include/core_cm4.h **** 
+1330:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FP_HPFP_Pos              24                                             /*!< MVFR
+1331:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FP_HPFP_Msk              (0xFUL << FPU_MVFR1_FP_HPFP_Pos)               /*!< MVFR
+1332:Drivers/CMSIS/Include/core_cm4.h **** 
+1333:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_D_NaN_mode_Pos            4                                             /*!< MVFR
+1334:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_D_NaN_mode_Msk           (0xFUL << FPU_MVFR1_D_NaN_mode_Pos)            /*!< MVFR
+1335:Drivers/CMSIS/Include/core_cm4.h **** 
+1336:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FtZ_mode_Pos              0                                             /*!< MVFR
+1337:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FtZ_mode_Msk             (0xFUL /*<< FPU_MVFR1_FtZ_mode_Pos*/)          /*!< MVFR
+1338:Drivers/CMSIS/Include/core_cm4.h **** 
+1339:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group CMSIS_FPU */
+1340:Drivers/CMSIS/Include/core_cm4.h **** #endif
+1341:Drivers/CMSIS/Include/core_cm4.h **** 
+1342:Drivers/CMSIS/Include/core_cm4.h **** 
+1343:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_core_register
+1344:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_CoreDebug       Core Debug Registers (CoreDebug)
+1345:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Type definitions for the Core Debug Registers
+1346:Drivers/CMSIS/Include/core_cm4.h ****   @{
+1347:Drivers/CMSIS/Include/core_cm4.h ****  */
+1348:Drivers/CMSIS/Include/core_cm4.h **** 
+1349:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Structure type to access the Core Debug Register (CoreDebug).
+1350:Drivers/CMSIS/Include/core_cm4.h ****  */
+1351:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
+1352:Drivers/CMSIS/Include/core_cm4.h **** {
+1353:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t DHCSR;                   /*!< Offset: 0x000 (R/W)  Debug Halting Control and Status
+1354:Drivers/CMSIS/Include/core_cm4.h ****   __O  uint32_t DCRSR;                   /*!< Offset: 0x004 ( /W)  Debug Core Register Selector Reg
+1355:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t DCRDR;                   /*!< Offset: 0x008 (R/W)  Debug Core Register Data Registe
+1356:Drivers/CMSIS/Include/core_cm4.h ****   __IO uint32_t DEMCR;                   /*!< Offset: 0x00C (R/W)  Debug Exception and Monitor Cont
+1357:Drivers/CMSIS/Include/core_cm4.h **** } CoreDebug_Type;
+1358:Drivers/CMSIS/Include/core_cm4.h **** 
+1359:Drivers/CMSIS/Include/core_cm4.h **** /* Debug Halting Control and Status Register */
+1360:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_DBGKEY_Pos         16                                             /*!< Core
+1361:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_DBGKEY_Msk         (0xFFFFUL << CoreDebug_DHCSR_DBGKEY_Pos)       /*!< Core
+1362:Drivers/CMSIS/Include/core_cm4.h **** 
+1363:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_RESET_ST_Pos     25                                             /*!< Core
+1364:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_RESET_ST_Msk     (1UL << CoreDebug_DHCSR_S_RESET_ST_Pos)        /*!< Core
+1365:Drivers/CMSIS/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccTVGe6C.s 			page 26
+
+
+1366:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_RETIRE_ST_Pos    24                                             /*!< Core
+1367:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_RETIRE_ST_Msk    (1UL << CoreDebug_DHCSR_S_RETIRE_ST_Pos)       /*!< Core
+1368:Drivers/CMSIS/Include/core_cm4.h **** 
+1369:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_LOCKUP_Pos       19                                             /*!< Core
+1370:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_LOCKUP_Msk       (1UL << CoreDebug_DHCSR_S_LOCKUP_Pos)          /*!< Core
+1371:Drivers/CMSIS/Include/core_cm4.h **** 
+1372:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_SLEEP_Pos        18                                             /*!< Core
+1373:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_SLEEP_Msk        (1UL << CoreDebug_DHCSR_S_SLEEP_Pos)           /*!< Core
+1374:Drivers/CMSIS/Include/core_cm4.h **** 
+1375:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_HALT_Pos         17                                             /*!< Core
+1376:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_HALT_Msk         (1UL << CoreDebug_DHCSR_S_HALT_Pos)            /*!< Core
+1377:Drivers/CMSIS/Include/core_cm4.h **** 
+1378:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_REGRDY_Pos       16                                             /*!< Core
+1379:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_S_REGRDY_Msk       (1UL << CoreDebug_DHCSR_S_REGRDY_Pos)          /*!< Core
+1380:Drivers/CMSIS/Include/core_cm4.h **** 
+1381:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_SNAPSTALL_Pos     5                                             /*!< Core
+1382:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_SNAPSTALL_Msk    (1UL << CoreDebug_DHCSR_C_SNAPSTALL_Pos)       /*!< Core
+1383:Drivers/CMSIS/Include/core_cm4.h **** 
+1384:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_MASKINTS_Pos      3                                             /*!< Core
+1385:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_MASKINTS_Msk     (1UL << CoreDebug_DHCSR_C_MASKINTS_Pos)        /*!< Core
+1386:Drivers/CMSIS/Include/core_cm4.h **** 
+1387:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_STEP_Pos          2                                             /*!< Core
+1388:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_STEP_Msk         (1UL << CoreDebug_DHCSR_C_STEP_Pos)            /*!< Core
+1389:Drivers/CMSIS/Include/core_cm4.h **** 
+1390:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_HALT_Pos          1                                             /*!< Core
+1391:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_HALT_Msk         (1UL << CoreDebug_DHCSR_C_HALT_Pos)            /*!< Core
+1392:Drivers/CMSIS/Include/core_cm4.h **** 
+1393:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_DEBUGEN_Pos       0                                             /*!< Core
+1394:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_DEBUGEN_Msk      (1UL /*<< CoreDebug_DHCSR_C_DEBUGEN_Pos*/)     /*!< Core
+1395:Drivers/CMSIS/Include/core_cm4.h **** 
+1396:Drivers/CMSIS/Include/core_cm4.h **** /* Debug Core Register Selector Register */
+1397:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DCRSR_REGWnR_Pos         16                                             /*!< Core
+1398:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DCRSR_REGWnR_Msk         (1UL << CoreDebug_DCRSR_REGWnR_Pos)            /*!< Core
+1399:Drivers/CMSIS/Include/core_cm4.h **** 
+1400:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DCRSR_REGSEL_Pos          0                                             /*!< Core
+1401:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DCRSR_REGSEL_Msk         (0x1FUL /*<< CoreDebug_DCRSR_REGSEL_Pos*/)     /*!< Core
+1402:Drivers/CMSIS/Include/core_cm4.h **** 
+1403:Drivers/CMSIS/Include/core_cm4.h **** /* Debug Exception and Monitor Control Register */
+1404:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_TRCENA_Pos         24                                             /*!< Core
+1405:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_TRCENA_Msk         (1UL << CoreDebug_DEMCR_TRCENA_Pos)            /*!< Core
+1406:Drivers/CMSIS/Include/core_cm4.h **** 
+1407:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_MON_REQ_Pos        19                                             /*!< Core
+1408:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_MON_REQ_Msk        (1UL << CoreDebug_DEMCR_MON_REQ_Pos)           /*!< Core
+1409:Drivers/CMSIS/Include/core_cm4.h **** 
+1410:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_MON_STEP_Pos       18                                             /*!< Core
+1411:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_MON_STEP_Msk       (1UL << CoreDebug_DEMCR_MON_STEP_Pos)          /*!< Core
+1412:Drivers/CMSIS/Include/core_cm4.h **** 
+1413:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_MON_PEND_Pos       17                                             /*!< Core
+1414:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_MON_PEND_Msk       (1UL << CoreDebug_DEMCR_MON_PEND_Pos)          /*!< Core
+1415:Drivers/CMSIS/Include/core_cm4.h **** 
+1416:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_MON_EN_Pos         16                                             /*!< Core
+1417:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_MON_EN_Msk         (1UL << CoreDebug_DEMCR_MON_EN_Pos)            /*!< Core
+1418:Drivers/CMSIS/Include/core_cm4.h **** 
+1419:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_HARDERR_Pos     10                                             /*!< Core
+1420:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_HARDERR_Msk     (1UL << CoreDebug_DEMCR_VC_HARDERR_Pos)        /*!< Core
+1421:Drivers/CMSIS/Include/core_cm4.h **** 
+1422:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_INTERR_Pos       9                                             /*!< Core
+ARM GAS  /tmp/ccTVGe6C.s 			page 27
+
+
+1423:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_INTERR_Msk      (1UL << CoreDebug_DEMCR_VC_INTERR_Pos)         /*!< Core
+1424:Drivers/CMSIS/Include/core_cm4.h **** 
+1425:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_BUSERR_Pos       8                                             /*!< Core
+1426:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_BUSERR_Msk      (1UL << CoreDebug_DEMCR_VC_BUSERR_Pos)         /*!< Core
+1427:Drivers/CMSIS/Include/core_cm4.h **** 
+1428:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_STATERR_Pos      7                                             /*!< Core
+1429:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_STATERR_Msk     (1UL << CoreDebug_DEMCR_VC_STATERR_Pos)        /*!< Core
+1430:Drivers/CMSIS/Include/core_cm4.h **** 
+1431:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_CHKERR_Pos       6                                             /*!< Core
+1432:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_CHKERR_Msk      (1UL << CoreDebug_DEMCR_VC_CHKERR_Pos)         /*!< Core
+1433:Drivers/CMSIS/Include/core_cm4.h **** 
+1434:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_NOCPERR_Pos      5                                             /*!< Core
+1435:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_NOCPERR_Msk     (1UL << CoreDebug_DEMCR_VC_NOCPERR_Pos)        /*!< Core
+1436:Drivers/CMSIS/Include/core_cm4.h **** 
+1437:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_MMERR_Pos        4                                             /*!< Core
+1438:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_MMERR_Msk       (1UL << CoreDebug_DEMCR_VC_MMERR_Pos)          /*!< Core
+1439:Drivers/CMSIS/Include/core_cm4.h **** 
+1440:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_CORERESET_Pos    0                                             /*!< Core
+1441:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_CORERESET_Msk   (1UL /*<< CoreDebug_DEMCR_VC_CORERESET_Pos*/)  /*!< Core
+1442:Drivers/CMSIS/Include/core_cm4.h **** 
+1443:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of group CMSIS_CoreDebug */
+1444:Drivers/CMSIS/Include/core_cm4.h **** 
+1445:Drivers/CMSIS/Include/core_cm4.h **** 
+1446:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup    CMSIS_core_register
+1447:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup   CMSIS_core_base     Core Definitions
+1448:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Definitions for base addresses, unions, and structures.
+1449:Drivers/CMSIS/Include/core_cm4.h ****   @{
+1450:Drivers/CMSIS/Include/core_cm4.h ****  */
+1451:Drivers/CMSIS/Include/core_cm4.h **** 
+1452:Drivers/CMSIS/Include/core_cm4.h **** /* Memory mapping of Cortex-M4 Hardware */
+1453:Drivers/CMSIS/Include/core_cm4.h **** #define SCS_BASE            (0xE000E000UL)                            /*!< System Control Space Bas
+1454:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_BASE            (0xE0000000UL)                            /*!< ITM Base Address        
+1455:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_BASE            (0xE0001000UL)                            /*!< DWT Base Address        
+1456:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_BASE            (0xE0040000UL)                            /*!< TPI Base Address        
+1457:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_BASE      (0xE000EDF0UL)                            /*!< Core Debug Base Address 
+1458:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_BASE        (SCS_BASE +  0x0010UL)                    /*!< SysTick Base Address    
+1459:Drivers/CMSIS/Include/core_cm4.h **** #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address       
+1460:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_BASE            (SCS_BASE +  0x0D00UL)                    /*!< System Control Block Bas
+1461:Drivers/CMSIS/Include/core_cm4.h **** 
+1462:Drivers/CMSIS/Include/core_cm4.h **** #define SCnSCB              ((SCnSCB_Type    *)     SCS_BASE      )   /*!< System control Register 
+1463:Drivers/CMSIS/Include/core_cm4.h **** #define SCB                 ((SCB_Type       *)     SCB_BASE      )   /*!< SCB configuration struct
+1464:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick             ((SysTick_Type   *)     SysTick_BASE  )   /*!< SysTick configuration st
+1465:Drivers/CMSIS/Include/core_cm4.h **** #define NVIC                ((NVIC_Type      *)     NVIC_BASE     )   /*!< NVIC configuration struc
+1466:Drivers/CMSIS/Include/core_cm4.h **** #define ITM                 ((ITM_Type       *)     ITM_BASE      )   /*!< ITM configuration struct
+1467:Drivers/CMSIS/Include/core_cm4.h **** #define DWT                 ((DWT_Type       *)     DWT_BASE      )   /*!< DWT configuration struct
+1468:Drivers/CMSIS/Include/core_cm4.h **** #define TPI                 ((TPI_Type       *)     TPI_BASE      )   /*!< TPI configuration struct
+1469:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug           ((CoreDebug_Type *)     CoreDebug_BASE)   /*!< Core Debug configuration
+1470:Drivers/CMSIS/Include/core_cm4.h **** 
+1471:Drivers/CMSIS/Include/core_cm4.h **** #if (__MPU_PRESENT == 1)
+1472:Drivers/CMSIS/Include/core_cm4.h ****   #define MPU_BASE          (SCS_BASE +  0x0D90UL)                    /*!< Memory Protection Unit  
+1473:Drivers/CMSIS/Include/core_cm4.h ****   #define MPU               ((MPU_Type       *)     MPU_BASE      )   /*!< Memory Protection Unit  
+1474:Drivers/CMSIS/Include/core_cm4.h **** #endif
+1475:Drivers/CMSIS/Include/core_cm4.h **** 
+1476:Drivers/CMSIS/Include/core_cm4.h **** #if (__FPU_PRESENT == 1)
+1477:Drivers/CMSIS/Include/core_cm4.h ****   #define FPU_BASE          (SCS_BASE +  0x0F30UL)                    /*!< Floating Point Unit     
+1478:Drivers/CMSIS/Include/core_cm4.h ****   #define FPU               ((FPU_Type       *)     FPU_BASE      )   /*!< Floating Point Unit     
+1479:Drivers/CMSIS/Include/core_cm4.h **** #endif
+ARM GAS  /tmp/ccTVGe6C.s 			page 28
+
+
+1480:Drivers/CMSIS/Include/core_cm4.h **** 
+1481:Drivers/CMSIS/Include/core_cm4.h **** /*@} */
+1482:Drivers/CMSIS/Include/core_cm4.h **** 
+1483:Drivers/CMSIS/Include/core_cm4.h **** 
+1484:Drivers/CMSIS/Include/core_cm4.h **** 
+1485:Drivers/CMSIS/Include/core_cm4.h **** /*******************************************************************************
+1486:Drivers/CMSIS/Include/core_cm4.h ****  *                Hardware Abstraction Layer
+1487:Drivers/CMSIS/Include/core_cm4.h ****   Core Function Interface contains:
+1488:Drivers/CMSIS/Include/core_cm4.h ****   - Core NVIC Functions
+1489:Drivers/CMSIS/Include/core_cm4.h ****   - Core SysTick Functions
+1490:Drivers/CMSIS/Include/core_cm4.h ****   - Core Debug Functions
+1491:Drivers/CMSIS/Include/core_cm4.h ****   - Core Register Access Functions
+1492:Drivers/CMSIS/Include/core_cm4.h ****  ******************************************************************************/
+1493:Drivers/CMSIS/Include/core_cm4.h **** /** \defgroup CMSIS_Core_FunctionInterface Functions and Instructions Reference
+1494:Drivers/CMSIS/Include/core_cm4.h **** */
+1495:Drivers/CMSIS/Include/core_cm4.h **** 
+1496:Drivers/CMSIS/Include/core_cm4.h **** 
+1497:Drivers/CMSIS/Include/core_cm4.h **** 
+1498:Drivers/CMSIS/Include/core_cm4.h **** /* ##########################   NVIC functions  #################################### */
+1499:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+1500:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_Core_NVICFunctions NVIC Functions
+1501:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Functions that manage interrupts and exceptions via the NVIC.
+1502:Drivers/CMSIS/Include/core_cm4.h ****     @{
+1503:Drivers/CMSIS/Include/core_cm4.h ****  */
+1504:Drivers/CMSIS/Include/core_cm4.h **** 
+1505:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Set Priority Grouping
+1506:Drivers/CMSIS/Include/core_cm4.h **** 
+1507:Drivers/CMSIS/Include/core_cm4.h ****   The function sets the priority grouping field using the required unlock sequence.
+1508:Drivers/CMSIS/Include/core_cm4.h ****   The parameter PriorityGroup is assigned to the field SCB->AIRCR [10:8] PRIGROUP field.
+1509:Drivers/CMSIS/Include/core_cm4.h ****   Only values from 0..7 are used.
+1510:Drivers/CMSIS/Include/core_cm4.h ****   In case of a conflict between priority grouping and available
+1511:Drivers/CMSIS/Include/core_cm4.h ****   priority bits (__NVIC_PRIO_BITS), the smallest possible priority group is set.
+1512:Drivers/CMSIS/Include/core_cm4.h **** 
+1513:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]      PriorityGroup  Priority grouping field.
+1514:Drivers/CMSIS/Include/core_cm4.h ****  */
+1515:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
+1516:Drivers/CMSIS/Include/core_cm4.h **** {
+1517:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t reg_value;
+1518:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);             /* only values 0..7 a
+1519:Drivers/CMSIS/Include/core_cm4.h **** 
+1520:Drivers/CMSIS/Include/core_cm4.h ****   reg_value  =  SCB->AIRCR;                                                   /* read old register 
+1521:Drivers/CMSIS/Include/core_cm4.h ****   reg_value &= ~((uint32_t)(SCB_AIRCR_VECTKEY_Msk | SCB_AIRCR_PRIGROUP_Msk));             /* clear 
+1522:Drivers/CMSIS/Include/core_cm4.h ****   reg_value  =  (reg_value                                   |
+1523:Drivers/CMSIS/Include/core_cm4.h ****                 ((uint32_t)0x5FAUL << SCB_AIRCR_VECTKEY_Pos) |
+1524:Drivers/CMSIS/Include/core_cm4.h ****                 (PriorityGroupTmp << 8)                       );              /* Insert write key a
+1525:Drivers/CMSIS/Include/core_cm4.h ****   SCB->AIRCR =  reg_value;
+1526:Drivers/CMSIS/Include/core_cm4.h **** }
+1527:Drivers/CMSIS/Include/core_cm4.h **** 
+1528:Drivers/CMSIS/Include/core_cm4.h **** 
+1529:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Get Priority Grouping
+1530:Drivers/CMSIS/Include/core_cm4.h **** 
+1531:Drivers/CMSIS/Include/core_cm4.h ****   The function reads the priority grouping field from the NVIC Interrupt Controller.
+1532:Drivers/CMSIS/Include/core_cm4.h **** 
+1533:Drivers/CMSIS/Include/core_cm4.h ****     \return                Priority grouping field (SCB->AIRCR [10:8] PRIGROUP field).
+1534:Drivers/CMSIS/Include/core_cm4.h ****  */
+1535:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE uint32_t NVIC_GetPriorityGrouping(void)
+1536:Drivers/CMSIS/Include/core_cm4.h **** {
+ARM GAS  /tmp/ccTVGe6C.s 			page 29
+
+
+1537:Drivers/CMSIS/Include/core_cm4.h ****   return ((uint32_t)((SCB->AIRCR & SCB_AIRCR_PRIGROUP_Msk) >> SCB_AIRCR_PRIGROUP_Pos));
+1538:Drivers/CMSIS/Include/core_cm4.h **** }
+1539:Drivers/CMSIS/Include/core_cm4.h **** 
+1540:Drivers/CMSIS/Include/core_cm4.h **** 
+1541:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Enable External Interrupt
+1542:Drivers/CMSIS/Include/core_cm4.h **** 
+1543:Drivers/CMSIS/Include/core_cm4.h ****     The function enables a device-specific interrupt in the NVIC interrupt controller.
+1544:Drivers/CMSIS/Include/core_cm4.h **** 
+1545:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]      IRQn  External interrupt number. Value cannot be negative.
+1546:Drivers/CMSIS/Include/core_cm4.h ****  */
+1547:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_EnableIRQ(IRQn_Type IRQn)
+1548:Drivers/CMSIS/Include/core_cm4.h **** {
+1549:Drivers/CMSIS/Include/core_cm4.h ****   NVIC->ISER[(((uint32_t)(int32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)(int32_t)IRQn) & 0
+1550:Drivers/CMSIS/Include/core_cm4.h **** }
+1551:Drivers/CMSIS/Include/core_cm4.h **** 
+1552:Drivers/CMSIS/Include/core_cm4.h **** 
+1553:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Disable External Interrupt
+1554:Drivers/CMSIS/Include/core_cm4.h **** 
+1555:Drivers/CMSIS/Include/core_cm4.h ****     The function disables a device-specific interrupt in the NVIC interrupt controller.
+1556:Drivers/CMSIS/Include/core_cm4.h **** 
+1557:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]      IRQn  External interrupt number. Value cannot be negative.
+1558:Drivers/CMSIS/Include/core_cm4.h ****  */
+1559:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_DisableIRQ(IRQn_Type IRQn)
+1560:Drivers/CMSIS/Include/core_cm4.h **** {
+1561:Drivers/CMSIS/Include/core_cm4.h ****   NVIC->ICER[(((uint32_t)(int32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)(int32_t)IRQn) & 0
+1562:Drivers/CMSIS/Include/core_cm4.h **** }
+1563:Drivers/CMSIS/Include/core_cm4.h **** 
+1564:Drivers/CMSIS/Include/core_cm4.h **** 
+1565:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Get Pending Interrupt
+1566:Drivers/CMSIS/Include/core_cm4.h **** 
+1567:Drivers/CMSIS/Include/core_cm4.h ****     The function reads the pending register in the NVIC and returns the pending bit
+1568:Drivers/CMSIS/Include/core_cm4.h ****     for the specified interrupt.
+1569:Drivers/CMSIS/Include/core_cm4.h **** 
+1570:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]      IRQn  Interrupt number.
+1571:Drivers/CMSIS/Include/core_cm4.h **** 
+1572:Drivers/CMSIS/Include/core_cm4.h ****     \return             0  Interrupt status is not pending.
+1573:Drivers/CMSIS/Include/core_cm4.h ****     \return             1  Interrupt status is pending.
+1574:Drivers/CMSIS/Include/core_cm4.h ****  */
+1575:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE uint32_t NVIC_GetPendingIRQ(IRQn_Type IRQn)
+1576:Drivers/CMSIS/Include/core_cm4.h **** {
+1577:Drivers/CMSIS/Include/core_cm4.h ****   return((uint32_t)(((NVIC->ISPR[(((uint32_t)(int32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)(int32_t
+1578:Drivers/CMSIS/Include/core_cm4.h **** }
+1579:Drivers/CMSIS/Include/core_cm4.h **** 
+1580:Drivers/CMSIS/Include/core_cm4.h **** 
+1581:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Set Pending Interrupt
+1582:Drivers/CMSIS/Include/core_cm4.h **** 
+1583:Drivers/CMSIS/Include/core_cm4.h ****     The function sets the pending bit of an external interrupt.
+1584:Drivers/CMSIS/Include/core_cm4.h **** 
+1585:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]      IRQn  Interrupt number. Value cannot be negative.
+1586:Drivers/CMSIS/Include/core_cm4.h ****  */
+1587:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_SetPendingIRQ(IRQn_Type IRQn)
+1588:Drivers/CMSIS/Include/core_cm4.h **** {
+1589:Drivers/CMSIS/Include/core_cm4.h ****   NVIC->ISPR[(((uint32_t)(int32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)(int32_t)IRQn) & 0
+1590:Drivers/CMSIS/Include/core_cm4.h **** }
+1591:Drivers/CMSIS/Include/core_cm4.h **** 
+1592:Drivers/CMSIS/Include/core_cm4.h **** 
+1593:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Clear Pending Interrupt
+ARM GAS  /tmp/ccTVGe6C.s 			page 30
+
+
+1594:Drivers/CMSIS/Include/core_cm4.h **** 
+1595:Drivers/CMSIS/Include/core_cm4.h ****     The function clears the pending bit of an external interrupt.
+1596:Drivers/CMSIS/Include/core_cm4.h **** 
+1597:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]      IRQn  External interrupt number. Value cannot be negative.
+1598:Drivers/CMSIS/Include/core_cm4.h ****  */
+1599:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_ClearPendingIRQ(IRQn_Type IRQn)
+1600:Drivers/CMSIS/Include/core_cm4.h **** {
+1601:Drivers/CMSIS/Include/core_cm4.h ****   NVIC->ICPR[(((uint32_t)(int32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)(int32_t)IRQn) & 0
+1602:Drivers/CMSIS/Include/core_cm4.h **** }
+1603:Drivers/CMSIS/Include/core_cm4.h **** 
+1604:Drivers/CMSIS/Include/core_cm4.h **** 
+1605:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Get Active Interrupt
+1606:Drivers/CMSIS/Include/core_cm4.h **** 
+1607:Drivers/CMSIS/Include/core_cm4.h ****     The function reads the active register in NVIC and returns the active bit.
+1608:Drivers/CMSIS/Include/core_cm4.h **** 
+1609:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]      IRQn  Interrupt number.
+1610:Drivers/CMSIS/Include/core_cm4.h **** 
+1611:Drivers/CMSIS/Include/core_cm4.h ****     \return             0  Interrupt status is not active.
+1612:Drivers/CMSIS/Include/core_cm4.h ****     \return             1  Interrupt status is active.
+1613:Drivers/CMSIS/Include/core_cm4.h ****  */
+1614:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE uint32_t NVIC_GetActive(IRQn_Type IRQn)
+1615:Drivers/CMSIS/Include/core_cm4.h **** {
+1616:Drivers/CMSIS/Include/core_cm4.h ****   return((uint32_t)(((NVIC->IABR[(((uint32_t)(int32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)(int32_t
+1617:Drivers/CMSIS/Include/core_cm4.h **** }
+1618:Drivers/CMSIS/Include/core_cm4.h **** 
+1619:Drivers/CMSIS/Include/core_cm4.h **** 
+1620:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Set Interrupt Priority
+1621:Drivers/CMSIS/Include/core_cm4.h **** 
+1622:Drivers/CMSIS/Include/core_cm4.h ****     The function sets the priority of an interrupt.
+1623:Drivers/CMSIS/Include/core_cm4.h **** 
+1624:Drivers/CMSIS/Include/core_cm4.h ****     \note The priority cannot be set for every core interrupt.
+1625:Drivers/CMSIS/Include/core_cm4.h **** 
+1626:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]      IRQn  Interrupt number.
+1627:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]  priority  Priority to set.
+1628:Drivers/CMSIS/Include/core_cm4.h ****  */
+1629:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+1630:Drivers/CMSIS/Include/core_cm4.h **** {
+1631:Drivers/CMSIS/Include/core_cm4.h ****   if((int32_t)IRQn < 0) {
+1632:Drivers/CMSIS/Include/core_cm4.h ****     SCB->SHP[(((uint32_t)(int32_t)IRQn) & 0xFUL)-4UL] = (uint8_t)((priority << (8 - __NVIC_PRIO_BIT
+1633:Drivers/CMSIS/Include/core_cm4.h ****   }
+1634:Drivers/CMSIS/Include/core_cm4.h ****   else {
+1635:Drivers/CMSIS/Include/core_cm4.h ****     NVIC->IP[((uint32_t)(int32_t)IRQn)]               = (uint8_t)((priority << (8 - __NVIC_PRIO_BIT
+1636:Drivers/CMSIS/Include/core_cm4.h ****   }
+1637:Drivers/CMSIS/Include/core_cm4.h **** }
+1638:Drivers/CMSIS/Include/core_cm4.h **** 
+1639:Drivers/CMSIS/Include/core_cm4.h **** 
+1640:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Get Interrupt Priority
+1641:Drivers/CMSIS/Include/core_cm4.h **** 
+1642:Drivers/CMSIS/Include/core_cm4.h ****     The function reads the priority of an interrupt. The interrupt
+1643:Drivers/CMSIS/Include/core_cm4.h ****     number can be positive to specify an external (device specific)
+1644:Drivers/CMSIS/Include/core_cm4.h ****     interrupt, or negative to specify an internal (core) interrupt.
+1645:Drivers/CMSIS/Include/core_cm4.h **** 
+1646:Drivers/CMSIS/Include/core_cm4.h **** 
+1647:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]   IRQn  Interrupt number.
+1648:Drivers/CMSIS/Include/core_cm4.h ****     \return             Interrupt Priority. Value is aligned automatically to the implemented
+1649:Drivers/CMSIS/Include/core_cm4.h ****                         priority bits of the microcontroller.
+1650:Drivers/CMSIS/Include/core_cm4.h ****  */
+ARM GAS  /tmp/ccTVGe6C.s 			page 31
+
+
+1651:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE uint32_t NVIC_GetPriority(IRQn_Type IRQn)
+1652:Drivers/CMSIS/Include/core_cm4.h **** {
+1653:Drivers/CMSIS/Include/core_cm4.h **** 
+1654:Drivers/CMSIS/Include/core_cm4.h ****   if((int32_t)IRQn < 0) {
+1655:Drivers/CMSIS/Include/core_cm4.h ****     return(((uint32_t)SCB->SHP[(((uint32_t)(int32_t)IRQn) & 0xFUL)-4UL] >> (8 - __NVIC_PRIO_BITS)))
+1656:Drivers/CMSIS/Include/core_cm4.h ****   }
+1657:Drivers/CMSIS/Include/core_cm4.h ****   else {
+1658:Drivers/CMSIS/Include/core_cm4.h ****     return(((uint32_t)NVIC->IP[((uint32_t)(int32_t)IRQn)]               >> (8 - __NVIC_PRIO_BITS)))
+1659:Drivers/CMSIS/Include/core_cm4.h ****   }
+1660:Drivers/CMSIS/Include/core_cm4.h **** }
+1661:Drivers/CMSIS/Include/core_cm4.h **** 
+1662:Drivers/CMSIS/Include/core_cm4.h **** 
+1663:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Encode Priority
+1664:Drivers/CMSIS/Include/core_cm4.h **** 
+1665:Drivers/CMSIS/Include/core_cm4.h ****     The function encodes the priority for an interrupt with the given priority group,
+1666:Drivers/CMSIS/Include/core_cm4.h ****     preemptive priority value, and subpriority value.
+1667:Drivers/CMSIS/Include/core_cm4.h ****     In case of a conflict between priority grouping and available
+1668:Drivers/CMSIS/Include/core_cm4.h ****     priority bits (__NVIC_PRIO_BITS), the smallest possible priority group is set.
+1669:Drivers/CMSIS/Include/core_cm4.h **** 
+1670:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]     PriorityGroup  Used priority group.
+1671:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]   PreemptPriority  Preemptive priority value (starting from 0).
+1672:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]       SubPriority  Subpriority value (starting from 0).
+1673:Drivers/CMSIS/Include/core_cm4.h ****     \return                        Encoded priority. Value can be used in the function \ref NVIC_Se
+1674:Drivers/CMSIS/Include/core_cm4.h ****  */
+1675:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE uint32_t NVIC_EncodePriority (uint32_t PriorityGroup, uint32_t PreemptPriority, uin
+1676:Drivers/CMSIS/Include/core_cm4.h **** {
+1677:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);   /* only values 0..7 are used   
+1678:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t PreemptPriorityBits;
+1679:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t SubPriorityBits;
+1680:Drivers/CMSIS/Include/core_cm4.h **** 
+1681:Drivers/CMSIS/Include/core_cm4.h ****   PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(__NVIC_PRIO_BITS)) ? (uint32_t)(__NV
+1682:Drivers/CMSIS/Include/core_cm4.h ****   SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(__NVIC_PRIO_BITS)) < (uint32_t)7UL) ? (uint
+1683:Drivers/CMSIS/Include/core_cm4.h **** 
+1684:Drivers/CMSIS/Include/core_cm4.h ****   return (
+1685:Drivers/CMSIS/Include/core_cm4.h ****            ((PreemptPriority & (uint32_t)((1UL << (PreemptPriorityBits)) - 1UL)) << SubPriorityBits
+1686:Drivers/CMSIS/Include/core_cm4.h ****            ((SubPriority     & (uint32_t)((1UL << (SubPriorityBits    )) - 1UL)))
+1687:Drivers/CMSIS/Include/core_cm4.h ****          );
+1688:Drivers/CMSIS/Include/core_cm4.h **** }
+1689:Drivers/CMSIS/Include/core_cm4.h **** 
+1690:Drivers/CMSIS/Include/core_cm4.h **** 
+1691:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  Decode Priority
+1692:Drivers/CMSIS/Include/core_cm4.h **** 
+1693:Drivers/CMSIS/Include/core_cm4.h ****     The function decodes an interrupt priority value with a given priority group to
+1694:Drivers/CMSIS/Include/core_cm4.h ****     preemptive priority value and subpriority value.
+1695:Drivers/CMSIS/Include/core_cm4.h ****     In case of a conflict between priority grouping and available
+1696:Drivers/CMSIS/Include/core_cm4.h ****     priority bits (__NVIC_PRIO_BITS) the smallest possible priority group is set.
+1697:Drivers/CMSIS/Include/core_cm4.h **** 
+1698:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]         Priority   Priority value, which can be retrieved with the function \ref NV
+1699:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]     PriorityGroup  Used priority group.
+1700:Drivers/CMSIS/Include/core_cm4.h ****     \param [out] pPreemptPriority  Preemptive priority value (starting from 0).
+1701:Drivers/CMSIS/Include/core_cm4.h ****     \param [out]     pSubPriority  Subpriority value (starting from 0).
+1702:Drivers/CMSIS/Include/core_cm4.h ****  */
+1703:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_DecodePriority (uint32_t Priority, uint32_t PriorityGroup, uint32_t* pPre
+1704:Drivers/CMSIS/Include/core_cm4.h **** {
+1705:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);   /* only values 0..7 are used   
+1706:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t PreemptPriorityBits;
+1707:Drivers/CMSIS/Include/core_cm4.h ****   uint32_t SubPriorityBits;
+ARM GAS  /tmp/ccTVGe6C.s 			page 32
+
+
+1708:Drivers/CMSIS/Include/core_cm4.h **** 
+1709:Drivers/CMSIS/Include/core_cm4.h ****   PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(__NVIC_PRIO_BITS)) ? (uint32_t)(__NV
+1710:Drivers/CMSIS/Include/core_cm4.h ****   SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(__NVIC_PRIO_BITS)) < (uint32_t)7UL) ? (uint
+1711:Drivers/CMSIS/Include/core_cm4.h **** 
+1712:Drivers/CMSIS/Include/core_cm4.h ****   *pPreemptPriority = (Priority >> SubPriorityBits) & (uint32_t)((1UL << (PreemptPriorityBits)) - 1
+1713:Drivers/CMSIS/Include/core_cm4.h ****   *pSubPriority     = (Priority                   ) & (uint32_t)((1UL << (SubPriorityBits    )) - 1
+1714:Drivers/CMSIS/Include/core_cm4.h **** }
+1715:Drivers/CMSIS/Include/core_cm4.h **** 
+1716:Drivers/CMSIS/Include/core_cm4.h **** 
+1717:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  System Reset
+1718:Drivers/CMSIS/Include/core_cm4.h **** 
+1719:Drivers/CMSIS/Include/core_cm4.h ****     The function initiates a system reset request to reset the MCU.
+1720:Drivers/CMSIS/Include/core_cm4.h ****  */
+1721:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_SystemReset(void)
+1722:Drivers/CMSIS/Include/core_cm4.h **** {
+1723:Drivers/CMSIS/Include/core_cm4.h ****   __DSB();                                                          /* Ensure all outstanding memor
+1724:Drivers/CMSIS/Include/core_cm4.h ****                                                                        buffered write are completed
+1725:Drivers/CMSIS/Include/core_cm4.h ****   SCB->AIRCR  = (uint32_t)((0x5FAUL << SCB_AIRCR_VECTKEY_Pos)    |
+1726:Drivers/CMSIS/Include/core_cm4.h ****                            (SCB->AIRCR & SCB_AIRCR_PRIGROUP_Msk) |
+1727:Drivers/CMSIS/Include/core_cm4.h ****                             SCB_AIRCR_SYSRESETREQ_Msk    );         /* Keep priority group unchange
+1728:Drivers/CMSIS/Include/core_cm4.h ****   __DSB();                                                          /* Ensure completion of memory 
+1729:Drivers/CMSIS/Include/core_cm4.h ****   while(1) { __NOP(); }                                             /* wait until reset */
+1730:Drivers/CMSIS/Include/core_cm4.h **** }
+1731:Drivers/CMSIS/Include/core_cm4.h **** 
+1732:Drivers/CMSIS/Include/core_cm4.h **** /*@} end of CMSIS_Core_NVICFunctions */
+1733:Drivers/CMSIS/Include/core_cm4.h **** 
+1734:Drivers/CMSIS/Include/core_cm4.h **** 
+1735:Drivers/CMSIS/Include/core_cm4.h **** 
+1736:Drivers/CMSIS/Include/core_cm4.h **** /* ##################################    SysTick function  ########################################
+1737:Drivers/CMSIS/Include/core_cm4.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+1738:Drivers/CMSIS/Include/core_cm4.h ****     \defgroup CMSIS_Core_SysTickFunctions SysTick Functions
+1739:Drivers/CMSIS/Include/core_cm4.h ****     \brief      Functions that configure the System.
+1740:Drivers/CMSIS/Include/core_cm4.h ****   @{
+1741:Drivers/CMSIS/Include/core_cm4.h ****  */
+1742:Drivers/CMSIS/Include/core_cm4.h **** 
+1743:Drivers/CMSIS/Include/core_cm4.h **** #if (__Vendor_SysTickConfig == 0)
+1744:Drivers/CMSIS/Include/core_cm4.h **** 
+1745:Drivers/CMSIS/Include/core_cm4.h **** /** \brief  System Tick Configuration
+1746:Drivers/CMSIS/Include/core_cm4.h **** 
+1747:Drivers/CMSIS/Include/core_cm4.h ****     The function initializes the System Timer and its interrupt, and starts the System Tick Timer.
+1748:Drivers/CMSIS/Include/core_cm4.h ****     Counter is in free running mode to generate periodic interrupts.
+1749:Drivers/CMSIS/Include/core_cm4.h **** 
+1750:Drivers/CMSIS/Include/core_cm4.h ****     \param [in]  ticks  Number of ticks between two interrupts.
+1751:Drivers/CMSIS/Include/core_cm4.h **** 
+1752:Drivers/CMSIS/Include/core_cm4.h ****     \return          0  Function succeeded.
+1753:Drivers/CMSIS/Include/core_cm4.h ****     \return          1  Function failed.
+1754:Drivers/CMSIS/Include/core_cm4.h **** 
+1755:Drivers/CMSIS/Include/core_cm4.h ****     \note     When the variable <b>__Vendor_SysTickConfig</b> is set to 1, then the
+1756:Drivers/CMSIS/Include/core_cm4.h ****     function <b>SysTick_Config</b> is not included. In this case, the file <b><i>device</i>.h</b>
+1757:Drivers/CMSIS/Include/core_cm4.h ****     must contain a vendor-specific implementation of this function.
+1758:Drivers/CMSIS/Include/core_cm4.h **** 
+1759:Drivers/CMSIS/Include/core_cm4.h ****  */
+1760:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE uint32_t SysTick_Config(uint32_t ticks)
+  48              		.loc 2 1760 26 view .LVU2
+  49              	.LBB9:
+1761:Drivers/CMSIS/Include/core_cm4.h **** {
+1762:Drivers/CMSIS/Include/core_cm4.h ****   if ((ticks - 1UL) > SysTick_LOAD_RELOAD_Msk) { return (1UL); }    /* Reload value impossible */
+ARM GAS  /tmp/ccTVGe6C.s 			page 33
+
+
+  50              		.loc 2 1762 3 view .LVU3
+  51              		.loc 2 1762 14 is_stmt 0 view .LVU4
+  52 000e 013B     		subs	r3, r3, #1
+  53              	.LVL1:
+  54              		.loc 2 1762 6 view .LVU5
+  55 0010 B3F1807F 		cmp	r3, #16777216
+  56 0014 0AD2     		bcs	.L2
+1763:Drivers/CMSIS/Include/core_cm4.h **** 
+1764:Drivers/CMSIS/Include/core_cm4.h ****   SysTick->LOAD  = (uint32_t)(ticks - 1UL);                         /* set reload register */
+  57              		.loc 2 1764 3 is_stmt 1 view .LVU6
+  58              		.loc 2 1764 18 is_stmt 0 view .LVU7
+  59 0016 4FF0E022 		mov	r2, #-536813568
+  60 001a 5361     		str	r3, [r2, #20]
+1765:Drivers/CMSIS/Include/core_cm4.h ****   NVIC_SetPriority (SysTick_IRQn, (1UL << __NVIC_PRIO_BITS) - 1UL); /* set Priority for Systick Int
+  61              		.loc 2 1765 3 is_stmt 1 view .LVU8
+  62              	.LVL2:
+  63              	.LBB10:
+  64              	.LBI10:
+1629:Drivers/CMSIS/Include/core_cm4.h **** {
+  65              		.loc 2 1629 22 view .LVU9
+  66              	.LBB11:
+1631:Drivers/CMSIS/Include/core_cm4.h ****     SCB->SHP[(((uint32_t)(int32_t)IRQn) & 0xFUL)-4UL] = (uint8_t)((priority << (8 - __NVIC_PRIO_BIT
+  67              		.loc 2 1631 3 view .LVU10
+1632:Drivers/CMSIS/Include/core_cm4.h ****   }
+  68              		.loc 2 1632 5 view .LVU11
+1632:Drivers/CMSIS/Include/core_cm4.h ****   }
+  69              		.loc 2 1632 55 is_stmt 0 view .LVU12
+  70 001c 094B     		ldr	r3, .L5+8
+  71              	.LVL3:
+1632:Drivers/CMSIS/Include/core_cm4.h ****   }
+  72              		.loc 2 1632 55 view .LVU13
+  73 001e F021     		movs	r1, #240
+  74 0020 83F82310 		strb	r1, [r3, #35]
+  75              	.LVL4:
+1632:Drivers/CMSIS/Include/core_cm4.h ****   }
+  76              		.loc 2 1632 55 view .LVU14
+  77              	.LBE11:
+  78              	.LBE10:
+1766:Drivers/CMSIS/Include/core_cm4.h ****   SysTick->VAL   = 0UL;                                             /* Load the SysTick Counter Val
+  79              		.loc 2 1766 3 is_stmt 1 view .LVU15
+  80              		.loc 2 1766 18 is_stmt 0 view .LVU16
+  81 0024 0023     		movs	r3, #0
+  82 0026 9361     		str	r3, [r2, #24]
+1767:Drivers/CMSIS/Include/core_cm4.h ****   SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk |
+  83              		.loc 2 1767 3 is_stmt 1 view .LVU17
+  84              		.loc 2 1767 18 is_stmt 0 view .LVU18
+  85 0028 0723     		movs	r3, #7
+  86 002a 1361     		str	r3, [r2, #16]
+1768:Drivers/CMSIS/Include/core_cm4.h ****                    SysTick_CTRL_TICKINT_Msk   |
+1769:Drivers/CMSIS/Include/core_cm4.h ****                    SysTick_CTRL_ENABLE_Msk;                         /* Enable SysTick IRQ and SysTi
+1770:Drivers/CMSIS/Include/core_cm4.h ****   return (0UL);                                                     /* Function successful */
+  87              		.loc 2 1770 3 is_stmt 1 view .LVU19
+  88              	.L2:
+  89              		.loc 2 1770 3 is_stmt 0 view .LVU20
+  90              	.LBE9:
+  91              	.LBE8:
+  15:Core/Src/main.c **** 	delay_init(); 
+ARM GAS  /tmp/ccTVGe6C.s 			page 34
+
+
+  92              		.loc 1 15 2 is_stmt 1 view .LVU21
+  93 002c FFF7FEFF 		bl	delay_init
+  94              	.LVL5:
+  16:Core/Src/main.c ****     ecatapp_init();
+  95              		.loc 1 16 5 view .LVU22
+  96 0030 FFF7FEFF 		bl	ecatapp_init
+  97              	.LVL6:
+  98              	.L3:
+  17:Core/Src/main.c ****     
+  18:Core/Src/main.c **** 
+  19:Core/Src/main.c **** 	while (1)
+  99              		.loc 1 19 2 discriminator 1 view .LVU23
+  20:Core/Src/main.c **** 	{
+  21:Core/Src/main.c ****         // ecatapp_benchmark_us();
+  22:Core/Src/main.c ****         ecatapp_loop();
+ 100              		.loc 1 22 9 discriminator 1 view .LVU24
+ 101 0034 FFF7FEFF 		bl	ecatapp_loop
+ 102              	.LVL7:
+  19:Core/Src/main.c **** 	{
+ 103              		.loc 1 19 8 discriminator 1 view .LVU25
+ 104 0038 FCE7     		b	.L3
+ 105              	.L6:
+ 106 003a 00BF     		.align	2
+ 107              	.L5:
+ 108 003c 00000000 		.word	SystemCoreClock
+ 109 0040 D34D6210 		.word	274877907
+ 110 0044 00ED00E0 		.word	-536810240
+ 111              		.cfi_endproc
+ 112              	.LFE123:
+ 114              		.text
+ 115              	.Letext0:
+ 116              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 117              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 118              		.file 5 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 119              		.file 6 "Lib/bsp/Inc/delay.h"
+ 120              		.file 7 "Core/Inc/ecatapp.h"
+ 121              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ARM GAS  /tmp/ccTVGe6C.s 			page 35
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccTVGe6C.s:20     .text.main:0000000000000000 $t
+     /tmp/ccTVGe6C.s:26     .text.main:0000000000000000 main
+     /tmp/ccTVGe6C.s:108    .text.main:000000000000003c $d
+
+UNDEFINED SYMBOLS
+delay_init
+ecatapp_init
+ecatapp_loop
+SystemCoreClock
