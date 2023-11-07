@@ -178,7 +178,7 @@ void ESC_interrupt_enable (uint32_t mask)
 
    if (ESCREG_ALEVENT_DC_SYNC0 & mask)
    {
-      EXTILine1_Config();
+      EXTILine0_Config();
       mask &= ~ESCREG_ALEVENT_DC_SYNC0;
    }
    if (ESCREG_ALEVENT_DC_SYNC1 & mask)
@@ -202,7 +202,7 @@ void ESC_interrupt_disable (uint32_t mask)
    EXTILine3_Disable();
    if (ESCREG_ALEVENT_DC_SYNC0 & mask)
    {
-      EXTILine1_Disable();
+      EXTILine0_Disable();
       mask &= ~ESCREG_ALEVENT_DC_SYNC0;
    }
    if (ESCREG_ALEVENT_DC_SYNC1 & mask)

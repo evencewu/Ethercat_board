@@ -47,7 +47,7 @@ static esc_cfg_t config = {
 
 static uint8_t sync0_irq_flag = 0;
 
-void EXTI1_IRQHandler(void)
+void EXTI0_IRQHandler(void)
 {
     if(EXTI_GetITStatus(EXTI_Line1) != RESET)
     {
@@ -58,11 +58,11 @@ void EXTI1_IRQHandler(void)
 
 static uint8_t pdi_irq_flag = 0;
 
-void EXTI3_IRQHandler(void)
+void EXTI9_5_IRQHandler(void)
 {
-    if(EXTI_GetITStatus(EXTI_Line3) != RESET)
+    if(EXTI_GetITStatus(EXTI_Line5) != RESET)
     {
-        EXTI_ClearITPendingBit(EXTI_Line3);
+        EXTI_ClearITPendingBit(EXTI_Line6);
         pdi_irq_flag = 1;
     }
 }

@@ -1,30 +1,30 @@
-ARM GAS  /tmp/ccIUOTTa.s 			page 1
+ARM GAS  /tmp/cchqGcV5.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.eabi_attribute 27, 1
-   3              		.eabi_attribute 28, 1
-   4              		.eabi_attribute 20, 1
-   5              		.eabi_attribute 21, 1
-   6              		.eabi_attribute 23, 3
-   7              		.eabi_attribute 24, 1
-   8              		.eabi_attribute 25, 1
-   9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
-  11              		.eabi_attribute 34, 1
-  12              		.eabi_attribute 18, 4
-  13              		.file	"esc_irq.c"
-  14              		.text
-  15              	.Ltext0:
-  16              		.cfi_sections	.debug_frame
-  17              		.section	.text.EXTILine1_Config,"ax",%progbits
-  18              		.align	1
-  19              		.global	EXTILine1_Config
-  20              		.arch armv7e-m
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  24              		.fpu fpv4-sp-d16
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"esc_irq.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.EXTILine1_Config,"ax",%progbits
+  20              		.align	1
+  21              		.global	EXTILine1_Config
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
   26              	EXTILine1_Config:
   27              	.LFB123:
   28              		.file 1 "Lib/soes_hal_bsp/src/esc_irq.c"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccIUOTTa.s 			page 1
   43              		.loc 1 13 5 view .LVU4
   44 0004 0121     		movs	r1, #1
   45 0006 0846     		mov	r0, r1
-ARM GAS  /tmp/ccIUOTTa.s 			page 2
+ARM GAS  /tmp/cchqGcV5.s 			page 2
 
 
   46 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccIUOTTa.s 			page 1
   30:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
   84              		.loc 1 30 5 is_stmt 1 view .LVU20
   85              		.loc 1 30 37 is_stmt 0 view .LVU21
-ARM GAS  /tmp/ccIUOTTa.s 			page 3
+ARM GAS  /tmp/cchqGcV5.s 			page 3
 
 
   86 0040 0124     		movs	r4, #1
@@ -171,364 +171,362 @@ ARM GAS  /tmp/ccIUOTTa.s 			page 1
  125              		.syntax unified
  126              		.thumb
  127              		.thumb_func
- 128              		.fpu fpv4-sp-d16
- 130              	EXTILine1_Disable:
- 131              	.LFB124:
+ 129              	EXTILine1_Disable:
+ 130              	.LFB124:
   40:Lib/soes_hal_bsp/src/esc_irq.c **** 
   41:Lib/soes_hal_bsp/src/esc_irq.c **** void EXTILine1_Disable(void)
   42:Lib/soes_hal_bsp/src/esc_irq.c **** {
- 132              		.loc 1 42 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccIUOTTa.s 			page 4
+ 131              		.loc 1 42 1 is_stmt 1 view -0
+ 132              		.cfi_startproc
+ARM GAS  /tmp/cchqGcV5.s 			page 4
 
 
- 133              		.cfi_startproc
- 134              		@ args = 0, pretend = 0, frame = 16
- 135              		@ frame_needed = 0, uses_anonymous_args = 0
- 136 0000 10B5     		push	{r4, lr}
- 137              		.cfi_def_cfa_offset 8
- 138              		.cfi_offset 4, -8
- 139              		.cfi_offset 14, -4
- 140 0002 84B0     		sub	sp, sp, #16
- 141              		.cfi_def_cfa_offset 24
+ 133              		@ args = 0, pretend = 0, frame = 16
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135 0000 10B5     		push	{r4, lr}
+ 136              		.cfi_def_cfa_offset 8
+ 137              		.cfi_offset 4, -8
+ 138              		.cfi_offset 14, -4
+ 139 0002 84B0     		sub	sp, sp, #16
+ 140              		.cfi_def_cfa_offset 24
   43:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitTypeDef   EXTI_InitStructure;
- 142              		.loc 1 43 5 view .LVU34
+ 141              		.loc 1 43 5 view .LVU34
   44:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitTypeDef   NVIC_InitStructure;
- 143              		.loc 1 44 5 view .LVU35
+ 142              		.loc 1 44 5 view .LVU35
   45:Lib/soes_hal_bsp/src/esc_irq.c **** 
   46:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Enable SYSCFG clock */
   47:Lib/soes_hal_bsp/src/esc_irq.c ****     RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
- 144              		.loc 1 47 5 view .LVU36
- 145 0004 0121     		movs	r1, #1
- 146 0006 4FF48040 		mov	r0, #16384
- 147 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
- 148              	.LVL6:
+ 143              		.loc 1 47 5 view .LVU36
+ 144 0004 0121     		movs	r1, #1
+ 145 0006 4FF48040 		mov	r0, #16384
+ 146 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 147              	.LVL6:
   48:Lib/soes_hal_bsp/src/esc_irq.c **** 
   49:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Configure EXTI Line1 */
   50:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Line = EXTI_Line1;
- 149              		.loc 1 50 5 view .LVU37
- 150              		.loc 1 50 34 is_stmt 0 view .LVU38
- 151 000e 0223     		movs	r3, #2
- 152 0010 0293     		str	r3, [sp, #8]
+ 148              		.loc 1 50 5 view .LVU37
+ 149              		.loc 1 50 34 is_stmt 0 view .LVU38
+ 150 000e 0223     		movs	r3, #2
+ 151 0010 0293     		str	r3, [sp, #8]
   51:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
- 153              		.loc 1 51 5 is_stmt 1 view .LVU39
- 154              		.loc 1 51 34 is_stmt 0 view .LVU40
- 155 0012 0024     		movs	r4, #0
- 156 0014 8DF80C40 		strb	r4, [sp, #12]
+ 152              		.loc 1 51 5 is_stmt 1 view .LVU39
+ 153              		.loc 1 51 34 is_stmt 0 view .LVU40
+ 154 0012 0024     		movs	r4, #0
+ 155 0014 8DF80C40 		strb	r4, [sp, #12]
   52:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;  
- 157              		.loc 1 52 5 is_stmt 1 view .LVU41
- 158              		.loc 1 52 37 is_stmt 0 view .LVU42
- 159 0018 0C23     		movs	r3, #12
- 160 001a 8DF80D30 		strb	r3, [sp, #13]
+ 156              		.loc 1 52 5 is_stmt 1 view .LVU41
+ 157              		.loc 1 52 37 is_stmt 0 view .LVU42
+ 158 0018 0C23     		movs	r3, #12
+ 159 001a 8DF80D30 		strb	r3, [sp, #13]
   53:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_LineCmd = DISABLE;
- 161              		.loc 1 53 5 is_stmt 1 view .LVU43
- 162              		.loc 1 53 37 is_stmt 0 view .LVU44
- 163 001e 8DF80E40 		strb	r4, [sp, #14]
+ 160              		.loc 1 53 5 is_stmt 1 view .LVU43
+ 161              		.loc 1 53 37 is_stmt 0 view .LVU44
+ 162 001e 8DF80E40 		strb	r4, [sp, #14]
   54:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_Init(&EXTI_InitStructure);
- 164              		.loc 1 54 5 is_stmt 1 view .LVU45
- 165 0022 02A8     		add	r0, sp, #8
- 166 0024 FFF7FEFF 		bl	EXTI_Init
- 167              	.LVL7:
+ 163              		.loc 1 54 5 is_stmt 1 view .LVU45
+ 164 0022 02A8     		add	r0, sp, #8
+ 165 0024 FFF7FEFF 		bl	EXTI_Init
+ 166              	.LVL7:
   55:Lib/soes_hal_bsp/src/esc_irq.c **** 
   56:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Enable and set EXTI Line1 Interrupt to the lowest priority */
   57:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannel = EXTI1_IRQn;
- 168              		.loc 1 57 5 view .LVU46
- 169              		.loc 1 57 40 is_stmt 0 view .LVU47
- 170 0028 0723     		movs	r3, #7
- 171 002a 8DF80430 		strb	r3, [sp, #4]
+ 167              		.loc 1 57 5 view .LVU46
+ 168              		.loc 1 57 40 is_stmt 0 view .LVU47
+ 169 0028 0723     		movs	r3, #7
+ 170 002a 8DF80430 		strb	r3, [sp, #4]
   58:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 172              		.loc 1 58 5 is_stmt 1 view .LVU48
- 173              		.loc 1 58 58 is_stmt 0 view .LVU49
-ARM GAS  /tmp/ccIUOTTa.s 			page 5
+ 171              		.loc 1 58 5 is_stmt 1 view .LVU48
+ 172              		.loc 1 58 58 is_stmt 0 view .LVU49
+ 173 002e 0F23     		movs	r3, #15
+ARM GAS  /tmp/cchqGcV5.s 			page 5
 
 
- 174 002e 0F23     		movs	r3, #15
- 175 0030 8DF80530 		strb	r3, [sp, #5]
+ 174 0030 8DF80530 		strb	r3, [sp, #5]
   59:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x0F;
- 176              		.loc 1 59 5 is_stmt 1 view .LVU50
- 177              		.loc 1 59 51 is_stmt 0 view .LVU51
- 178 0034 8DF80630 		strb	r3, [sp, #6]
+ 175              		.loc 1 59 5 is_stmt 1 view .LVU50
+ 176              		.loc 1 59 51 is_stmt 0 view .LVU51
+ 177 0034 8DF80630 		strb	r3, [sp, #6]
   60:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelCmd = DISABLE;
- 179              		.loc 1 60 5 is_stmt 1 view .LVU52
- 180              		.loc 1 60 43 is_stmt 0 view .LVU53
- 181 0038 8DF80740 		strb	r4, [sp, #7]
+ 178              		.loc 1 60 5 is_stmt 1 view .LVU52
+ 179              		.loc 1 60 43 is_stmt 0 view .LVU53
+ 180 0038 8DF80740 		strb	r4, [sp, #7]
   61:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_Init(&NVIC_InitStructure);
- 182              		.loc 1 61 5 is_stmt 1 view .LVU54
- 183 003c 01A8     		add	r0, sp, #4
- 184 003e FFF7FEFF 		bl	NVIC_Init
- 185              	.LVL8:
+ 181              		.loc 1 61 5 is_stmt 1 view .LVU54
+ 182 003c 01A8     		add	r0, sp, #4
+ 183 003e FFF7FEFF 		bl	NVIC_Init
+ 184              	.LVL8:
   62:Lib/soes_hal_bsp/src/esc_irq.c **** }
- 186              		.loc 1 62 1 is_stmt 0 view .LVU55
- 187 0042 04B0     		add	sp, sp, #16
- 188              		.cfi_def_cfa_offset 8
- 189              		@ sp needed
- 190 0044 10BD     		pop	{r4, pc}
- 191              		.cfi_endproc
- 192              	.LFE124:
- 194              		.section	.text.EXTILine3_Config,"ax",%progbits
- 195              		.align	1
- 196              		.global	EXTILine3_Config
- 197              		.syntax unified
- 198              		.thumb
- 199              		.thumb_func
- 200              		.fpu fpv4-sp-d16
- 202              	EXTILine3_Config:
- 203              	.LFB125:
+ 185              		.loc 1 62 1 is_stmt 0 view .LVU55
+ 186 0042 04B0     		add	sp, sp, #16
+ 187              		.cfi_def_cfa_offset 8
+ 188              		@ sp needed
+ 189 0044 10BD     		pop	{r4, pc}
+ 190              		.cfi_endproc
+ 191              	.LFE124:
+ 193              		.section	.text.EXTILine3_Config,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	EXTILine3_Config
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 200              	EXTILine3_Config:
+ 201              	.LFB125:
   63:Lib/soes_hal_bsp/src/esc_irq.c **** 
   64:Lib/soes_hal_bsp/src/esc_irq.c **** void EXTILine3_Config(void)
   65:Lib/soes_hal_bsp/src/esc_irq.c **** {
- 204              		.loc 1 65 1 is_stmt 1 view -0
- 205              		.cfi_startproc
- 206              		@ args = 0, pretend = 0, frame = 24
- 207              		@ frame_needed = 0, uses_anonymous_args = 0
- 208 0000 30B5     		push	{r4, r5, lr}
- 209              		.cfi_def_cfa_offset 12
- 210              		.cfi_offset 4, -12
- 211              		.cfi_offset 5, -8
- 212              		.cfi_offset 14, -4
- 213 0002 87B0     		sub	sp, sp, #28
- 214              		.cfi_def_cfa_offset 40
+ 202              		.loc 1 65 1 is_stmt 1 view -0
+ 203              		.cfi_startproc
+ 204              		@ args = 0, pretend = 0, frame = 24
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206 0000 30B5     		push	{r4, r5, lr}
+ 207              		.cfi_def_cfa_offset 12
+ 208              		.cfi_offset 4, -12
+ 209              		.cfi_offset 5, -8
+ 210              		.cfi_offset 14, -4
+ 211 0002 87B0     		sub	sp, sp, #28
+ 212              		.cfi_def_cfa_offset 40
   66:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitTypeDef   EXTI_InitStructure;
- 215              		.loc 1 66 5 view .LVU57
+ 213              		.loc 1 66 5 view .LVU57
   67:Lib/soes_hal_bsp/src/esc_irq.c ****     GPIO_InitTypeDef   GPIO_InitStructure;
- 216              		.loc 1 67 5 view .LVU58
+ 214              		.loc 1 67 5 view .LVU58
   68:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitTypeDef   NVIC_InitStructure;
- 217              		.loc 1 68 5 view .LVU59
+ 215              		.loc 1 68 5 view .LVU59
   69:Lib/soes_hal_bsp/src/esc_irq.c **** 
   70:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Enable GPIOA clock */
   71:Lib/soes_hal_bsp/src/esc_irq.c ****     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
- 218              		.loc 1 71 5 view .LVU60
- 219 0004 0121     		movs	r1, #1
-ARM GAS  /tmp/ccIUOTTa.s 			page 6
+ 216              		.loc 1 71 5 view .LVU60
+ 217 0004 0121     		movs	r1, #1
+ 218 0006 0846     		mov	r0, r1
+ 219 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+ARM GAS  /tmp/cchqGcV5.s 			page 6
 
 
- 220 0006 0846     		mov	r0, r1
- 221 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
- 222              	.LVL9:
+ 220              	.LVL9:
   72:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Enable SYSCFG clock */
   73:Lib/soes_hal_bsp/src/esc_irq.c ****     RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
- 223              		.loc 1 73 5 view .LVU61
- 224 000c 0121     		movs	r1, #1
- 225 000e 4FF48040 		mov	r0, #16384
- 226 0012 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
- 227              	.LVL10:
+ 221              		.loc 1 73 5 view .LVU61
+ 222 000c 0121     		movs	r1, #1
+ 223 000e 4FF48040 		mov	r0, #16384
+ 224 0012 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 225              	.LVL10:
   74:Lib/soes_hal_bsp/src/esc_irq.c **** 
   75:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Configure PA3 pin as input floating */
   76:Lib/soes_hal_bsp/src/esc_irq.c ****     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
- 228              		.loc 1 76 5 view .LVU62
- 229              		.loc 1 76 34 is_stmt 0 view .LVU63
- 230 0016 0024     		movs	r4, #0
- 231 0018 8DF80C40 		strb	r4, [sp, #12]
+ 226              		.loc 1 76 5 view .LVU62
+ 227              		.loc 1 76 34 is_stmt 0 view .LVU63
+ 228 0016 0024     		movs	r4, #0
+ 229 0018 8DF80C40 		strb	r4, [sp, #12]
   77:Lib/soes_hal_bsp/src/esc_irq.c ****     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
- 232              		.loc 1 77 5 is_stmt 1 view .LVU64
- 233              		.loc 1 77 34 is_stmt 0 view .LVU65
- 234 001c 8DF80F40 		strb	r4, [sp, #15]
+ 230              		.loc 1 77 5 is_stmt 1 view .LVU64
+ 231              		.loc 1 77 34 is_stmt 0 view .LVU65
+ 232 001c 8DF80F40 		strb	r4, [sp, #15]
   78:Lib/soes_hal_bsp/src/esc_irq.c ****     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
- 235              		.loc 1 78 5 is_stmt 1 view .LVU66
- 236              		.loc 1 78 33 is_stmt 0 view .LVU67
- 237 0020 0825     		movs	r5, #8
- 238 0022 0295     		str	r5, [sp, #8]
+ 233              		.loc 1 78 5 is_stmt 1 view .LVU66
+ 234              		.loc 1 78 33 is_stmt 0 view .LVU67
+ 235 0020 0825     		movs	r5, #8
+ 236 0022 0295     		str	r5, [sp, #8]
   79:Lib/soes_hal_bsp/src/esc_irq.c ****     GPIO_Init(GPIOA, &GPIO_InitStructure);
- 239              		.loc 1 79 5 is_stmt 1 view .LVU68
- 240 0024 0DEB0501 		add	r1, sp, r5
- 241 0028 1048     		ldr	r0, .L9
- 242 002a FFF7FEFF 		bl	GPIO_Init
- 243              	.LVL11:
+ 237              		.loc 1 79 5 is_stmt 1 view .LVU68
+ 238 0024 0DEB0501 		add	r1, sp, r5
+ 239 0028 1048     		ldr	r0, .L9
+ 240 002a FFF7FEFF 		bl	GPIO_Init
+ 241              	.LVL11:
   80:Lib/soes_hal_bsp/src/esc_irq.c **** 
   81:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Connect EXTI Line3 to PA3 pin */
   82:Lib/soes_hal_bsp/src/esc_irq.c ****     SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource3);
- 244              		.loc 1 82 5 view .LVU69
- 245 002e 0321     		movs	r1, #3
- 246 0030 2046     		mov	r0, r4
- 247 0032 FFF7FEFF 		bl	SYSCFG_EXTILineConfig
- 248              	.LVL12:
+ 242              		.loc 1 82 5 view .LVU69
+ 243 002e 0321     		movs	r1, #3
+ 244 0030 2046     		mov	r0, r4
+ 245 0032 FFF7FEFF 		bl	SYSCFG_EXTILineConfig
+ 246              	.LVL12:
   83:Lib/soes_hal_bsp/src/esc_irq.c **** 
   84:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Configure EXTI Line3 */
   85:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Line = EXTI_Line3;
- 249              		.loc 1 85 5 view .LVU70
- 250              		.loc 1 85 34 is_stmt 0 view .LVU71
- 251 0036 0495     		str	r5, [sp, #16]
+ 247              		.loc 1 85 5 view .LVU70
+ 248              		.loc 1 85 34 is_stmt 0 view .LVU71
+ 249 0036 0495     		str	r5, [sp, #16]
   86:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
- 252              		.loc 1 86 5 is_stmt 1 view .LVU72
- 253              		.loc 1 86 34 is_stmt 0 view .LVU73
- 254 0038 8DF81440 		strb	r4, [sp, #20]
+ 250              		.loc 1 86 5 is_stmt 1 view .LVU72
+ 251              		.loc 1 86 34 is_stmt 0 view .LVU73
+ 252 0038 8DF81440 		strb	r4, [sp, #20]
   87:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;  
- 255              		.loc 1 87 5 is_stmt 1 view .LVU74
- 256              		.loc 1 87 37 is_stmt 0 view .LVU75
- 257 003c 0C23     		movs	r3, #12
- 258 003e 8DF81530 		strb	r3, [sp, #21]
+ 253              		.loc 1 87 5 is_stmt 1 view .LVU74
+ 254              		.loc 1 87 37 is_stmt 0 view .LVU75
+ 255 003c 0C23     		movs	r3, #12
+ 256 003e 8DF81530 		strb	r3, [sp, #21]
   88:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
- 259              		.loc 1 88 5 is_stmt 1 view .LVU76
-ARM GAS  /tmp/ccIUOTTa.s 			page 7
+ 257              		.loc 1 88 5 is_stmt 1 view .LVU76
+ 258              		.loc 1 88 37 is_stmt 0 view .LVU77
+ 259 0042 0124     		movs	r4, #1
+ARM GAS  /tmp/cchqGcV5.s 			page 7
 
 
- 260              		.loc 1 88 37 is_stmt 0 view .LVU77
- 261 0042 0124     		movs	r4, #1
- 262 0044 8DF81640 		strb	r4, [sp, #22]
+ 260 0044 8DF81640 		strb	r4, [sp, #22]
   89:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_Init(&EXTI_InitStructure);
- 263              		.loc 1 89 5 is_stmt 1 view .LVU78
- 264 0048 04A8     		add	r0, sp, #16
- 265 004a FFF7FEFF 		bl	EXTI_Init
- 266              	.LVL13:
+ 261              		.loc 1 89 5 is_stmt 1 view .LVU78
+ 262 0048 04A8     		add	r0, sp, #16
+ 263 004a FFF7FEFF 		bl	EXTI_Init
+ 264              	.LVL13:
   90:Lib/soes_hal_bsp/src/esc_irq.c **** 
   91:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Enable and set EXTI Line3 Interrupt to the lowest priority */
   92:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannel = EXTI3_IRQn;
- 267              		.loc 1 92 5 view .LVU79
- 268              		.loc 1 92 40 is_stmt 0 view .LVU80
- 269 004e 0923     		movs	r3, #9
- 270 0050 8DF80430 		strb	r3, [sp, #4]
+ 265              		.loc 1 92 5 view .LVU79
+ 266              		.loc 1 92 40 is_stmt 0 view .LVU80
+ 267 004e 0923     		movs	r3, #9
+ 268 0050 8DF80430 		strb	r3, [sp, #4]
   93:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 271              		.loc 1 93 5 is_stmt 1 view .LVU81
- 272              		.loc 1 93 58 is_stmt 0 view .LVU82
- 273 0054 0F23     		movs	r3, #15
- 274 0056 8DF80530 		strb	r3, [sp, #5]
+ 269              		.loc 1 93 5 is_stmt 1 view .LVU81
+ 270              		.loc 1 93 58 is_stmt 0 view .LVU82
+ 271 0054 0F23     		movs	r3, #15
+ 272 0056 8DF80530 		strb	r3, [sp, #5]
   94:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x0F;
- 275              		.loc 1 94 5 is_stmt 1 view .LVU83
- 276              		.loc 1 94 51 is_stmt 0 view .LVU84
- 277 005a 8DF80630 		strb	r3, [sp, #6]
+ 273              		.loc 1 94 5 is_stmt 1 view .LVU83
+ 274              		.loc 1 94 51 is_stmt 0 view .LVU84
+ 275 005a 8DF80630 		strb	r3, [sp, #6]
   95:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
- 278              		.loc 1 95 5 is_stmt 1 view .LVU85
- 279              		.loc 1 95 43 is_stmt 0 view .LVU86
- 280 005e 8DF80740 		strb	r4, [sp, #7]
+ 276              		.loc 1 95 5 is_stmt 1 view .LVU85
+ 277              		.loc 1 95 43 is_stmt 0 view .LVU86
+ 278 005e 8DF80740 		strb	r4, [sp, #7]
   96:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_Init(&NVIC_InitStructure);
- 281              		.loc 1 96 5 is_stmt 1 view .LVU87
- 282 0062 01A8     		add	r0, sp, #4
- 283 0064 FFF7FEFF 		bl	NVIC_Init
- 284              	.LVL14:
+ 279              		.loc 1 96 5 is_stmt 1 view .LVU87
+ 280 0062 01A8     		add	r0, sp, #4
+ 281 0064 FFF7FEFF 		bl	NVIC_Init
+ 282              	.LVL14:
   97:Lib/soes_hal_bsp/src/esc_irq.c **** }
- 285              		.loc 1 97 1 is_stmt 0 view .LVU88
- 286 0068 07B0     		add	sp, sp, #28
- 287              		.cfi_def_cfa_offset 12
- 288              		@ sp needed
- 289 006a 30BD     		pop	{r4, r5, pc}
- 290              	.L10:
- 291              		.align	2
- 292              	.L9:
- 293 006c 00000240 		.word	1073872896
- 294              		.cfi_endproc
- 295              	.LFE125:
- 297              		.section	.text.EXTILine3_Disable,"ax",%progbits
- 298              		.align	1
- 299              		.global	EXTILine3_Disable
- 300              		.syntax unified
- 301              		.thumb
- 302              		.thumb_func
- 303              		.fpu fpv4-sp-d16
- 305              	EXTILine3_Disable:
- 306              	.LFB126:
+ 283              		.loc 1 97 1 is_stmt 0 view .LVU88
+ 284 0068 07B0     		add	sp, sp, #28
+ 285              		.cfi_def_cfa_offset 12
+ 286              		@ sp needed
+ 287 006a 30BD     		pop	{r4, r5, pc}
+ 288              	.L10:
+ 289              		.align	2
+ 290              	.L9:
+ 291 006c 00000240 		.word	1073872896
+ 292              		.cfi_endproc
+ 293              	.LFE125:
+ 295              		.section	.text.EXTILine3_Disable,"ax",%progbits
+ 296              		.align	1
+ 297              		.global	EXTILine3_Disable
+ 298              		.syntax unified
+ 299              		.thumb
+ 300              		.thumb_func
+ 302              	EXTILine3_Disable:
+ 303              	.LFB126:
   98:Lib/soes_hal_bsp/src/esc_irq.c **** 
   99:Lib/soes_hal_bsp/src/esc_irq.c **** void EXTILine3_Disable(void)
  100:Lib/soes_hal_bsp/src/esc_irq.c **** {
-ARM GAS  /tmp/ccIUOTTa.s 			page 8
+ 304              		.loc 1 100 1 is_stmt 1 view -0
+ 305              		.cfi_startproc
+ 306              		@ args = 0, pretend = 0, frame = 16
+ARM GAS  /tmp/cchqGcV5.s 			page 8
 
 
- 307              		.loc 1 100 1 is_stmt 1 view -0
- 308              		.cfi_startproc
- 309              		@ args = 0, pretend = 0, frame = 16
- 310              		@ frame_needed = 0, uses_anonymous_args = 0
- 311 0000 10B5     		push	{r4, lr}
- 312              		.cfi_def_cfa_offset 8
- 313              		.cfi_offset 4, -8
- 314              		.cfi_offset 14, -4
- 315 0002 84B0     		sub	sp, sp, #16
- 316              		.cfi_def_cfa_offset 24
+ 307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 308 0000 10B5     		push	{r4, lr}
+ 309              		.cfi_def_cfa_offset 8
+ 310              		.cfi_offset 4, -8
+ 311              		.cfi_offset 14, -4
+ 312 0002 84B0     		sub	sp, sp, #16
+ 313              		.cfi_def_cfa_offset 24
  101:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitTypeDef   EXTI_InitStructure;
- 317              		.loc 1 101 5 view .LVU90
+ 314              		.loc 1 101 5 view .LVU90
  102:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitTypeDef   NVIC_InitStructure;
- 318              		.loc 1 102 5 view .LVU91
+ 315              		.loc 1 102 5 view .LVU91
  103:Lib/soes_hal_bsp/src/esc_irq.c **** 
  104:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Enable SYSCFG clock */
  105:Lib/soes_hal_bsp/src/esc_irq.c ****     RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
- 319              		.loc 1 105 5 view .LVU92
- 320 0004 0121     		movs	r1, #1
- 321 0006 4FF48040 		mov	r0, #16384
- 322 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
- 323              	.LVL15:
+ 316              		.loc 1 105 5 view .LVU92
+ 317 0004 0121     		movs	r1, #1
+ 318 0006 4FF48040 		mov	r0, #16384
+ 319 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 320              	.LVL15:
  106:Lib/soes_hal_bsp/src/esc_irq.c **** 
  107:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Configure EXTI Line3 */
  108:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Line = EXTI_Line3;
- 324              		.loc 1 108 5 view .LVU93
- 325              		.loc 1 108 34 is_stmt 0 view .LVU94
- 326 000e 0823     		movs	r3, #8
- 327 0010 0293     		str	r3, [sp, #8]
+ 321              		.loc 1 108 5 view .LVU93
+ 322              		.loc 1 108 34 is_stmt 0 view .LVU94
+ 323 000e 0823     		movs	r3, #8
+ 324 0010 0293     		str	r3, [sp, #8]
  109:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
- 328              		.loc 1 109 5 is_stmt 1 view .LVU95
- 329              		.loc 1 109 34 is_stmt 0 view .LVU96
- 330 0012 0024     		movs	r4, #0
- 331 0014 8DF80C40 		strb	r4, [sp, #12]
+ 325              		.loc 1 109 5 is_stmt 1 view .LVU95
+ 326              		.loc 1 109 34 is_stmt 0 view .LVU96
+ 327 0012 0024     		movs	r4, #0
+ 328 0014 8DF80C40 		strb	r4, [sp, #12]
  110:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;  
- 332              		.loc 1 110 5 is_stmt 1 view .LVU97
- 333              		.loc 1 110 37 is_stmt 0 view .LVU98
- 334 0018 0C23     		movs	r3, #12
- 335 001a 8DF80D30 		strb	r3, [sp, #13]
+ 329              		.loc 1 110 5 is_stmt 1 view .LVU97
+ 330              		.loc 1 110 37 is_stmt 0 view .LVU98
+ 331 0018 0C23     		movs	r3, #12
+ 332 001a 8DF80D30 		strb	r3, [sp, #13]
  111:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_InitStructure.EXTI_LineCmd = DISABLE;
- 336              		.loc 1 111 5 is_stmt 1 view .LVU99
- 337              		.loc 1 111 37 is_stmt 0 view .LVU100
- 338 001e 8DF80E40 		strb	r4, [sp, #14]
+ 333              		.loc 1 111 5 is_stmt 1 view .LVU99
+ 334              		.loc 1 111 37 is_stmt 0 view .LVU100
+ 335 001e 8DF80E40 		strb	r4, [sp, #14]
  112:Lib/soes_hal_bsp/src/esc_irq.c ****     EXTI_Init(&EXTI_InitStructure);
- 339              		.loc 1 112 5 is_stmt 1 view .LVU101
- 340 0022 02A8     		add	r0, sp, #8
- 341 0024 FFF7FEFF 		bl	EXTI_Init
- 342              	.LVL16:
+ 336              		.loc 1 112 5 is_stmt 1 view .LVU101
+ 337 0022 02A8     		add	r0, sp, #8
+ 338 0024 FFF7FEFF 		bl	EXTI_Init
+ 339              	.LVL16:
  113:Lib/soes_hal_bsp/src/esc_irq.c **** 
  114:Lib/soes_hal_bsp/src/esc_irq.c ****     /* Enable and set EXTI Line3 Interrupt to the lowest priority */
  115:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannel = EXTI3_IRQn;
- 343              		.loc 1 115 5 view .LVU102
- 344              		.loc 1 115 40 is_stmt 0 view .LVU103
- 345 0028 0923     		movs	r3, #9
- 346 002a 8DF80430 		strb	r3, [sp, #4]
+ 340              		.loc 1 115 5 view .LVU102
+ 341              		.loc 1 115 40 is_stmt 0 view .LVU103
+ 342 0028 0923     		movs	r3, #9
+ 343 002a 8DF80430 		strb	r3, [sp, #4]
  116:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 347              		.loc 1 116 5 is_stmt 1 view .LVU104
-ARM GAS  /tmp/ccIUOTTa.s 			page 9
+ 344              		.loc 1 116 5 is_stmt 1 view .LVU104
+ 345              		.loc 1 116 58 is_stmt 0 view .LVU105
+ 346 002e 0F23     		movs	r3, #15
+ 347 0030 8DF80530 		strb	r3, [sp, #5]
+ARM GAS  /tmp/cchqGcV5.s 			page 9
 
 
- 348              		.loc 1 116 58 is_stmt 0 view .LVU105
- 349 002e 0F23     		movs	r3, #15
- 350 0030 8DF80530 		strb	r3, [sp, #5]
  117:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x0F;
- 351              		.loc 1 117 5 is_stmt 1 view .LVU106
- 352              		.loc 1 117 51 is_stmt 0 view .LVU107
- 353 0034 8DF80630 		strb	r3, [sp, #6]
+ 348              		.loc 1 117 5 is_stmt 1 view .LVU106
+ 349              		.loc 1 117 51 is_stmt 0 view .LVU107
+ 350 0034 8DF80630 		strb	r3, [sp, #6]
  118:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_InitStructure.NVIC_IRQChannelCmd = DISABLE;
- 354              		.loc 1 118 5 is_stmt 1 view .LVU108
- 355              		.loc 1 118 43 is_stmt 0 view .LVU109
- 356 0038 8DF80740 		strb	r4, [sp, #7]
+ 351              		.loc 1 118 5 is_stmt 1 view .LVU108
+ 352              		.loc 1 118 43 is_stmt 0 view .LVU109
+ 353 0038 8DF80740 		strb	r4, [sp, #7]
  119:Lib/soes_hal_bsp/src/esc_irq.c ****     NVIC_Init(&NVIC_InitStructure);
- 357              		.loc 1 119 5 is_stmt 1 view .LVU110
- 358 003c 01A8     		add	r0, sp, #4
- 359 003e FFF7FEFF 		bl	NVIC_Init
- 360              	.LVL17:
+ 354              		.loc 1 119 5 is_stmt 1 view .LVU110
+ 355 003c 01A8     		add	r0, sp, #4
+ 356 003e FFF7FEFF 		bl	NVIC_Init
+ 357              	.LVL17:
  120:Lib/soes_hal_bsp/src/esc_irq.c **** }
- 361              		.loc 1 120 1 is_stmt 0 view .LVU111
- 362 0042 04B0     		add	sp, sp, #16
- 363              		.cfi_def_cfa_offset 8
- 364              		@ sp needed
- 365 0044 10BD     		pop	{r4, pc}
- 366              		.cfi_endproc
- 367              	.LFE126:
- 369              		.text
- 370              	.Letext0:
- 371              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
- 372              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 373              		.file 4 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h"
- 374              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h"
- 375              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h"
- 376              		.file 7 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
- 377              		.file 8 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h"
-ARM GAS  /tmp/ccIUOTTa.s 			page 10
+ 358              		.loc 1 120 1 is_stmt 0 view .LVU111
+ 359 0042 04B0     		add	sp, sp, #16
+ 360              		.cfi_def_cfa_offset 8
+ 361              		@ sp needed
+ 362 0044 10BD     		pop	{r4, pc}
+ 363              		.cfi_endproc
+ 364              	.LFE126:
+ 366              		.text
+ 367              	.Letext0:
+ 368              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 369              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 370              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 371              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h"
+ 372              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h"
+ 373              		.file 7 "Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h"
+ 374              		.file 8 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ 375              		.file 9 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h"
+ARM GAS  /tmp/cchqGcV5.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 esc_irq.c
-     /tmp/ccIUOTTa.s:18     .text.EXTILine1_Config:0000000000000000 $t
-     /tmp/ccIUOTTa.s:26     .text.EXTILine1_Config:0000000000000000 EXTILine1_Config
-     /tmp/ccIUOTTa.s:118    .text.EXTILine1_Config:000000000000006c $d
-     /tmp/ccIUOTTa.s:123    .text.EXTILine1_Disable:0000000000000000 $t
-     /tmp/ccIUOTTa.s:130    .text.EXTILine1_Disable:0000000000000000 EXTILine1_Disable
-     /tmp/ccIUOTTa.s:195    .text.EXTILine3_Config:0000000000000000 $t
-     /tmp/ccIUOTTa.s:202    .text.EXTILine3_Config:0000000000000000 EXTILine3_Config
-     /tmp/ccIUOTTa.s:293    .text.EXTILine3_Config:000000000000006c $d
-     /tmp/ccIUOTTa.s:298    .text.EXTILine3_Disable:0000000000000000 $t
-     /tmp/ccIUOTTa.s:305    .text.EXTILine3_Disable:0000000000000000 EXTILine3_Disable
+     /tmp/cchqGcV5.s:20     .text.EXTILine1_Config:0000000000000000 $t
+     /tmp/cchqGcV5.s:26     .text.EXTILine1_Config:0000000000000000 EXTILine1_Config
+     /tmp/cchqGcV5.s:118    .text.EXTILine1_Config:000000000000006c $d
+     /tmp/cchqGcV5.s:123    .text.EXTILine1_Disable:0000000000000000 $t
+     /tmp/cchqGcV5.s:129    .text.EXTILine1_Disable:0000000000000000 EXTILine1_Disable
+     /tmp/cchqGcV5.s:194    .text.EXTILine3_Config:0000000000000000 $t
+     /tmp/cchqGcV5.s:200    .text.EXTILine3_Config:0000000000000000 EXTILine3_Config
+     /tmp/cchqGcV5.s:291    .text.EXTILine3_Config:000000000000006c $d
+     /tmp/cchqGcV5.s:296    .text.EXTILine3_Disable:0000000000000000 $t
+     /tmp/cchqGcV5.s:302    .text.EXTILine3_Disable:0000000000000000 EXTILine3_Disable
 
 UNDEFINED SYMBOLS
 RCC_AHB1PeriphClockCmd

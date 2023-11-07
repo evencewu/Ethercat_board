@@ -1,30 +1,30 @@
-ARM GAS  /tmp/ccb7sZyw.s 			page 1
+ARM GAS  /tmp/ccR4wFif.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.eabi_attribute 27, 1
-   3              		.eabi_attribute 28, 1
-   4              		.eabi_attribute 20, 1
-   5              		.eabi_attribute 21, 1
-   6              		.eabi_attribute 23, 3
-   7              		.eabi_attribute 24, 1
-   8              		.eabi_attribute 25, 1
-   9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
-  11              		.eabi_attribute 34, 1
-  12              		.eabi_attribute 18, 4
-  13              		.file	"spi.c"
-  14              		.text
-  15              	.Ltext0:
-  16              		.cfi_sections	.debug_frame
-  17              		.section	.text.spi_gpio_setup,"ax",%progbits
-  18              		.align	1
-  19              		.global	spi_gpio_setup
-  20              		.arch armv7e-m
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  24              		.fpu fpv4-sp-d16
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"spi.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.spi_gpio_setup,"ax",%progbits
+  20              		.align	1
+  21              		.global	spi_gpio_setup
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
   26              	spi_gpio_setup:
   27              	.LFB123:
   28              		.file 1 "Lib/soes_hal_bsp/src/spi.c"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccb7sZyw.s 			page 1
   10:Lib/soes_hal_bsp/src/spi.c ****     GPIO_PinAFConfig(GPIOA, GPIO_PinSource5,  GPIO_AF_SPI1);
   47              		.loc 1 10 5 view .LVU3
   48 000c 264D     		ldr	r5, .L3
-ARM GAS  /tmp/ccb7sZyw.s 			page 2
+ARM GAS  /tmp/ccR4wFif.s 			page 2
 
 
   49 000e 0522     		movs	r2, #5
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccb7sZyw.s 			page 1
   90              		.loc 1 23 21 is_stmt 0 view .LVU18
   91 004c 4023     		movs	r3, #64
   92 004e 0093     		str	r3, [sp]
-ARM GAS  /tmp/ccb7sZyw.s 			page 3
+ARM GAS  /tmp/ccR4wFif.s 			page 3
 
 
   24:Lib/soes_hal_bsp/src/spi.c ****     gpio.GPIO_Mode  = GPIO_Mode_AF;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccb7sZyw.s 			page 1
  131              		.loc 1 39 5 view .LVU39
  132              		.loc 1 39 21 is_stmt 0 view .LVU40
  133 0084 1023     		movs	r3, #16
-ARM GAS  /tmp/ccb7sZyw.s 			page 4
+ARM GAS  /tmp/ccR4wFif.s 			page 4
 
 
  134 0086 0093     		str	r3, [sp]
@@ -223,233 +223,229 @@ ARM GAS  /tmp/ccb7sZyw.s 			page 1
  168              		.syntax unified
  169              		.thumb
  170              		.thumb_func
- 171              		.fpu fpv4-sp-d16
- 173              	spi_setup:
- 174              	.LFB124:
+ 172              	spi_setup:
+ 173              	.LFB124:
   46:Lib/soes_hal_bsp/src/spi.c **** 
   47:Lib/soes_hal_bsp/src/spi.c **** void spi_setup(void)
   48:Lib/soes_hal_bsp/src/spi.c **** {
- 175              		.loc 1 48 1 is_stmt 1 view -0
- 176              		.cfi_startproc
- 177              		@ args = 0, pretend = 0, frame = 24
- 178              		@ frame_needed = 0, uses_anonymous_args = 0
- 179 0000 10B5     		push	{r4, lr}
- 180              		.cfi_def_cfa_offset 8
- 181              		.cfi_offset 4, -8
- 182              		.cfi_offset 14, -4
- 183 0002 86B0     		sub	sp, sp, #24
-ARM GAS  /tmp/ccb7sZyw.s 			page 5
+ 174              		.loc 1 48 1 is_stmt 1 view -0
+ 175              		.cfi_startproc
+ 176              		@ args = 0, pretend = 0, frame = 24
+ 177              		@ frame_needed = 0, uses_anonymous_args = 0
+ 178 0000 10B5     		push	{r4, lr}
+ 179              		.cfi_def_cfa_offset 8
+ 180              		.cfi_offset 4, -8
+ 181              		.cfi_offset 14, -4
+ 182 0002 86B0     		sub	sp, sp, #24
+ 183              		.cfi_def_cfa_offset 32
+ARM GAS  /tmp/ccR4wFif.s 			page 5
 
 
- 184              		.cfi_def_cfa_offset 32
   49:Lib/soes_hal_bsp/src/spi.c ****     spi_gpio_setup();
- 185              		.loc 1 49 5 view .LVU52
- 186 0004 FFF7FEFF 		bl	spi_gpio_setup
- 187              	.LVL8:
+ 184              		.loc 1 49 5 view .LVU52
+ 185 0004 FFF7FEFF 		bl	spi_gpio_setup
+ 186              	.LVL8:
   50:Lib/soes_hal_bsp/src/spi.c ****     
   51:Lib/soes_hal_bsp/src/spi.c ****     SPI_InitTypeDef  spi;
- 188              		.loc 1 51 5 view .LVU53
+ 187              		.loc 1 51 5 view .LVU53
   52:Lib/soes_hal_bsp/src/spi.c **** 
   53:Lib/soes_hal_bsp/src/spi.c ****     RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
- 189              		.loc 1 53 5 view .LVU54
- 190 0008 0121     		movs	r1, #1
- 191 000a 4FF48050 		mov	r0, #4096
- 192 000e FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
- 193              	.LVL9:
+ 188              		.loc 1 53 5 view .LVU54
+ 189 0008 0121     		movs	r1, #1
+ 190 000a 4FF48050 		mov	r0, #4096
+ 191 000e FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 192              	.LVL9:
   54:Lib/soes_hal_bsp/src/spi.c **** 
   55:Lib/soes_hal_bsp/src/spi.c ****     SPI_I2S_DeInit(SPI1);
- 194              		.loc 1 55 5 view .LVU55
- 195 0012 164C     		ldr	r4, .L8
- 196 0014 2046     		mov	r0, r4
- 197 0016 FFF7FEFF 		bl	SPI_I2S_DeInit
- 198              	.LVL10:
+ 193              		.loc 1 55 5 view .LVU55
+ 194 0012 164C     		ldr	r4, .L8
+ 195 0014 2046     		mov	r0, r4
+ 196 0016 FFF7FEFF 		bl	SPI_I2S_DeInit
+ 197              	.LVL10:
   56:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_Direction         = SPI_Direction_2Lines_FullDuplex;
- 199              		.loc 1 56 5 view .LVU56
- 200              		.loc 1 56 31 is_stmt 0 view .LVU57
- 201 001a 0023     		movs	r3, #0
- 202 001c ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 198              		.loc 1 56 5 view .LVU56
+ 199              		.loc 1 56 31 is_stmt 0 view .LVU57
+ 200 001a 0023     		movs	r3, #0
+ 201 001c ADF80430 		strh	r3, [sp, #4]	@ movhi
   57:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_DataSize          = SPI_DataSize_8b;
- 203              		.loc 1 57 5 is_stmt 1 view .LVU58
- 204              		.loc 1 57 31 is_stmt 0 view .LVU59
- 205 0020 ADF80830 		strh	r3, [sp, #8]	@ movhi
+ 202              		.loc 1 57 5 is_stmt 1 view .LVU58
+ 203              		.loc 1 57 31 is_stmt 0 view .LVU59
+ 204 0020 ADF80830 		strh	r3, [sp, #8]	@ movhi
   58:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_CPOL              = SPI_CPOL_Low;
- 206              		.loc 1 58 5 is_stmt 1 view .LVU60
- 207              		.loc 1 58 31 is_stmt 0 view .LVU61
- 208 0024 ADF80A30 		strh	r3, [sp, #10]	@ movhi
+ 205              		.loc 1 58 5 is_stmt 1 view .LVU60
+ 206              		.loc 1 58 31 is_stmt 0 view .LVU61
+ 207 0024 ADF80A30 		strh	r3, [sp, #10]	@ movhi
   59:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_CPHA              = SPI_CPHA_1Edge;
- 209              		.loc 1 59 5 is_stmt 1 view .LVU62
- 210              		.loc 1 59 31 is_stmt 0 view .LVU63
- 211 0028 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+ 208              		.loc 1 59 5 is_stmt 1 view .LVU62
+ 209              		.loc 1 59 31 is_stmt 0 view .LVU63
+ 210 0028 ADF80C30 		strh	r3, [sp, #12]	@ movhi
   60:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_NSS               = SPI_NSS_Soft;
- 212              		.loc 1 60 5 is_stmt 1 view .LVU64
- 213              		.loc 1 60 31 is_stmt 0 view .LVU65
- 214 002c 4FF40072 		mov	r2, #512
- 215 0030 ADF80E20 		strh	r2, [sp, #14]	@ movhi
+ 211              		.loc 1 60 5 is_stmt 1 view .LVU64
+ 212              		.loc 1 60 31 is_stmt 0 view .LVU65
+ 213 002c 4FF40072 		mov	r2, #512
+ 214 0030 ADF80E20 		strh	r2, [sp, #14]	@ movhi
   61:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
- 216              		.loc 1 61 5 is_stmt 1 view .LVU66
- 217              		.loc 1 61 31 is_stmt 0 view .LVU67
- 218 0034 0822     		movs	r2, #8
- 219 0036 ADF81020 		strh	r2, [sp, #16]	@ movhi
+ 215              		.loc 1 61 5 is_stmt 1 view .LVU66
+ 216              		.loc 1 61 31 is_stmt 0 view .LVU67
+ 217 0034 0822     		movs	r2, #8
+ 218 0036 ADF81020 		strh	r2, [sp, #16]	@ movhi
   62:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_FirstBit          = SPI_FirstBit_MSB;
- 220              		.loc 1 62 5 is_stmt 1 view .LVU68
- 221              		.loc 1 62 31 is_stmt 0 view .LVU69
- 222 003a ADF81230 		strh	r3, [sp, #18]	@ movhi
+ 219              		.loc 1 62 5 is_stmt 1 view .LVU68
+ 220              		.loc 1 62 31 is_stmt 0 view .LVU69
+ 221 003a ADF81230 		strh	r3, [sp, #18]	@ movhi
   63:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_CRCPolynomial     = 7;
- 223              		.loc 1 63 5 is_stmt 1 view .LVU70
- 224              		.loc 1 63 31 is_stmt 0 view .LVU71
- 225 003e 0723     		movs	r3, #7
-ARM GAS  /tmp/ccb7sZyw.s 			page 6
+ 222              		.loc 1 63 5 is_stmt 1 view .LVU70
+ 223              		.loc 1 63 31 is_stmt 0 view .LVU71
+ 224 003e 0723     		movs	r3, #7
+ 225 0040 ADF81430 		strh	r3, [sp, #20]	@ movhi
+ARM GAS  /tmp/ccR4wFif.s 			page 6
 
 
- 226 0040 ADF81430 		strh	r3, [sp, #20]	@ movhi
   64:Lib/soes_hal_bsp/src/spi.c ****     spi.SPI_Mode              = SPI_Mode_Master;
- 227              		.loc 1 64 5 is_stmt 1 view .LVU72
- 228              		.loc 1 64 31 is_stmt 0 view .LVU73
- 229 0044 4FF48273 		mov	r3, #260
- 230 0048 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 226              		.loc 1 64 5 is_stmt 1 view .LVU72
+ 227              		.loc 1 64 31 is_stmt 0 view .LVU73
+ 228 0044 4FF48273 		mov	r3, #260
+ 229 0048 ADF80630 		strh	r3, [sp, #6]	@ movhi
   65:Lib/soes_hal_bsp/src/spi.c ****     SPI_Init(SPI1, &spi);
- 231              		.loc 1 65 5 is_stmt 1 view .LVU74
- 232 004c 01A9     		add	r1, sp, #4
- 233 004e 2046     		mov	r0, r4
- 234 0050 FFF7FEFF 		bl	SPI_Init
- 235              	.LVL11:
+ 230              		.loc 1 65 5 is_stmt 1 view .LVU74
+ 231 004c 01A9     		add	r1, sp, #4
+ 232 004e 2046     		mov	r0, r4
+ 233 0050 FFF7FEFF 		bl	SPI_Init
+ 234              	.LVL11:
   66:Lib/soes_hal_bsp/src/spi.c **** 
   67:Lib/soes_hal_bsp/src/spi.c ****     while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET) { }
- 236              		.loc 1 67 5 view .LVU75
- 237              	.L6:
- 238              		.loc 1 67 69 discriminator 1 view .LVU76
- 239              		.loc 1 67 10 discriminator 1 view .LVU77
- 240              		.loc 1 67 11 is_stmt 0 discriminator 1 view .LVU78
- 241 0054 0221     		movs	r1, #2
- 242 0056 0548     		ldr	r0, .L8
- 243 0058 FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
- 244              	.LVL12:
- 245              		.loc 1 67 10 discriminator 1 view .LVU79
- 246 005c 0028     		cmp	r0, #0
- 247 005e F9D0     		beq	.L6
+ 235              		.loc 1 67 5 view .LVU75
+ 236              	.L6:
+ 237              		.loc 1 67 69 discriminator 1 view .LVU76
+ 238              		.loc 1 67 10 discriminator 1 view .LVU77
+ 239              		.loc 1 67 11 is_stmt 0 discriminator 1 view .LVU78
+ 240 0054 0221     		movs	r1, #2
+ 241 0056 0548     		ldr	r0, .L8
+ 242 0058 FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
+ 243              	.LVL12:
+ 244              		.loc 1 67 10 discriminator 1 view .LVU79
+ 245 005c 0028     		cmp	r0, #0
+ 246 005e F9D0     		beq	.L6
   68:Lib/soes_hal_bsp/src/spi.c **** 
   69:Lib/soes_hal_bsp/src/spi.c ****     /* Enable the SPI peripheral */
   70:Lib/soes_hal_bsp/src/spi.c ****     SPI_Cmd(SPI1, ENABLE);
- 248              		.loc 1 70 5 is_stmt 1 view .LVU80
- 249 0060 0121     		movs	r1, #1
- 250 0062 0248     		ldr	r0, .L8
- 251 0064 FFF7FEFF 		bl	SPI_Cmd
- 252              	.LVL13:
+ 247              		.loc 1 70 5 is_stmt 1 view .LVU80
+ 248 0060 0121     		movs	r1, #1
+ 249 0062 0248     		ldr	r0, .L8
+ 250 0064 FFF7FEFF 		bl	SPI_Cmd
+ 251              	.LVL13:
   71:Lib/soes_hal_bsp/src/spi.c **** }
- 253              		.loc 1 71 1 is_stmt 0 view .LVU81
- 254 0068 06B0     		add	sp, sp, #24
- 255              		.cfi_def_cfa_offset 8
- 256              		@ sp needed
- 257 006a 10BD     		pop	{r4, pc}
- 258              	.L9:
- 259              		.align	2
- 260              	.L8:
- 261 006c 00300140 		.word	1073819648
- 262              		.cfi_endproc
- 263              	.LFE124:
- 265              		.section	.text.spi_select,"ax",%progbits
- 266              		.align	1
- 267              		.global	spi_select
- 268              		.syntax unified
- 269              		.thumb
- 270              		.thumb_func
- 271              		.fpu fpv4-sp-d16
- 273              	spi_select:
- 274              	.LVL14:
- 275              	.LFB125:
+ 252              		.loc 1 71 1 is_stmt 0 view .LVU81
+ 253 0068 06B0     		add	sp, sp, #24
+ 254              		.cfi_def_cfa_offset 8
+ 255              		@ sp needed
+ 256 006a 10BD     		pop	{r4, pc}
+ 257              	.L9:
+ 258              		.align	2
+ 259              	.L8:
+ 260 006c 00300140 		.word	1073819648
+ 261              		.cfi_endproc
+ 262              	.LFE124:
+ 264              		.section	.text.spi_select,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	spi_select
+ 267              		.syntax unified
+ 268              		.thumb
+ 269              		.thumb_func
+ 271              	spi_select:
+ 272              	.LVL14:
+ 273              	.LFB125:
   72:Lib/soes_hal_bsp/src/spi.c **** 
-ARM GAS  /tmp/ccb7sZyw.s 			page 7
-
-
   73:Lib/soes_hal_bsp/src/spi.c **** void spi_select (int8_t board)
   74:Lib/soes_hal_bsp/src/spi.c **** {
- 276              		.loc 1 74 1 is_stmt 1 view -0
- 277              		.cfi_startproc
- 278              		@ args = 0, pretend = 0, frame = 0
- 279              		@ frame_needed = 0, uses_anonymous_args = 0
- 280              		.loc 1 74 1 is_stmt 0 view .LVU83
- 281 0000 08B5     		push	{r3, lr}
- 282              		.cfi_def_cfa_offset 8
- 283              		.cfi_offset 3, -8
- 284              		.cfi_offset 14, -4
+ARM GAS  /tmp/ccR4wFif.s 			page 7
+
+
+ 274              		.loc 1 74 1 is_stmt 1 view -0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 0
+ 277              		@ frame_needed = 0, uses_anonymous_args = 0
+ 278              		.loc 1 74 1 is_stmt 0 view .LVU83
+ 279 0000 08B5     		push	{r3, lr}
+ 280              		.cfi_def_cfa_offset 8
+ 281              		.cfi_offset 3, -8
+ 282              		.cfi_offset 14, -4
   75:Lib/soes_hal_bsp/src/spi.c ****     // Soft CSM
   76:Lib/soes_hal_bsp/src/spi.c ****     #if SCS_ACTIVE_POLARITY == SCS_LOW
   77:Lib/soes_hal_bsp/src/spi.c ****     GPIO_ResetBits(ESC_GPIOX_CS, ESC_GPIO_Pin_CS);
- 285              		.loc 1 77 5 is_stmt 1 view .LVU84
- 286 0002 1021     		movs	r1, #16
- 287 0004 0148     		ldr	r0, .L12
- 288              	.LVL15:
- 289              		.loc 1 77 5 is_stmt 0 view .LVU85
- 290 0006 FFF7FEFF 		bl	GPIO_ResetBits
- 291              	.LVL16:
+ 283              		.loc 1 77 5 is_stmt 1 view .LVU84
+ 284 0002 1021     		movs	r1, #16
+ 285 0004 0148     		ldr	r0, .L12
+ 286              	.LVL15:
+ 287              		.loc 1 77 5 is_stmt 0 view .LVU85
+ 288 0006 FFF7FEFF 		bl	GPIO_ResetBits
+ 289              	.LVL16:
   78:Lib/soes_hal_bsp/src/spi.c ****     #elif SCS_ACTIVE_POLARITY == SCS_HIGH
   79:Lib/soes_hal_bsp/src/spi.c ****     GPIO_SetBits(ESC_GPIOX_CS, ESC_GPIO_Pin_CS);
   80:Lib/soes_hal_bsp/src/spi.c ****     #endif
   81:Lib/soes_hal_bsp/src/spi.c **** }
- 292              		.loc 1 81 1 view .LVU86
- 293 000a 08BD     		pop	{r3, pc}
- 294              	.L13:
- 295              		.align	2
- 296              	.L12:
- 297 000c 00000240 		.word	1073872896
- 298              		.cfi_endproc
- 299              	.LFE125:
- 301              		.section	.text.spi_unselect,"ax",%progbits
- 302              		.align	1
- 303              		.global	spi_unselect
- 304              		.syntax unified
- 305              		.thumb
- 306              		.thumb_func
- 307              		.fpu fpv4-sp-d16
- 309              	spi_unselect:
- 310              	.LVL17:
- 311              	.LFB126:
+ 290              		.loc 1 81 1 view .LVU86
+ 291 000a 08BD     		pop	{r3, pc}
+ 292              	.L13:
+ 293              		.align	2
+ 294              	.L12:
+ 295 000c 00000240 		.word	1073872896
+ 296              		.cfi_endproc
+ 297              	.LFE125:
+ 299              		.section	.text.spi_unselect,"ax",%progbits
+ 300              		.align	1
+ 301              		.global	spi_unselect
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 306              	spi_unselect:
+ 307              	.LVL17:
+ 308              	.LFB126:
   82:Lib/soes_hal_bsp/src/spi.c **** 
   83:Lib/soes_hal_bsp/src/spi.c **** void spi_unselect (int8_t board)
   84:Lib/soes_hal_bsp/src/spi.c **** {
- 312              		.loc 1 84 1 is_stmt 1 view -0
- 313              		.cfi_startproc
- 314              		@ args = 0, pretend = 0, frame = 0
- 315              		@ frame_needed = 0, uses_anonymous_args = 0
- 316              		.loc 1 84 1 is_stmt 0 view .LVU88
- 317 0000 08B5     		push	{r3, lr}
- 318              		.cfi_def_cfa_offset 8
- 319              		.cfi_offset 3, -8
- 320              		.cfi_offset 14, -4
+ 309              		.loc 1 84 1 is_stmt 1 view -0
+ 310              		.cfi_startproc
+ 311              		@ args = 0, pretend = 0, frame = 0
+ 312              		@ frame_needed = 0, uses_anonymous_args = 0
+ 313              		.loc 1 84 1 is_stmt 0 view .LVU88
+ 314 0000 08B5     		push	{r3, lr}
+ 315              		.cfi_def_cfa_offset 8
+ 316              		.cfi_offset 3, -8
+ 317              		.cfi_offset 14, -4
   85:Lib/soes_hal_bsp/src/spi.c ****     #if SCS_ACTIVE_POLARITY == SCS_LOW
   86:Lib/soes_hal_bsp/src/spi.c **** 	GPIO_SetBits(ESC_GPIOX_CS, ESC_GPIO_Pin_CS);
-ARM GAS  /tmp/ccb7sZyw.s 			page 8
+ 318              		.loc 1 86 2 is_stmt 1 view .LVU89
+ 319 0002 1021     		movs	r1, #16
+ 320 0004 0148     		ldr	r0, .L16
+ARM GAS  /tmp/ccR4wFif.s 			page 8
 
 
- 321              		.loc 1 86 2 is_stmt 1 view .LVU89
- 322 0002 1021     		movs	r1, #16
- 323 0004 0148     		ldr	r0, .L16
- 324              	.LVL18:
- 325              		.loc 1 86 2 is_stmt 0 view .LVU90
- 326 0006 FFF7FEFF 		bl	GPIO_SetBits
- 327              	.LVL19:
+ 321              	.LVL18:
+ 322              		.loc 1 86 2 is_stmt 0 view .LVU90
+ 323 0006 FFF7FEFF 		bl	GPIO_SetBits
+ 324              	.LVL19:
   87:Lib/soes_hal_bsp/src/spi.c ****     #elif SCS_ACTIVE_POLARITY == SCS_HIGH
   88:Lib/soes_hal_bsp/src/spi.c ****     GPIO_ResetBits(ESC_GPIOX_CS, ESC_GPIO_Pin_CS);
   89:Lib/soes_hal_bsp/src/spi.c ****     #endif
   90:Lib/soes_hal_bsp/src/spi.c **** }
- 328              		.loc 1 90 1 view .LVU91
- 329 000a 08BD     		pop	{r3, pc}
- 330              	.L17:
- 331              		.align	2
- 332              	.L16:
- 333 000c 00000240 		.word	1073872896
- 334              		.cfi_endproc
- 335              	.LFE126:
- 337              		.section	.text.spi_write,"ax",%progbits
- 338              		.align	1
- 339              		.global	spi_write
- 340              		.syntax unified
- 341              		.thumb
- 342              		.thumb_func
- 343              		.fpu fpv4-sp-d16
- 345              	spi_write:
- 346              	.LVL20:
- 347              	.LFB128:
+ 325              		.loc 1 90 1 view .LVU91
+ 326 000a 08BD     		pop	{r3, pc}
+ 327              	.L17:
+ 328              		.align	2
+ 329              	.L16:
+ 330 000c 00000240 		.word	1073872896
+ 331              		.cfi_endproc
+ 332              	.LFE126:
+ 334              		.section	.text.spi_write,"ax",%progbits
+ 335              		.align	1
+ 336              		.global	spi_write
+ 337              		.syntax unified
+ 338              		.thumb
+ 339              		.thumb_func
+ 341              	spi_write:
+ 342              	.LVL20:
+ 343              	.LFB128:
   91:Lib/soes_hal_bsp/src/spi.c **** 
   92:Lib/soes_hal_bsp/src/spi.c **** inline static uint8_t spi_transfer(uint8_t byte)
   93:Lib/soes_hal_bsp/src/spi.c **** {
@@ -463,379 +459,378 @@ ARM GAS  /tmp/ccb7sZyw.s 			page 1
  101:Lib/soes_hal_bsp/src/spi.c **** 
  102:Lib/soes_hal_bsp/src/spi.c **** void spi_write (int8_t board, uint8_t *data, uint8_t size)
  103:Lib/soes_hal_bsp/src/spi.c **** {
- 348              		.loc 1 103 1 is_stmt 1 view -0
- 349              		.cfi_startproc
- 350              		@ args = 0, pretend = 0, frame = 0
- 351              		@ frame_needed = 0, uses_anonymous_args = 0
- 352              		.loc 1 103 1 is_stmt 0 view .LVU93
- 353 0000 70B5     		push	{r4, r5, r6, lr}
- 354              		.cfi_def_cfa_offset 16
- 355              		.cfi_offset 4, -16
- 356              		.cfi_offset 5, -12
- 357              		.cfi_offset 6, -8
- 358              		.cfi_offset 14, -4
- 359 0002 0E46     		mov	r6, r1
- 360 0004 1546     		mov	r5, r2
+ 344              		.loc 1 103 1 is_stmt 1 view -0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348              		.loc 1 103 1 is_stmt 0 view .LVU93
+ 349 0000 70B5     		push	{r4, r5, r6, lr}
+ 350              		.cfi_def_cfa_offset 16
+ 351              		.cfi_offset 4, -16
+ 352              		.cfi_offset 5, -12
+ 353              		.cfi_offset 6, -8
+ 354              		.cfi_offset 14, -4
+ 355 0002 0E46     		mov	r6, r1
+ 356 0004 1546     		mov	r5, r2
  104:Lib/soes_hal_bsp/src/spi.c ****     for(int i = 0; i < size; ++i)
- 361              		.loc 1 104 5 is_stmt 1 view .LVU94
-ARM GAS  /tmp/ccb7sZyw.s 			page 9
+ 357              		.loc 1 104 5 is_stmt 1 view .LVU94
+ 358              	.LBB5:
+ 359              		.loc 1 104 9 view .LVU95
+ 360              	.LVL21:
+ 361              		.loc 1 104 13 is_stmt 0 view .LVU96
+ARM GAS  /tmp/ccR4wFif.s 			page 9
 
 
- 362              	.LBB5:
- 363              		.loc 1 104 9 view .LVU95
- 364              	.LVL21:
- 365              		.loc 1 104 13 is_stmt 0 view .LVU96
- 366 0006 0024     		movs	r4, #0
- 367              	.LVL22:
- 368              	.L19:
- 369              		.loc 1 104 20 is_stmt 1 discriminator 1 view .LVU97
- 370              		.loc 1 104 5 is_stmt 0 discriminator 1 view .LVU98
- 371 0008 A542     		cmp	r5, r4
- 372 000a 0EDD     		ble	.L23
+ 362 0006 0024     		movs	r4, #0
+ 363              	.LVL22:
+ 364              	.L19:
+ 365              		.loc 1 104 20 is_stmt 1 discriminator 1 view .LVU97
+ 366              		.loc 1 104 5 is_stmt 0 discriminator 1 view .LVU98
+ 367 0008 A542     		cmp	r5, r4
+ 368 000a 0EDD     		ble	.L23
  105:Lib/soes_hal_bsp/src/spi.c ****     {
  106:Lib/soes_hal_bsp/src/spi.c ****         spi_transfer(data[i]);
- 373              		.loc 1 106 9 is_stmt 1 discriminator 3 view .LVU99
- 374              	.LVL23:
- 375              	.LBB6:
- 376              	.LBI6:
+ 369              		.loc 1 106 9 is_stmt 1 discriminator 3 view .LVU99
+ 370              	.LVL23:
+ 371              	.LBB6:
+ 372              	.LBI6:
   92:Lib/soes_hal_bsp/src/spi.c **** {
- 377              		.loc 1 92 23 discriminator 3 view .LVU100
- 378              	.LBB7:
+ 373              		.loc 1 92 23 discriminator 3 view .LVU100
+ 374              	.LBB7:
   94:Lib/soes_hal_bsp/src/spi.c **** 
- 379              		.loc 1 94 5 discriminator 3 view .LVU101
- 380 000c 315D     		ldrb	r1, [r6, r4]	@ zero_extendqisi2
- 381              	.LVL24:
+ 375              		.loc 1 94 5 discriminator 3 view .LVU101
+ 376 000c 315D     		ldrb	r1, [r6, r4]	@ zero_extendqisi2
+ 377              	.LVL24:
   94:Lib/soes_hal_bsp/src/spi.c **** 
- 382              		.loc 1 94 5 is_stmt 0 discriminator 3 view .LVU102
- 383 000e 0748     		ldr	r0, .L24
- 384 0010 FFF7FEFF 		bl	SPI_I2S_SendData
- 385              	.LVL25:
+ 378              		.loc 1 94 5 is_stmt 0 discriminator 3 view .LVU102
+ 379 000e 0748     		ldr	r0, .L24
+ 380 0010 FFF7FEFF 		bl	SPI_I2S_SendData
+ 381              	.LVL25:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 386              		.loc 1 96 5 is_stmt 1 discriminator 3 view .LVU103
- 387              	.L20:
+ 382              		.loc 1 96 5 is_stmt 1 discriminator 3 view .LVU103
+ 383              	.L20:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 388              		.loc 1 96 76 view .LVU104
+ 384              		.loc 1 96 76 view .LVU104
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 389              		.loc 1 96 11 view .LVU105
+ 385              		.loc 1 96 11 view .LVU105
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 390              		.loc 1 96 13 is_stmt 0 view .LVU106
- 391 0014 0121     		movs	r1, #1
- 392 0016 0548     		ldr	r0, .L24
- 393 0018 FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
- 394              	.LVL26:
+ 386              		.loc 1 96 13 is_stmt 0 view .LVU106
+ 387 0014 0121     		movs	r1, #1
+ 388 0016 0548     		ldr	r0, .L24
+ 389 0018 FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
+ 390              	.LVL26:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 395              		.loc 1 96 11 view .LVU107
- 396 001c 0028     		cmp	r0, #0
- 397 001e F9D0     		beq	.L20
+ 391              		.loc 1 96 11 view .LVU107
+ 392 001c 0028     		cmp	r0, #0
+ 393 001e F9D0     		beq	.L20
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 398              		.loc 1 99 5 is_stmt 1 view .LVU108
+ 394              		.loc 1 99 5 is_stmt 1 view .LVU108
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 399              		.loc 1 99 12 is_stmt 0 view .LVU109
- 400 0020 0248     		ldr	r0, .L24
- 401 0022 FFF7FEFF 		bl	SPI_I2S_ReceiveData
- 402              	.LVL27:
+ 395              		.loc 1 99 12 is_stmt 0 view .LVU109
+ 396 0020 0248     		ldr	r0, .L24
+ 397 0022 FFF7FEFF 		bl	SPI_I2S_ReceiveData
+ 398              	.LVL27:
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 403              		.loc 1 99 12 view .LVU110
- 404              	.LBE7:
- 405              	.LBE6:
-ARM GAS  /tmp/ccb7sZyw.s 			page 10
+ 399              		.loc 1 99 12 view .LVU110
+ 400              	.LBE7:
+ 401              	.LBE6:
+ 104:Lib/soes_hal_bsp/src/spi.c ****     {
+ 402              		.loc 1 104 30 is_stmt 1 view .LVU111
+ 403 0026 0134     		adds	r4, r4, #1
+ 404              	.LVL28:
+ARM GAS  /tmp/ccR4wFif.s 			page 10
 
 
  104:Lib/soes_hal_bsp/src/spi.c ****     {
- 406              		.loc 1 104 30 is_stmt 1 view .LVU111
- 407 0026 0134     		adds	r4, r4, #1
- 408              	.LVL28:
+ 405              		.loc 1 104 30 is_stmt 0 view .LVU112
+ 406 0028 EEE7     		b	.L19
+ 407              	.L23:
  104:Lib/soes_hal_bsp/src/spi.c ****     {
- 409              		.loc 1 104 30 is_stmt 0 view .LVU112
- 410 0028 EEE7     		b	.L19
- 411              	.L23:
- 104:Lib/soes_hal_bsp/src/spi.c ****     {
- 412              		.loc 1 104 30 view .LVU113
- 413              	.LBE5:
+ 408              		.loc 1 104 30 view .LVU113
+ 409              	.LBE5:
  107:Lib/soes_hal_bsp/src/spi.c ****     }
  108:Lib/soes_hal_bsp/src/spi.c **** }
- 414              		.loc 1 108 1 view .LVU114
- 415 002a 70BD     		pop	{r4, r5, r6, pc}
- 416              	.LVL29:
- 417              	.L25:
- 418              		.loc 1 108 1 view .LVU115
- 419              		.align	2
- 420              	.L24:
- 421 002c 00300140 		.word	1073819648
- 422              		.cfi_endproc
- 423              	.LFE128:
- 425              		.section	.text.spi_read,"ax",%progbits
- 426              		.align	1
- 427              		.global	spi_read
- 428              		.syntax unified
- 429              		.thumb
- 430              		.thumb_func
- 431              		.fpu fpv4-sp-d16
- 433              	spi_read:
- 434              	.LVL30:
- 435              	.LFB129:
+ 410              		.loc 1 108 1 view .LVU114
+ 411 002a 70BD     		pop	{r4, r5, r6, pc}
+ 412              	.LVL29:
+ 413              	.L25:
+ 414              		.loc 1 108 1 view .LVU115
+ 415              		.align	2
+ 416              	.L24:
+ 417 002c 00300140 		.word	1073819648
+ 418              		.cfi_endproc
+ 419              	.LFE128:
+ 421              		.section	.text.spi_read,"ax",%progbits
+ 422              		.align	1
+ 423              		.global	spi_read
+ 424              		.syntax unified
+ 425              		.thumb
+ 426              		.thumb_func
+ 428              	spi_read:
+ 429              	.LVL30:
+ 430              	.LFB129:
  109:Lib/soes_hal_bsp/src/spi.c **** 
  110:Lib/soes_hal_bsp/src/spi.c **** void spi_read (int8_t board, uint8_t *result, uint8_t size)
  111:Lib/soes_hal_bsp/src/spi.c **** {
- 436              		.loc 1 111 1 is_stmt 1 view -0
- 437              		.cfi_startproc
- 438              		@ args = 0, pretend = 0, frame = 0
- 439              		@ frame_needed = 0, uses_anonymous_args = 0
- 440              		.loc 1 111 1 is_stmt 0 view .LVU117
- 441 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
- 442              		.cfi_def_cfa_offset 24
- 443              		.cfi_offset 3, -24
- 444              		.cfi_offset 4, -20
- 445              		.cfi_offset 5, -16
- 446              		.cfi_offset 6, -12
- 447              		.cfi_offset 7, -8
- 448              		.cfi_offset 14, -4
- 449 0002 0F46     		mov	r7, r1
- 450 0004 1646     		mov	r6, r2
+ 431              		.loc 1 111 1 is_stmt 1 view -0
+ 432              		.cfi_startproc
+ 433              		@ args = 0, pretend = 0, frame = 0
+ 434              		@ frame_needed = 0, uses_anonymous_args = 0
+ 435              		.loc 1 111 1 is_stmt 0 view .LVU117
+ 436 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 437              		.cfi_def_cfa_offset 24
+ 438              		.cfi_offset 3, -24
+ 439              		.cfi_offset 4, -20
+ 440              		.cfi_offset 5, -16
+ 441              		.cfi_offset 6, -12
+ 442              		.cfi_offset 7, -8
+ 443              		.cfi_offset 14, -4
+ 444 0002 0F46     		mov	r7, r1
+ 445 0004 1646     		mov	r6, r2
  112:Lib/soes_hal_bsp/src/spi.c **** 	for(int i = 0; i < size; ++i)
- 451              		.loc 1 112 2 is_stmt 1 view .LVU118
- 452              	.LBB11:
- 453              		.loc 1 112 6 view .LVU119
- 454              	.LVL31:
- 455              		.loc 1 112 10 is_stmt 0 view .LVU120
-ARM GAS  /tmp/ccb7sZyw.s 			page 11
+ 446              		.loc 1 112 2 is_stmt 1 view .LVU118
+ 447              	.LBB11:
+ 448              		.loc 1 112 6 view .LVU119
+ 449              	.LVL31:
+ 450              		.loc 1 112 10 is_stmt 0 view .LVU120
+ 451 0006 0024     		movs	r4, #0
+ 452              	.LVL32:
+ 453              	.L27:
+ 454              		.loc 1 112 17 is_stmt 1 discriminator 1 view .LVU121
+ 455              		.loc 1 112 2 is_stmt 0 discriminator 1 view .LVU122
+ARM GAS  /tmp/ccR4wFif.s 			page 11
 
 
- 456 0006 0024     		movs	r4, #0
- 457              	.LVL32:
- 458              	.L27:
- 459              		.loc 1 112 17 is_stmt 1 discriminator 1 view .LVU121
- 460              		.loc 1 112 2 is_stmt 0 discriminator 1 view .LVU122
- 461 0008 A642     		cmp	r6, r4
- 462 000a 10DD     		ble	.L31
+ 456 0008 A642     		cmp	r6, r4
+ 457 000a 10DD     		ble	.L31
  113:Lib/soes_hal_bsp/src/spi.c ****     {
  114:Lib/soes_hal_bsp/src/spi.c ****         result[i] = spi_transfer(DUMMY_BYTE);
- 463              		.loc 1 114 9 is_stmt 1 discriminator 3 view .LVU123
- 464              		.loc 1 114 15 is_stmt 0 discriminator 3 view .LVU124
- 465 000c 3D19     		adds	r5, r7, r4
- 466              	.LVL33:
- 467              	.LBB12:
- 468              	.LBI12:
+ 458              		.loc 1 114 9 is_stmt 1 discriminator 3 view .LVU123
+ 459              		.loc 1 114 15 is_stmt 0 discriminator 3 view .LVU124
+ 460 000c 3D19     		adds	r5, r7, r4
+ 461              	.LVL33:
+ 462              	.LBB12:
+ 463              	.LBI12:
   92:Lib/soes_hal_bsp/src/spi.c **** {
- 469              		.loc 1 92 23 is_stmt 1 discriminator 3 view .LVU125
- 470              	.LBB13:
+ 464              		.loc 1 92 23 is_stmt 1 discriminator 3 view .LVU125
+ 465              	.LBB13:
   94:Lib/soes_hal_bsp/src/spi.c **** 
- 471              		.loc 1 94 5 discriminator 3 view .LVU126
- 472 000e FF21     		movs	r1, #255
- 473 0010 0748     		ldr	r0, .L32
- 474 0012 FFF7FEFF 		bl	SPI_I2S_SendData
- 475              	.LVL34:
+ 466              		.loc 1 94 5 discriminator 3 view .LVU126
+ 467 000e FF21     		movs	r1, #255
+ 468 0010 0748     		ldr	r0, .L32
+ 469 0012 FFF7FEFF 		bl	SPI_I2S_SendData
+ 470              	.LVL34:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 476              		.loc 1 96 5 discriminator 3 view .LVU127
- 477              	.L28:
+ 471              		.loc 1 96 5 discriminator 3 view .LVU127
+ 472              	.L28:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 478              		.loc 1 96 76 view .LVU128
+ 473              		.loc 1 96 76 view .LVU128
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 479              		.loc 1 96 11 view .LVU129
+ 474              		.loc 1 96 11 view .LVU129
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 480              		.loc 1 96 13 is_stmt 0 view .LVU130
- 481 0016 0121     		movs	r1, #1
- 482 0018 0548     		ldr	r0, .L32
- 483 001a FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
- 484              	.LVL35:
+ 475              		.loc 1 96 13 is_stmt 0 view .LVU130
+ 476 0016 0121     		movs	r1, #1
+ 477 0018 0548     		ldr	r0, .L32
+ 478 001a FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
+ 479              	.LVL35:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 485              		.loc 1 96 11 view .LVU131
- 486 001e 0028     		cmp	r0, #0
- 487 0020 F9D0     		beq	.L28
+ 480              		.loc 1 96 11 view .LVU131
+ 481 001e 0028     		cmp	r0, #0
+ 482 0020 F9D0     		beq	.L28
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 488              		.loc 1 99 5 is_stmt 1 view .LVU132
+ 483              		.loc 1 99 5 is_stmt 1 view .LVU132
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 489              		.loc 1 99 12 is_stmt 0 view .LVU133
- 490 0022 0348     		ldr	r0, .L32
- 491 0024 FFF7FEFF 		bl	SPI_I2S_ReceiveData
- 492              	.LVL36:
+ 484              		.loc 1 99 12 is_stmt 0 view .LVU133
+ 485 0022 0348     		ldr	r0, .L32
+ 486 0024 FFF7FEFF 		bl	SPI_I2S_ReceiveData
+ 487              	.LVL36:
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 493              		.loc 1 99 12 view .LVU134
- 494              	.LBE13:
- 495              	.LBE12:
- 496              		.loc 1 114 19 view .LVU135
- 497 0028 2870     		strb	r0, [r5]
+ 488              		.loc 1 99 12 view .LVU134
+ 489              	.LBE13:
+ 490              	.LBE12:
+ 491              		.loc 1 114 19 view .LVU135
+ 492 0028 2870     		strb	r0, [r5]
  112:Lib/soes_hal_bsp/src/spi.c ****     {
- 498              		.loc 1 112 27 is_stmt 1 view .LVU136
- 499 002a 0134     		adds	r4, r4, #1
-ARM GAS  /tmp/ccb7sZyw.s 			page 12
+ 493              		.loc 1 112 27 is_stmt 1 view .LVU136
+ 494 002a 0134     		adds	r4, r4, #1
+ 495              	.LVL37:
+ 112:Lib/soes_hal_bsp/src/spi.c ****     {
+ 496              		.loc 1 112 27 is_stmt 0 view .LVU137
+ 497 002c ECE7     		b	.L27
+ 498              	.L31:
+ARM GAS  /tmp/ccR4wFif.s 			page 12
 
 
- 500              	.LVL37:
  112:Lib/soes_hal_bsp/src/spi.c ****     {
- 501              		.loc 1 112 27 is_stmt 0 view .LVU137
- 502 002c ECE7     		b	.L27
- 503              	.L31:
- 112:Lib/soes_hal_bsp/src/spi.c ****     {
- 504              		.loc 1 112 27 view .LVU138
- 505              	.LBE11:
+ 499              		.loc 1 112 27 view .LVU138
+ 500              	.LBE11:
  115:Lib/soes_hal_bsp/src/spi.c ****     }
  116:Lib/soes_hal_bsp/src/spi.c **** }
- 506              		.loc 1 116 1 view .LVU139
- 507 002e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 508              	.LVL38:
- 509              	.L33:
- 510              		.loc 1 116 1 view .LVU140
- 511              		.align	2
- 512              	.L32:
- 513 0030 00300140 		.word	1073819648
- 514              		.cfi_endproc
- 515              	.LFE129:
- 517              		.section	.text.spi_bidirectionally_transfer,"ax",%progbits
- 518              		.align	1
- 519              		.global	spi_bidirectionally_transfer
- 520              		.syntax unified
- 521              		.thumb
- 522              		.thumb_func
- 523              		.fpu fpv4-sp-d16
- 525              	spi_bidirectionally_transfer:
- 526              	.LVL39:
- 527              	.LFB130:
+ 501              		.loc 1 116 1 view .LVU139
+ 502 002e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 503              	.LVL38:
+ 504              	.L33:
+ 505              		.loc 1 116 1 view .LVU140
+ 506              		.align	2
+ 507              	.L32:
+ 508 0030 00300140 		.word	1073819648
+ 509              		.cfi_endproc
+ 510              	.LFE129:
+ 512              		.section	.text.spi_bidirectionally_transfer,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	spi_bidirectionally_transfer
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 519              	spi_bidirectionally_transfer:
+ 520              	.LVL39:
+ 521              	.LFB130:
  117:Lib/soes_hal_bsp/src/spi.c **** 
  118:Lib/soes_hal_bsp/src/spi.c **** 
  119:Lib/soes_hal_bsp/src/spi.c **** void spi_bidirectionally_transfer (int8_t board, uint8_t *result, uint8_t *data, uint8_t size)
  120:Lib/soes_hal_bsp/src/spi.c **** {
- 528              		.loc 1 120 1 is_stmt 1 view -0
- 529              		.cfi_startproc
- 530              		@ args = 0, pretend = 0, frame = 0
- 531              		@ frame_needed = 0, uses_anonymous_args = 0
- 532              		.loc 1 120 1 is_stmt 0 view .LVU142
- 533 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
- 534              		.cfi_def_cfa_offset 24
- 535              		.cfi_offset 4, -24
- 536              		.cfi_offset 5, -20
- 537              		.cfi_offset 6, -16
- 538              		.cfi_offset 7, -12
- 539              		.cfi_offset 8, -8
- 540              		.cfi_offset 14, -4
- 541 0004 8846     		mov	r8, r1
- 542 0006 1746     		mov	r7, r2
- 543 0008 1E46     		mov	r6, r3
+ 522              		.loc 1 120 1 is_stmt 1 view -0
+ 523              		.cfi_startproc
+ 524              		@ args = 0, pretend = 0, frame = 0
+ 525              		@ frame_needed = 0, uses_anonymous_args = 0
+ 526              		.loc 1 120 1 is_stmt 0 view .LVU142
+ 527 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 528              		.cfi_def_cfa_offset 24
+ 529              		.cfi_offset 4, -24
+ 530              		.cfi_offset 5, -20
+ 531              		.cfi_offset 6, -16
+ 532              		.cfi_offset 7, -12
+ 533              		.cfi_offset 8, -8
+ 534              		.cfi_offset 14, -4
+ 535 0004 8846     		mov	r8, r1
+ 536 0006 1746     		mov	r7, r2
+ 537 0008 1E46     		mov	r6, r3
  121:Lib/soes_hal_bsp/src/spi.c **** 	for(int i = 0; i < size; ++i)
- 544              		.loc 1 121 2 is_stmt 1 view .LVU143
- 545              	.LBB17:
- 546              		.loc 1 121 6 view .LVU144
- 547              	.LVL40:
- 548              		.loc 1 121 10 is_stmt 0 view .LVU145
- 549 000a 0024     		movs	r4, #0
-ARM GAS  /tmp/ccb7sZyw.s 			page 13
+ 538              		.loc 1 121 2 is_stmt 1 view .LVU143
+ 539              	.LBB17:
+ 540              		.loc 1 121 6 view .LVU144
+ 541              	.LVL40:
+ 542              		.loc 1 121 10 is_stmt 0 view .LVU145
+ 543 000a 0024     		movs	r4, #0
+ 544              	.LVL41:
+ 545              	.L35:
+ 546              		.loc 1 121 17 is_stmt 1 discriminator 1 view .LVU146
+ 547              		.loc 1 121 2 is_stmt 0 discriminator 1 view .LVU147
+ 548 000c A642     		cmp	r6, r4
+ 549 000e 11DD     		ble	.L39
+ARM GAS  /tmp/ccR4wFif.s 			page 13
 
 
- 550              	.LVL41:
- 551              	.L35:
- 552              		.loc 1 121 17 is_stmt 1 discriminator 1 view .LVU146
- 553              		.loc 1 121 2 is_stmt 0 discriminator 1 view .LVU147
- 554 000c A642     		cmp	r6, r4
- 555 000e 11DD     		ble	.L39
  122:Lib/soes_hal_bsp/src/spi.c ****     {
  123:Lib/soes_hal_bsp/src/spi.c ****         result[i] = spi_transfer(data[i]);
- 556              		.loc 1 123 9 is_stmt 1 discriminator 3 view .LVU148
- 557              		.loc 1 123 15 is_stmt 0 discriminator 3 view .LVU149
- 558 0010 08EB0405 		add	r5, r8, r4
- 559              	.LVL42:
- 560              	.LBB18:
- 561              	.LBI18:
+ 550              		.loc 1 123 9 is_stmt 1 discriminator 3 view .LVU148
+ 551              		.loc 1 123 15 is_stmt 0 discriminator 3 view .LVU149
+ 552 0010 08EB0405 		add	r5, r8, r4
+ 553              	.LVL42:
+ 554              	.LBB18:
+ 555              	.LBI18:
   92:Lib/soes_hal_bsp/src/spi.c **** {
- 562              		.loc 1 92 23 is_stmt 1 discriminator 3 view .LVU150
- 563              	.LBB19:
+ 556              		.loc 1 92 23 is_stmt 1 discriminator 3 view .LVU150
+ 557              	.LBB19:
   94:Lib/soes_hal_bsp/src/spi.c **** 
- 564              		.loc 1 94 5 discriminator 3 view .LVU151
- 565 0014 395D     		ldrb	r1, [r7, r4]	@ zero_extendqisi2
- 566              	.LVL43:
+ 558              		.loc 1 94 5 discriminator 3 view .LVU151
+ 559 0014 395D     		ldrb	r1, [r7, r4]	@ zero_extendqisi2
+ 560              	.LVL43:
   94:Lib/soes_hal_bsp/src/spi.c **** 
- 567              		.loc 1 94 5 is_stmt 0 discriminator 3 view .LVU152
- 568 0016 0848     		ldr	r0, .L40
- 569 0018 FFF7FEFF 		bl	SPI_I2S_SendData
- 570              	.LVL44:
+ 561              		.loc 1 94 5 is_stmt 0 discriminator 3 view .LVU152
+ 562 0016 0848     		ldr	r0, .L40
+ 563 0018 FFF7FEFF 		bl	SPI_I2S_SendData
+ 564              	.LVL44:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 571              		.loc 1 96 5 is_stmt 1 discriminator 3 view .LVU153
- 572              	.L36:
+ 565              		.loc 1 96 5 is_stmt 1 discriminator 3 view .LVU153
+ 566              	.L36:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 573              		.loc 1 96 76 view .LVU154
+ 567              		.loc 1 96 76 view .LVU154
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 574              		.loc 1 96 11 view .LVU155
+ 568              		.loc 1 96 11 view .LVU155
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 575              		.loc 1 96 13 is_stmt 0 view .LVU156
- 576 001c 0121     		movs	r1, #1
- 577 001e 0648     		ldr	r0, .L40
- 578 0020 FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
- 579              	.LVL45:
+ 569              		.loc 1 96 13 is_stmt 0 view .LVU156
+ 570 001c 0121     		movs	r1, #1
+ 571 001e 0648     		ldr	r0, .L40
+ 572 0020 FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
+ 573              	.LVL45:
   96:Lib/soes_hal_bsp/src/spi.c ****     // TODO add timeout
- 580              		.loc 1 96 11 view .LVU157
- 581 0024 0028     		cmp	r0, #0
- 582 0026 F9D0     		beq	.L36
+ 574              		.loc 1 96 11 view .LVU157
+ 575 0024 0028     		cmp	r0, #0
+ 576 0026 F9D0     		beq	.L36
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 583              		.loc 1 99 5 is_stmt 1 view .LVU158
+ 577              		.loc 1 99 5 is_stmt 1 view .LVU158
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 584              		.loc 1 99 12 is_stmt 0 view .LVU159
- 585 0028 0348     		ldr	r0, .L40
- 586 002a FFF7FEFF 		bl	SPI_I2S_ReceiveData
- 587              	.LVL46:
+ 578              		.loc 1 99 12 is_stmt 0 view .LVU159
+ 579 0028 0348     		ldr	r0, .L40
+ 580 002a FFF7FEFF 		bl	SPI_I2S_ReceiveData
+ 581              	.LVL46:
   99:Lib/soes_hal_bsp/src/spi.c **** }
- 588              		.loc 1 99 12 view .LVU160
- 589              	.LBE19:
- 590              	.LBE18:
- 591              		.loc 1 123 19 view .LVU161
- 592 002e 2870     		strb	r0, [r5]
+ 582              		.loc 1 99 12 view .LVU160
+ 583              	.LBE19:
+ 584              	.LBE18:
+ 585              		.loc 1 123 19 view .LVU161
+ 586 002e 2870     		strb	r0, [r5]
  121:Lib/soes_hal_bsp/src/spi.c ****     {
-ARM GAS  /tmp/ccb7sZyw.s 			page 14
+ 587              		.loc 1 121 27 is_stmt 1 view .LVU162
+ 588 0030 0134     		adds	r4, r4, #1
+ 589              	.LVL47:
+ 121:Lib/soes_hal_bsp/src/spi.c ****     {
+ 590              		.loc 1 121 27 is_stmt 0 view .LVU163
+ 591 0032 EBE7     		b	.L35
+ARM GAS  /tmp/ccR4wFif.s 			page 14
 
 
- 593              		.loc 1 121 27 is_stmt 1 view .LVU162
- 594 0030 0134     		adds	r4, r4, #1
- 595              	.LVL47:
+ 592              	.L39:
  121:Lib/soes_hal_bsp/src/spi.c ****     {
- 596              		.loc 1 121 27 is_stmt 0 view .LVU163
- 597 0032 EBE7     		b	.L35
- 598              	.L39:
- 121:Lib/soes_hal_bsp/src/spi.c ****     {
- 599              		.loc 1 121 27 view .LVU164
- 600              	.LBE17:
+ 593              		.loc 1 121 27 view .LVU164
+ 594              	.LBE17:
  124:Lib/soes_hal_bsp/src/spi.c ****     }
  125:Lib/soes_hal_bsp/src/spi.c **** }
- 601              		.loc 1 125 1 view .LVU165
- 602 0034 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
- 603              	.LVL48:
- 604              	.L41:
- 605              		.loc 1 125 1 view .LVU166
- 606              		.align	2
- 607              	.L40:
- 608 0038 00300140 		.word	1073819648
- 609              		.cfi_endproc
- 610              	.LFE130:
- 612              		.text
- 613              	.Letext0:
- 614              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
- 615              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 616              		.file 4 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h"
- 617              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_spi.h"
- 618              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
-ARM GAS  /tmp/ccb7sZyw.s 			page 15
+ 595              		.loc 1 125 1 view .LVU165
+ 596 0034 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 597              	.LVL48:
+ 598              	.L41:
+ 599              		.loc 1 125 1 view .LVU166
+ 600              		.align	2
+ 601              	.L40:
+ 602 0038 00300140 		.word	1073819648
+ 603              		.cfi_endproc
+ 604              	.LFE130:
+ 606              		.text
+ 607              	.Letext0:
+ 608              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 609              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 610              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 611              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h"
+ 612              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_spi.h"
+ 613              		.file 7 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ARM GAS  /tmp/ccR4wFif.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 spi.c
-     /tmp/ccb7sZyw.s:18     .text.spi_gpio_setup:0000000000000000 $t
-     /tmp/ccb7sZyw.s:26     .text.spi_gpio_setup:0000000000000000 spi_gpio_setup
-     /tmp/ccb7sZyw.s:161    .text.spi_gpio_setup:00000000000000a8 $d
-     /tmp/ccb7sZyw.s:166    .text.spi_setup:0000000000000000 $t
-     /tmp/ccb7sZyw.s:173    .text.spi_setup:0000000000000000 spi_setup
-     /tmp/ccb7sZyw.s:261    .text.spi_setup:000000000000006c $d
-     /tmp/ccb7sZyw.s:266    .text.spi_select:0000000000000000 $t
-     /tmp/ccb7sZyw.s:273    .text.spi_select:0000000000000000 spi_select
-     /tmp/ccb7sZyw.s:297    .text.spi_select:000000000000000c $d
-     /tmp/ccb7sZyw.s:302    .text.spi_unselect:0000000000000000 $t
-     /tmp/ccb7sZyw.s:309    .text.spi_unselect:0000000000000000 spi_unselect
-     /tmp/ccb7sZyw.s:333    .text.spi_unselect:000000000000000c $d
-     /tmp/ccb7sZyw.s:338    .text.spi_write:0000000000000000 $t
-     /tmp/ccb7sZyw.s:345    .text.spi_write:0000000000000000 spi_write
-     /tmp/ccb7sZyw.s:421    .text.spi_write:000000000000002c $d
-     /tmp/ccb7sZyw.s:426    .text.spi_read:0000000000000000 $t
-     /tmp/ccb7sZyw.s:433    .text.spi_read:0000000000000000 spi_read
-     /tmp/ccb7sZyw.s:513    .text.spi_read:0000000000000030 $d
-     /tmp/ccb7sZyw.s:518    .text.spi_bidirectionally_transfer:0000000000000000 $t
-     /tmp/ccb7sZyw.s:525    .text.spi_bidirectionally_transfer:0000000000000000 spi_bidirectionally_transfer
-     /tmp/ccb7sZyw.s:608    .text.spi_bidirectionally_transfer:0000000000000038 $d
+     /tmp/ccR4wFif.s:20     .text.spi_gpio_setup:0000000000000000 $t
+     /tmp/ccR4wFif.s:26     .text.spi_gpio_setup:0000000000000000 spi_gpio_setup
+     /tmp/ccR4wFif.s:161    .text.spi_gpio_setup:00000000000000a8 $d
+     /tmp/ccR4wFif.s:166    .text.spi_setup:0000000000000000 $t
+     /tmp/ccR4wFif.s:172    .text.spi_setup:0000000000000000 spi_setup
+     /tmp/ccR4wFif.s:260    .text.spi_setup:000000000000006c $d
+     /tmp/ccR4wFif.s:265    .text.spi_select:0000000000000000 $t
+     /tmp/ccR4wFif.s:271    .text.spi_select:0000000000000000 spi_select
+     /tmp/ccR4wFif.s:295    .text.spi_select:000000000000000c $d
+     /tmp/ccR4wFif.s:300    .text.spi_unselect:0000000000000000 $t
+     /tmp/ccR4wFif.s:306    .text.spi_unselect:0000000000000000 spi_unselect
+     /tmp/ccR4wFif.s:330    .text.spi_unselect:000000000000000c $d
+     /tmp/ccR4wFif.s:335    .text.spi_write:0000000000000000 $t
+     /tmp/ccR4wFif.s:341    .text.spi_write:0000000000000000 spi_write
+     /tmp/ccR4wFif.s:417    .text.spi_write:000000000000002c $d
+     /tmp/ccR4wFif.s:422    .text.spi_read:0000000000000000 $t
+     /tmp/ccR4wFif.s:428    .text.spi_read:0000000000000000 spi_read
+     /tmp/ccR4wFif.s:508    .text.spi_read:0000000000000030 $d
+     /tmp/ccR4wFif.s:513    .text.spi_bidirectionally_transfer:0000000000000000 $t
+     /tmp/ccR4wFif.s:519    .text.spi_bidirectionally_transfer:0000000000000000 spi_bidirectionally_transfer
+     /tmp/ccR4wFif.s:602    .text.spi_bidirectionally_transfer:0000000000000038 $d
 
 UNDEFINED SYMBOLS
 RCC_AHB1PeriphClockCmd
