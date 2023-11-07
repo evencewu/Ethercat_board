@@ -1,30 +1,30 @@
-ARM GAS  /tmp/ccOLPoOU.s 			page 1
+ARM GAS  /tmp/cc2Z1hJh.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.arch armv7e-m
-   3              		.fpu fpv4-sp-d16
-   4              		.eabi_attribute 27, 1
-   5              		.eabi_attribute 28, 1
-   6              		.eabi_attribute 20, 1
-   7              		.eabi_attribute 21, 1
-   8              		.eabi_attribute 23, 3
-   9              		.eabi_attribute 24, 1
-  10              		.eabi_attribute 25, 1
-  11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
-  13              		.eabi_attribute 34, 1
-  14              		.eabi_attribute 18, 4
-  15              		.file	"ecat_slv.c"
-  16              		.text
-  17              	.Ltext0:
-  18              		.cfi_sections	.debug_frame
-  19              		.section	.text.ESC_download_pre_objecthandler,"ax",%progbits
-  20              		.align	1
-  21              		.global	ESC_download_pre_objecthandler
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"ecat_slv.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.ESC_download_pre_objecthandler,"ax",%progbits
+  18              		.align	1
+  19              		.global	ESC_download_pre_objecthandler
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
   26              	ESC_download_pre_objecthandler:
   27              	.LVL0:
   28              	.LFB0:
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
   27:Lib/soes/src/ecat_slv.c **** #else
   28:Lib/soes/src/ecat_slv.c **** extern uint8_t rxpdo[];
   29:Lib/soes/src/ecat_slv.c **** #endif
-ARM GAS  /tmp/ccOLPoOU.s 			page 2
+ARM GAS  /tmp/cc2Z1hJh.s 			page 2
 
 
   30:Lib/soes/src/ecat_slv.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
   63              		.loc 1 50 8 discriminator 1 view .LVU7
   64 0022 9BB2     		uxth	r3, r3
   49:Lib/soes/src/ecat_slv.c ****    if (IS_RXPDO (index) ||
-ARM GAS  /tmp/ccOLPoOU.s 			page 3
+ARM GAS  /tmp/cc2Z1hJh.s 			page 3
 
 
   65              		.loc 1 49 25 discriminator 1 view .LVU8
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
   65:Lib/soes/src/ecat_slv.c ****             data,
   66:Lib/soes/src/ecat_slv.c ****             size,
   67:Lib/soes/src/ecat_slv.c ****             flags);
-ARM GAS  /tmp/ccOLPoOU.s 			page 4
+ARM GAS  /tmp/cc2Z1hJh.s 			page 4
 
 
   68:Lib/soes/src/ecat_slv.c ****    }
@@ -233,14 +233,15 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  145              		.syntax unified
  146              		.thumb
  147              		.thumb_func
- 149              	ESC_download_post_objecthandler:
- 150              	.LVL10:
- 151              	.LFB1:
+ 148              		.fpu fpv4-sp-d16
+ 150              	ESC_download_post_objecthandler:
+ 151              	.LVL10:
+ 152              	.LFB1:
   72:Lib/soes/src/ecat_slv.c **** 
+ARM GAS  /tmp/cc2Z1hJh.s 			page 5
+
+
   73:Lib/soes/src/ecat_slv.c **** /** Hook called from the slave stack SDO Download handler to act on
-ARM GAS  /tmp/ccOLPoOU.s 			page 5
-
-
   74:Lib/soes/src/ecat_slv.c ****  * user specified Index and Sub-index.
   75:Lib/soes/src/ecat_slv.c ****  *
   76:Lib/soes/src/ecat_slv.c ****  * @param[in] index      = index of SDO download request to handle
@@ -249,62 +250,63 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
   79:Lib/soes/src/ecat_slv.c ****  */
   80:Lib/soes/src/ecat_slv.c **** uint32_t ESC_download_post_objecthandler (uint16_t index, uint8_t subindex, uint16_t flags)
   81:Lib/soes/src/ecat_slv.c **** {
- 152              		.loc 1 81 1 is_stmt 1 view -0
- 153              		.cfi_startproc
- 154              		@ args = 0, pretend = 0, frame = 0
- 155              		@ frame_needed = 0, uses_anonymous_args = 0
- 156              		.loc 1 81 1 is_stmt 0 view .LVU28
- 157 0000 08B5     		push	{r3, lr}
- 158              		.cfi_def_cfa_offset 8
- 159              		.cfi_offset 3, -8
- 160              		.cfi_offset 14, -4
+ 153              		.loc 1 81 1 is_stmt 1 view -0
+ 154              		.cfi_startproc
+ 155              		@ args = 0, pretend = 0, frame = 0
+ 156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 157              		.loc 1 81 1 is_stmt 0 view .LVU28
+ 158 0000 08B5     		push	{r3, lr}
+ 159              		.cfi_def_cfa_offset 8
+ 160              		.cfi_offset 3, -8
+ 161              		.cfi_offset 14, -4
   82:Lib/soes/src/ecat_slv.c ****    if (ESCvar.post_object_download_hook != NULL)
- 161              		.loc 1 82 4 is_stmt 1 view .LVU29
- 162              		.loc 1 82 14 is_stmt 0 view .LVU30
- 163 0002 034B     		ldr	r3, .L15
- 164 0004 1B6C     		ldr	r3, [r3, #64]
- 165              		.loc 1 82 7 view .LVU31
- 166 0006 0BB1     		cbz	r3, .L13
+ 162              		.loc 1 82 4 is_stmt 1 view .LVU29
+ 163              		.loc 1 82 14 is_stmt 0 view .LVU30
+ 164 0002 034B     		ldr	r3, .L15
+ 165 0004 1B6C     		ldr	r3, [r3, #64]
+ 166              		.loc 1 82 7 view .LVU31
+ 167 0006 0BB1     		cbz	r3, .L13
   83:Lib/soes/src/ecat_slv.c ****    {
   84:Lib/soes/src/ecat_slv.c ****       return (ESCvar.post_object_download_hook)(index, subindex, flags);
- 167              		.loc 1 84 7 is_stmt 1 view .LVU32
- 168              		.loc 1 84 21 is_stmt 0 view .LVU33
- 169 0008 9847     		blx	r3
- 170              	.LVL11:
- 171              	.L11:
+ 168              		.loc 1 84 7 is_stmt 1 view .LVU32
+ 169              		.loc 1 84 21 is_stmt 0 view .LVU33
+ 170 0008 9847     		blx	r3
+ 171              	.LVL11:
+ 172              	.L11:
   85:Lib/soes/src/ecat_slv.c ****    }
   86:Lib/soes/src/ecat_slv.c **** 
   87:Lib/soes/src/ecat_slv.c ****    return 0;
   88:Lib/soes/src/ecat_slv.c **** }
- 172              		.loc 1 88 1 view .LVU34
- 173 000a 08BD     		pop	{r3, pc}
- 174              	.LVL12:
- 175              	.L13:
+ 173              		.loc 1 88 1 view .LVU34
+ 174 000a 08BD     		pop	{r3, pc}
+ 175              	.LVL12:
+ 176              	.L13:
   87:Lib/soes/src/ecat_slv.c **** }
- 176              		.loc 1 87 11 view .LVU35
- 177 000c 0020     		movs	r0, #0
- 178              	.LVL13:
+ 177              		.loc 1 87 11 view .LVU35
+ 178 000c 0020     		movs	r0, #0
+ 179              	.LVL13:
   87:Lib/soes/src/ecat_slv.c **** }
- 179              		.loc 1 87 11 view .LVU36
- 180 000e FCE7     		b	.L11
- 181              	.L16:
- 182              		.align	2
- 183              	.L15:
- 184 0010 00000000 		.word	.LANCHOR0
- 185              		.cfi_endproc
- 186              	.LFE1:
- 188              		.section	.text.ESC_upload_pre_objecthandler,"ax",%progbits
- 189              		.align	1
- 190              		.global	ESC_upload_pre_objecthandler
- 191              		.syntax unified
- 192              		.thumb
-ARM GAS  /tmp/ccOLPoOU.s 			page 6
+ 180              		.loc 1 87 11 view .LVU36
+ 181 000e FCE7     		b	.L11
+ 182              	.L16:
+ 183              		.align	2
+ 184              	.L15:
+ 185 0010 00000000 		.word	.LANCHOR0
+ 186              		.cfi_endproc
+ 187              	.LFE1:
+ 189              		.section	.text.ESC_upload_pre_objecthandler,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	ESC_upload_pre_objecthandler
+ 192              		.syntax unified
+ARM GAS  /tmp/cc2Z1hJh.s 			page 6
 
 
- 193              		.thumb_func
- 195              	ESC_upload_pre_objecthandler:
- 196              	.LVL14:
- 197              	.LFB2:
+ 193              		.thumb
+ 194              		.thumb_func
+ 195              		.fpu fpv4-sp-d16
+ 197              	ESC_upload_pre_objecthandler:
+ 198              	.LVL14:
+ 199              	.LFB2:
   89:Lib/soes/src/ecat_slv.c **** 
   90:Lib/soes/src/ecat_slv.c **** /** Function to pre-qualify the incoming SDO upload.
   91:Lib/soes/src/ecat_slv.c ****  *
@@ -318,34 +320,34 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
   99:Lib/soes/src/ecat_slv.c ****       size_t *size,
  100:Lib/soes/src/ecat_slv.c ****       uint16_t flags)
  101:Lib/soes/src/ecat_slv.c **** {
- 198              		.loc 1 101 1 is_stmt 1 view -0
- 199              		.cfi_startproc
- 200              		@ args = 4, pretend = 0, frame = 0
- 201              		@ frame_needed = 0, uses_anonymous_args = 0
- 202              		.loc 1 101 1 is_stmt 0 view .LVU38
- 203 0000 30B5     		push	{r4, r5, lr}
- 204              		.cfi_def_cfa_offset 12
- 205              		.cfi_offset 4, -12
- 206              		.cfi_offset 5, -8
- 207              		.cfi_offset 14, -4
- 208 0002 83B0     		sub	sp, sp, #12
- 209              		.cfi_def_cfa_offset 24
+ 200              		.loc 1 101 1 is_stmt 1 view -0
+ 201              		.cfi_startproc
+ 202              		@ args = 4, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              		.loc 1 101 1 is_stmt 0 view .LVU38
+ 205 0000 30B5     		push	{r4, r5, lr}
+ 206              		.cfi_def_cfa_offset 12
+ 207              		.cfi_offset 4, -12
+ 208              		.cfi_offset 5, -8
+ 209              		.cfi_offset 14, -4
+ 210 0002 83B0     		sub	sp, sp, #12
+ 211              		.cfi_def_cfa_offset 24
  102:Lib/soes/src/ecat_slv.c ****    if (ESCvar.pre_object_upload_hook != NULL)
- 210              		.loc 1 102 4 is_stmt 1 view .LVU39
- 211              		.loc 1 102 14 is_stmt 0 view .LVU40
- 212 0004 054C     		ldr	r4, .L21
- 213 0006 646C     		ldr	r4, [r4, #68]
- 214              		.loc 1 102 7 view .LVU41
- 215 0008 2CB1     		cbz	r4, .L19
+ 212              		.loc 1 102 4 is_stmt 1 view .LVU39
+ 213              		.loc 1 102 14 is_stmt 0 view .LVU40
+ 214 0004 054C     		ldr	r4, .L21
+ 215 0006 646C     		ldr	r4, [r4, #68]
+ 216              		.loc 1 102 7 view .LVU41
+ 217 0008 2CB1     		cbz	r4, .L19
  103:Lib/soes/src/ecat_slv.c ****    {
  104:Lib/soes/src/ecat_slv.c ****       return (ESCvar.pre_object_upload_hook) (index,
- 216              		.loc 1 104 7 is_stmt 1 view .LVU42
- 217              		.loc 1 104 21 is_stmt 0 view .LVU43
- 218 000a BDF81850 		ldrh	r5, [sp, #24]
- 219 000e 0095     		str	r5, [sp]
- 220 0010 A047     		blx	r4
- 221              	.LVL15:
- 222              	.L17:
+ 218              		.loc 1 104 7 is_stmt 1 view .LVU42
+ 219              		.loc 1 104 21 is_stmt 0 view .LVU43
+ 220 000a BDF81850 		ldrh	r5, [sp, #24]
+ 221 000e 0095     		str	r5, [sp]
+ 222 0010 A047     		blx	r4
+ 223              	.LVL15:
+ 224              	.L17:
  105:Lib/soes/src/ecat_slv.c ****             subindex,
  106:Lib/soes/src/ecat_slv.c ****             data,
  107:Lib/soes/src/ecat_slv.c ****             size,
@@ -354,40 +356,41 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  110:Lib/soes/src/ecat_slv.c **** 
  111:Lib/soes/src/ecat_slv.c ****    return 0;
  112:Lib/soes/src/ecat_slv.c **** }
- 223              		.loc 1 112 1 view .LVU44
- 224 0012 03B0     		add	sp, sp, #12
- 225              		.cfi_remember_state
- 226              		.cfi_def_cfa_offset 12
-ARM GAS  /tmp/ccOLPoOU.s 			page 7
+ 225              		.loc 1 112 1 view .LVU44
+ 226 0012 03B0     		add	sp, sp, #12
+ARM GAS  /tmp/cc2Z1hJh.s 			page 7
 
 
- 227              		@ sp needed
- 228 0014 30BD     		pop	{r4, r5, pc}
- 229              	.LVL16:
- 230              	.L19:
- 231              		.cfi_restore_state
+ 227              		.cfi_remember_state
+ 228              		.cfi_def_cfa_offset 12
+ 229              		@ sp needed
+ 230 0014 30BD     		pop	{r4, r5, pc}
+ 231              	.LVL16:
+ 232              	.L19:
+ 233              		.cfi_restore_state
  111:Lib/soes/src/ecat_slv.c **** }
- 232              		.loc 1 111 11 view .LVU45
- 233 0016 0020     		movs	r0, #0
- 234              	.LVL17:
+ 234              		.loc 1 111 11 view .LVU45
+ 235 0016 0020     		movs	r0, #0
+ 236              	.LVL17:
  111:Lib/soes/src/ecat_slv.c **** }
- 235              		.loc 1 111 11 view .LVU46
- 236 0018 FBE7     		b	.L17
- 237              	.L22:
- 238 001a 00BF     		.align	2
- 239              	.L21:
- 240 001c 00000000 		.word	.LANCHOR0
- 241              		.cfi_endproc
- 242              	.LFE2:
- 244              		.section	.text.ESC_upload_post_objecthandler,"ax",%progbits
- 245              		.align	1
- 246              		.global	ESC_upload_post_objecthandler
- 247              		.syntax unified
- 248              		.thumb
- 249              		.thumb_func
- 251              	ESC_upload_post_objecthandler:
- 252              	.LVL18:
- 253              	.LFB3:
+ 237              		.loc 1 111 11 view .LVU46
+ 238 0018 FBE7     		b	.L17
+ 239              	.L22:
+ 240 001a 00BF     		.align	2
+ 241              	.L21:
+ 242 001c 00000000 		.word	.LANCHOR0
+ 243              		.cfi_endproc
+ 244              	.LFE2:
+ 246              		.section	.text.ESC_upload_post_objecthandler,"ax",%progbits
+ 247              		.align	1
+ 248              		.global	ESC_upload_post_objecthandler
+ 249              		.syntax unified
+ 250              		.thumb
+ 251              		.thumb_func
+ 252              		.fpu fpv4-sp-d16
+ 254              	ESC_upload_post_objecthandler:
+ 255              	.LVL18:
+ 256              	.LFB3:
  113:Lib/soes/src/ecat_slv.c **** 
  114:Lib/soes/src/ecat_slv.c **** /** Hook called from the slave stack SDO Upload handler to act on
  115:Lib/soes/src/ecat_slv.c ****  * user specified Index and Sub-index.
@@ -398,226 +401,229 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  120:Lib/soes/src/ecat_slv.c ****  */
  121:Lib/soes/src/ecat_slv.c **** uint32_t ESC_upload_post_objecthandler (uint16_t index, uint8_t subindex, uint16_t flags)
  122:Lib/soes/src/ecat_slv.c **** {
- 254              		.loc 1 122 1 is_stmt 1 view -0
- 255              		.cfi_startproc
- 256              		@ args = 0, pretend = 0, frame = 0
- 257              		@ frame_needed = 0, uses_anonymous_args = 0
- 258              		.loc 1 122 1 is_stmt 0 view .LVU48
- 259 0000 08B5     		push	{r3, lr}
- 260              		.cfi_def_cfa_offset 8
- 261              		.cfi_offset 3, -8
- 262              		.cfi_offset 14, -4
+ 257              		.loc 1 122 1 is_stmt 1 view -0
+ 258              		.cfi_startproc
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261              		.loc 1 122 1 is_stmt 0 view .LVU48
+ 262 0000 08B5     		push	{r3, lr}
+ 263              		.cfi_def_cfa_offset 8
+ 264              		.cfi_offset 3, -8
+ 265              		.cfi_offset 14, -4
  123:Lib/soes/src/ecat_slv.c ****    if (ESCvar.post_object_upload_hook != NULL)
- 263              		.loc 1 123 4 is_stmt 1 view .LVU49
- 264              		.loc 1 123 14 is_stmt 0 view .LVU50
- 265 0002 034B     		ldr	r3, .L27
- 266 0004 9B6C     		ldr	r3, [r3, #72]
- 267              		.loc 1 123 7 view .LVU51
- 268 0006 0BB1     		cbz	r3, .L25
+ 266              		.loc 1 123 4 is_stmt 1 view .LVU49
+ 267              		.loc 1 123 14 is_stmt 0 view .LVU50
+ 268 0002 034B     		ldr	r3, .L27
+ 269 0004 9B6C     		ldr	r3, [r3, #72]
+ 270              		.loc 1 123 7 view .LVU51
+ 271 0006 0BB1     		cbz	r3, .L25
  124:Lib/soes/src/ecat_slv.c ****    {
+ARM GAS  /tmp/cc2Z1hJh.s 			page 8
+
+
  125:Lib/soes/src/ecat_slv.c ****       return (ESCvar.post_object_upload_hook)(index, subindex, flags);
- 269              		.loc 1 125 7 is_stmt 1 view .LVU52
- 270              		.loc 1 125 21 is_stmt 0 view .LVU53
-ARM GAS  /tmp/ccOLPoOU.s 			page 8
-
-
- 271 0008 9847     		blx	r3
- 272              	.LVL19:
- 273              	.L23:
+ 272              		.loc 1 125 7 is_stmt 1 view .LVU52
+ 273              		.loc 1 125 21 is_stmt 0 view .LVU53
+ 274 0008 9847     		blx	r3
+ 275              	.LVL19:
+ 276              	.L23:
  126:Lib/soes/src/ecat_slv.c ****    }
  127:Lib/soes/src/ecat_slv.c **** 
  128:Lib/soes/src/ecat_slv.c ****    return 0;
  129:Lib/soes/src/ecat_slv.c **** }
- 274              		.loc 1 129 1 view .LVU54
- 275 000a 08BD     		pop	{r3, pc}
- 276              	.LVL20:
- 277              	.L25:
+ 277              		.loc 1 129 1 view .LVU54
+ 278 000a 08BD     		pop	{r3, pc}
+ 279              	.LVL20:
+ 280              	.L25:
  128:Lib/soes/src/ecat_slv.c **** }
- 278              		.loc 1 128 11 view .LVU55
- 279 000c 0020     		movs	r0, #0
- 280              	.LVL21:
+ 281              		.loc 1 128 11 view .LVU55
+ 282 000c 0020     		movs	r0, #0
+ 283              	.LVL21:
  128:Lib/soes/src/ecat_slv.c **** }
- 281              		.loc 1 128 11 view .LVU56
- 282 000e FCE7     		b	.L23
- 283              	.L28:
- 284              		.align	2
- 285              	.L27:
- 286 0010 00000000 		.word	.LANCHOR0
- 287              		.cfi_endproc
- 288              	.LFE3:
- 290              		.section	.text.APP_safeoutput,"ax",%progbits
- 291              		.align	1
- 292              		.global	APP_safeoutput
- 293              		.syntax unified
- 294              		.thumb
- 295              		.thumb_func
- 297              	APP_safeoutput:
- 298              	.LFB4:
+ 284              		.loc 1 128 11 view .LVU56
+ 285 000e FCE7     		b	.L23
+ 286              	.L28:
+ 287              		.align	2
+ 288              	.L27:
+ 289 0010 00000000 		.word	.LANCHOR0
+ 290              		.cfi_endproc
+ 291              	.LFE3:
+ 293              		.section	.text.APP_safeoutput,"ax",%progbits
+ 294              		.align	1
+ 295              		.global	APP_safeoutput
+ 296              		.syntax unified
+ 297              		.thumb
+ 298              		.thumb_func
+ 299              		.fpu fpv4-sp-d16
+ 301              	APP_safeoutput:
+ 302              	.LFB4:
  130:Lib/soes/src/ecat_slv.c **** 
  131:Lib/soes/src/ecat_slv.c **** /** Hook called from the slave stack ESC_stopoutputs to act on state changes
  132:Lib/soes/src/ecat_slv.c ****  * forcing us to stop outputs. Here we can set them to a safe state.
  133:Lib/soes/src/ecat_slv.c ****  */
  134:Lib/soes/src/ecat_slv.c **** void APP_safeoutput (void)
  135:Lib/soes/src/ecat_slv.c **** {
- 299              		.loc 1 135 1 is_stmt 1 view -0
- 300              		.cfi_startproc
- 301              		@ args = 0, pretend = 0, frame = 0
- 302              		@ frame_needed = 0, uses_anonymous_args = 0
- 303 0000 08B5     		push	{r3, lr}
- 304              		.cfi_def_cfa_offset 8
- 305              		.cfi_offset 3, -8
- 306              		.cfi_offset 14, -4
+ 303              		.loc 1 135 1 is_stmt 1 view -0
+ 304              		.cfi_startproc
+ 305              		@ args = 0, pretend = 0, frame = 0
+ 306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 307 0000 08B5     		push	{r3, lr}
+ 308              		.cfi_def_cfa_offset 8
+ 309              		.cfi_offset 3, -8
+ 310              		.cfi_offset 14, -4
  136:Lib/soes/src/ecat_slv.c ****    DPRINT ("APP_safeoutput\n");
- 307              		.loc 1 136 31 view .LVU58
+ 311              		.loc 1 136 31 view .LVU58
  137:Lib/soes/src/ecat_slv.c **** 
  138:Lib/soes/src/ecat_slv.c ****    if(ESCvar.safeoutput_override != NULL)
- 308              		.loc 1 138 4 view .LVU59
- 309              		.loc 1 138 13 is_stmt 0 view .LVU60
- 310 0002 024B     		ldr	r3, .L32
- 311 0004 9B6B     		ldr	r3, [r3, #56]
- 312              		.loc 1 138 6 view .LVU61
- 313 0006 03B1     		cbz	r3, .L29
+ 312              		.loc 1 138 4 view .LVU59
+ 313              		.loc 1 138 13 is_stmt 0 view .LVU60
+ 314 0002 024B     		ldr	r3, .L32
+ARM GAS  /tmp/cc2Z1hJh.s 			page 9
+
+
+ 315 0004 9B6B     		ldr	r3, [r3, #56]
+ 316              		.loc 1 138 6 view .LVU61
+ 317 0006 03B1     		cbz	r3, .L29
  139:Lib/soes/src/ecat_slv.c ****    {
-ARM GAS  /tmp/ccOLPoOU.s 			page 9
-
-
  140:Lib/soes/src/ecat_slv.c ****       (ESCvar.safeoutput_override)();
- 314              		.loc 1 140 7 is_stmt 1 view .LVU62
- 315              		.loc 1 140 14 is_stmt 0 view .LVU63
- 316 0008 9847     		blx	r3
- 317              	.LVL22:
- 318              	.L29:
+ 318              		.loc 1 140 7 is_stmt 1 view .LVU62
+ 319              		.loc 1 140 14 is_stmt 0 view .LVU63
+ 320 0008 9847     		blx	r3
+ 321              	.LVL22:
+ 322              	.L29:
  141:Lib/soes/src/ecat_slv.c ****    }
  142:Lib/soes/src/ecat_slv.c **** }
- 319              		.loc 1 142 1 view .LVU64
- 320 000a 08BD     		pop	{r3, pc}
- 321              	.L33:
- 322              		.align	2
- 323              	.L32:
- 324 000c 00000000 		.word	.LANCHOR0
- 325              		.cfi_endproc
- 326              	.LFE4:
- 328              		.section	.text.TXPDO_update,"ax",%progbits
- 329              		.align	1
- 330              		.global	TXPDO_update
- 331              		.syntax unified
- 332              		.thumb
- 333              		.thumb_func
- 335              	TXPDO_update:
- 336              	.LFB5:
+ 323              		.loc 1 142 1 view .LVU64
+ 324 000a 08BD     		pop	{r3, pc}
+ 325              	.L33:
+ 326              		.align	2
+ 327              	.L32:
+ 328 000c 00000000 		.word	.LANCHOR0
+ 329              		.cfi_endproc
+ 330              	.LFE4:
+ 332              		.section	.text.TXPDO_update,"ax",%progbits
+ 333              		.align	1
+ 334              		.global	TXPDO_update
+ 335              		.syntax unified
+ 336              		.thumb
+ 337              		.thumb_func
+ 338              		.fpu fpv4-sp-d16
+ 340              	TXPDO_update:
+ 341              	.LFB5:
  143:Lib/soes/src/ecat_slv.c **** 
  144:Lib/soes/src/ecat_slv.c **** /** Write local process data to Sync Manager 3, Master Inputs.
  145:Lib/soes/src/ecat_slv.c ****  */
  146:Lib/soes/src/ecat_slv.c **** void TXPDO_update (void)
  147:Lib/soes/src/ecat_slv.c **** {
- 337              		.loc 1 147 1 is_stmt 1 view -0
- 338              		.cfi_startproc
- 339              		@ args = 0, pretend = 0, frame = 0
- 340              		@ frame_needed = 0, uses_anonymous_args = 0
- 341 0000 38B5     		push	{r3, r4, r5, lr}
- 342              		.cfi_def_cfa_offset 16
- 343              		.cfi_offset 3, -16
- 344              		.cfi_offset 4, -12
- 345              		.cfi_offset 5, -8
- 346              		.cfi_offset 14, -4
+ 342              		.loc 1 147 1 is_stmt 1 view -0
+ 343              		.cfi_startproc
+ 344              		@ args = 0, pretend = 0, frame = 0
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 346 0000 38B5     		push	{r3, r4, r5, lr}
+ 347              		.cfi_def_cfa_offset 16
+ 348              		.cfi_offset 3, -16
+ 349              		.cfi_offset 4, -12
+ 350              		.cfi_offset 5, -8
+ 351              		.cfi_offset 14, -4
  148:Lib/soes/src/ecat_slv.c ****    if(ESCvar.txpdo_override != NULL)
- 347              		.loc 1 148 4 view .LVU66
- 348              		.loc 1 148 13 is_stmt 0 view .LVU67
- 349 0002 0A4B     		ldr	r3, .L38
- 350 0004 1B6D     		ldr	r3, [r3, #80]
- 351              		.loc 1 148 6 view .LVU68
- 352 0006 0BB1     		cbz	r3, .L35
+ 352              		.loc 1 148 4 view .LVU66
+ 353              		.loc 1 148 13 is_stmt 0 view .LVU67
+ 354 0002 0A4B     		ldr	r3, .L38
+ 355 0004 1B6D     		ldr	r3, [r3, #80]
+ 356              		.loc 1 148 6 view .LVU68
+ 357 0006 0BB1     		cbz	r3, .L35
  149:Lib/soes/src/ecat_slv.c ****    {
  150:Lib/soes/src/ecat_slv.c ****       (ESCvar.txpdo_override)();
- 353              		.loc 1 150 7 is_stmt 1 view .LVU69
- 354              		.loc 1 150 14 is_stmt 0 view .LVU70
- 355 0008 9847     		blx	r3
- 356              	.LVL23:
- 357              	.L34:
+ 358              		.loc 1 150 7 is_stmt 1 view .LVU69
+ 359              		.loc 1 150 14 is_stmt 0 view .LVU70
+ 360 0008 9847     		blx	r3
+ 361              	.LVL23:
+ARM GAS  /tmp/cc2Z1hJh.s 			page 10
+
+
+ 362              	.L34:
  151:Lib/soes/src/ecat_slv.c ****    }
  152:Lib/soes/src/ecat_slv.c ****    else
  153:Lib/soes/src/ecat_slv.c ****    {
  154:Lib/soes/src/ecat_slv.c ****       if (MAX_MAPPINGS_SM3 > 0)
-ARM GAS  /tmp/ccOLPoOU.s 			page 10
-
-
  155:Lib/soes/src/ecat_slv.c ****       {
  156:Lib/soes/src/ecat_slv.c ****          COE_pdoPack (txpdo, ESCvar.sm3mappings, SMmap3);
  157:Lib/soes/src/ecat_slv.c ****       }
  158:Lib/soes/src/ecat_slv.c ****       ESC_write (ESC_SM3_sma, txpdo, ESCvar.ESC_SM3_sml);
  159:Lib/soes/src/ecat_slv.c ****    }
  160:Lib/soes/src/ecat_slv.c **** }
- 358              		.loc 1 160 1 view .LVU71
- 359 000a 38BD     		pop	{r3, r4, r5, pc}
- 360              	.L35:
+ 363              		.loc 1 160 1 view .LVU71
+ 364 000a 38BD     		pop	{r3, r4, r5, pc}
+ 365              	.L35:
  154:Lib/soes/src/ecat_slv.c ****       {
- 361              		.loc 1 154 7 is_stmt 1 view .LVU72
+ 366              		.loc 1 154 7 is_stmt 1 view .LVU72
  156:Lib/soes/src/ecat_slv.c ****       }
- 362              		.loc 1 156 10 view .LVU73
- 363 000c 074D     		ldr	r5, .L38
- 364 000e 084C     		ldr	r4, .L38+4
- 365 0010 084A     		ldr	r2, .L38+8
- 366 0012 D5F8B010 		ldr	r1, [r5, #176]
- 367 0016 2046     		mov	r0, r4
- 368 0018 FFF7FEFF 		bl	COE_pdoPack
- 369              	.LVL24:
+ 367              		.loc 1 156 10 view .LVU73
+ 368 000c 074D     		ldr	r5, .L38
+ 369 000e 084C     		ldr	r4, .L38+4
+ 370 0010 084A     		ldr	r2, .L38+8
+ 371 0012 D5F8B010 		ldr	r1, [r5, #176]
+ 372 0016 2046     		mov	r0, r4
+ 373 0018 FFF7FEFF 		bl	COE_pdoPack
+ 374              	.LVL24:
  158:Lib/soes/src/ecat_slv.c ****    }
- 370              		.loc 1 158 7 view .LVU74
- 371 001c B5F87A20 		ldrh	r2, [r5, #122]
- 372 0020 2146     		mov	r1, r4
- 373 0022 4FF4D050 		mov	r0, #6656
- 374 0026 FFF7FEFF 		bl	ESC_write
- 375              	.LVL25:
- 376              		.loc 1 160 1 is_stmt 0 view .LVU75
- 377 002a EEE7     		b	.L34
- 378              	.L39:
- 379              		.align	2
- 380              	.L38:
- 381 002c 00000000 		.word	.LANCHOR0
- 382 0030 00000000 		.word	.LANCHOR2
- 383 0034 00000000 		.word	.LANCHOR1
- 384              		.cfi_endproc
- 385              	.LFE5:
- 387              		.section	.text.RXPDO_update,"ax",%progbits
- 388              		.align	1
- 389              		.global	RXPDO_update
- 390              		.syntax unified
- 391              		.thumb
- 392              		.thumb_func
- 394              	RXPDO_update:
- 395              	.LFB6:
+ 375              		.loc 1 158 7 view .LVU74
+ 376 001c B5F87A20 		ldrh	r2, [r5, #122]
+ 377 0020 2146     		mov	r1, r4
+ 378 0022 4FF4D050 		mov	r0, #6656
+ 379 0026 FFF7FEFF 		bl	ESC_write
+ 380              	.LVL25:
+ 381              		.loc 1 160 1 is_stmt 0 view .LVU75
+ 382 002a EEE7     		b	.L34
+ 383              	.L39:
+ 384              		.align	2
+ 385              	.L38:
+ 386 002c 00000000 		.word	.LANCHOR0
+ 387 0030 00000000 		.word	.LANCHOR2
+ 388 0034 00000000 		.word	.LANCHOR1
+ 389              		.cfi_endproc
+ 390              	.LFE5:
+ 392              		.section	.text.RXPDO_update,"ax",%progbits
+ 393              		.align	1
+ 394              		.global	RXPDO_update
+ 395              		.syntax unified
+ 396              		.thumb
+ 397              		.thumb_func
+ 398              		.fpu fpv4-sp-d16
+ 400              	RXPDO_update:
+ 401              	.LFB6:
  161:Lib/soes/src/ecat_slv.c **** 
  162:Lib/soes/src/ecat_slv.c **** /** Read Sync Manager 2 to local process data, Master Outputs.
  163:Lib/soes/src/ecat_slv.c ****  */
  164:Lib/soes/src/ecat_slv.c **** void RXPDO_update (void)
  165:Lib/soes/src/ecat_slv.c **** {
- 396              		.loc 1 165 1 is_stmt 1 view -0
- 397              		.cfi_startproc
- 398              		@ args = 0, pretend = 0, frame = 0
- 399              		@ frame_needed = 0, uses_anonymous_args = 0
- 400 0000 38B5     		push	{r3, r4, r5, lr}
- 401              		.cfi_def_cfa_offset 16
- 402              		.cfi_offset 3, -16
-ARM GAS  /tmp/ccOLPoOU.s 			page 11
+ 402              		.loc 1 165 1 is_stmt 1 view -0
+ARM GAS  /tmp/cc2Z1hJh.s 			page 11
 
 
- 403              		.cfi_offset 4, -12
- 404              		.cfi_offset 5, -8
- 405              		.cfi_offset 14, -4
+ 403              		.cfi_startproc
+ 404              		@ args = 0, pretend = 0, frame = 0
+ 405              		@ frame_needed = 0, uses_anonymous_args = 0
+ 406 0000 38B5     		push	{r3, r4, r5, lr}
+ 407              		.cfi_def_cfa_offset 16
+ 408              		.cfi_offset 3, -16
+ 409              		.cfi_offset 4, -12
+ 410              		.cfi_offset 5, -8
+ 411              		.cfi_offset 14, -4
  166:Lib/soes/src/ecat_slv.c ****    if(ESCvar.rxpdo_override != NULL)
- 406              		.loc 1 166 4 view .LVU77
- 407              		.loc 1 166 13 is_stmt 0 view .LVU78
- 408 0002 0A4B     		ldr	r3, .L44
- 409 0004 DB6C     		ldr	r3, [r3, #76]
- 410              		.loc 1 166 6 view .LVU79
- 411 0006 0BB1     		cbz	r3, .L41
+ 412              		.loc 1 166 4 view .LVU77
+ 413              		.loc 1 166 13 is_stmt 0 view .LVU78
+ 414 0002 0A4B     		ldr	r3, .L44
+ 415 0004 DB6C     		ldr	r3, [r3, #76]
+ 416              		.loc 1 166 6 view .LVU79
+ 417 0006 0BB1     		cbz	r3, .L41
  167:Lib/soes/src/ecat_slv.c ****    {
  168:Lib/soes/src/ecat_slv.c ****       (ESCvar.rxpdo_override)();
- 412              		.loc 1 168 7 is_stmt 1 view .LVU80
- 413              		.loc 1 168 14 is_stmt 0 view .LVU81
- 414 0008 9847     		blx	r3
- 415              	.LVL26:
- 416              	.L40:
+ 418              		.loc 1 168 7 is_stmt 1 view .LVU80
+ 419              		.loc 1 168 14 is_stmt 0 view .LVU81
+ 420 0008 9847     		blx	r3
+ 421              	.LVL26:
+ 422              	.L40:
  169:Lib/soes/src/ecat_slv.c ****    }
  170:Lib/soes/src/ecat_slv.c ****    else
  171:Lib/soes/src/ecat_slv.c ****    {
@@ -628,49 +634,50 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  176:Lib/soes/src/ecat_slv.c ****       }
  177:Lib/soes/src/ecat_slv.c ****    }
  178:Lib/soes/src/ecat_slv.c **** }
- 417              		.loc 1 178 1 view .LVU82
- 418 000a 38BD     		pop	{r3, r4, r5, pc}
- 419              	.L41:
+ 423              		.loc 1 178 1 view .LVU82
+ 424 000a 38BD     		pop	{r3, r4, r5, pc}
+ 425              	.L41:
  172:Lib/soes/src/ecat_slv.c ****       if (MAX_MAPPINGS_SM2 > 0)
- 420              		.loc 1 172 7 is_stmt 1 view .LVU83
- 421 000c 074D     		ldr	r5, .L44
- 422 000e 084C     		ldr	r4, .L44+4
- 423 0010 B5F87820 		ldrh	r2, [r5, #120]
- 424 0014 2146     		mov	r1, r4
- 425 0016 4FF4B050 		mov	r0, #5632
- 426 001a FFF7FEFF 		bl	ESC_read
- 427              	.LVL27:
+ 426              		.loc 1 172 7 is_stmt 1 view .LVU83
+ 427 000c 074D     		ldr	r5, .L44
+ 428 000e 084C     		ldr	r4, .L44+4
+ 429 0010 B5F87820 		ldrh	r2, [r5, #120]
+ 430 0014 2146     		mov	r1, r4
+ 431 0016 4FF4B050 		mov	r0, #5632
+ 432 001a FFF7FEFF 		bl	ESC_read
+ 433              	.LVL27:
  173:Lib/soes/src/ecat_slv.c ****       {
- 428              		.loc 1 173 7 view .LVU84
+ 434              		.loc 1 173 7 view .LVU84
  175:Lib/soes/src/ecat_slv.c ****       }
- 429              		.loc 1 175 10 view .LVU85
- 430 001e 054A     		ldr	r2, .L44+8
- 431 0020 D5F8AC10 		ldr	r1, [r5, #172]
- 432 0024 2046     		mov	r0, r4
- 433 0026 FFF7FEFF 		bl	COE_pdoUnpack
- 434              	.LVL28:
- 435              		.loc 1 178 1 is_stmt 0 view .LVU86
- 436 002a EEE7     		b	.L40
- 437              	.L45:
- 438              		.align	2
- 439              	.L44:
- 440 002c 00000000 		.word	.LANCHOR0
- 441 0030 00000000 		.word	.LANCHOR3
- 442 0034 00000000 		.word	.LANCHOR4
- 443              		.cfi_endproc
-ARM GAS  /tmp/ccOLPoOU.s 			page 12
+ 435              		.loc 1 175 10 view .LVU85
+ 436 001e 054A     		ldr	r2, .L44+8
+ 437 0020 D5F8AC10 		ldr	r1, [r5, #172]
+ 438 0024 2046     		mov	r0, r4
+ 439 0026 FFF7FEFF 		bl	COE_pdoUnpack
+ 440              	.LVL28:
+ 441              		.loc 1 178 1 is_stmt 0 view .LVU86
+ 442 002a EEE7     		b	.L40
+ 443              	.L45:
+ARM GAS  /tmp/cc2Z1hJh.s 			page 12
 
 
- 444              	.LFE6:
- 446              		.section	.text.APP_setwatchdog,"ax",%progbits
- 447              		.align	1
- 448              		.global	APP_setwatchdog
- 449              		.syntax unified
- 450              		.thumb
- 451              		.thumb_func
- 453              	APP_setwatchdog:
- 454              	.LVL29:
- 455              	.LFB7:
+ 444              		.align	2
+ 445              	.L44:
+ 446 002c 00000000 		.word	.LANCHOR0
+ 447 0030 00000000 		.word	.LANCHOR3
+ 448 0034 00000000 		.word	.LANCHOR4
+ 449              		.cfi_endproc
+ 450              	.LFE6:
+ 452              		.section	.text.APP_setwatchdog,"ax",%progbits
+ 453              		.align	1
+ 454              		.global	APP_setwatchdog
+ 455              		.syntax unified
+ 456              		.thumb
+ 457              		.thumb_func
+ 458              		.fpu fpv4-sp-d16
+ 460              	APP_setwatchdog:
+ 461              	.LVL29:
+ 462              	.LFB7:
  179:Lib/soes/src/ecat_slv.c **** 
  180:Lib/soes/src/ecat_slv.c **** /* Set the watchdog count value, don't have any affect when using
  181:Lib/soes/src/ecat_slv.c ****  * HW watchdog 0x4xx
@@ -679,63 +686,64 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  184:Lib/soes/src/ecat_slv.c ****  */
  185:Lib/soes/src/ecat_slv.c **** void APP_setwatchdog (int watchdogcnt)
  186:Lib/soes/src/ecat_slv.c **** {
- 456              		.loc 1 186 1 is_stmt 1 view -0
- 457              		.cfi_startproc
- 458              		@ args = 0, pretend = 0, frame = 0
- 459              		@ frame_needed = 0, uses_anonymous_args = 0
- 460              		@ link register save eliminated.
+ 463              		.loc 1 186 1 is_stmt 1 view -0
+ 464              		.cfi_startproc
+ 465              		@ args = 0, pretend = 0, frame = 0
+ 466              		@ frame_needed = 0, uses_anonymous_args = 0
+ 467              		@ link register save eliminated.
  187:Lib/soes/src/ecat_slv.c ****    CC_ATOMIC_SET(ESCvar.watchdogcnt, watchdogcnt);
- 461              		.loc 1 187 4 view .LVU88
- 462 0000 BFF35B8F 		dmb	ish
- 463 0004 024B     		ldr	r3, .L47
- 464 0006 C3F8DC00 		str	r0, [r3, #220]
- 465 000a BFF35B8F 		dmb	ish
+ 468              		.loc 1 187 4 view .LVU88
+ 469 0000 BFF35B8F 		dmb	ish
+ 470 0004 024B     		ldr	r3, .L47
+ 471 0006 C3F8DC00 		str	r0, [r3, #220]
+ 472 000a BFF35B8F 		dmb	ish
  188:Lib/soes/src/ecat_slv.c **** }
- 466              		.loc 1 188 1 is_stmt 0 view .LVU89
- 467 000e 7047     		bx	lr
- 468              	.L48:
- 469              		.align	2
- 470              	.L47:
- 471 0010 00000000 		.word	.LANCHOR0
- 472              		.cfi_endproc
- 473              	.LFE7:
- 475              		.section	.text.DIG_process,"ax",%progbits
- 476              		.align	1
- 477              		.global	DIG_process
- 478              		.syntax unified
- 479              		.thumb
- 480              		.thumb_func
- 482              	DIG_process:
- 483              	.LVL30:
- 484              	.LFB8:
+ 473              		.loc 1 188 1 is_stmt 0 view .LVU89
+ 474 000e 7047     		bx	lr
+ 475              	.L48:
+ 476              		.align	2
+ 477              	.L47:
+ 478 0010 00000000 		.word	.LANCHOR0
+ 479              		.cfi_endproc
+ 480              	.LFE7:
+ 482              		.section	.text.DIG_process,"ax",%progbits
+ 483              		.align	1
+ 484              		.global	DIG_process
+ 485              		.syntax unified
+ 486              		.thumb
+ 487              		.thumb_func
+ 488              		.fpu fpv4-sp-d16
+ 490              	DIG_process:
+ 491              	.LVL30:
+ 492              	.LFB8:
  189:Lib/soes/src/ecat_slv.c **** 
  190:Lib/soes/src/ecat_slv.c **** /* Function to update local I/O, call read ethercat outputs, call
+ARM GAS  /tmp/cc2Z1hJh.s 			page 13
+
+
  191:Lib/soes/src/ecat_slv.c ****  * write ethercat inputs. Implement watch-dog counter to count-out if we have
  192:Lib/soes/src/ecat_slv.c ****  * made state change affecting the App.state.
  193:Lib/soes/src/ecat_slv.c ****  */
  194:Lib/soes/src/ecat_slv.c **** void DIG_process (uint8_t flags)
  195:Lib/soes/src/ecat_slv.c **** {
- 485              		.loc 1 195 1 is_stmt 1 view -0
- 486              		.cfi_startproc
- 487              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccOLPoOU.s 			page 13
-
-
- 488              		@ frame_needed = 0, uses_anonymous_args = 0
- 489              		.loc 1 195 1 is_stmt 0 view .LVU91
- 490 0000 10B5     		push	{r4, lr}
- 491              		.cfi_def_cfa_offset 8
- 492              		.cfi_offset 4, -8
- 493              		.cfi_offset 14, -4
- 494 0002 0446     		mov	r4, r0
+ 493              		.loc 1 195 1 is_stmt 1 view -0
+ 494              		.cfi_startproc
+ 495              		@ args = 0, pretend = 0, frame = 0
+ 496              		@ frame_needed = 0, uses_anonymous_args = 0
+ 497              		.loc 1 195 1 is_stmt 0 view .LVU91
+ 498 0000 10B5     		push	{r4, lr}
+ 499              		.cfi_def_cfa_offset 8
+ 500              		.cfi_offset 4, -8
+ 501              		.cfi_offset 14, -4
+ 502 0002 0446     		mov	r4, r0
  196:Lib/soes/src/ecat_slv.c ****    /* Handle watchdog */
  197:Lib/soes/src/ecat_slv.c ****    if((flags & DIG_PROCESS_WD_FLAG) > 0)
- 495              		.loc 1 197 4 is_stmt 1 view .LVU92
- 496              		.loc 1 197 6 is_stmt 0 view .LVU93
- 497 0004 10F0040F 		tst	r0, #4
- 498 0008 0DD1     		bne	.L59
- 499              	.LVL31:
- 500              	.L50:
+ 503              		.loc 1 197 4 is_stmt 1 view .LVU92
+ 504              		.loc 1 197 6 is_stmt 0 view .LVU93
+ 505 0004 10F0040F 		tst	r0, #4
+ 506 0008 0DD1     		bne	.L59
+ 507              	.LVL31:
+ 508              	.L50:
  198:Lib/soes/src/ecat_slv.c ****    {
  199:Lib/soes/src/ecat_slv.c ****       if (CC_ATOMIC_GET(watchdog) > 0)
  200:Lib/soes/src/ecat_slv.c ****       {
@@ -757,11 +765,11 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  216:Lib/soes/src/ecat_slv.c **** 
  217:Lib/soes/src/ecat_slv.c ****    /* Handle Outputs */
  218:Lib/soes/src/ecat_slv.c ****    if ((flags & DIG_PROCESS_OUTPUTS_FLAG) > 0)
- 501              		.loc 1 218 4 is_stmt 1 view .LVU94
- 502              		.loc 1 218 7 is_stmt 0 view .LVU95
- 503 000a 14F0020F 		tst	r4, #2
- 504 000e 4ED1     		bne	.L60
- 505              	.L53:
+ 509              		.loc 1 218 4 is_stmt 1 view .LVU94
+ 510              		.loc 1 218 7 is_stmt 0 view .LVU95
+ 511 000a 14F0020F 		tst	r4, #2
+ 512 000e 4ED1     		bne	.L60
+ 513              	.L53:
  219:Lib/soes/src/ecat_slv.c ****    {
  220:Lib/soes/src/ecat_slv.c ****       if(((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0) &&
  221:Lib/soes/src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
@@ -770,6 +778,9 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  224:Lib/soes/src/ecat_slv.c ****          CC_ATOMIC_SET(watchdog, ESCvar.watchdogcnt);
  225:Lib/soes/src/ecat_slv.c ****          /* Set outputs */
  226:Lib/soes/src/ecat_slv.c ****          cb_set_outputs();
+ARM GAS  /tmp/cc2Z1hJh.s 			page 14
+
+
  227:Lib/soes/src/ecat_slv.c ****       }
  228:Lib/soes/src/ecat_slv.c ****       else if (ESCvar.ALevent & ESCREG_ALEVENT_SM2)
  229:Lib/soes/src/ecat_slv.c ****       {
@@ -778,40 +789,37 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  232:Lib/soes/src/ecat_slv.c ****    }
  233:Lib/soes/src/ecat_slv.c **** 
  234:Lib/soes/src/ecat_slv.c ****    /* Call application */
-ARM GAS  /tmp/ccOLPoOU.s 			page 14
-
-
  235:Lib/soes/src/ecat_slv.c ****    if ((flags & DIG_PROCESS_APP_HOOK_FLAG) > 0)
- 506              		.loc 1 235 4 is_stmt 1 view .LVU96
- 507              		.loc 1 235 7 is_stmt 0 view .LVU97
- 508 0010 14F0080F 		tst	r4, #8
- 509 0014 03D0     		beq	.L55
+ 514              		.loc 1 235 4 is_stmt 1 view .LVU96
+ 515              		.loc 1 235 7 is_stmt 0 view .LVU97
+ 516 0010 14F0080F 		tst	r4, #8
+ 517 0014 03D0     		beq	.L55
  236:Lib/soes/src/ecat_slv.c ****    {
  237:Lib/soes/src/ecat_slv.c ****       /* Call application callback if set */
  238:Lib/soes/src/ecat_slv.c ****       if (ESCvar.application_hook != NULL)
- 510              		.loc 1 238 7 is_stmt 1 view .LVU98
- 511              		.loc 1 238 17 is_stmt 0 view .LVU99
- 512 0016 434B     		ldr	r3, .L64
- 513 0018 5B6B     		ldr	r3, [r3, #52]
- 514              		.loc 1 238 10 view .LVU100
- 515 001a 03B1     		cbz	r3, .L55
+ 518              		.loc 1 238 7 is_stmt 1 view .LVU98
+ 519              		.loc 1 238 17 is_stmt 0 view .LVU99
+ 520 0016 434B     		ldr	r3, .L64
+ 521 0018 5B6B     		ldr	r3, [r3, #52]
+ 522              		.loc 1 238 10 view .LVU100
+ 523 001a 03B1     		cbz	r3, .L55
  239:Lib/soes/src/ecat_slv.c ****       {
  240:Lib/soes/src/ecat_slv.c ****          (ESCvar.application_hook)();
- 516              		.loc 1 240 10 is_stmt 1 view .LVU101
- 517              		.loc 1 240 17 is_stmt 0 view .LVU102
- 518 001c 9847     		blx	r3
- 519              	.LVL32:
- 520              	.L55:
+ 524              		.loc 1 240 10 is_stmt 1 view .LVU101
+ 525              		.loc 1 240 17 is_stmt 0 view .LVU102
+ 526 001c 9847     		blx	r3
+ 527              	.LVL32:
+ 528              	.L55:
  241:Lib/soes/src/ecat_slv.c ****       }
  242:Lib/soes/src/ecat_slv.c ****    }
  243:Lib/soes/src/ecat_slv.c **** 
  244:Lib/soes/src/ecat_slv.c ****    /* Handle Inputs */
  245:Lib/soes/src/ecat_slv.c ****    if ((flags & DIG_PROCESS_INPUTS_FLAG) > 0)
- 521              		.loc 1 245 4 is_stmt 1 view .LVU103
- 522              		.loc 1 245 7 is_stmt 0 view .LVU104
- 523 001e 14F0010F 		tst	r4, #1
- 524 0022 71D1     		bne	.L61
- 525              	.L49:
+ 529              		.loc 1 245 4 is_stmt 1 view .LVU103
+ 530              		.loc 1 245 7 is_stmt 0 view .LVU104
+ 531 001e 14F0010F 		tst	r4, #1
+ 532 0022 71D1     		bne	.L61
+ 533              	.L49:
  246:Lib/soes/src/ecat_slv.c ****    {
  247:Lib/soes/src/ecat_slv.c ****       if(CC_ATOMIC_GET(ESCvar.App.state) > 0)
  248:Lib/soes/src/ecat_slv.c ****       {
@@ -821,210 +829,211 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  252:Lib/soes/src/ecat_slv.c ****       }
  253:Lib/soes/src/ecat_slv.c ****    }
  254:Lib/soes/src/ecat_slv.c **** }
- 526              		.loc 1 254 1 view .LVU105
- 527 0024 10BD     		pop	{r4, pc}
- 528              	.LVL33:
- 529              	.L59:
+ 534              		.loc 1 254 1 view .LVU105
+ 535 0024 10BD     		pop	{r4, pc}
+ 536              	.LVL33:
+ 537              	.L59:
  199:Lib/soes/src/ecat_slv.c ****       {
- 530              		.loc 1 199 7 is_stmt 1 view .LVU106
+ 538              		.loc 1 199 7 is_stmt 1 view .LVU106
  199:Lib/soes/src/ecat_slv.c ****       {
- 531              		.loc 1 199 11 is_stmt 0 view .LVU107
- 532 0026 BFF35B8F 		dmb	ish
- 533 002a 3F4B     		ldr	r3, .L64+4
- 534 002c 1B68     		ldr	r3, [r3]
- 535 002e BFF35B8F 		dmb	ish
+ 539              		.loc 1 199 11 is_stmt 0 view .LVU107
+ 540 0026 BFF35B8F 		dmb	ish
+ARM GAS  /tmp/cc2Z1hJh.s 			page 15
+
+
+ 541 002a 3F4B     		ldr	r3, .L64+4
+ 542 002c 1B68     		ldr	r3, [r3]
+ 543 002e BFF35B8F 		dmb	ish
  199:Lib/soes/src/ecat_slv.c ****       {
- 536              		.loc 1 199 10 view .LVU108
- 537 0032 002B     		cmp	r3, #0
- 538 0034 0BDD     		ble	.L51
+ 544              		.loc 1 199 10 view .LVU108
+ 545 0032 002B     		cmp	r3, #0
+ 546 0034 0BDD     		ble	.L51
  201:Lib/soes/src/ecat_slv.c ****       }
-ARM GAS  /tmp/ccOLPoOU.s 			page 15
-
-
- 539              		.loc 1 201 10 is_stmt 1 view .LVU109
- 540 0036 3C4B     		ldr	r3, .L64+4
- 541 0038 BFF35B8F 		dmb	ish
- 542              	.L57:
- 543 003c 53E8002F 		ldrex	r2, [r3]
- 544 0040 013A     		subs	r2, r2, #1
- 545 0042 43E80021 		strex	r1, r2, [r3]
- 546 0046 0029     		cmp	r1, #0
- 547 0048 F8D1     		bne	.L57
- 548 004a BFF35B8F 		dmb	ish
- 549              	.L51:
+ 547              		.loc 1 201 10 is_stmt 1 view .LVU109
+ 548 0036 3C4B     		ldr	r3, .L64+4
+ 549 0038 BFF35B8F 		dmb	ish
+ 550              	.L57:
+ 551 003c 53E8002F 		ldrex	r2, [r3]
+ 552 0040 013A     		subs	r2, r2, #1
+ 553 0042 43E80021 		strex	r1, r2, [r3]
+ 554 0046 0029     		cmp	r1, #0
+ 555 0048 F8D1     		bne	.L57
+ 556 004a BFF35B8F 		dmb	ish
+ 557              	.L51:
  204:Lib/soes/src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0) &&
- 550              		.loc 1 204 7 view .LVU110
+ 558              		.loc 1 204 7 view .LVU110
  204:Lib/soes/src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0) &&
- 551              		.loc 1 204 12 is_stmt 0 view .LVU111
- 552 004e BFF35B8F 		dmb	ish
- 553 0052 354B     		ldr	r3, .L64+4
- 554 0054 1B68     		ldr	r3, [r3]
- 555 0056 BFF35B8F 		dmb	ish
+ 559              		.loc 1 204 12 is_stmt 0 view .LVU111
+ 560 004e BFF35B8F 		dmb	ish
+ 561 0052 354B     		ldr	r3, .L64+4
+ 562 0054 1B68     		ldr	r3, [r3]
+ 563 0056 BFF35B8F 		dmb	ish
  204:Lib/soes/src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0) &&
- 556              		.loc 1 204 10 view .LVU112
- 557 005a 002B     		cmp	r3, #0
- 558 005c 13DD     		ble	.L62
- 559              	.L52:
+ 564              		.loc 1 204 10 view .LVU112
+ 565 005a 002B     		cmp	r3, #0
+ 566 005c 13DD     		ble	.L62
+ 567              	.L52:
  211:Lib/soes/src/ecat_slv.c ****       {
- 560              		.loc 1 211 12 is_stmt 1 view .LVU113
+ 568              		.loc 1 211 12 is_stmt 1 view .LVU113
  211:Lib/soes/src/ecat_slv.c ****       {
- 561              		.loc 1 211 17 is_stmt 0 view .LVU114
- 562 005e BFF35B8F 		dmb	ish
- 563 0062 304B     		ldr	r3, .L64
- 564 0064 93F8E930 		ldrb	r3, [r3, #233]	@ zero_extendqisi2
- 565 0068 BFF35B8F 		dmb	ish
+ 569              		.loc 1 211 17 is_stmt 0 view .LVU114
+ 570 005e BFF35B8F 		dmb	ish
+ 571 0062 304B     		ldr	r3, .L64
+ 572 0064 93F8E930 		ldrb	r3, [r3, #233]	@ zero_extendqisi2
+ 573 0068 BFF35B8F 		dmb	ish
  211:Lib/soes/src/ecat_slv.c ****       {
- 566              		.loc 1 211 14 view .LVU115
- 567 006c 13F0020F 		tst	r3, #2
- 568 0070 CBD1     		bne	.L50
+ 574              		.loc 1 211 14 view .LVU115
+ 575 006c 13F0020F 		tst	r3, #2
+ 576 0070 CBD1     		bne	.L50
  213:Lib/soes/src/ecat_slv.c ****       }
- 569              		.loc 1 213 10 is_stmt 1 view .LVU116
- 570 0072 2C4B     		ldr	r3, .L64
- 571 0074 D3F8DC20 		ldr	r2, [r3, #220]
- 572 0078 BFF35B8F 		dmb	ish
- 573 007c 2A4B     		ldr	r3, .L64+4
- 574 007e 1A60     		str	r2, [r3]
- 575 0080 BFF35B8F 		dmb	ish
- 576 0084 C1E7     		b	.L50
- 577              	.L62:
+ 577              		.loc 1 213 10 is_stmt 1 view .LVU116
+ 578 0072 2C4B     		ldr	r3, .L64
+ 579 0074 D3F8DC20 		ldr	r2, [r3, #220]
+ 580 0078 BFF35B8F 		dmb	ish
+ 581 007c 2A4B     		ldr	r3, .L64+4
+ 582 007e 1A60     		str	r2, [r3]
+ 583 0080 BFF35B8F 		dmb	ish
+ 584 0084 C1E7     		b	.L50
+ 585              	.L62:
  205:Lib/soes/src/ecat_slv.c ****            (ESCvar.ESC_SM2_sml > 0))
- 578              		.loc 1 205 13 is_stmt 0 discriminator 1 view .LVU117
- 579 0086 BFF35B8F 		dmb	ish
- 580 008a 264B     		ldr	r3, .L64
- 581 008c 93F8E930 		ldrb	r3, [r3, #233]	@ zero_extendqisi2
- 582 0090 BFF35B8F 		dmb	ish
+ 586              		.loc 1 205 13 is_stmt 0 discriminator 1 view .LVU117
+ 587 0086 BFF35B8F 		dmb	ish
+ARM GAS  /tmp/cc2Z1hJh.s 			page 16
+
+
+ 588 008a 264B     		ldr	r3, .L64
+ 589 008c 93F8E930 		ldrb	r3, [r3, #233]	@ zero_extendqisi2
+ 590 0090 BFF35B8F 		dmb	ish
  204:Lib/soes/src/ecat_slv.c ****           ((CC_ATOMIC_GET(ESCvar.App.state) & APPSTATE_OUTPUT) > 0) &&
- 583              		.loc 1 204 42 discriminator 1 view .LVU118
- 584 0094 13F0020F 		tst	r3, #2
- 585 0098 E1D0     		beq	.L52
+ 591              		.loc 1 204 42 discriminator 1 view .LVU118
+ 592 0094 13F0020F 		tst	r3, #2
+ 593 0098 E1D0     		beq	.L52
  206:Lib/soes/src/ecat_slv.c ****       {
-ARM GAS  /tmp/ccOLPoOU.s 			page 16
-
-
- 586              		.loc 1 206 19 view .LVU119
- 587 009a 224B     		ldr	r3, .L64
- 588 009c B3F87830 		ldrh	r3, [r3, #120]
+ 594              		.loc 1 206 19 view .LVU119
+ 595 009a 224B     		ldr	r3, .L64
+ 596 009c B3F87830 		ldrh	r3, [r3, #120]
  205:Lib/soes/src/ecat_slv.c ****            (ESCvar.ESC_SM2_sml > 0))
- 589              		.loc 1 205 69 view .LVU120
- 590 00a0 002B     		cmp	r3, #0
- 591 00a2 DCD0     		beq	.L52
+ 597              		.loc 1 205 69 view .LVU120
+ 598 00a0 002B     		cmp	r3, #0
+ 599 00a2 DCD0     		beq	.L52
  208:Lib/soes/src/ecat_slv.c ****          ESC_ALstatusgotoerror((ESCsafeop | ESCerror), ALERR_WATCHDOG);
- 592              		.loc 1 208 50 is_stmt 1 view .LVU121
+ 600              		.loc 1 208 50 is_stmt 1 view .LVU121
  209:Lib/soes/src/ecat_slv.c ****       }
- 593              		.loc 1 209 10 view .LVU122
- 594 00a4 1B21     		movs	r1, #27
- 595 00a6 1420     		movs	r0, #20
- 596              	.LVL34:
+ 601              		.loc 1 209 10 view .LVU122
+ 602 00a4 1B21     		movs	r1, #27
+ 603 00a6 1420     		movs	r0, #20
+ 604              	.LVL34:
  209:Lib/soes/src/ecat_slv.c ****       }
- 597              		.loc 1 209 10 is_stmt 0 view .LVU123
- 598 00a8 FFF7FEFF 		bl	ESC_ALstatusgotoerror
- 599              	.LVL35:
- 600 00ac ADE7     		b	.L50
- 601              	.L60:
+ 605              		.loc 1 209 10 is_stmt 0 view .LVU123
+ 606 00a8 FFF7FEFF 		bl	ESC_ALstatusgotoerror
+ 607              	.LVL35:
+ 608 00ac ADE7     		b	.L50
+ 609              	.L60:
  220:Lib/soes/src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
- 602              		.loc 1 220 7 is_stmt 1 view .LVU124
+ 610              		.loc 1 220 7 is_stmt 1 view .LVU124
  220:Lib/soes/src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
- 603              		.loc 1 220 12 is_stmt 0 view .LVU125
- 604 00ae BFF35B8F 		dmb	ish
- 605 00b2 1C4B     		ldr	r3, .L64
- 606 00b4 93F8E930 		ldrb	r3, [r3, #233]	@ zero_extendqisi2
- 607 00b8 BFF35B8F 		dmb	ish
+ 611              		.loc 1 220 12 is_stmt 0 view .LVU125
+ 612 00ae BFF35B8F 		dmb	ish
+ 613 00b2 1C4B     		ldr	r3, .L64
+ 614 00b4 93F8E930 		ldrb	r3, [r3, #233]	@ zero_extendqisi2
+ 615 00b8 BFF35B8F 		dmb	ish
  220:Lib/soes/src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
- 608              		.loc 1 220 9 view .LVU126
- 609 00bc 13F0020F 		tst	r3, #2
- 610 00c0 05D0     		beq	.L54
+ 616              		.loc 1 220 9 view .LVU126
+ 617 00bc 13F0020F 		tst	r3, #2
+ 618 00c0 05D0     		beq	.L54
  221:Lib/soes/src/ecat_slv.c ****       {
- 611              		.loc 1 221 17 discriminator 1 view .LVU127
- 612 00c2 184B     		ldr	r3, .L64
- 613 00c4 D3F8E430 		ldr	r3, [r3, #228]
+ 619              		.loc 1 221 17 discriminator 1 view .LVU127
+ 620 00c2 184B     		ldr	r3, .L64
+ 621 00c4 D3F8E430 		ldr	r3, [r3, #228]
  220:Lib/soes/src/ecat_slv.c ****          (ESCvar.ALevent & ESCREG_ALEVENT_SM2))
- 614              		.loc 1 220 68 discriminator 1 view .LVU128
- 615 00c8 13F4806F 		tst	r3, #1024
- 616 00cc 0ED1     		bne	.L63
- 617              	.L54:
+ 622              		.loc 1 220 68 discriminator 1 view .LVU128
+ 623 00c8 13F4806F 		tst	r3, #1024
+ 624 00cc 0ED1     		bne	.L63
+ 625              	.L54:
  228:Lib/soes/src/ecat_slv.c ****       {
- 618              		.loc 1 228 12 is_stmt 1 view .LVU129
+ 626              		.loc 1 228 12 is_stmt 1 view .LVU129
  228:Lib/soes/src/ecat_slv.c ****       {
- 619              		.loc 1 228 22 is_stmt 0 view .LVU130
- 620 00ce 154B     		ldr	r3, .L64
- 621 00d0 D3F8E430 		ldr	r3, [r3, #228]
+ 627              		.loc 1 228 22 is_stmt 0 view .LVU130
+ 628 00ce 154B     		ldr	r3, .L64
+ 629 00d0 D3F8E430 		ldr	r3, [r3, #228]
  228:Lib/soes/src/ecat_slv.c ****       {
- 622              		.loc 1 228 15 view .LVU131
- 623 00d4 13F4806F 		tst	r3, #1024
- 624 00d8 9AD0     		beq	.L53
+ 630              		.loc 1 228 15 view .LVU131
+ARM GAS  /tmp/cc2Z1hJh.s 			page 17
+
+
+ 631 00d4 13F4806F 		tst	r3, #1024
+ 632 00d8 9AD0     		beq	.L53
  230:Lib/soes/src/ecat_slv.c ****       }
- 625              		.loc 1 230 10 is_stmt 1 view .LVU132
- 626 00da 124B     		ldr	r3, .L64
- 627 00dc B3F87820 		ldrh	r2, [r3, #120]
- 628 00e0 1249     		ldr	r1, .L64+8
- 629 00e2 4FF4B050 		mov	r0, #5632
-ARM GAS  /tmp/ccOLPoOU.s 			page 17
-
-
- 630 00e6 FFF7FEFF 		bl	ESC_read
- 631              	.LVL36:
- 632 00ea 91E7     		b	.L53
- 633              	.L63:
+ 633              		.loc 1 230 10 is_stmt 1 view .LVU132
+ 634 00da 124B     		ldr	r3, .L64
+ 635 00dc B3F87820 		ldrh	r2, [r3, #120]
+ 636 00e0 1249     		ldr	r1, .L64+8
+ 637 00e2 4FF4B050 		mov	r0, #5632
+ 638 00e6 FFF7FEFF 		bl	ESC_read
+ 639              	.LVL36:
+ 640 00ea 91E7     		b	.L53
+ 641              	.L63:
  223:Lib/soes/src/ecat_slv.c ****          CC_ATOMIC_SET(watchdog, ESCvar.watchdogcnt);
- 634              		.loc 1 223 10 view .LVU133
- 635 00ec FFF7FEFF 		bl	RXPDO_update
- 636              	.LVL37:
+ 642              		.loc 1 223 10 view .LVU133
+ 643 00ec FFF7FEFF 		bl	RXPDO_update
+ 644              	.LVL37:
  224:Lib/soes/src/ecat_slv.c ****          /* Set outputs */
- 637              		.loc 1 224 10 view .LVU134
- 638 00f0 0C4B     		ldr	r3, .L64
- 639 00f2 D3F8DC20 		ldr	r2, [r3, #220]
- 640 00f6 BFF35B8F 		dmb	ish
- 641 00fa 0B4B     		ldr	r3, .L64+4
- 642 00fc 1A60     		str	r2, [r3]
- 643 00fe BFF35B8F 		dmb	ish
+ 645              		.loc 1 224 10 view .LVU134
+ 646 00f0 0C4B     		ldr	r3, .L64
+ 647 00f2 D3F8DC20 		ldr	r2, [r3, #220]
+ 648 00f6 BFF35B8F 		dmb	ish
+ 649 00fa 0B4B     		ldr	r3, .L64+4
+ 650 00fc 1A60     		str	r2, [r3]
+ 651 00fe BFF35B8F 		dmb	ish
  226:Lib/soes/src/ecat_slv.c ****       }
- 644              		.loc 1 226 10 view .LVU135
- 645 0102 FFF7FEFF 		bl	cb_set_outputs
- 646              	.LVL38:
- 647 0106 83E7     		b	.L53
- 648              	.L61:
+ 652              		.loc 1 226 10 view .LVU135
+ 653 0102 FFF7FEFF 		bl	cb_set_outputs
+ 654              	.LVL38:
+ 655 0106 83E7     		b	.L53
+ 656              	.L61:
  247:Lib/soes/src/ecat_slv.c ****       {
- 649              		.loc 1 247 7 view .LVU136
+ 657              		.loc 1 247 7 view .LVU136
  247:Lib/soes/src/ecat_slv.c ****       {
- 650              		.loc 1 247 10 is_stmt 0 view .LVU137
- 651 0108 BFF35B8F 		dmb	ish
- 652 010c 054B     		ldr	r3, .L64
- 653 010e 93F8E930 		ldrb	r3, [r3, #233]	@ zero_extendqisi2
- 654 0112 BFF35B8F 		dmb	ish
+ 658              		.loc 1 247 10 is_stmt 0 view .LVU137
+ 659 0108 BFF35B8F 		dmb	ish
+ 660 010c 054B     		ldr	r3, .L64
+ 661 010e 93F8E930 		ldrb	r3, [r3, #233]	@ zero_extendqisi2
+ 662 0112 BFF35B8F 		dmb	ish
  247:Lib/soes/src/ecat_slv.c ****       {
- 655              		.loc 1 247 9 view .LVU138
- 656 0116 002B     		cmp	r3, #0
- 657 0118 84D0     		beq	.L49
+ 663              		.loc 1 247 9 view .LVU138
+ 664 0116 002B     		cmp	r3, #0
+ 665 0118 84D0     		beq	.L49
  250:Lib/soes/src/ecat_slv.c ****          TXPDO_update();
- 658              		.loc 1 250 10 is_stmt 1 view .LVU139
- 659 011a FFF7FEFF 		bl	cb_get_inputs
- 660              	.LVL39:
+ 666              		.loc 1 250 10 is_stmt 1 view .LVU139
+ 667 011a FFF7FEFF 		bl	cb_get_inputs
+ 668              	.LVL39:
  251:Lib/soes/src/ecat_slv.c ****       }
- 661              		.loc 1 251 10 view .LVU140
- 662 011e FFF7FEFF 		bl	TXPDO_update
- 663              	.LVL40:
- 664              		.loc 1 254 1 is_stmt 0 view .LVU141
- 665 0122 7FE7     		b	.L49
- 666              	.L65:
- 667              		.align	2
- 668              	.L64:
- 669 0124 00000000 		.word	.LANCHOR0
- 670 0128 00000000 		.word	.LANCHOR5
- 671 012c 00000000 		.word	.LANCHOR3
- 672              		.cfi_endproc
- 673              	.LFE8:
- 675              		.section	.text.ecat_slv_worker,"ax",%progbits
- 676              		.align	1
- 677              		.global	ecat_slv_worker
- 678              		.syntax unified
- 679              		.thumb
-ARM GAS  /tmp/ccOLPoOU.s 			page 18
+ 669              		.loc 1 251 10 view .LVU140
+ 670 011e FFF7FEFF 		bl	TXPDO_update
+ 671              	.LVL40:
+ 672              		.loc 1 254 1 is_stmt 0 view .LVU141
+ 673 0122 7FE7     		b	.L49
+ 674              	.L65:
+ 675              		.align	2
+ 676              	.L64:
+ 677 0124 00000000 		.word	.LANCHOR0
+ 678 0128 00000000 		.word	.LANCHOR5
+ARM GAS  /tmp/cc2Z1hJh.s 			page 18
 
 
- 680              		.thumb_func
- 682              	ecat_slv_worker:
- 683              	.LVL41:
- 684              	.LFB9:
+ 679 012c 00000000 		.word	.LANCHOR3
+ 680              		.cfi_endproc
+ 681              	.LFE8:
+ 683              		.section	.text.ecat_slv_worker,"ax",%progbits
+ 684              		.align	1
+ 685              		.global	ecat_slv_worker
+ 686              		.syntax unified
+ 687              		.thumb
+ 688              		.thumb_func
+ 689              		.fpu fpv4-sp-d16
+ 691              	ecat_slv_worker:
+ 692              	.LVL41:
+ 693              	.LFB9:
  255:Lib/soes/src/ecat_slv.c **** 
  256:Lib/soes/src/ecat_slv.c **** /*
  257:Lib/soes/src/ecat_slv.c ****  * Handler for SM change, SM0/1, AL CONTROL and EEPROM events, the application
@@ -1033,19 +1042,19 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  260:Lib/soes/src/ecat_slv.c ****  */
  261:Lib/soes/src/ecat_slv.c **** void ecat_slv_worker (uint32_t event_mask)
  262:Lib/soes/src/ecat_slv.c **** {
- 685              		.loc 1 262 1 is_stmt 1 view -0
- 686              		.cfi_startproc
- 687              		@ args = 0, pretend = 0, frame = 0
- 688              		@ frame_needed = 0, uses_anonymous_args = 0
- 689              		.loc 1 262 1 is_stmt 0 view .LVU143
- 690 0000 10B5     		push	{r4, lr}
- 691              		.cfi_def_cfa_offset 8
- 692              		.cfi_offset 4, -8
- 693              		.cfi_offset 14, -4
- 694 0002 0446     		mov	r4, r0
- 695 0004 1DE0     		b	.L70
- 696              	.LVL42:
- 697              	.L68:
+ 694              		.loc 1 262 1 is_stmt 1 view -0
+ 695              		.cfi_startproc
+ 696              		@ args = 0, pretend = 0, frame = 0
+ 697              		@ frame_needed = 0, uses_anonymous_args = 0
+ 698              		.loc 1 262 1 is_stmt 0 view .LVU143
+ 699 0000 10B5     		push	{r4, lr}
+ 700              		.cfi_def_cfa_offset 8
+ 701              		.cfi_offset 4, -8
+ 702              		.cfi_offset 14, -4
+ 703 0002 0446     		mov	r4, r0
+ 704 0004 1DE0     		b	.L70
+ 705              	.LVL42:
+ 706              	.L68:
  263:Lib/soes/src/ecat_slv.c ****    do
  264:Lib/soes/src/ecat_slv.c ****    {
  265:Lib/soes/src/ecat_slv.c ****       /* Check the state machine */
@@ -1057,9 +1066,9 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  271:Lib/soes/src/ecat_slv.c ****       while ((ESC_mbxprocess() > 0) || (ESCvar.txcue > 0))
  272:Lib/soes/src/ecat_slv.c ****       {
  273:Lib/soes/src/ecat_slv.c ****          ESC_coeprocess();
- 698              		.loc 1 273 10 is_stmt 1 view .LVU144
- 699 0006 FFF7FEFF 		bl	ESC_coeprocess
- 700              	.LVL43:
+ 707              		.loc 1 273 10 is_stmt 1 view .LVU144
+ 708 0006 FFF7FEFF 		bl	ESC_coeprocess
+ 709              	.LVL43:
  274:Lib/soes/src/ecat_slv.c **** #if USE_FOE
  275:Lib/soes/src/ecat_slv.c ****          ESC_foeprocess();
  276:Lib/soes/src/ecat_slv.c **** #endif
@@ -1067,117 +1076,118 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  278:Lib/soes/src/ecat_slv.c ****          ESC_eoeprocess();
  279:Lib/soes/src/ecat_slv.c **** #endif
  280:Lib/soes/src/ecat_slv.c ****          ESC_xoeprocess();
- 701              		.loc 1 280 10 view .LVU145
- 702 000a FFF7FEFF 		bl	ESC_xoeprocess
- 703              	.LVL44:
- 704              	.L67:
- 271:Lib/soes/src/ecat_slv.c ****       {
- 705              		.loc 1 271 13 view .LVU146
- 271:Lib/soes/src/ecat_slv.c ****       {
- 706              		.loc 1 271 15 is_stmt 0 view .LVU147
- 707 000e FFF7FEFF 		bl	ESC_mbxprocess
- 708              	.LVL45:
- 271:Lib/soes/src/ecat_slv.c ****       {
-ARM GAS  /tmp/ccOLPoOU.s 			page 19
+ 710              		.loc 1 280 10 view .LVU145
+ 711 000a FFF7FEFF 		bl	ESC_xoeprocess
+ARM GAS  /tmp/cc2Z1hJh.s 			page 19
 
 
- 709              		.loc 1 271 13 view .LVU148
- 710 0012 0028     		cmp	r0, #0
- 711 0014 F7D1     		bne	.L68
+ 712              	.LVL44:
+ 713              	.L67:
  271:Lib/soes/src/ecat_slv.c ****       {
- 712              		.loc 1 271 47 discriminator 1 view .LVU149
- 713 0016 104B     		ldr	r3, .L73
- 714 0018 93F88F30 		ldrb	r3, [r3, #143]	@ zero_extendqisi2
+ 714              		.loc 1 271 13 view .LVU146
  271:Lib/soes/src/ecat_slv.c ****       {
- 715              		.loc 1 271 37 discriminator 1 view .LVU150
- 716 001c 002B     		cmp	r3, #0
- 717 001e F2D1     		bne	.L68
+ 715              		.loc 1 271 15 is_stmt 0 view .LVU147
+ 716 000e FFF7FEFF 		bl	ESC_mbxprocess
+ 717              	.LVL45:
+ 271:Lib/soes/src/ecat_slv.c ****       {
+ 718              		.loc 1 271 13 view .LVU148
+ 719 0012 0028     		cmp	r0, #0
+ 720 0014 F7D1     		bne	.L68
+ 271:Lib/soes/src/ecat_slv.c ****       {
+ 721              		.loc 1 271 47 discriminator 1 view .LVU149
+ 722 0016 104B     		ldr	r3, .L73
+ 723 0018 93F88F30 		ldrb	r3, [r3, #143]	@ zero_extendqisi2
+ 271:Lib/soes/src/ecat_slv.c ****       {
+ 724              		.loc 1 271 37 discriminator 1 view .LVU150
+ 725 001c 002B     		cmp	r3, #0
+ 726 001e F2D1     		bne	.L68
  281:Lib/soes/src/ecat_slv.c ****       }
  282:Lib/soes/src/ecat_slv.c **** #if USE_EOE
  283:Lib/soes/src/ecat_slv.c ****       ESC_eoeprocess_tx();
  284:Lib/soes/src/ecat_slv.c **** #endif
  285:Lib/soes/src/ecat_slv.c ****       /* Call emulated eeprom handler if set */
  286:Lib/soes/src/ecat_slv.c ****       if (ESCvar.esc_hw_eep_handler != NULL)
- 718              		.loc 1 286 7 is_stmt 1 view .LVU151
- 719              		.loc 1 286 17 is_stmt 0 view .LVU152
- 720 0020 0D4B     		ldr	r3, .L73
- 721 0022 DB6D     		ldr	r3, [r3, #92]
- 722              		.loc 1 286 10 view .LVU153
- 723 0024 03B1     		cbz	r3, .L69
+ 727              		.loc 1 286 7 is_stmt 1 view .LVU151
+ 728              		.loc 1 286 17 is_stmt 0 view .LVU152
+ 729 0020 0D4B     		ldr	r3, .L73
+ 730 0022 DB6D     		ldr	r3, [r3, #92]
+ 731              		.loc 1 286 10 view .LVU153
+ 732 0024 03B1     		cbz	r3, .L69
  287:Lib/soes/src/ecat_slv.c ****       {
  288:Lib/soes/src/ecat_slv.c ****          (ESCvar.esc_hw_eep_handler)();
- 724              		.loc 1 288 10 is_stmt 1 view .LVU154
- 725              		.loc 1 288 17 is_stmt 0 view .LVU155
- 726 0026 9847     		blx	r3
- 727              	.LVL46:
- 728              	.L69:
+ 733              		.loc 1 288 10 is_stmt 1 view .LVU154
+ 734              		.loc 1 288 17 is_stmt 0 view .LVU155
+ 735 0026 9847     		blx	r3
+ 736              	.LVL46:
+ 737              	.L69:
  289:Lib/soes/src/ecat_slv.c ****       }
  290:Lib/soes/src/ecat_slv.c **** 
  291:Lib/soes/src/ecat_slv.c ****       CC_ATOMIC_SET(ESCvar.ALevent, ESC_ALeventread());
- 729              		.loc 1 291 7 is_stmt 1 view .LVU156
- 730 0028 FFF7FEFF 		bl	ESC_ALeventread
- 731              	.LVL47:
- 732 002c 0A4B     		ldr	r3, .L73
- 733 002e BFF35B8F 		dmb	ish
- 734 0032 C3F8E400 		str	r0, [r3, #228]
- 735 0036 BFF35B8F 		dmb	ish
+ 738              		.loc 1 291 7 is_stmt 1 view .LVU156
+ 739 0028 FFF7FEFF 		bl	ESC_ALeventread
+ 740              	.LVL47:
+ 741 002c 0A4B     		ldr	r3, .L73
+ 742 002e BFF35B8F 		dmb	ish
+ 743 0032 C3F8E400 		str	r0, [r3, #228]
+ 744 0036 BFF35B8F 		dmb	ish
  292:Lib/soes/src/ecat_slv.c **** 
  293:Lib/soes/src/ecat_slv.c ****    }while(ESCvar.ALevent & event_mask);
- 736              		.loc 1 293 10 view .LVU157
- 737              		.loc 1 293 17 is_stmt 0 view .LVU158
- 738 003a D3F8E430 		ldr	r3, [r3, #228]
- 739              		.loc 1 293 4 view .LVU159
- 740 003e 2342     		tst	r3, r4
- 741 0040 04D0     		beq	.L72
- 742              	.L70:
+ 745              		.loc 1 293 10 view .LVU157
+ 746              		.loc 1 293 17 is_stmt 0 view .LVU158
+ 747 003a D3F8E430 		ldr	r3, [r3, #228]
+ 748              		.loc 1 293 4 view .LVU159
+ 749 003e 2342     		tst	r3, r4
+ 750 0040 04D0     		beq	.L72
+ARM GAS  /tmp/cc2Z1hJh.s 			page 20
+
+
+ 751              	.L70:
  263:Lib/soes/src/ecat_slv.c ****    {
- 743              		.loc 1 263 4 is_stmt 1 view .LVU160
+ 752              		.loc 1 263 4 is_stmt 1 view .LVU160
  266:Lib/soes/src/ecat_slv.c ****       /* Check the SM activation event */
- 744              		.loc 1 266 7 view .LVU161
- 745 0042 FFF7FEFF 		bl	ESC_state
- 746              	.LVL48:
+ 753              		.loc 1 266 7 view .LVU161
+ 754 0042 FFF7FEFF 		bl	ESC_state
+ 755              	.LVL48:
  268:Lib/soes/src/ecat_slv.c **** 
- 747              		.loc 1 268 7 view .LVU162
-ARM GAS  /tmp/ccOLPoOU.s 			page 20
-
-
- 748 0046 FFF7FEFF 		bl	ESC_sm_act_event
- 749              	.LVL49:
+ 756              		.loc 1 268 7 view .LVU162
+ 757 0046 FFF7FEFF 		bl	ESC_sm_act_event
+ 758              	.LVL49:
  271:Lib/soes/src/ecat_slv.c ****       {
- 750              		.loc 1 271 7 view .LVU163
+ 759              		.loc 1 271 7 view .LVU163
  271:Lib/soes/src/ecat_slv.c ****       {
- 751              		.loc 1 271 13 is_stmt 0 view .LVU164
- 752 004a E0E7     		b	.L67
- 753              	.L72:
+ 760              		.loc 1 271 13 is_stmt 0 view .LVU164
+ 761 004a E0E7     		b	.L67
+ 762              	.L72:
  294:Lib/soes/src/ecat_slv.c **** 
  295:Lib/soes/src/ecat_slv.c ****    ESC_ALeventmaskwrite(ESC_ALeventmaskread() | event_mask);
- 754              		.loc 1 295 4 is_stmt 1 view .LVU165
- 755              		.loc 1 295 25 is_stmt 0 view .LVU166
- 756 004c FFF7FEFF 		bl	ESC_ALeventmaskread
- 757              	.LVL50:
- 758              		.loc 1 295 4 view .LVU167
- 759 0050 2043     		orrs	r0, r0, r4
- 760 0052 FFF7FEFF 		bl	ESC_ALeventmaskwrite
- 761              	.LVL51:
+ 763              		.loc 1 295 4 is_stmt 1 view .LVU165
+ 764              		.loc 1 295 25 is_stmt 0 view .LVU166
+ 765 004c FFF7FEFF 		bl	ESC_ALeventmaskread
+ 766              	.LVL50:
+ 767              		.loc 1 295 4 view .LVU167
+ 768 0050 2043     		orrs	r0, r0, r4
+ 769 0052 FFF7FEFF 		bl	ESC_ALeventmaskwrite
+ 770              	.LVL51:
  296:Lib/soes/src/ecat_slv.c **** }
- 762              		.loc 1 296 1 view .LVU168
- 763 0056 10BD     		pop	{r4, pc}
- 764              	.LVL52:
- 765              	.L74:
- 766              		.loc 1 296 1 view .LVU169
- 767              		.align	2
- 768              	.L73:
- 769 0058 00000000 		.word	.LANCHOR0
- 770              		.cfi_endproc
- 771              	.LFE9:
- 773              		.section	.text.ecat_slv_poll,"ax",%progbits
- 774              		.align	1
- 775              		.global	ecat_slv_poll
- 776              		.syntax unified
- 777              		.thumb
- 778              		.thumb_func
- 780              	ecat_slv_poll:
- 781              	.LFB10:
+ 771              		.loc 1 296 1 view .LVU168
+ 772 0056 10BD     		pop	{r4, pc}
+ 773              	.LVL52:
+ 774              	.L74:
+ 775              		.loc 1 296 1 view .LVU169
+ 776              		.align	2
+ 777              	.L73:
+ 778 0058 00000000 		.word	.LANCHOR0
+ 779              		.cfi_endproc
+ 780              	.LFE9:
+ 782              		.section	.text.ecat_slv_poll,"ax",%progbits
+ 783              		.align	1
+ 784              		.global	ecat_slv_poll
+ 785              		.syntax unified
+ 786              		.thumb
+ 787              		.thumb_func
+ 788              		.fpu fpv4-sp-d16
+ 790              	ecat_slv_poll:
+ 791              	.LFB10:
  297:Lib/soes/src/ecat_slv.c **** 
  298:Lib/soes/src/ecat_slv.c **** /*
  299:Lib/soes/src/ecat_slv.c ****  * Polling function. It should be called periodically for an application 
@@ -1186,53 +1196,53 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  302:Lib/soes/src/ecat_slv.c ****  */
  303:Lib/soes/src/ecat_slv.c **** void ecat_slv_poll (void)
  304:Lib/soes/src/ecat_slv.c **** {
- 782              		.loc 1 304 1 is_stmt 1 view -0
- 783              		.cfi_startproc
- 784              		@ args = 0, pretend = 0, frame = 0
- 785              		@ frame_needed = 0, uses_anonymous_args = 0
- 786 0000 10B5     		push	{r4, lr}
- 787              		.cfi_def_cfa_offset 8
- 788              		.cfi_offset 4, -8
- 789              		.cfi_offset 14, -4
+ 792              		.loc 1 304 1 is_stmt 1 view -0
+ 793              		.cfi_startproc
+ARM GAS  /tmp/cc2Z1hJh.s 			page 21
+
+
+ 794              		@ args = 0, pretend = 0, frame = 0
+ 795              		@ frame_needed = 0, uses_anonymous_args = 0
+ 796 0000 10B5     		push	{r4, lr}
+ 797              		.cfi_def_cfa_offset 8
+ 798              		.cfi_offset 4, -8
+ 799              		.cfi_offset 14, -4
  305:Lib/soes/src/ecat_slv.c ****    /* Read local time from ESC*/
  306:Lib/soes/src/ecat_slv.c ****    ESC_read (ESCREG_LOCALTIME, (void *) &ESCvar.Time, sizeof (ESCvar.Time));
- 790              		.loc 1 306 4 view .LVU171
- 791 0002 0E4C     		ldr	r4, .L80
-ARM GAS  /tmp/ccOLPoOU.s 			page 21
-
-
- 792 0004 0422     		movs	r2, #4
- 793 0006 04F1E001 		add	r1, r4, #224
- 794 000a 4FF41160 		mov	r0, #2320
- 795 000e FFF7FEFF 		bl	ESC_read
- 796              	.LVL53:
+ 800              		.loc 1 306 4 view .LVU171
+ 801 0002 0E4C     		ldr	r4, .L80
+ 802 0004 0422     		movs	r2, #4
+ 803 0006 04F1E001 		add	r1, r4, #224
+ 804 000a 4FF41160 		mov	r0, #2320
+ 805 000e FFF7FEFF 		bl	ESC_read
+ 806              	.LVL53:
  307:Lib/soes/src/ecat_slv.c ****    ESCvar.Time = etohl (ESCvar.Time);
- 797              		.loc 1 307 4 view .LVU172
- 798              		.loc 1 307 18 is_stmt 0 view .LVU173
- 799 0012 D4F8E030 		ldr	r3, [r4, #224]
- 800              		.loc 1 307 16 view .LVU174
- 801 0016 C4F8E030 		str	r3, [r4, #224]
+ 807              		.loc 1 307 4 view .LVU172
+ 808              		.loc 1 307 18 is_stmt 0 view .LVU173
+ 809 0012 D4F8E030 		ldr	r3, [r4, #224]
+ 810              		.loc 1 307 16 view .LVU174
+ 811 0016 C4F8E030 		str	r3, [r4, #224]
  308:Lib/soes/src/ecat_slv.c **** 
  309:Lib/soes/src/ecat_slv.c ****    /* Check the state machine */
  310:Lib/soes/src/ecat_slv.c ****    ESC_state();
- 802              		.loc 1 310 4 is_stmt 1 view .LVU175
- 803 001a FFF7FEFF 		bl	ESC_state
- 804              	.LVL54:
+ 812              		.loc 1 310 4 is_stmt 1 view .LVU175
+ 813 001a FFF7FEFF 		bl	ESC_state
+ 814              	.LVL54:
  311:Lib/soes/src/ecat_slv.c ****    /* Check the SM activation event */
  312:Lib/soes/src/ecat_slv.c ****    ESC_sm_act_event();
- 805              		.loc 1 312 4 view .LVU176
- 806 001e FFF7FEFF 		bl	ESC_sm_act_event
- 807              	.LVL55:
+ 815              		.loc 1 312 4 view .LVU176
+ 816 001e FFF7FEFF 		bl	ESC_sm_act_event
+ 817              	.LVL55:
  313:Lib/soes/src/ecat_slv.c **** 
  314:Lib/soes/src/ecat_slv.c ****    /* Check mailboxes */
  315:Lib/soes/src/ecat_slv.c ****    if (ESC_mbxprocess())
- 808              		.loc 1 315 4 view .LVU177
- 809              		.loc 1 315 8 is_stmt 0 view .LVU178
- 810 0022 FFF7FEFF 		bl	ESC_mbxprocess
- 811              	.LVL56:
- 812              		.loc 1 315 7 view .LVU179
- 813 0026 20B9     		cbnz	r0, .L79
- 814              	.L76:
+ 818              		.loc 1 315 4 view .LVU177
+ 819              		.loc 1 315 8 is_stmt 0 view .LVU178
+ 820 0022 FFF7FEFF 		bl	ESC_mbxprocess
+ 821              	.LVL56:
+ 822              		.loc 1 315 7 view .LVU179
+ 823 0026 20B9     		cbnz	r0, .L79
+ 824              	.L76:
  316:Lib/soes/src/ecat_slv.c ****    {
  317:Lib/soes/src/ecat_slv.c ****       ESC_coeprocess();
  318:Lib/soes/src/ecat_slv.c **** #if USE_FOE
@@ -1248,163 +1258,165 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  328:Lib/soes/src/ecat_slv.c **** #endif
  329:Lib/soes/src/ecat_slv.c **** 
  330:Lib/soes/src/ecat_slv.c ****    /* Call emulated eeprom handler if set */
+ARM GAS  /tmp/cc2Z1hJh.s 			page 22
+
+
  331:Lib/soes/src/ecat_slv.c ****    if (ESCvar.esc_hw_eep_handler != NULL)
- 815              		.loc 1 331 4 is_stmt 1 view .LVU180
- 816              		.loc 1 331 14 is_stmt 0 view .LVU181
- 817 0028 044B     		ldr	r3, .L80
- 818 002a DB6D     		ldr	r3, [r3, #92]
- 819              		.loc 1 331 7 view .LVU182
- 820 002c 03B1     		cbz	r3, .L75
+ 825              		.loc 1 331 4 is_stmt 1 view .LVU180
+ 826              		.loc 1 331 14 is_stmt 0 view .LVU181
+ 827 0028 044B     		ldr	r3, .L80
+ 828 002a DB6D     		ldr	r3, [r3, #92]
+ 829              		.loc 1 331 7 view .LVU182
+ 830 002c 03B1     		cbz	r3, .L75
  332:Lib/soes/src/ecat_slv.c ****    {
  333:Lib/soes/src/ecat_slv.c ****       (ESCvar.esc_hw_eep_handler)();
- 821              		.loc 1 333 7 is_stmt 1 view .LVU183
-ARM GAS  /tmp/ccOLPoOU.s 			page 22
-
-
- 822              		.loc 1 333 14 is_stmt 0 view .LVU184
- 823 002e 9847     		blx	r3
- 824              	.LVL57:
- 825              	.L75:
+ 831              		.loc 1 333 7 is_stmt 1 view .LVU183
+ 832              		.loc 1 333 14 is_stmt 0 view .LVU184
+ 833 002e 9847     		blx	r3
+ 834              	.LVL57:
+ 835              	.L75:
  334:Lib/soes/src/ecat_slv.c ****    }
  335:Lib/soes/src/ecat_slv.c **** }
- 826              		.loc 1 335 1 view .LVU185
- 827 0030 10BD     		pop	{r4, pc}
- 828              	.L79:
+ 836              		.loc 1 335 1 view .LVU185
+ 837 0030 10BD     		pop	{r4, pc}
+ 838              	.L79:
  317:Lib/soes/src/ecat_slv.c **** #if USE_FOE
- 829              		.loc 1 317 7 is_stmt 1 view .LVU186
- 830 0032 FFF7FEFF 		bl	ESC_coeprocess
- 831              	.LVL58:
+ 839              		.loc 1 317 7 is_stmt 1 view .LVU186
+ 840 0032 FFF7FEFF 		bl	ESC_coeprocess
+ 841              	.LVL58:
  324:Lib/soes/src/ecat_slv.c ****    }
- 832              		.loc 1 324 7 view .LVU187
- 833 0036 FFF7FEFF 		bl	ESC_xoeprocess
- 834              	.LVL59:
- 835 003a F5E7     		b	.L76
- 836              	.L81:
- 837              		.align	2
- 838              	.L80:
- 839 003c 00000000 		.word	.LANCHOR0
- 840              		.cfi_endproc
- 841              	.LFE10:
- 843              		.section	.text.ecat_slv,"ax",%progbits
- 844              		.align	1
- 845              		.global	ecat_slv
- 846              		.syntax unified
- 847              		.thumb
- 848              		.thumb_func
- 850              	ecat_slv:
- 851              	.LFB11:
+ 842              		.loc 1 324 7 view .LVU187
+ 843 0036 FFF7FEFF 		bl	ESC_xoeprocess
+ 844              	.LVL59:
+ 845 003a F5E7     		b	.L76
+ 846              	.L81:
+ 847              		.align	2
+ 848              	.L80:
+ 849 003c 00000000 		.word	.LANCHOR0
+ 850              		.cfi_endproc
+ 851              	.LFE10:
+ 853              		.section	.text.ecat_slv,"ax",%progbits
+ 854              		.align	1
+ 855              		.global	ecat_slv
+ 856              		.syntax unified
+ 857              		.thumb
+ 858              		.thumb_func
+ 859              		.fpu fpv4-sp-d16
+ 861              	ecat_slv:
+ 862              	.LFB11:
  336:Lib/soes/src/ecat_slv.c **** 
  337:Lib/soes/src/ecat_slv.c **** /*
  338:Lib/soes/src/ecat_slv.c ****  * Poll all events in a free-run application
  339:Lib/soes/src/ecat_slv.c ****  */
  340:Lib/soes/src/ecat_slv.c **** void ecat_slv (void)
  341:Lib/soes/src/ecat_slv.c **** {
- 852              		.loc 1 341 1 view -0
- 853              		.cfi_startproc
- 854              		@ args = 0, pretend = 0, frame = 0
- 855              		@ frame_needed = 0, uses_anonymous_args = 0
- 856 0000 08B5     		push	{r3, lr}
- 857              		.cfi_def_cfa_offset 8
- 858              		.cfi_offset 3, -8
- 859              		.cfi_offset 14, -4
+ 863              		.loc 1 341 1 view -0
+ 864              		.cfi_startproc
+ 865              		@ args = 0, pretend = 0, frame = 0
+ 866              		@ frame_needed = 0, uses_anonymous_args = 0
+ 867 0000 08B5     		push	{r3, lr}
+ 868              		.cfi_def_cfa_offset 8
+ 869              		.cfi_offset 3, -8
+ 870              		.cfi_offset 14, -4
+ARM GAS  /tmp/cc2Z1hJh.s 			page 23
+
+
  342:Lib/soes/src/ecat_slv.c ****    ecat_slv_poll();
- 860              		.loc 1 342 4 view .LVU189
- 861 0002 FFF7FEFF 		bl	ecat_slv_poll
- 862              	.LVL60:
+ 871              		.loc 1 342 4 view .LVU189
+ 872 0002 FFF7FEFF 		bl	ecat_slv_poll
+ 873              	.LVL60:
  343:Lib/soes/src/ecat_slv.c ****    DIG_process(DIG_PROCESS_WD_FLAG | DIG_PROCESS_OUTPUTS_FLAG |
- 863              		.loc 1 343 4 view .LVU190
- 864 0006 0F20     		movs	r0, #15
- 865 0008 FFF7FEFF 		bl	DIG_process
- 866              	.LVL61:
+ 874              		.loc 1 343 4 view .LVU190
+ 875 0006 0F20     		movs	r0, #15
+ 876 0008 FFF7FEFF 		bl	DIG_process
+ 877              	.LVL61:
  344:Lib/soes/src/ecat_slv.c ****          DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
  345:Lib/soes/src/ecat_slv.c **** }
-ARM GAS  /tmp/ccOLPoOU.s 			page 23
-
-
- 867              		.loc 1 345 1 is_stmt 0 view .LVU191
- 868 000c 08BD     		pop	{r3, pc}
- 869              		.cfi_endproc
- 870              	.LFE11:
- 872              		.section	.text.ecat_slv_init,"ax",%progbits
- 873              		.align	1
- 874              		.global	ecat_slv_init
- 875              		.syntax unified
- 876              		.thumb
- 877              		.thumb_func
- 879              	ecat_slv_init:
- 880              	.LVL62:
- 881              	.LFB12:
+ 878              		.loc 1 345 1 is_stmt 0 view .LVU191
+ 879 000c 08BD     		pop	{r3, pc}
+ 880              		.cfi_endproc
+ 881              	.LFE11:
+ 883              		.section	.text.ecat_slv_init,"ax",%progbits
+ 884              		.align	1
+ 885              		.global	ecat_slv_init
+ 886              		.syntax unified
+ 887              		.thumb
+ 888              		.thumb_func
+ 889              		.fpu fpv4-sp-d16
+ 891              	ecat_slv_init:
+ 892              	.LVL62:
+ 893              	.LFB12:
  346:Lib/soes/src/ecat_slv.c **** 
  347:Lib/soes/src/ecat_slv.c **** /*
  348:Lib/soes/src/ecat_slv.c ****  * Initialize the slave stack.
  349:Lib/soes/src/ecat_slv.c ****  */
  350:Lib/soes/src/ecat_slv.c **** void ecat_slv_init (esc_cfg_t * config)
  351:Lib/soes/src/ecat_slv.c **** {
- 882              		.loc 1 351 1 is_stmt 1 view -0
- 883              		.cfi_startproc
- 884              		@ args = 0, pretend = 0, frame = 0
- 885              		@ frame_needed = 0, uses_anonymous_args = 0
- 886              		.loc 1 351 1 is_stmt 0 view .LVU193
- 887 0000 10B5     		push	{r4, lr}
- 888              		.cfi_def_cfa_offset 8
- 889              		.cfi_offset 4, -8
- 890              		.cfi_offset 14, -4
- 891 0002 0446     		mov	r4, r0
+ 894              		.loc 1 351 1 is_stmt 1 view -0
+ 895              		.cfi_startproc
+ 896              		@ args = 0, pretend = 0, frame = 0
+ 897              		@ frame_needed = 0, uses_anonymous_args = 0
+ 898              		.loc 1 351 1 is_stmt 0 view .LVU193
+ 899 0000 10B5     		push	{r4, lr}
+ 900              		.cfi_def_cfa_offset 8
+ 901              		.cfi_offset 4, -8
+ 902              		.cfi_offset 14, -4
+ 903 0002 0446     		mov	r4, r0
  352:Lib/soes/src/ecat_slv.c ****    DPRINT ("Slave stack init started\n");
- 892              		.loc 1 352 41 is_stmt 1 view .LVU194
+ 904              		.loc 1 352 41 is_stmt 1 view .LVU194
  353:Lib/soes/src/ecat_slv.c **** 
  354:Lib/soes/src/ecat_slv.c ****    /* Init watchdog */
  355:Lib/soes/src/ecat_slv.c ****    watchdog = config->watchdog_cnt;
- 893              		.loc 1 355 4 view .LVU195
- 894              		.loc 1 355 21 is_stmt 0 view .LVU196
- 895 0004 8268     		ldr	r2, [r0, #8]
- 896              		.loc 1 355 13 view .LVU197
- 897 0006 114B     		ldr	r3, .L88
- 898 0008 1A60     		str	r2, [r3]
+ 905              		.loc 1 355 4 view .LVU195
+ 906              		.loc 1 355 21 is_stmt 0 view .LVU196
+ 907 0004 8268     		ldr	r2, [r0, #8]
+ 908              		.loc 1 355 13 view .LVU197
+ 909 0006 114B     		ldr	r3, .L88
+ 910 0008 1A60     		str	r2, [r3]
  356:Lib/soes/src/ecat_slv.c **** 
  357:Lib/soes/src/ecat_slv.c ****    /* Call stack configuration */
  358:Lib/soes/src/ecat_slv.c ****    ESC_config (config);
- 899              		.loc 1 358 4 is_stmt 1 view .LVU198
- 900 000a FFF7FEFF 		bl	ESC_config
- 901              	.LVL63:
+ 911              		.loc 1 358 4 is_stmt 1 view .LVU198
+ 912 000a FFF7FEFF 		bl	ESC_config
+ARM GAS  /tmp/cc2Z1hJh.s 			page 24
+
+
+ 913              	.LVL63:
  359:Lib/soes/src/ecat_slv.c ****    /* Call HW init */
  360:Lib/soes/src/ecat_slv.c ****    ESC_init (config);
- 902              		.loc 1 360 4 view .LVU199
- 903 000e 2046     		mov	r0, r4
- 904 0010 FFF7FEFF 		bl	ESC_init
- 905              	.LVL64:
+ 914              		.loc 1 360 4 view .LVU199
+ 915 000e 2046     		mov	r0, r4
+ 916 0010 FFF7FEFF 		bl	ESC_init
+ 917              	.LVL64:
  361:Lib/soes/src/ecat_slv.c **** 
  362:Lib/soes/src/ecat_slv.c ****    /*  wait until ESC is started up */
  363:Lib/soes/src/ecat_slv.c ****    while ((ESCvar.DLstatus & 0x0001) == 0)
- 906              		.loc 1 363 4 view .LVU200
- 907              		.loc 1 363 10 is_stmt 0 view .LVU201
-ARM GAS  /tmp/ccOLPoOU.s 			page 24
-
-
- 908 0014 05E0     		b	.L85
- 909              	.L86:
+ 918              		.loc 1 363 4 view .LVU200
+ 919              		.loc 1 363 10 is_stmt 0 view .LVU201
+ 920 0014 05E0     		b	.L85
+ 921              	.L86:
  364:Lib/soes/src/ecat_slv.c ****    {
  365:Lib/soes/src/ecat_slv.c ****       ESC_read (ESCREG_DLSTATUS, (void *) &ESCvar.DLstatus,
- 910              		.loc 1 365 7 is_stmt 1 view .LVU202
- 911 0016 0222     		movs	r2, #2
- 912 0018 0D49     		ldr	r1, .L88+4
- 913 001a 4FF48870 		mov	r0, #272
- 914 001e FFF7FEFF 		bl	ESC_read
- 915              	.LVL65:
+ 922              		.loc 1 365 7 is_stmt 1 view .LVU202
+ 923 0016 0222     		movs	r2, #2
+ 924 0018 0D49     		ldr	r1, .L88+4
+ 925 001a 4FF48870 		mov	r0, #272
+ 926 001e FFF7FEFF 		bl	ESC_read
+ 927              	.LVL65:
  366:Lib/soes/src/ecat_slv.c ****                 sizeof (ESCvar.DLstatus));
  367:Lib/soes/src/ecat_slv.c ****       ESCvar.DLstatus = etohs (ESCvar.DLstatus);
- 916              		.loc 1 367 7 view .LVU203
- 917              	.L85:
+ 928              		.loc 1 367 7 view .LVU203
+ 929              	.L85:
  363:Lib/soes/src/ecat_slv.c ****    {
- 918              		.loc 1 363 10 view .LVU204
+ 930              		.loc 1 363 10 view .LVU204
  363:Lib/soes/src/ecat_slv.c ****    {
- 919              		.loc 1 363 18 is_stmt 0 view .LVU205
- 920 0022 0C4B     		ldr	r3, .L88+8
- 921 0024 B3F88630 		ldrh	r3, [r3, #134]
+ 931              		.loc 1 363 18 is_stmt 0 view .LVU205
+ 932 0022 0C4B     		ldr	r3, .L88+8
+ 933 0024 B3F88630 		ldrh	r3, [r3, #134]
  363:Lib/soes/src/ecat_slv.c ****    {
- 922              		.loc 1 363 10 view .LVU206
- 923 0028 13F0010F 		tst	r3, #1
- 924 002c F3D0     		beq	.L86
+ 934              		.loc 1 363 10 view .LVU206
+ 935 0028 13F0010F 		tst	r3, #1
+ 936 002c F3D0     		beq	.L86
  368:Lib/soes/src/ecat_slv.c ****    }
  369:Lib/soes/src/ecat_slv.c **** 
  370:Lib/soes/src/ecat_slv.c **** #if USE_FOE
@@ -1419,187 +1431,186 @@ ARM GAS  /tmp/ccOLPoOU.s 			page 1
  379:Lib/soes/src/ecat_slv.c **** 
  380:Lib/soes/src/ecat_slv.c ****    /* reset ESC to init state */
  381:Lib/soes/src/ecat_slv.c ****    ESC_ALstatus (ESCinit);
- 925              		.loc 1 381 4 is_stmt 1 view .LVU207
- 926 002e 0120     		movs	r0, #1
- 927 0030 FFF7FEFF 		bl	ESC_ALstatus
- 928              	.LVL66:
+ 937              		.loc 1 381 4 is_stmt 1 view .LVU207
+ 938 002e 0120     		movs	r0, #1
+ 939 0030 FFF7FEFF 		bl	ESC_ALstatus
+ 940              	.LVL66:
  382:Lib/soes/src/ecat_slv.c ****    ESC_ALerror (ALERR_NONE);
- 929              		.loc 1 382 4 view .LVU208
- 930 0034 0020     		movs	r0, #0
- 931 0036 FFF7FEFF 		bl	ESC_ALerror
- 932              	.LVL67:
+ 941              		.loc 1 382 4 view .LVU208
+ 942 0034 0020     		movs	r0, #0
+ARM GAS  /tmp/cc2Z1hJh.s 			page 25
+
+
+ 943 0036 FFF7FEFF 		bl	ESC_ALerror
+ 944              	.LVL67:
  383:Lib/soes/src/ecat_slv.c ****    ESC_stopmbx ();
- 933              		.loc 1 383 4 view .LVU209
- 934 003a FFF7FEFF 		bl	ESC_stopmbx
- 935              	.LVL68:
+ 945              		.loc 1 383 4 view .LVU209
+ 946 003a FFF7FEFF 		bl	ESC_stopmbx
+ 947              	.LVL68:
  384:Lib/soes/src/ecat_slv.c ****    ESC_stopinput ();
- 936              		.loc 1 384 4 view .LVU210
- 937 003e FFF7FEFF 		bl	ESC_stopinput
- 938              	.LVL69:
+ 948              		.loc 1 384 4 view .LVU210
+ 949 003e FFF7FEFF 		bl	ESC_stopinput
+ 950              	.LVL69:
  385:Lib/soes/src/ecat_slv.c ****    ESC_stopoutput ();
- 939              		.loc 1 385 4 view .LVU211
-ARM GAS  /tmp/ccOLPoOU.s 			page 25
-
-
- 940 0042 FFF7FEFF 		bl	ESC_stopoutput
- 941              	.LVL70:
+ 951              		.loc 1 385 4 view .LVU211
+ 952 0042 FFF7FEFF 		bl	ESC_stopoutput
+ 953              	.LVL70:
  386:Lib/soes/src/ecat_slv.c ****    /* Init Object Dictionary default values */
  387:Lib/soes/src/ecat_slv.c ****    COE_initDefaultValues ();
- 942              		.loc 1 387 4 view .LVU212
- 943 0046 FFF7FEFF 		bl	COE_initDefaultValues
- 944              	.LVL71:
+ 954              		.loc 1 387 4 view .LVU212
+ 955 0046 FFF7FEFF 		bl	COE_initDefaultValues
+ 956              	.LVL71:
  388:Lib/soes/src/ecat_slv.c **** }
- 945              		.loc 1 388 1 is_stmt 0 view .LVU213
- 946 004a 10BD     		pop	{r4, pc}
- 947              	.LVL72:
- 948              	.L89:
- 949              		.loc 1 388 1 view .LVU214
- 950              		.align	2
- 951              	.L88:
- 952 004c 00000000 		.word	.LANCHOR5
- 953 0050 86000000 		.word	.LANCHOR0+134
- 954 0054 00000000 		.word	.LANCHOR0
- 955              		.cfi_endproc
- 956              	.LFE12:
- 958              		.global	ESCvar
- 959              		.global	SMmap3
- 960              		.global	SMmap2
- 961              		.global	MBXcontrol
- 962              		.global	MBX
- 963              		.section	.bss.ESCvar,"aw",%nobits
- 964              		.align	2
- 965              		.set	.LANCHOR0,. + 0
- 968              	ESCvar:
- 969 0000 00000000 		.space	1772
- 969      00000000 
- 969      00000000 
- 969      00000000 
- 969      00000000 
- 970              		.section	.bss.MBX,"aw",%nobits
- 971              		.align	2
- 974              	MBX:
- 975 0000 00000000 		.space	1536
- 975      00000000 
- 975      00000000 
- 975      00000000 
- 975      00000000 
- 976              		.section	.bss.MBXcontrol,"aw",%nobits
- 977              		.align	2
- 980              	MBXcontrol:
- 981 0000 000000   		.space	3
- 982              		.section	.bss.SMmap2,"aw",%nobits
+ 957              		.loc 1 388 1 is_stmt 0 view .LVU213
+ 958 004a 10BD     		pop	{r4, pc}
+ 959              	.LVL72:
+ 960              	.L89:
+ 961              		.loc 1 388 1 view .LVU214
+ 962              		.align	2
+ 963              	.L88:
+ 964 004c 00000000 		.word	.LANCHOR5
+ 965 0050 86000000 		.word	.LANCHOR0+134
+ 966 0054 00000000 		.word	.LANCHOR0
+ 967              		.cfi_endproc
+ 968              	.LFE12:
+ 970              		.global	ESCvar
+ 971              		.global	SMmap3
+ 972              		.global	SMmap2
+ 973              		.global	MBXcontrol
+ 974              		.global	MBX
+ 975              		.section	.bss.ESCvar,"aw",%nobits
+ 976              		.align	2
+ 977              		.set	.LANCHOR0,. + 0
+ 980              	ESCvar:
+ 981 0000 00000000 		.space	1772
+ 981      00000000 
+ 981      00000000 
+ 981      00000000 
+ 981      00000000 
+ 982              		.section	.bss.MBX,"aw",%nobits
  983              		.align	2
- 984              		.set	.LANCHOR4,. + 0
- 987              	SMmap2:
- 988 0000 00000000 		.space	24
- 988      00000000 
- 988      00000000 
- 988      00000000 
- 988      00000000 
- 989              		.section	.bss.SMmap3,"aw",%nobits
- 990              		.align	2
-ARM GAS  /tmp/ccOLPoOU.s 			page 26
+ 986              	MBX:
+ 987 0000 00000000 		.space	1536
+ 987      00000000 
+ 987      00000000 
+ 987      00000000 
+ 987      00000000 
+ 988              		.section	.bss.MBXcontrol,"aw",%nobits
+ 989              		.align	2
+ 992              	MBXcontrol:
+ARM GAS  /tmp/cc2Z1hJh.s 			page 26
 
 
- 991              		.set	.LANCHOR1,. + 0
- 994              	SMmap3:
- 995 0000 00000000 		.space	24
- 995      00000000 
- 995      00000000 
- 995      00000000 
- 995      00000000 
- 996              		.section	.bss.rxpdo,"aw",%nobits
- 997              		.align	3
- 998              		.set	.LANCHOR3,. + 0
- 1001              	rxpdo:
- 1002 0000 00000000 		.space	512
- 1002      00000000 
- 1002      00000000 
- 1002      00000000 
- 1002      00000000 
- 1003              		.section	.bss.txpdo,"aw",%nobits
- 1004              		.align	3
- 1005              		.set	.LANCHOR2,. + 0
- 1008              	txpdo:
- 1009 0000 00000000 		.space	512
- 1009      00000000 
- 1009      00000000 
- 1009      00000000 
- 1009      00000000 
- 1010              		.section	.bss.watchdog,"aw",%nobits
- 1011              		.align	2
- 1012              		.set	.LANCHOR5,. + 0
- 1015              	watchdog:
- 1016 0000 00000000 		.space	4
- 1017              		.text
- 1018              	.Letext0:
- 1019              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 1020              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 1021              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 1022              		.file 5 "Lib/soes/inc/esc_coe.h"
- 1023              		.file 6 "Lib/soes/inc/esc.h"
- 1024              		.file 7 "Lib/soes/inc/ecat_slv.h"
-ARM GAS  /tmp/ccOLPoOU.s 			page 27
+ 993 0000 000000   		.space	3
+ 994              		.section	.bss.SMmap2,"aw",%nobits
+ 995              		.align	2
+ 996              		.set	.LANCHOR4,. + 0
+ 999              	SMmap2:
+ 1000 0000 00000000 		.space	24
+ 1000      00000000 
+ 1000      00000000 
+ 1000      00000000 
+ 1000      00000000 
+ 1001              		.section	.bss.SMmap3,"aw",%nobits
+ 1002              		.align	2
+ 1003              		.set	.LANCHOR1,. + 0
+ 1006              	SMmap3:
+ 1007 0000 00000000 		.space	24
+ 1007      00000000 
+ 1007      00000000 
+ 1007      00000000 
+ 1007      00000000 
+ 1008              		.section	.bss.rxpdo,"aw",%nobits
+ 1009              		.align	3
+ 1010              		.set	.LANCHOR3,. + 0
+ 1013              	rxpdo:
+ 1014 0000 00000000 		.space	512
+ 1014      00000000 
+ 1014      00000000 
+ 1014      00000000 
+ 1014      00000000 
+ 1015              		.section	.bss.txpdo,"aw",%nobits
+ 1016              		.align	3
+ 1017              		.set	.LANCHOR2,. + 0
+ 1020              	txpdo:
+ 1021 0000 00000000 		.space	512
+ 1021      00000000 
+ 1021      00000000 
+ 1021      00000000 
+ 1021      00000000 
+ 1022              		.section	.bss.watchdog,"aw",%nobits
+ 1023              		.align	2
+ 1024              		.set	.LANCHOR5,. + 0
+ 1027              	watchdog:
+ 1028 0000 00000000 		.space	4
+ 1029              		.text
+ 1030              	.Letext0:
+ 1031              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1032              		.file 3 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 1033              		.file 4 "Lib/soes/inc/esc_coe.h"
+ 1034              		.file 5 "Lib/soes/inc/esc.h"
+ 1035              		.file 6 "Lib/soes/inc/ecat_slv.h"
+ARM GAS  /tmp/cc2Z1hJh.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ecat_slv.c
-     /tmp/ccOLPoOU.s:20     .text.ESC_download_pre_objecthandler:0000000000000000 $t
-     /tmp/ccOLPoOU.s:26     .text.ESC_download_pre_objecthandler:0000000000000000 ESC_download_pre_objecthandler
-     /tmp/ccOLPoOU.s:137    .text.ESC_download_pre_objecthandler:0000000000000074 $d
-     /tmp/ccOLPoOU.s:143    .text.ESC_download_post_objecthandler:0000000000000000 $t
-     /tmp/ccOLPoOU.s:149    .text.ESC_download_post_objecthandler:0000000000000000 ESC_download_post_objecthandler
-     /tmp/ccOLPoOU.s:184    .text.ESC_download_post_objecthandler:0000000000000010 $d
-     /tmp/ccOLPoOU.s:189    .text.ESC_upload_pre_objecthandler:0000000000000000 $t
-     /tmp/ccOLPoOU.s:195    .text.ESC_upload_pre_objecthandler:0000000000000000 ESC_upload_pre_objecthandler
-     /tmp/ccOLPoOU.s:240    .text.ESC_upload_pre_objecthandler:000000000000001c $d
-     /tmp/ccOLPoOU.s:245    .text.ESC_upload_post_objecthandler:0000000000000000 $t
-     /tmp/ccOLPoOU.s:251    .text.ESC_upload_post_objecthandler:0000000000000000 ESC_upload_post_objecthandler
-     /tmp/ccOLPoOU.s:286    .text.ESC_upload_post_objecthandler:0000000000000010 $d
-     /tmp/ccOLPoOU.s:291    .text.APP_safeoutput:0000000000000000 $t
-     /tmp/ccOLPoOU.s:297    .text.APP_safeoutput:0000000000000000 APP_safeoutput
-     /tmp/ccOLPoOU.s:324    .text.APP_safeoutput:000000000000000c $d
-     /tmp/ccOLPoOU.s:329    .text.TXPDO_update:0000000000000000 $t
-     /tmp/ccOLPoOU.s:335    .text.TXPDO_update:0000000000000000 TXPDO_update
-     /tmp/ccOLPoOU.s:381    .text.TXPDO_update:000000000000002c $d
-     /tmp/ccOLPoOU.s:388    .text.RXPDO_update:0000000000000000 $t
-     /tmp/ccOLPoOU.s:394    .text.RXPDO_update:0000000000000000 RXPDO_update
-     /tmp/ccOLPoOU.s:440    .text.RXPDO_update:000000000000002c $d
-     /tmp/ccOLPoOU.s:447    .text.APP_setwatchdog:0000000000000000 $t
-     /tmp/ccOLPoOU.s:453    .text.APP_setwatchdog:0000000000000000 APP_setwatchdog
-     /tmp/ccOLPoOU.s:471    .text.APP_setwatchdog:0000000000000010 $d
-     /tmp/ccOLPoOU.s:476    .text.DIG_process:0000000000000000 $t
-     /tmp/ccOLPoOU.s:482    .text.DIG_process:0000000000000000 DIG_process
-     /tmp/ccOLPoOU.s:669    .text.DIG_process:0000000000000124 $d
-     /tmp/ccOLPoOU.s:676    .text.ecat_slv_worker:0000000000000000 $t
-     /tmp/ccOLPoOU.s:682    .text.ecat_slv_worker:0000000000000000 ecat_slv_worker
-     /tmp/ccOLPoOU.s:769    .text.ecat_slv_worker:0000000000000058 $d
-     /tmp/ccOLPoOU.s:774    .text.ecat_slv_poll:0000000000000000 $t
-     /tmp/ccOLPoOU.s:780    .text.ecat_slv_poll:0000000000000000 ecat_slv_poll
-     /tmp/ccOLPoOU.s:839    .text.ecat_slv_poll:000000000000003c $d
-     /tmp/ccOLPoOU.s:844    .text.ecat_slv:0000000000000000 $t
-     /tmp/ccOLPoOU.s:850    .text.ecat_slv:0000000000000000 ecat_slv
-     /tmp/ccOLPoOU.s:873    .text.ecat_slv_init:0000000000000000 $t
-     /tmp/ccOLPoOU.s:879    .text.ecat_slv_init:0000000000000000 ecat_slv_init
-     /tmp/ccOLPoOU.s:952    .text.ecat_slv_init:000000000000004c $d
-     /tmp/ccOLPoOU.s:968    .bss.ESCvar:0000000000000000 ESCvar
-     /tmp/ccOLPoOU.s:994    .bss.SMmap3:0000000000000000 SMmap3
-     /tmp/ccOLPoOU.s:987    .bss.SMmap2:0000000000000000 SMmap2
-     /tmp/ccOLPoOU.s:980    .bss.MBXcontrol:0000000000000000 MBXcontrol
-     /tmp/ccOLPoOU.s:974    .bss.MBX:0000000000000000 MBX
-     /tmp/ccOLPoOU.s:964    .bss.ESCvar:0000000000000000 $d
-     /tmp/ccOLPoOU.s:971    .bss.MBX:0000000000000000 $d
-     /tmp/ccOLPoOU.s:977    .bss.MBXcontrol:0000000000000000 $d
-     /tmp/ccOLPoOU.s:983    .bss.SMmap2:0000000000000000 $d
-     /tmp/ccOLPoOU.s:990    .bss.SMmap3:0000000000000000 $d
-     /tmp/ccOLPoOU.s:997    .bss.rxpdo:0000000000000000 $d
-     /tmp/ccOLPoOU.s:1001   .bss.rxpdo:0000000000000000 rxpdo
-     /tmp/ccOLPoOU.s:1004   .bss.txpdo:0000000000000000 $d
-     /tmp/ccOLPoOU.s:1008   .bss.txpdo:0000000000000000 txpdo
-     /tmp/ccOLPoOU.s:1011   .bss.watchdog:0000000000000000 $d
-     /tmp/ccOLPoOU.s:1015   .bss.watchdog:0000000000000000 watchdog
+     /tmp/cc2Z1hJh.s:18     .text.ESC_download_pre_objecthandler:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:26     .text.ESC_download_pre_objecthandler:0000000000000000 ESC_download_pre_objecthandler
+     /tmp/cc2Z1hJh.s:137    .text.ESC_download_pre_objecthandler:0000000000000074 $d
+     /tmp/cc2Z1hJh.s:143    .text.ESC_download_post_objecthandler:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:150    .text.ESC_download_post_objecthandler:0000000000000000 ESC_download_post_objecthandler
+     /tmp/cc2Z1hJh.s:185    .text.ESC_download_post_objecthandler:0000000000000010 $d
+     /tmp/cc2Z1hJh.s:190    .text.ESC_upload_pre_objecthandler:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:197    .text.ESC_upload_pre_objecthandler:0000000000000000 ESC_upload_pre_objecthandler
+     /tmp/cc2Z1hJh.s:242    .text.ESC_upload_pre_objecthandler:000000000000001c $d
+     /tmp/cc2Z1hJh.s:247    .text.ESC_upload_post_objecthandler:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:254    .text.ESC_upload_post_objecthandler:0000000000000000 ESC_upload_post_objecthandler
+     /tmp/cc2Z1hJh.s:289    .text.ESC_upload_post_objecthandler:0000000000000010 $d
+     /tmp/cc2Z1hJh.s:294    .text.APP_safeoutput:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:301    .text.APP_safeoutput:0000000000000000 APP_safeoutput
+     /tmp/cc2Z1hJh.s:328    .text.APP_safeoutput:000000000000000c $d
+     /tmp/cc2Z1hJh.s:333    .text.TXPDO_update:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:340    .text.TXPDO_update:0000000000000000 TXPDO_update
+     /tmp/cc2Z1hJh.s:386    .text.TXPDO_update:000000000000002c $d
+     /tmp/cc2Z1hJh.s:393    .text.RXPDO_update:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:400    .text.RXPDO_update:0000000000000000 RXPDO_update
+     /tmp/cc2Z1hJh.s:446    .text.RXPDO_update:000000000000002c $d
+     /tmp/cc2Z1hJh.s:453    .text.APP_setwatchdog:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:460    .text.APP_setwatchdog:0000000000000000 APP_setwatchdog
+     /tmp/cc2Z1hJh.s:478    .text.APP_setwatchdog:0000000000000010 $d
+     /tmp/cc2Z1hJh.s:483    .text.DIG_process:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:490    .text.DIG_process:0000000000000000 DIG_process
+     /tmp/cc2Z1hJh.s:677    .text.DIG_process:0000000000000124 $d
+     /tmp/cc2Z1hJh.s:684    .text.ecat_slv_worker:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:691    .text.ecat_slv_worker:0000000000000000 ecat_slv_worker
+     /tmp/cc2Z1hJh.s:778    .text.ecat_slv_worker:0000000000000058 $d
+     /tmp/cc2Z1hJh.s:783    .text.ecat_slv_poll:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:790    .text.ecat_slv_poll:0000000000000000 ecat_slv_poll
+     /tmp/cc2Z1hJh.s:849    .text.ecat_slv_poll:000000000000003c $d
+     /tmp/cc2Z1hJh.s:854    .text.ecat_slv:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:861    .text.ecat_slv:0000000000000000 ecat_slv
+     /tmp/cc2Z1hJh.s:884    .text.ecat_slv_init:0000000000000000 $t
+     /tmp/cc2Z1hJh.s:891    .text.ecat_slv_init:0000000000000000 ecat_slv_init
+     /tmp/cc2Z1hJh.s:964    .text.ecat_slv_init:000000000000004c $d
+     /tmp/cc2Z1hJh.s:980    .bss.ESCvar:0000000000000000 ESCvar
+     /tmp/cc2Z1hJh.s:1006   .bss.SMmap3:0000000000000000 SMmap3
+     /tmp/cc2Z1hJh.s:999    .bss.SMmap2:0000000000000000 SMmap2
+     /tmp/cc2Z1hJh.s:992    .bss.MBXcontrol:0000000000000000 MBXcontrol
+     /tmp/cc2Z1hJh.s:986    .bss.MBX:0000000000000000 MBX
+     /tmp/cc2Z1hJh.s:976    .bss.ESCvar:0000000000000000 $d
+     /tmp/cc2Z1hJh.s:983    .bss.MBX:0000000000000000 $d
+     /tmp/cc2Z1hJh.s:989    .bss.MBXcontrol:0000000000000000 $d
+     /tmp/cc2Z1hJh.s:995    .bss.SMmap2:0000000000000000 $d
+     /tmp/cc2Z1hJh.s:1002   .bss.SMmap3:0000000000000000 $d
+     /tmp/cc2Z1hJh.s:1009   .bss.rxpdo:0000000000000000 $d
+     /tmp/cc2Z1hJh.s:1013   .bss.rxpdo:0000000000000000 rxpdo
+     /tmp/cc2Z1hJh.s:1016   .bss.txpdo:0000000000000000 $d
+     /tmp/cc2Z1hJh.s:1020   .bss.txpdo:0000000000000000 txpdo
+     /tmp/cc2Z1hJh.s:1023   .bss.watchdog:0000000000000000 $d
+     /tmp/cc2Z1hJh.s:1027   .bss.watchdog:0000000000000000 watchdog
 
-ARM GAS  /tmp/ccOLPoOU.s 			page 28
+ARM GAS  /tmp/cc2Z1hJh.s 			page 28
 
 
 UNDEFINED SYMBOLS

@@ -1,29 +1,29 @@
-ARM GAS  /tmp/cc97UT6A.s 			page 1
+ARM GAS  /tmp/ccc92rV8.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.arch armv7e-m
-   3              		.fpu fpv4-sp-d16
-   4              		.eabi_attribute 27, 1
-   5              		.eabi_attribute 28, 1
-   6              		.eabi_attribute 20, 1
-   7              		.eabi_attribute 21, 1
-   8              		.eabi_attribute 23, 3
-   9              		.eabi_attribute 24, 1
-  10              		.eabi_attribute 25, 1
-  11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
-  13              		.eabi_attribute 34, 1
-  14              		.eabi_attribute 18, 4
-  15              		.file	"esc_foe.c"
-  16              		.text
-  17              	.Ltext0:
-  18              		.cfi_sections	.debug_frame
-  19              		.section	.text.FOE_fwrite,"ax",%progbits
-  20              		.align	1
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"esc_foe.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.FOE_fwrite,"ax",%progbits
+  18              		.align	1
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
   25              	FOE_fwrite:
   26              	.LVL0:
   27              	.LFB1:
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
   28:Lib/soes/src/esc_foe.c ****  */
   29:Lib/soes/src/esc_foe.c **** static char foe_file_name[FOE_FN_MAX + 1];
   30:Lib/soes/src/esc_foe.c **** 
-ARM GAS  /tmp/cc97UT6A.s 			page 2
+ARM GAS  /tmp/ccc92rV8.s 			page 2
 
 
   31:Lib/soes/src/esc_foe.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
   85:Lib/soes/src/esc_foe.c **** 
   86:Lib/soes/src/esc_foe.c ****          foe_file = &foe_cfg->files[i];
   87:Lib/soes/src/esc_foe.c ****          foe_file->address_offset = 0;
-ARM GAS  /tmp/cc97UT6A.s 			page 3
+ARM GAS  /tmp/ccc92rV8.s 			page 3
 
 
   88:Lib/soes/src/esc_foe.c ****          foe_file->total_size = 0;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  142:Lib/soes/src/esc_foe.c ****  * @param[in] data   = Pointer to buffer
  143:Lib/soes/src/esc_foe.c ****  * @param[in] length = Length of data to read
  144:Lib/soes/src/esc_foe.c **** 
-ARM GAS  /tmp/cc97UT6A.s 			page 4
+ARM GAS  /tmp/ccc92rV8.s 			page 4
 
 
  145:Lib/soes/src/esc_foe.c ****  * @return Number of copied bytes.
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
   71 0020 D3F80730 		ldr	r3, [r3, #7]	@ unaligned
   72              		.loc 1 154 19 discriminator 1 view .LVU14
   73 0024 9A42     		cmp	r2, r3
-ARM GAS  /tmp/cc97UT6A.s 			page 5
+ARM GAS  /tmp/ccc92rV8.s 			page 5
 
 
   74 0026 30D0     		beq	.L5
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  121 0064 9A70     		strb	r2, [r3, #2]
  162:Lib/soes/src/esc_foe.c ****           foe_file->address_offset += foe_cfg->buffer_size;
  122              		.loc 1 162 11 is_stmt 1 view .LVU33
-ARM GAS  /tmp/cc97UT6A.s 			page 6
+ARM GAS  /tmp/ccc92rV8.s 			page 6
 
 
  123              		.loc 1 162 36 is_stmt 0 view .LVU34
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  179:Lib/soes/src/esc_foe.c **** }
  161              		.loc 1 179 1 is_stmt 0 view .LVU49
  162 0094 4846     		mov	r0, r9
-ARM GAS  /tmp/cc97UT6A.s 			page 7
+ARM GAS  /tmp/ccc92rV8.s 			page 7
 
 
  163              	.LVL9:
@@ -379,8 +379,9 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  179              		.syntax unified
  180              		.thumb
  181              		.thumb_func
- 183              	FOE_fclose:
- 184              	.LFB2:
+ 182              		.fpu fpv4-sp-d16
+ 184              	FOE_fclose:
+ 185              	.LFB2:
  180:Lib/soes/src/esc_foe.c **** 
  181:Lib/soes/src/esc_foe.c **** 
  182:Lib/soes/src/esc_foe.c **** /** Function handling the final FOE_fwrite when we close up regardless
@@ -390,364 +391,366 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  186:Lib/soes/src/esc_foe.c ****  */
  187:Lib/soes/src/esc_foe.c **** static uint32_t FOE_fclose (void)
  188:Lib/soes/src/esc_foe.c **** {
- 185              		.loc 1 188 1 is_stmt 1 view -0
- 186              		.cfi_startproc
- 187              		@ args = 0, pretend = 0, frame = 0
- 188              		@ frame_needed = 0, uses_anonymous_args = 0
- 189 0000 38B5     		push	{r3, r4, r5, lr}
- 190              		.cfi_def_cfa_offset 16
- 191              		.cfi_offset 3, -16
- 192              		.cfi_offset 4, -12
- 193              		.cfi_offset 5, -8
- 194              		.cfi_offset 14, -4
+ 186              		.loc 1 188 1 is_stmt 1 view -0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 0
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190 0000 38B5     		push	{r3, r4, r5, lr}
+ 191              		.cfi_def_cfa_offset 16
+ 192              		.cfi_offset 3, -16
+ 193              		.cfi_offset 4, -12
+ 194              		.cfi_offset 5, -8
+ 195              		.cfi_offset 14, -4
  189:Lib/soes/src/esc_foe.c ****    uint32_t failed = 0;
- 195              		.loc 1 189 4 view .LVU53
- 196              	.LVL11:
+ 196              		.loc 1 189 4 view .LVU53
+ 197              	.LVL11:
  190:Lib/soes/src/esc_foe.c **** 
  191:Lib/soes/src/esc_foe.c ****    DPRINT("FOE_fclose\n");
- 197              		.loc 1 191 26 view .LVU54
+ 198              		.loc 1 191 26 view .LVU54
  192:Lib/soes/src/esc_foe.c ****    
  193:Lib/soes/src/esc_foe.c ****    failed = foe_file->write_function (foe_file, foe_cfg->fbuffer, FOEvar.fbufposition);
- 198              		.loc 1 193 4 view .LVU55
- 199              		.loc 1 193 21 is_stmt 0 view .LVU56
- 200 0002 0A4D     		ldr	r5, .L12
- 201 0004 2868     		ldr	r0, [r5]
- 202 0006 C369     		ldr	r3, [r0, #28]
- 203              		.loc 1 193 56 view .LVU57
- 204 0008 094A     		ldr	r2, .L12+4
- 205 000a 1168     		ldr	r1, [r2]
- 206              		.loc 1 193 73 view .LVU58
- 207 000c 094C     		ldr	r4, .L12+8
-ARM GAS  /tmp/cc97UT6A.s 			page 8
+ 199              		.loc 1 193 4 view .LVU55
+ 200              		.loc 1 193 21 is_stmt 0 view .LVU56
+ 201 0002 0A4D     		ldr	r5, .L12
+ 202 0004 2868     		ldr	r0, [r5]
+ 203 0006 C369     		ldr	r3, [r0, #28]
+ 204              		.loc 1 193 56 view .LVU57
+ 205 0008 094A     		ldr	r2, .L12+4
+ 206 000a 1168     		ldr	r1, [r2]
+ 207              		.loc 1 193 73 view .LVU58
+ARM GAS  /tmp/ccc92rV8.s 			page 8
 
 
- 208              		.loc 1 193 13 view .LVU59
- 209 000e B4F80120 		ldrh	r2, [r4, #1]	@ unaligned
- 210 0012 0968     		ldr	r1, [r1]
- 211 0014 9847     		blx	r3
- 212              	.LVL12:
+ 208 000c 094C     		ldr	r4, .L12+8
+ 209              		.loc 1 193 13 view .LVU59
+ 210 000e B4F80120 		ldrh	r2, [r4, #1]	@ unaligned
+ 211 0012 0968     		ldr	r1, [r1]
+ 212 0014 9847     		blx	r3
+ 213              	.LVL12:
  194:Lib/soes/src/esc_foe.c ****    foe_file->address_offset += FOEvar.fbufposition;
- 213              		.loc 1 194 4 is_stmt 1 view .LVU60
- 214              		.loc 1 194 29 is_stmt 0 view .LVU61
- 215 0016 2A68     		ldr	r2, [r5]
- 216              		.loc 1 194 38 view .LVU62
- 217 0018 B4F80110 		ldrh	r1, [r4, #1]	@ unaligned
- 218              		.loc 1 194 29 view .LVU63
- 219 001c D368     		ldr	r3, [r2, #12]
- 220 001e 0B44     		add	r3, r3, r1
- 221 0020 D360     		str	r3, [r2, #12]
+ 214              		.loc 1 194 4 is_stmt 1 view .LVU60
+ 215              		.loc 1 194 29 is_stmt 0 view .LVU61
+ 216 0016 2A68     		ldr	r2, [r5]
+ 217              		.loc 1 194 38 view .LVU62
+ 218 0018 B4F80110 		ldrh	r1, [r4, #1]	@ unaligned
+ 219              		.loc 1 194 29 view .LVU63
+ 220 001c D368     		ldr	r3, [r2, #12]
+ 221 001e 0B44     		add	r3, r3, r1
+ 222 0020 D360     		str	r3, [r2, #12]
  195:Lib/soes/src/esc_foe.c ****    FOEvar.fbufposition = 0;
- 222              		.loc 1 195 4 is_stmt 1 view .LVU64
- 223              		.loc 1 195 24 is_stmt 0 view .LVU65
- 224 0022 0023     		movs	r3, #0
- 225 0024 6370     		strb	r3, [r4, #1]
- 226 0026 A370     		strb	r3, [r4, #2]
+ 223              		.loc 1 195 4 is_stmt 1 view .LVU64
+ 224              		.loc 1 195 24 is_stmt 0 view .LVU65
+ 225 0022 0023     		movs	r3, #0
+ 226 0024 6370     		strb	r3, [r4, #1]
+ 227 0026 A370     		strb	r3, [r4, #2]
  196:Lib/soes/src/esc_foe.c **** 
  197:Lib/soes/src/esc_foe.c ****    return failed;
- 227              		.loc 1 197 4 is_stmt 1 view .LVU66
+ 228              		.loc 1 197 4 is_stmt 1 view .LVU66
  198:Lib/soes/src/esc_foe.c **** }
- 228              		.loc 1 198 1 is_stmt 0 view .LVU67
- 229 0028 38BD     		pop	{r3, r4, r5, pc}
- 230              	.L13:
- 231 002a 00BF     		.align	2
- 232              	.L12:
- 233 002c 00000000 		.word	.LANCHOR2
- 234 0030 00000000 		.word	.LANCHOR1
- 235 0034 00000000 		.word	.LANCHOR0
- 236              		.cfi_endproc
- 237              	.LFE2:
- 239              		.section	.text.FOE_fopen,"ax",%progbits
- 240              		.align	1
- 241              		.syntax unified
- 242              		.thumb
- 243              		.thumb_func
- 245              	FOE_fopen:
- 246              	.LVL13:
- 247              	.LFB0:
+ 229              		.loc 1 198 1 is_stmt 0 view .LVU67
+ 230 0028 38BD     		pop	{r3, r4, r5, pc}
+ 231              	.L13:
+ 232 002a 00BF     		.align	2
+ 233              	.L12:
+ 234 002c 00000000 		.word	.LANCHOR2
+ 235 0030 00000000 		.word	.LANCHOR1
+ 236 0034 00000000 		.word	.LANCHOR0
+ 237              		.cfi_endproc
+ 238              	.LFE2:
+ 240              		.section	.text.FOE_fopen,"ax",%progbits
+ 241              		.align	1
+ 242              		.syntax unified
+ 243              		.thumb
+ 244              		.thumb_func
+ 245              		.fpu fpv4-sp-d16
+ 247              	FOE_fopen:
+ 248              	.LVL13:
+ 249              	.LFB0:
   54:Lib/soes/src/esc_foe.c ****    uint32_t i;
- 248              		.loc 1 54 1 is_stmt 1 view -0
- 249              		.cfi_startproc
- 250              		@ args = 0, pretend = 0, frame = 0
- 251              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250              		.loc 1 54 1 is_stmt 1 view -0
+ 251              		.cfi_startproc
+ 252              		@ args = 0, pretend = 0, frame = 0
+ 253              		@ frame_needed = 0, uses_anonymous_args = 0
   54:Lib/soes/src/esc_foe.c ****    uint32_t i;
- 252              		.loc 1 54 1 is_stmt 0 view .LVU69
- 253 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
- 254              		.cfi_def_cfa_offset 32
- 255              		.cfi_offset 4, -32
- 256              		.cfi_offset 5, -28
- 257              		.cfi_offset 6, -24
- 258              		.cfi_offset 7, -20
- 259              		.cfi_offset 8, -16
-ARM GAS  /tmp/cc97UT6A.s 			page 9
+ 254              		.loc 1 54 1 is_stmt 0 view .LVU69
+ 255 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 256              		.cfi_def_cfa_offset 32
+ 257              		.cfi_offset 4, -32
+ 258              		.cfi_offset 5, -28
+ 259              		.cfi_offset 6, -24
+ARM GAS  /tmp/ccc92rV8.s 			page 9
 
 
- 260              		.cfi_offset 9, -12
- 261              		.cfi_offset 10, -8
- 262              		.cfi_offset 14, -4
- 263 0004 1746     		mov	r7, r2
- 264 0006 1E46     		mov	r6, r3
+ 260              		.cfi_offset 7, -20
+ 261              		.cfi_offset 8, -16
+ 262              		.cfi_offset 9, -12
+ 263              		.cfi_offset 10, -8
+ 264              		.cfi_offset 14, -4
+ 265 0004 1746     		mov	r7, r2
+ 266 0006 1E46     		mov	r6, r3
   55:Lib/soes/src/esc_foe.c **** 
- 265              		.loc 1 55 4 is_stmt 1 view .LVU70
+ 267              		.loc 1 55 4 is_stmt 1 view .LVU70
   58:Lib/soes/src/esc_foe.c ****    {
- 266              		.loc 1 58 4 view .LVU71
+ 268              		.loc 1 58 4 view .LVU71
   58:Lib/soes/src/esc_foe.c ****    {
- 267              		.loc 1 58 7 is_stmt 0 view .LVU72
- 268 0008 1F29     		cmp	r1, #31
- 269 000a 00D9     		bls	.L15
+ 269              		.loc 1 58 7 is_stmt 0 view .LVU72
+ 270 0008 1F29     		cmp	r1, #31
+ 271 000a 00D9     		bls	.L15
   60:Lib/soes/src/esc_foe.c ****    }
- 270              		.loc 1 60 17 view .LVU73
- 271 000c 1F21     		movs	r1, #31
- 272              	.LVL14:
- 273              	.L15:
+ 272              		.loc 1 60 17 view .LVU73
+ 273 000c 1F21     		movs	r1, #31
+ 274              	.LVL14:
+ 275              	.L15:
   63:Lib/soes/src/esc_foe.c ****    {
- 274              		.loc 1 63 4 is_stmt 1 view .LVU74
+ 276              		.loc 1 63 4 is_stmt 1 view .LVU74
   63:Lib/soes/src/esc_foe.c ****    {
- 275              		.loc 1 63 11 is_stmt 0 view .LVU75
- 276 000e 4FF0000C 		mov	ip, #0
+ 277              		.loc 1 63 11 is_stmt 0 view .LVU75
+ 278 000e 4FF0000C 		mov	ip, #0
   63:Lib/soes/src/esc_foe.c ****    {
- 277              		.loc 1 63 4 view .LVU76
- 278 0012 06E0     		b	.L16
- 279              	.LVL15:
- 280              	.L17:
+ 279              		.loc 1 63 4 view .LVU76
+ 280 0012 06E0     		b	.L16
+ 281              	.LVL15:
+ 282              	.L17:
   65:Lib/soes/src/esc_foe.c ****    }
- 281              		.loc 1 65 7 is_stmt 1 discriminator 3 view .LVU77
+ 283              		.loc 1 65 7 is_stmt 1 discriminator 3 view .LVU77
   65:Lib/soes/src/esc_foe.c ****    }
- 282              		.loc 1 65 30 is_stmt 0 discriminator 3 view .LVU78
- 283 0014 10F80CE0 		ldrb	lr, [r0, ip]	@ zero_extendqisi2
+ 284              		.loc 1 65 30 is_stmt 0 discriminator 3 view .LVU78
+ 285 0014 10F80CE0 		ldrb	lr, [r0, ip]	@ zero_extendqisi2
   65:Lib/soes/src/esc_foe.c ****    }
- 284              		.loc 1 65 24 discriminator 3 view .LVU79
- 285 0018 314C     		ldr	r4, .L31
- 286 001a 04F80CE0 		strb	lr, [r4, ip]
+ 286              		.loc 1 65 24 discriminator 3 view .LVU79
+ 287 0018 314C     		ldr	r4, .L31
+ 288 001a 04F80CE0 		strb	lr, [r4, ip]
   63:Lib/soes/src/esc_foe.c ****    {
- 287              		.loc 1 63 31 is_stmt 1 discriminator 3 view .LVU80
+ 289              		.loc 1 63 31 is_stmt 1 discriminator 3 view .LVU80
   63:Lib/soes/src/esc_foe.c ****    {
- 288              		.loc 1 63 32 is_stmt 0 discriminator 3 view .LVU81
- 289 001e 0CF1010C 		add	ip, ip, #1
- 290              	.LVL16:
- 291              	.L16:
+ 290              		.loc 1 63 32 is_stmt 0 discriminator 3 view .LVU81
+ 291 001e 0CF1010C 		add	ip, ip, #1
+ 292              	.LVL16:
+ 293              	.L16:
   63:Lib/soes/src/esc_foe.c ****    {
- 292              		.loc 1 63 16 is_stmt 1 discriminator 1 view .LVU82
+ 294              		.loc 1 63 16 is_stmt 1 discriminator 1 view .LVU82
   63:Lib/soes/src/esc_foe.c ****    {
- 293              		.loc 1 63 18 is_stmt 0 discriminator 1 view .LVU83
- 294 0022 0D46     		mov	r5, r1
+ 295              		.loc 1 63 18 is_stmt 0 discriminator 1 view .LVU83
+ 296 0022 0D46     		mov	r5, r1
   63:Lib/soes/src/esc_foe.c ****    {
- 295              		.loc 1 63 4 discriminator 1 view .LVU84
- 296 0024 6145     		cmp	r1, ip
- 297 0026 F5D8     		bhi	.L17
+ 297              		.loc 1 63 4 discriminator 1 view .LVU84
+ 298 0024 6145     		cmp	r1, ip
+ 299 0026 F5D8     		bhi	.L17
   67:Lib/soes/src/esc_foe.c **** 
- 298              		.loc 1 67 4 is_stmt 1 view .LVU85
-  67:Lib/soes/src/esc_foe.c **** 
- 299              		.loc 1 67 21 is_stmt 0 view .LVU86
-ARM GAS  /tmp/cc97UT6A.s 			page 10
+ 300              		.loc 1 67 4 is_stmt 1 view .LVU85
+ARM GAS  /tmp/ccc92rV8.s 			page 10
 
 
- 300 0028 0024     		movs	r4, #0
- 301 002a 2D4B     		ldr	r3, .L31
- 302              	.LVL17:
   67:Lib/soes/src/esc_foe.c **** 
- 303              		.loc 1 67 21 view .LVU87
- 304 002c 03F80C40 		strb	r4, [r3, ip]
+ 301              		.loc 1 67 21 is_stmt 0 view .LVU86
+ 302 0028 0024     		movs	r4, #0
+ 303 002a 2D4B     		ldr	r3, .L31
+ 304              	.LVL17:
+  67:Lib/soes/src/esc_foe.c **** 
+ 305              		.loc 1 67 21 view .LVU87
+ 306 002c 03F80C40 		strb	r4, [r3, ip]
   70:Lib/soes/src/esc_foe.c ****    {
- 305              		.loc 1 70 4 is_stmt 1 view .LVU88
- 306              	.LVL18:
+ 307              		.loc 1 70 4 is_stmt 1 view .LVU88
+ 308              	.LVL18:
   70:Lib/soes/src/esc_foe.c ****    {
- 307              		.loc 1 70 4 is_stmt 0 view .LVU89
- 308 0030 1AE0     		b	.L18
- 309              	.LVL19:
- 310              	.L30:
+ 309              		.loc 1 70 4 is_stmt 0 view .LVU89
+ 310 0030 1AE0     		b	.L18
+ 311              	.LVL19:
+ 312              	.L30:
   80:Lib/soes/src/esc_foe.c ****              (ESCvar.ALstatus != ESCboot))
- 311              		.loc 1 80 32 discriminator 1 view .LVU90
- 312 0032 99F81830 		ldrb	r3, [r9, #24]	@ zero_extendqisi2
+ 313              		.loc 1 80 32 discriminator 1 view .LVU90
+ 314 0032 99F81830 		ldrb	r3, [r9, #24]	@ zero_extendqisi2
   79:Lib/soes/src/esc_foe.c ****              (foe_cfg->files[i].write_only_in_boot) &&
- 313              		.loc 1 79 31 discriminator 1 view .LVU91
- 314 0036 93B3     		cbz	r3, .L21
+ 315              		.loc 1 79 31 discriminator 1 view .LVU91
+ 316 0036 93B3     		cbz	r3, .L21
   81:Lib/soes/src/esc_foe.c ****          {
- 315              		.loc 1 81 21 view .LVU92
- 316 0038 2A4B     		ldr	r3, .L31+4
- 317 003a B3F88030 		ldrh	r3, [r3, #128]
+ 317              		.loc 1 81 21 view .LVU92
+ 318 0038 2A4B     		ldr	r3, .L31+4
+ 319 003a B3F88030 		ldrh	r3, [r3, #128]
   80:Lib/soes/src/esc_foe.c ****              (ESCvar.ALstatus != ESCboot))
- 318              		.loc 1 80 53 view .LVU93
- 319 003e 032B     		cmp	r3, #3
- 320 0040 2DD0     		beq	.L21
+ 320              		.loc 1 80 53 view .LVU93
+ 321 003e 032B     		cmp	r3, #3
+ 322 0040 2DD0     		beq	.L21
   83:Lib/soes/src/esc_foe.c ****          }
- 321              		.loc 1 83 20 view .LVU94
- 322 0042 48F20900 		movw	r0, #32777
- 323 0046 0CE0     		b	.L14
- 324              	.L22:
+ 323              		.loc 1 83 20 view .LVU94
+ 324 0042 48F20900 		movw	r0, #32777
+ 325 0046 0CE0     		b	.L14
+ 326              	.L22:
   93:Lib/soes/src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
- 325              		.loc 1 93 16 is_stmt 1 view .LVU95
+ 327              		.loc 1 93 16 is_stmt 1 view .LVU95
   93:Lib/soes/src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
- 326              		.loc 1 93 33 is_stmt 0 view .LVU96
- 327 0048 274B     		ldr	r3, .L31+8
- 328 004a 0020     		movs	r0, #0
- 329 004c D871     		strb	r0, [r3, #7]
- 330 004e 1872     		strb	r0, [r3, #8]
- 331 0050 5872     		strb	r0, [r3, #9]
- 332 0052 9872     		strb	r0, [r3, #10]
+ 328              		.loc 1 93 33 is_stmt 0 view .LVU96
+ 329 0048 274B     		ldr	r3, .L31+8
+ 330 004a 0020     		movs	r0, #0
+ 331 004c D871     		strb	r0, [r3, #7]
+ 332 004e 1872     		strb	r0, [r3, #8]
+ 333 0050 5872     		strb	r0, [r3, #9]
+ 334 0052 9872     		strb	r0, [r3, #10]
   94:Lib/soes/src/esc_foe.c ****                return 0;
- 333              		.loc 1 94 16 is_stmt 1 view .LVU97
+ 335              		.loc 1 94 16 is_stmt 1 view .LVU97
   94:Lib/soes/src/esc_foe.c ****                return 0;
- 334              		.loc 1 94 37 is_stmt 0 view .LVU98
- 335 0054 D8F80C20 		ldr	r2, [r8, #12]
+ 336              		.loc 1 94 37 is_stmt 0 view .LVU98
+ 337 0054 D8F80C20 		ldr	r2, [r8, #12]
   94:Lib/soes/src/esc_foe.c ****                return 0;
- 336              		.loc 1 94 44 view .LVU99
- 337 0058 9244     		add	r10, r10, r2
+ 338              		.loc 1 94 44 view .LVU99
+ 339 0058 9244     		add	r10, r10, r2
   94:Lib/soes/src/esc_foe.c ****                return 0;
- 338              		.loc 1 94 47 view .LVU100
- 339 005a DAF80420 		ldr	r2, [r10, #4]
+ 340              		.loc 1 94 47 view .LVU100
+ 341 005a DAF80420 		ldr	r2, [r10, #4]
   94:Lib/soes/src/esc_foe.c ****                return 0;
- 340              		.loc 1 94 28 view .LVU101
- 341 005e C3F80F20 		str	r2, [r3, #15]	@ unaligned
-ARM GAS  /tmp/cc97UT6A.s 			page 11
+ARM GAS  /tmp/ccc92rV8.s 			page 11
 
 
+ 342              		.loc 1 94 28 view .LVU101
+ 343 005e C3F80F20 		str	r2, [r3, #15]	@ unaligned
   95:Lib/soes/src/esc_foe.c ****             }
- 342              		.loc 1 95 16 is_stmt 1 view .LVU102
- 343              	.L14:
+ 344              		.loc 1 95 16 is_stmt 1 view .LVU102
+ 345              	.L14:
  108:Lib/soes/src/esc_foe.c **** 
- 344              		.loc 1 108 1 is_stmt 0 view .LVU103
- 345 0062 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
- 346              	.LVL20:
- 347              	.L19:
+ 346              		.loc 1 108 1 is_stmt 0 view .LVU103
+ 347 0062 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 348              	.LVL20:
+ 349              	.L19:
   70:Lib/soes/src/esc_foe.c ****    {
- 348              		.loc 1 70 38 is_stmt 1 discriminator 2 view .LVU104
+ 350              		.loc 1 70 38 is_stmt 1 discriminator 2 view .LVU104
   70:Lib/soes/src/esc_foe.c ****    {
- 349              		.loc 1 70 39 is_stmt 0 discriminator 2 view .LVU105
- 350 0066 0134     		adds	r4, r4, #1
- 351              	.LVL21:
- 352              	.L18:
+ 351              		.loc 1 70 39 is_stmt 0 discriminator 2 view .LVU105
+ 352 0066 0134     		adds	r4, r4, #1
+ 353              	.LVL21:
+ 354              	.L18:
   70:Lib/soes/src/esc_foe.c ****    {
- 353              		.loc 1 70 16 is_stmt 1 discriminator 1 view .LVU106
+ 355              		.loc 1 70 16 is_stmt 1 discriminator 1 view .LVU106
   70:Lib/soes/src/esc_foe.c ****    {
- 354              		.loc 1 70 27 is_stmt 0 discriminator 1 view .LVU107
- 355 0068 204B     		ldr	r3, .L31+12
- 356 006a D3F80080 		ldr	r8, [r3]
- 357 006e D8F80830 		ldr	r3, [r8, #8]
+ 356              		.loc 1 70 27 is_stmt 0 discriminator 1 view .LVU107
+ 357 0068 204B     		ldr	r3, .L31+12
+ 358 006a D3F80080 		ldr	r8, [r3]
+ 359 006e D8F80830 		ldr	r3, [r8, #8]
   70:Lib/soes/src/esc_foe.c ****    {
- 358              		.loc 1 70 4 discriminator 1 view .LVU108
- 359 0072 A342     		cmp	r3, r4
- 360 0074 2DD9     		bls	.L29
+ 360              		.loc 1 70 4 discriminator 1 view .LVU108
+ 361 0072 A342     		cmp	r3, r4
+ 362 0074 2DD9     		bls	.L29
   72:Lib/soes/src/esc_foe.c ****       {
- 361              		.loc 1 72 7 is_stmt 1 view .LVU109
+ 363              		.loc 1 72 7 is_stmt 1 view .LVU109
   72:Lib/soes/src/esc_foe.c ****       {
- 362              		.loc 1 72 47 is_stmt 0 view .LVU110
- 363 0076 D8F80C30 		ldr	r3, [r8, #12]
+ 364              		.loc 1 72 47 is_stmt 0 view .LVU110
+ 365 0076 D8F80C30 		ldr	r3, [r8, #12]
   72:Lib/soes/src/esc_foe.c ****       {
- 364              		.loc 1 72 54 view .LVU111
- 365 007a 4FEA441A 		lsl	r10, r4, #5
- 366 007e 03EB4419 		add	r9, r3, r4, lsl #5
+ 366              		.loc 1 72 54 view .LVU111
+ 367 007a 4FEA441A 		lsl	r10, r4, #5
+ 368 007e 03EB4419 		add	r9, r3, r4, lsl #5
   72:Lib/soes/src/esc_foe.c ****       {
- 367              		.loc 1 72 16 view .LVU112
- 368 0082 2A46     		mov	r2, r5
- 369 0084 53F80A10 		ldr	r1, [r3, r10]
- 370 0088 1548     		ldr	r0, .L31
- 371 008a FFF7FEFF 		bl	strncmp
- 372              	.LVL22:
+ 369              		.loc 1 72 16 view .LVU112
+ 370 0082 2A46     		mov	r2, r5
+ 371 0084 53F80A10 		ldr	r1, [r3, r10]
+ 372 0088 1548     		ldr	r0, .L31
+ 373 008a FFF7FEFF 		bl	strncmp
+ 374              	.LVL22:
   72:Lib/soes/src/esc_foe.c ****       {
- 373              		.loc 1 72 10 view .LVU113
- 374 008e 0028     		cmp	r0, #0
- 375 0090 E9D1     		bne	.L19
+ 375              		.loc 1 72 10 view .LVU113
+ 376 008e 0028     		cmp	r0, #0
+ 377 0090 E9D1     		bne	.L19
   74:Lib/soes/src/esc_foe.c ****          {
- 376              		.loc 1 74 10 is_stmt 1 view .LVU114
+ 378              		.loc 1 74 10 is_stmt 1 view .LVU114
   74:Lib/soes/src/esc_foe.c ****          {
- 377              		.loc 1 74 39 is_stmt 0 view .LVU115
- 378 0092 D9F81430 		ldr	r3, [r9, #20]
+ 379              		.loc 1 74 39 is_stmt 0 view .LVU115
+ 380 0092 D9F81430 		ldr	r3, [r9, #20]
   74:Lib/soes/src/esc_foe.c ****          {
- 379              		.loc 1 74 13 view .LVU116
- 380 0096 BB42     		cmp	r3, r7
- 381 0098 1ED1     		bne	.L26
-  79:Lib/soes/src/esc_foe.c ****              (foe_cfg->files[i].write_only_in_boot) &&
- 382              		.loc 1 79 10 is_stmt 1 view .LVU117
-ARM GAS  /tmp/cc97UT6A.s 			page 12
+ 381              		.loc 1 74 13 view .LVU116
+ 382 0096 BB42     		cmp	r3, r7
+ 383 0098 1ED1     		bne	.L26
+ARM GAS  /tmp/ccc92rV8.s 			page 12
 
 
   79:Lib/soes/src/esc_foe.c ****              (foe_cfg->files[i].write_only_in_boot) &&
- 383              		.loc 1 79 13 is_stmt 0 view .LVU118
- 384 009a 022E     		cmp	r6, #2
- 385 009c C9D0     		beq	.L30
- 386              	.L21:
+ 384              		.loc 1 79 10 is_stmt 1 view .LVU117
+  79:Lib/soes/src/esc_foe.c ****              (foe_cfg->files[i].write_only_in_boot) &&
+ 385              		.loc 1 79 13 is_stmt 0 view .LVU118
+ 386 009a 022E     		cmp	r6, #2
+ 387 009c C9D0     		beq	.L30
+ 388              	.L21:
   86:Lib/soes/src/esc_foe.c ****          foe_file->address_offset = 0;
- 387              		.loc 1 86 10 is_stmt 1 view .LVU119
+ 389              		.loc 1 86 10 is_stmt 1 view .LVU119
   86:Lib/soes/src/esc_foe.c ****          foe_file->address_offset = 0;
- 388              		.loc 1 86 19 is_stmt 0 view .LVU120
- 389 009e 144B     		ldr	r3, .L31+16
- 390 00a0 C3F80090 		str	r9, [r3]
+ 390              		.loc 1 86 19 is_stmt 0 view .LVU120
+ 391 009e 144B     		ldr	r3, .L31+16
+ 392 00a0 C3F80090 		str	r9, [r3]
   87:Lib/soes/src/esc_foe.c ****          foe_file->total_size = 0;
- 391              		.loc 1 87 10 is_stmt 1 view .LVU121
+ 393              		.loc 1 87 10 is_stmt 1 view .LVU121
   87:Lib/soes/src/esc_foe.c ****          foe_file->total_size = 0;
- 392              		.loc 1 87 35 is_stmt 0 view .LVU122
- 393 00a4 0023     		movs	r3, #0
- 394 00a6 C9F80C30 		str	r3, [r9, #12]
+ 394              		.loc 1 87 35 is_stmt 0 view .LVU122
+ 395 00a4 0023     		movs	r3, #0
+ 396 00a6 C9F80C30 		str	r3, [r9, #12]
   88:Lib/soes/src/esc_foe.c ****          switch (op)
- 395              		.loc 1 88 10 is_stmt 1 view .LVU123
+ 397              		.loc 1 88 10 is_stmt 1 view .LVU123
   88:Lib/soes/src/esc_foe.c ****          switch (op)
- 396              		.loc 1 88 31 is_stmt 0 view .LVU124
- 397 00aa C9F81030 		str	r3, [r9, #16]
+ 398              		.loc 1 88 31 is_stmt 0 view .LVU124
+ 399 00aa C9F81030 		str	r3, [r9, #16]
   89:Lib/soes/src/esc_foe.c ****          {
- 398              		.loc 1 89 10 is_stmt 1 view .LVU125
- 399 00ae 012E     		cmp	r6, #1
- 400 00b0 CAD0     		beq	.L22
- 401 00b2 022E     		cmp	r6, #2
- 402 00b4 D7D1     		bne	.L19
+ 400              		.loc 1 89 10 is_stmt 1 view .LVU125
+ 401 00ae 012E     		cmp	r6, #1
+ 402 00b0 CAD0     		beq	.L22
+ 403 00b2 022E     		cmp	r6, #2
+ 404 00b4 D7D1     		bne	.L19
   99:Lib/soes/src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
- 403              		.loc 1 99 16 view .LVU126
+ 405              		.loc 1 99 16 view .LVU126
   99:Lib/soes/src/esc_foe.c ****                FOEvar.fend = foe_cfg->files[i].max_data;
- 404              		.loc 1 99 33 is_stmt 0 view .LVU127
- 405 00b6 0C4B     		ldr	r3, .L31+8
- 406 00b8 0020     		movs	r0, #0
- 407 00ba D871     		strb	r0, [r3, #7]
- 408 00bc 1872     		strb	r0, [r3, #8]
- 409 00be 5872     		strb	r0, [r3, #9]
- 410 00c0 9872     		strb	r0, [r3, #10]
+ 406              		.loc 1 99 33 is_stmt 0 view .LVU127
+ 407 00b6 0C4B     		ldr	r3, .L31+8
+ 408 00b8 0020     		movs	r0, #0
+ 409 00ba D871     		strb	r0, [r3, #7]
+ 410 00bc 1872     		strb	r0, [r3, #8]
+ 411 00be 5872     		strb	r0, [r3, #9]
+ 412 00c0 9872     		strb	r0, [r3, #10]
  100:Lib/soes/src/esc_foe.c ****                return 0;
- 411              		.loc 1 100 16 is_stmt 1 view .LVU128
+ 413              		.loc 1 100 16 is_stmt 1 view .LVU128
  100:Lib/soes/src/esc_foe.c ****                return 0;
- 412              		.loc 1 100 37 is_stmt 0 view .LVU129
- 413 00c2 D8F80C20 		ldr	r2, [r8, #12]
+ 414              		.loc 1 100 37 is_stmt 0 view .LVU129
+ 415 00c2 D8F80C20 		ldr	r2, [r8, #12]
  100:Lib/soes/src/esc_foe.c ****                return 0;
- 414              		.loc 1 100 44 view .LVU130
- 415 00c6 9244     		add	r10, r10, r2
+ 416              		.loc 1 100 44 view .LVU130
+ 417 00c6 9244     		add	r10, r10, r2
  100:Lib/soes/src/esc_foe.c ****                return 0;
- 416              		.loc 1 100 47 view .LVU131
- 417 00c8 DAF80420 		ldr	r2, [r10, #4]
+ 418              		.loc 1 100 47 view .LVU131
+ 419 00c8 DAF80420 		ldr	r2, [r10, #4]
  100:Lib/soes/src/esc_foe.c ****                return 0;
- 418              		.loc 1 100 28 view .LVU132
- 419 00cc C3F80F20 		str	r2, [r3, #15]	@ unaligned
+ 420              		.loc 1 100 28 view .LVU132
+ 421 00cc C3F80F20 		str	r2, [r3, #15]	@ unaligned
  101:Lib/soes/src/esc_foe.c ****             }
- 420              		.loc 1 101 16 is_stmt 1 view .LVU133
+ 422              		.loc 1 101 16 is_stmt 1 view .LVU133
  101:Lib/soes/src/esc_foe.c ****             }
- 421              		.loc 1 101 23 is_stmt 0 view .LVU134
- 422 00d0 C7E7     		b	.L14
-ARM GAS  /tmp/cc97UT6A.s 			page 13
+ARM GAS  /tmp/ccc92rV8.s 			page 13
 
 
- 423              	.L29:
+ 423              		.loc 1 101 23 is_stmt 0 view .LVU134
+ 424 00d0 C7E7     		b	.L14
+ 425              	.L29:
  107:Lib/soes/src/esc_foe.c **** }
- 424              		.loc 1 107 11 view .LVU135
- 425 00d2 48F20100 		movw	r0, #32769
- 426 00d6 C4E7     		b	.L14
- 427              	.L26:
+ 426              		.loc 1 107 11 view .LVU135
+ 427 00d2 48F20100 		movw	r0, #32769
+ 428 00d6 C4E7     		b	.L14
+ 429              	.L26:
   76:Lib/soes/src/esc_foe.c ****          }
- 428              		.loc 1 76 20 view .LVU136
- 429 00d8 48F20A00 		movw	r0, #32778
- 430 00dc C1E7     		b	.L14
- 431              	.L32:
- 432 00de 00BF     		.align	2
- 433              	.L31:
- 434 00e0 00000000 		.word	.LANCHOR3
- 435 00e4 00000000 		.word	ESCvar
- 436 00e8 00000000 		.word	.LANCHOR0
- 437 00ec 00000000 		.word	.LANCHOR1
- 438 00f0 00000000 		.word	.LANCHOR2
- 439              		.cfi_endproc
- 440              	.LFE0:
- 442              		.section	.text.FOE_send_ack,"ax",%progbits
- 443              		.align	1
- 444              		.syntax unified
- 445              		.thumb
- 446              		.thumb_func
- 448              	FOE_send_ack:
- 449              	.LFB5:
+ 430              		.loc 1 76 20 view .LVU136
+ 431 00d8 48F20A00 		movw	r0, #32778
+ 432 00dc C1E7     		b	.L14
+ 433              	.L32:
+ 434 00de 00BF     		.align	2
+ 435              	.L31:
+ 436 00e0 00000000 		.word	.LANCHOR3
+ 437 00e4 00000000 		.word	ESCvar
+ 438 00e8 00000000 		.word	.LANCHOR0
+ 439 00ec 00000000 		.word	.LANCHOR1
+ 440 00f0 00000000 		.word	.LANCHOR2
+ 441              		.cfi_endproc
+ 442              	.LFE0:
+ 444              		.section	.text.FOE_send_ack,"ax",%progbits
+ 445              		.align	1
+ 446              		.syntax unified
+ 447              		.thumb
+ 448              		.thumb_func
+ 449              		.fpu fpv4-sp-d16
+ 451              	FOE_send_ack:
+ 452              	.LFB5:
  199:Lib/soes/src/esc_foe.c **** 
  200:Lib/soes/src/esc_foe.c **** /** Initialize by clearing all current status variables.
  201:Lib/soes/src/esc_foe.c ****  *
@@ -775,12 +778,12 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  223:Lib/soes/src/esc_foe.c ****    {
  224:Lib/soes/src/esc_foe.c ****       /* Send back an error packet. */
  225:Lib/soes/src/esc_foe.c ****       mbxhandle = ESC_claimbuffer ();
+ARM GAS  /tmp/ccc92rV8.s 			page 14
+
+
  226:Lib/soes/src/esc_foe.c ****       if (mbxhandle)
  227:Lib/soes/src/esc_foe.c ****       {
  228:Lib/soes/src/esc_foe.c ****          foembx = (_FOE *) &MBX[mbxhandle * ESC_MBXSIZE];
-ARM GAS  /tmp/cc97UT6A.s 			page 14
-
-
  229:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
  230:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.mbxtype = MBXFOE;
  231:Lib/soes/src/esc_foe.c ****          foembx->foeheader.opcode = FOE_OP_ERR;
@@ -835,95 +838,95 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  280:Lib/soes/src/esc_foe.c **** 
  281:Lib/soes/src/esc_foe.c ****  * @return 0= or error number.
  282:Lib/soes/src/esc_foe.c ****  */
+ARM GAS  /tmp/ccc92rV8.s 			page 15
+
+
  283:Lib/soes/src/esc_foe.c **** static uint32_t FOE_send_ack ()
  284:Lib/soes/src/esc_foe.c **** {
- 450              		.loc 1 284 1 is_stmt 1 view -0
-ARM GAS  /tmp/cc97UT6A.s 			page 15
-
-
- 451              		.cfi_startproc
- 452              		@ args = 0, pretend = 0, frame = 0
- 453              		@ frame_needed = 0, uses_anonymous_args = 0
- 454 0000 10B5     		push	{r4, lr}
- 455              		.cfi_def_cfa_offset 8
- 456              		.cfi_offset 4, -8
- 457              		.cfi_offset 14, -4
+ 453              		.loc 1 284 1 is_stmt 1 view -0
+ 454              		.cfi_startproc
+ 455              		@ args = 0, pretend = 0, frame = 0
+ 456              		@ frame_needed = 0, uses_anonymous_args = 0
+ 457 0000 10B5     		push	{r4, lr}
+ 458              		.cfi_def_cfa_offset 8
+ 459              		.cfi_offset 4, -8
+ 460              		.cfi_offset 14, -4
  285:Lib/soes/src/esc_foe.c ****    _FOE *foembx;
- 458              		.loc 1 285 4 view .LVU138
+ 461              		.loc 1 285 4 view .LVU138
  286:Lib/soes/src/esc_foe.c ****    uint8_t mbxhandle;
- 459              		.loc 1 286 4 view .LVU139
+ 462              		.loc 1 286 4 view .LVU139
  287:Lib/soes/src/esc_foe.c **** 
  288:Lib/soes/src/esc_foe.c ****    mbxhandle = ESC_claimbuffer ();
- 460              		.loc 1 288 4 view .LVU140
- 461              		.loc 1 288 16 is_stmt 0 view .LVU141
- 462 0002 FFF7FEFF 		bl	ESC_claimbuffer
- 463              	.LVL23:
+ 463              		.loc 1 288 4 view .LVU140
+ 464              		.loc 1 288 16 is_stmt 0 view .LVU141
+ 465 0002 FFF7FEFF 		bl	ESC_claimbuffer
+ 466              	.LVL23:
  289:Lib/soes/src/esc_foe.c ****    if (mbxhandle)
- 464              		.loc 1 289 4 is_stmt 1 view .LVU142
- 465              		.loc 1 289 7 is_stmt 0 view .LVU143
- 466 0006 E8B1     		cbz	r0, .L35
- 467 0008 0146     		mov	r1, r0
+ 467              		.loc 1 289 4 is_stmt 1 view .LVU142
+ 468              		.loc 1 289 7 is_stmt 0 view .LVU143
+ 469 0006 E8B1     		cbz	r0, .L35
+ 470 0008 0146     		mov	r1, r0
  290:Lib/soes/src/esc_foe.c ****    {
  291:Lib/soes/src/esc_foe.c ****       DPRINT("FOE_send_ack\n");
- 468              		.loc 1 291 31 is_stmt 1 view .LVU144
+ 471              		.loc 1 291 31 is_stmt 1 view .LVU144
  292:Lib/soes/src/esc_foe.c ****       foembx = (_FOE *) &MBX[mbxhandle * ESC_MBXSIZE];
- 469              		.loc 1 292 7 view .LVU145
- 470              		.loc 1 292 42 is_stmt 0 view .LVU146
- 471 000a 104B     		ldr	r3, .L37
- 472 000c DA6E     		ldr	r2, [r3, #108]
- 473              		.loc 1 292 40 view .LVU147
- 474 000e 00FB02F2 		mul	r2, r0, r2
- 475              		.loc 1 292 14 view .LVU148
- 476 0012 0F4C     		ldr	r4, .L37+4
- 477 0014 1319     		adds	r3, r2, r4
- 478              	.LVL24:
+ 472              		.loc 1 292 7 view .LVU145
+ 473              		.loc 1 292 42 is_stmt 0 view .LVU146
+ 474 000a 104B     		ldr	r3, .L37
+ 475 000c DA6E     		ldr	r2, [r3, #108]
+ 476              		.loc 1 292 40 view .LVU147
+ 477 000e 00FB02F2 		mul	r2, r0, r2
+ 478              		.loc 1 292 14 view .LVU148
+ 479 0012 0F4C     		ldr	r4, .L37+4
+ 480 0014 1319     		adds	r3, r2, r4
+ 481              	.LVL24:
  293:Lib/soes/src/esc_foe.c ****       foembx->mbxheader.length = htoes (ESC_FOEHSIZE);
- 479              		.loc 1 293 7 is_stmt 1 view .LVU149
- 480              		.loc 1 293 32 is_stmt 0 view .LVU150
- 481 0016 0020     		movs	r0, #0
- 482              	.LVL25:
- 483              		.loc 1 293 32 view .LVU151
- 484 0018 4FF0060C 		mov	ip, #6
- 485 001c 02F804C0 		strb	ip, [r2, r4]
- 486 0020 5870     		strb	r0, [r3, #1]
+ 482              		.loc 1 293 7 is_stmt 1 view .LVU149
+ 483              		.loc 1 293 32 is_stmt 0 view .LVU150
+ 484 0016 0020     		movs	r0, #0
+ 485              	.LVL25:
+ 486              		.loc 1 293 32 view .LVU151
+ 487 0018 4FF0060C 		mov	ip, #6
+ 488 001c 02F804C0 		strb	ip, [r2, r4]
+ 489 0020 5870     		strb	r0, [r3, #1]
  294:Lib/soes/src/esc_foe.c ****       foembx->mbxheader.mbxtype = MBXFOE;
- 487              		.loc 1 294 7 is_stmt 1 view .LVU152
- 488              		.loc 1 294 33 is_stmt 0 view .LVU153
- 489 0022 5C79     		ldrb	r4, [r3, #5]	@ zero_extendqisi2
- 490 0024 0422     		movs	r2, #4
- 491 0026 62F30304 		bfi	r4, r2, #0, #4
- 492 002a 5C71     		strb	r4, [r3, #5]
+ 490              		.loc 1 294 7 is_stmt 1 view .LVU152
+ 491              		.loc 1 294 33 is_stmt 0 view .LVU153
+ 492 0022 5C79     		ldrb	r4, [r3, #5]	@ zero_extendqisi2
+ 493 0024 0422     		movs	r2, #4
+ 494 0026 62F30304 		bfi	r4, r2, #0, #4
+ 495 002a 5C71     		strb	r4, [r3, #5]
  295:Lib/soes/src/esc_foe.c ****       foembx->foeheader.opcode = FOE_OP_ACK;
- 493              		.loc 1 295 7 is_stmt 1 view .LVU154
- 494              		.loc 1 295 32 is_stmt 0 view .LVU155
- 495 002c 9A71     		strb	r2, [r3, #6]
+ 496              		.loc 1 295 7 is_stmt 1 view .LVU154
+ARM GAS  /tmp/ccc92rV8.s 			page 16
+
+
+ 497              		.loc 1 295 32 is_stmt 0 view .LVU155
+ 498 002c 9A71     		strb	r2, [r3, #6]
  296:Lib/soes/src/esc_foe.c ****       foembx->foeheader.packetnumber = htoel (FOEvar.foepacket);
-ARM GAS  /tmp/cc97UT6A.s 			page 16
-
-
- 496              		.loc 1 296 7 is_stmt 1 view .LVU156
- 497              		.loc 1 296 40 is_stmt 0 view .LVU157
- 498 002e 094C     		ldr	r4, .L37+8
- 499 0030 D4F80320 		ldr	r2, [r4, #3]	@ unaligned
- 500              		.loc 1 296 38 view .LVU158
- 501 0034 9A60     		str	r2, [r3, #8]	@ unaligned
+ 499              		.loc 1 296 7 is_stmt 1 view .LVU156
+ 500              		.loc 1 296 40 is_stmt 0 view .LVU157
+ 501 002e 094C     		ldr	r4, .L37+8
+ 502 0030 D4F80320 		ldr	r2, [r4, #3]	@ unaligned
+ 503              		.loc 1 296 38 view .LVU158
+ 504 0034 9A60     		str	r2, [r3, #8]	@ unaligned
  297:Lib/soes/src/esc_foe.c ****       FOEvar.foepacket++;
- 502              		.loc 1 297 7 is_stmt 1 view .LVU159
- 503              		.loc 1 297 23 is_stmt 0 view .LVU160
- 504 0036 0132     		adds	r2, r2, #1
- 505 0038 C4F80320 		str	r2, [r4, #3]	@ unaligned
+ 505              		.loc 1 297 7 is_stmt 1 view .LVU159
+ 506              		.loc 1 297 23 is_stmt 0 view .LVU160
+ 507 0036 0132     		adds	r2, r2, #1
+ 508 0038 C4F80320 		str	r2, [r4, #3]	@ unaligned
  298:Lib/soes/src/esc_foe.c ****       MBXcontrol[mbxhandle].state = MBXstate_outreq;
- 506              		.loc 1 298 7 is_stmt 1 view .LVU161
- 507              		.loc 1 298 35 is_stmt 0 view .LVU162
- 508 003c 064B     		ldr	r3, .L37+12
- 509              	.LVL26:
- 510              		.loc 1 298 35 view .LVU163
- 511 003e 0322     		movs	r2, #3
- 512 0040 5A54     		strb	r2, [r3, r1]
+ 509              		.loc 1 298 7 is_stmt 1 view .LVU161
+ 510              		.loc 1 298 35 is_stmt 0 view .LVU162
+ 511 003c 064B     		ldr	r3, .L37+12
+ 512              	.LVL26:
+ 513              		.loc 1 298 35 view .LVU163
+ 514 003e 0322     		movs	r2, #3
+ 515 0040 5A54     		strb	r2, [r3, r1]
  299:Lib/soes/src/esc_foe.c ****       return 0;
- 513              		.loc 1 299 7 is_stmt 1 view .LVU164
- 514              	.LVL27:
- 515              	.L33:
+ 516              		.loc 1 299 7 is_stmt 1 view .LVU164
+ 517              	.LVL27:
+ 518              	.L33:
  300:Lib/soes/src/esc_foe.c ****    }
  301:Lib/soes/src/esc_foe.c ****    else
  302:Lib/soes/src/esc_foe.c ****    {
@@ -931,227 +934,230 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  304:Lib/soes/src/esc_foe.c ****       return FOE_ERR_PROGERROR;
  305:Lib/soes/src/esc_foe.c ****    }
  306:Lib/soes/src/esc_foe.c **** }
- 516              		.loc 1 306 1 is_stmt 0 view .LVU165
- 517 0042 10BD     		pop	{r4, pc}
- 518              	.LVL28:
- 519              	.L35:
+ 519              		.loc 1 306 1 is_stmt 0 view .LVU165
+ 520 0042 10BD     		pop	{r4, pc}
+ 521              	.LVL28:
+ 522              	.L35:
  304:Lib/soes/src/esc_foe.c ****    }
- 520              		.loc 1 304 14 view .LVU166
- 521 0044 48F20B00 		movw	r0, #32779
- 522              	.LVL29:
+ 523              		.loc 1 304 14 view .LVU166
+ 524 0044 48F20B00 		movw	r0, #32779
+ 525              	.LVL29:
  304:Lib/soes/src/esc_foe.c ****    }
- 523              		.loc 1 304 14 view .LVU167
- 524 0048 FBE7     		b	.L33
- 525              	.L38:
- 526 004a 00BF     		.align	2
- 527              	.L37:
- 528 004c 00000000 		.word	ESCvar
- 529 0050 00000000 		.word	MBX
- 530 0054 00000000 		.word	.LANCHOR0
- 531 0058 00000000 		.word	MBXcontrol
- 532              		.cfi_endproc
- 533              	.LFE5:
- 535              		.section	.text.FOE_init,"ax",%progbits
- 536              		.align	1
- 537              		.global	FOE_init
- 538              		.syntax unified
- 539              		.thumb
- 540              		.thumb_func
- 542              	FOE_init:
-ARM GAS  /tmp/cc97UT6A.s 			page 17
+ 526              		.loc 1 304 14 view .LVU167
+ 527 0048 FBE7     		b	.L33
+ 528              	.L38:
+ 529 004a 00BF     		.align	2
+ 530              	.L37:
+ 531 004c 00000000 		.word	ESCvar
+ 532 0050 00000000 		.word	MBX
+ 533 0054 00000000 		.word	.LANCHOR0
+ 534 0058 00000000 		.word	MBXcontrol
+ 535              		.cfi_endproc
+ 536              	.LFE5:
+ 538              		.section	.text.FOE_init,"ax",%progbits
+ 539              		.align	1
+ 540              		.global	FOE_init
+ 541              		.syntax unified
+ARM GAS  /tmp/ccc92rV8.s 			page 17
 
 
- 543              	.LFB3:
+ 542              		.thumb
+ 543              		.thumb_func
+ 544              		.fpu fpv4-sp-d16
+ 546              	FOE_init:
+ 547              	.LFB3:
  204:Lib/soes/src/esc_foe.c ****    DPRINT("FOE_init\n");
- 544              		.loc 1 204 1 is_stmt 1 view -0
- 545              		.cfi_startproc
- 546              		@ args = 0, pretend = 0, frame = 0
- 547              		@ frame_needed = 0, uses_anonymous_args = 0
- 548              		@ link register save eliminated.
+ 548              		.loc 1 204 1 is_stmt 1 view -0
+ 549              		.cfi_startproc
+ 550              		@ args = 0, pretend = 0, frame = 0
+ 551              		@ frame_needed = 0, uses_anonymous_args = 0
+ 552              		@ link register save eliminated.
  205:Lib/soes/src/esc_foe.c ****    FOEvar.foepacket = 0;
- 549              		.loc 1 205 24 view .LVU169
+ 553              		.loc 1 205 24 view .LVU169
  206:Lib/soes/src/esc_foe.c ****    FOEvar.foestate = FOE_READY;
- 550              		.loc 1 206 4 view .LVU170
+ 554              		.loc 1 206 4 view .LVU170
  206:Lib/soes/src/esc_foe.c ****    FOEvar.foestate = FOE_READY;
- 551              		.loc 1 206 21 is_stmt 0 view .LVU171
- 552 0000 084B     		ldr	r3, .L40
- 553 0002 0022     		movs	r2, #0
- 554 0004 DA70     		strb	r2, [r3, #3]
- 555 0006 1A71     		strb	r2, [r3, #4]
- 556 0008 5A71     		strb	r2, [r3, #5]
- 557 000a 9A71     		strb	r2, [r3, #6]
+ 555              		.loc 1 206 21 is_stmt 0 view .LVU171
+ 556 0000 084B     		ldr	r3, .L40
+ 557 0002 0022     		movs	r2, #0
+ 558 0004 DA70     		strb	r2, [r3, #3]
+ 559 0006 1A71     		strb	r2, [r3, #4]
+ 560 0008 5A71     		strb	r2, [r3, #5]
+ 561 000a 9A71     		strb	r2, [r3, #6]
  207:Lib/soes/src/esc_foe.c ****    FOEvar.fposition = 0;
- 558              		.loc 1 207 4 is_stmt 1 view .LVU172
+ 562              		.loc 1 207 4 is_stmt 1 view .LVU172
  207:Lib/soes/src/esc_foe.c ****    FOEvar.fposition = 0;
- 559              		.loc 1 207 20 is_stmt 0 view .LVU173
- 560 000c 1A70     		strb	r2, [r3]
+ 563              		.loc 1 207 20 is_stmt 0 view .LVU173
+ 564 000c 1A70     		strb	r2, [r3]
  208:Lib/soes/src/esc_foe.c ****    FOEvar.fprevposition = 0;
- 561              		.loc 1 208 4 is_stmt 1 view .LVU174
+ 565              		.loc 1 208 4 is_stmt 1 view .LVU174
  208:Lib/soes/src/esc_foe.c ****    FOEvar.fprevposition = 0;
- 562              		.loc 1 208 21 is_stmt 0 view .LVU175
- 563 000e DA71     		strb	r2, [r3, #7]
- 564 0010 1A72     		strb	r2, [r3, #8]
- 565 0012 5A72     		strb	r2, [r3, #9]
- 566 0014 9A72     		strb	r2, [r3, #10]
+ 566              		.loc 1 208 21 is_stmt 0 view .LVU175
+ 567 000e DA71     		strb	r2, [r3, #7]
+ 568 0010 1A72     		strb	r2, [r3, #8]
+ 569 0012 5A72     		strb	r2, [r3, #9]
+ 570 0014 9A72     		strb	r2, [r3, #10]
  209:Lib/soes/src/esc_foe.c ****    FOEvar.fbufposition = 0;
- 567              		.loc 1 209 4 is_stmt 1 view .LVU176
+ 571              		.loc 1 209 4 is_stmt 1 view .LVU176
  209:Lib/soes/src/esc_foe.c ****    FOEvar.fbufposition = 0;
- 568              		.loc 1 209 25 is_stmt 0 view .LVU177
- 569 0016 DA72     		strb	r2, [r3, #11]
- 570 0018 1A73     		strb	r2, [r3, #12]
- 571 001a 5A73     		strb	r2, [r3, #13]
- 572 001c 9A73     		strb	r2, [r3, #14]
+ 572              		.loc 1 209 25 is_stmt 0 view .LVU177
+ 573 0016 DA72     		strb	r2, [r3, #11]
+ 574 0018 1A73     		strb	r2, [r3, #12]
+ 575 001a 5A73     		strb	r2, [r3, #13]
+ 576 001c 9A73     		strb	r2, [r3, #14]
  210:Lib/soes/src/esc_foe.c **** }
- 573              		.loc 1 210 4 is_stmt 1 view .LVU178
+ 577              		.loc 1 210 4 is_stmt 1 view .LVU178
  210:Lib/soes/src/esc_foe.c **** }
- 574              		.loc 1 210 24 is_stmt 0 view .LVU179
- 575 001e 5A70     		strb	r2, [r3, #1]
- 576 0020 9A70     		strb	r2, [r3, #2]
+ 578              		.loc 1 210 24 is_stmt 0 view .LVU179
+ 579 001e 5A70     		strb	r2, [r3, #1]
+ 580 0020 9A70     		strb	r2, [r3, #2]
  211:Lib/soes/src/esc_foe.c **** 
- 577              		.loc 1 211 1 view .LVU180
- 578 0022 7047     		bx	lr
- 579              	.L41:
- 580              		.align	2
- 581              	.L40:
- 582 0024 00000000 		.word	.LANCHOR0
- 583              		.cfi_endproc
- 584              	.LFE3:
- 586              		.section	.text.FOE_abort,"ax",%progbits
- 587              		.align	1
-ARM GAS  /tmp/cc97UT6A.s 			page 18
+ 581              		.loc 1 211 1 view .LVU180
+ 582 0022 7047     		bx	lr
+ 583              	.L41:
+ 584              		.align	2
+ 585              	.L40:
+ 586 0024 00000000 		.word	.LANCHOR0
+ARM GAS  /tmp/ccc92rV8.s 			page 18
 
 
- 588              		.syntax unified
- 589              		.thumb
- 590              		.thumb_func
- 592              	FOE_abort:
- 593              	.LVL30:
- 594              	.LFB4:
+ 587              		.cfi_endproc
+ 588              	.LFE3:
+ 590              		.section	.text.FOE_abort,"ax",%progbits
+ 591              		.align	1
+ 592              		.syntax unified
+ 593              		.thumb
+ 594              		.thumb_func
+ 595              		.fpu fpv4-sp-d16
+ 597              	FOE_abort:
+ 598              	.LVL30:
+ 599              	.LFB4:
  218:Lib/soes/src/esc_foe.c ****    _FOE *foembx;
- 595              		.loc 1 218 1 is_stmt 1 view -0
- 596              		.cfi_startproc
- 597              		@ args = 0, pretend = 0, frame = 0
- 598              		@ frame_needed = 0, uses_anonymous_args = 0
+ 600              		.loc 1 218 1 is_stmt 1 view -0
+ 601              		.cfi_startproc
+ 602              		@ args = 0, pretend = 0, frame = 0
+ 603              		@ frame_needed = 0, uses_anonymous_args = 0
  218:Lib/soes/src/esc_foe.c ****    _FOE *foembx;
- 599              		.loc 1 218 1 is_stmt 0 view .LVU182
- 600 0000 10B5     		push	{r4, lr}
- 601              		.cfi_def_cfa_offset 8
- 602              		.cfi_offset 4, -8
- 603              		.cfi_offset 14, -4
+ 604              		.loc 1 218 1 is_stmt 0 view .LVU182
+ 605 0000 10B5     		push	{r4, lr}
+ 606              		.cfi_def_cfa_offset 8
+ 607              		.cfi_offset 4, -8
+ 608              		.cfi_offset 14, -4
  219:Lib/soes/src/esc_foe.c ****    uint8_t mbxhandle;
- 604              		.loc 1 219 4 is_stmt 1 view .LVU183
+ 609              		.loc 1 219 4 is_stmt 1 view .LVU183
  220:Lib/soes/src/esc_foe.c **** 
- 605              		.loc 1 220 4 view .LVU184
+ 610              		.loc 1 220 4 view .LVU184
  222:Lib/soes/src/esc_foe.c ****    {
- 606              		.loc 1 222 4 view .LVU185
+ 611              		.loc 1 222 4 view .LVU185
  222:Lib/soes/src/esc_foe.c ****    {
- 607              		.loc 1 222 7 is_stmt 0 view .LVU186
- 608 0002 10B9     		cbnz	r0, .L45
- 609              	.LVL31:
- 610              	.L43:
+ 612              		.loc 1 222 7 is_stmt 0 view .LVU186
+ 613 0002 10B9     		cbnz	r0, .L45
+ 614              	.LVL31:
+ 615              	.L43:
  237:Lib/soes/src/esc_foe.c ****    FOE_init ();
- 611              		.loc 1 237 44 is_stmt 1 view .LVU187
+ 616              		.loc 1 237 44 is_stmt 1 view .LVU187
  238:Lib/soes/src/esc_foe.c **** }
- 612              		.loc 1 238 4 view .LVU188
- 613 0004 FFF7FEFF 		bl	FOE_init
- 614              	.LVL32:
+ 617              		.loc 1 238 4 view .LVU188
+ 618 0004 FFF7FEFF 		bl	FOE_init
+ 619              	.LVL32:
  239:Lib/soes/src/esc_foe.c **** 
- 615              		.loc 1 239 1 is_stmt 0 view .LVU189
- 616 0008 10BD     		pop	{r4, pc}
- 617              	.LVL33:
- 618              	.L45:
+ 620              		.loc 1 239 1 is_stmt 0 view .LVU189
+ 621 0008 10BD     		pop	{r4, pc}
+ 622              	.LVL33:
+ 623              	.L45:
  239:Lib/soes/src/esc_foe.c **** 
- 619              		.loc 1 239 1 view .LVU190
- 620 000a 0446     		mov	r4, r0
+ 624              		.loc 1 239 1 view .LVU190
+ 625 000a 0446     		mov	r4, r0
  225:Lib/soes/src/esc_foe.c ****       if (mbxhandle)
- 621              		.loc 1 225 7 is_stmt 1 view .LVU191
+ 626              		.loc 1 225 7 is_stmt 1 view .LVU191
  225:Lib/soes/src/esc_foe.c ****       if (mbxhandle)
- 622              		.loc 1 225 19 is_stmt 0 view .LVU192
- 623 000c FFF7FEFF 		bl	ESC_claimbuffer
- 624              	.LVL34:
+ 627              		.loc 1 225 19 is_stmt 0 view .LVU192
+ 628 000c FFF7FEFF 		bl	ESC_claimbuffer
+ 629              	.LVL34:
  226:Lib/soes/src/esc_foe.c ****       {
- 625              		.loc 1 226 7 is_stmt 1 view .LVU193
+ 630              		.loc 1 226 7 is_stmt 1 view .LVU193
  226:Lib/soes/src/esc_foe.c ****       {
- 626              		.loc 1 226 10 is_stmt 0 view .LVU194
- 627 0010 0146     		mov	r1, r0
- 628 0012 0028     		cmp	r0, #0
- 629 0014 F6D0     		beq	.L43
- 228:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
- 630              		.loc 1 228 10 is_stmt 1 view .LVU195
-ARM GAS  /tmp/cc97UT6A.s 			page 19
+ 631              		.loc 1 226 10 is_stmt 0 view .LVU194
+ARM GAS  /tmp/ccc92rV8.s 			page 19
 
 
+ 632 0010 0146     		mov	r1, r0
+ 633 0012 0028     		cmp	r0, #0
+ 634 0014 F6D0     		beq	.L43
  228:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
- 631              		.loc 1 228 45 is_stmt 0 view .LVU196
- 632 0016 0C4B     		ldr	r3, .L46
- 633 0018 DA6E     		ldr	r2, [r3, #108]
+ 635              		.loc 1 228 10 is_stmt 1 view .LVU195
  228:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
- 634              		.loc 1 228 43 view .LVU197
- 635 001a 00FB02F2 		mul	r2, r0, r2
+ 636              		.loc 1 228 45 is_stmt 0 view .LVU196
+ 637 0016 0C4B     		ldr	r3, .L46
+ 638 0018 DA6E     		ldr	r2, [r3, #108]
  228:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
- 636              		.loc 1 228 17 view .LVU198
- 637 001e 0B48     		ldr	r0, .L46+4
- 638              	.LVL35:
+ 639              		.loc 1 228 43 view .LVU197
+ 640 001a 00FB02F2 		mul	r2, r0, r2
  228:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
- 639              		.loc 1 228 17 view .LVU199
- 640 0020 1318     		adds	r3, r2, r0
- 641              	.LVL36:
+ 641              		.loc 1 228 17 view .LVU198
+ 642 001e 0B48     		ldr	r0, .L46+4
+ 643              	.LVL35:
+ 228:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.length = htoes (ESC_FOEHSIZE);   /* Don't bother with error text for now
+ 644              		.loc 1 228 17 view .LVU199
+ 645 0020 1318     		adds	r3, r2, r0
+ 646              	.LVL36:
  229:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.mbxtype = MBXFOE;
- 642              		.loc 1 229 10 is_stmt 1 view .LVU200
+ 647              		.loc 1 229 10 is_stmt 1 view .LVU200
  229:Lib/soes/src/esc_foe.c ****          foembx->mbxheader.mbxtype = MBXFOE;
- 643              		.loc 1 229 35 is_stmt 0 view .LVU201
- 644 0022 4FF0060C 		mov	ip, #6
- 645 0026 02F800C0 		strb	ip, [r2, r0]
- 646 002a 0022     		movs	r2, #0
- 647 002c 5A70     		strb	r2, [r3, #1]
+ 648              		.loc 1 229 35 is_stmt 0 view .LVU201
+ 649 0022 4FF0060C 		mov	ip, #6
+ 650 0026 02F800C0 		strb	ip, [r2, r0]
+ 651 002a 0022     		movs	r2, #0
+ 652 002c 5A70     		strb	r2, [r3, #1]
  230:Lib/soes/src/esc_foe.c ****          foembx->foeheader.opcode = FOE_OP_ERR;
- 648              		.loc 1 230 10 is_stmt 1 view .LVU202
+ 653              		.loc 1 230 10 is_stmt 1 view .LVU202
  230:Lib/soes/src/esc_foe.c ****          foembx->foeheader.opcode = FOE_OP_ERR;
- 649              		.loc 1 230 36 is_stmt 0 view .LVU203
- 650 002e 5A79     		ldrb	r2, [r3, #5]	@ zero_extendqisi2
- 651 0030 0420     		movs	r0, #4
- 652 0032 60F30302 		bfi	r2, r0, #0, #4
- 653 0036 5A71     		strb	r2, [r3, #5]
+ 654              		.loc 1 230 36 is_stmt 0 view .LVU203
+ 655 002e 5A79     		ldrb	r2, [r3, #5]	@ zero_extendqisi2
+ 656 0030 0420     		movs	r0, #4
+ 657 0032 60F30302 		bfi	r2, r0, #0, #4
+ 658 0036 5A71     		strb	r2, [r3, #5]
  231:Lib/soes/src/esc_foe.c ****          foembx->foeheader.errorcode = htoel (code);
- 654              		.loc 1 231 10 is_stmt 1 view .LVU204
+ 659              		.loc 1 231 10 is_stmt 1 view .LVU204
  231:Lib/soes/src/esc_foe.c ****          foembx->foeheader.errorcode = htoel (code);
- 655              		.loc 1 231 35 is_stmt 0 view .LVU205
- 656 0038 0522     		movs	r2, #5
- 657 003a 9A71     		strb	r2, [r3, #6]
+ 660              		.loc 1 231 35 is_stmt 0 view .LVU205
+ 661 0038 0522     		movs	r2, #5
+ 662 003a 9A71     		strb	r2, [r3, #6]
  232:Lib/soes/src/esc_foe.c ****          MBXcontrol[mbxhandle].state = MBXstate_outreq;
- 658              		.loc 1 232 10 is_stmt 1 view .LVU206
+ 663              		.loc 1 232 10 is_stmt 1 view .LVU206
  232:Lib/soes/src/esc_foe.c ****          MBXcontrol[mbxhandle].state = MBXstate_outreq;
- 659              		.loc 1 232 38 is_stmt 0 view .LVU207
- 660 003c 9C60     		str	r4, [r3, #8]	@ unaligned
+ 664              		.loc 1 232 38 is_stmt 0 view .LVU207
+ 665 003c 9C60     		str	r4, [r3, #8]	@ unaligned
  233:Lib/soes/src/esc_foe.c ****       }
- 661              		.loc 1 233 10 is_stmt 1 view .LVU208
+ 666              		.loc 1 233 10 is_stmt 1 view .LVU208
  233:Lib/soes/src/esc_foe.c ****       }
- 662              		.loc 1 233 38 is_stmt 0 view .LVU209
- 663 003e 044B     		ldr	r3, .L46+8
- 664              	.LVL37:
+ 667              		.loc 1 233 38 is_stmt 0 view .LVU209
+ 668 003e 044B     		ldr	r3, .L46+8
+ 669              	.LVL37:
  233:Lib/soes/src/esc_foe.c ****       }
- 665              		.loc 1 233 38 view .LVU210
- 666 0040 0322     		movs	r2, #3
- 667 0042 5A54     		strb	r2, [r3, r1]
- 668 0044 DEE7     		b	.L43
- 669              	.L47:
- 670 0046 00BF     		.align	2
- 671              	.L46:
- 672 0048 00000000 		.word	ESCvar
-ARM GAS  /tmp/cc97UT6A.s 			page 20
+ 670              		.loc 1 233 38 view .LVU210
+ 671 0040 0322     		movs	r2, #3
+ 672 0042 5A54     		strb	r2, [r3, r1]
+ARM GAS  /tmp/ccc92rV8.s 			page 20
 
 
- 673 004c 00000000 		.word	MBX
- 674 0050 00000000 		.word	MBXcontrol
- 675              		.cfi_endproc
- 676              	.LFE4:
- 678              		.section	.text.FOE_error,"ax",%progbits
- 679              		.align	1
- 680              		.syntax unified
- 681              		.thumb
- 682              		.thumb_func
- 684              	FOE_error:
- 685              	.LFB8:
+ 673 0044 DEE7     		b	.L43
+ 674              	.L47:
+ 675 0046 00BF     		.align	2
+ 676              	.L46:
+ 677 0048 00000000 		.word	ESCvar
+ 678 004c 00000000 		.word	MBX
+ 679 0050 00000000 		.word	MBXcontrol
+ 680              		.cfi_endproc
+ 681              	.LFE4:
+ 683              		.section	.text.FOE_error,"ax",%progbits
+ 684              		.align	1
+ 685              		.syntax unified
+ 686              		.thumb
+ 687              		.thumb_func
+ 688              		.fpu fpv4-sp-d16
+ 690              	FOE_error:
+ 691              	.LFB8:
  307:Lib/soes/src/esc_foe.c **** 
  308:Lib/soes/src/esc_foe.c **** /* Handlers for various FoE states. */
  309:Lib/soes/src/esc_foe.c **** 
@@ -1192,15 +1198,15 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  344:Lib/soes/src/esc_foe.c ****       {
  345:Lib/soes/src/esc_foe.c ****          FOEvar.foestate = FOE_WAIT_FOR_ACK;
  346:Lib/soes/src/esc_foe.c ****       }
+ARM GAS  /tmp/ccc92rV8.s 			page 21
+
+
  347:Lib/soes/src/esc_foe.c ****       else
  348:Lib/soes/src/esc_foe.c ****       {
  349:Lib/soes/src/esc_foe.c ****          FOE_abort (res);
  350:Lib/soes/src/esc_foe.c ****       }
  351:Lib/soes/src/esc_foe.c ****    }
  352:Lib/soes/src/esc_foe.c ****    else
-ARM GAS  /tmp/cc97UT6A.s 			page 21
-
-
  353:Lib/soes/src/esc_foe.c ****    {
  354:Lib/soes/src/esc_foe.c ****       FOE_abort (res);
  355:Lib/soes/src/esc_foe.c ****    }
@@ -1252,15 +1258,15 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  401:Lib/soes/src/esc_foe.c ****    {
  402:Lib/soes/src/esc_foe.c ****       FOE_abort (FOE_ERR_ILLEGAL);
  403:Lib/soes/src/esc_foe.c ****       return;
+ARM GAS  /tmp/ccc92rV8.s 			page 22
+
+
  404:Lib/soes/src/esc_foe.c ****    }
  405:Lib/soes/src/esc_foe.c **** 
  406:Lib/soes/src/esc_foe.c ****    FOE_init ();
  407:Lib/soes/src/esc_foe.c ****    foembx = (_FOE *) &MBX[0];
  408:Lib/soes/src/esc_foe.c ****    data_len = (uint8_t)(etohs (foembx->mbxheader.length) - ESC_FOEHSIZE);
  409:Lib/soes/src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
-ARM GAS  /tmp/cc97UT6A.s 			page 22
-
-
  410:Lib/soes/src/esc_foe.c **** 
  411:Lib/soes/src/esc_foe.c ****    /* Get an address we can write the file to, if possible. */
  412:Lib/soes/src/esc_foe.c ****    res = FOE_fopen (foembx->filename, data_len, password, FOE_OP_WRQ);
@@ -1312,15 +1318,15 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  458:Lib/soes/src/esc_foe.c ****    }
  459:Lib/soes/src/esc_foe.c ****    else if (data_len == 0)
  460:Lib/soes/src/esc_foe.c ****    {
+ARM GAS  /tmp/ccc92rV8.s 			page 23
+
+
  461:Lib/soes/src/esc_foe.c ****       DPRINT("FOE_data completed\n");
  462:Lib/soes/src/esc_foe.c ****       FOE_fclose ();
  463:Lib/soes/src/esc_foe.c ****       res = FOE_send_ack ();
  464:Lib/soes/src/esc_foe.c ****       FOE_init ();
  465:Lib/soes/src/esc_foe.c ****    }
  466:Lib/soes/src/esc_foe.c ****    else if (FOEvar.fposition + data_len > FOEvar.fend)
-ARM GAS  /tmp/cc97UT6A.s 			page 23
-
-
  467:Lib/soes/src/esc_foe.c ****    {
  468:Lib/soes/src/esc_foe.c ****       DPRINT("FOE_data disk full\n");
  469:Lib/soes/src/esc_foe.c ****       FOE_abort (FOE_ERR_DISKFULL);
@@ -1372,15 +1378,15 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  515:Lib/soes/src/esc_foe.c **** static void FOE_busy ()
  516:Lib/soes/src/esc_foe.c **** {
  517:Lib/soes/src/esc_foe.c ****    /* Only valid if we're servicing a read request. */
+ARM GAS  /tmp/ccc92rV8.s 			page 24
+
+
  518:Lib/soes/src/esc_foe.c ****    if (FOEvar.foestate != FOE_WAIT_FOR_ACK)
  519:Lib/soes/src/esc_foe.c ****    {
  520:Lib/soes/src/esc_foe.c ****       FOE_abort (FOE_ERR_ILLEGAL);
  521:Lib/soes/src/esc_foe.c ****    }
  522:Lib/soes/src/esc_foe.c ****    else
  523:Lib/soes/src/esc_foe.c ****    {
-ARM GAS  /tmp/cc97UT6A.s 			page 24
-
-
  524:Lib/soes/src/esc_foe.c ****       /* Send the last part again. */
  525:Lib/soes/src/esc_foe.c ****       FOEvar.fposition = FOEvar.fprevposition;
  526:Lib/soes/src/esc_foe.c ****       FOEvar.foepacket--;
@@ -1394,497 +1400,501 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  534:Lib/soes/src/esc_foe.c ****  */
  535:Lib/soes/src/esc_foe.c **** static void FOE_error ()
  536:Lib/soes/src/esc_foe.c **** {
- 686              		.loc 1 536 1 is_stmt 1 view -0
- 687              		.cfi_startproc
- 688              		@ args = 0, pretend = 0, frame = 0
- 689              		@ frame_needed = 0, uses_anonymous_args = 0
- 690 0000 08B5     		push	{r3, lr}
- 691              		.cfi_def_cfa_offset 8
- 692              		.cfi_offset 3, -8
- 693              		.cfi_offset 14, -4
+ 692              		.loc 1 536 1 is_stmt 1 view -0
+ 693              		.cfi_startproc
+ 694              		@ args = 0, pretend = 0, frame = 0
+ 695              		@ frame_needed = 0, uses_anonymous_args = 0
+ 696 0000 08B5     		push	{r3, lr}
+ 697              		.cfi_def_cfa_offset 8
+ 698              		.cfi_offset 3, -8
+ 699              		.cfi_offset 14, -4
  537:Lib/soes/src/esc_foe.c ****    /* Master panic! abort the transfer. */
  538:Lib/soes/src/esc_foe.c ****    FOE_abort (0);
- 694              		.loc 1 538 4 view .LVU212
- 695 0002 0020     		movs	r0, #0
- 696 0004 FFF7FEFF 		bl	FOE_abort
- 697              	.LVL38:
+ 700              		.loc 1 538 4 view .LVU212
+ 701 0002 0020     		movs	r0, #0
+ 702 0004 FFF7FEFF 		bl	FOE_abort
+ 703              	.LVL38:
  539:Lib/soes/src/esc_foe.c **** }
- 698              		.loc 1 539 1 is_stmt 0 view .LVU213
- 699 0008 08BD     		pop	{r3, pc}
- 700              		.cfi_endproc
- 701              	.LFE8:
- 703              		.section	.text.FOE_write,"ax",%progbits
- 704              		.align	1
- 705              		.syntax unified
- 706              		.thumb
- 707              		.thumb_func
- 709              	FOE_write:
- 710              	.LFB6:
+ 704              		.loc 1 539 1 is_stmt 0 view .LVU213
+ 705 0008 08BD     		pop	{r3, pc}
+ 706              		.cfi_endproc
+ 707              	.LFE8:
+ 709              		.section	.text.FOE_write,"ax",%progbits
+ 710              		.align	1
+ 711              		.syntax unified
+ 712              		.thumb
+ 713              		.thumb_func
+ 714              		.fpu fpv4-sp-d16
+ 716              	FOE_write:
+ 717              	.LFB6:
  394:Lib/soes/src/esc_foe.c ****    _FOE *foembx;
- 711              		.loc 1 394 1 is_stmt 1 view -0
- 712              		.cfi_startproc
- 713              		@ args = 0, pretend = 0, frame = 0
- 714              		@ frame_needed = 0, uses_anonymous_args = 0
- 715 0000 08B5     		push	{r3, lr}
- 716              		.cfi_def_cfa_offset 8
- 717              		.cfi_offset 3, -8
- 718              		.cfi_offset 14, -4
+ 718              		.loc 1 394 1 is_stmt 1 view -0
+ 719              		.cfi_startproc
+ 720              		@ args = 0, pretend = 0, frame = 0
+ 721              		@ frame_needed = 0, uses_anonymous_args = 0
+ 722 0000 08B5     		push	{r3, lr}
+ 723              		.cfi_def_cfa_offset 8
+ 724              		.cfi_offset 3, -8
+ 725              		.cfi_offset 14, -4
  395:Lib/soes/src/esc_foe.c ****    uint32_t password;
- 719              		.loc 1 395 4 view .LVU215
+ 726              		.loc 1 395 4 view .LVU215
+ARM GAS  /tmp/ccc92rV8.s 			page 25
+
+
  396:Lib/soes/src/esc_foe.c ****    uint32_t res;
- 720              		.loc 1 396 4 view .LVU216
+ 727              		.loc 1 396 4 view .LVU216
  397:Lib/soes/src/esc_foe.c ****    uint8_t data_len;
- 721              		.loc 1 397 4 view .LVU217
+ 728              		.loc 1 397 4 view .LVU217
  398:Lib/soes/src/esc_foe.c **** 
- 722              		.loc 1 398 4 view .LVU218
+ 729              		.loc 1 398 4 view .LVU218
  400:Lib/soes/src/esc_foe.c ****    {
-ARM GAS  /tmp/cc97UT6A.s 			page 25
-
-
- 723              		.loc 1 400 4 view .LVU219
+ 730              		.loc 1 400 4 view .LVU219
  400:Lib/soes/src/esc_foe.c ****    {
- 724              		.loc 1 400 14 is_stmt 0 view .LVU220
- 725 0002 114B     		ldr	r3, .L58
- 726 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 731              		.loc 1 400 14 is_stmt 0 view .LVU220
+ 732 0002 114B     		ldr	r3, .L58
+ 733 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  400:Lib/soes/src/esc_foe.c ****    {
- 727              		.loc 1 400 7 view .LVU221
- 728 0006 9BB9     		cbnz	r3, .L56
+ 734              		.loc 1 400 7 view .LVU221
+ 735 0006 9BB9     		cbnz	r3, .L56
  406:Lib/soes/src/esc_foe.c ****    foembx = (_FOE *) &MBX[0];
- 729              		.loc 1 406 4 is_stmt 1 view .LVU222
- 730 0008 FFF7FEFF 		bl	FOE_init
- 731              	.LVL39:
+ 736              		.loc 1 406 4 is_stmt 1 view .LVU222
+ 737 0008 FFF7FEFF 		bl	FOE_init
+ 738              	.LVL39:
  407:Lib/soes/src/esc_foe.c ****    data_len = (uint8_t)(etohs (foembx->mbxheader.length) - ESC_FOEHSIZE);
- 732              		.loc 1 407 4 view .LVU223
+ 739              		.loc 1 407 4 view .LVU223
  408:Lib/soes/src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
- 733              		.loc 1 408 4 view .LVU224
+ 740              		.loc 1 408 4 view .LVU224
  408:Lib/soes/src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
- 734              		.loc 1 408 25 is_stmt 0 view .LVU225
- 735 000c 0F48     		ldr	r0, .L58+4
- 736 000e 0188     		ldrh	r1, [r0]	@ unaligned
+ 741              		.loc 1 408 25 is_stmt 0 view .LVU225
+ 742 000c 0F48     		ldr	r0, .L58+4
+ 743 000e 0188     		ldrh	r1, [r0]	@ unaligned
  408:Lib/soes/src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
- 737              		.loc 1 408 15 view .LVU226
- 738 0010 C9B2     		uxtb	r1, r1
+ 744              		.loc 1 408 15 view .LVU226
+ 745 0010 C9B2     		uxtb	r1, r1
  408:Lib/soes/src/esc_foe.c ****    password = etohl (foembx->foeheader.password);
- 739              		.loc 1 408 13 view .LVU227
- 740 0012 0639     		subs	r1, r1, #6
- 741              	.LVL40:
+ 746              		.loc 1 408 13 view .LVU227
+ 747 0012 0639     		subs	r1, r1, #6
+ 748              	.LVL40:
  409:Lib/soes/src/esc_foe.c **** 
- 742              		.loc 1 409 4 is_stmt 1 view .LVU228
+ 749              		.loc 1 409 4 is_stmt 1 view .LVU228
  412:Lib/soes/src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
- 743              		.loc 1 412 4 view .LVU229
+ 750              		.loc 1 412 4 view .LVU229
  412:Lib/soes/src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
- 744              		.loc 1 412 10 is_stmt 0 view .LVU230
- 745 0014 0223     		movs	r3, #2
- 746 0016 8268     		ldr	r2, [r0, #8]	@ unaligned
- 747              	.LVL41:
+ 751              		.loc 1 412 10 is_stmt 0 view .LVU230
+ 752 0014 0223     		movs	r3, #2
+ 753 0016 8268     		ldr	r2, [r0, #8]	@ unaligned
+ 754              	.LVL41:
  412:Lib/soes/src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
- 748              		.loc 1 412 10 view .LVU231
- 749 0018 C9B2     		uxtb	r1, r1
+ 755              		.loc 1 412 10 view .LVU231
+ 756 0018 C9B2     		uxtb	r1, r1
  412:Lib/soes/src/esc_foe.c ****    DPRINT("%s %sOK, file \"%s\"\n", __func__, (res == 0) ? "" : "N", foe_file_name);
- 750              		.loc 1 412 10 view .LVU232
- 751 001a 0C30     		adds	r0, r0, #12
- 752 001c FFF7FEFF 		bl	FOE_fopen
- 753              	.LVL42:
+ 757              		.loc 1 412 10 view .LVU232
+ 758 001a 0C30     		adds	r0, r0, #12
+ 759 001c FFF7FEFF 		bl	FOE_fopen
+ 760              	.LVL42:
  413:Lib/soes/src/esc_foe.c ****    if (res == 0)
- 754              		.loc 1 413 84 is_stmt 1 view .LVU233
+ 761              		.loc 1 413 84 is_stmt 1 view .LVU233
  414:Lib/soes/src/esc_foe.c ****    {
- 755              		.loc 1 414 4 view .LVU234
+ 762              		.loc 1 414 4 view .LVU234
  414:Lib/soes/src/esc_foe.c ****    {
- 756              		.loc 1 414 7 is_stmt 0 view .LVU235
- 757 0020 70B9     		cbnz	r0, .L53
- 416:Lib/soes/src/esc_foe.c ****       if (res)
- 758              		.loc 1 416 7 is_stmt 1 view .LVU236
- 416:Lib/soes/src/esc_foe.c ****       if (res)
- 759              		.loc 1 416 13 is_stmt 0 view .LVU237
- 760 0022 FFF7FEFF 		bl	FOE_send_ack
- 761              	.LVL43:
-ARM GAS  /tmp/cc97UT6A.s 			page 26
+ 763              		.loc 1 414 7 is_stmt 0 view .LVU235
+ARM GAS  /tmp/ccc92rV8.s 			page 26
 
 
+ 764 0020 70B9     		cbnz	r0, .L53
+ 416:Lib/soes/src/esc_foe.c ****       if (res)
+ 765              		.loc 1 416 7 is_stmt 1 view .LVU236
+ 416:Lib/soes/src/esc_foe.c ****       if (res)
+ 766              		.loc 1 416 13 is_stmt 0 view .LVU237
+ 767 0022 FFF7FEFF 		bl	FOE_send_ack
+ 768              	.LVL43:
  417:Lib/soes/src/esc_foe.c ****       {
- 762              		.loc 1 417 7 is_stmt 1 view .LVU238
+ 769              		.loc 1 417 7 is_stmt 1 view .LVU238
  417:Lib/soes/src/esc_foe.c ****       {
- 763              		.loc 1 417 10 is_stmt 0 view .LVU239
- 764 0026 40B9     		cbnz	r0, .L57
+ 770              		.loc 1 417 10 is_stmt 0 view .LVU239
+ 771 0026 40B9     		cbnz	r0, .L57
  423:Lib/soes/src/esc_foe.c ****       }
- 765              		.loc 1 423 10 is_stmt 1 view .LVU240
+ 772              		.loc 1 423 10 is_stmt 1 view .LVU240
  423:Lib/soes/src/esc_foe.c ****       }
- 766              		.loc 1 423 26 is_stmt 0 view .LVU241
- 767 0028 074B     		ldr	r3, .L58
- 768 002a 0322     		movs	r2, #3
- 769 002c 1A70     		strb	r2, [r3]
- 770 002e 03E0     		b	.L50
- 771              	.LVL44:
- 772              	.L56:
+ 773              		.loc 1 423 26 is_stmt 0 view .LVU241
+ 774 0028 074B     		ldr	r3, .L58
+ 775 002a 0322     		movs	r2, #3
+ 776 002c 1A70     		strb	r2, [r3]
+ 777 002e 03E0     		b	.L50
+ 778              	.LVL44:
+ 779              	.L56:
  402:Lib/soes/src/esc_foe.c ****       return;
- 773              		.loc 1 402 7 is_stmt 1 view .LVU242
- 774 0030 48F20400 		movw	r0, #32772
- 775 0034 FFF7FEFF 		bl	FOE_abort
- 776              	.LVL45:
+ 780              		.loc 1 402 7 is_stmt 1 view .LVU242
+ 781 0030 48F20400 		movw	r0, #32772
+ 782 0034 FFF7FEFF 		bl	FOE_abort
+ 783              	.LVL45:
  403:Lib/soes/src/esc_foe.c ****    }
- 777              		.loc 1 403 7 view .LVU243
- 778              	.L50:
+ 784              		.loc 1 403 7 view .LVU243
+ 785              	.L50:
  430:Lib/soes/src/esc_foe.c **** /** FoE data request handler. Validates and reads data until we're finished. Every
- 779              		.loc 1 430 1 is_stmt 0 view .LVU244
- 780 0038 08BD     		pop	{r3, pc}
- 781              	.LVL46:
- 782              	.L57:
+ 786              		.loc 1 430 1 is_stmt 0 view .LVU244
+ 787 0038 08BD     		pop	{r3, pc}
+ 788              	.LVL46:
+ 789              	.L57:
  419:Lib/soes/src/esc_foe.c ****       }
- 783              		.loc 1 419 10 is_stmt 1 view .LVU245
- 784 003a FFF7FEFF 		bl	FOE_abort
- 785              	.LVL47:
+ 790              		.loc 1 419 10 is_stmt 1 view .LVU245
+ 791 003a FFF7FEFF 		bl	FOE_abort
+ 792              	.LVL47:
  419:Lib/soes/src/esc_foe.c ****       }
- 786              		.loc 1 419 10 is_stmt 0 view .LVU246
- 787 003e FBE7     		b	.L50
- 788              	.LVL48:
- 789              	.L53:
+ 793              		.loc 1 419 10 is_stmt 0 view .LVU246
+ 794 003e FBE7     		b	.L50
+ 795              	.LVL48:
+ 796              	.L53:
  428:Lib/soes/src/esc_foe.c ****    }
- 790              		.loc 1 428 7 is_stmt 1 view .LVU247
- 791 0040 FFF7FEFF 		bl	FOE_abort
- 792              	.LVL49:
+ 797              		.loc 1 428 7 is_stmt 1 view .LVU247
+ 798 0040 FFF7FEFF 		bl	FOE_abort
+ 799              	.LVL49:
  428:Lib/soes/src/esc_foe.c ****    }
- 793              		.loc 1 428 7 is_stmt 0 view .LVU248
- 794 0044 F8E7     		b	.L50
- 795              	.L59:
- 796 0046 00BF     		.align	2
- 797              	.L58:
- 798 0048 00000000 		.word	.LANCHOR0
- 799 004c 00000000 		.word	MBX
- 800              		.cfi_endproc
- 801              	.LFE6:
- 803              		.section	.text.FOE_data,"ax",%progbits
- 804              		.align	1
- 805              		.syntax unified
- 806              		.thumb
- 807              		.thumb_func
- 809              	FOE_data:
-ARM GAS  /tmp/cc97UT6A.s 			page 27
+ 800              		.loc 1 428 7 is_stmt 0 view .LVU248
+ 801 0044 F8E7     		b	.L50
+ 802              	.L59:
+ 803 0046 00BF     		.align	2
+ 804              	.L58:
+ 805 0048 00000000 		.word	.LANCHOR0
+ 806 004c 00000000 		.word	MBX
+ 807              		.cfi_endproc
+ARM GAS  /tmp/ccc92rV8.s 			page 27
 
 
- 810              	.LFB7:
+ 808              	.LFE6:
+ 810              		.section	.text.FOE_data,"ax",%progbits
+ 811              		.align	1
+ 812              		.syntax unified
+ 813              		.thumb
+ 814              		.thumb_func
+ 815              		.fpu fpv4-sp-d16
+ 817              	FOE_data:
+ 818              	.LFB7:
  436:Lib/soes/src/esc_foe.c ****    _FOE *foembx;
- 811              		.loc 1 436 1 is_stmt 1 view -0
- 812              		.cfi_startproc
- 813              		@ args = 0, pretend = 0, frame = 0
- 814              		@ frame_needed = 0, uses_anonymous_args = 0
- 815 0000 10B5     		push	{r4, lr}
- 816              		.cfi_def_cfa_offset 8
- 817              		.cfi_offset 4, -8
- 818              		.cfi_offset 14, -4
+ 819              		.loc 1 436 1 is_stmt 1 view -0
+ 820              		.cfi_startproc
+ 821              		@ args = 0, pretend = 0, frame = 0
+ 822              		@ frame_needed = 0, uses_anonymous_args = 0
+ 823 0000 10B5     		push	{r4, lr}
+ 824              		.cfi_def_cfa_offset 8
+ 825              		.cfi_offset 4, -8
+ 826              		.cfi_offset 14, -4
  437:Lib/soes/src/esc_foe.c ****    uint32_t packet;
- 819              		.loc 1 437 4 view .LVU250
+ 827              		.loc 1 437 4 view .LVU250
  438:Lib/soes/src/esc_foe.c ****    uint32_t data_len, ncopied;
- 820              		.loc 1 438 4 view .LVU251
+ 828              		.loc 1 438 4 view .LVU251
  439:Lib/soes/src/esc_foe.c ****    uint32_t res;
- 821              		.loc 1 439 4 view .LVU252
+ 829              		.loc 1 439 4 view .LVU252
  440:Lib/soes/src/esc_foe.c **** 
- 822              		.loc 1 440 4 view .LVU253
+ 830              		.loc 1 440 4 view .LVU253
  442:Lib/soes/src/esc_foe.c ****    {
- 823              		.loc 1 442 4 view .LVU254
+ 831              		.loc 1 442 4 view .LVU254
  442:Lib/soes/src/esc_foe.c ****    {
- 824              		.loc 1 442 13 is_stmt 0 view .LVU255
- 825 0002 2C4B     		ldr	r3, .L79
- 826 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 832              		.loc 1 442 13 is_stmt 0 view .LVU255
+ 833 0002 2C4B     		ldr	r3, .L79
+ 834 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  442:Lib/soes/src/esc_foe.c ****    {
- 827              		.loc 1 442 6 view .LVU256
- 828 0006 032B     		cmp	r3, #3
- 829 0008 16D1     		bne	.L72
+ 835              		.loc 1 442 6 view .LVU256
+ 836 0006 032B     		cmp	r3, #3
+ 837 0008 16D1     		bne	.L72
  448:Lib/soes/src/esc_foe.c ****    data_len = etohs(foembx->mbxheader.length) - ESC_FOEHSIZE;
- 830              		.loc 1 448 4 is_stmt 1 view .LVU257
- 831              	.LVL50:
+ 838              		.loc 1 448 4 is_stmt 1 view .LVU257
+ 839              	.LVL50:
  449:Lib/soes/src/esc_foe.c ****    packet = etohl(foembx->foeheader.packetnumber);
- 832              		.loc 1 449 4 view .LVU258
+ 840              		.loc 1 449 4 view .LVU258
  449:Lib/soes/src/esc_foe.c ****    packet = etohl(foembx->foeheader.packetnumber);
- 833              		.loc 1 449 15 is_stmt 0 view .LVU259
- 834 000a 2B4B     		ldr	r3, .L79+4
- 835 000c 1C88     		ldrh	r4, [r3]	@ unaligned
+ 841              		.loc 1 449 15 is_stmt 0 view .LVU259
+ 842 000a 2B4B     		ldr	r3, .L79+4
+ 843 000c 1C88     		ldrh	r4, [r3]	@ unaligned
  449:Lib/soes/src/esc_foe.c ****    packet = etohl(foembx->foeheader.packetnumber);
- 836              		.loc 1 449 13 view .LVU260
- 837 000e 063C     		subs	r4, r4, #6
- 838              	.LVL51:
+ 844              		.loc 1 449 13 view .LVU260
+ 845 000e 063C     		subs	r4, r4, #6
+ 846              	.LVL51:
  450:Lib/soes/src/esc_foe.c **** 
- 839              		.loc 1 450 4 is_stmt 1 view .LVU261
+ 847              		.loc 1 450 4 is_stmt 1 view .LVU261
  450:Lib/soes/src/esc_foe.c **** 
- 840              		.loc 1 450 11 is_stmt 0 view .LVU262
- 841 0010 9B68     		ldr	r3, [r3, #8]	@ unaligned
- 842              	.LVL52:
+ 848              		.loc 1 450 11 is_stmt 0 view .LVU262
+ 849 0010 9B68     		ldr	r3, [r3, #8]	@ unaligned
+ 850              	.LVL52:
  452:Lib/soes/src/esc_foe.c ****    {
- 843              		.loc 1 452 4 is_stmt 1 view .LVU263
- 452:Lib/soes/src/esc_foe.c ****    {
- 844              		.loc 1 452 24 is_stmt 0 view .LVU264
- 845 0012 284A     		ldr	r2, .L79
- 846 0014 D2F80320 		ldr	r2, [r2, #3]	@ unaligned
- 452:Lib/soes/src/esc_foe.c ****    {
- 847              		.loc 1 452 7 view .LVU265
- 848 0018 9A42     		cmp	r2, r3
- 849 001a 12D1     		bne	.L73
-ARM GAS  /tmp/cc97UT6A.s 			page 28
+ 851              		.loc 1 452 4 is_stmt 1 view .LVU263
+ARM GAS  /tmp/ccc92rV8.s 			page 28
 
 
+ 452:Lib/soes/src/esc_foe.c ****    {
+ 852              		.loc 1 452 24 is_stmt 0 view .LVU264
+ 853 0012 284A     		ldr	r2, .L79
+ 854 0014 D2F80320 		ldr	r2, [r2, #3]	@ unaligned
+ 452:Lib/soes/src/esc_foe.c ****    {
+ 855              		.loc 1 452 7 view .LVU265
+ 856 0018 9A42     		cmp	r2, r3
+ 857 001a 12D1     		bne	.L73
  459:Lib/soes/src/esc_foe.c ****    {
- 850              		.loc 1 459 9 is_stmt 1 view .LVU266
+ 858              		.loc 1 459 9 is_stmt 1 view .LVU266
  459:Lib/soes/src/esc_foe.c ****    {
- 851              		.loc 1 459 12 is_stmt 0 view .LVU267
- 852 001c B4B1     		cbz	r4, .L74
+ 859              		.loc 1 459 12 is_stmt 0 view .LVU267
+ 860 001c B4B1     		cbz	r4, .L74
  466:Lib/soes/src/esc_foe.c ****    {
- 853              		.loc 1 466 9 is_stmt 1 view .LVU268
+ 861              		.loc 1 466 9 is_stmt 1 view .LVU268
  466:Lib/soes/src/esc_foe.c ****    {
- 854              		.loc 1 466 19 is_stmt 0 view .LVU269
- 855 001e 254A     		ldr	r2, .L79
- 856 0020 D2F80730 		ldr	r3, [r2, #7]	@ unaligned
- 857              	.LVL53:
+ 862              		.loc 1 466 19 is_stmt 0 view .LVU269
+ 863 001e 254A     		ldr	r2, .L79
+ 864 0020 D2F80730 		ldr	r3, [r2, #7]	@ unaligned
+ 865              	.LVL53:
  466:Lib/soes/src/esc_foe.c ****    {
- 858              		.loc 1 466 30 view .LVU270
- 859 0024 2344     		add	r3, r3, r4
+ 866              		.loc 1 466 30 view .LVU270
+ 867 0024 2344     		add	r3, r3, r4
  466:Lib/soes/src/esc_foe.c ****    {
- 860              		.loc 1 466 49 view .LVU271
- 861 0026 D2F80F20 		ldr	r2, [r2, #15]	@ unaligned
+ 868              		.loc 1 466 49 view .LVU271
+ 869 0026 D2F80F20 		ldr	r2, [r2, #15]	@ unaligned
  466:Lib/soes/src/esc_foe.c ****    {
- 862              		.loc 1 466 12 view .LVU272
- 863 002a 9342     		cmp	r3, r2
- 864 002c 15D9     		bls	.L65
+ 870              		.loc 1 466 12 view .LVU272
+ 871 002a 9342     		cmp	r3, r2
+ 872 002c 15D9     		bls	.L65
  468:Lib/soes/src/esc_foe.c ****       FOE_abort (FOE_ERR_DISKFULL);
- 865              		.loc 1 468 37 is_stmt 1 view .LVU273
+ 873              		.loc 1 468 37 is_stmt 1 view .LVU273
  469:Lib/soes/src/esc_foe.c ****    }
- 866              		.loc 1 469 7 view .LVU274
- 867 002e 48F20300 		movw	r0, #32771
- 868 0032 FFF7FEFF 		bl	FOE_abort
- 869              	.LVL54:
+ 874              		.loc 1 469 7 view .LVU274
+ 875 002e 48F20300 		movw	r0, #32771
+ 876 0032 FFF7FEFF 		bl	FOE_abort
+ 877              	.LVL54:
  469:Lib/soes/src/esc_foe.c ****    }
- 870              		.loc 1 469 7 is_stmt 0 view .LVU275
- 871 0036 03E0     		b	.L60
- 872              	.LVL55:
- 873              	.L72:
+ 878              		.loc 1 469 7 is_stmt 0 view .LVU275
+ 879 0036 03E0     		b	.L60
+ 880              	.LVL55:
+ 881              	.L72:
  444:Lib/soes/src/esc_foe.c ****       return;
- 874              		.loc 1 444 7 is_stmt 1 view .LVU276
- 875 0038 48F20400 		movw	r0, #32772
- 876 003c FFF7FEFF 		bl	FOE_abort
- 877              	.LVL56:
+ 882              		.loc 1 444 7 is_stmt 1 view .LVU276
+ 883 0038 48F20400 		movw	r0, #32772
+ 884 003c FFF7FEFF 		bl	FOE_abort
+ 885              	.LVL56:
  445:Lib/soes/src/esc_foe.c ****    }
- 878              		.loc 1 445 7 view .LVU277
- 879              	.L60:
+ 886              		.loc 1 445 7 view .LVU277
+ 887              	.L60:
  508:Lib/soes/src/esc_foe.c **** 
- 880              		.loc 1 508 1 is_stmt 0 view .LVU278
- 881 0040 10BD     		pop	{r4, pc}
- 882              	.LVL57:
- 883              	.L73:
+ 888              		.loc 1 508 1 is_stmt 0 view .LVU278
+ 889 0040 10BD     		pop	{r4, pc}
+ 890              	.LVL57:
+ 891              	.L73:
  456:Lib/soes/src/esc_foe.c ****       FOE_abort (FOE_ERR_PACKETNO);
- 884              		.loc 1 456 30 is_stmt 1 view .LVU279
- 457:Lib/soes/src/esc_foe.c ****    }
- 885              		.loc 1 457 7 view .LVU280
- 886 0042 48F20500 		movw	r0, #32773
- 887 0046 FFF7FEFF 		bl	FOE_abort
- 888              	.LVL58:
- 457:Lib/soes/src/esc_foe.c ****    }
- 889              		.loc 1 457 7 is_stmt 0 view .LVU281
- 890 004a F9E7     		b	.L60
-ARM GAS  /tmp/cc97UT6A.s 			page 29
+ 892              		.loc 1 456 30 is_stmt 1 view .LVU279
+ARM GAS  /tmp/ccc92rV8.s 			page 29
 
 
- 891              	.LVL59:
- 892              	.L74:
+ 457:Lib/soes/src/esc_foe.c ****    }
+ 893              		.loc 1 457 7 view .LVU280
+ 894 0042 48F20500 		movw	r0, #32773
+ 895 0046 FFF7FEFF 		bl	FOE_abort
+ 896              	.LVL58:
+ 457:Lib/soes/src/esc_foe.c ****    }
+ 897              		.loc 1 457 7 is_stmt 0 view .LVU281
+ 898 004a F9E7     		b	.L60
+ 899              	.LVL59:
+ 900              	.L74:
  461:Lib/soes/src/esc_foe.c ****       FOE_fclose ();
- 893              		.loc 1 461 37 is_stmt 1 view .LVU282
+ 901              		.loc 1 461 37 is_stmt 1 view .LVU282
  462:Lib/soes/src/esc_foe.c ****       res = FOE_send_ack ();
- 894              		.loc 1 462 7 view .LVU283
- 895 004c FFF7FEFF 		bl	FOE_fclose
- 896              	.LVL60:
+ 902              		.loc 1 462 7 view .LVU283
+ 903 004c FFF7FEFF 		bl	FOE_fclose
+ 904              	.LVL60:
  463:Lib/soes/src/esc_foe.c ****       FOE_init ();
- 897              		.loc 1 463 7 view .LVU284
+ 905              		.loc 1 463 7 view .LVU284
  463:Lib/soes/src/esc_foe.c ****       FOE_init ();
- 898              		.loc 1 463 13 is_stmt 0 view .LVU285
- 899 0050 FFF7FEFF 		bl	FOE_send_ack
- 900              	.LVL61:
+ 906              		.loc 1 463 13 is_stmt 0 view .LVU285
+ 907 0050 FFF7FEFF 		bl	FOE_send_ack
+ 908              	.LVL61:
  464:Lib/soes/src/esc_foe.c ****    }
- 901              		.loc 1 464 7 is_stmt 1 view .LVU286
- 902 0054 FFF7FEFF 		bl	FOE_init
- 903              	.LVL62:
- 904 0058 F2E7     		b	.L60
- 905              	.LVL63:
- 906              	.L65:
+ 909              		.loc 1 464 7 is_stmt 1 view .LVU286
+ 910 0054 FFF7FEFF 		bl	FOE_init
+ 911              	.LVL62:
+ 912 0058 F2E7     		b	.L60
+ 913              	.LVL63:
+ 914              	.L65:
  473:Lib/soes/src/esc_foe.c ****       if (!ncopied)
- 907              		.loc 1 473 7 view .LVU287
+ 915              		.loc 1 473 7 view .LVU287
  473:Lib/soes/src/esc_foe.c ****       if (!ncopied)
- 908              		.loc 1 473 17 is_stmt 0 view .LVU288
- 909 005a 2146     		mov	r1, r4
- 910 005c 1748     		ldr	r0, .L79+8
- 911 005e FFF7FEFF 		bl	FOE_fwrite
- 912              	.LVL64:
+ 916              		.loc 1 473 17 is_stmt 0 view .LVU288
+ 917 005a 2146     		mov	r1, r4
+ 918 005c 1748     		ldr	r0, .L79+8
+ 919 005e FFF7FEFF 		bl	FOE_fwrite
+ 920              	.LVL64:
  474:Lib/soes/src/esc_foe.c ****       {
- 913              		.loc 1 474 7 is_stmt 1 view .LVU289
+ 921              		.loc 1 474 7 is_stmt 1 view .LVU289
  474:Lib/soes/src/esc_foe.c ****       {
- 914              		.loc 1 474 10 is_stmt 0 view .LVU290
- 915 0062 58B1     		cbz	r0, .L75
+ 922              		.loc 1 474 10 is_stmt 0 view .LVU290
+ 923 0062 58B1     		cbz	r0, .L75
  479:Lib/soes/src/esc_foe.c ****       {
- 916              		.loc 1 479 12 is_stmt 1 view .LVU291
+ 924              		.loc 1 479 12 is_stmt 1 view .LVU291
  479:Lib/soes/src/esc_foe.c ****       {
- 917              		.loc 1 479 28 is_stmt 0 view .LVU292
- 918 0064 164B     		ldr	r3, .L79+12
- 919 0066 DB6E     		ldr	r3, [r3, #108]
- 920 0068 0C3B     		subs	r3, r3, #12
+ 925              		.loc 1 479 28 is_stmt 0 view .LVU292
+ 926 0064 164B     		ldr	r3, .L79+12
+ 927 0066 DB6E     		ldr	r3, [r3, #108]
+ 928 0068 0C3B     		subs	r3, r3, #12
  479:Lib/soes/src/esc_foe.c ****       {
- 921              		.loc 1 479 15 view .LVU293
- 922 006a A342     		cmp	r3, r4
- 923 006c 0BD0     		beq	.L76
+ 929              		.loc 1 479 15 view .LVU293
+ 930 006a A342     		cmp	r3, r4
+ 931 006c 0BD0     		beq	.L76
  495:Lib/soes/src/esc_foe.c ****          {
- 924              		.loc 1 495 10 is_stmt 1 view .LVU294
+ 932              		.loc 1 495 10 is_stmt 1 view .LVU294
  495:Lib/soes/src/esc_foe.c ****          {
- 925              		.loc 1 495 13 is_stmt 0 view .LVU295
- 926 006e 8442     		cmp	r4, r0
- 927 0070 17D0     		beq	.L77
- 928              	.LVL65:
- 929              	.L69:
+ 933              		.loc 1 495 13 is_stmt 0 view .LVU295
+ARM GAS  /tmp/ccc92rV8.s 			page 30
+
+
+ 934 006e 8442     		cmp	r4, r0
+ 935 0070 17D0     		beq	.L77
+ 936              	.LVL65:
+ 937              	.L69:
  497:Lib/soes/src/esc_foe.c ****             FOE_abort (FOE_ERR_PROGERROR);
- 930              		.loc 1 497 64 is_stmt 1 view .LVU296
+ 938              		.loc 1 497 64 is_stmt 1 view .LVU296
  498:Lib/soes/src/esc_foe.c ****          }
- 931              		.loc 1 498 13 view .LVU297
-ARM GAS  /tmp/cc97UT6A.s 			page 30
-
-
- 932 0072 48F20B00 		movw	r0, #32779
- 933 0076 FFF7FEFF 		bl	FOE_abort
- 934              	.LVL66:
- 935 007a E1E7     		b	.L60
- 936              	.LVL67:
- 937              	.L75:
+ 939              		.loc 1 498 13 view .LVU297
+ 940 0072 48F20B00 		movw	r0, #32779
+ 941 0076 FFF7FEFF 		bl	FOE_abort
+ 942              	.LVL66:
+ 943 007a E1E7     		b	.L60
+ 944              	.LVL67:
+ 945              	.L75:
  476:Lib/soes/src/esc_foe.c ****          FOE_abort (FOE_ERR_PROGERROR);
- 938              		.loc 1 476 40 view .LVU298
+ 946              		.loc 1 476 40 view .LVU298
  477:Lib/soes/src/esc_foe.c ****       }
- 939              		.loc 1 477 10 view .LVU299
- 940 007c 48F20B00 		movw	r0, #32779
- 941              	.LVL68:
+ 947              		.loc 1 477 10 view .LVU299
+ 948 007c 48F20B00 		movw	r0, #32779
+ 949              	.LVL68:
  477:Lib/soes/src/esc_foe.c ****       }
- 942              		.loc 1 477 10 is_stmt 0 view .LVU300
- 943 0080 FFF7FEFF 		bl	FOE_abort
- 944              	.LVL69:
- 945 0084 DCE7     		b	.L60
- 946              	.LVL70:
- 947              	.L76:
+ 950              		.loc 1 477 10 is_stmt 0 view .LVU300
+ 951 0080 FFF7FEFF 		bl	FOE_abort
+ 952              	.LVL69:
+ 953 0084 DCE7     		b	.L60
+ 954              	.LVL70:
+ 955              	.L76:
  481:Lib/soes/src/esc_foe.c ****          if (ncopied != data_len)
- 948              		.loc 1 481 56 is_stmt 1 view .LVU301
+ 956              		.loc 1 481 56 is_stmt 1 view .LVU301
  482:Lib/soes/src/esc_foe.c ****          {
- 949              		.loc 1 482 10 view .LVU302
+ 957              		.loc 1 482 10 view .LVU302
  482:Lib/soes/src/esc_foe.c ****          {
- 950              		.loc 1 482 13 is_stmt 0 view .LVU303
- 951 0086 8442     		cmp	r4, r0
- 952 0088 06D1     		bne	.L78
- 953              	.LVL71:
- 954              	.L68:
+ 958              		.loc 1 482 13 is_stmt 0 view .LVU303
+ 959 0086 8442     		cmp	r4, r0
+ 960 0088 06D1     		bne	.L78
+ 961              	.LVL71:
+ 962              	.L68:
  487:Lib/soes/src/esc_foe.c ****          if (res)
- 955              		.loc 1 487 10 is_stmt 1 view .LVU304
+ 963              		.loc 1 487 10 is_stmt 1 view .LVU304
  487:Lib/soes/src/esc_foe.c ****          if (res)
- 956              		.loc 1 487 16 is_stmt 0 view .LVU305
- 957 008a FFF7FEFF 		bl	FOE_send_ack
- 958              	.LVL72:
+ 964              		.loc 1 487 16 is_stmt 0 view .LVU305
+ 965 008a FFF7FEFF 		bl	FOE_send_ack
+ 966              	.LVL72:
  488:Lib/soes/src/esc_foe.c ****          {
- 959              		.loc 1 488 10 is_stmt 1 view .LVU306
+ 967              		.loc 1 488 10 is_stmt 1 view .LVU306
  488:Lib/soes/src/esc_foe.c ****          {
- 960              		.loc 1 488 13 is_stmt 0 view .LVU307
- 961 008e 0028     		cmp	r0, #0
- 962 0090 D6D0     		beq	.L60
+ 968              		.loc 1 488 13 is_stmt 0 view .LVU307
+ 969 008e 0028     		cmp	r0, #0
+ 970 0090 D6D0     		beq	.L60
  490:Lib/soes/src/esc_foe.c ****          }
- 963              		.loc 1 490 13 is_stmt 1 view .LVU308
- 964 0092 FFF7FEFF 		bl	FOE_abort
- 965              	.LVL73:
+ 971              		.loc 1 490 13 is_stmt 1 view .LVU308
+ 972 0092 FFF7FEFF 		bl	FOE_abort
+ 973              	.LVL73:
  490:Lib/soes/src/esc_foe.c ****          }
- 966              		.loc 1 490 13 is_stmt 0 view .LVU309
- 967 0096 D3E7     		b	.L60
- 968              	.LVL74:
- 969              	.L78:
+ 974              		.loc 1 490 13 is_stmt 0 view .LVU309
+ 975 0096 D3E7     		b	.L60
+ 976              	.LVL74:
+ARM GAS  /tmp/ccc92rV8.s 			page 31
+
+
+ 977              	.L78:
  484:Lib/soes/src/esc_foe.c ****             FOE_abort (FOE_ERR_PROGERROR);
- 970              		.loc 1 484 86 is_stmt 1 view .LVU310
+ 978              		.loc 1 484 86 is_stmt 1 view .LVU310
  485:Lib/soes/src/esc_foe.c ****          }
- 971              		.loc 1 485 13 view .LVU311
- 972 0098 48F20B00 		movw	r0, #32779
- 973              	.LVL75:
+ 979              		.loc 1 485 13 view .LVU311
+ 980 0098 48F20B00 		movw	r0, #32779
+ 981              	.LVL75:
  485:Lib/soes/src/esc_foe.c ****          }
-ARM GAS  /tmp/cc97UT6A.s 			page 31
-
-
- 974              		.loc 1 485 13 is_stmt 0 view .LVU312
- 975 009c FFF7FEFF 		bl	FOE_abort
- 976              	.LVL76:
- 977 00a0 F3E7     		b	.L68
- 978              	.LVL77:
- 979              	.L77:
+ 982              		.loc 1 485 13 is_stmt 0 view .LVU312
+ 983 009c FFF7FEFF 		bl	FOE_abort
+ 984              	.LVL76:
+ 985 00a0 F3E7     		b	.L68
+ 986              	.LVL77:
+ 987              	.L77:
  495:Lib/soes/src/esc_foe.c ****          {
- 980              		.loc 1 495 39 discriminator 1 view .LVU313
- 981 00a2 FFF7FEFF 		bl	FOE_fclose
- 982              	.LVL78:
+ 988              		.loc 1 495 39 discriminator 1 view .LVU313
+ 989 00a2 FFF7FEFF 		bl	FOE_fclose
+ 990              	.LVL78:
  495:Lib/soes/src/esc_foe.c ****          {
- 983              		.loc 1 495 36 discriminator 1 view .LVU314
- 984 00a6 0028     		cmp	r0, #0
- 985 00a8 E3D1     		bne	.L69
+ 991              		.loc 1 495 36 discriminator 1 view .LVU314
+ 992 00a6 0028     		cmp	r0, #0
+ 993 00a8 E3D1     		bne	.L69
  502:Lib/soes/src/esc_foe.c ****             res = FOE_send_ack ();
- 986              		.loc 1 502 43 is_stmt 1 view .LVU315
+ 994              		.loc 1 502 43 is_stmt 1 view .LVU315
  503:Lib/soes/src/esc_foe.c ****             FOE_init ();
- 987              		.loc 1 503 13 view .LVU316
+ 995              		.loc 1 503 13 view .LVU316
  503:Lib/soes/src/esc_foe.c ****             FOE_init ();
- 988              		.loc 1 503 19 is_stmt 0 view .LVU317
- 989 00aa FFF7FEFF 		bl	FOE_send_ack
- 990              	.LVL79:
+ 996              		.loc 1 503 19 is_stmt 0 view .LVU317
+ 997 00aa FFF7FEFF 		bl	FOE_send_ack
+ 998              	.LVL79:
  504:Lib/soes/src/esc_foe.c ****          }
- 991              		.loc 1 504 13 is_stmt 1 view .LVU318
- 992 00ae FFF7FEFF 		bl	FOE_init
- 993              	.LVL80:
- 994 00b2 C5E7     		b	.L60
- 995              	.L80:
- 996              		.align	2
- 997              	.L79:
- 998 00b4 00000000 		.word	.LANCHOR0
- 999 00b8 00000000 		.word	MBX
- 1000 00bc 0C000000 		.word	MBX+12
- 1001 00c0 00000000 		.word	ESCvar
- 1002              		.cfi_endproc
- 1003              	.LFE7:
- 1005              		.section	.text.FOE_config,"ax",%progbits
- 1006              		.align	1
- 1007              		.global	FOE_config
- 1008              		.syntax unified
- 1009              		.thumb
- 1010              		.thumb_func
- 1012              	FOE_config:
- 1013              	.LVL81:
- 1014              	.LFB9:
+ 999              		.loc 1 504 13 is_stmt 1 view .LVU318
+ 1000 00ae FFF7FEFF 		bl	FOE_init
+ 1001              	.LVL80:
+ 1002 00b2 C5E7     		b	.L60
+ 1003              	.L80:
+ 1004              		.align	2
+ 1005              	.L79:
+ 1006 00b4 00000000 		.word	.LANCHOR0
+ 1007 00b8 00000000 		.word	MBX
+ 1008 00bc 0C000000 		.word	MBX+12
+ 1009 00c0 00000000 		.word	ESCvar
+ 1010              		.cfi_endproc
+ 1011              	.LFE7:
+ 1013              		.section	.text.FOE_config,"ax",%progbits
+ 1014              		.align	1
+ 1015              		.global	FOE_config
+ 1016              		.syntax unified
+ 1017              		.thumb
+ 1018              		.thumb_func
+ 1019              		.fpu fpv4-sp-d16
+ 1021              	FOE_config:
+ 1022              	.LVL81:
+ 1023              	.LFB9:
  540:Lib/soes/src/esc_foe.c **** 
  541:Lib/soes/src/esc_foe.c **** /** Function copying the application configuration variable
  542:Lib/soes/src/esc_foe.c ****  * to the FoE module local pointer variable.
+ARM GAS  /tmp/ccc92rV8.s 			page 32
+
+
  543:Lib/soes/src/esc_foe.c ****  *
  544:Lib/soes/src/esc_foe.c ****  * @param[in] cfg       = Pointer to by the Application static declared
  545:Lib/soes/src/esc_foe.c ****  * configuration variable holding application specific details.
  546:Lib/soes/src/esc_foe.c ****  */
  547:Lib/soes/src/esc_foe.c **** void FOE_config (foe_cfg_t * cfg)
  548:Lib/soes/src/esc_foe.c **** {
- 1015              		.loc 1 548 1 view -0
- 1016              		.cfi_startproc
- 1017              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/cc97UT6A.s 			page 32
-
-
- 1018              		@ frame_needed = 0, uses_anonymous_args = 0
- 1019              		@ link register save eliminated.
+ 1024              		.loc 1 548 1 view -0
+ 1025              		.cfi_startproc
+ 1026              		@ args = 0, pretend = 0, frame = 0
+ 1027              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1028              		@ link register save eliminated.
  549:Lib/soes/src/esc_foe.c ****    foe_cfg = cfg;
- 1020              		.loc 1 549 4 view .LVU320
- 1021              		.loc 1 549 12 is_stmt 0 view .LVU321
- 1022 0000 014B     		ldr	r3, .L82
- 1023 0002 1860     		str	r0, [r3]
+ 1029              		.loc 1 549 4 view .LVU320
+ 1030              		.loc 1 549 12 is_stmt 0 view .LVU321
+ 1031 0000 014B     		ldr	r3, .L82
+ 1032 0002 1860     		str	r0, [r3]
  550:Lib/soes/src/esc_foe.c **** }
- 1024              		.loc 1 550 1 view .LVU322
- 1025 0004 7047     		bx	lr
- 1026              	.L83:
- 1027 0006 00BF     		.align	2
- 1028              	.L82:
- 1029 0008 00000000 		.word	.LANCHOR1
- 1030              		.cfi_endproc
- 1031              	.LFE9:
- 1033              		.section	.text.ESC_foeprocess,"ax",%progbits
- 1034              		.align	1
- 1035              		.global	ESC_foeprocess
- 1036              		.syntax unified
- 1037              		.thumb
- 1038              		.thumb_func
- 1040              	ESC_foeprocess:
- 1041              	.LFB10:
+ 1033              		.loc 1 550 1 view .LVU322
+ 1034 0004 7047     		bx	lr
+ 1035              	.L83:
+ 1036 0006 00BF     		.align	2
+ 1037              	.L82:
+ 1038 0008 00000000 		.word	.LANCHOR1
+ 1039              		.cfi_endproc
+ 1040              	.LFE9:
+ 1042              		.section	.text.ESC_foeprocess,"ax",%progbits
+ 1043              		.align	1
+ 1044              		.global	ESC_foeprocess
+ 1045              		.syntax unified
+ 1046              		.thumb
+ 1047              		.thumb_func
+ 1048              		.fpu fpv4-sp-d16
+ 1050              	ESC_foeprocess:
+ 1051              	.LFB10:
  551:Lib/soes/src/esc_foe.c **** 
  552:Lib/soes/src/esc_foe.c **** /** Main FoE function checking the status on current mailbox buffers carrying
  553:Lib/soes/src/esc_foe.c ****  * data, distributing the mailboxes to appropriate FOE functions depending
@@ -1893,46 +1903,46 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  556:Lib/soes/src/esc_foe.c ****  */
  557:Lib/soes/src/esc_foe.c **** void ESC_foeprocess (void)
  558:Lib/soes/src/esc_foe.c **** {
- 1042              		.loc 1 558 1 is_stmt 1 view -0
- 1043              		.cfi_startproc
- 1044              		@ args = 0, pretend = 0, frame = 0
- 1045              		@ frame_needed = 0, uses_anonymous_args = 0
- 1046 0000 08B5     		push	{r3, lr}
- 1047              		.cfi_def_cfa_offset 8
- 1048              		.cfi_offset 3, -8
- 1049              		.cfi_offset 14, -4
+ 1052              		.loc 1 558 1 is_stmt 1 view -0
+ 1053              		.cfi_startproc
+ 1054              		@ args = 0, pretend = 0, frame = 0
+ 1055              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1056 0000 08B5     		push	{r3, lr}
+ 1057              		.cfi_def_cfa_offset 8
+ 1058              		.cfi_offset 3, -8
+ 1059              		.cfi_offset 14, -4
  559:Lib/soes/src/esc_foe.c ****    _MBXh *mbh;
- 1050              		.loc 1 559 4 view .LVU324
+ 1060              		.loc 1 559 4 view .LVU324
  560:Lib/soes/src/esc_foe.c ****    _FOE *foembx;
- 1051              		.loc 1 560 4 view .LVU325
+ 1061              		.loc 1 560 4 view .LVU325
  561:Lib/soes/src/esc_foe.c **** 
  562:Lib/soes/src/esc_foe.c ****    if (ESCvar.MBXrun == 0)
- 1052              		.loc 1 562 4 view .LVU326
- 1053              		.loc 1 562 14 is_stmt 0 view .LVU327
- 1054 0002 204B     		ldr	r3, .L97
- 1055 0004 93F86830 		ldrb	r3, [r3, #104]	@ zero_extendqisi2
- 1056              		.loc 1 562 7 view .LVU328
- 1057 0008 63B1     		cbz	r3, .L84
+ 1062              		.loc 1 562 4 view .LVU326
+ARM GAS  /tmp/ccc92rV8.s 			page 33
+
+
+ 1063              		.loc 1 562 14 is_stmt 0 view .LVU327
+ 1064 0002 204B     		ldr	r3, .L97
+ 1065 0004 93F86830 		ldrb	r3, [r3, #104]	@ zero_extendqisi2
+ 1066              		.loc 1 562 7 view .LVU328
+ 1067 0008 63B1     		cbz	r3, .L84
  563:Lib/soes/src/esc_foe.c ****    {
  564:Lib/soes/src/esc_foe.c ****       return;
  565:Lib/soes/src/esc_foe.c ****    }
  566:Lib/soes/src/esc_foe.c ****    if (!ESCvar.xoe && (MBXcontrol[0].state == MBXstate_inclaim))
- 1058              		.loc 1 566 4 is_stmt 1 view .LVU329
-ARM GAS  /tmp/cc97UT6A.s 			page 33
-
-
- 1059              		.loc 1 566 15 is_stmt 0 view .LVU330
- 1060 000a 1E4B     		ldr	r3, .L97
- 1061 000c 93F88E30 		ldrb	r3, [r3, #142]	@ zero_extendqisi2
- 1062              		.loc 1 566 7 view .LVU331
- 1063 0010 1BB9     		cbnz	r3, .L86
- 1064              		.loc 1 566 37 discriminator 1 view .LVU332
- 1065 0012 1D4B     		ldr	r3, .L97+4
- 1066 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1067              		.loc 1 566 20 discriminator 1 view .LVU333
- 1068 0016 012B     		cmp	r3, #1
- 1069 0018 05D0     		beq	.L93
- 1070              	.L86:
+ 1068              		.loc 1 566 4 is_stmt 1 view .LVU329
+ 1069              		.loc 1 566 15 is_stmt 0 view .LVU330
+ 1070 000a 1E4B     		ldr	r3, .L97
+ 1071 000c 93F88E30 		ldrb	r3, [r3, #142]	@ zero_extendqisi2
+ 1072              		.loc 1 566 7 view .LVU331
+ 1073 0010 1BB9     		cbnz	r3, .L86
+ 1074              		.loc 1 566 37 discriminator 1 view .LVU332
+ 1075 0012 1D4B     		ldr	r3, .L97+4
+ 1076 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1077              		.loc 1 566 20 discriminator 1 view .LVU333
+ 1078 0016 012B     		cmp	r3, #1
+ 1079 0018 05D0     		beq	.L93
+ 1080              	.L86:
  567:Lib/soes/src/esc_foe.c ****    {
  568:Lib/soes/src/esc_foe.c ****       mbh = (_MBXh *) &MBX[0];
  569:Lib/soes/src/esc_foe.c ****       if (mbh->mbxtype == MBXFOE)
@@ -1941,14 +1951,14 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  572:Lib/soes/src/esc_foe.c ****       }
  573:Lib/soes/src/esc_foe.c ****    }
  574:Lib/soes/src/esc_foe.c ****    if (ESCvar.xoe == MBXFOE)
- 1071              		.loc 1 574 4 is_stmt 1 view .LVU334
- 1072              		.loc 1 574 14 is_stmt 0 view .LVU335
- 1073 001a 1A4B     		ldr	r3, .L97
- 1074 001c 93F88E30 		ldrb	r3, [r3, #142]	@ zero_extendqisi2
- 1075              		.loc 1 574 7 view .LVU336
- 1076 0020 042B     		cmp	r3, #4
- 1077 0022 0BD0     		beq	.L94
- 1078              	.L84:
+ 1081              		.loc 1 574 4 is_stmt 1 view .LVU334
+ 1082              		.loc 1 574 14 is_stmt 0 view .LVU335
+ 1083 001a 1A4B     		ldr	r3, .L97
+ 1084 001c 93F88E30 		ldrb	r3, [r3, #142]	@ zero_extendqisi2
+ 1085              		.loc 1 574 7 view .LVU336
+ 1086 0020 042B     		cmp	r3, #4
+ 1087 0022 0BD0     		beq	.L94
+ 1088              	.L84:
  575:Lib/soes/src/esc_foe.c ****    {
  576:Lib/soes/src/esc_foe.c ****       foembx = (_FOE *) &MBX[0];
  577:Lib/soes/src/esc_foe.c ****       /* Verify the size of the file data. */
@@ -1968,6 +1978,9 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  591:Lib/soes/src/esc_foe.c ****             }
  592:Lib/soes/src/esc_foe.c ****             case FOE_OP_DATA:
  593:Lib/soes/src/esc_foe.c ****             {
+ARM GAS  /tmp/ccc92rV8.s 			page 34
+
+
  594:Lib/soes/src/esc_foe.c ****                DPRINT("FOE_OP_DATA\n");
  595:Lib/soes/src/esc_foe.c ****                FOE_data ();
  596:Lib/soes/src/esc_foe.c ****                break;
@@ -1978,9 +1991,6 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  601:Lib/soes/src/esc_foe.c ****                DPRINT("FOE_OP_RRQ\n");
  602:Lib/soes/src/esc_foe.c ****                FOE_read ();
  603:Lib/soes/src/esc_foe.c ****                break;
-ARM GAS  /tmp/cc97UT6A.s 			page 34
-
-
  604:Lib/soes/src/esc_foe.c ****             }
  605:Lib/soes/src/esc_foe.c ****             case FOE_OP_ACK:
  606:Lib/soes/src/esc_foe.c ****             {
@@ -2014,218 +2024,217 @@ ARM GAS  /tmp/cc97UT6A.s 			page 1
  634:Lib/soes/src/esc_foe.c ****       ESCvar.xoe = 0;
  635:Lib/soes/src/esc_foe.c ****    }
  636:Lib/soes/src/esc_foe.c **** }
- 1079              		.loc 1 636 1 view .LVU337
- 1080 0024 08BD     		pop	{r3, pc}
- 1081              	.L93:
+ 1089              		.loc 1 636 1 view .LVU337
+ 1090 0024 08BD     		pop	{r3, pc}
+ 1091              	.L93:
  568:Lib/soes/src/esc_foe.c ****       if (mbh->mbxtype == MBXFOE)
- 1082              		.loc 1 568 7 is_stmt 1 view .LVU338
- 1083              	.LVL82:
+ 1092              		.loc 1 568 7 is_stmt 1 view .LVU338
+ 1093              	.LVL82:
  569:Lib/soes/src/esc_foe.c ****       {
- 1084              		.loc 1 569 7 view .LVU339
+ 1094              		.loc 1 569 7 view .LVU339
  569:Lib/soes/src/esc_foe.c ****       {
- 1085              		.loc 1 569 24 is_stmt 0 view .LVU340
- 1086 0026 194B     		ldr	r3, .L97+8
- 1087 0028 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
- 1088 002a 03F00F03 		and	r3, r3, #15
+ 1095              		.loc 1 569 24 is_stmt 0 view .LVU340
+ 1096 0026 194B     		ldr	r3, .L97+8
+ 1097 0028 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 1098 002a 03F00F03 		and	r3, r3, #15
  569:Lib/soes/src/esc_foe.c ****       {
- 1089              		.loc 1 569 10 view .LVU341
- 1090 002e 042B     		cmp	r3, #4
- 1091 0030 F3D1     		bne	.L86
- 571:Lib/soes/src/esc_foe.c ****       }
- 1092              		.loc 1 571 10 is_stmt 1 view .LVU342
- 571:Lib/soes/src/esc_foe.c ****       }
- 1093              		.loc 1 571 21 is_stmt 0 view .LVU343
- 1094 0032 144B     		ldr	r3, .L97
- 1095 0034 0422     		movs	r2, #4
- 1096 0036 83F88E20 		strb	r2, [r3, #142]
-ARM GAS  /tmp/cc97UT6A.s 			page 35
+ARM GAS  /tmp/ccc92rV8.s 			page 35
 
 
- 1097 003a EEE7     		b	.L86
- 1098              	.LVL83:
- 1099              	.L94:
+ 1099              		.loc 1 569 10 view .LVU341
+ 1100 002e 042B     		cmp	r3, #4
+ 1101 0030 F3D1     		bne	.L86
+ 571:Lib/soes/src/esc_foe.c ****       }
+ 1102              		.loc 1 571 10 is_stmt 1 view .LVU342
+ 571:Lib/soes/src/esc_foe.c ****       }
+ 1103              		.loc 1 571 21 is_stmt 0 view .LVU343
+ 1104 0032 144B     		ldr	r3, .L97
+ 1105 0034 0422     		movs	r2, #4
+ 1106 0036 83F88E20 		strb	r2, [r3, #142]
+ 1107 003a EEE7     		b	.L86
+ 1108              	.LVL83:
+ 1109              	.L94:
  576:Lib/soes/src/esc_foe.c ****       /* Verify the size of the file data. */
- 1100              		.loc 1 576 7 is_stmt 1 view .LVU344
+ 1110              		.loc 1 576 7 is_stmt 1 view .LVU344
  578:Lib/soes/src/esc_foe.c ****       {
- 1101              		.loc 1 578 7 view .LVU345
+ 1111              		.loc 1 578 7 view .LVU345
  578:Lib/soes/src/esc_foe.c ****       {
- 1102              		.loc 1 578 11 is_stmt 0 view .LVU346
- 1103 003c 134B     		ldr	r3, .L97+8
- 1104 003e 1B88     		ldrh	r3, [r3]	@ unaligned
+ 1112              		.loc 1 578 11 is_stmt 0 view .LVU346
+ 1113 003c 134B     		ldr	r3, .L97+8
+ 1114 003e 1B88     		ldrh	r3, [r3]	@ unaligned
  578:Lib/soes/src/esc_foe.c ****       {
- 1105              		.loc 1 578 10 view .LVU347
- 1106 0040 052B     		cmp	r3, #5
- 1107 0042 0CD9     		bls	.L95
+ 1115              		.loc 1 578 10 view .LVU347
+ 1116 0040 052B     		cmp	r3, #5
+ 1117 0042 0CD9     		bls	.L95
  584:Lib/soes/src/esc_foe.c ****          {
- 1108              		.loc 1 584 10 is_stmt 1 view .LVU348
+ 1118              		.loc 1 584 10 is_stmt 1 view .LVU348
  584:Lib/soes/src/esc_foe.c ****          {
- 1109              		.loc 1 584 35 is_stmt 0 view .LVU349
- 1110 0044 114B     		ldr	r3, .L97+8
- 1111 0046 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 1119              		.loc 1 584 35 is_stmt 0 view .LVU349
+ 1120 0044 114B     		ldr	r3, .L97+8
+ 1121 0046 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
  584:Lib/soes/src/esc_foe.c ****          {
- 1112              		.loc 1 584 10 view .LVU350
- 1113 0048 032B     		cmp	r3, #3
- 1114 004a 15D0     		beq	.L89
- 1115 004c 052B     		cmp	r3, #5
- 1116 004e 16D0     		beq	.L90
- 1117 0050 022B     		cmp	r3, #2
- 1118 0052 0ED0     		beq	.L96
+ 1122              		.loc 1 584 10 view .LVU350
+ 1123 0048 032B     		cmp	r3, #3
+ 1124 004a 15D0     		beq	.L89
+ 1125 004c 052B     		cmp	r3, #5
+ 1126 004e 16D0     		beq	.L90
+ 1127 0050 022B     		cmp	r3, #2
+ 1128 0052 0ED0     		beq	.L96
  627:Lib/soes/src/esc_foe.c ****                FOE_abort (FOE_ERR_NOTDEFINED);
- 1119              		.loc 1 627 46 is_stmt 1 view .LVU351
+ 1129              		.loc 1 627 46 is_stmt 1 view .LVU351
  628:Lib/soes/src/esc_foe.c ****                break;
- 1120              		.loc 1 628 16 view .LVU352
- 1121 0054 4FF40040 		mov	r0, #32768
- 1122 0058 FFF7FEFF 		bl	FOE_abort
- 1123              	.LVL84:
+ 1130              		.loc 1 628 16 view .LVU352
+ 1131 0054 4FF40040 		mov	r0, #32768
+ 1132 0058 FFF7FEFF 		bl	FOE_abort
+ 1133              	.LVL84:
  629:Lib/soes/src/esc_foe.c ****             }
- 1124              		.loc 1 629 16 view .LVU353
- 1125 005c 02E0     		b	.L88
- 1126              	.L95:
+ 1134              		.loc 1 629 16 view .LVU353
+ 1135 005c 02E0     		b	.L88
+ 1136              	.L95:
  580:Lib/soes/src/esc_foe.c ****       }
- 1127              		.loc 1 580 10 view .LVU354
- 1128 005e 0620     		movs	r0, #6
- 1129 0060 FFF7FEFF 		bl	FOE_abort
- 1130              	.LVL85:
- 1131              	.L88:
+ 1137              		.loc 1 580 10 view .LVU354
+ 1138 005e 0620     		movs	r0, #6
+ 1139 0060 FFF7FEFF 		bl	FOE_abort
+ 1140              	.LVL85:
+ 1141              	.L88:
  633:Lib/soes/src/esc_foe.c ****       ESCvar.xoe = 0;
- 1132              		.loc 1 633 7 view .LVU355
- 633:Lib/soes/src/esc_foe.c ****       ESCvar.xoe = 0;
- 1133              		.loc 1 633 27 is_stmt 0 view .LVU356
- 1134 0064 0023     		movs	r3, #0
- 1135 0066 084A     		ldr	r2, .L97+4
- 1136 0068 1370     		strb	r3, [r2]
- 634:Lib/soes/src/esc_foe.c ****    }
- 1137              		.loc 1 634 7 is_stmt 1 view .LVU357
- 634:Lib/soes/src/esc_foe.c ****    }
- 1138              		.loc 1 634 18 is_stmt 0 view .LVU358
-ARM GAS  /tmp/cc97UT6A.s 			page 36
+ARM GAS  /tmp/ccc92rV8.s 			page 36
 
 
- 1139 006a 064A     		ldr	r2, .L97
- 1140 006c 82F88E30 		strb	r3, [r2, #142]
- 1141 0070 D8E7     		b	.L84
- 1142              	.L96:
+ 1142              		.loc 1 633 7 view .LVU355
+ 633:Lib/soes/src/esc_foe.c ****       ESCvar.xoe = 0;
+ 1143              		.loc 1 633 27 is_stmt 0 view .LVU356
+ 1144 0064 0023     		movs	r3, #0
+ 1145 0066 084A     		ldr	r2, .L97+4
+ 1146 0068 1370     		strb	r3, [r2]
+ 634:Lib/soes/src/esc_foe.c ****    }
+ 1147              		.loc 1 634 7 is_stmt 1 view .LVU357
+ 634:Lib/soes/src/esc_foe.c ****    }
+ 1148              		.loc 1 634 18 is_stmt 0 view .LVU358
+ 1149 006a 064A     		ldr	r2, .L97
+ 1150 006c 82F88E30 		strb	r3, [r2, #142]
+ 1151 0070 D8E7     		b	.L84
+ 1152              	.L96:
  588:Lib/soes/src/esc_foe.c ****                FOE_write ();
- 1143              		.loc 1 588 38 is_stmt 1 view .LVU359
+ 1153              		.loc 1 588 38 is_stmt 1 view .LVU359
  589:Lib/soes/src/esc_foe.c ****                break;
- 1144              		.loc 1 589 16 view .LVU360
- 1145 0072 FFF7FEFF 		bl	FOE_write
- 1146              	.LVL86:
+ 1154              		.loc 1 589 16 view .LVU360
+ 1155 0072 FFF7FEFF 		bl	FOE_write
+ 1156              	.LVL86:
  590:Lib/soes/src/esc_foe.c ****             }
- 1147              		.loc 1 590 16 view .LVU361
- 1148 0076 F5E7     		b	.L88
- 1149              	.L89:
+ 1157              		.loc 1 590 16 view .LVU361
+ 1158 0076 F5E7     		b	.L88
+ 1159              	.L89:
  594:Lib/soes/src/esc_foe.c ****                FOE_data ();
- 1150              		.loc 1 594 39 view .LVU362
+ 1160              		.loc 1 594 39 view .LVU362
  595:Lib/soes/src/esc_foe.c ****                break;
- 1151              		.loc 1 595 16 view .LVU363
- 1152 0078 FFF7FEFF 		bl	FOE_data
- 1153              	.LVL87:
+ 1161              		.loc 1 595 16 view .LVU363
+ 1162 0078 FFF7FEFF 		bl	FOE_data
+ 1163              	.LVL87:
  596:Lib/soes/src/esc_foe.c ****             }
- 1154              		.loc 1 596 16 view .LVU364
- 1155 007c F2E7     		b	.L88
- 1156              	.L90:
+ 1164              		.loc 1 596 16 view .LVU364
+ 1165 007c F2E7     		b	.L88
+ 1166              	.L90:
  621:Lib/soes/src/esc_foe.c ****                FOE_error ();
- 1157              		.loc 1 621 38 view .LVU365
+ 1167              		.loc 1 621 38 view .LVU365
  622:Lib/soes/src/esc_foe.c ****                break;
- 1158              		.loc 1 622 16 view .LVU366
- 1159 007e FFF7FEFF 		bl	FOE_error
- 1160              	.LVL88:
+ 1168              		.loc 1 622 16 view .LVU366
+ 1169 007e FFF7FEFF 		bl	FOE_error
+ 1170              	.LVL88:
  623:Lib/soes/src/esc_foe.c ****             }
- 1161              		.loc 1 623 16 view .LVU367
- 1162 0082 EFE7     		b	.L88
- 1163              	.L98:
- 1164              		.align	2
- 1165              	.L97:
- 1166 0084 00000000 		.word	ESCvar
- 1167 0088 00000000 		.word	MBXcontrol
- 1168 008c 00000000 		.word	MBX
- 1169              		.cfi_endproc
- 1170              	.LFE10:
- 1172              		.section	.bss.FOEvar,"aw",%nobits
- 1173              		.align	2
- 1174              		.set	.LANCHOR0,. + 0
- 1177              	FOEvar:
- 1178 0000 00000000 		.space	19
- 1178      00000000 
- 1178      00000000 
- 1178      00000000 
- 1178      000000
- 1179              		.section	.bss.foe_cfg,"aw",%nobits
- 1180              		.align	2
- 1181              		.set	.LANCHOR1,. + 0
- 1184              	foe_cfg:
- 1185 0000 00000000 		.space	4
- 1186              		.section	.bss.foe_file,"aw",%nobits
- 1187              		.align	2
-ARM GAS  /tmp/cc97UT6A.s 			page 37
+ 1171              		.loc 1 623 16 view .LVU367
+ 1172 0082 EFE7     		b	.L88
+ 1173              	.L98:
+ 1174              		.align	2
+ 1175              	.L97:
+ 1176 0084 00000000 		.word	ESCvar
+ 1177 0088 00000000 		.word	MBXcontrol
+ 1178 008c 00000000 		.word	MBX
+ 1179              		.cfi_endproc
+ 1180              	.LFE10:
+ 1182              		.section	.bss.FOEvar,"aw",%nobits
+ 1183              		.align	2
+ 1184              		.set	.LANCHOR0,. + 0
+ 1187              	FOEvar:
+ 1188 0000 00000000 		.space	19
+ 1188      00000000 
+ARM GAS  /tmp/ccc92rV8.s 			page 37
 
 
- 1188              		.set	.LANCHOR2,. + 0
- 1191              	foe_file:
- 1192 0000 00000000 		.space	4
- 1193              		.section	.bss.foe_file_name,"aw",%nobits
- 1194              		.align	2
- 1195              		.set	.LANCHOR3,. + 0
- 1198              	foe_file_name:
- 1199 0000 00000000 		.space	32
- 1199      00000000 
- 1199      00000000 
- 1199      00000000 
- 1199      00000000 
- 1200              		.text
- 1201              	.Letext0:
- 1202              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 1203              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 1204              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 1205              		.file 5 "Lib/soes/inc/esc.h"
- 1206              		.file 6 "Lib/soes/inc/esc_foe.h"
- 1207              		.file 7 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h"
-ARM GAS  /tmp/cc97UT6A.s 			page 38
+ 1188      00000000 
+ 1188      00000000 
+ 1188      000000
+ 1189              		.section	.bss.foe_cfg,"aw",%nobits
+ 1190              		.align	2
+ 1191              		.set	.LANCHOR1,. + 0
+ 1194              	foe_cfg:
+ 1195 0000 00000000 		.space	4
+ 1196              		.section	.bss.foe_file,"aw",%nobits
+ 1197              		.align	2
+ 1198              		.set	.LANCHOR2,. + 0
+ 1201              	foe_file:
+ 1202 0000 00000000 		.space	4
+ 1203              		.section	.bss.foe_file_name,"aw",%nobits
+ 1204              		.align	2
+ 1205              		.set	.LANCHOR3,. + 0
+ 1208              	foe_file_name:
+ 1209 0000 00000000 		.space	32
+ 1209      00000000 
+ 1209      00000000 
+ 1209      00000000 
+ 1209      00000000 
+ 1210              		.text
+ 1211              	.Letext0:
+ 1212              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 1213              		.file 3 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1214              		.file 4 "Lib/soes/inc/esc.h"
+ 1215              		.file 5 "Lib/soes/inc/esc_foe.h"
+ 1216              		.file 6 "/usr/include/newlib/string.h"
+ARM GAS  /tmp/ccc92rV8.s 			page 38
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 esc_foe.c
-     /tmp/cc97UT6A.s:20     .text.FOE_fwrite:0000000000000000 $t
-     /tmp/cc97UT6A.s:25     .text.FOE_fwrite:0000000000000000 FOE_fwrite
-     /tmp/cc97UT6A.s:171    .text.FOE_fwrite:000000000000009c $d
-     /tmp/cc97UT6A.s:178    .text.FOE_fclose:0000000000000000 $t
-     /tmp/cc97UT6A.s:183    .text.FOE_fclose:0000000000000000 FOE_fclose
-     /tmp/cc97UT6A.s:233    .text.FOE_fclose:000000000000002c $d
-     /tmp/cc97UT6A.s:240    .text.FOE_fopen:0000000000000000 $t
-     /tmp/cc97UT6A.s:245    .text.FOE_fopen:0000000000000000 FOE_fopen
-     /tmp/cc97UT6A.s:434    .text.FOE_fopen:00000000000000e0 $d
-     /tmp/cc97UT6A.s:443    .text.FOE_send_ack:0000000000000000 $t
-     /tmp/cc97UT6A.s:448    .text.FOE_send_ack:0000000000000000 FOE_send_ack
-     /tmp/cc97UT6A.s:528    .text.FOE_send_ack:000000000000004c $d
-     /tmp/cc97UT6A.s:536    .text.FOE_init:0000000000000000 $t
-     /tmp/cc97UT6A.s:542    .text.FOE_init:0000000000000000 FOE_init
-     /tmp/cc97UT6A.s:582    .text.FOE_init:0000000000000024 $d
-     /tmp/cc97UT6A.s:587    .text.FOE_abort:0000000000000000 $t
-     /tmp/cc97UT6A.s:592    .text.FOE_abort:0000000000000000 FOE_abort
-     /tmp/cc97UT6A.s:672    .text.FOE_abort:0000000000000048 $d
-     /tmp/cc97UT6A.s:679    .text.FOE_error:0000000000000000 $t
-     /tmp/cc97UT6A.s:684    .text.FOE_error:0000000000000000 FOE_error
-     /tmp/cc97UT6A.s:704    .text.FOE_write:0000000000000000 $t
-     /tmp/cc97UT6A.s:709    .text.FOE_write:0000000000000000 FOE_write
-     /tmp/cc97UT6A.s:798    .text.FOE_write:0000000000000048 $d
-     /tmp/cc97UT6A.s:804    .text.FOE_data:0000000000000000 $t
-     /tmp/cc97UT6A.s:809    .text.FOE_data:0000000000000000 FOE_data
-     /tmp/cc97UT6A.s:998    .text.FOE_data:00000000000000b4 $d
-     /tmp/cc97UT6A.s:1006   .text.FOE_config:0000000000000000 $t
-     /tmp/cc97UT6A.s:1012   .text.FOE_config:0000000000000000 FOE_config
-     /tmp/cc97UT6A.s:1029   .text.FOE_config:0000000000000008 $d
-     /tmp/cc97UT6A.s:1034   .text.ESC_foeprocess:0000000000000000 $t
-     /tmp/cc97UT6A.s:1040   .text.ESC_foeprocess:0000000000000000 ESC_foeprocess
-     /tmp/cc97UT6A.s:1166   .text.ESC_foeprocess:0000000000000084 $d
-     /tmp/cc97UT6A.s:1173   .bss.FOEvar:0000000000000000 $d
-     /tmp/cc97UT6A.s:1177   .bss.FOEvar:0000000000000000 FOEvar
-     /tmp/cc97UT6A.s:1180   .bss.foe_cfg:0000000000000000 $d
-     /tmp/cc97UT6A.s:1184   .bss.foe_cfg:0000000000000000 foe_cfg
-     /tmp/cc97UT6A.s:1187   .bss.foe_file:0000000000000000 $d
-     /tmp/cc97UT6A.s:1191   .bss.foe_file:0000000000000000 foe_file
-     /tmp/cc97UT6A.s:1194   .bss.foe_file_name:0000000000000000 $d
-     /tmp/cc97UT6A.s:1198   .bss.foe_file_name:0000000000000000 foe_file_name
+     /tmp/ccc92rV8.s:18     .text.FOE_fwrite:0000000000000000 $t
+     /tmp/ccc92rV8.s:25     .text.FOE_fwrite:0000000000000000 FOE_fwrite
+     /tmp/ccc92rV8.s:171    .text.FOE_fwrite:000000000000009c $d
+     /tmp/ccc92rV8.s:178    .text.FOE_fclose:0000000000000000 $t
+     /tmp/ccc92rV8.s:184    .text.FOE_fclose:0000000000000000 FOE_fclose
+     /tmp/ccc92rV8.s:234    .text.FOE_fclose:000000000000002c $d
+     /tmp/ccc92rV8.s:241    .text.FOE_fopen:0000000000000000 $t
+     /tmp/ccc92rV8.s:247    .text.FOE_fopen:0000000000000000 FOE_fopen
+     /tmp/ccc92rV8.s:436    .text.FOE_fopen:00000000000000e0 $d
+     /tmp/ccc92rV8.s:445    .text.FOE_send_ack:0000000000000000 $t
+     /tmp/ccc92rV8.s:451    .text.FOE_send_ack:0000000000000000 FOE_send_ack
+     /tmp/ccc92rV8.s:531    .text.FOE_send_ack:000000000000004c $d
+     /tmp/ccc92rV8.s:539    .text.FOE_init:0000000000000000 $t
+     /tmp/ccc92rV8.s:546    .text.FOE_init:0000000000000000 FOE_init
+     /tmp/ccc92rV8.s:586    .text.FOE_init:0000000000000024 $d
+     /tmp/ccc92rV8.s:591    .text.FOE_abort:0000000000000000 $t
+     /tmp/ccc92rV8.s:597    .text.FOE_abort:0000000000000000 FOE_abort
+     /tmp/ccc92rV8.s:677    .text.FOE_abort:0000000000000048 $d
+     /tmp/ccc92rV8.s:684    .text.FOE_error:0000000000000000 $t
+     /tmp/ccc92rV8.s:690    .text.FOE_error:0000000000000000 FOE_error
+     /tmp/ccc92rV8.s:710    .text.FOE_write:0000000000000000 $t
+     /tmp/ccc92rV8.s:716    .text.FOE_write:0000000000000000 FOE_write
+     /tmp/ccc92rV8.s:805    .text.FOE_write:0000000000000048 $d
+     /tmp/ccc92rV8.s:811    .text.FOE_data:0000000000000000 $t
+     /tmp/ccc92rV8.s:817    .text.FOE_data:0000000000000000 FOE_data
+     /tmp/ccc92rV8.s:1006   .text.FOE_data:00000000000000b4 $d
+     /tmp/ccc92rV8.s:1014   .text.FOE_config:0000000000000000 $t
+     /tmp/ccc92rV8.s:1021   .text.FOE_config:0000000000000000 FOE_config
+     /tmp/ccc92rV8.s:1038   .text.FOE_config:0000000000000008 $d
+     /tmp/ccc92rV8.s:1043   .text.ESC_foeprocess:0000000000000000 $t
+     /tmp/ccc92rV8.s:1050   .text.ESC_foeprocess:0000000000000000 ESC_foeprocess
+     /tmp/ccc92rV8.s:1176   .text.ESC_foeprocess:0000000000000084 $d
+     /tmp/ccc92rV8.s:1183   .bss.FOEvar:0000000000000000 $d
+     /tmp/ccc92rV8.s:1187   .bss.FOEvar:0000000000000000 FOEvar
+     /tmp/ccc92rV8.s:1190   .bss.foe_cfg:0000000000000000 $d
+     /tmp/ccc92rV8.s:1194   .bss.foe_cfg:0000000000000000 foe_cfg
+     /tmp/ccc92rV8.s:1197   .bss.foe_file:0000000000000000 $d
+     /tmp/ccc92rV8.s:1201   .bss.foe_file:0000000000000000 foe_file
+     /tmp/ccc92rV8.s:1204   .bss.foe_file_name:0000000000000000 $d
+     /tmp/ccc92rV8.s:1208   .bss.foe_file_name:0000000000000000 foe_file_name
 
 UNDEFINED SYMBOLS
 strncmp

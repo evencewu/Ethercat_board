@@ -1,30 +1,30 @@
-ARM GAS  /tmp/ccna7i2j.s 			page 1
+ARM GAS  /tmp/ccnnMKuR.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.arch armv7e-m
-   3              		.fpu fpv4-sp-d16
-   4              		.eabi_attribute 27, 1
-   5              		.eabi_attribute 28, 1
-   6              		.eabi_attribute 20, 1
-   7              		.eabi_attribute 21, 1
-   8              		.eabi_attribute 23, 3
-   9              		.eabi_attribute 24, 1
-  10              		.eabi_attribute 25, 1
-  11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
-  13              		.eabi_attribute 34, 1
-  14              		.eabi_attribute 18, 4
-  15              		.file	"stm32f4xx_rng.c"
-  16              		.text
-  17              	.Ltext0:
-  18              		.cfi_sections	.debug_frame
-  19              		.section	.text.RNG_DeInit,"ax",%progbits
-  20              		.align	1
-  21              		.global	RNG_DeInit
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4xx_rng.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.RNG_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	RNG_DeInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
   26              	RNG_DeInit:
   27              	.LFB123:
   28              		.file 1 "Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****    (#) Get the 32 bit Random number using RNG_GetRandomNumber() function
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****             
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****    (#) To get another 32 bit Random number, go to step 3.       
-ARM GAS  /tmp/ccna7i2j.s 			page 2
+ARM GAS  /tmp/ccnnMKuR.s 			page 2
 
 
   31:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****          
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****  ===============================================================================  
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****  [..] This section provides functions allowing to 
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****    (+) Initialize the RNG peripheral
-ARM GAS  /tmp/ccna7i2j.s 			page 3
+ARM GAS  /tmp/ccnnMKuR.s 			page 3
 
 
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****    (+) Enable or disable the RNG peripheral
@@ -177,12 +177,13 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
   55              		.syntax unified
   56              		.thumb
   57              		.thumb_func
-  59              	RNG_Cmd:
-ARM GAS  /tmp/ccna7i2j.s 			page 4
+  58              		.fpu fpv4-sp-d16
+ARM GAS  /tmp/ccnnMKuR.s 			page 4
 
 
-  60              	.LVL2:
-  61              	.LFB124:
+  60              	RNG_Cmd:
+  61              	.LVL2:
+  62              	.LFB124:
  116:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  117:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** /**
  118:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   * @brief  Enables or disables the RNG peripheral.
@@ -192,62 +193,63 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
  122:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   */
  123:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** void RNG_Cmd(FunctionalState NewState)
  124:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** {
-  62              		.loc 1 124 1 is_stmt 1 view -0
-  63              		.cfi_startproc
-  64              		@ args = 0, pretend = 0, frame = 0
-  65              		@ frame_needed = 0, uses_anonymous_args = 0
-  66              		@ link register save eliminated.
+  63              		.loc 1 124 1 is_stmt 1 view -0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
  125:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Check the parameters */
  126:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
-  67              		.loc 1 126 3 view .LVU5
+  68              		.loc 1 126 3 view .LVU5
  127:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  128:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   if (NewState != DISABLE)
-  68              		.loc 1 128 3 view .LVU6
-  69              		.loc 1 128 6 is_stmt 0 view .LVU7
-  70 0000 28B1     		cbz	r0, .L4
+  69              		.loc 1 128 3 view .LVU6
+  70              		.loc 1 128 6 is_stmt 0 view .LVU7
+  71 0000 28B1     		cbz	r0, .L4
  129:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   {
  130:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     /* Enable the RNG */
  131:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     RNG->CR |= RNG_CR_RNGEN;
-  71              		.loc 1 131 5 is_stmt 1 view .LVU8
-  72              		.loc 1 131 13 is_stmt 0 view .LVU9
-  73 0002 064A     		ldr	r2, .L6
-  74 0004 1368     		ldr	r3, [r2]
-  75 0006 43F00403 		orr	r3, r3, #4
-  76 000a 1360     		str	r3, [r2]
-  77 000c 7047     		bx	lr
-  78              	.L4:
+  72              		.loc 1 131 5 is_stmt 1 view .LVU8
+  73              		.loc 1 131 13 is_stmt 0 view .LVU9
+  74 0002 064A     		ldr	r2, .L6
+  75 0004 1368     		ldr	r3, [r2]
+  76 0006 43F00403 		orr	r3, r3, #4
+  77 000a 1360     		str	r3, [r2]
+  78 000c 7047     		bx	lr
+  79              	.L4:
  132:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   }
  133:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   else
  134:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   {
  135:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     /* Disable the RNG */
  136:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     RNG->CR &= ~RNG_CR_RNGEN;
-  79              		.loc 1 136 5 is_stmt 1 view .LVU10
-  80              		.loc 1 136 13 is_stmt 0 view .LVU11
-  81 000e 034A     		ldr	r2, .L6
-  82 0010 1368     		ldr	r3, [r2]
-  83 0012 23F00403 		bic	r3, r3, #4
-  84 0016 1360     		str	r3, [r2]
+  80              		.loc 1 136 5 is_stmt 1 view .LVU10
+  81              		.loc 1 136 13 is_stmt 0 view .LVU11
+  82 000e 034A     		ldr	r2, .L6
+  83 0010 1368     		ldr	r3, [r2]
+  84 0012 23F00403 		bic	r3, r3, #4
+  85 0016 1360     		str	r3, [r2]
  137:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   }
  138:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** }
-  85              		.loc 1 138 1 view .LVU12
-  86 0018 7047     		bx	lr
-  87              	.L7:
-  88 001a 00BF     		.align	2
-  89              	.L6:
-  90 001c 00080650 		.word	1342572544
-  91              		.cfi_endproc
-  92              	.LFE124:
-  94              		.section	.text.RNG_GetRandomNumber,"ax",%progbits
-ARM GAS  /tmp/ccna7i2j.s 			page 5
+  86              		.loc 1 138 1 view .LVU12
+  87 0018 7047     		bx	lr
+  88              	.L7:
+  89 001a 00BF     		.align	2
+  90              	.L6:
+  91 001c 00080650 		.word	1342572544
+  92              		.cfi_endproc
+  93              	.LFE124:
+ARM GAS  /tmp/ccnnMKuR.s 			page 5
 
 
-  95              		.align	1
-  96              		.global	RNG_GetRandomNumber
-  97              		.syntax unified
-  98              		.thumb
-  99              		.thumb_func
- 101              	RNG_GetRandomNumber:
- 102              	.LFB125:
+  95              		.section	.text.RNG_GetRandomNumber,"ax",%progbits
+  96              		.align	1
+  97              		.global	RNG_GetRandomNumber
+  98              		.syntax unified
+  99              		.thumb
+ 100              		.thumb_func
+ 101              		.fpu fpv4-sp-d16
+ 103              	RNG_GetRandomNumber:
+ 104              	.LFB125:
  139:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** /**
  140:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   * @}
  141:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   */
@@ -296,38 +298,39 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
  184:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   */
  185:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** uint32_t RNG_GetRandomNumber(void)
  186:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** {
- 103              		.loc 1 186 1 is_stmt 1 view -0
- 104              		.cfi_startproc
-ARM GAS  /tmp/ccna7i2j.s 			page 6
+ARM GAS  /tmp/ccnnMKuR.s 			page 6
 
 
- 105              		@ args = 0, pretend = 0, frame = 0
- 106              		@ frame_needed = 0, uses_anonymous_args = 0
- 107              		@ link register save eliminated.
+ 105              		.loc 1 186 1 is_stmt 1 view -0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
  187:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Return the 32 bit random number from the DR register */
  188:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   return RNG->DR;
- 108              		.loc 1 188 3 view .LVU14
- 109              		.loc 1 188 13 is_stmt 0 view .LVU15
- 110 0000 014B     		ldr	r3, .L9
- 111 0002 9868     		ldr	r0, [r3, #8]
+ 110              		.loc 1 188 3 view .LVU14
+ 111              		.loc 1 188 13 is_stmt 0 view .LVU15
+ 112 0000 014B     		ldr	r3, .L9
+ 113 0002 9868     		ldr	r0, [r3, #8]
  189:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** }
- 112              		.loc 1 189 1 view .LVU16
- 113 0004 7047     		bx	lr
- 114              	.L10:
- 115 0006 00BF     		.align	2
- 116              	.L9:
- 117 0008 00080650 		.word	1342572544
- 118              		.cfi_endproc
- 119              	.LFE125:
- 121              		.section	.text.RNG_ITConfig,"ax",%progbits
- 122              		.align	1
- 123              		.global	RNG_ITConfig
- 124              		.syntax unified
- 125              		.thumb
- 126              		.thumb_func
- 128              	RNG_ITConfig:
- 129              	.LVL3:
- 130              	.LFB126:
+ 114              		.loc 1 189 1 view .LVU16
+ 115 0004 7047     		bx	lr
+ 116              	.L10:
+ 117 0006 00BF     		.align	2
+ 118              	.L9:
+ 119 0008 00080650 		.word	1342572544
+ 120              		.cfi_endproc
+ 121              	.LFE125:
+ 123              		.section	.text.RNG_ITConfig,"ax",%progbits
+ 124              		.align	1
+ 125              		.global	RNG_ITConfig
+ 126              		.syntax unified
+ 127              		.thumb
+ 128              		.thumb_func
+ 129              		.fpu fpv4-sp-d16
+ 131              	RNG_ITConfig:
+ 132              	.LVL3:
+ 133              	.LFB126:
  190:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  191:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  192:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** /**
@@ -355,12 +358,12 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
  214:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****         RNG_GetRandomNumber() function).
  215:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  216:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     (#) RNG_FLAG_CECS : In the case of a seed error detection. 
+ARM GAS  /tmp/ccnnMKuR.s 			page 7
+
+
  217:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****       
  218:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     (#) RNG_FLAG_SECS : In the case of a clock error detection.
  219:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****               
-ARM GAS  /tmp/ccna7i2j.s 			page 7
-
-
  220:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****  *** Interrupts ***
  221:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****  ==================
  222:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****  [..] If enabled, an RNG interrupt is pending :
@@ -415,72 +418,73 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
  271:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   *         (see RNG_ClearITPendingBit() function).
  272:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   * @param  NewState: new state of the RNG interrupt.
  273:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   *          This parameter can be: ENABLE or DISABLE.
+ARM GAS  /tmp/ccnnMKuR.s 			page 8
+
+
  274:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   * @retval None
  275:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   */
  276:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** void RNG_ITConfig(FunctionalState NewState)
-ARM GAS  /tmp/ccna7i2j.s 			page 8
-
-
  277:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** {
- 131              		.loc 1 277 1 is_stmt 1 view -0
- 132              		.cfi_startproc
- 133              		@ args = 0, pretend = 0, frame = 0
- 134              		@ frame_needed = 0, uses_anonymous_args = 0
- 135              		@ link register save eliminated.
+ 134              		.loc 1 277 1 is_stmt 1 view -0
+ 135              		.cfi_startproc
+ 136              		@ args = 0, pretend = 0, frame = 0
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138              		@ link register save eliminated.
  278:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Check the parameters */
  279:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 136              		.loc 1 279 3 view .LVU18
+ 139              		.loc 1 279 3 view .LVU18
  280:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  281:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   if (NewState != DISABLE)
- 137              		.loc 1 281 3 view .LVU19
- 138              		.loc 1 281 6 is_stmt 0 view .LVU20
- 139 0000 28B1     		cbz	r0, .L12
+ 140              		.loc 1 281 3 view .LVU19
+ 141              		.loc 1 281 6 is_stmt 0 view .LVU20
+ 142 0000 28B1     		cbz	r0, .L12
  282:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   {
  283:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     /* Enable the RNG interrupt */
  284:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     RNG->CR |= RNG_CR_IE;
- 140              		.loc 1 284 5 is_stmt 1 view .LVU21
- 141              		.loc 1 284 13 is_stmt 0 view .LVU22
- 142 0002 064A     		ldr	r2, .L14
- 143 0004 1368     		ldr	r3, [r2]
- 144 0006 43F00803 		orr	r3, r3, #8
- 145 000a 1360     		str	r3, [r2]
- 146 000c 7047     		bx	lr
- 147              	.L12:
+ 143              		.loc 1 284 5 is_stmt 1 view .LVU21
+ 144              		.loc 1 284 13 is_stmt 0 view .LVU22
+ 145 0002 064A     		ldr	r2, .L14
+ 146 0004 1368     		ldr	r3, [r2]
+ 147 0006 43F00803 		orr	r3, r3, #8
+ 148 000a 1360     		str	r3, [r2]
+ 149 000c 7047     		bx	lr
+ 150              	.L12:
  285:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   }
  286:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   else
  287:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   {
  288:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     /* Disable the RNG interrupt */
  289:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     RNG->CR &= ~RNG_CR_IE;
- 148              		.loc 1 289 5 is_stmt 1 view .LVU23
- 149              		.loc 1 289 13 is_stmt 0 view .LVU24
- 150 000e 034A     		ldr	r2, .L14
- 151 0010 1368     		ldr	r3, [r2]
- 152 0012 23F00803 		bic	r3, r3, #8
- 153 0016 1360     		str	r3, [r2]
+ 151              		.loc 1 289 5 is_stmt 1 view .LVU23
+ 152              		.loc 1 289 13 is_stmt 0 view .LVU24
+ 153 000e 034A     		ldr	r2, .L14
+ 154 0010 1368     		ldr	r3, [r2]
+ 155 0012 23F00803 		bic	r3, r3, #8
+ 156 0016 1360     		str	r3, [r2]
  290:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   }
  291:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** }
- 154              		.loc 1 291 1 view .LVU25
- 155 0018 7047     		bx	lr
- 156              	.L15:
- 157 001a 00BF     		.align	2
- 158              	.L14:
- 159 001c 00080650 		.word	1342572544
- 160              		.cfi_endproc
- 161              	.LFE126:
- 163              		.section	.text.RNG_GetFlagStatus,"ax",%progbits
- 164              		.align	1
- 165              		.global	RNG_GetFlagStatus
- 166              		.syntax unified
- 167              		.thumb
- 168              		.thumb_func
- 170              	RNG_GetFlagStatus:
- 171              	.LVL4:
- 172              	.LFB127:
+ 157              		.loc 1 291 1 view .LVU25
+ 158 0018 7047     		bx	lr
+ 159              	.L15:
+ 160 001a 00BF     		.align	2
+ 161              	.L14:
+ 162 001c 00080650 		.word	1342572544
+ 163              		.cfi_endproc
+ 164              	.LFE126:
+ 166              		.section	.text.RNG_GetFlagStatus,"ax",%progbits
+ 167              		.align	1
+ 168              		.global	RNG_GetFlagStatus
+ 169              		.syntax unified
+ 170              		.thumb
+ 171              		.thumb_func
+ 172              		.fpu fpv4-sp-d16
+ 174              	RNG_GetFlagStatus:
+ARM GAS  /tmp/ccnnMKuR.s 			page 9
+
+
+ 175              	.LVL4:
+ 176              	.LFB127:
  292:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  293:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** /**
-ARM GAS  /tmp/ccna7i2j.s 			page 9
-
-
  294:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   * @brief  Checks whether the specified RNG flag is set or not.
  295:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   * @param  RNG_FLAG: specifies the RNG flag to check.
  296:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   *          This parameter can be one of the following values:
@@ -491,69 +495,70 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
  301:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   */
  302:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** FlagStatus RNG_GetFlagStatus(uint8_t RNG_FLAG)
  303:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** {
- 173              		.loc 1 303 1 is_stmt 1 view -0
- 174              		.cfi_startproc
- 175              		@ args = 0, pretend = 0, frame = 0
- 176              		@ frame_needed = 0, uses_anonymous_args = 0
- 177              		@ link register save eliminated.
+ 177              		.loc 1 303 1 is_stmt 1 view -0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
  304:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   FlagStatus bitstatus = RESET;
- 178              		.loc 1 304 3 view .LVU27
+ 182              		.loc 1 304 3 view .LVU27
  305:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Check the parameters */
  306:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   assert_param(IS_RNG_GET_FLAG(RNG_FLAG));
- 179              		.loc 1 306 3 view .LVU28
+ 183              		.loc 1 306 3 view .LVU28
  307:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  308:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Check the status of the specified RNG flag */
  309:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   if ((RNG->SR & RNG_FLAG) != (uint8_t)RESET)
- 180              		.loc 1 309 3 view .LVU29
- 181              		.loc 1 309 11 is_stmt 0 view .LVU30
- 182 0000 034B     		ldr	r3, .L19
- 183 0002 5B68     		ldr	r3, [r3, #4]
- 184              		.loc 1 309 6 view .LVU31
- 185 0004 1842     		tst	r0, r3
- 186 0006 01D0     		beq	.L18
+ 184              		.loc 1 309 3 view .LVU29
+ 185              		.loc 1 309 11 is_stmt 0 view .LVU30
+ 186 0000 034B     		ldr	r3, .L19
+ 187 0002 5B68     		ldr	r3, [r3, #4]
+ 188              		.loc 1 309 6 view .LVU31
+ 189 0004 1842     		tst	r0, r3
+ 190 0006 01D0     		beq	.L18
  310:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   {
  311:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     /* RNG_FLAG is set */
  312:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     bitstatus = SET;
- 187              		.loc 1 312 15 view .LVU32
- 188 0008 0120     		movs	r0, #1
- 189              	.LVL5:
- 190              		.loc 1 312 15 view .LVU33
- 191 000a 7047     		bx	lr
- 192              	.LVL6:
- 193              	.L18:
+ 191              		.loc 1 312 15 view .LVU32
+ 192 0008 0120     		movs	r0, #1
+ 193              	.LVL5:
+ 194              		.loc 1 312 15 view .LVU33
+ 195 000a 7047     		bx	lr
+ 196              	.LVL6:
+ 197              	.L18:
  313:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   }
  314:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   else
  315:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   {
  316:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     /* RNG_FLAG is reset */
  317:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     bitstatus = RESET;
- 194              		.loc 1 317 15 view .LVU34
- 195 000c 0020     		movs	r0, #0
- 196              	.LVL7:
+ 198              		.loc 1 317 15 view .LVU34
+ 199 000c 0020     		movs	r0, #0
+ 200              	.LVL7:
  318:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   }
  319:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Return the RNG_FLAG status */
  320:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   return  bitstatus;
- 197              		.loc 1 320 3 is_stmt 1 view .LVU35
+ 201              		.loc 1 320 3 is_stmt 1 view .LVU35
  321:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** }
- 198              		.loc 1 321 1 is_stmt 0 view .LVU36
- 199 000e 7047     		bx	lr
- 200              	.L20:
- 201              		.align	2
-ARM GAS  /tmp/ccna7i2j.s 			page 10
+ARM GAS  /tmp/ccnnMKuR.s 			page 10
 
 
- 202              	.L19:
- 203 0010 00080650 		.word	1342572544
- 204              		.cfi_endproc
- 205              	.LFE127:
- 207              		.section	.text.RNG_ClearFlag,"ax",%progbits
- 208              		.align	1
- 209              		.global	RNG_ClearFlag
- 210              		.syntax unified
- 211              		.thumb
- 212              		.thumb_func
- 214              	RNG_ClearFlag:
- 215              	.LVL8:
- 216              	.LFB128:
+ 202              		.loc 1 321 1 is_stmt 0 view .LVU36
+ 203 000e 7047     		bx	lr
+ 204              	.L20:
+ 205              		.align	2
+ 206              	.L19:
+ 207 0010 00080650 		.word	1342572544
+ 208              		.cfi_endproc
+ 209              	.LFE127:
+ 211              		.section	.text.RNG_ClearFlag,"ax",%progbits
+ 212              		.align	1
+ 213              		.global	RNG_ClearFlag
+ 214              		.syntax unified
+ 215              		.thumb
+ 216              		.thumb_func
+ 217              		.fpu fpv4-sp-d16
+ 219              	RNG_ClearFlag:
+ 220              	.LVL8:
+ 221              	.LFB128:
  322:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  323:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  324:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** /**
@@ -569,44 +574,45 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
  334:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   */
  335:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** void RNG_ClearFlag(uint8_t RNG_FLAG)
  336:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** {
- 217              		.loc 1 336 1 is_stmt 1 view -0
- 218              		.cfi_startproc
- 219              		@ args = 0, pretend = 0, frame = 0
- 220              		@ frame_needed = 0, uses_anonymous_args = 0
- 221              		@ link register save eliminated.
+ 222              		.loc 1 336 1 is_stmt 1 view -0
+ 223              		.cfi_startproc
+ 224              		@ args = 0, pretend = 0, frame = 0
+ 225              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226              		@ link register save eliminated.
  337:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Check the parameters */
  338:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   assert_param(IS_RNG_CLEAR_FLAG(RNG_FLAG));
- 222              		.loc 1 338 3 view .LVU38
+ 227              		.loc 1 338 3 view .LVU38
  339:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Clear the selected RNG flags */
  340:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   RNG->SR = ~(uint32_t)(((uint32_t)RNG_FLAG) << 4);
- 223              		.loc 1 340 3 view .LVU39
- 224              		.loc 1 340 13 is_stmt 0 view .LVU40
- 225 0000 6FEA0010 		mvn	r0, r0, lsl #4
- 226              	.LVL9:
- 227              		.loc 1 340 11 view .LVU41
- 228 0004 014B     		ldr	r3, .L22
- 229 0006 5860     		str	r0, [r3, #4]
+ 228              		.loc 1 340 3 view .LVU39
+ 229              		.loc 1 340 13 is_stmt 0 view .LVU40
+ 230 0000 6FEA0010 		mvn	r0, r0, lsl #4
+ 231              	.LVL9:
+ 232              		.loc 1 340 11 view .LVU41
+ 233 0004 014B     		ldr	r3, .L22
+ 234 0006 5860     		str	r0, [r3, #4]
  341:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** }
- 230              		.loc 1 341 1 view .LVU42
- 231 0008 7047     		bx	lr
- 232              	.L23:
- 233 000a 00BF     		.align	2
- 234              	.L22:
- 235 000c 00080650 		.word	1342572544
- 236              		.cfi_endproc
- 237              	.LFE128:
- 239              		.section	.text.RNG_GetITStatus,"ax",%progbits
- 240              		.align	1
- 241              		.global	RNG_GetITStatus
-ARM GAS  /tmp/ccna7i2j.s 			page 11
+ 235              		.loc 1 341 1 view .LVU42
+ 236 0008 7047     		bx	lr
+ 237              	.L23:
+ 238 000a 00BF     		.align	2
+ 239              	.L22:
+ 240 000c 00080650 		.word	1342572544
+ARM GAS  /tmp/ccnnMKuR.s 			page 11
 
 
- 242              		.syntax unified
- 243              		.thumb
- 244              		.thumb_func
- 246              	RNG_GetITStatus:
- 247              	.LVL10:
- 248              	.LFB129:
+ 241              		.cfi_endproc
+ 242              	.LFE128:
+ 244              		.section	.text.RNG_GetITStatus,"ax",%progbits
+ 245              		.align	1
+ 246              		.global	RNG_GetITStatus
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 250              		.fpu fpv4-sp-d16
+ 252              	RNG_GetITStatus:
+ 253              	.LVL10:
+ 254              	.LFB129:
  342:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  343:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** /**
  344:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   * @brief  Checks whether the specified RNG interrupt has occurred or not.
@@ -618,69 +624,70 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
  350:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   */
  351:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** ITStatus RNG_GetITStatus(uint8_t RNG_IT)
  352:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** {
- 249              		.loc 1 352 1 is_stmt 1 view -0
- 250              		.cfi_startproc
- 251              		@ args = 0, pretend = 0, frame = 0
- 252              		@ frame_needed = 0, uses_anonymous_args = 0
- 253              		@ link register save eliminated.
+ 255              		.loc 1 352 1 is_stmt 1 view -0
+ 256              		.cfi_startproc
+ 257              		@ args = 0, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259              		@ link register save eliminated.
  353:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   ITStatus bitstatus = RESET;
- 254              		.loc 1 353 3 view .LVU44
+ 260              		.loc 1 353 3 view .LVU44
  354:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Check the parameters */
  355:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   assert_param(IS_RNG_GET_IT(RNG_IT));
- 255              		.loc 1 355 3 view .LVU45
+ 261              		.loc 1 355 3 view .LVU45
  356:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  357:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Check the status of the specified RNG interrupt */
  358:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   if ((RNG->SR & RNG_IT) != (uint8_t)RESET)
- 256              		.loc 1 358 3 view .LVU46
- 257              		.loc 1 358 11 is_stmt 0 view .LVU47
- 258 0000 034B     		ldr	r3, .L27
- 259 0002 5B68     		ldr	r3, [r3, #4]
- 260              		.loc 1 358 6 view .LVU48
- 261 0004 1842     		tst	r0, r3
- 262 0006 01D0     		beq	.L26
+ 262              		.loc 1 358 3 view .LVU46
+ 263              		.loc 1 358 11 is_stmt 0 view .LVU47
+ 264 0000 034B     		ldr	r3, .L27
+ 265 0002 5B68     		ldr	r3, [r3, #4]
+ 266              		.loc 1 358 6 view .LVU48
+ 267 0004 1842     		tst	r0, r3
+ 268 0006 01D0     		beq	.L26
  359:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   {
  360:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     /* RNG_IT is set */
  361:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     bitstatus = SET;
- 263              		.loc 1 361 15 view .LVU49
- 264 0008 0120     		movs	r0, #1
- 265              	.LVL11:
- 266              		.loc 1 361 15 view .LVU50
- 267 000a 7047     		bx	lr
- 268              	.LVL12:
- 269              	.L26:
+ 269              		.loc 1 361 15 view .LVU49
+ 270 0008 0120     		movs	r0, #1
+ 271              	.LVL11:
+ 272              		.loc 1 361 15 view .LVU50
+ 273 000a 7047     		bx	lr
+ 274              	.LVL12:
+ 275              	.L26:
  362:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   }
  363:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   else
  364:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   {
  365:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     /* RNG_IT is reset */
+ARM GAS  /tmp/ccnnMKuR.s 			page 12
+
+
  366:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****     bitstatus = RESET;
- 270              		.loc 1 366 15 view .LVU51
- 271 000c 0020     		movs	r0, #0
- 272              	.LVL13:
+ 276              		.loc 1 366 15 view .LVU51
+ 277 000c 0020     		movs	r0, #0
+ 278              	.LVL13:
  367:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   }
  368:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Return the RNG_IT status */
-ARM GAS  /tmp/ccna7i2j.s 			page 12
-
-
  369:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   return bitstatus;
- 273              		.loc 1 369 3 is_stmt 1 view .LVU52
+ 279              		.loc 1 369 3 is_stmt 1 view .LVU52
  370:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** }
- 274              		.loc 1 370 1 is_stmt 0 view .LVU53
- 275 000e 7047     		bx	lr
- 276              	.L28:
- 277              		.align	2
- 278              	.L27:
- 279 0010 00080650 		.word	1342572544
- 280              		.cfi_endproc
- 281              	.LFE129:
- 283              		.section	.text.RNG_ClearITPendingBit,"ax",%progbits
- 284              		.align	1
- 285              		.global	RNG_ClearITPendingBit
- 286              		.syntax unified
- 287              		.thumb
- 288              		.thumb_func
- 290              	RNG_ClearITPendingBit:
- 291              	.LVL14:
- 292              	.LFB130:
+ 280              		.loc 1 370 1 is_stmt 0 view .LVU53
+ 281 000e 7047     		bx	lr
+ 282              	.L28:
+ 283              		.align	2
+ 284              	.L27:
+ 285 0010 00080650 		.word	1342572544
+ 286              		.cfi_endproc
+ 287              	.LFE129:
+ 289              		.section	.text.RNG_ClearITPendingBit,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	RNG_ClearITPendingBit
+ 292              		.syntax unified
+ 293              		.thumb
+ 294              		.thumb_func
+ 295              		.fpu fpv4-sp-d16
+ 297              	RNG_ClearITPendingBit:
+ 298              	.LVL14:
+ 299              	.LFB130:
  371:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  372:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  373:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** /**
@@ -693,72 +700,71 @@ ARM GAS  /tmp/ccna7i2j.s 			page 1
  380:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   */
  381:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** void RNG_ClearITPendingBit(uint8_t RNG_IT)
  382:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** {
- 293              		.loc 1 382 1 is_stmt 1 view -0
- 294              		.cfi_startproc
- 295              		@ args = 0, pretend = 0, frame = 0
- 296              		@ frame_needed = 0, uses_anonymous_args = 0
- 297              		@ link register save eliminated.
+ 300              		.loc 1 382 1 is_stmt 1 view -0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304              		@ link register save eliminated.
  383:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Check the parameters */
  384:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   assert_param(IS_RNG_IT(RNG_IT));
- 298              		.loc 1 384 3 view .LVU55
+ 305              		.loc 1 384 3 view .LVU55
  385:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** 
  386:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   /* Clear the selected RNG interrupt pending bit */
  387:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c ****   RNG->SR = (uint8_t)~RNG_IT;
- 299              		.loc 1 387 3 view .LVU56
- 300              		.loc 1 387 13 is_stmt 0 view .LVU57
- 301 0000 C043     		mvns	r0, r0
- 302              	.LVL15:
- 303              		.loc 1 387 13 view .LVU58
- 304 0002 C0B2     		uxtb	r0, r0
- 305              		.loc 1 387 11 view .LVU59
- 306 0004 014B     		ldr	r3, .L30
- 307 0006 5860     		str	r0, [r3, #4]
+ 306              		.loc 1 387 3 view .LVU56
+ 307              		.loc 1 387 13 is_stmt 0 view .LVU57
+ 308 0000 C043     		mvns	r0, r0
+ 309              	.LVL15:
+ 310              		.loc 1 387 13 view .LVU58
+ 311 0002 C0B2     		uxtb	r0, r0
+ 312              		.loc 1 387 11 view .LVU59
+ARM GAS  /tmp/ccnnMKuR.s 			page 13
+
+
+ 313 0004 014B     		ldr	r3, .L30
+ 314 0006 5860     		str	r0, [r3, #4]
  388:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c **** }
- 308              		.loc 1 388 1 view .LVU60
- 309 0008 7047     		bx	lr
- 310              	.L31:
- 311 000a 00BF     		.align	2
-ARM GAS  /tmp/ccna7i2j.s 			page 13
-
-
- 312              	.L30:
- 313 000c 00080650 		.word	1342572544
- 314              		.cfi_endproc
- 315              	.LFE130:
- 317              		.text
- 318              	.Letext0:
- 319              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 320              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 321              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 322              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
-ARM GAS  /tmp/ccna7i2j.s 			page 14
+ 315              		.loc 1 388 1 view .LVU60
+ 316 0008 7047     		bx	lr
+ 317              	.L31:
+ 318 000a 00BF     		.align	2
+ 319              	.L30:
+ 320 000c 00080650 		.word	1342572544
+ 321              		.cfi_endproc
+ 322              	.LFE130:
+ 324              		.text
+ 325              	.Letext0:
+ 326              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 327              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 328              		.file 4 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ARM GAS  /tmp/ccnnMKuR.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_rng.c
-     /tmp/ccna7i2j.s:20     .text.RNG_DeInit:0000000000000000 $t
-     /tmp/ccna7i2j.s:26     .text.RNG_DeInit:0000000000000000 RNG_DeInit
-     /tmp/ccna7i2j.s:53     .text.RNG_Cmd:0000000000000000 $t
-     /tmp/ccna7i2j.s:59     .text.RNG_Cmd:0000000000000000 RNG_Cmd
-     /tmp/ccna7i2j.s:90     .text.RNG_Cmd:000000000000001c $d
-     /tmp/ccna7i2j.s:95     .text.RNG_GetRandomNumber:0000000000000000 $t
-     /tmp/ccna7i2j.s:101    .text.RNG_GetRandomNumber:0000000000000000 RNG_GetRandomNumber
-     /tmp/ccna7i2j.s:117    .text.RNG_GetRandomNumber:0000000000000008 $d
-     /tmp/ccna7i2j.s:122    .text.RNG_ITConfig:0000000000000000 $t
-     /tmp/ccna7i2j.s:128    .text.RNG_ITConfig:0000000000000000 RNG_ITConfig
-     /tmp/ccna7i2j.s:159    .text.RNG_ITConfig:000000000000001c $d
-     /tmp/ccna7i2j.s:164    .text.RNG_GetFlagStatus:0000000000000000 $t
-     /tmp/ccna7i2j.s:170    .text.RNG_GetFlagStatus:0000000000000000 RNG_GetFlagStatus
-     /tmp/ccna7i2j.s:203    .text.RNG_GetFlagStatus:0000000000000010 $d
-     /tmp/ccna7i2j.s:208    .text.RNG_ClearFlag:0000000000000000 $t
-     /tmp/ccna7i2j.s:214    .text.RNG_ClearFlag:0000000000000000 RNG_ClearFlag
-     /tmp/ccna7i2j.s:235    .text.RNG_ClearFlag:000000000000000c $d
-     /tmp/ccna7i2j.s:240    .text.RNG_GetITStatus:0000000000000000 $t
-     /tmp/ccna7i2j.s:246    .text.RNG_GetITStatus:0000000000000000 RNG_GetITStatus
-     /tmp/ccna7i2j.s:279    .text.RNG_GetITStatus:0000000000000010 $d
-     /tmp/ccna7i2j.s:284    .text.RNG_ClearITPendingBit:0000000000000000 $t
-     /tmp/ccna7i2j.s:290    .text.RNG_ClearITPendingBit:0000000000000000 RNG_ClearITPendingBit
-     /tmp/ccna7i2j.s:313    .text.RNG_ClearITPendingBit:000000000000000c $d
+     /tmp/ccnnMKuR.s:18     .text.RNG_DeInit:0000000000000000 $t
+     /tmp/ccnnMKuR.s:26     .text.RNG_DeInit:0000000000000000 RNG_DeInit
+     /tmp/ccnnMKuR.s:53     .text.RNG_Cmd:0000000000000000 $t
+     /tmp/ccnnMKuR.s:60     .text.RNG_Cmd:0000000000000000 RNG_Cmd
+     /tmp/ccnnMKuR.s:91     .text.RNG_Cmd:000000000000001c $d
+     /tmp/ccnnMKuR.s:96     .text.RNG_GetRandomNumber:0000000000000000 $t
+     /tmp/ccnnMKuR.s:103    .text.RNG_GetRandomNumber:0000000000000000 RNG_GetRandomNumber
+     /tmp/ccnnMKuR.s:119    .text.RNG_GetRandomNumber:0000000000000008 $d
+     /tmp/ccnnMKuR.s:124    .text.RNG_ITConfig:0000000000000000 $t
+     /tmp/ccnnMKuR.s:131    .text.RNG_ITConfig:0000000000000000 RNG_ITConfig
+     /tmp/ccnnMKuR.s:162    .text.RNG_ITConfig:000000000000001c $d
+     /tmp/ccnnMKuR.s:167    .text.RNG_GetFlagStatus:0000000000000000 $t
+     /tmp/ccnnMKuR.s:174    .text.RNG_GetFlagStatus:0000000000000000 RNG_GetFlagStatus
+     /tmp/ccnnMKuR.s:207    .text.RNG_GetFlagStatus:0000000000000010 $d
+     /tmp/ccnnMKuR.s:212    .text.RNG_ClearFlag:0000000000000000 $t
+     /tmp/ccnnMKuR.s:219    .text.RNG_ClearFlag:0000000000000000 RNG_ClearFlag
+     /tmp/ccnnMKuR.s:240    .text.RNG_ClearFlag:000000000000000c $d
+     /tmp/ccnnMKuR.s:245    .text.RNG_GetITStatus:0000000000000000 $t
+     /tmp/ccnnMKuR.s:252    .text.RNG_GetITStatus:0000000000000000 RNG_GetITStatus
+     /tmp/ccnnMKuR.s:285    .text.RNG_GetITStatus:0000000000000010 $d
+     /tmp/ccnnMKuR.s:290    .text.RNG_ClearITPendingBit:0000000000000000 $t
+     /tmp/ccnnMKuR.s:297    .text.RNG_ClearITPendingBit:0000000000000000 RNG_ClearITPendingBit
+     /tmp/ccnnMKuR.s:320    .text.RNG_ClearITPendingBit:000000000000000c $d
 
 UNDEFINED SYMBOLS
 RCC_AHB2PeriphResetCmd

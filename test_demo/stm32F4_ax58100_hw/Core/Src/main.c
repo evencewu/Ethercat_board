@@ -14,7 +14,6 @@ int main(void)
   	SysTick_Config(SystemCoreClock / 1000);
 	delay_init(); 
     ecatapp_init();
-    
 
 	while (1)
 	{

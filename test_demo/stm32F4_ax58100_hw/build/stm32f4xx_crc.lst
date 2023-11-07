@@ -1,30 +1,30 @@
-ARM GAS  /tmp/ccqZEVa1.s 			page 1
+ARM GAS  /tmp/ccrEtUgi.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.arch armv7e-m
-   3              		.fpu fpv4-sp-d16
-   4              		.eabi_attribute 27, 1
-   5              		.eabi_attribute 28, 1
-   6              		.eabi_attribute 20, 1
-   7              		.eabi_attribute 21, 1
-   8              		.eabi_attribute 23, 3
-   9              		.eabi_attribute 24, 1
-  10              		.eabi_attribute 25, 1
-  11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
-  13              		.eabi_attribute 34, 1
-  14              		.eabi_attribute 18, 4
-  15              		.file	"stm32f4xx_crc.c"
-  16              		.text
-  17              	.Ltext0:
-  18              		.cfi_sections	.debug_frame
-  19              		.section	.text.CRC_ResetDR,"ax",%progbits
-  20              		.align	1
-  21              		.global	CRC_ResetDR
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4xx_crc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.CRC_ResetDR,"ax",%progbits
+  18              		.align	1
+  19              		.global	CRC_ResetDR
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
   26              	CRC_ResetDR:
   27              	.LFB123:
   28              		.file 1 "Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccqZEVa1.s 			page 1
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** /* Includes ------------------------------------------------------------------*/
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** #include "stm32f4xx_crc.h"
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** 
-ARM GAS  /tmp/ccqZEVa1.s 			page 2
+ARM GAS  /tmp/ccrEtUgi.s 			page 2
 
 
   31:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
@@ -115,12 +115,13 @@ ARM GAS  /tmp/ccqZEVa1.s 			page 1
   51              		.syntax unified
   52              		.thumb
   53              		.thumb_func
-  55              	CRC_CalcCRC:
-  56              	.LVL0:
-  57              	.LFB124:
-ARM GAS  /tmp/ccqZEVa1.s 			page 3
+  54              		.fpu fpv4-sp-d16
+  56              	CRC_CalcCRC:
+  57              	.LVL0:
+ARM GAS  /tmp/ccrEtUgi.s 			page 3
 
 
+  58              	.LFB124:
   61:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** 
   62:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** /**
   63:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   * @brief  Computes the 32-bit CRC of a given data word(32-bit).
@@ -129,40 +130,41 @@ ARM GAS  /tmp/ccqZEVa1.s 			page 1
   66:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   */
   67:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** uint32_t CRC_CalcCRC(uint32_t Data)
   68:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** {
-  58              		.loc 1 68 1 is_stmt 1 view -0
-  59              		.cfi_startproc
-  60              		@ args = 0, pretend = 0, frame = 0
-  61              		@ frame_needed = 0, uses_anonymous_args = 0
-  62              		@ link register save eliminated.
+  59              		.loc 1 68 1 is_stmt 1 view -0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
   69:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   CRC->DR = Data;
-  63              		.loc 1 69 3 view .LVU5
-  64              		.loc 1 69 11 is_stmt 0 view .LVU6
-  65 0000 014B     		ldr	r3, .L5
-  66 0002 1860     		str	r0, [r3]
+  64              		.loc 1 69 3 view .LVU5
+  65              		.loc 1 69 11 is_stmt 0 view .LVU6
+  66 0000 014B     		ldr	r3, .L5
+  67 0002 1860     		str	r0, [r3]
   70:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   
   71:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   return (CRC->DR);
-  67              		.loc 1 71 3 is_stmt 1 view .LVU7
-  68              		.loc 1 71 14 is_stmt 0 view .LVU8
-  69 0004 1868     		ldr	r0, [r3]
-  70              	.LVL1:
+  68              		.loc 1 71 3 is_stmt 1 view .LVU7
+  69              		.loc 1 71 14 is_stmt 0 view .LVU8
+  70 0004 1868     		ldr	r0, [r3]
+  71              	.LVL1:
   72:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
-  71              		.loc 1 72 1 view .LVU9
-  72 0006 7047     		bx	lr
-  73              	.L6:
-  74              		.align	2
-  75              	.L5:
-  76 0008 00300240 		.word	1073885184
-  77              		.cfi_endproc
-  78              	.LFE124:
-  80              		.section	.text.CRC_CalcBlockCRC,"ax",%progbits
-  81              		.align	1
-  82              		.global	CRC_CalcBlockCRC
-  83              		.syntax unified
-  84              		.thumb
-  85              		.thumb_func
-  87              	CRC_CalcBlockCRC:
-  88              	.LVL2:
-  89              	.LFB125:
+  72              		.loc 1 72 1 view .LVU9
+  73 0006 7047     		bx	lr
+  74              	.L6:
+  75              		.align	2
+  76              	.L5:
+  77 0008 00300240 		.word	1073885184
+  78              		.cfi_endproc
+  79              	.LFE124:
+  81              		.section	.text.CRC_CalcBlockCRC,"ax",%progbits
+  82              		.align	1
+  83              		.global	CRC_CalcBlockCRC
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  87              		.fpu fpv4-sp-d16
+  89              	CRC_CalcBlockCRC:
+  90              	.LVL2:
+  91              	.LFB125:
   73:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** 
   74:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** /**
   75:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   * @brief  Computes the 32-bit CRC of a given buffer of data word(32-bit).
@@ -172,97 +174,98 @@ ARM GAS  /tmp/ccqZEVa1.s 			page 1
   79:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   */
   80:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** uint32_t CRC_CalcBlockCRC(uint32_t pBuffer[], uint32_t BufferLength)
   81:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** {
-  90              		.loc 1 81 1 is_stmt 1 view -0
-  91              		.cfi_startproc
-  92              		@ args = 0, pretend = 0, frame = 0
-  93              		@ frame_needed = 0, uses_anonymous_args = 0
-  94              		@ link register save eliminated.
+  92              		.loc 1 81 1 is_stmt 1 view -0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccrEtUgi.s 			page 4
+
+
+  96              		@ link register save eliminated.
   82:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   uint32_t index = 0;
-ARM GAS  /tmp/ccqZEVa1.s 			page 4
-
-
-  95              		.loc 1 82 3 view .LVU11
+  97              		.loc 1 82 3 view .LVU11
   83:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   
   84:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   for(index = 0; index < BufferLength; index++)
-  96              		.loc 1 84 3 view .LVU12
-  97              		.loc 1 84 13 is_stmt 0 view .LVU13
-  98 0000 0023     		movs	r3, #0
-  99              	.LVL3:
- 100              		.loc 1 84 18 is_stmt 1 view .LVU14
- 101              		.loc 1 84 3 is_stmt 0 view .LVU15
- 102 0002 8B42     		cmp	r3, r1
- 103 0004 0CD2     		bcs	.L14
+  98              		.loc 1 84 3 view .LVU12
+  99              		.loc 1 84 13 is_stmt 0 view .LVU13
+ 100 0000 0023     		movs	r3, #0
+ 101              	.LVL3:
+ 102              		.loc 1 84 18 is_stmt 1 view .LVU14
+ 103              		.loc 1 84 3 is_stmt 0 view .LVU15
+ 104 0002 8B42     		cmp	r3, r1
+ 105 0004 0CD2     		bcs	.L14
   81:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   uint32_t index = 0;
- 104              		.loc 1 81 1 view .LVU16
- 105 0006 10B4     		push	{r4}
- 106              		.cfi_def_cfa_offset 4
- 107              		.cfi_offset 4, -4
- 108              	.L9:
+ 106              		.loc 1 81 1 view .LVU16
+ 107 0006 10B4     		push	{r4}
+ 108              		.cfi_def_cfa_offset 4
+ 109              		.cfi_offset 4, -4
+ 110              	.L9:
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   {
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****     CRC->DR = pBuffer[index];
- 109              		.loc 1 86 5 is_stmt 1 discriminator 3 view .LVU17
- 110              		.loc 1 86 13 is_stmt 0 discriminator 3 view .LVU18
- 111 0008 074A     		ldr	r2, .L15
- 112 000a 50F82340 		ldr	r4, [r0, r3, lsl #2]
- 113 000e 1460     		str	r4, [r2]
+ 111              		.loc 1 86 5 is_stmt 1 discriminator 3 view .LVU17
+ 112              		.loc 1 86 13 is_stmt 0 discriminator 3 view .LVU18
+ 113 0008 074A     		ldr	r2, .L15
+ 114 000a 50F82340 		ldr	r4, [r0, r3, lsl #2]
+ 115 000e 1460     		str	r4, [r2]
   84:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   {
- 114              		.loc 1 84 40 is_stmt 1 discriminator 3 view .LVU19
+ 116              		.loc 1 84 40 is_stmt 1 discriminator 3 view .LVU19
   84:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   {
- 115              		.loc 1 84 45 is_stmt 0 discriminator 3 view .LVU20
- 116 0010 0133     		adds	r3, r3, #1
- 117              	.LVL4:
+ 117              		.loc 1 84 45 is_stmt 0 discriminator 3 view .LVU20
+ 118 0010 0133     		adds	r3, r3, #1
+ 119              	.LVL4:
   84:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   {
- 118              		.loc 1 84 18 is_stmt 1 discriminator 3 view .LVU21
+ 120              		.loc 1 84 18 is_stmt 1 discriminator 3 view .LVU21
   84:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   {
- 119              		.loc 1 84 3 is_stmt 0 discriminator 3 view .LVU22
- 120 0012 8B42     		cmp	r3, r1
- 121 0014 F8D3     		bcc	.L9
+ 121              		.loc 1 84 3 is_stmt 0 discriminator 3 view .LVU22
+ 122 0012 8B42     		cmp	r3, r1
+ 123 0014 F8D3     		bcc	.L9
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   }
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   return (CRC->DR);
- 122              		.loc 1 88 3 is_stmt 1 view .LVU23
- 123              		.loc 1 88 14 is_stmt 0 view .LVU24
- 124 0016 044B     		ldr	r3, .L15
- 125              	.LVL5:
- 126              		.loc 1 88 14 view .LVU25
- 127 0018 1868     		ldr	r0, [r3]
- 128              	.LVL6:
+ 124              		.loc 1 88 3 is_stmt 1 view .LVU23
+ 125              		.loc 1 88 14 is_stmt 0 view .LVU24
+ 126 0016 044B     		ldr	r3, .L15
+ 127              	.LVL5:
+ 128              		.loc 1 88 14 view .LVU25
+ 129 0018 1868     		ldr	r0, [r3]
+ 130              	.LVL6:
   89:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
- 129              		.loc 1 89 1 view .LVU26
- 130 001a 5DF8044B 		ldr	r4, [sp], #4
- 131              		.cfi_restore 4
- 132              		.cfi_def_cfa_offset 0
- 133 001e 7047     		bx	lr
- 134              	.LVL7:
- 135              	.L14:
+ 131              		.loc 1 89 1 view .LVU26
+ 132 001a 5DF8044B 		ldr	r4, [sp], #4
+ 133              		.cfi_restore 4
+ 134              		.cfi_def_cfa_offset 0
+ 135 001e 7047     		bx	lr
+ 136              	.LVL7:
+ 137              	.L14:
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
- 136              		.loc 1 88 3 is_stmt 1 view .LVU27
-  88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
- 137              		.loc 1 88 14 is_stmt 0 view .LVU28
-ARM GAS  /tmp/ccqZEVa1.s 			page 5
+ 138              		.loc 1 88 3 is_stmt 1 view .LVU27
+ARM GAS  /tmp/ccrEtUgi.s 			page 5
 
 
- 138 0020 014B     		ldr	r3, .L15
- 139              	.LVL8:
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
- 140              		.loc 1 88 14 view .LVU29
- 141 0022 1868     		ldr	r0, [r3]
- 142              	.LVL9:
- 143              		.loc 1 89 1 view .LVU30
- 144 0024 7047     		bx	lr
- 145              	.L16:
- 146 0026 00BF     		.align	2
- 147              	.L15:
- 148 0028 00300240 		.word	1073885184
- 149              		.cfi_endproc
- 150              	.LFE125:
- 152              		.section	.text.CRC_GetCRC,"ax",%progbits
- 153              		.align	1
- 154              		.global	CRC_GetCRC
- 155              		.syntax unified
- 156              		.thumb
- 157              		.thumb_func
- 159              	CRC_GetCRC:
- 160              	.LFB126:
+ 139              		.loc 1 88 14 is_stmt 0 view .LVU28
+ 140 0020 014B     		ldr	r3, .L15
+ 141              	.LVL8:
+  88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
+ 142              		.loc 1 88 14 view .LVU29
+ 143 0022 1868     		ldr	r0, [r3]
+ 144              	.LVL9:
+ 145              		.loc 1 89 1 view .LVU30
+ 146 0024 7047     		bx	lr
+ 147              	.L16:
+ 148 0026 00BF     		.align	2
+ 149              	.L15:
+ 150 0028 00300240 		.word	1073885184
+ 151              		.cfi_endproc
+ 152              	.LFE125:
+ 154              		.section	.text.CRC_GetCRC,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	CRC_GetCRC
+ 157              		.syntax unified
+ 158              		.thumb
+ 159              		.thumb_func
+ 160              		.fpu fpv4-sp-d16
+ 162              	CRC_GetCRC:
+ 163              	.LFB126:
   90:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** 
   91:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** /**
   92:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   * @brief  Returns the current CRC value.
@@ -271,37 +274,38 @@ ARM GAS  /tmp/ccqZEVa1.s 			page 1
   95:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   */
   96:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** uint32_t CRC_GetCRC(void)
   97:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** {
- 161              		.loc 1 97 1 is_stmt 1 view -0
- 162              		.cfi_startproc
- 163              		@ args = 0, pretend = 0, frame = 0
- 164              		@ frame_needed = 0, uses_anonymous_args = 0
- 165              		@ link register save eliminated.
+ 164              		.loc 1 97 1 is_stmt 1 view -0
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 168              		@ link register save eliminated.
   98:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   return (CRC->DR);
- 166              		.loc 1 98 3 view .LVU32
- 167              		.loc 1 98 14 is_stmt 0 view .LVU33
- 168 0000 014B     		ldr	r3, .L18
- 169 0002 1868     		ldr	r0, [r3]
+ 169              		.loc 1 98 3 view .LVU32
+ 170              		.loc 1 98 14 is_stmt 0 view .LVU33
+ 171 0000 014B     		ldr	r3, .L18
+ 172 0002 1868     		ldr	r0, [r3]
   99:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
- 170              		.loc 1 99 1 view .LVU34
- 171 0004 7047     		bx	lr
- 172              	.L19:
- 173 0006 00BF     		.align	2
- 174              	.L18:
- 175 0008 00300240 		.word	1073885184
- 176              		.cfi_endproc
- 177              	.LFE126:
- 179              		.section	.text.CRC_SetIDRegister,"ax",%progbits
- 180              		.align	1
- 181              		.global	CRC_SetIDRegister
- 182              		.syntax unified
- 183              		.thumb
- 184              		.thumb_func
- 186              	CRC_SetIDRegister:
- 187              	.LVL10:
-ARM GAS  /tmp/ccqZEVa1.s 			page 6
+ 173              		.loc 1 99 1 view .LVU34
+ 174 0004 7047     		bx	lr
+ 175              	.L19:
+ 176 0006 00BF     		.align	2
+ 177              	.L18:
+ 178 0008 00300240 		.word	1073885184
+ 179              		.cfi_endproc
+ 180              	.LFE126:
+ 182              		.section	.text.CRC_SetIDRegister,"ax",%progbits
+ 183              		.align	1
+ 184              		.global	CRC_SetIDRegister
+ 185              		.syntax unified
+ 186              		.thumb
+ARM GAS  /tmp/ccrEtUgi.s 			page 6
 
 
- 188              	.LFB127:
+ 187              		.thumb_func
+ 188              		.fpu fpv4-sp-d16
+ 190              	CRC_SetIDRegister:
+ 191              	.LVL10:
+ 192              	.LFB127:
  100:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** 
  101:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** /**
  102:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   * @brief  Stores a 8-bit data in the Independent Data(ID) register.
@@ -310,33 +314,34 @@ ARM GAS  /tmp/ccqZEVa1.s 			page 1
  105:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   */
  106:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** void CRC_SetIDRegister(uint8_t IDValue)
  107:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** {
- 189              		.loc 1 107 1 is_stmt 1 view -0
- 190              		.cfi_startproc
- 191              		@ args = 0, pretend = 0, frame = 0
- 192              		@ frame_needed = 0, uses_anonymous_args = 0
- 193              		@ link register save eliminated.
+ 193              		.loc 1 107 1 is_stmt 1 view -0
+ 194              		.cfi_startproc
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              		@ link register save eliminated.
  108:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   CRC->IDR = IDValue;
- 194              		.loc 1 108 3 view .LVU36
- 195              		.loc 1 108 12 is_stmt 0 view .LVU37
- 196 0000 014B     		ldr	r3, .L21
- 197 0002 1871     		strb	r0, [r3, #4]
+ 198              		.loc 1 108 3 view .LVU36
+ 199              		.loc 1 108 12 is_stmt 0 view .LVU37
+ 200 0000 014B     		ldr	r3, .L21
+ 201 0002 1871     		strb	r0, [r3, #4]
  109:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
- 198              		.loc 1 109 1 view .LVU38
- 199 0004 7047     		bx	lr
- 200              	.L22:
- 201 0006 00BF     		.align	2
- 202              	.L21:
- 203 0008 00300240 		.word	1073885184
- 204              		.cfi_endproc
- 205              	.LFE127:
- 207              		.section	.text.CRC_GetIDRegister,"ax",%progbits
- 208              		.align	1
- 209              		.global	CRC_GetIDRegister
- 210              		.syntax unified
- 211              		.thumb
- 212              		.thumb_func
- 214              	CRC_GetIDRegister:
- 215              	.LFB128:
+ 202              		.loc 1 109 1 view .LVU38
+ 203 0004 7047     		bx	lr
+ 204              	.L22:
+ 205 0006 00BF     		.align	2
+ 206              	.L21:
+ 207 0008 00300240 		.word	1073885184
+ 208              		.cfi_endproc
+ 209              	.LFE127:
+ 211              		.section	.text.CRC_GetIDRegister,"ax",%progbits
+ 212              		.align	1
+ 213              		.global	CRC_GetIDRegister
+ 214              		.syntax unified
+ 215              		.thumb
+ 216              		.thumb_func
+ 217              		.fpu fpv4-sp-d16
+ 219              	CRC_GetIDRegister:
+ 220              	.LFB128:
  110:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** 
  111:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** /**
  112:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   * @brief  Returns the 8-bit data stored in the Independent Data(ID) register
@@ -345,55 +350,54 @@ ARM GAS  /tmp/ccqZEVa1.s 			page 1
  115:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   */
  116:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** uint8_t CRC_GetIDRegister(void)
  117:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** {
- 216              		.loc 1 117 1 is_stmt 1 view -0
- 217              		.cfi_startproc
- 218              		@ args = 0, pretend = 0, frame = 0
- 219              		@ frame_needed = 0, uses_anonymous_args = 0
- 220              		@ link register save eliminated.
+ 221              		.loc 1 117 1 is_stmt 1 view -0
+ 222              		.cfi_startproc
+ 223              		@ args = 0, pretend = 0, frame = 0
+ 224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225              		@ link register save eliminated.
  118:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c ****   return (CRC->IDR);
- 221              		.loc 1 118 3 view .LVU40
- 222              		.loc 1 118 14 is_stmt 0 view .LVU41
- 223 0000 014B     		ldr	r3, .L24
- 224 0002 1879     		ldrb	r0, [r3, #4]	@ zero_extendqisi2
+ 226              		.loc 1 118 3 view .LVU40
+ 227              		.loc 1 118 14 is_stmt 0 view .LVU41
+ARM GAS  /tmp/ccrEtUgi.s 			page 7
+
+
+ 228 0000 014B     		ldr	r3, .L24
+ 229 0002 1879     		ldrb	r0, [r3, #4]	@ zero_extendqisi2
  119:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c **** }
- 225              		.loc 1 119 1 view .LVU42
- 226 0004 7047     		bx	lr
-ARM GAS  /tmp/ccqZEVa1.s 			page 7
-
-
- 227              	.L25:
- 228 0006 00BF     		.align	2
- 229              	.L24:
- 230 0008 00300240 		.word	1073885184
- 231              		.cfi_endproc
- 232              	.LFE128:
- 234              		.text
- 235              	.Letext0:
- 236              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 237              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 238              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
-ARM GAS  /tmp/ccqZEVa1.s 			page 8
+ 230              		.loc 1 119 1 view .LVU42
+ 231 0004 7047     		bx	lr
+ 232              	.L25:
+ 233 0006 00BF     		.align	2
+ 234              	.L24:
+ 235 0008 00300240 		.word	1073885184
+ 236              		.cfi_endproc
+ 237              	.LFE128:
+ 239              		.text
+ 240              	.Letext0:
+ 241              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 242              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ARM GAS  /tmp/ccrEtUgi.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_crc.c
-     /tmp/ccqZEVa1.s:20     .text.CRC_ResetDR:0000000000000000 $t
-     /tmp/ccqZEVa1.s:26     .text.CRC_ResetDR:0000000000000000 CRC_ResetDR
-     /tmp/ccqZEVa1.s:44     .text.CRC_ResetDR:0000000000000008 $d
-     /tmp/ccqZEVa1.s:49     .text.CRC_CalcCRC:0000000000000000 $t
-     /tmp/ccqZEVa1.s:55     .text.CRC_CalcCRC:0000000000000000 CRC_CalcCRC
-     /tmp/ccqZEVa1.s:76     .text.CRC_CalcCRC:0000000000000008 $d
-     /tmp/ccqZEVa1.s:81     .text.CRC_CalcBlockCRC:0000000000000000 $t
-     /tmp/ccqZEVa1.s:87     .text.CRC_CalcBlockCRC:0000000000000000 CRC_CalcBlockCRC
-     /tmp/ccqZEVa1.s:148    .text.CRC_CalcBlockCRC:0000000000000028 $d
-     /tmp/ccqZEVa1.s:153    .text.CRC_GetCRC:0000000000000000 $t
-     /tmp/ccqZEVa1.s:159    .text.CRC_GetCRC:0000000000000000 CRC_GetCRC
-     /tmp/ccqZEVa1.s:175    .text.CRC_GetCRC:0000000000000008 $d
-     /tmp/ccqZEVa1.s:180    .text.CRC_SetIDRegister:0000000000000000 $t
-     /tmp/ccqZEVa1.s:186    .text.CRC_SetIDRegister:0000000000000000 CRC_SetIDRegister
-     /tmp/ccqZEVa1.s:203    .text.CRC_SetIDRegister:0000000000000008 $d
-     /tmp/ccqZEVa1.s:208    .text.CRC_GetIDRegister:0000000000000000 $t
-     /tmp/ccqZEVa1.s:214    .text.CRC_GetIDRegister:0000000000000000 CRC_GetIDRegister
-     /tmp/ccqZEVa1.s:230    .text.CRC_GetIDRegister:0000000000000008 $d
+     /tmp/ccrEtUgi.s:18     .text.CRC_ResetDR:0000000000000000 $t
+     /tmp/ccrEtUgi.s:26     .text.CRC_ResetDR:0000000000000000 CRC_ResetDR
+     /tmp/ccrEtUgi.s:44     .text.CRC_ResetDR:0000000000000008 $d
+     /tmp/ccrEtUgi.s:49     .text.CRC_CalcCRC:0000000000000000 $t
+     /tmp/ccrEtUgi.s:56     .text.CRC_CalcCRC:0000000000000000 CRC_CalcCRC
+     /tmp/ccrEtUgi.s:77     .text.CRC_CalcCRC:0000000000000008 $d
+     /tmp/ccrEtUgi.s:82     .text.CRC_CalcBlockCRC:0000000000000000 $t
+     /tmp/ccrEtUgi.s:89     .text.CRC_CalcBlockCRC:0000000000000000 CRC_CalcBlockCRC
+     /tmp/ccrEtUgi.s:150    .text.CRC_CalcBlockCRC:0000000000000028 $d
+     /tmp/ccrEtUgi.s:155    .text.CRC_GetCRC:0000000000000000 $t
+     /tmp/ccrEtUgi.s:162    .text.CRC_GetCRC:0000000000000000 CRC_GetCRC
+     /tmp/ccrEtUgi.s:178    .text.CRC_GetCRC:0000000000000008 $d
+     /tmp/ccrEtUgi.s:183    .text.CRC_SetIDRegister:0000000000000000 $t
+     /tmp/ccrEtUgi.s:190    .text.CRC_SetIDRegister:0000000000000000 CRC_SetIDRegister
+     /tmp/ccrEtUgi.s:207    .text.CRC_SetIDRegister:0000000000000008 $d
+     /tmp/ccrEtUgi.s:212    .text.CRC_GetIDRegister:0000000000000000 $t
+     /tmp/ccrEtUgi.s:219    .text.CRC_GetIDRegister:0000000000000000 CRC_GetIDRegister
+     /tmp/ccrEtUgi.s:235    .text.CRC_GetIDRegister:0000000000000008 $d
 
 NO UNDEFINED SYMBOLS

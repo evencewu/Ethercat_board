@@ -1,30 +1,30 @@
-ARM GAS  /tmp/cco4iIGS.s 			page 1
+ARM GAS  /tmp/cc0RTPKr.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.arch armv7e-m
-   3              		.fpu fpv4-sp-d16
-   4              		.eabi_attribute 27, 1
-   5              		.eabi_attribute 28, 1
-   6              		.eabi_attribute 20, 1
-   7              		.eabi_attribute 21, 1
-   8              		.eabi_attribute 23, 3
-   9              		.eabi_attribute 24, 1
-  10              		.eabi_attribute 25, 1
-  11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
-  13              		.eabi_attribute 34, 1
-  14              		.eabi_attribute 18, 4
-  15              		.file	"stm32f4xx_dma2d.c"
-  16              		.text
-  17              	.Ltext0:
-  18              		.cfi_sections	.debug_frame
-  19              		.section	.text.DMA2D_DeInit,"ax",%progbits
-  20              		.align	1
-  21              		.global	DMA2D_DeInit
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4xx_dma2d.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.DMA2D_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	DMA2D_DeInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
   26              	DMA2D_DeInit:
   27              	.LFB123:
   28              		.file 1 "Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****         (#) Configures Foreground or/and background
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) memory address
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) alpha value
-ARM GAS  /tmp/cco4iIGS.s 			page 2
+ARM GAS  /tmp/cc0RTPKr.s 			page 2
 
 
   31:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) offset and default color
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /** @defgroup DMA2D_Group1 Initialization and Configuration functions
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  *  @brief   Initialization and Configuration functions 
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  *
-ARM GAS  /tmp/cco4iIGS.s 			page 3
+ARM GAS  /tmp/cc0RTPKr.s 			page 3
 
 
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** @verbatim
@@ -178,13 +178,14 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
   54              		.global	DMA2D_Init
   55              		.syntax unified
   56              		.thumb
-ARM GAS  /tmp/cco4iIGS.s 			page 4
+ARM GAS  /tmp/cc0RTPKr.s 			page 4
 
 
   57              		.thumb_func
-  59              	DMA2D_Init:
-  60              	.LVL2:
-  61              	.LFB124:
+  58              		.fpu fpv4-sp-d16
+  60              	DMA2D_Init:
+  61              	.LVL2:
+  62              	.LFB124:
  118:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  119:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  120:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
@@ -197,120 +198,120 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  127:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  128:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_Init(DMA2D_InitTypeDef* DMA2D_InitStruct)
  129:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
-  62              		.loc 1 129 1 is_stmt 1 view -0
-  63              		.cfi_startproc
-  64              		@ args = 0, pretend = 0, frame = 0
-  65              		@ frame_needed = 0, uses_anonymous_args = 0
-  66              		@ link register save eliminated.
-  67              		.loc 1 129 1 is_stmt 0 view .LVU5
-  68 0000 30B4     		push	{r4, r5}
-  69              		.cfi_def_cfa_offset 8
-  70              		.cfi_offset 4, -8
-  71              		.cfi_offset 5, -4
+  63              		.loc 1 129 1 is_stmt 1 view -0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
+  68              		.loc 1 129 1 is_stmt 0 view .LVU5
+  69 0000 30B4     		push	{r4, r5}
+  70              		.cfi_def_cfa_offset 8
+  71              		.cfi_offset 4, -8
+  72              		.cfi_offset 5, -4
  130:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  131:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t outgreen = 0;
-  72              		.loc 1 131 3 is_stmt 1 view .LVU6
-  73              	.LVL3:
+  73              		.loc 1 131 3 is_stmt 1 view .LVU6
+  74              	.LVL3:
  132:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t outred   = 0;
-  74              		.loc 1 132 3 view .LVU7
+  75              		.loc 1 132 3 view .LVU7
  133:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t outalpha = 0;
-  75              		.loc 1 133 3 view .LVU8
+  76              		.loc 1 133 3 view .LVU8
  134:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t pixline  = 0;
-  76              		.loc 1 134 3 view .LVU9
+  77              		.loc 1 134 3 view .LVU9
  135:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  136:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  137:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_MODE(DMA2D_InitStruct->DMA2D_Mode));
-  77              		.loc 1 137 3 view .LVU10
+  78              		.loc 1 137 3 view .LVU10
  138:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_CMODE(DMA2D_InitStruct->DMA2D_CMode));
-  78              		.loc 1 138 3 view .LVU11
+  79              		.loc 1 138 3 view .LVU11
  139:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_OGREEN(DMA2D_InitStruct->DMA2D_OutputGreen));
-  79              		.loc 1 139 3 view .LVU12
+  80              		.loc 1 139 3 view .LVU12
  140:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_ORED(DMA2D_InitStruct->DMA2D_OutputRed));
-  80              		.loc 1 140 3 view .LVU13
+  81              		.loc 1 140 3 view .LVU13
  141:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_OBLUE(DMA2D_InitStruct->DMA2D_OutputBlue));
-  81              		.loc 1 141 3 view .LVU14
+  82              		.loc 1 141 3 view .LVU14
  142:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_OALPHA(DMA2D_InitStruct->DMA2D_OutputAlpha));
-  82              		.loc 1 142 3 view .LVU15
+  83              		.loc 1 142 3 view .LVU15
  143:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_OUTPUT_OFFSET(DMA2D_InitStruct->DMA2D_OutputOffset));
-  83              		.loc 1 143 3 view .LVU16
+  84              		.loc 1 143 3 view .LVU16
  144:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_LINE(DMA2D_InitStruct->DMA2D_NumberOfLine));
-  84              		.loc 1 144 3 view .LVU17
+  85              		.loc 1 144 3 view .LVU17
  145:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_PIXEL(DMA2D_InitStruct->DMA2D_PixelPerLine));
-  85              		.loc 1 145 3 view .LVU18
+  86              		.loc 1 145 3 view .LVU18
+ARM GAS  /tmp/cc0RTPKr.s 			page 5
+
+
  146:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
-ARM GAS  /tmp/cco4iIGS.s 			page 5
-
-
  147:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the DMA2D operation mode */
  148:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->CR &= (uint32_t)CR_MASK;
-  86              		.loc 1 148 3 view .LVU19
-  87              		.loc 1 148 13 is_stmt 0 view .LVU20
-  88 0002 314B     		ldr	r3, .L13
-  89 0004 1A68     		ldr	r2, [r3]
-  90 0006 22F00312 		bic	r2, r2, #196611
-  91 000a 22F4F852 		bic	r2, r2, #7936
-  92 000e 1A60     		str	r2, [r3]
+  87              		.loc 1 148 3 view .LVU19
+  88              		.loc 1 148 13 is_stmt 0 view .LVU20
+  89 0002 314B     		ldr	r3, .L13
+  90 0004 1A68     		ldr	r2, [r3]
+  91 0006 22F00312 		bic	r2, r2, #196611
+  92 000a 22F4F852 		bic	r2, r2, #7936
+  93 000e 1A60     		str	r2, [r3]
  149:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->CR |= (DMA2D_InitStruct->DMA2D_Mode);
-  93              		.loc 1 149 3 is_stmt 1 view .LVU21
-  94              		.loc 1 149 13 is_stmt 0 view .LVU22
-  95 0010 1A68     		ldr	r2, [r3]
-  96              		.loc 1 149 33 view .LVU23
-  97 0012 0168     		ldr	r1, [r0]
-  98              		.loc 1 149 13 view .LVU24
-  99 0014 0A43     		orrs	r2, r2, r1
- 100 0016 1A60     		str	r2, [r3]
+  94              		.loc 1 149 3 is_stmt 1 view .LVU21
+  95              		.loc 1 149 13 is_stmt 0 view .LVU22
+  96 0010 1A68     		ldr	r2, [r3]
+  97              		.loc 1 149 33 view .LVU23
+  98 0012 0168     		ldr	r1, [r0]
+  99              		.loc 1 149 13 view .LVU24
+ 100 0014 0A43     		orrs	r2, r2, r1
+ 101 0016 1A60     		str	r2, [r3]
  150:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  151:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the color mode of the output image */
  152:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OPFCCR &= ~(uint32_t)DMA2D_OPFCCR_CM;
- 101              		.loc 1 152 3 is_stmt 1 view .LVU25
- 102              		.loc 1 152 17 is_stmt 0 view .LVU26
- 103 0018 5A6B     		ldr	r2, [r3, #52]
- 104 001a 22F00702 		bic	r2, r2, #7
- 105 001e 5A63     		str	r2, [r3, #52]
+ 102              		.loc 1 152 3 is_stmt 1 view .LVU25
+ 103              		.loc 1 152 17 is_stmt 0 view .LVU26
+ 104 0018 5A6B     		ldr	r2, [r3, #52]
+ 105 001a 22F00702 		bic	r2, r2, #7
+ 106 001e 5A63     		str	r2, [r3, #52]
  153:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OPFCCR |= (DMA2D_InitStruct->DMA2D_CMode);
- 106              		.loc 1 153 3 is_stmt 1 view .LVU27
- 107              		.loc 1 153 17 is_stmt 0 view .LVU28
- 108 0020 5A6B     		ldr	r2, [r3, #52]
- 109              		.loc 1 153 37 view .LVU29
- 110 0022 4168     		ldr	r1, [r0, #4]
- 111              		.loc 1 153 17 view .LVU30
- 112 0024 0A43     		orrs	r2, r2, r1
- 113 0026 5A63     		str	r2, [r3, #52]
+ 107              		.loc 1 153 3 is_stmt 1 view .LVU27
+ 108              		.loc 1 153 17 is_stmt 0 view .LVU28
+ 109 0020 5A6B     		ldr	r2, [r3, #52]
+ 110              		.loc 1 153 37 view .LVU29
+ 111 0022 4168     		ldr	r1, [r0, #4]
+ 112              		.loc 1 153 17 view .LVU30
+ 113 0024 0A43     		orrs	r2, r2, r1
+ 114 0026 5A63     		str	r2, [r3, #52]
  154:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  155:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the output color */
  156:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  157:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (DMA2D_InitStruct->DMA2D_CMode == DMA2D_ARGB8888)
- 114              		.loc 1 157 3 is_stmt 1 view .LVU31
- 115              		.loc 1 157 23 is_stmt 0 view .LVU32
- 116 0028 4368     		ldr	r3, [r0, #4]
- 117              		.loc 1 157 6 view .LVU33
- 118 002a 43BB     		cbnz	r3, .L4
+ 115              		.loc 1 157 3 is_stmt 1 view .LVU31
+ 116              		.loc 1 157 23 is_stmt 0 view .LVU32
+ 117 0028 4368     		ldr	r3, [r0, #4]
+ 118              		.loc 1 157 6 view .LVU33
+ 119 002a 43BB     		cbnz	r3, .L4
  158:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  159:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outgreen = DMA2D_InitStruct->DMA2D_OutputGreen << 8;
- 119              		.loc 1 159 5 is_stmt 1 view .LVU34
- 120              		.loc 1 159 32 is_stmt 0 view .LVU35
- 121 002c C268     		ldr	r2, [r0, #12]
- 122              		.loc 1 159 14 view .LVU36
- 123 002e 1202     		lsls	r2, r2, #8
- 124              	.LVL4:
+ 120              		.loc 1 159 5 is_stmt 1 view .LVU34
+ 121              		.loc 1 159 32 is_stmt 0 view .LVU35
+ 122 002c C268     		ldr	r2, [r0, #12]
+ 123              		.loc 1 159 14 view .LVU36
+ 124 002e 1202     		lsls	r2, r2, #8
+ 125              	.LVL4:
  160:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outred = DMA2D_InitStruct->DMA2D_OutputRed << 16;
- 125              		.loc 1 160 5 is_stmt 1 view .LVU37
- 126              		.loc 1 160 30 is_stmt 0 view .LVU38
- 127 0030 0469     		ldr	r4, [r0, #16]
- 128              		.loc 1 160 12 view .LVU39
-ARM GAS  /tmp/cco4iIGS.s 			page 6
+ 126              		.loc 1 160 5 is_stmt 1 view .LVU37
+ 127              		.loc 1 160 30 is_stmt 0 view .LVU38
+ 128 0030 0469     		ldr	r4, [r0, #16]
+ARM GAS  /tmp/cc0RTPKr.s 			page 6
 
 
- 129 0032 2404     		lsls	r4, r4, #16
- 130              	.LVL5:
+ 129              		.loc 1 160 12 view .LVU39
+ 130 0032 2404     		lsls	r4, r4, #16
+ 131              	.LVL5:
  161:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 24;
- 131              		.loc 1 161 5 is_stmt 1 view .LVU40
- 132              		.loc 1 161 32 is_stmt 0 view .LVU41
- 133 0034 4369     		ldr	r3, [r0, #20]
- 134              		.loc 1 161 14 view .LVU42
- 135 0036 4FEA036C 		lsl	ip, r3, #24
- 136              	.LVL6:
- 137              	.L5:
+ 132              		.loc 1 161 5 is_stmt 1 view .LVU40
+ 133              		.loc 1 161 32 is_stmt 0 view .LVU41
+ 134 0034 4369     		ldr	r3, [r0, #20]
+ 135              		.loc 1 161 14 view .LVU42
+ 136 0036 4FEA036C 		lsl	ip, r3, #24
+ 137              	.LVL6:
+ 138              	.L5:
  162:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  163:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  164:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
@@ -346,330 +347,332 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  194:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 12;
  195:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }  
  196:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OCOLR |= ((outgreen) | (outred) | (DMA2D_InitStruct->DMA2D_OutputBlue) | (outalpha));
- 138              		.loc 1 196 3 is_stmt 1 view .LVU43
- 139              		.loc 1 196 16 is_stmt 0 view .LVU44
- 140 003a 234B     		ldr	r3, .L13
- 141 003c 996B     		ldr	r1, [r3, #56]
- 142              		.loc 1 196 31 view .LVU45
- 143 003e 2243     		orrs	r2, r2, r4
- 144              	.LVL7:
- 145              		.loc 1 196 61 view .LVU46
- 146 0040 8468     		ldr	r4, [r0, #8]
- 147              	.LVL8:
- 148              		.loc 1 196 42 view .LVU47
- 149 0042 2243     		orrs	r2, r2, r4
-ARM GAS  /tmp/cco4iIGS.s 			page 7
+ 139              		.loc 1 196 3 is_stmt 1 view .LVU43
+ 140              		.loc 1 196 16 is_stmt 0 view .LVU44
+ 141 003a 234B     		ldr	r3, .L13
+ 142 003c 996B     		ldr	r1, [r3, #56]
+ 143              		.loc 1 196 31 view .LVU45
+ 144 003e 2243     		orrs	r2, r2, r4
+ 145              	.LVL7:
+ 146              		.loc 1 196 61 view .LVU46
+ 147 0040 8468     		ldr	r4, [r0, #8]
+ 148              	.LVL8:
+ 149              		.loc 1 196 42 view .LVU47
+ARM GAS  /tmp/cc0RTPKr.s 			page 7
 
 
- 150              		.loc 1 196 81 view .LVU48
- 151 0044 42EA0C02 		orr	r2, r2, ip
- 152              		.loc 1 196 16 view .LVU49
- 153 0048 0A43     		orrs	r2, r2, r1
- 154 004a 9A63     		str	r2, [r3, #56]
+ 150 0042 2243     		orrs	r2, r2, r4
+ 151              		.loc 1 196 81 view .LVU48
+ 152 0044 42EA0C02 		orr	r2, r2, ip
+ 153              		.loc 1 196 16 view .LVU49
+ 154 0048 0A43     		orrs	r2, r2, r1
+ 155 004a 9A63     		str	r2, [r3, #56]
  197:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  198:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the output memory address */
  199:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OMAR = (DMA2D_InitStruct->DMA2D_OutputMemoryAdd);
- 155              		.loc 1 199 3 is_stmt 1 view .LVU50
- 156              		.loc 1 199 34 is_stmt 0 view .LVU51
- 157 004c 8269     		ldr	r2, [r0, #24]
- 158              		.loc 1 199 15 view .LVU52
- 159 004e DA63     		str	r2, [r3, #60]
+ 156              		.loc 1 199 3 is_stmt 1 view .LVU50
+ 157              		.loc 1 199 34 is_stmt 0 view .LVU51
+ 158 004c 8269     		ldr	r2, [r0, #24]
+ 159              		.loc 1 199 15 view .LVU52
+ 160 004e DA63     		str	r2, [r3, #60]
  200:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  201:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configure  the line Offset */
  202:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OOR &= ~(uint32_t)DMA2D_OOR_LO;
- 160              		.loc 1 202 3 is_stmt 1 view .LVU53
- 161              		.loc 1 202 14 is_stmt 0 view .LVU54
- 162 0050 1A6C     		ldr	r2, [r3, #64]
- 163 0052 22F47F52 		bic	r2, r2, #16320
- 164 0056 22F03F02 		bic	r2, r2, #63
- 165 005a 1A64     		str	r2, [r3, #64]
+ 161              		.loc 1 202 3 is_stmt 1 view .LVU53
+ 162              		.loc 1 202 14 is_stmt 0 view .LVU54
+ 163 0050 1A6C     		ldr	r2, [r3, #64]
+ 164 0052 22F47F52 		bic	r2, r2, #16320
+ 165 0056 22F03F02 		bic	r2, r2, #63
+ 166 005a 1A64     		str	r2, [r3, #64]
  203:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OOR |= (DMA2D_InitStruct->DMA2D_OutputOffset);
- 166              		.loc 1 203 3 is_stmt 1 view .LVU55
- 167              		.loc 1 203 14 is_stmt 0 view .LVU56
- 168 005c 1A6C     		ldr	r2, [r3, #64]
- 169              		.loc 1 203 34 view .LVU57
- 170 005e C169     		ldr	r1, [r0, #28]
- 171              		.loc 1 203 14 view .LVU58
- 172 0060 0A43     		orrs	r2, r2, r1
- 173 0062 1A64     		str	r2, [r3, #64]
+ 167              		.loc 1 203 3 is_stmt 1 view .LVU55
+ 168              		.loc 1 203 14 is_stmt 0 view .LVU56
+ 169 005c 1A6C     		ldr	r2, [r3, #64]
+ 170              		.loc 1 203 34 view .LVU57
+ 171 005e C169     		ldr	r1, [r0, #28]
+ 172              		.loc 1 203 14 view .LVU58
+ 173 0060 0A43     		orrs	r2, r2, r1
+ 174 0062 1A64     		str	r2, [r3, #64]
  204:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  205:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configure the number of line and pixel per line */
  206:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   pixline = DMA2D_InitStruct->DMA2D_PixelPerLine << 16; 
- 174              		.loc 1 206 3 is_stmt 1 view .LVU59
- 175              		.loc 1 206 29 is_stmt 0 view .LVU60
- 176 0064 456A     		ldr	r5, [r0, #36]
- 177              	.LVL9:
+ 175              		.loc 1 206 3 is_stmt 1 view .LVU59
+ 176              		.loc 1 206 29 is_stmt 0 view .LVU60
+ 177 0064 456A     		ldr	r5, [r0, #36]
+ 178              	.LVL9:
  207:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->NLR &= ~(DMA2D_NLR_NL | DMA2D_NLR_PL);
- 178              		.loc 1 207 3 is_stmt 1 view .LVU61
- 179              		.loc 1 207 14 is_stmt 0 view .LVU62
- 180 0066 5C6C     		ldr	r4, [r3, #68]
- 181 0068 04F04044 		and	r4, r4, #-1073741824
- 182 006c 5C64     		str	r4, [r3, #68]
+ 179              		.loc 1 207 3 is_stmt 1 view .LVU61
+ 180              		.loc 1 207 14 is_stmt 0 view .LVU62
+ 181 0066 5C6C     		ldr	r4, [r3, #68]
+ 182 0068 04F04044 		and	r4, r4, #-1073741824
+ 183 006c 5C64     		str	r4, [r3, #68]
  208:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->NLR |= ((DMA2D_InitStruct->DMA2D_NumberOfLine) | (pixline));
- 183              		.loc 1 208 3 is_stmt 1 view .LVU63
- 184              		.loc 1 208 14 is_stmt 0 view .LVU64
- 185 006e 5A6C     		ldr	r2, [r3, #68]
- 186              		.loc 1 208 35 view .LVU65
- 187 0070 016A     		ldr	r1, [r0, #32]
- 188              		.loc 1 208 57 view .LVU66
- 189 0072 41EA0541 		orr	r1, r1, r5, lsl #16
- 190              		.loc 1 208 14 view .LVU67
- 191 0076 0A43     		orrs	r2, r2, r1
- 192 0078 5A64     		str	r2, [r3, #68]
+ 184              		.loc 1 208 3 is_stmt 1 view .LVU63
+ 185              		.loc 1 208 14 is_stmt 0 view .LVU64
+ 186 006e 5A6C     		ldr	r2, [r3, #68]
+ 187              		.loc 1 208 35 view .LVU65
+ 188 0070 016A     		ldr	r1, [r0, #32]
+ 189              		.loc 1 208 57 view .LVU66
+ 190 0072 41EA0541 		orr	r1, r1, r5, lsl #16
+ 191              		.loc 1 208 14 view .LVU67
+ 192 0076 0A43     		orrs	r2, r2, r1
+ 193 0078 5A64     		str	r2, [r3, #68]
  209:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ARM GAS  /tmp/cc0RTPKr.s 			page 8
+
+
  210:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
-ARM GAS  /tmp/cco4iIGS.s 			page 8
-
-
  211:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Fills each DMA2D_InitStruct member with its default value.
  212:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_InitStruct: pointer to a DMA2D_InitTypeDef structure which will
  213:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         be initialized.
  214:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
  215:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  216:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 193              		.loc 1 216 1 view .LVU68
- 194 007a 30BC     		pop	{r4, r5}
- 195              		.cfi_remember_state
- 196              		.cfi_restore 5
- 197              		.cfi_restore 4
- 198              		.cfi_def_cfa_offset 0
- 199              	.LVL10:
- 200              		.loc 1 216 1 view .LVU69
- 201 007c 7047     		bx	lr
- 202              	.LVL11:
- 203              	.L4:
- 204              		.cfi_restore_state
+ 194              		.loc 1 216 1 view .LVU68
+ 195 007a 30BC     		pop	{r4, r5}
+ 196              		.cfi_remember_state
+ 197              		.cfi_restore 5
+ 198              		.cfi_restore 4
+ 199              		.cfi_def_cfa_offset 0
+ 200              	.LVL10:
+ 201              		.loc 1 216 1 view .LVU69
+ 202 007c 7047     		bx	lr
+ 203              	.LVL11:
+ 204              	.L4:
+ 205              		.cfi_restore_state
  165:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {
- 205              		.loc 1 165 5 is_stmt 1 view .LVU70
+ 206              		.loc 1 165 5 is_stmt 1 view .LVU70
  165:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {
- 206              		.loc 1 165 8 is_stmt 0 view .LVU71
- 207 007e 012B     		cmp	r3, #1
- 208 0080 0BD0     		beq	.L10
+ 207              		.loc 1 165 8 is_stmt 0 view .LVU71
+ 208 007e 012B     		cmp	r3, #1
+ 209 0080 0BD0     		beq	.L10
  174:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {
- 209              		.loc 1 174 5 is_stmt 1 view .LVU72
+ 210              		.loc 1 174 5 is_stmt 1 view .LVU72
  174:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {
- 210              		.loc 1 174 8 is_stmt 0 view .LVU73
- 211 0082 022B     		cmp	r3, #2
- 212 0084 10D0     		beq	.L11
+ 211              		.loc 1 174 8 is_stmt 0 view .LVU73
+ 212 0082 022B     		cmp	r3, #2
+ 213 0084 10D0     		beq	.L11
  183:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {  
- 213              		.loc 1 183 5 is_stmt 1 view .LVU74
+ 214              		.loc 1 183 5 is_stmt 1 view .LVU74
  183:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {  
- 214              		.loc 1 183 8 is_stmt 0 view .LVU75
- 215 0086 032B     		cmp	r3, #3
- 216 0088 15D0     		beq	.L12
+ 215              		.loc 1 183 8 is_stmt 0 view .LVU75
+ 216 0086 032B     		cmp	r3, #3
+ 217 0088 15D0     		beq	.L12
  192:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outred = DMA2D_InitStruct->DMA2D_OutputRed << 8;
- 217              		.loc 1 192 5 is_stmt 1 view .LVU76
+ 218              		.loc 1 192 5 is_stmt 1 view .LVU76
  192:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outred = DMA2D_InitStruct->DMA2D_OutputRed << 8;
- 218              		.loc 1 192 32 is_stmt 0 view .LVU77
- 219 008a C268     		ldr	r2, [r0, #12]
+ 219              		.loc 1 192 32 is_stmt 0 view .LVU77
+ 220 008a C268     		ldr	r2, [r0, #12]
  192:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outred = DMA2D_InitStruct->DMA2D_OutputRed << 8;
- 220              		.loc 1 192 14 view .LVU78
- 221 008c 1201     		lsls	r2, r2, #4
- 222              	.LVL12:
+ 221              		.loc 1 192 14 view .LVU78
+ 222 008c 1201     		lsls	r2, r2, #4
+ 223              	.LVL12:
  193:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 12;
- 223              		.loc 1 193 5 is_stmt 1 view .LVU79
+ 224              		.loc 1 193 5 is_stmt 1 view .LVU79
  193:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 12;
- 224              		.loc 1 193 30 is_stmt 0 view .LVU80
- 225 008e 0469     		ldr	r4, [r0, #16]
+ 225              		.loc 1 193 30 is_stmt 0 view .LVU80
+ 226 008e 0469     		ldr	r4, [r0, #16]
  193:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 12;
- 226              		.loc 1 193 12 view .LVU81
- 227 0090 2402     		lsls	r4, r4, #8
- 228              	.LVL13:
+ 227              		.loc 1 193 12 view .LVU81
+ 228 0090 2402     		lsls	r4, r4, #8
+ 229              	.LVL13:
  194:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }  
- 229              		.loc 1 194 5 is_stmt 1 view .LVU82
- 194:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }  
-ARM GAS  /tmp/cco4iIGS.s 			page 9
+ 230              		.loc 1 194 5 is_stmt 1 view .LVU82
+ARM GAS  /tmp/cc0RTPKr.s 			page 9
 
 
- 230              		.loc 1 194 32 is_stmt 0 view .LVU83
- 231 0092 4369     		ldr	r3, [r0, #20]
  194:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }  
- 232              		.loc 1 194 14 view .LVU84
- 233 0094 4FEA033C 		lsl	ip, r3, #12
- 234              	.LVL14:
+ 231              		.loc 1 194 32 is_stmt 0 view .LVU83
+ 232 0092 4369     		ldr	r3, [r0, #20]
  194:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }  
- 235              		.loc 1 194 14 view .LVU85
- 236 0098 CFE7     		b	.L5
- 237              	.LVL15:
- 238              	.L10:
+ 233              		.loc 1 194 14 view .LVU84
+ 234 0094 4FEA033C 		lsl	ip, r3, #12
+ 235              	.LVL14:
+ 194:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }  
+ 236              		.loc 1 194 14 view .LVU85
+ 237 0098 CFE7     		b	.L5
+ 238              	.LVL15:
+ 239              	.L10:
  167:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 16;
- 239              		.loc 1 167 7 is_stmt 1 view .LVU86
+ 240              		.loc 1 167 7 is_stmt 1 view .LVU86
  167:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 16;
- 240              		.loc 1 167 34 is_stmt 0 view .LVU87
- 241 009a C268     		ldr	r2, [r0, #12]
+ 241              		.loc 1 167 34 is_stmt 0 view .LVU87
+ 242 009a C268     		ldr	r2, [r0, #12]
  167:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 16;
- 242              		.loc 1 167 16 view .LVU88
- 243 009c 1202     		lsls	r2, r2, #8
- 244              	.LVL16:
+ 243              		.loc 1 167 16 view .LVU88
+ 244 009c 1202     		lsls	r2, r2, #8
+ 245              	.LVL16:
  168:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = (uint32_t)0x00000000;
- 245              		.loc 1 168 7 is_stmt 1 view .LVU89
+ 246              		.loc 1 168 7 is_stmt 1 view .LVU89
  168:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = (uint32_t)0x00000000;
- 246              		.loc 1 168 32 is_stmt 0 view .LVU90
- 247 009e 0469     		ldr	r4, [r0, #16]
+ 247              		.loc 1 168 32 is_stmt 0 view .LVU90
+ 248 009e 0469     		ldr	r4, [r0, #16]
  168:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = (uint32_t)0x00000000;
- 248              		.loc 1 168 14 view .LVU91
- 249 00a0 2404     		lsls	r4, r4, #16
- 250              	.LVL17:
+ 249              		.loc 1 168 14 view .LVU91
+ 250 00a0 2404     		lsls	r4, r4, #16
+ 251              	.LVL17:
  169:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
- 251              		.loc 1 169 7 is_stmt 1 view .LVU92
+ 252              		.loc 1 169 7 is_stmt 1 view .LVU92
  169:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
- 252              		.loc 1 169 16 is_stmt 0 view .LVU93
- 253 00a2 4FF0000C 		mov	ip, #0
- 254 00a6 C8E7     		b	.L5
- 255              	.LVL18:
- 256              	.L11:
+ 253              		.loc 1 169 16 is_stmt 0 view .LVU93
+ 254 00a2 4FF0000C 		mov	ip, #0
+ 255 00a6 C8E7     		b	.L5
+ 256              	.LVL18:
+ 257              	.L11:
  176:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 11;
- 257              		.loc 1 176 7 is_stmt 1 view .LVU94
+ 258              		.loc 1 176 7 is_stmt 1 view .LVU94
  176:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 11;
- 258              		.loc 1 176 34 is_stmt 0 view .LVU95
- 259 00a8 C268     		ldr	r2, [r0, #12]
+ 259              		.loc 1 176 34 is_stmt 0 view .LVU95
+ 260 00a8 C268     		ldr	r2, [r0, #12]
  176:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 11;
- 260              		.loc 1 176 16 view .LVU96
- 261 00aa 5201     		lsls	r2, r2, #5
- 262              	.LVL19:
+ 261              		.loc 1 176 16 view .LVU96
+ 262 00aa 5201     		lsls	r2, r2, #5
+ 263              	.LVL19:
  177:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = (uint32_t)0x00000000;
- 263              		.loc 1 177 7 is_stmt 1 view .LVU97
+ 264              		.loc 1 177 7 is_stmt 1 view .LVU97
  177:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = (uint32_t)0x00000000;
- 264              		.loc 1 177 32 is_stmt 0 view .LVU98
- 265 00ac 0469     		ldr	r4, [r0, #16]
+ 265              		.loc 1 177 32 is_stmt 0 view .LVU98
+ 266 00ac 0469     		ldr	r4, [r0, #16]
  177:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = (uint32_t)0x00000000;
- 266              		.loc 1 177 14 view .LVU99
- 267 00ae E402     		lsls	r4, r4, #11
- 268              	.LVL20:
+ 267              		.loc 1 177 14 view .LVU99
+ 268 00ae E402     		lsls	r4, r4, #11
+ 269              	.LVL20:
  178:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
- 269              		.loc 1 178 7 is_stmt 1 view .LVU100
-ARM GAS  /tmp/cco4iIGS.s 			page 10
+ARM GAS  /tmp/cc0RTPKr.s 			page 10
 
 
+ 270              		.loc 1 178 7 is_stmt 1 view .LVU100
  178:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
- 270              		.loc 1 178 16 is_stmt 0 view .LVU101
- 271 00b0 4FF0000C 		mov	ip, #0
- 272 00b4 C1E7     		b	.L5
- 273              	.LVL21:
- 274              	.L12:
+ 271              		.loc 1 178 16 is_stmt 0 view .LVU101
+ 272 00b0 4FF0000C 		mov	ip, #0
+ 273 00b4 C1E7     		b	.L5
+ 274              	.LVL21:
+ 275              	.L12:
  185:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 10;
- 275              		.loc 1 185 7 is_stmt 1 view .LVU102
+ 276              		.loc 1 185 7 is_stmt 1 view .LVU102
  185:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 10;
- 276              		.loc 1 185 34 is_stmt 0 view .LVU103
- 277 00b6 C268     		ldr	r2, [r0, #12]
+ 277              		.loc 1 185 34 is_stmt 0 view .LVU103
+ 278 00b6 C268     		ldr	r2, [r0, #12]
  185:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 10;
- 278              		.loc 1 185 16 view .LVU104
- 279 00b8 5201     		lsls	r2, r2, #5
- 280              	.LVL22:
+ 279              		.loc 1 185 16 view .LVU104
+ 280 00b8 5201     		lsls	r2, r2, #5
+ 281              	.LVL22:
  186:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 15;
- 281              		.loc 1 186 7 is_stmt 1 view .LVU105
+ 282              		.loc 1 186 7 is_stmt 1 view .LVU105
  186:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 15;
- 282              		.loc 1 186 32 is_stmt 0 view .LVU106
- 283 00ba 0469     		ldr	r4, [r0, #16]
+ 283              		.loc 1 186 32 is_stmt 0 view .LVU106
+ 284 00ba 0469     		ldr	r4, [r0, #16]
  186:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 15;
- 284              		.loc 1 186 14 view .LVU107
- 285 00bc A402     		lsls	r4, r4, #10
- 286              	.LVL23:
+ 285              		.loc 1 186 14 view .LVU107
+ 286 00bc A402     		lsls	r4, r4, #10
+ 287              	.LVL23:
  187:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
- 287              		.loc 1 187 7 is_stmt 1 view .LVU108
+ 288              		.loc 1 187 7 is_stmt 1 view .LVU108
  187:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
- 288              		.loc 1 187 34 is_stmt 0 view .LVU109
- 289 00be 4369     		ldr	r3, [r0, #20]
+ 289              		.loc 1 187 34 is_stmt 0 view .LVU109
+ 290 00be 4369     		ldr	r3, [r0, #20]
  187:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
- 290              		.loc 1 187 16 view .LVU110
- 291 00c0 4FEAC33C 		lsl	ip, r3, #15
- 292              	.LVL24:
+ 291              		.loc 1 187 16 view .LVU110
+ 292 00c0 4FEAC33C 		lsl	ip, r3, #15
+ 293              	.LVL24:
  187:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
- 293              		.loc 1 187 16 view .LVU111
- 294 00c4 B9E7     		b	.L5
- 295              	.L14:
- 296 00c6 00BF     		.align	2
- 297              	.L13:
- 298 00c8 00B00240 		.word	1073917952
- 299              		.cfi_endproc
- 300              	.LFE124:
- 302              		.section	.text.DMA2D_StructInit,"ax",%progbits
- 303              		.align	1
- 304              		.global	DMA2D_StructInit
- 305              		.syntax unified
- 306              		.thumb
- 307              		.thumb_func
- 309              	DMA2D_StructInit:
- 310              	.LVL25:
- 311              	.LFB125:
+ 294              		.loc 1 187 16 view .LVU111
+ 295 00c4 B9E7     		b	.L5
+ 296              	.L14:
+ 297 00c6 00BF     		.align	2
+ 298              	.L13:
+ 299 00c8 00B00240 		.word	1073917952
+ 300              		.cfi_endproc
+ 301              	.LFE124:
+ 303              		.section	.text.DMA2D_StructInit,"ax",%progbits
+ 304              		.align	1
+ 305              		.global	DMA2D_StructInit
+ 306              		.syntax unified
+ 307              		.thumb
+ 308              		.thumb_func
+ 309              		.fpu fpv4-sp-d16
+ 311              	DMA2D_StructInit:
+ 312              	.LVL25:
+ 313              	.LFB125:
  217:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_StructInit(DMA2D_InitTypeDef* DMA2D_InitStruct)
  218:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 312              		.loc 1 218 1 is_stmt 1 view -0
- 313              		.cfi_startproc
- 314              		@ args = 0, pretend = 0, frame = 0
- 315              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/cco4iIGS.s 			page 11
+ 314              		.loc 1 218 1 is_stmt 1 view -0
+ 315              		.cfi_startproc
+ARM GAS  /tmp/cc0RTPKr.s 			page 11
 
 
- 316              		@ link register save eliminated.
+ 316              		@ args = 0, pretend = 0, frame = 0
+ 317              		@ frame_needed = 0, uses_anonymous_args = 0
+ 318              		@ link register save eliminated.
  219:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the transfer mode member */
  220:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_Mode = DMA2D_M2M;
- 317              		.loc 1 220 3 view .LVU113
- 318              		.loc 1 220 32 is_stmt 0 view .LVU114
- 319 0000 0023     		movs	r3, #0
- 320 0002 0360     		str	r3, [r0]
+ 319              		.loc 1 220 3 view .LVU113
+ 320              		.loc 1 220 32 is_stmt 0 view .LVU114
+ 321 0000 0023     		movs	r3, #0
+ 322 0002 0360     		str	r3, [r0]
  221:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  222:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the output color mode members */
  223:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_CMode = DMA2D_ARGB8888;
- 321              		.loc 1 223 3 is_stmt 1 view .LVU115
- 322              		.loc 1 223 33 is_stmt 0 view .LVU116
- 323 0004 4360     		str	r3, [r0, #4]
+ 323              		.loc 1 223 3 is_stmt 1 view .LVU115
+ 324              		.loc 1 223 33 is_stmt 0 view .LVU116
+ 325 0004 4360     		str	r3, [r0, #4]
  224:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  225:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the alpha and RGB values */
  226:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputGreen = 0x00;
- 324              		.loc 1 226 3 is_stmt 1 view .LVU117
- 325              		.loc 1 226 39 is_stmt 0 view .LVU118
- 326 0006 C360     		str	r3, [r0, #12]
+ 326              		.loc 1 226 3 is_stmt 1 view .LVU117
+ 327              		.loc 1 226 39 is_stmt 0 view .LVU118
+ 328 0006 C360     		str	r3, [r0, #12]
  227:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputBlue = 0x00;
- 327              		.loc 1 227 3 is_stmt 1 view .LVU119
- 328              		.loc 1 227 38 is_stmt 0 view .LVU120
- 329 0008 8360     		str	r3, [r0, #8]
+ 329              		.loc 1 227 3 is_stmt 1 view .LVU119
+ 330              		.loc 1 227 38 is_stmt 0 view .LVU120
+ 331 0008 8360     		str	r3, [r0, #8]
  228:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputRed = 0x00;
- 330              		.loc 1 228 3 is_stmt 1 view .LVU121
- 331              		.loc 1 228 37 is_stmt 0 view .LVU122
- 332 000a 0361     		str	r3, [r0, #16]
+ 332              		.loc 1 228 3 is_stmt 1 view .LVU121
+ 333              		.loc 1 228 37 is_stmt 0 view .LVU122
+ 334 000a 0361     		str	r3, [r0, #16]
  229:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputAlpha = 0x00;
- 333              		.loc 1 229 3 is_stmt 1 view .LVU123
- 334              		.loc 1 229 39 is_stmt 0 view .LVU124
- 335 000c 4361     		str	r3, [r0, #20]
+ 335              		.loc 1 229 3 is_stmt 1 view .LVU123
+ 336              		.loc 1 229 39 is_stmt 0 view .LVU124
+ 337 000c 4361     		str	r3, [r0, #20]
  230:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  231:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the output memory address */
  232:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputMemoryAdd = 0x00;
- 336              		.loc 1 232 3 is_stmt 1 view .LVU125
- 337              		.loc 1 232 43 is_stmt 0 view .LVU126
- 338 000e 8361     		str	r3, [r0, #24]
+ 338              		.loc 1 232 3 is_stmt 1 view .LVU125
+ 339              		.loc 1 232 43 is_stmt 0 view .LVU126
+ 340 000e 8361     		str	r3, [r0, #24]
  233:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  234:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the output offset */
  235:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputOffset = 0x00;
- 339              		.loc 1 235 3 is_stmt 1 view .LVU127
- 340              		.loc 1 235 40 is_stmt 0 view .LVU128
- 341 0010 C361     		str	r3, [r0, #28]
+ 341              		.loc 1 235 3 is_stmt 1 view .LVU127
+ 342              		.loc 1 235 40 is_stmt 0 view .LVU128
+ 343 0010 C361     		str	r3, [r0, #28]
  236:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  237:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the number of line and the number of pixel per line */
  238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_NumberOfLine = 0x00;
- 342              		.loc 1 238 3 is_stmt 1 view .LVU129
- 343              		.loc 1 238 40 is_stmt 0 view .LVU130
- 344 0012 0362     		str	r3, [r0, #32]
+ 344              		.loc 1 238 3 is_stmt 1 view .LVU129
+ 345              		.loc 1 238 40 is_stmt 0 view .LVU130
+ 346 0012 0362     		str	r3, [r0, #32]
  239:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_PixelPerLine = 0x00;
- 345              		.loc 1 239 3 is_stmt 1 view .LVU131
- 346              		.loc 1 239 40 is_stmt 0 view .LVU132
- 347 0014 4362     		str	r3, [r0, #36]
+ 347              		.loc 1 239 3 is_stmt 1 view .LVU131
+ 348              		.loc 1 239 40 is_stmt 0 view .LVU132
+ 349 0014 4362     		str	r3, [r0, #36]
  240:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 348              		.loc 1 240 1 view .LVU133
- 349 0016 7047     		bx	lr
- 350              		.cfi_endproc
-ARM GAS  /tmp/cco4iIGS.s 			page 12
+ 350              		.loc 1 240 1 view .LVU133
+ARM GAS  /tmp/cc0RTPKr.s 			page 12
 
 
- 351              	.LFE125:
- 353              		.section	.text.DMA2D_StartTransfer,"ax",%progbits
- 354              		.align	1
- 355              		.global	DMA2D_StartTransfer
- 356              		.syntax unified
- 357              		.thumb
- 358              		.thumb_func
- 360              	DMA2D_StartTransfer:
- 361              	.LFB126:
+ 351 0016 7047     		bx	lr
+ 352              		.cfi_endproc
+ 353              	.LFE125:
+ 355              		.section	.text.DMA2D_StartTransfer,"ax",%progbits
+ 356              		.align	1
+ 357              		.global	DMA2D_StartTransfer
+ 358              		.syntax unified
+ 359              		.thumb
+ 360              		.thumb_func
+ 361              		.fpu fpv4-sp-d16
+ 363              	DMA2D_StartTransfer:
+ 364              	.LFB126:
  241:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  242:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  243:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Start the DMA2D transfer.
@@ -679,80 +682,82 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  247:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  248:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_StartTransfer(void)
  249:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 362              		.loc 1 249 1 is_stmt 1 view -0
- 363              		.cfi_startproc
- 364              		@ args = 0, pretend = 0, frame = 0
- 365              		@ frame_needed = 0, uses_anonymous_args = 0
- 366              		@ link register save eliminated.
+ 365              		.loc 1 249 1 is_stmt 1 view -0
+ 366              		.cfi_startproc
+ 367              		@ args = 0, pretend = 0, frame = 0
+ 368              		@ frame_needed = 0, uses_anonymous_args = 0
+ 369              		@ link register save eliminated.
  250:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Start DMA2D transfer by setting START bit */
  251:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR |= (uint32_t)DMA2D_CR_START;
- 367              		.loc 1 251 5 view .LVU135
- 368              		.loc 1 251 15 is_stmt 0 view .LVU136
- 369 0000 024A     		ldr	r2, .L17
- 370 0002 1368     		ldr	r3, [r2]
- 371 0004 43F00103 		orr	r3, r3, #1
- 372 0008 1360     		str	r3, [r2]
+ 370              		.loc 1 251 5 view .LVU135
+ 371              		.loc 1 251 15 is_stmt 0 view .LVU136
+ 372 0000 024A     		ldr	r2, .L17
+ 373 0002 1368     		ldr	r3, [r2]
+ 374 0004 43F00103 		orr	r3, r3, #1
+ 375 0008 1360     		str	r3, [r2]
  252:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 373              		.loc 1 252 1 view .LVU137
- 374 000a 7047     		bx	lr
- 375              	.L18:
- 376              		.align	2
- 377              	.L17:
- 378 000c 00B00240 		.word	1073917952
- 379              		.cfi_endproc
- 380              	.LFE126:
- 382              		.section	.text.DMA2D_AbortTransfer,"ax",%progbits
- 383              		.align	1
- 384              		.global	DMA2D_AbortTransfer
- 385              		.syntax unified
- 386              		.thumb
- 387              		.thumb_func
- 389              	DMA2D_AbortTransfer:
- 390              	.LFB127:
+ 376              		.loc 1 252 1 view .LVU137
+ 377 000a 7047     		bx	lr
+ 378              	.L18:
+ 379              		.align	2
+ 380              	.L17:
+ 381 000c 00B00240 		.word	1073917952
+ 382              		.cfi_endproc
+ 383              	.LFE126:
+ 385              		.section	.text.DMA2D_AbortTransfer,"ax",%progbits
+ 386              		.align	1
+ 387              		.global	DMA2D_AbortTransfer
+ 388              		.syntax unified
+ 389              		.thumb
+ 390              		.thumb_func
+ 391              		.fpu fpv4-sp-d16
+ 393              	DMA2D_AbortTransfer:
+ 394              	.LFB127:
  253:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  254:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  255:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Abort the DMA2D transfer.
  256:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param
  257:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ARM GAS  /tmp/cc0RTPKr.s 			page 13
+
+
  258:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  259:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  260:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_AbortTransfer(void)
  261:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
-ARM GAS  /tmp/cco4iIGS.s 			page 13
-
-
- 391              		.loc 1 261 1 is_stmt 1 view -0
- 392              		.cfi_startproc
- 393              		@ args = 0, pretend = 0, frame = 0
- 394              		@ frame_needed = 0, uses_anonymous_args = 0
- 395              		@ link register save eliminated.
+ 395              		.loc 1 261 1 is_stmt 1 view -0
+ 396              		.cfi_startproc
+ 397              		@ args = 0, pretend = 0, frame = 0
+ 398              		@ frame_needed = 0, uses_anonymous_args = 0
+ 399              		@ link register save eliminated.
  262:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Start DMA2D transfer by setting START bit */
  263:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR |= (uint32_t)DMA2D_CR_ABORT;
- 396              		.loc 1 263 5 view .LVU139
- 397              		.loc 1 263 15 is_stmt 0 view .LVU140
- 398 0000 024A     		ldr	r2, .L20
- 399 0002 1368     		ldr	r3, [r2]
- 400 0004 43F00403 		orr	r3, r3, #4
- 401 0008 1360     		str	r3, [r2]
+ 400              		.loc 1 263 5 view .LVU139
+ 401              		.loc 1 263 15 is_stmt 0 view .LVU140
+ 402 0000 024A     		ldr	r2, .L20
+ 403 0002 1368     		ldr	r3, [r2]
+ 404 0004 43F00403 		orr	r3, r3, #4
+ 405 0008 1360     		str	r3, [r2]
  264:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  265:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 402              		.loc 1 265 1 view .LVU141
- 403 000a 7047     		bx	lr
- 404              	.L21:
- 405              		.align	2
- 406              	.L20:
- 407 000c 00B00240 		.word	1073917952
- 408              		.cfi_endproc
- 409              	.LFE127:
- 411              		.section	.text.DMA2D_Suspend,"ax",%progbits
- 412              		.align	1
- 413              		.global	DMA2D_Suspend
- 414              		.syntax unified
- 415              		.thumb
- 416              		.thumb_func
- 418              	DMA2D_Suspend:
- 419              	.LVL26:
- 420              	.LFB128:
+ 406              		.loc 1 265 1 view .LVU141
+ 407 000a 7047     		bx	lr
+ 408              	.L21:
+ 409              		.align	2
+ 410              	.L20:
+ 411 000c 00B00240 		.word	1073917952
+ 412              		.cfi_endproc
+ 413              	.LFE127:
+ 415              		.section	.text.DMA2D_Suspend,"ax",%progbits
+ 416              		.align	1
+ 417              		.global	DMA2D_Suspend
+ 418              		.syntax unified
+ 419              		.thumb
+ 420              		.thumb_func
+ 421              		.fpu fpv4-sp-d16
+ 423              	DMA2D_Suspend:
+ 424              	.LVL26:
+ 425              	.LFB128:
  266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  267:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  268:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Stop or continue the DMA2D transfer.
@@ -762,63 +767,64 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  272:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  273:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_Suspend(FunctionalState NewState)
  274:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 421              		.loc 1 274 1 is_stmt 1 view -0
- 422              		.cfi_startproc
- 423              		@ args = 0, pretend = 0, frame = 0
- 424              		@ frame_needed = 0, uses_anonymous_args = 0
- 425              		@ link register save eliminated.
+ 426              		.loc 1 274 1 is_stmt 1 view -0
+ 427              		.cfi_startproc
+ 428              		@ args = 0, pretend = 0, frame = 0
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 430              		@ link register save eliminated.
  275:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  276:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 426              		.loc 1 276 3 view .LVU143
+ 431              		.loc 1 276 3 view .LVU143
  277:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  278:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
- 427              		.loc 1 278 3 view .LVU144
- 428              		.loc 1 278 6 is_stmt 0 view .LVU145
- 429 0000 28B1     		cbz	r0, .L23
+ 432              		.loc 1 278 3 view .LVU144
+ARM GAS  /tmp/cc0RTPKr.s 			page 14
+
+
+ 433              		.loc 1 278 6 is_stmt 0 view .LVU145
+ 434 0000 28B1     		cbz	r0, .L23
  279:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  280:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Suspend DMA2D transfer by setting STOP bit */
  281:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR |= (uint32_t)DMA2D_CR_SUSP;
-ARM GAS  /tmp/cco4iIGS.s 			page 14
-
-
- 430              		.loc 1 281 5 is_stmt 1 view .LVU146
- 431              		.loc 1 281 15 is_stmt 0 view .LVU147
- 432 0002 064A     		ldr	r2, .L25
- 433 0004 1368     		ldr	r3, [r2]
- 434 0006 43F00203 		orr	r3, r3, #2
- 435 000a 1360     		str	r3, [r2]
- 436 000c 7047     		bx	lr
- 437              	.L23:
+ 435              		.loc 1 281 5 is_stmt 1 view .LVU146
+ 436              		.loc 1 281 15 is_stmt 0 view .LVU147
+ 437 0002 064A     		ldr	r2, .L25
+ 438 0004 1368     		ldr	r3, [r2]
+ 439 0006 43F00203 		orr	r3, r3, #2
+ 440 000a 1360     		str	r3, [r2]
+ 441 000c 7047     		bx	lr
+ 442              	.L23:
  282:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  283:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  284:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  285:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Continue DMA2D transfer by clearing STOP bit */
  286:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR &= ~(uint32_t)DMA2D_CR_SUSP;
- 438              		.loc 1 286 5 is_stmt 1 view .LVU148
- 439              		.loc 1 286 15 is_stmt 0 view .LVU149
- 440 000e 034A     		ldr	r2, .L25
- 441 0010 1368     		ldr	r3, [r2]
- 442 0012 23F00203 		bic	r3, r3, #2
- 443 0016 1360     		str	r3, [r2]
+ 443              		.loc 1 286 5 is_stmt 1 view .LVU148
+ 444              		.loc 1 286 15 is_stmt 0 view .LVU149
+ 445 000e 034A     		ldr	r2, .L25
+ 446 0010 1368     		ldr	r3, [r2]
+ 447 0012 23F00203 		bic	r3, r3, #2
+ 448 0016 1360     		str	r3, [r2]
  287:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  288:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 444              		.loc 1 288 1 view .LVU150
- 445 0018 7047     		bx	lr
- 446              	.L26:
- 447 001a 00BF     		.align	2
- 448              	.L25:
- 449 001c 00B00240 		.word	1073917952
- 450              		.cfi_endproc
- 451              	.LFE128:
- 453              		.section	.text.DMA2D_FGConfig,"ax",%progbits
- 454              		.align	1
- 455              		.global	DMA2D_FGConfig
- 456              		.syntax unified
- 457              		.thumb
- 458              		.thumb_func
- 460              	DMA2D_FGConfig:
- 461              	.LVL27:
- 462              	.LFB129:
+ 449              		.loc 1 288 1 view .LVU150
+ 450 0018 7047     		bx	lr
+ 451              	.L26:
+ 452 001a 00BF     		.align	2
+ 453              	.L25:
+ 454 001c 00B00240 		.word	1073917952
+ 455              		.cfi_endproc
+ 456              	.LFE128:
+ 458              		.section	.text.DMA2D_FGConfig,"ax",%progbits
+ 459              		.align	1
+ 460              		.global	DMA2D_FGConfig
+ 461              		.syntax unified
+ 462              		.thumb
+ 463              		.thumb_func
+ 464              		.fpu fpv4-sp-d16
+ 466              	DMA2D_FGConfig:
+ 467              	.LVL27:
+ 468              	.LFB129:
  289:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  290:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  291:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Configures the Foreground according to the specified parameters
@@ -830,289 +836,291 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  297:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  298:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_FGConfig(DMA2D_FG_InitTypeDef* DMA2D_FG_InitStruct)
  299:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 463              		.loc 1 299 1 is_stmt 1 view -0
- 464              		.cfi_startproc
- 465              		@ args = 0, pretend = 0, frame = 0
- 466              		@ frame_needed = 0, uses_anonymous_args = 0
- 467              		@ link register save eliminated.
- 468              		.loc 1 299 1 is_stmt 0 view .LVU152
- 469 0000 10B4     		push	{r4}
- 470              		.cfi_def_cfa_offset 4
-ARM GAS  /tmp/cco4iIGS.s 			page 15
+ 469              		.loc 1 299 1 is_stmt 1 view -0
+ 470              		.cfi_startproc
+ARM GAS  /tmp/cc0RTPKr.s 			page 15
 
 
- 471              		.cfi_offset 4, -4
+ 471              		@ args = 0, pretend = 0, frame = 0
+ 472              		@ frame_needed = 0, uses_anonymous_args = 0
+ 473              		@ link register save eliminated.
+ 474              		.loc 1 299 1 is_stmt 0 view .LVU152
+ 475 0000 10B4     		push	{r4}
+ 476              		.cfi_def_cfa_offset 4
+ 477              		.cfi_offset 4, -4
  300:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  301:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_clutcolormode = 0;
- 472              		.loc 1 301 3 is_stmt 1 view .LVU153
- 473              	.LVL28:
+ 478              		.loc 1 301 3 is_stmt 1 view .LVU153
+ 479              	.LVL28:
  302:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_clutsize = 0;
- 474              		.loc 1 302 3 view .LVU154
+ 480              		.loc 1 302 3 view .LVU154
  303:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_alpha_mode = 0;
- 475              		.loc 1 303 3 view .LVU155
+ 481              		.loc 1 303 3 view .LVU155
  304:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_alphavalue = 0;
- 476              		.loc 1 304 3 view .LVU156
+ 482              		.loc 1 304 3 view .LVU156
  305:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_colorgreen = 0;
- 477              		.loc 1 305 3 view .LVU157
+ 483              		.loc 1 305 3 view .LVU157
  306:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_colorred = 0;
- 478              		.loc 1 306 3 view .LVU158
+ 484              		.loc 1 306 3 view .LVU158
  307:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  308:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGO(DMA2D_FG_InitStruct->DMA2D_FGO));
- 479              		.loc 1 308 3 view .LVU159
+ 485              		.loc 1 308 3 view .LVU159
  309:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGCM(DMA2D_FG_InitStruct->DMA2D_FGCM));
- 480              		.loc 1 309 3 view .LVU160
+ 486              		.loc 1 309 3 view .LVU160
  310:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FG_CLUT_CM(DMA2D_FG_InitStruct->DMA2D_FG_CLUT_CM));
- 481              		.loc 1 310 3 view .LVU161
+ 487              		.loc 1 310 3 view .LVU161
  311:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FG_CLUT_SIZE(DMA2D_FG_InitStruct->DMA2D_FG_CLUT_SIZE));
- 482              		.loc 1 311 3 view .LVU162
+ 488              		.loc 1 311 3 view .LVU162
  312:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FG_ALPHA_MODE(DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_MODE));
- 483              		.loc 1 312 3 view .LVU163
+ 489              		.loc 1 312 3 view .LVU163
  313:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FG_ALPHA_VALUE(DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_VALUE));
- 484              		.loc 1 313 3 view .LVU164
+ 490              		.loc 1 313 3 view .LVU164
  314:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGC_BLUE(DMA2D_FG_InitStruct->DMA2D_FGC_BLUE));
- 485              		.loc 1 314 3 view .LVU165
+ 491              		.loc 1 314 3 view .LVU165
  315:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGC_GREEN(DMA2D_FG_InitStruct->DMA2D_FGC_GREEN));
- 486              		.loc 1 315 3 view .LVU166
+ 492              		.loc 1 315 3 view .LVU166
  316:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGC_RED(DMA2D_FG_InitStruct->DMA2D_FGC_RED));
- 487              		.loc 1 316 3 view .LVU167
+ 493              		.loc 1 316 3 view .LVU167
  317:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  318:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the FG memory address */
  319:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGMAR = (DMA2D_FG_InitStruct->DMA2D_FGMA);
- 488              		.loc 1 319 3 view .LVU168
- 489              		.loc 1 319 38 is_stmt 0 view .LVU169
- 490 0002 0268     		ldr	r2, [r0]
- 491              		.loc 1 319 16 view .LVU170
- 492 0004 194B     		ldr	r3, .L29
- 493 0006 DA60     		str	r2, [r3, #12]
+ 494              		.loc 1 319 3 view .LVU168
+ 495              		.loc 1 319 38 is_stmt 0 view .LVU169
+ 496 0002 0268     		ldr	r2, [r0]
+ 497              		.loc 1 319 16 view .LVU170
+ 498 0004 194B     		ldr	r3, .L29
+ 499 0006 DA60     		str	r2, [r3, #12]
  320:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  321:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the FG offset */
  322:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGOR &= ~(uint32_t)DMA2D_FGOR_LO;
- 494              		.loc 1 322 3 is_stmt 1 view .LVU171
- 495              		.loc 1 322 15 is_stmt 0 view .LVU172
- 496 0008 1A69     		ldr	r2, [r3, #16]
- 497 000a 22F47F52 		bic	r2, r2, #16320
- 498 000e 22F03F02 		bic	r2, r2, #63
- 499 0012 1A61     		str	r2, [r3, #16]
+ 500              		.loc 1 322 3 is_stmt 1 view .LVU171
+ 501              		.loc 1 322 15 is_stmt 0 view .LVU172
+ 502 0008 1A69     		ldr	r2, [r3, #16]
+ 503 000a 22F47F52 		bic	r2, r2, #16320
+ 504 000e 22F03F02 		bic	r2, r2, #63
+ARM GAS  /tmp/cc0RTPKr.s 			page 16
+
+
+ 505 0012 1A61     		str	r2, [r3, #16]
  323:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGOR |= (DMA2D_FG_InitStruct->DMA2D_FGO);
- 500              		.loc 1 323 3 is_stmt 1 view .LVU173
- 501              		.loc 1 323 15 is_stmt 0 view .LVU174
- 502 0014 1A69     		ldr	r2, [r3, #16]
- 503              		.loc 1 323 38 view .LVU175
-ARM GAS  /tmp/cco4iIGS.s 			page 16
-
-
- 504 0016 4168     		ldr	r1, [r0, #4]
- 505              		.loc 1 323 15 view .LVU176
- 506 0018 0A43     		orrs	r2, r2, r1
- 507 001a 1A61     		str	r2, [r3, #16]
+ 506              		.loc 1 323 3 is_stmt 1 view .LVU173
+ 507              		.loc 1 323 15 is_stmt 0 view .LVU174
+ 508 0014 1A69     		ldr	r2, [r3, #16]
+ 509              		.loc 1 323 38 view .LVU175
+ 510 0016 4168     		ldr	r1, [r0, #4]
+ 511              		.loc 1 323 15 view .LVU176
+ 512 0018 0A43     		orrs	r2, r2, r1
+ 513 001a 1A61     		str	r2, [r3, #16]
  324:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  325:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures foreground Pixel Format Convertor */
  326:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGPFCCR &= (uint32_t)PFCCR_MASK;
- 508              		.loc 1 326 3 is_stmt 1 view .LVU177
- 509              		.loc 1 326 18 is_stmt 0 view .LVU178
- 510 001c D969     		ldr	r1, [r3, #28]
- 511 001e 144A     		ldr	r2, .L29+4
- 512 0020 0A40     		ands	r2, r2, r1
- 513 0022 DA61     		str	r2, [r3, #28]
+ 514              		.loc 1 326 3 is_stmt 1 view .LVU177
+ 515              		.loc 1 326 18 is_stmt 0 view .LVU178
+ 516 001c D969     		ldr	r1, [r3, #28]
+ 517 001e 144A     		ldr	r2, .L29+4
+ 518 0020 0A40     		ands	r2, r2, r1
+ 519 0022 DA61     		str	r2, [r3, #28]
  327:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_clutcolormode = DMA2D_FG_InitStruct->DMA2D_FG_CLUT_CM << 4;
- 514              		.loc 1 327 3 is_stmt 1 view .LVU179
- 515              	.LVL29:
+ 520              		.loc 1 327 3 is_stmt 1 view .LVU179
+ 521              	.LVL29:
  328:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_clutsize = DMA2D_FG_InitStruct->DMA2D_FG_CLUT_SIZE << 8;
- 516              		.loc 1 328 3 view .LVU180
+ 522              		.loc 1 328 3 view .LVU180
  329:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_alpha_mode = DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_MODE << 16;
- 517              		.loc 1 329 3 view .LVU181
+ 523              		.loc 1 329 3 view .LVU181
  330:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_alphavalue = DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_VALUE << 24;
- 518              		.loc 1 330 3 view .LVU182
+ 524              		.loc 1 330 3 view .LVU182
  331:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGPFCCR |= (DMA2D_FG_InitStruct->DMA2D_FGCM | fg_clutcolormode | fg_clutsize | \
- 519              		.loc 1 331 3 view .LVU183
- 520              		.loc 1 331 18 is_stmt 0 view .LVU184
- 521 0024 D969     		ldr	r1, [r3, #28]
- 522              		.loc 1 331 41 view .LVU185
- 523 0026 8268     		ldr	r2, [r0, #8]
- 524              		.loc 1 331 54 view .LVU186
- 525 0028 C468     		ldr	r4, [r0, #12]
- 526 002a 42EA0412 		orr	r2, r2, r4, lsl #4
- 527              		.loc 1 331 73 view .LVU187
- 528 002e 0469     		ldr	r4, [r0, #16]
- 529 0030 42EA0422 		orr	r2, r2, r4, lsl #8
- 530              		.loc 1 331 87 view .LVU188
- 531 0034 4469     		ldr	r4, [r0, #20]
- 532 0036 42EA0442 		orr	r2, r2, r4, lsl #16
+ 525              		.loc 1 331 3 view .LVU183
+ 526              		.loc 1 331 18 is_stmt 0 view .LVU184
+ 527 0024 D969     		ldr	r1, [r3, #28]
+ 528              		.loc 1 331 41 view .LVU185
+ 529 0026 8268     		ldr	r2, [r0, #8]
+ 530              		.loc 1 331 54 view .LVU186
+ 531 0028 C468     		ldr	r4, [r0, #12]
+ 532 002a 42EA0412 		orr	r2, r2, r4, lsl #4
+ 533              		.loc 1 331 73 view .LVU187
+ 534 002e 0469     		ldr	r4, [r0, #16]
+ 535 0030 42EA0422 		orr	r2, r2, r4, lsl #8
+ 536              		.loc 1 331 87 view .LVU188
+ 537 0034 4469     		ldr	r4, [r0, #20]
+ 538 0036 42EA0442 		orr	r2, r2, r4, lsl #16
  332:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                     fg_alpha_mode | fg_alphavalue);
- 533              		.loc 1 332 35 view .LVU189
- 534 003a 8469     		ldr	r4, [r0, #24]
- 535 003c 42EA0462 		orr	r2, r2, r4, lsl #24
+ 539              		.loc 1 332 35 view .LVU189
+ 540 003a 8469     		ldr	r4, [r0, #24]
+ 541 003c 42EA0462 		orr	r2, r2, r4, lsl #24
  331:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGPFCCR |= (DMA2D_FG_InitStruct->DMA2D_FGCM | fg_clutcolormode | fg_clutsize | \
- 536              		.loc 1 331 18 view .LVU190
- 537 0040 0A43     		orrs	r2, r2, r1
- 538 0042 DA61     		str	r2, [r3, #28]
- 539              	.LVL30:
+ 542              		.loc 1 331 18 view .LVU190
+ 543 0040 0A43     		orrs	r2, r2, r1
+ 544 0042 DA61     		str	r2, [r3, #28]
+ 545              	.LVL30:
  333:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  334:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures foreground color */
  335:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGCOLR &= ~(DMA2D_FGCOLR_BLUE | DMA2D_FGCOLR_GREEN | DMA2D_FGCOLR_RED);
- 540              		.loc 1 335 3 is_stmt 1 view .LVU191
- 541              		.loc 1 335 17 is_stmt 0 view .LVU192
- 542 0044 1A6A     		ldr	r2, [r3, #32]
- 543 0046 02F07F42 		and	r2, r2, #-16777216
- 544 004a 1A62     		str	r2, [r3, #32]
+ 546              		.loc 1 335 3 is_stmt 1 view .LVU191
+ 547              		.loc 1 335 17 is_stmt 0 view .LVU192
+ARM GAS  /tmp/cc0RTPKr.s 			page 17
+
+
+ 548 0044 1A6A     		ldr	r2, [r3, #32]
+ 549 0046 02F07F42 		and	r2, r2, #-16777216
+ 550 004a 1A62     		str	r2, [r3, #32]
  336:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_colorgreen = DMA2D_FG_InitStruct->DMA2D_FGC_GREEN << 8;
- 545              		.loc 1 336 3 is_stmt 1 view .LVU193
- 546              	.LVL31:
-ARM GAS  /tmp/cco4iIGS.s 			page 17
-
-
+ 551              		.loc 1 336 3 is_stmt 1 view .LVU193
+ 552              	.LVL31:
  337:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_colorred = DMA2D_FG_InitStruct->DMA2D_FGC_RED << 16;
- 547              		.loc 1 337 3 view .LVU194
+ 553              		.loc 1 337 3 view .LVU194
  338:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGCOLR |= (DMA2D_FG_InitStruct->DMA2D_FGC_BLUE | fg_colorgreen | fg_colorred);
- 548              		.loc 1 338 3 view .LVU195
- 549              		.loc 1 338 17 is_stmt 0 view .LVU196
- 550 004c 196A     		ldr	r1, [r3, #32]
- 551              		.loc 1 338 40 view .LVU197
- 552 004e C269     		ldr	r2, [r0, #28]
- 553              		.loc 1 338 57 view .LVU198
- 554 0050 046A     		ldr	r4, [r0, #32]
- 555              	.LVL32:
- 556              		.loc 1 338 57 view .LVU199
- 557 0052 42EA0422 		orr	r2, r2, r4, lsl #8
- 558              		.loc 1 338 73 view .LVU200
- 559 0056 446A     		ldr	r4, [r0, #36]
- 560 0058 42EA0442 		orr	r2, r2, r4, lsl #16
- 561              		.loc 1 338 17 view .LVU201
- 562 005c 0A43     		orrs	r2, r2, r1
- 563 005e 1A62     		str	r2, [r3, #32]
- 564              	.LVL33:
+ 554              		.loc 1 338 3 view .LVU195
+ 555              		.loc 1 338 17 is_stmt 0 view .LVU196
+ 556 004c 196A     		ldr	r1, [r3, #32]
+ 557              		.loc 1 338 40 view .LVU197
+ 558 004e C269     		ldr	r2, [r0, #28]
+ 559              		.loc 1 338 57 view .LVU198
+ 560 0050 046A     		ldr	r4, [r0, #32]
+ 561              	.LVL32:
+ 562              		.loc 1 338 57 view .LVU199
+ 563 0052 42EA0422 		orr	r2, r2, r4, lsl #8
+ 564              		.loc 1 338 73 view .LVU200
+ 565 0056 446A     		ldr	r4, [r0, #36]
+ 566 0058 42EA0442 		orr	r2, r2, r4, lsl #16
+ 567              		.loc 1 338 17 view .LVU201
+ 568 005c 0A43     		orrs	r2, r2, r1
+ 569 005e 1A62     		str	r2, [r3, #32]
+ 570              	.LVL33:
  339:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  340:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures foreground CLUT memory address */
  341:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGCMAR = DMA2D_FG_InitStruct->DMA2D_FGCMAR;
- 565              		.loc 1 341 3 is_stmt 1 view .LVU202
- 566              		.loc 1 341 38 is_stmt 0 view .LVU203
- 567 0060 826A     		ldr	r2, [r0, #40]
- 568              		.loc 1 341 17 view .LVU204
- 569 0062 DA62     		str	r2, [r3, #44]
+ 571              		.loc 1 341 3 is_stmt 1 view .LVU202
+ 572              		.loc 1 341 38 is_stmt 0 view .LVU203
+ 573 0060 826A     		ldr	r2, [r0, #40]
+ 574              		.loc 1 341 17 view .LVU204
+ 575 0062 DA62     		str	r2, [r3, #44]
  342:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 570              		.loc 1 342 1 view .LVU205
- 571 0064 5DF8044B 		ldr	r4, [sp], #4
- 572              		.cfi_restore 4
- 573              		.cfi_def_cfa_offset 0
- 574              	.LVL34:
- 575              		.loc 1 342 1 view .LVU206
- 576 0068 7047     		bx	lr
- 577              	.L30:
- 578 006a 00BF     		.align	2
- 579              	.L29:
- 580 006c 00B00240 		.word	1073917952
- 581 0070 C000FC00 		.word	16515264
- 582              		.cfi_endproc
- 583              	.LFE129:
- 585              		.section	.text.DMA2D_FG_StructInit,"ax",%progbits
- 586              		.align	1
- 587              		.global	DMA2D_FG_StructInit
- 588              		.syntax unified
- 589              		.thumb
- 590              		.thumb_func
- 592              	DMA2D_FG_StructInit:
- 593              	.LVL35:
- 594              	.LFB130:
+ 576              		.loc 1 342 1 view .LVU205
+ 577 0064 5DF8044B 		ldr	r4, [sp], #4
+ 578              		.cfi_restore 4
+ 579              		.cfi_def_cfa_offset 0
+ 580              	.LVL34:
+ 581              		.loc 1 342 1 view .LVU206
+ 582 0068 7047     		bx	lr
+ 583              	.L30:
+ 584 006a 00BF     		.align	2
+ 585              	.L29:
+ 586 006c 00B00240 		.word	1073917952
+ 587 0070 C000FC00 		.word	16515264
+ 588              		.cfi_endproc
+ 589              	.LFE129:
+ 591              		.section	.text.DMA2D_FG_StructInit,"ax",%progbits
+ 592              		.align	1
+ 593              		.global	DMA2D_FG_StructInit
+ 594              		.syntax unified
+ 595              		.thumb
+ 596              		.thumb_func
+ 597              		.fpu fpv4-sp-d16
+ 599              	DMA2D_FG_StructInit:
+ARM GAS  /tmp/cc0RTPKr.s 			page 18
+
+
+ 600              	.LVL35:
+ 601              	.LFB130:
  343:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  344:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  345:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Fills each DMA2D_FGStruct member with its default value.
  346:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_FGStruct: pointer to a DMA2D_FGTypeDef structure which will
  347:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         be initialized.
-ARM GAS  /tmp/cco4iIGS.s 			page 18
-
-
  348:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
  349:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  350:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_FG_StructInit(DMA2D_FG_InitTypeDef* DMA2D_FG_InitStruct)
  351:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 595              		.loc 1 351 1 is_stmt 1 view -0
- 596              		.cfi_startproc
- 597              		@ args = 0, pretend = 0, frame = 0
- 598              		@ frame_needed = 0, uses_anonymous_args = 0
- 599              		@ link register save eliminated.
+ 602              		.loc 1 351 1 is_stmt 1 view -0
+ 603              		.cfi_startproc
+ 604              		@ args = 0, pretend = 0, frame = 0
+ 605              		@ frame_needed = 0, uses_anonymous_args = 0
+ 606              		@ link register save eliminated.
  352:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground memory address */
  353:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGMA = 0x00;
- 600              		.loc 1 353 3 view .LVU208
- 601              		.loc 1 353 35 is_stmt 0 view .LVU209
- 602 0000 0023     		movs	r3, #0
- 603 0002 0360     		str	r3, [r0]
+ 607              		.loc 1 353 3 view .LVU208
+ 608              		.loc 1 353 35 is_stmt 0 view .LVU209
+ 609 0000 0023     		movs	r3, #0
+ 610 0002 0360     		str	r3, [r0]
  354:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  355:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground offset */
  356:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGO = 0x00;
- 604              		.loc 1 356 3 is_stmt 1 view .LVU210
- 605              		.loc 1 356 34 is_stmt 0 view .LVU211
- 606 0004 4360     		str	r3, [r0, #4]
+ 611              		.loc 1 356 3 is_stmt 1 view .LVU210
+ 612              		.loc 1 356 34 is_stmt 0 view .LVU211
+ 613 0004 4360     		str	r3, [r0, #4]
  357:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  358:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground color mode */
  359:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGCM = CM_ARGB8888;
- 607              		.loc 1 359 3 is_stmt 1 view .LVU212
- 608              		.loc 1 359 35 is_stmt 0 view .LVU213
- 609 0006 8360     		str	r3, [r0, #8]
+ 614              		.loc 1 359 3 is_stmt 1 view .LVU212
+ 615              		.loc 1 359 35 is_stmt 0 view .LVU213
+ 616 0006 8360     		str	r3, [r0, #8]
  360:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  361:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground CLUT color mode */
  362:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FG_CLUT_CM = CLUT_CM_ARGB8888;
- 610              		.loc 1 362 3 is_stmt 1 view .LVU214
- 611              		.loc 1 362 41 is_stmt 0 view .LVU215
- 612 0008 C360     		str	r3, [r0, #12]
+ 617              		.loc 1 362 3 is_stmt 1 view .LVU214
+ 618              		.loc 1 362 41 is_stmt 0 view .LVU215
+ 619 0008 C360     		str	r3, [r0, #12]
  363:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  364:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground CLUT size */
  365:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FG_CLUT_SIZE = 0x00;
- 613              		.loc 1 365 3 is_stmt 1 view .LVU216
- 614              		.loc 1 365 43 is_stmt 0 view .LVU217
- 615 000a 0361     		str	r3, [r0, #16]
+ 620              		.loc 1 365 3 is_stmt 1 view .LVU216
+ 621              		.loc 1 365 43 is_stmt 0 view .LVU217
+ 622 000a 0361     		str	r3, [r0, #16]
  366:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  367:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground alpha mode */
  368:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_MODE = NO_MODIF_ALPHA_VALUE;
- 616              		.loc 1 368 3 is_stmt 1 view .LVU218
- 617              		.loc 1 368 47 is_stmt 0 view .LVU219
- 618 000c 4361     		str	r3, [r0, #20]
+ 623              		.loc 1 368 3 is_stmt 1 view .LVU218
+ 624              		.loc 1 368 47 is_stmt 0 view .LVU219
+ 625 000c 4361     		str	r3, [r0, #20]
  369:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  370:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground alpha value */
  371:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_VALUE = 0x00;
- 619              		.loc 1 371 3 is_stmt 1 view .LVU220
- 620              		.loc 1 371 48 is_stmt 0 view .LVU221
- 621 000e 8361     		str	r3, [r0, #24]
+ 626              		.loc 1 371 3 is_stmt 1 view .LVU220
+ 627              		.loc 1 371 48 is_stmt 0 view .LVU221
+ARM GAS  /tmp/cc0RTPKr.s 			page 19
+
+
+ 628 000e 8361     		str	r3, [r0, #24]
  372:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  373:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground blue value */
  374:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGC_BLUE = 0x00;
- 622              		.loc 1 374 3 is_stmt 1 view .LVU222
- 623              		.loc 1 374 39 is_stmt 0 view .LVU223
- 624 0010 C361     		str	r3, [r0, #28]
-ARM GAS  /tmp/cco4iIGS.s 			page 19
-
-
+ 629              		.loc 1 374 3 is_stmt 1 view .LVU222
+ 630              		.loc 1 374 39 is_stmt 0 view .LVU223
+ 631 0010 C361     		str	r3, [r0, #28]
  375:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  376:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground green value */
  377:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGC_GREEN = 0x00;
- 625              		.loc 1 377 3 is_stmt 1 view .LVU224
- 626              		.loc 1 377 40 is_stmt 0 view .LVU225
- 627 0012 0362     		str	r3, [r0, #32]
+ 632              		.loc 1 377 3 is_stmt 1 view .LVU224
+ 633              		.loc 1 377 40 is_stmt 0 view .LVU225
+ 634 0012 0362     		str	r3, [r0, #32]
  378:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  379:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground red value */
  380:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGC_RED = 0x00;
- 628              		.loc 1 380 3 is_stmt 1 view .LVU226
- 629              		.loc 1 380 38 is_stmt 0 view .LVU227
- 630 0014 4362     		str	r3, [r0, #36]
+ 635              		.loc 1 380 3 is_stmt 1 view .LVU226
+ 636              		.loc 1 380 38 is_stmt 0 view .LVU227
+ 637 0014 4362     		str	r3, [r0, #36]
  381:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  382:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground CLUT memory address */
  383:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGCMAR = 0x00;
- 631              		.loc 1 383 3 is_stmt 1 view .LVU228
- 632              		.loc 1 383 37 is_stmt 0 view .LVU229
- 633 0016 8362     		str	r3, [r0, #40]
+ 638              		.loc 1 383 3 is_stmt 1 view .LVU228
+ 639              		.loc 1 383 37 is_stmt 0 view .LVU229
+ 640 0016 8362     		str	r3, [r0, #40]
  384:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 634              		.loc 1 384 1 view .LVU230
- 635 0018 7047     		bx	lr
- 636              		.cfi_endproc
- 637              	.LFE130:
- 639              		.section	.text.DMA2D_BGConfig,"ax",%progbits
- 640              		.align	1
- 641              		.global	DMA2D_BGConfig
- 642              		.syntax unified
- 643              		.thumb
- 644              		.thumb_func
- 646              	DMA2D_BGConfig:
- 647              	.LVL36:
- 648              	.LFB131:
+ 641              		.loc 1 384 1 view .LVU230
+ 642 0018 7047     		bx	lr
+ 643              		.cfi_endproc
+ 644              	.LFE130:
+ 646              		.section	.text.DMA2D_BGConfig,"ax",%progbits
+ 647              		.align	1
+ 648              		.global	DMA2D_BGConfig
+ 649              		.syntax unified
+ 650              		.thumb
+ 651              		.thumb_func
+ 652              		.fpu fpv4-sp-d16
+ 654              	DMA2D_BGConfig:
+ 655              	.LVL36:
+ 656              	.LFB131:
  385:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  386:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  387:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
@@ -1125,190 +1133,194 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  394:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  395:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_BGConfig(DMA2D_BG_InitTypeDef* DMA2D_BG_InitStruct)
  396:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 649              		.loc 1 396 1 is_stmt 1 view -0
- 650              		.cfi_startproc
- 651              		@ args = 0, pretend = 0, frame = 0
- 652              		@ frame_needed = 0, uses_anonymous_args = 0
- 653              		@ link register save eliminated.
- 654              		.loc 1 396 1 is_stmt 0 view .LVU232
- 655 0000 10B4     		push	{r4}
- 656              		.cfi_def_cfa_offset 4
- 657              		.cfi_offset 4, -4
+ 657              		.loc 1 396 1 is_stmt 1 view -0
+ 658              		.cfi_startproc
+ 659              		@ args = 0, pretend = 0, frame = 0
+ 660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 661              		@ link register save eliminated.
+ARM GAS  /tmp/cc0RTPKr.s 			page 20
+
+
+ 662              		.loc 1 396 1 is_stmt 0 view .LVU232
+ 663 0000 10B4     		push	{r4}
+ 664              		.cfi_def_cfa_offset 4
+ 665              		.cfi_offset 4, -4
  397:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  398:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_clutcolormode = 0;
- 658              		.loc 1 398 3 is_stmt 1 view .LVU233
- 659              	.LVL37:
-ARM GAS  /tmp/cco4iIGS.s 			page 20
-
-
+ 666              		.loc 1 398 3 is_stmt 1 view .LVU233
+ 667              	.LVL37:
  399:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_clutsize = 0;
- 660              		.loc 1 399 3 view .LVU234
+ 668              		.loc 1 399 3 view .LVU234
  400:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_alpha_mode = 0;
- 661              		.loc 1 400 3 view .LVU235
+ 669              		.loc 1 400 3 view .LVU235
  401:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_alphavalue = 0;
- 662              		.loc 1 401 3 view .LVU236
+ 670              		.loc 1 401 3 view .LVU236
  402:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_colorgreen = 0;
- 663              		.loc 1 402 3 view .LVU237
+ 671              		.loc 1 402 3 view .LVU237
  403:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_colorred = 0;
- 664              		.loc 1 403 3 view .LVU238
+ 672              		.loc 1 403 3 view .LVU238
  404:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  405:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGO(DMA2D_BG_InitStruct->DMA2D_BGO));
- 665              		.loc 1 405 3 view .LVU239
+ 673              		.loc 1 405 3 view .LVU239
  406:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGCM(DMA2D_BG_InitStruct->DMA2D_BGCM));
- 666              		.loc 1 406 3 view .LVU240
+ 674              		.loc 1 406 3 view .LVU240
  407:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BG_CLUT_CM(DMA2D_BG_InitStruct->DMA2D_BG_CLUT_CM));
- 667              		.loc 1 407 3 view .LVU241
+ 675              		.loc 1 407 3 view .LVU241
  408:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BG_CLUT_SIZE(DMA2D_BG_InitStruct->DMA2D_BG_CLUT_SIZE));
- 668              		.loc 1 408 3 view .LVU242
+ 676              		.loc 1 408 3 view .LVU242
  409:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BG_ALPHA_MODE(DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_MODE));
- 669              		.loc 1 409 3 view .LVU243
+ 677              		.loc 1 409 3 view .LVU243
  410:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BG_ALPHA_VALUE(DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_VALUE));
- 670              		.loc 1 410 3 view .LVU244
+ 678              		.loc 1 410 3 view .LVU244
  411:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGC_BLUE(DMA2D_BG_InitStruct->DMA2D_BGC_BLUE));
- 671              		.loc 1 411 3 view .LVU245
+ 679              		.loc 1 411 3 view .LVU245
  412:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGC_GREEN(DMA2D_BG_InitStruct->DMA2D_BGC_GREEN));
- 672              		.loc 1 412 3 view .LVU246
+ 680              		.loc 1 412 3 view .LVU246
  413:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGC_RED(DMA2D_BG_InitStruct->DMA2D_BGC_RED));
- 673              		.loc 1 413 3 view .LVU247
+ 681              		.loc 1 413 3 view .LVU247
  414:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  415:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the BG memory address */
  416:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGMAR = (DMA2D_BG_InitStruct->DMA2D_BGMA);
- 674              		.loc 1 416 3 view .LVU248
- 675              		.loc 1 416 38 is_stmt 0 view .LVU249
- 676 0002 0268     		ldr	r2, [r0]
- 677              		.loc 1 416 16 view .LVU250
- 678 0004 194B     		ldr	r3, .L34
- 679 0006 5A61     		str	r2, [r3, #20]
+ 682              		.loc 1 416 3 view .LVU248
+ 683              		.loc 1 416 38 is_stmt 0 view .LVU249
+ 684 0002 0268     		ldr	r2, [r0]
+ 685              		.loc 1 416 16 view .LVU250
+ 686 0004 194B     		ldr	r3, .L34
+ 687 0006 5A61     		str	r2, [r3, #20]
  417:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  418:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the BG offset */
  419:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGOR &= ~(uint32_t)DMA2D_BGOR_LO;
- 680              		.loc 1 419 3 is_stmt 1 view .LVU251
- 681              		.loc 1 419 15 is_stmt 0 view .LVU252
- 682 0008 9A69     		ldr	r2, [r3, #24]
- 683 000a 22F47F52 		bic	r2, r2, #16320
- 684 000e 22F03F02 		bic	r2, r2, #63
- 685 0012 9A61     		str	r2, [r3, #24]
+ 688              		.loc 1 419 3 is_stmt 1 view .LVU251
+ 689              		.loc 1 419 15 is_stmt 0 view .LVU252
+ 690 0008 9A69     		ldr	r2, [r3, #24]
+ 691 000a 22F47F52 		bic	r2, r2, #16320
+ 692 000e 22F03F02 		bic	r2, r2, #63
+ 693 0012 9A61     		str	r2, [r3, #24]
  420:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGOR |= (DMA2D_BG_InitStruct->DMA2D_BGO);
- 686              		.loc 1 420 3 is_stmt 1 view .LVU253
- 687              		.loc 1 420 15 is_stmt 0 view .LVU254
- 688 0014 9A69     		ldr	r2, [r3, #24]
- 689              		.loc 1 420 38 view .LVU255
- 690 0016 4168     		ldr	r1, [r0, #4]
- 691              		.loc 1 420 15 view .LVU256
- 692 0018 0A43     		orrs	r2, r2, r1
- 693 001a 9A61     		str	r2, [r3, #24]
+ 694              		.loc 1 420 3 is_stmt 1 view .LVU253
+ARM GAS  /tmp/cc0RTPKr.s 			page 21
+
+
+ 695              		.loc 1 420 15 is_stmt 0 view .LVU254
+ 696 0014 9A69     		ldr	r2, [r3, #24]
+ 697              		.loc 1 420 38 view .LVU255
+ 698 0016 4168     		ldr	r1, [r0, #4]
+ 699              		.loc 1 420 15 view .LVU256
+ 700 0018 0A43     		orrs	r2, r2, r1
+ 701 001a 9A61     		str	r2, [r3, #24]
  421:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
-ARM GAS  /tmp/cco4iIGS.s 			page 21
-
-
  422:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures background Pixel Format Convertor */
  423:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGPFCCR &= (uint32_t)PFCCR_MASK;
- 694              		.loc 1 423 3 is_stmt 1 view .LVU257
- 695              		.loc 1 423 18 is_stmt 0 view .LVU258
- 696 001c 596A     		ldr	r1, [r3, #36]
- 697 001e 144A     		ldr	r2, .L34+4
- 698 0020 0A40     		ands	r2, r2, r1
- 699 0022 5A62     		str	r2, [r3, #36]
+ 702              		.loc 1 423 3 is_stmt 1 view .LVU257
+ 703              		.loc 1 423 18 is_stmt 0 view .LVU258
+ 704 001c 596A     		ldr	r1, [r3, #36]
+ 705 001e 144A     		ldr	r2, .L34+4
+ 706 0020 0A40     		ands	r2, r2, r1
+ 707 0022 5A62     		str	r2, [r3, #36]
  424:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_clutcolormode = DMA2D_BG_InitStruct->DMA2D_BG_CLUT_CM << 4;
- 700              		.loc 1 424 3 is_stmt 1 view .LVU259
- 701              	.LVL38:
+ 708              		.loc 1 424 3 is_stmt 1 view .LVU259
+ 709              	.LVL38:
  425:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_clutsize = DMA2D_BG_InitStruct->DMA2D_BG_CLUT_SIZE << 8;
- 702              		.loc 1 425 3 view .LVU260
+ 710              		.loc 1 425 3 view .LVU260
  426:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_alpha_mode = DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_MODE << 16;
- 703              		.loc 1 426 3 view .LVU261
+ 711              		.loc 1 426 3 view .LVU261
  427:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_alphavalue = DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_VALUE << 24;
- 704              		.loc 1 427 3 view .LVU262
+ 712              		.loc 1 427 3 view .LVU262
  428:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGPFCCR |= (DMA2D_BG_InitStruct->DMA2D_BGCM | bg_clutcolormode | bg_clutsize | \
- 705              		.loc 1 428 3 view .LVU263
- 706              		.loc 1 428 18 is_stmt 0 view .LVU264
- 707 0024 596A     		ldr	r1, [r3, #36]
- 708              		.loc 1 428 41 view .LVU265
- 709 0026 8268     		ldr	r2, [r0, #8]
- 710              		.loc 1 428 54 view .LVU266
- 711 0028 C468     		ldr	r4, [r0, #12]
- 712 002a 42EA0412 		orr	r2, r2, r4, lsl #4
- 713              		.loc 1 428 73 view .LVU267
- 714 002e 0469     		ldr	r4, [r0, #16]
- 715 0030 42EA0422 		orr	r2, r2, r4, lsl #8
- 716              		.loc 1 428 87 view .LVU268
- 717 0034 4469     		ldr	r4, [r0, #20]
- 718 0036 42EA0442 		orr	r2, r2, r4, lsl #16
+ 713              		.loc 1 428 3 view .LVU263
+ 714              		.loc 1 428 18 is_stmt 0 view .LVU264
+ 715 0024 596A     		ldr	r1, [r3, #36]
+ 716              		.loc 1 428 41 view .LVU265
+ 717 0026 8268     		ldr	r2, [r0, #8]
+ 718              		.loc 1 428 54 view .LVU266
+ 719 0028 C468     		ldr	r4, [r0, #12]
+ 720 002a 42EA0412 		orr	r2, r2, r4, lsl #4
+ 721              		.loc 1 428 73 view .LVU267
+ 722 002e 0469     		ldr	r4, [r0, #16]
+ 723 0030 42EA0422 		orr	r2, r2, r4, lsl #8
+ 724              		.loc 1 428 87 view .LVU268
+ 725 0034 4469     		ldr	r4, [r0, #20]
+ 726 0036 42EA0442 		orr	r2, r2, r4, lsl #16
  429:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                     bg_alpha_mode | bg_alphavalue);
- 719              		.loc 1 429 35 view .LVU269
- 720 003a 8469     		ldr	r4, [r0, #24]
- 721 003c 42EA0462 		orr	r2, r2, r4, lsl #24
+ 727              		.loc 1 429 35 view .LVU269
+ 728 003a 8469     		ldr	r4, [r0, #24]
+ 729 003c 42EA0462 		orr	r2, r2, r4, lsl #24
  428:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGPFCCR |= (DMA2D_BG_InitStruct->DMA2D_BGCM | bg_clutcolormode | bg_clutsize | \
- 722              		.loc 1 428 18 view .LVU270
- 723 0040 0A43     		orrs	r2, r2, r1
- 724 0042 5A62     		str	r2, [r3, #36]
- 725              	.LVL39:
+ 730              		.loc 1 428 18 view .LVU270
+ 731 0040 0A43     		orrs	r2, r2, r1
+ 732 0042 5A62     		str	r2, [r3, #36]
+ 733              	.LVL39:
  430:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  431:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures background color */
  432:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGCOLR &= ~(DMA2D_BGCOLR_BLUE | DMA2D_BGCOLR_GREEN | DMA2D_BGCOLR_RED);
- 726              		.loc 1 432 3 is_stmt 1 view .LVU271
- 727              		.loc 1 432 17 is_stmt 0 view .LVU272
- 728 0044 9A6A     		ldr	r2, [r3, #40]
- 729 0046 02F07F42 		and	r2, r2, #-16777216
- 730 004a 9A62     		str	r2, [r3, #40]
+ 734              		.loc 1 432 3 is_stmt 1 view .LVU271
+ 735              		.loc 1 432 17 is_stmt 0 view .LVU272
+ 736 0044 9A6A     		ldr	r2, [r3, #40]
+ 737 0046 02F07F42 		and	r2, r2, #-16777216
+ 738 004a 9A62     		str	r2, [r3, #40]
+ARM GAS  /tmp/cc0RTPKr.s 			page 22
+
+
  433:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_colorgreen = DMA2D_BG_InitStruct->DMA2D_BGC_GREEN << 8;
- 731              		.loc 1 433 3 is_stmt 1 view .LVU273
- 732              	.LVL40:
+ 739              		.loc 1 433 3 is_stmt 1 view .LVU273
+ 740              	.LVL40:
  434:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_colorred = DMA2D_BG_InitStruct->DMA2D_BGC_RED << 16;
- 733              		.loc 1 434 3 view .LVU274
+ 741              		.loc 1 434 3 view .LVU274
  435:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGCOLR |= (DMA2D_BG_InitStruct->DMA2D_BGC_BLUE | bg_colorgreen | bg_colorred);
- 734              		.loc 1 435 3 view .LVU275
- 735              		.loc 1 435 17 is_stmt 0 view .LVU276
-ARM GAS  /tmp/cco4iIGS.s 			page 22
-
-
- 736 004c 996A     		ldr	r1, [r3, #40]
- 737              		.loc 1 435 40 view .LVU277
- 738 004e C269     		ldr	r2, [r0, #28]
- 739              		.loc 1 435 57 view .LVU278
- 740 0050 046A     		ldr	r4, [r0, #32]
- 741              	.LVL41:
- 742              		.loc 1 435 57 view .LVU279
- 743 0052 42EA0422 		orr	r2, r2, r4, lsl #8
- 744              		.loc 1 435 73 view .LVU280
- 745 0056 446A     		ldr	r4, [r0, #36]
- 746 0058 42EA0442 		orr	r2, r2, r4, lsl #16
- 747              		.loc 1 435 17 view .LVU281
- 748 005c 0A43     		orrs	r2, r2, r1
- 749 005e 9A62     		str	r2, [r3, #40]
- 750              	.LVL42:
+ 742              		.loc 1 435 3 view .LVU275
+ 743              		.loc 1 435 17 is_stmt 0 view .LVU276
+ 744 004c 996A     		ldr	r1, [r3, #40]
+ 745              		.loc 1 435 40 view .LVU277
+ 746 004e C269     		ldr	r2, [r0, #28]
+ 747              		.loc 1 435 57 view .LVU278
+ 748 0050 046A     		ldr	r4, [r0, #32]
+ 749              	.LVL41:
+ 750              		.loc 1 435 57 view .LVU279
+ 751 0052 42EA0422 		orr	r2, r2, r4, lsl #8
+ 752              		.loc 1 435 73 view .LVU280
+ 753 0056 446A     		ldr	r4, [r0, #36]
+ 754 0058 42EA0442 		orr	r2, r2, r4, lsl #16
+ 755              		.loc 1 435 17 view .LVU281
+ 756 005c 0A43     		orrs	r2, r2, r1
+ 757 005e 9A62     		str	r2, [r3, #40]
+ 758              	.LVL42:
  436:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
  437:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures background CLUT memory address */
  438:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGCMAR = DMA2D_BG_InitStruct->DMA2D_BGCMAR;
- 751              		.loc 1 438 3 is_stmt 1 view .LVU282
- 752              		.loc 1 438 38 is_stmt 0 view .LVU283
- 753 0060 826A     		ldr	r2, [r0, #40]
- 754              		.loc 1 438 17 view .LVU284
- 755 0062 1A63     		str	r2, [r3, #48]
+ 759              		.loc 1 438 3 is_stmt 1 view .LVU282
+ 760              		.loc 1 438 38 is_stmt 0 view .LVU283
+ 761 0060 826A     		ldr	r2, [r0, #40]
+ 762              		.loc 1 438 17 view .LVU284
+ 763 0062 1A63     		str	r2, [r3, #48]
  439:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  440:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 756              		.loc 1 440 1 view .LVU285
- 757 0064 5DF8044B 		ldr	r4, [sp], #4
- 758              		.cfi_restore 4
- 759              		.cfi_def_cfa_offset 0
- 760              	.LVL43:
- 761              		.loc 1 440 1 view .LVU286
- 762 0068 7047     		bx	lr
- 763              	.L35:
- 764 006a 00BF     		.align	2
- 765              	.L34:
- 766 006c 00B00240 		.word	1073917952
- 767 0070 C000FC00 		.word	16515264
- 768              		.cfi_endproc
- 769              	.LFE131:
- 771              		.section	.text.DMA2D_BG_StructInit,"ax",%progbits
- 772              		.align	1
- 773              		.global	DMA2D_BG_StructInit
- 774              		.syntax unified
- 775              		.thumb
- 776              		.thumb_func
- 778              	DMA2D_BG_StructInit:
- 779              	.LVL44:
- 780              	.LFB132:
+ 764              		.loc 1 440 1 view .LVU285
+ 765 0064 5DF8044B 		ldr	r4, [sp], #4
+ 766              		.cfi_restore 4
+ 767              		.cfi_def_cfa_offset 0
+ 768              	.LVL43:
+ 769              		.loc 1 440 1 view .LVU286
+ 770 0068 7047     		bx	lr
+ 771              	.L35:
+ 772 006a 00BF     		.align	2
+ 773              	.L34:
+ 774 006c 00B00240 		.word	1073917952
+ 775 0070 C000FC00 		.word	16515264
+ 776              		.cfi_endproc
+ 777              	.LFE131:
+ 779              		.section	.text.DMA2D_BG_StructInit,"ax",%progbits
+ 780              		.align	1
+ 781              		.global	DMA2D_BG_StructInit
+ 782              		.syntax unified
+ 783              		.thumb
+ 784              		.thumb_func
+ 785              		.fpu fpv4-sp-d16
+ 787              	DMA2D_BG_StructInit:
+ 788              	.LVL44:
+ 789              	.LFB132:
+ARM GAS  /tmp/cc0RTPKr.s 			page 23
+
+
  441:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  442:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  443:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Fills each DMA2D_BGStruct member with its default value.
@@ -1318,97 +1330,95 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  447:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  448:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_BG_StructInit(DMA2D_BG_InitTypeDef* DMA2D_BG_InitStruct)
  449:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
-ARM GAS  /tmp/cco4iIGS.s 			page 23
-
-
- 781              		.loc 1 449 1 is_stmt 1 view -0
- 782              		.cfi_startproc
- 783              		@ args = 0, pretend = 0, frame = 0
- 784              		@ frame_needed = 0, uses_anonymous_args = 0
- 785              		@ link register save eliminated.
+ 790              		.loc 1 449 1 is_stmt 1 view -0
+ 791              		.cfi_startproc
+ 792              		@ args = 0, pretend = 0, frame = 0
+ 793              		@ frame_needed = 0, uses_anonymous_args = 0
+ 794              		@ link register save eliminated.
  450:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background memory address */
  451:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGMA = 0x00;
- 786              		.loc 1 451 3 view .LVU288
- 787              		.loc 1 451 35 is_stmt 0 view .LVU289
- 788 0000 0023     		movs	r3, #0
- 789 0002 0360     		str	r3, [r0]
+ 795              		.loc 1 451 3 view .LVU288
+ 796              		.loc 1 451 35 is_stmt 0 view .LVU289
+ 797 0000 0023     		movs	r3, #0
+ 798 0002 0360     		str	r3, [r0]
  452:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  453:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background offset */
  454:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGO = 0x00;
- 790              		.loc 1 454 3 is_stmt 1 view .LVU290
- 791              		.loc 1 454 34 is_stmt 0 view .LVU291
- 792 0004 4360     		str	r3, [r0, #4]
+ 799              		.loc 1 454 3 is_stmt 1 view .LVU290
+ 800              		.loc 1 454 34 is_stmt 0 view .LVU291
+ 801 0004 4360     		str	r3, [r0, #4]
  455:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  456:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background color mode */
  457:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGCM = CM_ARGB8888;
- 793              		.loc 1 457 3 is_stmt 1 view .LVU292
- 794              		.loc 1 457 35 is_stmt 0 view .LVU293
- 795 0006 8360     		str	r3, [r0, #8]
+ 802              		.loc 1 457 3 is_stmt 1 view .LVU292
+ 803              		.loc 1 457 35 is_stmt 0 view .LVU293
+ 804 0006 8360     		str	r3, [r0, #8]
  458:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  459:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background CLUT color mode */
  460:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BG_CLUT_CM = CLUT_CM_ARGB8888;
- 796              		.loc 1 460 3 is_stmt 1 view .LVU294
- 797              		.loc 1 460 41 is_stmt 0 view .LVU295
- 798 0008 C360     		str	r3, [r0, #12]
+ 805              		.loc 1 460 3 is_stmt 1 view .LVU294
+ 806              		.loc 1 460 41 is_stmt 0 view .LVU295
+ 807 0008 C360     		str	r3, [r0, #12]
  461:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  462:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background CLUT size */
  463:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BG_CLUT_SIZE = 0x00;
- 799              		.loc 1 463 3 is_stmt 1 view .LVU296
- 800              		.loc 1 463 43 is_stmt 0 view .LVU297
- 801 000a 0361     		str	r3, [r0, #16]
+ 808              		.loc 1 463 3 is_stmt 1 view .LVU296
+ 809              		.loc 1 463 43 is_stmt 0 view .LVU297
+ 810 000a 0361     		str	r3, [r0, #16]
  464:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  465:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background alpha mode */
  466:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_MODE = NO_MODIF_ALPHA_VALUE;
- 802              		.loc 1 466 3 is_stmt 1 view .LVU298
- 803              		.loc 1 466 47 is_stmt 0 view .LVU299
- 804 000c 4361     		str	r3, [r0, #20]
+ 811              		.loc 1 466 3 is_stmt 1 view .LVU298
+ 812              		.loc 1 466 47 is_stmt 0 view .LVU299
+ 813 000c 4361     		str	r3, [r0, #20]
  467:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  468:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background alpha value */
  469:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_VALUE = 0x00;
- 805              		.loc 1 469 3 is_stmt 1 view .LVU300
- 806              		.loc 1 469 48 is_stmt 0 view .LVU301
- 807 000e 8361     		str	r3, [r0, #24]
+ 814              		.loc 1 469 3 is_stmt 1 view .LVU300
+ 815              		.loc 1 469 48 is_stmt 0 view .LVU301
+ 816 000e 8361     		str	r3, [r0, #24]
  470:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ARM GAS  /tmp/cc0RTPKr.s 			page 24
+
+
  471:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background blue value */
  472:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGC_BLUE = 0x00;
- 808              		.loc 1 472 3 is_stmt 1 view .LVU302
- 809              		.loc 1 472 39 is_stmt 0 view .LVU303
- 810 0010 C361     		str	r3, [r0, #28]
+ 817              		.loc 1 472 3 is_stmt 1 view .LVU302
+ 818              		.loc 1 472 39 is_stmt 0 view .LVU303
+ 819 0010 C361     		str	r3, [r0, #28]
  473:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  474:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background green value */
  475:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGC_GREEN = 0x00;
- 811              		.loc 1 475 3 is_stmt 1 view .LVU304
-ARM GAS  /tmp/cco4iIGS.s 			page 24
-
-
- 812              		.loc 1 475 40 is_stmt 0 view .LVU305
- 813 0012 0362     		str	r3, [r0, #32]
+ 820              		.loc 1 475 3 is_stmt 1 view .LVU304
+ 821              		.loc 1 475 40 is_stmt 0 view .LVU305
+ 822 0012 0362     		str	r3, [r0, #32]
  476:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  477:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background red value */
  478:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGC_RED = 0x00;
- 814              		.loc 1 478 3 is_stmt 1 view .LVU306
- 815              		.loc 1 478 38 is_stmt 0 view .LVU307
- 816 0014 4362     		str	r3, [r0, #36]
+ 823              		.loc 1 478 3 is_stmt 1 view .LVU306
+ 824              		.loc 1 478 38 is_stmt 0 view .LVU307
+ 825 0014 4362     		str	r3, [r0, #36]
  479:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  480:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background CLUT memory address */
  481:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGCMAR = 0x00;
- 817              		.loc 1 481 3 is_stmt 1 view .LVU308
- 818              		.loc 1 481 37 is_stmt 0 view .LVU309
- 819 0016 8362     		str	r3, [r0, #40]
+ 826              		.loc 1 481 3 is_stmt 1 view .LVU308
+ 827              		.loc 1 481 37 is_stmt 0 view .LVU309
+ 828 0016 8362     		str	r3, [r0, #40]
  482:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 820              		.loc 1 482 1 view .LVU310
- 821 0018 7047     		bx	lr
- 822              		.cfi_endproc
- 823              	.LFE132:
- 825              		.section	.text.DMA2D_FGStart,"ax",%progbits
- 826              		.align	1
- 827              		.global	DMA2D_FGStart
- 828              		.syntax unified
- 829              		.thumb
- 830              		.thumb_func
- 832              	DMA2D_FGStart:
- 833              	.LVL45:
- 834              	.LFB133:
+ 829              		.loc 1 482 1 view .LVU310
+ 830 0018 7047     		bx	lr
+ 831              		.cfi_endproc
+ 832              	.LFE132:
+ 834              		.section	.text.DMA2D_FGStart,"ax",%progbits
+ 835              		.align	1
+ 836              		.global	DMA2D_FGStart
+ 837              		.syntax unified
+ 838              		.thumb
+ 839              		.thumb_func
+ 840              		.fpu fpv4-sp-d16
+ 842              	DMA2D_FGStart:
+ 843              	.LVL45:
+ 844              	.LFB133:
  483:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  484:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  485:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Start the automatic loading of the CLUT or abort the transfer.
@@ -1419,63 +1429,64 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  490:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  491:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_FGStart(FunctionalState NewState) 
  492:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 835              		.loc 1 492 1 is_stmt 1 view -0
- 836              		.cfi_startproc
- 837              		@ args = 0, pretend = 0, frame = 0
- 838              		@ frame_needed = 0, uses_anonymous_args = 0
- 839              		@ link register save eliminated.
+ 845              		.loc 1 492 1 is_stmt 1 view -0
+ 846              		.cfi_startproc
+ 847              		@ args = 0, pretend = 0, frame = 0
+ 848              		@ frame_needed = 0, uses_anonymous_args = 0
+ 849              		@ link register save eliminated.
  493:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  494:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 840              		.loc 1 494 3 view .LVU312
+ 850              		.loc 1 494 3 view .LVU312
  495:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ARM GAS  /tmp/cc0RTPKr.s 			page 25
+
+
  496:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
- 841              		.loc 1 496 3 view .LVU313
- 842              		.loc 1 496 6 is_stmt 0 view .LVU314
- 843 0000 28B1     		cbz	r0, .L38
+ 851              		.loc 1 496 3 view .LVU313
+ 852              		.loc 1 496 6 is_stmt 0 view .LVU314
+ 853 0000 28B1     		cbz	r0, .L38
  497:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  498:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Start the automatic loading of the CLUT */
  499:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->FGPFCCR |= DMA2D_FGPFCCR_START;
- 844              		.loc 1 499 5 is_stmt 1 view .LVU315
- 845              		.loc 1 499 20 is_stmt 0 view .LVU316
- 846 0002 064A     		ldr	r2, .L40
-ARM GAS  /tmp/cco4iIGS.s 			page 25
-
-
- 847 0004 D369     		ldr	r3, [r2, #28]
- 848 0006 43F02003 		orr	r3, r3, #32
- 849 000a D361     		str	r3, [r2, #28]
- 850 000c 7047     		bx	lr
- 851              	.L38:
+ 854              		.loc 1 499 5 is_stmt 1 view .LVU315
+ 855              		.loc 1 499 20 is_stmt 0 view .LVU316
+ 856 0002 064A     		ldr	r2, .L40
+ 857 0004 D369     		ldr	r3, [r2, #28]
+ 858 0006 43F02003 		orr	r3, r3, #32
+ 859 000a D361     		str	r3, [r2, #28]
+ 860 000c 7047     		bx	lr
+ 861              	.L38:
  500:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  501:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  502:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  503:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* abort the transfer */
  504:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->FGPFCCR &= (uint32_t)~DMA2D_FGPFCCR_START;
- 852              		.loc 1 504 5 is_stmt 1 view .LVU317
- 853              		.loc 1 504 20 is_stmt 0 view .LVU318
- 854 000e 034A     		ldr	r2, .L40
- 855 0010 D369     		ldr	r3, [r2, #28]
- 856 0012 23F02003 		bic	r3, r3, #32
- 857 0016 D361     		str	r3, [r2, #28]
+ 862              		.loc 1 504 5 is_stmt 1 view .LVU317
+ 863              		.loc 1 504 20 is_stmt 0 view .LVU318
+ 864 000e 034A     		ldr	r2, .L40
+ 865 0010 D369     		ldr	r3, [r2, #28]
+ 866 0012 23F02003 		bic	r3, r3, #32
+ 867 0016 D361     		str	r3, [r2, #28]
  505:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  506:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 858              		.loc 1 506 1 view .LVU319
- 859 0018 7047     		bx	lr
- 860              	.L41:
- 861 001a 00BF     		.align	2
- 862              	.L40:
- 863 001c 00B00240 		.word	1073917952
- 864              		.cfi_endproc
- 865              	.LFE133:
- 867              		.section	.text.DMA2D_BGStart,"ax",%progbits
- 868              		.align	1
- 869              		.global	DMA2D_BGStart
- 870              		.syntax unified
- 871              		.thumb
- 872              		.thumb_func
- 874              	DMA2D_BGStart:
- 875              	.LVL46:
- 876              	.LFB134:
+ 868              		.loc 1 506 1 view .LVU319
+ 869 0018 7047     		bx	lr
+ 870              	.L41:
+ 871 001a 00BF     		.align	2
+ 872              	.L40:
+ 873 001c 00B00240 		.word	1073917952
+ 874              		.cfi_endproc
+ 875              	.LFE133:
+ 877              		.section	.text.DMA2D_BGStart,"ax",%progbits
+ 878              		.align	1
+ 879              		.global	DMA2D_BGStart
+ 880              		.syntax unified
+ 881              		.thumb
+ 882              		.thumb_func
+ 883              		.fpu fpv4-sp-d16
+ 885              	DMA2D_BGStart:
+ 886              	.LVL46:
+ 887              	.LFB134:
  507:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  508:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  509:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Start the automatic loading of the CLUT or abort the transfer.
@@ -1486,150 +1497,152 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  514:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
  515:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_BGStart(FunctionalState NewState) 
  516:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 877              		.loc 1 516 1 is_stmt 1 view -0
- 878              		.cfi_startproc
- 879              		@ args = 0, pretend = 0, frame = 0
- 880              		@ frame_needed = 0, uses_anonymous_args = 0
- 881              		@ link register save eliminated.
+ 888              		.loc 1 516 1 is_stmt 1 view -0
+ARM GAS  /tmp/cc0RTPKr.s 			page 26
+
+
+ 889              		.cfi_startproc
+ 890              		@ args = 0, pretend = 0, frame = 0
+ 891              		@ frame_needed = 0, uses_anonymous_args = 0
+ 892              		@ link register save eliminated.
  517:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  518:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 882              		.loc 1 518 3 view .LVU321
+ 893              		.loc 1 518 3 view .LVU321
  519:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
  520:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
- 883              		.loc 1 520 3 view .LVU322
- 884              		.loc 1 520 6 is_stmt 0 view .LVU323
-ARM GAS  /tmp/cco4iIGS.s 			page 26
-
-
- 885 0000 28B1     		cbz	r0, .L43
+ 894              		.loc 1 520 3 view .LVU322
+ 895              		.loc 1 520 6 is_stmt 0 view .LVU323
+ 896 0000 28B1     		cbz	r0, .L43
  521:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  522:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Start the automatic loading of the CLUT */
  523:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->BGPFCCR |= DMA2D_BGPFCCR_START;
- 886              		.loc 1 523 5 is_stmt 1 view .LVU324
- 887              		.loc 1 523 20 is_stmt 0 view .LVU325
- 888 0002 064A     		ldr	r2, .L45
- 889 0004 536A     		ldr	r3, [r2, #36]
- 890 0006 43F02003 		orr	r3, r3, #32
- 891 000a 5362     		str	r3, [r2, #36]
- 892 000c 7047     		bx	lr
- 893              	.L43:
+ 897              		.loc 1 523 5 is_stmt 1 view .LVU324
+ 898              		.loc 1 523 20 is_stmt 0 view .LVU325
+ 899 0002 064A     		ldr	r2, .L45
+ 900 0004 536A     		ldr	r3, [r2, #36]
+ 901 0006 43F02003 		orr	r3, r3, #32
+ 902 000a 5362     		str	r3, [r2, #36]
+ 903 000c 7047     		bx	lr
+ 904              	.L43:
  524:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  525:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  526:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  527:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* abort the transfer */
  528:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->BGPFCCR &= (uint32_t)~DMA2D_BGPFCCR_START;
- 894              		.loc 1 528 5 is_stmt 1 view .LVU326
- 895              		.loc 1 528 20 is_stmt 0 view .LVU327
- 896 000e 034A     		ldr	r2, .L45
- 897 0010 536A     		ldr	r3, [r2, #36]
- 898 0012 23F02003 		bic	r3, r3, #32
- 899 0016 5362     		str	r3, [r2, #36]
+ 905              		.loc 1 528 5 is_stmt 1 view .LVU326
+ 906              		.loc 1 528 20 is_stmt 0 view .LVU327
+ 907 000e 034A     		ldr	r2, .L45
+ 908 0010 536A     		ldr	r3, [r2, #36]
+ 909 0012 23F02003 		bic	r3, r3, #32
+ 910 0016 5362     		str	r3, [r2, #36]
  529:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  530:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 900              		.loc 1 530 1 view .LVU328
- 901 0018 7047     		bx	lr
- 902              	.L46:
- 903 001a 00BF     		.align	2
- 904              	.L45:
- 905 001c 00B00240 		.word	1073917952
- 906              		.cfi_endproc
- 907              	.LFE134:
- 909              		.section	.text.DMA2D_DeadTimeConfig,"ax",%progbits
- 910              		.align	1
- 911              		.global	DMA2D_DeadTimeConfig
- 912              		.syntax unified
- 913              		.thumb
- 914              		.thumb_func
- 916              	DMA2D_DeadTimeConfig:
- 917              	.LVL47:
- 918              	.LFB135:
+ 911              		.loc 1 530 1 view .LVU328
+ 912 0018 7047     		bx	lr
+ 913              	.L46:
+ 914 001a 00BF     		.align	2
+ 915              	.L45:
+ 916 001c 00B00240 		.word	1073917952
+ 917              		.cfi_endproc
+ 918              	.LFE134:
+ 920              		.section	.text.DMA2D_DeadTimeConfig,"ax",%progbits
+ 921              		.align	1
+ 922              		.global	DMA2D_DeadTimeConfig
+ 923              		.syntax unified
+ 924              		.thumb
+ 925              		.thumb_func
+ 926              		.fpu fpv4-sp-d16
+ 928              	DMA2D_DeadTimeConfig:
+ 929              	.LVL47:
+ 930              	.LFB135:
  531:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  532:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  533:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Configures the DMA2D dead time.
+ARM GAS  /tmp/cc0RTPKr.s 			page 27
+
+
  534:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_DeadTime: specifies the DMA2D dead time.
  535:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be one of the following values:
  536:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
  537:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  538:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_DeadTimeConfig(uint32_t DMA2D_DeadTime, FunctionalState NewState)
  539:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 919              		.loc 1 539 1 is_stmt 1 view -0
- 920              		.cfi_startproc
- 921              		@ args = 0, pretend = 0, frame = 0
- 922              		@ frame_needed = 0, uses_anonymous_args = 0
- 923              		@ link register save eliminated.
+ 931              		.loc 1 539 1 is_stmt 1 view -0
+ 932              		.cfi_startproc
+ 933              		@ args = 0, pretend = 0, frame = 0
+ 934              		@ frame_needed = 0, uses_anonymous_args = 0
+ 935              		@ link register save eliminated.
  540:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****    uint32_t DeadTime;
-ARM GAS  /tmp/cco4iIGS.s 			page 27
-
-
- 924              		.loc 1 540 4 view .LVU330
+ 936              		.loc 1 540 4 view .LVU330
  541:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  542:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  543:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_DEAD_TIME(DMA2D_DeadTime));
- 925              		.loc 1 543 3 view .LVU331
+ 937              		.loc 1 543 3 view .LVU331
  544:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 926              		.loc 1 544 3 view .LVU332
+ 938              		.loc 1 544 3 view .LVU332
  545:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  546:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
- 927              		.loc 1 546 3 view .LVU333
- 928              		.loc 1 546 6 is_stmt 0 view .LVU334
- 929 0000 69B1     		cbz	r1, .L48
+ 939              		.loc 1 546 3 view .LVU333
+ 940              		.loc 1 546 6 is_stmt 0 view .LVU334
+ 941 0000 69B1     		cbz	r1, .L48
  547:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  548:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Enable and Configures the dead time */
  549:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->AMTCR &= (uint32_t)DEAD_MASK;
- 930              		.loc 1 549 5 is_stmt 1 view .LVU335
- 931              		.loc 1 549 18 is_stmt 0 view .LVU336
- 932 0002 0A4A     		ldr	r2, .L50
- 933 0004 D36C     		ldr	r3, [r2, #76]
- 934 0006 23F47F43 		bic	r3, r3, #65280
- 935 000a 23F00103 		bic	r3, r3, #1
- 936 000e D364     		str	r3, [r2, #76]
+ 942              		.loc 1 549 5 is_stmt 1 view .LVU335
+ 943              		.loc 1 549 18 is_stmt 0 view .LVU336
+ 944 0002 0A4A     		ldr	r2, .L50
+ 945 0004 D36C     		ldr	r3, [r2, #76]
+ 946 0006 23F47F43 		bic	r3, r3, #65280
+ 947 000a 23F00103 		bic	r3, r3, #1
+ 948 000e D364     		str	r3, [r2, #76]
  550:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DeadTime = DMA2D_DeadTime << 8;
- 937              		.loc 1 550 5 is_stmt 1 view .LVU337
- 938              	.LVL48:
+ 949              		.loc 1 550 5 is_stmt 1 view .LVU337
+ 950              	.LVL48:
  551:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->AMTCR |= (DeadTime | DMA2D_AMTCR_EN);
- 939              		.loc 1 551 5 view .LVU338
- 940              		.loc 1 551 18 is_stmt 0 view .LVU339
- 941 0010 D36C     		ldr	r3, [r2, #76]
- 942 0012 43EA0020 		orr	r0, r3, r0, lsl #8
- 943              	.LVL49:
- 944              		.loc 1 551 18 view .LVU340
- 945 0016 40F00100 		orr	r0, r0, #1
- 946 001a D064     		str	r0, [r2, #76]
- 947 001c 7047     		bx	lr
- 948              	.LVL50:
- 949              	.L48:
+ 951              		.loc 1 551 5 view .LVU338
+ 952              		.loc 1 551 18 is_stmt 0 view .LVU339
+ 953 0010 D36C     		ldr	r3, [r2, #76]
+ 954 0012 43EA0020 		orr	r0, r3, r0, lsl #8
+ 955              	.LVL49:
+ 956              		.loc 1 551 18 view .LVU340
+ 957 0016 40F00100 		orr	r0, r0, #1
+ 958 001a D064     		str	r0, [r2, #76]
+ 959 001c 7047     		bx	lr
+ 960              	.LVL50:
+ 961              	.L48:
  552:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  553:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  554:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  555:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****      DMA2D->AMTCR &= ~(uint32_t)DMA2D_AMTCR_EN;
- 950              		.loc 1 555 6 is_stmt 1 view .LVU341
- 951              		.loc 1 555 19 is_stmt 0 view .LVU342
- 952 001e 034A     		ldr	r2, .L50
- 953 0020 D36C     		ldr	r3, [r2, #76]
- 954 0022 23F00103 		bic	r3, r3, #1
- 955 0026 D364     		str	r3, [r2, #76]
+ 962              		.loc 1 555 6 is_stmt 1 view .LVU341
+ 963              		.loc 1 555 19 is_stmt 0 view .LVU342
+ 964 001e 034A     		ldr	r2, .L50
+ 965 0020 D36C     		ldr	r3, [r2, #76]
+ARM GAS  /tmp/cc0RTPKr.s 			page 28
+
+
+ 966 0022 23F00103 		bic	r3, r3, #1
+ 967 0026 D364     		str	r3, [r2, #76]
  556:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  557:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 956              		.loc 1 557 1 view .LVU343
- 957 0028 7047     		bx	lr
- 958              	.L51:
- 959 002a 00BF     		.align	2
- 960              	.L50:
- 961 002c 00B00240 		.word	1073917952
- 962              		.cfi_endproc
- 963              	.LFE135:
-ARM GAS  /tmp/cco4iIGS.s 			page 28
-
-
- 965              		.section	.text.DMA2D_LineWatermarkConfig,"ax",%progbits
- 966              		.align	1
- 967              		.global	DMA2D_LineWatermarkConfig
- 968              		.syntax unified
- 969              		.thumb
- 970              		.thumb_func
- 972              	DMA2D_LineWatermarkConfig:
- 973              	.LVL51:
- 974              	.LFB136:
+ 968              		.loc 1 557 1 view .LVU343
+ 969 0028 7047     		bx	lr
+ 970              	.L51:
+ 971 002a 00BF     		.align	2
+ 972              	.L50:
+ 973 002c 00B00240 		.word	1073917952
+ 974              		.cfi_endproc
+ 975              	.LFE135:
+ 977              		.section	.text.DMA2D_LineWatermarkConfig,"ax",%progbits
+ 978              		.align	1
+ 979              		.global	DMA2D_LineWatermarkConfig
+ 980              		.syntax unified
+ 981              		.thumb
+ 982              		.thumb_func
+ 983              		.fpu fpv4-sp-d16
+ 985              	DMA2D_LineWatermarkConfig:
+ 986              	.LVL51:
+ 987              	.LFB136:
  558:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  559:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  560:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Define the configuration of the line watermark .
@@ -1639,48 +1652,49 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  564:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  565:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_LineWatermarkConfig(uint32_t DMA2D_LWatermarkConfig)
  566:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 975              		.loc 1 566 1 is_stmt 1 view -0
- 976              		.cfi_startproc
- 977              		@ args = 0, pretend = 0, frame = 0
- 978              		@ frame_needed = 0, uses_anonymous_args = 0
- 979              		@ link register save eliminated.
+ 988              		.loc 1 566 1 is_stmt 1 view -0
+ 989              		.cfi_startproc
+ 990              		@ args = 0, pretend = 0, frame = 0
+ 991              		@ frame_needed = 0, uses_anonymous_args = 0
+ 992              		@ link register save eliminated.
  567:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  568:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_LineWatermark(DMA2D_LWatermarkConfig));
- 980              		.loc 1 568 3 view .LVU345
+ 993              		.loc 1 568 3 view .LVU345
  569:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  570:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Sets the Line watermark configuration */
  571:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->LWR = (uint32_t)DMA2D_LWatermarkConfig;
- 981              		.loc 1 571 3 view .LVU346
- 982              		.loc 1 571 14 is_stmt 0 view .LVU347
- 983 0000 014B     		ldr	r3, .L53
- 984 0002 9864     		str	r0, [r3, #72]
+ 994              		.loc 1 571 3 view .LVU346
+ 995              		.loc 1 571 14 is_stmt 0 view .LVU347
+ 996 0000 014B     		ldr	r3, .L53
+ 997 0002 9864     		str	r0, [r3, #72]
  572:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 985              		.loc 1 572 1 view .LVU348
- 986 0004 7047     		bx	lr
- 987              	.L54:
- 988 0006 00BF     		.align	2
- 989              	.L53:
- 990 0008 00B00240 		.word	1073917952
- 991              		.cfi_endproc
- 992              	.LFE136:
- 994              		.section	.text.DMA2D_ITConfig,"ax",%progbits
- 995              		.align	1
- 996              		.global	DMA2D_ITConfig
- 997              		.syntax unified
- 998              		.thumb
- 999              		.thumb_func
- 1001              	DMA2D_ITConfig:
- 1002              	.LVL52:
- 1003              	.LFB137:
+ 998              		.loc 1 572 1 view .LVU348
+ 999 0004 7047     		bx	lr
+ 1000              	.L54:
+ 1001 0006 00BF     		.align	2
+ 1002              	.L53:
+ 1003 0008 00B00240 		.word	1073917952
+ 1004              		.cfi_endproc
+ 1005              	.LFE136:
+ 1007              		.section	.text.DMA2D_ITConfig,"ax",%progbits
+ 1008              		.align	1
+ARM GAS  /tmp/cc0RTPKr.s 			page 29
+
+
+ 1009              		.global	DMA2D_ITConfig
+ 1010              		.syntax unified
+ 1011              		.thumb
+ 1012              		.thumb_func
+ 1013              		.fpu fpv4-sp-d16
+ 1015              	DMA2D_ITConfig:
+ 1016              	.LVL52:
+ 1017              	.LFB137:
  573:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  574:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  575:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @}
  576:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  577:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  578:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /** @defgroup DMA2D_Group2 Interrupts and flags management functions
-ARM GAS  /tmp/cco4iIGS.s 			page 29
-
-
  579:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  *  @brief   Interrupts and flags management functions
  580:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  *
  581:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** @verbatim
@@ -1724,6 +1738,9 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  619:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_IT: specifies the DMA2D interrupts sources to be enabled or disabled.
  620:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be any combination of the following values:
  621:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CE:   Configuration Error Interrupt Enable.
+ARM GAS  /tmp/cc0RTPKr.s 			page 30
+
+
  622:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CTC:  CLUT Transfer Complete Interrupt Enable.
  623:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CAE:  CLUT Access Error Interrupt Enable.
  624:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TW:   Transfer Watermark Interrupt Enable.
@@ -1736,73 +1753,71 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  631:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  632:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_ITConfig(uint32_t DMA2D_IT, FunctionalState NewState)
  633:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 1004              		.loc 1 633 1 is_stmt 1 view -0
- 1005              		.cfi_startproc
-ARM GAS  /tmp/cco4iIGS.s 			page 30
-
-
- 1006              		@ args = 0, pretend = 0, frame = 0
- 1007              		@ frame_needed = 0, uses_anonymous_args = 0
- 1008              		@ link register save eliminated.
+ 1018              		.loc 1 633 1 is_stmt 1 view -0
+ 1019              		.cfi_startproc
+ 1020              		@ args = 0, pretend = 0, frame = 0
+ 1021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1022              		@ link register save eliminated.
  634:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  635:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_IT(DMA2D_IT));
- 1009              		.loc 1 635 3 view .LVU350
+ 1023              		.loc 1 635 3 view .LVU350
  636:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 1010              		.loc 1 636 3 view .LVU351
+ 1024              		.loc 1 636 3 view .LVU351
  637:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  638:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
- 1011              		.loc 1 638 3 view .LVU352
- 1012              		.loc 1 638 6 is_stmt 0 view .LVU353
- 1013 0000 21B1     		cbz	r1, .L56
+ 1025              		.loc 1 638 3 view .LVU352
+ 1026              		.loc 1 638 6 is_stmt 0 view .LVU353
+ 1027 0000 21B1     		cbz	r1, .L56
  639:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  640:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Enable the selected DMA2D interrupts */
  641:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR |= DMA2D_IT;
- 1014              		.loc 1 641 5 is_stmt 1 view .LVU354
- 1015              		.loc 1 641 15 is_stmt 0 view .LVU355
- 1016 0002 054A     		ldr	r2, .L58
- 1017 0004 1368     		ldr	r3, [r2]
- 1018 0006 1843     		orrs	r0, r0, r3
- 1019              	.LVL53:
- 1020              		.loc 1 641 15 view .LVU356
- 1021 0008 1060     		str	r0, [r2]
- 1022 000a 7047     		bx	lr
- 1023              	.LVL54:
- 1024              	.L56:
+ 1028              		.loc 1 641 5 is_stmt 1 view .LVU354
+ 1029              		.loc 1 641 15 is_stmt 0 view .LVU355
+ 1030 0002 054A     		ldr	r2, .L58
+ 1031 0004 1368     		ldr	r3, [r2]
+ 1032 0006 1843     		orrs	r0, r0, r3
+ 1033              	.LVL53:
+ 1034              		.loc 1 641 15 view .LVU356
+ 1035 0008 1060     		str	r0, [r2]
+ 1036 000a 7047     		bx	lr
+ 1037              	.LVL54:
+ 1038              	.L56:
  642:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  643:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  644:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  645:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Disable the selected DMA2D interrupts */
  646:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR &= (uint32_t)~DMA2D_IT;
- 1025              		.loc 1 646 5 is_stmt 1 view .LVU357
- 1026              		.loc 1 646 15 is_stmt 0 view .LVU358
- 1027 000c 024A     		ldr	r2, .L58
- 1028 000e 1368     		ldr	r3, [r2]
- 1029 0010 23EA0000 		bic	r0, r3, r0
- 1030              	.LVL55:
- 1031              		.loc 1 646 15 view .LVU359
- 1032 0014 1060     		str	r0, [r2]
+ 1039              		.loc 1 646 5 is_stmt 1 view .LVU357
+ 1040              		.loc 1 646 15 is_stmt 0 view .LVU358
+ 1041 000c 024A     		ldr	r2, .L58
+ 1042 000e 1368     		ldr	r3, [r2]
+ 1043 0010 23EA0000 		bic	r0, r3, r0
+ 1044              	.LVL55:
+ 1045              		.loc 1 646 15 view .LVU359
+ 1046 0014 1060     		str	r0, [r2]
  647:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  648:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 1033              		.loc 1 648 1 view .LVU360
- 1034 0016 7047     		bx	lr
- 1035              	.L59:
- 1036              		.align	2
- 1037              	.L58:
- 1038 0018 00B00240 		.word	1073917952
- 1039              		.cfi_endproc
- 1040              	.LFE137:
- 1042              		.section	.text.DMA2D_GetFlagStatus,"ax",%progbits
- 1043              		.align	1
- 1044              		.global	DMA2D_GetFlagStatus
- 1045              		.syntax unified
- 1046              		.thumb
- 1047              		.thumb_func
- 1049              	DMA2D_GetFlagStatus:
-ARM GAS  /tmp/cco4iIGS.s 			page 31
+ 1047              		.loc 1 648 1 view .LVU360
+ARM GAS  /tmp/cc0RTPKr.s 			page 31
 
 
- 1050              	.LVL56:
- 1051              	.LFB138:
+ 1048 0016 7047     		bx	lr
+ 1049              	.L59:
+ 1050              		.align	2
+ 1051              	.L58:
+ 1052 0018 00B00240 		.word	1073917952
+ 1053              		.cfi_endproc
+ 1054              	.LFE137:
+ 1056              		.section	.text.DMA2D_GetFlagStatus,"ax",%progbits
+ 1057              		.align	1
+ 1058              		.global	DMA2D_GetFlagStatus
+ 1059              		.syntax unified
+ 1060              		.thumb
+ 1061              		.thumb_func
+ 1062              		.fpu fpv4-sp-d16
+ 1064              	DMA2D_GetFlagStatus:
+ 1065              	.LVL56:
+ 1066              	.LFB138:
  649:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  650:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  651:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Checks whether the specified DMA2D's flag is set or not.
@@ -1819,70 +1834,71 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  662:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  663:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** FlagStatus DMA2D_GetFlagStatus(uint32_t DMA2D_FLAG)
  664:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 1052              		.loc 1 664 1 is_stmt 1 view -0
- 1053              		.cfi_startproc
- 1054              		@ args = 0, pretend = 0, frame = 0
- 1055              		@ frame_needed = 0, uses_anonymous_args = 0
- 1056              		@ link register save eliminated.
+ 1067              		.loc 1 664 1 is_stmt 1 view -0
+ 1068              		.cfi_startproc
+ 1069              		@ args = 0, pretend = 0, frame = 0
+ 1070              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1071              		@ link register save eliminated.
  665:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   FlagStatus bitstatus = RESET;
- 1057              		.loc 1 665 3 view .LVU362
+ 1072              		.loc 1 665 3 view .LVU362
  666:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
  667:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  668:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_GET_FLAG(DMA2D_FLAG));
- 1058              		.loc 1 668 3 view .LVU363
+ 1073              		.loc 1 668 3 view .LVU363
  669:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
  670:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the status of the specified DMA2D flag */
  671:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (((DMA2D->ISR) & DMA2D_FLAG) != (uint32_t)RESET)
- 1059              		.loc 1 671 3 view .LVU364
- 1060              		.loc 1 671 14 is_stmt 0 view .LVU365
- 1061 0000 034B     		ldr	r3, .L63
- 1062 0002 5B68     		ldr	r3, [r3, #4]
- 1063              		.loc 1 671 6 view .LVU366
- 1064 0004 0342     		tst	r3, r0
- 1065 0006 01D0     		beq	.L62
+ 1074              		.loc 1 671 3 view .LVU364
+ 1075              		.loc 1 671 14 is_stmt 0 view .LVU365
+ 1076 0000 034B     		ldr	r3, .L63
+ 1077 0002 5B68     		ldr	r3, [r3, #4]
+ 1078              		.loc 1 671 6 view .LVU366
+ 1079 0004 0342     		tst	r3, r0
+ 1080 0006 01D0     		beq	.L62
  672:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  673:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* DMA2D_FLAG is set */
  674:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = SET;
- 1066              		.loc 1 674 15 view .LVU367
- 1067 0008 0120     		movs	r0, #1
- 1068              	.LVL57:
- 1069              		.loc 1 674 15 view .LVU368
- 1070 000a 7047     		bx	lr
- 1071              	.LVL58:
- 1072              	.L62:
+ARM GAS  /tmp/cc0RTPKr.s 			page 32
+
+
+ 1081              		.loc 1 674 15 view .LVU367
+ 1082 0008 0120     		movs	r0, #1
+ 1083              	.LVL57:
+ 1084              		.loc 1 674 15 view .LVU368
+ 1085 000a 7047     		bx	lr
+ 1086              	.LVL58:
+ 1087              	.L62:
  675:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  676:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  677:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  678:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* DMA2D_FLAG is reset */
  679:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = RESET;
- 1073              		.loc 1 679 15 view .LVU369
- 1074 000c 0020     		movs	r0, #0
- 1075              	.LVL59:
-ARM GAS  /tmp/cco4iIGS.s 			page 32
-
-
+ 1088              		.loc 1 679 15 view .LVU369
+ 1089 000c 0020     		movs	r0, #0
+ 1090              	.LVL59:
  680:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  681:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Return the DMA2D_FLAG status */
  682:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   return bitstatus;
- 1076              		.loc 1 682 3 is_stmt 1 view .LVU370
+ 1091              		.loc 1 682 3 is_stmt 1 view .LVU370
  683:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 1077              		.loc 1 683 1 is_stmt 0 view .LVU371
- 1078 000e 7047     		bx	lr
- 1079              	.L64:
- 1080              		.align	2
- 1081              	.L63:
- 1082 0010 00B00240 		.word	1073917952
- 1083              		.cfi_endproc
- 1084              	.LFE138:
- 1086              		.section	.text.DMA2D_ClearFlag,"ax",%progbits
- 1087              		.align	1
- 1088              		.global	DMA2D_ClearFlag
- 1089              		.syntax unified
- 1090              		.thumb
- 1091              		.thumb_func
- 1093              	DMA2D_ClearFlag:
- 1094              	.LVL60:
- 1095              	.LFB139:
+ 1092              		.loc 1 683 1 is_stmt 0 view .LVU371
+ 1093 000e 7047     		bx	lr
+ 1094              	.L64:
+ 1095              		.align	2
+ 1096              	.L63:
+ 1097 0010 00B00240 		.word	1073917952
+ 1098              		.cfi_endproc
+ 1099              	.LFE138:
+ 1101              		.section	.text.DMA2D_ClearFlag,"ax",%progbits
+ 1102              		.align	1
+ 1103              		.global	DMA2D_ClearFlag
+ 1104              		.syntax unified
+ 1105              		.thumb
+ 1106              		.thumb_func
+ 1107              		.fpu fpv4-sp-d16
+ 1109              	DMA2D_ClearFlag:
+ 1110              	.LVL60:
+ 1111              	.LFB139:
  684:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  685:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  686:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Clears the DMA2D's pending flags.
@@ -1898,42 +1914,43 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  696:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  697:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_ClearFlag(uint32_t DMA2D_FLAG)
  698:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 1096              		.loc 1 698 1 is_stmt 1 view -0
- 1097              		.cfi_startproc
- 1098              		@ args = 0, pretend = 0, frame = 0
- 1099              		@ frame_needed = 0, uses_anonymous_args = 0
- 1100              		@ link register save eliminated.
+ 1112              		.loc 1 698 1 is_stmt 1 view -0
+ 1113              		.cfi_startproc
+ 1114              		@ args = 0, pretend = 0, frame = 0
+ 1115              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc0RTPKr.s 			page 33
+
+
+ 1116              		@ link register save eliminated.
  699:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  700:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_GET_FLAG(DMA2D_FLAG));
- 1101              		.loc 1 700 3 view .LVU373
+ 1117              		.loc 1 700 3 view .LVU373
  701:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     
  702:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Clear the corresponding DMA2D flag */
  703:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->IFCR = (uint32_t)DMA2D_FLAG;
- 1102              		.loc 1 703 3 view .LVU374
- 1103              		.loc 1 703 15 is_stmt 0 view .LVU375
- 1104 0000 014B     		ldr	r3, .L66
- 1105 0002 9860     		str	r0, [r3, #8]
+ 1118              		.loc 1 703 3 view .LVU374
+ 1119              		.loc 1 703 15 is_stmt 0 view .LVU375
+ 1120 0000 014B     		ldr	r3, .L66
+ 1121 0002 9860     		str	r0, [r3, #8]
  704:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 1106              		.loc 1 704 1 view .LVU376
- 1107 0004 7047     		bx	lr
- 1108              	.L67:
- 1109 0006 00BF     		.align	2
-ARM GAS  /tmp/cco4iIGS.s 			page 33
-
-
- 1110              	.L66:
- 1111 0008 00B00240 		.word	1073917952
- 1112              		.cfi_endproc
- 1113              	.LFE139:
- 1115              		.section	.text.DMA2D_GetITStatus,"ax",%progbits
- 1116              		.align	1
- 1117              		.global	DMA2D_GetITStatus
- 1118              		.syntax unified
- 1119              		.thumb
- 1120              		.thumb_func
- 1122              	DMA2D_GetITStatus:
- 1123              	.LVL61:
- 1124              	.LFB140:
+ 1122              		.loc 1 704 1 view .LVU376
+ 1123 0004 7047     		bx	lr
+ 1124              	.L67:
+ 1125 0006 00BF     		.align	2
+ 1126              	.L66:
+ 1127 0008 00B00240 		.word	1073917952
+ 1128              		.cfi_endproc
+ 1129              	.LFE139:
+ 1131              		.section	.text.DMA2D_GetITStatus,"ax",%progbits
+ 1132              		.align	1
+ 1133              		.global	DMA2D_GetITStatus
+ 1134              		.syntax unified
+ 1135              		.thumb
+ 1136              		.thumb_func
+ 1137              		.fpu fpv4-sp-d16
+ 1139              	DMA2D_GetITStatus:
+ 1140              	.LVL61:
+ 1141              	.LFB140:
  705:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  706:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  707:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Checks whether the specified DMA2D's interrupt has occurred or not.
@@ -1949,40 +1966,40 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  717:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  718:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** ITStatus DMA2D_GetITStatus(uint32_t DMA2D_IT)
  719:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 1125              		.loc 1 719 1 is_stmt 1 view -0
- 1126              		.cfi_startproc
- 1127              		@ args = 0, pretend = 0, frame = 0
- 1128              		@ frame_needed = 0, uses_anonymous_args = 0
- 1129              		@ link register save eliminated.
- 1130              		.loc 1 719 1 is_stmt 0 view .LVU378
- 1131 0000 0346     		mov	r3, r0
+ 1142              		.loc 1 719 1 is_stmt 1 view -0
+ 1143              		.cfi_startproc
+ 1144              		@ args = 0, pretend = 0, frame = 0
+ 1145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1146              		@ link register save eliminated.
+ 1147              		.loc 1 719 1 is_stmt 0 view .LVU378
+ 1148 0000 0346     		mov	r3, r0
  720:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   ITStatus bitstatus = RESET;
- 1132              		.loc 1 720 3 is_stmt 1 view .LVU379
- 1133              	.LVL62:
+ 1149              		.loc 1 720 3 is_stmt 1 view .LVU379
+ 1150              	.LVL62:
  721:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t DMA2D_IT_FLAG = DMA2D_IT >> 8;
- 1134              		.loc 1 721 3 view .LVU380
+ 1151              		.loc 1 721 3 view .LVU380
+ARM GAS  /tmp/cc0RTPKr.s 			page 34
+
+
  722:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
  723:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  724:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_IT(DMA2D_IT));
- 1135              		.loc 1 724 3 view .LVU381
+ 1152              		.loc 1 724 3 view .LVU381
  725:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
  726:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if ((DMA2D->ISR & DMA2D_IT_FLAG) != (uint32_t)RESET)
- 1136              		.loc 1 726 3 view .LVU382
- 1137              		.loc 1 726 13 is_stmt 0 view .LVU383
- 1138 0002 074A     		ldr	r2, .L73
- 1139 0004 5268     		ldr	r2, [r2, #4]
- 1140              		.loc 1 726 6 view .LVU384
- 1141 0006 12EA1022 		ands	r2, r2, r0, lsr #8
- 1142 000a 06D0     		beq	.L71
+ 1153              		.loc 1 726 3 view .LVU382
+ 1154              		.loc 1 726 13 is_stmt 0 view .LVU383
+ 1155 0002 074A     		ldr	r2, .L73
+ 1156 0004 5268     		ldr	r2, [r2, #4]
+ 1157              		.loc 1 726 6 view .LVU384
+ 1158 0006 12EA1022 		ands	r2, r2, r0, lsr #8
+ 1159 000a 06D0     		beq	.L71
  727:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  728:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = SET;
- 1143              		.loc 1 728 15 view .LVU385
- 1144 000c 0120     		movs	r0, #1
-ARM GAS  /tmp/cco4iIGS.s 			page 34
-
-
- 1145              	.LVL63:
- 1146              	.L69:
+ 1160              		.loc 1 728 15 view .LVU385
+ 1161 000c 0120     		movs	r0, #1
+ 1162              	.LVL63:
+ 1163              	.L69:
  729:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  730:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  731:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
@@ -1990,57 +2007,58 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  733:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  734:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
  735:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (((DMA2D->CR & DMA2D_IT) != (uint32_t)RESET) && (bitstatus != (uint32_t)RESET))
- 1147              		.loc 1 735 3 is_stmt 1 view .LVU386
- 1148              		.loc 1 735 14 is_stmt 0 view .LVU387
- 1149 000e 044A     		ldr	r2, .L73
- 1150 0010 1268     		ldr	r2, [r2]
- 1151              		.loc 1 735 6 view .LVU388
- 1152 0012 1A42     		tst	r2, r3
- 1153 0014 00D1     		bne	.L70
+ 1164              		.loc 1 735 3 is_stmt 1 view .LVU386
+ 1165              		.loc 1 735 14 is_stmt 0 view .LVU387
+ 1166 000e 044A     		ldr	r2, .L73
+ 1167 0010 1268     		ldr	r2, [r2]
+ 1168              		.loc 1 735 6 view .LVU388
+ 1169 0012 1A42     		tst	r2, r3
+ 1170 0014 00D1     		bne	.L70
  736:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  737:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = SET;
  738:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  739:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
  740:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
  741:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = RESET;
- 1154              		.loc 1 741 15 view .LVU389
- 1155 0016 0020     		movs	r0, #0
- 1156              	.LVL64:
- 1157              	.L70:
+ 1171              		.loc 1 741 15 view .LVU389
+ 1172 0016 0020     		movs	r0, #0
+ 1173              	.LVL64:
+ 1174              	.L70:
  742:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
  743:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   return bitstatus;
- 1158              		.loc 1 743 3 is_stmt 1 view .LVU390
+ 1175              		.loc 1 743 3 is_stmt 1 view .LVU390
  744:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 1159              		.loc 1 744 1 is_stmt 0 view .LVU391
- 1160 0018 7047     		bx	lr
- 1161              	.LVL65:
- 1162              	.L71:
+ 1176              		.loc 1 744 1 is_stmt 0 view .LVU391
+ 1177 0018 7047     		bx	lr
+ 1178              	.LVL65:
+ 1179              	.L71:
  732:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
- 1163              		.loc 1 732 15 view .LVU392
- 1164 001a 0020     		movs	r0, #0
- 1165              	.LVL66:
+ 1180              		.loc 1 732 15 view .LVU392
+ 1181 001a 0020     		movs	r0, #0
+ 1182              	.LVL66:
  732:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
- 1166              		.loc 1 732 15 view .LVU393
- 1167 001c F7E7     		b	.L69
- 1168              	.L74:
- 1169 001e 00BF     		.align	2
- 1170              	.L73:
- 1171 0020 00B00240 		.word	1073917952
- 1172              		.cfi_endproc
- 1173              	.LFE140:
- 1175              		.section	.text.DMA2D_ClearITPendingBit,"ax",%progbits
- 1176              		.align	1
- 1177              		.global	DMA2D_ClearITPendingBit
- 1178              		.syntax unified
- 1179              		.thumb
- 1180              		.thumb_func
- 1182              	DMA2D_ClearITPendingBit:
- 1183              	.LVL67:
- 1184              	.LFB141:
+ 1183              		.loc 1 732 15 view .LVU393
+ARM GAS  /tmp/cc0RTPKr.s 			page 35
+
+
+ 1184 001c F7E7     		b	.L69
+ 1185              	.L74:
+ 1186 001e 00BF     		.align	2
+ 1187              	.L73:
+ 1188 0020 00B00240 		.word	1073917952
+ 1189              		.cfi_endproc
+ 1190              	.LFE140:
+ 1192              		.section	.text.DMA2D_ClearITPendingBit,"ax",%progbits
+ 1193              		.align	1
+ 1194              		.global	DMA2D_ClearITPendingBit
+ 1195              		.syntax unified
+ 1196              		.thumb
+ 1197              		.thumb_func
+ 1198              		.fpu fpv4-sp-d16
+ 1200              	DMA2D_ClearITPendingBit:
+ 1201              	.LVL67:
+ 1202              	.LFB141:
  745:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
-ARM GAS  /tmp/cco4iIGS.s 			page 35
-
-
  746:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
  747:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Clears the DMA2D's interrupt pending bits.
  748:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_IT: specifies the interrupt pending bit to clear.
@@ -2055,103 +2073,105 @@ ARM GAS  /tmp/cco4iIGS.s 			page 1
  757:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
  758:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_ClearITPendingBit(uint32_t DMA2D_IT)
  759:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
- 1185              		.loc 1 759 1 is_stmt 1 view -0
- 1186              		.cfi_startproc
- 1187              		@ args = 0, pretend = 0, frame = 0
- 1188              		@ frame_needed = 0, uses_anonymous_args = 0
- 1189              		@ link register save eliminated.
+ 1203              		.loc 1 759 1 is_stmt 1 view -0
+ 1204              		.cfi_startproc
+ 1205              		@ args = 0, pretend = 0, frame = 0
+ 1206              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1207              		@ link register save eliminated.
  760:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
  761:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_IT(DMA2D_IT));
- 1190              		.loc 1 761 3 view .LVU395
+ 1208              		.loc 1 761 3 view .LVU395
  762:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_IT = DMA2D_IT >> 8;
- 1191              		.loc 1 762 3 view .LVU396
- 1192              		.loc 1 762 12 is_stmt 0 view .LVU397
- 1193 0000 000A     		lsrs	r0, r0, #8
- 1194              	.LVL68:
+ 1209              		.loc 1 762 3 view .LVU396
+ 1210              		.loc 1 762 12 is_stmt 0 view .LVU397
+ 1211 0000 000A     		lsrs	r0, r0, #8
+ 1212              	.LVL68:
  763:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     
  764:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Clear the corresponding DMA2D Interrupt */
  765:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->IFCR = (uint32_t)DMA2D_IT;
- 1195              		.loc 1 765 3 is_stmt 1 view .LVU398
- 1196              		.loc 1 765 15 is_stmt 0 view .LVU399
- 1197 0002 014B     		ldr	r3, .L76
- 1198 0004 9860     		str	r0, [r3, #8]
+ 1213              		.loc 1 765 3 is_stmt 1 view .LVU398
+ 1214              		.loc 1 765 15 is_stmt 0 view .LVU399
+ 1215 0002 014B     		ldr	r3, .L76
+ 1216 0004 9860     		str	r0, [r3, #8]
  766:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
- 1199              		.loc 1 766 1 view .LVU400
- 1200 0006 7047     		bx	lr
- 1201              	.L77:
- 1202              		.align	2
- 1203              	.L76:
- 1204 0008 00B00240 		.word	1073917952
- 1205              		.cfi_endproc
- 1206              	.LFE141:
- 1208              		.text
- 1209              	.Letext0:
- 1210              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 1211              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 1212              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 1213              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma2d.h"
- 1214              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
-ARM GAS  /tmp/cco4iIGS.s 			page 36
+ 1217              		.loc 1 766 1 view .LVU400
+ 1218 0006 7047     		bx	lr
+ 1219              	.L77:
+ 1220              		.align	2
+ARM GAS  /tmp/cc0RTPKr.s 			page 36
+
+
+ 1221              	.L76:
+ 1222 0008 00B00240 		.word	1073917952
+ 1223              		.cfi_endproc
+ 1224              	.LFE141:
+ 1226              		.text
+ 1227              	.Letext0:
+ 1228              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 1229              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1230              		.file 4 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma2d.h"
+ 1231              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ARM GAS  /tmp/cc0RTPKr.s 			page 37
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_dma2d.c
-     /tmp/cco4iIGS.s:20     .text.DMA2D_DeInit:0000000000000000 $t
-     /tmp/cco4iIGS.s:26     .text.DMA2D_DeInit:0000000000000000 DMA2D_DeInit
-     /tmp/cco4iIGS.s:53     .text.DMA2D_Init:0000000000000000 $t
-     /tmp/cco4iIGS.s:59     .text.DMA2D_Init:0000000000000000 DMA2D_Init
-     /tmp/cco4iIGS.s:298    .text.DMA2D_Init:00000000000000c8 $d
-     /tmp/cco4iIGS.s:303    .text.DMA2D_StructInit:0000000000000000 $t
-     /tmp/cco4iIGS.s:309    .text.DMA2D_StructInit:0000000000000000 DMA2D_StructInit
-     /tmp/cco4iIGS.s:354    .text.DMA2D_StartTransfer:0000000000000000 $t
-     /tmp/cco4iIGS.s:360    .text.DMA2D_StartTransfer:0000000000000000 DMA2D_StartTransfer
-     /tmp/cco4iIGS.s:378    .text.DMA2D_StartTransfer:000000000000000c $d
-     /tmp/cco4iIGS.s:383    .text.DMA2D_AbortTransfer:0000000000000000 $t
-     /tmp/cco4iIGS.s:389    .text.DMA2D_AbortTransfer:0000000000000000 DMA2D_AbortTransfer
-     /tmp/cco4iIGS.s:407    .text.DMA2D_AbortTransfer:000000000000000c $d
-     /tmp/cco4iIGS.s:412    .text.DMA2D_Suspend:0000000000000000 $t
-     /tmp/cco4iIGS.s:418    .text.DMA2D_Suspend:0000000000000000 DMA2D_Suspend
-     /tmp/cco4iIGS.s:449    .text.DMA2D_Suspend:000000000000001c $d
-     /tmp/cco4iIGS.s:454    .text.DMA2D_FGConfig:0000000000000000 $t
-     /tmp/cco4iIGS.s:460    .text.DMA2D_FGConfig:0000000000000000 DMA2D_FGConfig
-     /tmp/cco4iIGS.s:580    .text.DMA2D_FGConfig:000000000000006c $d
-     /tmp/cco4iIGS.s:586    .text.DMA2D_FG_StructInit:0000000000000000 $t
-     /tmp/cco4iIGS.s:592    .text.DMA2D_FG_StructInit:0000000000000000 DMA2D_FG_StructInit
-     /tmp/cco4iIGS.s:640    .text.DMA2D_BGConfig:0000000000000000 $t
-     /tmp/cco4iIGS.s:646    .text.DMA2D_BGConfig:0000000000000000 DMA2D_BGConfig
-     /tmp/cco4iIGS.s:766    .text.DMA2D_BGConfig:000000000000006c $d
-     /tmp/cco4iIGS.s:772    .text.DMA2D_BG_StructInit:0000000000000000 $t
-     /tmp/cco4iIGS.s:778    .text.DMA2D_BG_StructInit:0000000000000000 DMA2D_BG_StructInit
-     /tmp/cco4iIGS.s:826    .text.DMA2D_FGStart:0000000000000000 $t
-     /tmp/cco4iIGS.s:832    .text.DMA2D_FGStart:0000000000000000 DMA2D_FGStart
-     /tmp/cco4iIGS.s:863    .text.DMA2D_FGStart:000000000000001c $d
-     /tmp/cco4iIGS.s:868    .text.DMA2D_BGStart:0000000000000000 $t
-     /tmp/cco4iIGS.s:874    .text.DMA2D_BGStart:0000000000000000 DMA2D_BGStart
-     /tmp/cco4iIGS.s:905    .text.DMA2D_BGStart:000000000000001c $d
-     /tmp/cco4iIGS.s:910    .text.DMA2D_DeadTimeConfig:0000000000000000 $t
-     /tmp/cco4iIGS.s:916    .text.DMA2D_DeadTimeConfig:0000000000000000 DMA2D_DeadTimeConfig
-     /tmp/cco4iIGS.s:961    .text.DMA2D_DeadTimeConfig:000000000000002c $d
-     /tmp/cco4iIGS.s:966    .text.DMA2D_LineWatermarkConfig:0000000000000000 $t
-     /tmp/cco4iIGS.s:972    .text.DMA2D_LineWatermarkConfig:0000000000000000 DMA2D_LineWatermarkConfig
-     /tmp/cco4iIGS.s:990    .text.DMA2D_LineWatermarkConfig:0000000000000008 $d
-     /tmp/cco4iIGS.s:995    .text.DMA2D_ITConfig:0000000000000000 $t
-     /tmp/cco4iIGS.s:1001   .text.DMA2D_ITConfig:0000000000000000 DMA2D_ITConfig
-     /tmp/cco4iIGS.s:1038   .text.DMA2D_ITConfig:0000000000000018 $d
-     /tmp/cco4iIGS.s:1043   .text.DMA2D_GetFlagStatus:0000000000000000 $t
-     /tmp/cco4iIGS.s:1049   .text.DMA2D_GetFlagStatus:0000000000000000 DMA2D_GetFlagStatus
-     /tmp/cco4iIGS.s:1082   .text.DMA2D_GetFlagStatus:0000000000000010 $d
-     /tmp/cco4iIGS.s:1087   .text.DMA2D_ClearFlag:0000000000000000 $t
-     /tmp/cco4iIGS.s:1093   .text.DMA2D_ClearFlag:0000000000000000 DMA2D_ClearFlag
-     /tmp/cco4iIGS.s:1111   .text.DMA2D_ClearFlag:0000000000000008 $d
-     /tmp/cco4iIGS.s:1116   .text.DMA2D_GetITStatus:0000000000000000 $t
-     /tmp/cco4iIGS.s:1122   .text.DMA2D_GetITStatus:0000000000000000 DMA2D_GetITStatus
-     /tmp/cco4iIGS.s:1171   .text.DMA2D_GetITStatus:0000000000000020 $d
-     /tmp/cco4iIGS.s:1176   .text.DMA2D_ClearITPendingBit:0000000000000000 $t
-     /tmp/cco4iIGS.s:1182   .text.DMA2D_ClearITPendingBit:0000000000000000 DMA2D_ClearITPendingBit
-     /tmp/cco4iIGS.s:1204   .text.DMA2D_ClearITPendingBit:0000000000000008 $d
+     /tmp/cc0RTPKr.s:18     .text.DMA2D_DeInit:0000000000000000 $t
+     /tmp/cc0RTPKr.s:26     .text.DMA2D_DeInit:0000000000000000 DMA2D_DeInit
+     /tmp/cc0RTPKr.s:53     .text.DMA2D_Init:0000000000000000 $t
+     /tmp/cc0RTPKr.s:60     .text.DMA2D_Init:0000000000000000 DMA2D_Init
+     /tmp/cc0RTPKr.s:299    .text.DMA2D_Init:00000000000000c8 $d
+     /tmp/cc0RTPKr.s:304    .text.DMA2D_StructInit:0000000000000000 $t
+     /tmp/cc0RTPKr.s:311    .text.DMA2D_StructInit:0000000000000000 DMA2D_StructInit
+     /tmp/cc0RTPKr.s:356    .text.DMA2D_StartTransfer:0000000000000000 $t
+     /tmp/cc0RTPKr.s:363    .text.DMA2D_StartTransfer:0000000000000000 DMA2D_StartTransfer
+     /tmp/cc0RTPKr.s:381    .text.DMA2D_StartTransfer:000000000000000c $d
+     /tmp/cc0RTPKr.s:386    .text.DMA2D_AbortTransfer:0000000000000000 $t
+     /tmp/cc0RTPKr.s:393    .text.DMA2D_AbortTransfer:0000000000000000 DMA2D_AbortTransfer
+     /tmp/cc0RTPKr.s:411    .text.DMA2D_AbortTransfer:000000000000000c $d
+     /tmp/cc0RTPKr.s:416    .text.DMA2D_Suspend:0000000000000000 $t
+     /tmp/cc0RTPKr.s:423    .text.DMA2D_Suspend:0000000000000000 DMA2D_Suspend
+     /tmp/cc0RTPKr.s:454    .text.DMA2D_Suspend:000000000000001c $d
+     /tmp/cc0RTPKr.s:459    .text.DMA2D_FGConfig:0000000000000000 $t
+     /tmp/cc0RTPKr.s:466    .text.DMA2D_FGConfig:0000000000000000 DMA2D_FGConfig
+     /tmp/cc0RTPKr.s:586    .text.DMA2D_FGConfig:000000000000006c $d
+     /tmp/cc0RTPKr.s:592    .text.DMA2D_FG_StructInit:0000000000000000 $t
+     /tmp/cc0RTPKr.s:599    .text.DMA2D_FG_StructInit:0000000000000000 DMA2D_FG_StructInit
+     /tmp/cc0RTPKr.s:647    .text.DMA2D_BGConfig:0000000000000000 $t
+     /tmp/cc0RTPKr.s:654    .text.DMA2D_BGConfig:0000000000000000 DMA2D_BGConfig
+     /tmp/cc0RTPKr.s:774    .text.DMA2D_BGConfig:000000000000006c $d
+     /tmp/cc0RTPKr.s:780    .text.DMA2D_BG_StructInit:0000000000000000 $t
+     /tmp/cc0RTPKr.s:787    .text.DMA2D_BG_StructInit:0000000000000000 DMA2D_BG_StructInit
+     /tmp/cc0RTPKr.s:835    .text.DMA2D_FGStart:0000000000000000 $t
+     /tmp/cc0RTPKr.s:842    .text.DMA2D_FGStart:0000000000000000 DMA2D_FGStart
+     /tmp/cc0RTPKr.s:873    .text.DMA2D_FGStart:000000000000001c $d
+     /tmp/cc0RTPKr.s:878    .text.DMA2D_BGStart:0000000000000000 $t
+     /tmp/cc0RTPKr.s:885    .text.DMA2D_BGStart:0000000000000000 DMA2D_BGStart
+     /tmp/cc0RTPKr.s:916    .text.DMA2D_BGStart:000000000000001c $d
+     /tmp/cc0RTPKr.s:921    .text.DMA2D_DeadTimeConfig:0000000000000000 $t
+     /tmp/cc0RTPKr.s:928    .text.DMA2D_DeadTimeConfig:0000000000000000 DMA2D_DeadTimeConfig
+     /tmp/cc0RTPKr.s:973    .text.DMA2D_DeadTimeConfig:000000000000002c $d
+     /tmp/cc0RTPKr.s:978    .text.DMA2D_LineWatermarkConfig:0000000000000000 $t
+     /tmp/cc0RTPKr.s:985    .text.DMA2D_LineWatermarkConfig:0000000000000000 DMA2D_LineWatermarkConfig
+     /tmp/cc0RTPKr.s:1003   .text.DMA2D_LineWatermarkConfig:0000000000000008 $d
+     /tmp/cc0RTPKr.s:1008   .text.DMA2D_ITConfig:0000000000000000 $t
+     /tmp/cc0RTPKr.s:1015   .text.DMA2D_ITConfig:0000000000000000 DMA2D_ITConfig
+     /tmp/cc0RTPKr.s:1052   .text.DMA2D_ITConfig:0000000000000018 $d
+     /tmp/cc0RTPKr.s:1057   .text.DMA2D_GetFlagStatus:0000000000000000 $t
+     /tmp/cc0RTPKr.s:1064   .text.DMA2D_GetFlagStatus:0000000000000000 DMA2D_GetFlagStatus
+     /tmp/cc0RTPKr.s:1097   .text.DMA2D_GetFlagStatus:0000000000000010 $d
+     /tmp/cc0RTPKr.s:1102   .text.DMA2D_ClearFlag:0000000000000000 $t
+     /tmp/cc0RTPKr.s:1109   .text.DMA2D_ClearFlag:0000000000000000 DMA2D_ClearFlag
+     /tmp/cc0RTPKr.s:1127   .text.DMA2D_ClearFlag:0000000000000008 $d
+     /tmp/cc0RTPKr.s:1132   .text.DMA2D_GetITStatus:0000000000000000 $t
+     /tmp/cc0RTPKr.s:1139   .text.DMA2D_GetITStatus:0000000000000000 DMA2D_GetITStatus
+     /tmp/cc0RTPKr.s:1188   .text.DMA2D_GetITStatus:0000000000000020 $d
+     /tmp/cc0RTPKr.s:1193   .text.DMA2D_ClearITPendingBit:0000000000000000 $t
+     /tmp/cc0RTPKr.s:1200   .text.DMA2D_ClearITPendingBit:0000000000000000 DMA2D_ClearITPendingBit
+     /tmp/cc0RTPKr.s:1222   .text.DMA2D_ClearITPendingBit:0000000000000008 $d
 
 UNDEFINED SYMBOLS
-ARM GAS  /tmp/cco4iIGS.s 			page 37
+ARM GAS  /tmp/cc0RTPKr.s 			page 38
 
 
 RCC_AHB1PeriphResetCmd
