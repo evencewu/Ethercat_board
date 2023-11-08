@@ -1,30 +1,30 @@
-ARM GAS  /tmp/ccNphSW8.s 			page 1
+ARM GAS  /tmp/cc2WnIAQ.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.arch armv7e-m
-   3              		.fpu fpv4-sp-d16
-   4              		.eabi_attribute 27, 1
-   5              		.eabi_attribute 28, 1
-   6              		.eabi_attribute 20, 1
-   7              		.eabi_attribute 21, 1
-   8              		.eabi_attribute 23, 3
-   9              		.eabi_attribute 24, 1
-  10              		.eabi_attribute 25, 1
-  11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
-  13              		.eabi_attribute 34, 1
-  14              		.eabi_attribute 18, 4
-  15              		.file	"stm32f4xx_cryp.c"
-  16              		.text
-  17              	.Ltext0:
-  18              		.cfi_sections	.debug_frame
-  19              		.section	.text.CRYP_DeInit,"ax",%progbits
-  20              		.align	1
-  21              		.global	CRYP_DeInit
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4xx_cryp.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.CRYP_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	CRYP_DeInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
   26              	CRYP_DeInit:
   27              	.LFB123:
   28              		.file 1 "Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****    (#) Enable the CRYP controller using the CRYP_Cmd() function. 
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****    (#) If using DMA for Data input and output transfer, activate the needed DMA 
-ARM GAS  /tmp/ccNphSW8.s 			page 2
+ARM GAS  /tmp/cc2WnIAQ.s 			page 2
 
 
   31:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        Requests using CRYP_DMACmd() function 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****             function then write the IN FIFO using CRYP_DataIn() function 
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****             (1 block or until the FIFO is full)
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   
-ARM GAS  /tmp/ccNphSW8.s 			page 3
+ARM GAS  /tmp/cc2WnIAQ.s 			page 3
 
 
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     (#) At the end of the processing, CRYP_FLAG_BUSY flag will be reset and 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  142:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *
  143:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   ******************************************************************************
  144:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @attention
-ARM GAS  /tmp/ccNphSW8.s 			page 4
+ARM GAS  /tmp/cc2WnIAQ.s 			page 4
 
 
  145:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  199:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        (++)  Encrypt or Decrypt 
  200:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        (++)  mode : TDES-ECB, TDES-CBC, 
  201:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                     DES-ECB, DES-CBC, 
-ARM GAS  /tmp/ccNphSW8.s 			page 5
+ARM GAS  /tmp/cc2WnIAQ.s 			page 5
 
 
  202:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                     AES-ECB, AES-CBC, AES-CTR, AES-Key, AES-GCM, AES-CCM 
@@ -294,13 +294,14 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
   55              		.syntax unified
   56              		.thumb
   57              		.thumb_func
-  59              	CRYP_Init:
-  60              	.LVL2:
-  61              	.LFB124:
+  58              		.fpu fpv4-sp-d16
+  60              	CRYP_Init:
+  61              	.LVL2:
+  62              	.LFB124:
+ARM GAS  /tmp/cc2WnIAQ.s 			page 6
+
+
  227:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
-ARM GAS  /tmp/ccNphSW8.s 			page 6
-
-
  228:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  229:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Initializes the CRYP peripheral according to the specified parameters
  230:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         in the CRYP_InitStruct.
@@ -310,139 +311,140 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  234:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  235:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_Init(CRYP_InitTypeDef* CRYP_InitStruct)
  236:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
-  62              		.loc 1 236 1 is_stmt 1 view -0
-  63              		.cfi_startproc
-  64              		@ args = 0, pretend = 0, frame = 0
-  65              		@ frame_needed = 0, uses_anonymous_args = 0
-  66              		@ link register save eliminated.
+  63              		.loc 1 236 1 is_stmt 1 view -0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
  237:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the parameters */
  238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_CRYP_ALGOMODE(CRYP_InitStruct->CRYP_AlgoMode));
-  67              		.loc 1 238 3 view .LVU5
+  68              		.loc 1 238 3 view .LVU5
  239:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_CRYP_DATATYPE(CRYP_InitStruct->CRYP_DataType));
-  68              		.loc 1 239 3 view .LVU6
+  69              		.loc 1 239 3 view .LVU6
  240:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_CRYP_ALGODIR(CRYP_InitStruct->CRYP_AlgoDir));
-  69              		.loc 1 240 3 view .LVU7
+  70              		.loc 1 240 3 view .LVU7
  241:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  242:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Select Algorithm mode*/  
  243:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR &= ~CRYP_CR_ALGOMODE;
-  70              		.loc 1 243 3 view .LVU8
-  71              		.loc 1 243 12 is_stmt 0 view .LVU9
-  72 0000 164B     		ldr	r3, .L5
-  73 0002 1A68     		ldr	r2, [r3]
-  74 0004 22F40022 		bic	r2, r2, #524288
-  75 0008 22F03802 		bic	r2, r2, #56
-  76 000c 1A60     		str	r2, [r3]
+  71              		.loc 1 243 3 view .LVU8
+  72              		.loc 1 243 12 is_stmt 0 view .LVU9
+  73 0000 164B     		ldr	r3, .L5
+  74 0002 1A68     		ldr	r2, [r3]
+  75 0004 22F40022 		bic	r2, r2, #524288
+  76 0008 22F03802 		bic	r2, r2, #56
+  77 000c 1A60     		str	r2, [r3]
  244:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR |= CRYP_InitStruct->CRYP_AlgoMode;
-  77              		.loc 1 244 3 is_stmt 1 view .LVU10
-  78              		.loc 1 244 12 is_stmt 0 view .LVU11
-  79 000e 1A68     		ldr	r2, [r3]
-  80              		.loc 1 244 30 view .LVU12
-  81 0010 4168     		ldr	r1, [r0, #4]
-  82              		.loc 1 244 12 view .LVU13
-  83 0012 0A43     		orrs	r2, r2, r1
-  84 0014 1A60     		str	r2, [r3]
+  78              		.loc 1 244 3 is_stmt 1 view .LVU10
+  79              		.loc 1 244 12 is_stmt 0 view .LVU11
+  80 000e 1A68     		ldr	r2, [r3]
+  81              		.loc 1 244 30 view .LVU12
+  82 0010 4168     		ldr	r1, [r0, #4]
+  83              		.loc 1 244 12 view .LVU13
+  84 0012 0A43     		orrs	r2, r2, r1
+  85 0014 1A60     		str	r2, [r3]
  245:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  246:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Select dataType */ 
  247:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR &= ~CRYP_CR_DATATYPE;
-  85              		.loc 1 247 3 is_stmt 1 view .LVU14
-  86              		.loc 1 247 12 is_stmt 0 view .LVU15
-  87 0016 1A68     		ldr	r2, [r3]
-  88 0018 22F0C002 		bic	r2, r2, #192
-  89 001c 1A60     		str	r2, [r3]
+  86              		.loc 1 247 3 is_stmt 1 view .LVU14
+  87              		.loc 1 247 12 is_stmt 0 view .LVU15
+  88 0016 1A68     		ldr	r2, [r3]
+  89 0018 22F0C002 		bic	r2, r2, #192
+  90 001c 1A60     		str	r2, [r3]
  248:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR |= CRYP_InitStruct->CRYP_DataType;
-  90              		.loc 1 248 3 is_stmt 1 view .LVU16
-  91              		.loc 1 248 12 is_stmt 0 view .LVU17
-  92 001e 1A68     		ldr	r2, [r3]
-  93              		.loc 1 248 30 view .LVU18
-  94 0020 8168     		ldr	r1, [r0, #8]
-  95              		.loc 1 248 12 view .LVU19
-  96 0022 0A43     		orrs	r2, r2, r1
-  97 0024 1A60     		str	r2, [r3]
-ARM GAS  /tmp/ccNphSW8.s 			page 7
+  91              		.loc 1 248 3 is_stmt 1 view .LVU16
+  92              		.loc 1 248 12 is_stmt 0 view .LVU17
+  93 001e 1A68     		ldr	r2, [r3]
+  94              		.loc 1 248 30 view .LVU18
+  95 0020 8168     		ldr	r1, [r0, #8]
+  96              		.loc 1 248 12 view .LVU19
+  97 0022 0A43     		orrs	r2, r2, r1
+ARM GAS  /tmp/cc2WnIAQ.s 			page 7
 
 
+  98 0024 1A60     		str	r2, [r3]
  249:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  250:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* select Key size (used only with AES algorithm) */
  251:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if ((CRYP_InitStruct->CRYP_AlgoMode != CRYP_AlgoMode_TDES_ECB) &&
-  98              		.loc 1 251 3 is_stmt 1 view .LVU20
-  99              		.loc 1 251 23 is_stmt 0 view .LVU21
- 100 0026 4368     		ldr	r3, [r0, #4]
- 101              		.loc 1 251 6 view .LVU22
- 102 0028 73B1     		cbz	r3, .L4
- 103              		.loc 1 251 66 discriminator 1 view .LVU23
- 104 002a 082B     		cmp	r3, #8
- 105 002c 0CD0     		beq	.L4
+  99              		.loc 1 251 3 is_stmt 1 view .LVU20
+ 100              		.loc 1 251 23 is_stmt 0 view .LVU21
+ 101 0026 4368     		ldr	r3, [r0, #4]
+ 102              		.loc 1 251 6 view .LVU22
+ 103 0028 73B1     		cbz	r3, .L4
+ 104              		.loc 1 251 66 discriminator 1 view .LVU23
+ 105 002a 082B     		cmp	r3, #8
+ 106 002c 0CD0     		beq	.L4
  252:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****       (CRYP_InitStruct->CRYP_AlgoMode != CRYP_AlgoMode_TDES_CBC) &&
- 106              		.loc 1 252 66 view .LVU24
- 107 002e 102B     		cmp	r3, #16
- 108 0030 0AD0     		beq	.L4
+ 107              		.loc 1 252 66 view .LVU24
+ 108 002e 102B     		cmp	r3, #16
+ 109 0030 0AD0     		beq	.L4
  253:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****       (CRYP_InitStruct->CRYP_AlgoMode != CRYP_AlgoMode_DES_ECB) &&
- 109              		.loc 1 253 65 view .LVU25
- 110 0032 182B     		cmp	r3, #24
- 111 0034 08D0     		beq	.L4
+ 110              		.loc 1 253 65 view .LVU25
+ 111 0032 182B     		cmp	r3, #24
+ 112 0034 08D0     		beq	.L4
  254:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****       (CRYP_InitStruct->CRYP_AlgoMode != CRYP_AlgoMode_DES_CBC))
  255:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  256:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     assert_param(IS_CRYP_KEYSIZE(CRYP_InitStruct->CRYP_KeySize));
- 112              		.loc 1 256 5 is_stmt 1 view .LVU26
+ 113              		.loc 1 256 5 is_stmt 1 view .LVU26
  257:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->CR &= ~CRYP_CR_KEYSIZE;
- 113              		.loc 1 257 5 view .LVU27
- 114              		.loc 1 257 14 is_stmt 0 view .LVU28
- 115 0036 094B     		ldr	r3, .L5
- 116 0038 1A68     		ldr	r2, [r3]
- 117 003a 22F44072 		bic	r2, r2, #768
- 118 003e 1A60     		str	r2, [r3]
+ 114              		.loc 1 257 5 view .LVU27
+ 115              		.loc 1 257 14 is_stmt 0 view .LVU28
+ 116 0036 094B     		ldr	r3, .L5
+ 117 0038 1A68     		ldr	r2, [r3]
+ 118 003a 22F44072 		bic	r2, r2, #768
+ 119 003e 1A60     		str	r2, [r3]
  258:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->CR |= CRYP_InitStruct->CRYP_KeySize; /* Key size and value must be 
- 119              		.loc 1 258 5 is_stmt 1 view .LVU29
- 120              		.loc 1 258 14 is_stmt 0 view .LVU30
- 121 0040 1A68     		ldr	r2, [r3]
- 122              		.loc 1 258 32 view .LVU31
- 123 0042 C168     		ldr	r1, [r0, #12]
- 124              		.loc 1 258 14 view .LVU32
- 125 0044 0A43     		orrs	r2, r2, r1
- 126 0046 1A60     		str	r2, [r3]
- 127              	.L4:
+ 120              		.loc 1 258 5 is_stmt 1 view .LVU29
+ 121              		.loc 1 258 14 is_stmt 0 view .LVU30
+ 122 0040 1A68     		ldr	r2, [r3]
+ 123              		.loc 1 258 32 view .LVU31
+ 124 0042 C168     		ldr	r1, [r0, #12]
+ 125              		.loc 1 258 14 view .LVU32
+ 126 0044 0A43     		orrs	r2, r2, r1
+ 127 0046 1A60     		str	r2, [r3]
+ 128              	.L4:
  259:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                   configured once the key has 
  260:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                   been prepared */
  261:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  262:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  263:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Select data Direction */ 
  264:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR &= ~CRYP_CR_ALGODIR;
- 128              		.loc 1 264 3 is_stmt 1 view .LVU33
- 129              		.loc 1 264 12 is_stmt 0 view .LVU34
- 130 0048 044B     		ldr	r3, .L5
- 131 004a 1A68     		ldr	r2, [r3]
- 132 004c 22F00402 		bic	r2, r2, #4
- 133 0050 1A60     		str	r2, [r3]
+ 129              		.loc 1 264 3 is_stmt 1 view .LVU33
+ 130              		.loc 1 264 12 is_stmt 0 view .LVU34
+ 131 0048 044B     		ldr	r3, .L5
+ 132 004a 1A68     		ldr	r2, [r3]
+ 133 004c 22F00402 		bic	r2, r2, #4
+ 134 0050 1A60     		str	r2, [r3]
  265:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR |= CRYP_InitStruct->CRYP_AlgoDir;
- 134              		.loc 1 265 3 is_stmt 1 view .LVU35
- 135              		.loc 1 265 12 is_stmt 0 view .LVU36
- 136 0052 1A68     		ldr	r2, [r3]
- 137              		.loc 1 265 30 view .LVU37
-ARM GAS  /tmp/ccNphSW8.s 			page 8
+ 135              		.loc 1 265 3 is_stmt 1 view .LVU35
+ 136              		.loc 1 265 12 is_stmt 0 view .LVU36
+ 137 0052 1A68     		ldr	r2, [r3]
+ARM GAS  /tmp/cc2WnIAQ.s 			page 8
 
 
- 138 0054 0168     		ldr	r1, [r0]
- 139              		.loc 1 265 12 view .LVU38
- 140 0056 0A43     		orrs	r2, r2, r1
- 141 0058 1A60     		str	r2, [r3]
+ 138              		.loc 1 265 30 view .LVU37
+ 139 0054 0168     		ldr	r1, [r0]
+ 140              		.loc 1 265 12 view .LVU38
+ 141 0056 0A43     		orrs	r2, r2, r1
+ 142 0058 1A60     		str	r2, [r3]
  266:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 142              		.loc 1 266 1 view .LVU39
- 143 005a 7047     		bx	lr
- 144              	.L6:
- 145              		.align	2
- 146              	.L5:
- 147 005c 00000650 		.word	1342570496
- 148              		.cfi_endproc
- 149              	.LFE124:
- 151              		.section	.text.CRYP_StructInit,"ax",%progbits
- 152              		.align	1
- 153              		.global	CRYP_StructInit
- 154              		.syntax unified
- 155              		.thumb
- 156              		.thumb_func
- 158              	CRYP_StructInit:
- 159              	.LVL3:
- 160              	.LFB125:
+ 143              		.loc 1 266 1 view .LVU39
+ 144 005a 7047     		bx	lr
+ 145              	.L6:
+ 146              		.align	2
+ 147              	.L5:
+ 148 005c 00000650 		.word	1342570496
+ 149              		.cfi_endproc
+ 150              	.LFE124:
+ 152              		.section	.text.CRYP_StructInit,"ax",%progbits
+ 153              		.align	1
+ 154              		.global	CRYP_StructInit
+ 155              		.syntax unified
+ 156              		.thumb
+ 157              		.thumb_func
+ 158              		.fpu fpv4-sp-d16
+ 160              	CRYP_StructInit:
+ 161              	.LVL3:
+ 162              	.LFB125:
  267:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  268:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  269:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Fills each CRYP_InitStruct member with its default value.
@@ -452,52 +454,53 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  273:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  274:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_StructInit(CRYP_InitTypeDef* CRYP_InitStruct)
  275:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 161              		.loc 1 275 1 is_stmt 1 view -0
- 162              		.cfi_startproc
- 163              		@ args = 0, pretend = 0, frame = 0
- 164              		@ frame_needed = 0, uses_anonymous_args = 0
- 165              		@ link register save eliminated.
+ 163              		.loc 1 275 1 is_stmt 1 view -0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167              		@ link register save eliminated.
  276:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Initialize the CRYP_AlgoDir member */
  277:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_InitStruct->CRYP_AlgoDir = CRYP_AlgoDir_Encrypt;
- 166              		.loc 1 277 3 view .LVU41
- 167              		.loc 1 277 33 is_stmt 0 view .LVU42
- 168 0000 0023     		movs	r3, #0
- 169 0002 0360     		str	r3, [r0]
+ 168              		.loc 1 277 3 view .LVU41
+ 169              		.loc 1 277 33 is_stmt 0 view .LVU42
+ 170 0000 0023     		movs	r3, #0
+ 171 0002 0360     		str	r3, [r0]
  278:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  279:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* initialize the CRYP_AlgoMode member */
  280:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_InitStruct->CRYP_AlgoMode = CRYP_AlgoMode_TDES_ECB;
- 170              		.loc 1 280 3 is_stmt 1 view .LVU43
- 171              		.loc 1 280 34 is_stmt 0 view .LVU44
- 172 0004 4360     		str	r3, [r0, #4]
+ 172              		.loc 1 280 3 is_stmt 1 view .LVU43
+ 173              		.loc 1 280 34 is_stmt 0 view .LVU44
+ 174 0004 4360     		str	r3, [r0, #4]
  281:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  282:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* initialize the CRYP_DataType member */
  283:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_InitStruct->CRYP_DataType = CRYP_DataType_32b;
- 173              		.loc 1 283 3 is_stmt 1 view .LVU45
- 174              		.loc 1 283 34 is_stmt 0 view .LVU46
- 175 0006 8360     		str	r3, [r0, #8]
+ 175              		.loc 1 283 3 is_stmt 1 view .LVU45
+ 176              		.loc 1 283 34 is_stmt 0 view .LVU46
+ 177 0006 8360     		str	r3, [r0, #8]
  284:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   
+ARM GAS  /tmp/cc2WnIAQ.s 			page 9
+
+
  285:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Initialize the CRYP_KeySize member */
  286:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_InitStruct->CRYP_KeySize = CRYP_KeySize_128b;
-ARM GAS  /tmp/ccNphSW8.s 			page 9
-
-
- 176              		.loc 1 286 3 is_stmt 1 view .LVU47
- 177              		.loc 1 286 33 is_stmt 0 view .LVU48
- 178 0008 C360     		str	r3, [r0, #12]
+ 178              		.loc 1 286 3 is_stmt 1 view .LVU47
+ 179              		.loc 1 286 33 is_stmt 0 view .LVU48
+ 180 0008 C360     		str	r3, [r0, #12]
  287:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 179              		.loc 1 287 1 view .LVU49
- 180 000a 7047     		bx	lr
- 181              		.cfi_endproc
- 182              	.LFE125:
- 184              		.section	.text.CRYP_KeyInit,"ax",%progbits
- 185              		.align	1
- 186              		.global	CRYP_KeyInit
- 187              		.syntax unified
- 188              		.thumb
- 189              		.thumb_func
- 191              	CRYP_KeyInit:
- 192              	.LVL4:
- 193              	.LFB126:
+ 181              		.loc 1 287 1 view .LVU49
+ 182 000a 7047     		bx	lr
+ 183              		.cfi_endproc
+ 184              	.LFE125:
+ 186              		.section	.text.CRYP_KeyInit,"ax",%progbits
+ 187              		.align	1
+ 188              		.global	CRYP_KeyInit
+ 189              		.syntax unified
+ 190              		.thumb
+ 191              		.thumb_func
+ 192              		.fpu fpv4-sp-d16
+ 194              	CRYP_KeyInit:
+ 195              	.LVL4:
+ 196              	.LFB126:
  288:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  289:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  290:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Initializes the CRYP Keys according to the specified parameters in
@@ -508,82 +511,83 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  295:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  296:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_KeyInit(CRYP_KeyInitTypeDef* CRYP_KeyInitStruct)
  297:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 194              		.loc 1 297 1 is_stmt 1 view -0
- 195              		.cfi_startproc
- 196              		@ args = 0, pretend = 0, frame = 0
- 197              		@ frame_needed = 0, uses_anonymous_args = 0
- 198              		@ link register save eliminated.
+ 197              		.loc 1 297 1 is_stmt 1 view -0
+ 198              		.cfi_startproc
+ 199              		@ args = 0, pretend = 0, frame = 0
+ 200              		@ frame_needed = 0, uses_anonymous_args = 0
+ 201              		@ link register save eliminated.
  298:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Key Initialisation */
  299:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K0LR = CRYP_KeyInitStruct->CRYP_Key0Left;
- 199              		.loc 1 299 3 view .LVU51
- 200              		.loc 1 299 34 is_stmt 0 view .LVU52
- 201 0000 0268     		ldr	r2, [r0]
- 202              		.loc 1 299 14 view .LVU53
- 203 0002 084B     		ldr	r3, .L9
- 204 0004 1A62     		str	r2, [r3, #32]
+ 202              		.loc 1 299 3 view .LVU51
+ 203              		.loc 1 299 34 is_stmt 0 view .LVU52
+ 204 0000 0268     		ldr	r2, [r0]
+ 205              		.loc 1 299 14 view .LVU53
+ 206 0002 084B     		ldr	r3, .L9
+ 207 0004 1A62     		str	r2, [r3, #32]
  300:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K0RR = CRYP_KeyInitStruct->CRYP_Key0Right;
- 205              		.loc 1 300 3 is_stmt 1 view .LVU54
- 206              		.loc 1 300 34 is_stmt 0 view .LVU55
- 207 0006 4268     		ldr	r2, [r0, #4]
- 208              		.loc 1 300 14 view .LVU56
- 209 0008 5A62     		str	r2, [r3, #36]
+ 208              		.loc 1 300 3 is_stmt 1 view .LVU54
+ 209              		.loc 1 300 34 is_stmt 0 view .LVU55
+ 210 0006 4268     		ldr	r2, [r0, #4]
+ 211              		.loc 1 300 14 view .LVU56
+ 212 0008 5A62     		str	r2, [r3, #36]
  301:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K1LR = CRYP_KeyInitStruct->CRYP_Key1Left;
- 210              		.loc 1 301 3 is_stmt 1 view .LVU57
- 211              		.loc 1 301 34 is_stmt 0 view .LVU58
- 212 000a 8268     		ldr	r2, [r0, #8]
- 213              		.loc 1 301 14 view .LVU59
- 214 000c 9A62     		str	r2, [r3, #40]
+ 213              		.loc 1 301 3 is_stmt 1 view .LVU57
+ 214              		.loc 1 301 34 is_stmt 0 view .LVU58
+ 215 000a 8268     		ldr	r2, [r0, #8]
+ 216              		.loc 1 301 14 view .LVU59
+ 217 000c 9A62     		str	r2, [r3, #40]
  302:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K1RR = CRYP_KeyInitStruct->CRYP_Key1Right;
- 215              		.loc 1 302 3 is_stmt 1 view .LVU60
- 216              		.loc 1 302 34 is_stmt 0 view .LVU61
- 217 000e C268     		ldr	r2, [r0, #12]
- 218              		.loc 1 302 14 view .LVU62
-ARM GAS  /tmp/ccNphSW8.s 			page 10
+ 218              		.loc 1 302 3 is_stmt 1 view .LVU60
+ARM GAS  /tmp/cc2WnIAQ.s 			page 10
 
 
- 219 0010 DA62     		str	r2, [r3, #44]
+ 219              		.loc 1 302 34 is_stmt 0 view .LVU61
+ 220 000e C268     		ldr	r2, [r0, #12]
+ 221              		.loc 1 302 14 view .LVU62
+ 222 0010 DA62     		str	r2, [r3, #44]
  303:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K2LR = CRYP_KeyInitStruct->CRYP_Key2Left;
- 220              		.loc 1 303 3 is_stmt 1 view .LVU63
- 221              		.loc 1 303 34 is_stmt 0 view .LVU64
- 222 0012 0269     		ldr	r2, [r0, #16]
- 223              		.loc 1 303 14 view .LVU65
- 224 0014 1A63     		str	r2, [r3, #48]
+ 223              		.loc 1 303 3 is_stmt 1 view .LVU63
+ 224              		.loc 1 303 34 is_stmt 0 view .LVU64
+ 225 0012 0269     		ldr	r2, [r0, #16]
+ 226              		.loc 1 303 14 view .LVU65
+ 227 0014 1A63     		str	r2, [r3, #48]
  304:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K2RR = CRYP_KeyInitStruct->CRYP_Key2Right;
- 225              		.loc 1 304 3 is_stmt 1 view .LVU66
- 226              		.loc 1 304 34 is_stmt 0 view .LVU67
- 227 0016 4269     		ldr	r2, [r0, #20]
- 228              		.loc 1 304 14 view .LVU68
- 229 0018 5A63     		str	r2, [r3, #52]
+ 228              		.loc 1 304 3 is_stmt 1 view .LVU66
+ 229              		.loc 1 304 34 is_stmt 0 view .LVU67
+ 230 0016 4269     		ldr	r2, [r0, #20]
+ 231              		.loc 1 304 14 view .LVU68
+ 232 0018 5A63     		str	r2, [r3, #52]
  305:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K3LR = CRYP_KeyInitStruct->CRYP_Key3Left;
- 230              		.loc 1 305 3 is_stmt 1 view .LVU69
- 231              		.loc 1 305 34 is_stmt 0 view .LVU70
- 232 001a 8269     		ldr	r2, [r0, #24]
- 233              		.loc 1 305 14 view .LVU71
- 234 001c 9A63     		str	r2, [r3, #56]
+ 233              		.loc 1 305 3 is_stmt 1 view .LVU69
+ 234              		.loc 1 305 34 is_stmt 0 view .LVU70
+ 235 001a 8269     		ldr	r2, [r0, #24]
+ 236              		.loc 1 305 14 view .LVU71
+ 237 001c 9A63     		str	r2, [r3, #56]
  306:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K3RR = CRYP_KeyInitStruct->CRYP_Key3Right;
- 235              		.loc 1 306 3 is_stmt 1 view .LVU72
- 236              		.loc 1 306 34 is_stmt 0 view .LVU73
- 237 001e C269     		ldr	r2, [r0, #28]
- 238              		.loc 1 306 14 view .LVU74
- 239 0020 DA63     		str	r2, [r3, #60]
+ 238              		.loc 1 306 3 is_stmt 1 view .LVU72
+ 239              		.loc 1 306 34 is_stmt 0 view .LVU73
+ 240 001e C269     		ldr	r2, [r0, #28]
+ 241              		.loc 1 306 14 view .LVU74
+ 242 0020 DA63     		str	r2, [r3, #60]
  307:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 240              		.loc 1 307 1 view .LVU75
- 241 0022 7047     		bx	lr
- 242              	.L10:
- 243              		.align	2
- 244              	.L9:
- 245 0024 00000650 		.word	1342570496
- 246              		.cfi_endproc
- 247              	.LFE126:
- 249              		.section	.text.CRYP_KeyStructInit,"ax",%progbits
- 250              		.align	1
- 251              		.global	CRYP_KeyStructInit
- 252              		.syntax unified
- 253              		.thumb
- 254              		.thumb_func
- 256              	CRYP_KeyStructInit:
- 257              	.LVL5:
- 258              	.LFB127:
+ 243              		.loc 1 307 1 view .LVU75
+ 244 0022 7047     		bx	lr
+ 245              	.L10:
+ 246              		.align	2
+ 247              	.L9:
+ 248 0024 00000650 		.word	1342570496
+ 249              		.cfi_endproc
+ 250              	.LFE126:
+ 252              		.section	.text.CRYP_KeyStructInit,"ax",%progbits
+ 253              		.align	1
+ 254              		.global	CRYP_KeyStructInit
+ 255              		.syntax unified
+ 256              		.thumb
+ 257              		.thumb_func
+ 258              		.fpu fpv4-sp-d16
+ 260              	CRYP_KeyStructInit:
+ 261              	.LVL5:
+ 262              	.LFB127:
  308:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  309:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  310:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Fills each CRYP_KeyInitStruct member with its default value.
@@ -593,169 +597,172 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  314:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  315:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_KeyStructInit(CRYP_KeyInitTypeDef* CRYP_KeyInitStruct)
  316:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 259              		.loc 1 316 1 is_stmt 1 view -0
- 260              		.cfi_startproc
- 261              		@ args = 0, pretend = 0, frame = 0
- 262              		@ frame_needed = 0, uses_anonymous_args = 0
- 263              		@ link register save eliminated.
-ARM GAS  /tmp/ccNphSW8.s 			page 11
+ 263              		.loc 1 316 1 is_stmt 1 view -0
+ARM GAS  /tmp/cc2WnIAQ.s 			page 11
 
 
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267              		@ link register save eliminated.
  317:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_KeyInitStruct->CRYP_Key0Left  = 0;
- 264              		.loc 1 317 3 view .LVU77
- 265              		.loc 1 317 38 is_stmt 0 view .LVU78
- 266 0000 0023     		movs	r3, #0
- 267 0002 0360     		str	r3, [r0]
+ 268              		.loc 1 317 3 view .LVU77
+ 269              		.loc 1 317 38 is_stmt 0 view .LVU78
+ 270 0000 0023     		movs	r3, #0
+ 271 0002 0360     		str	r3, [r0]
  318:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_KeyInitStruct->CRYP_Key0Right = 0;
- 268              		.loc 1 318 3 is_stmt 1 view .LVU79
- 269              		.loc 1 318 38 is_stmt 0 view .LVU80
- 270 0004 4360     		str	r3, [r0, #4]
+ 272              		.loc 1 318 3 is_stmt 1 view .LVU79
+ 273              		.loc 1 318 38 is_stmt 0 view .LVU80
+ 274 0004 4360     		str	r3, [r0, #4]
  319:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_KeyInitStruct->CRYP_Key1Left  = 0;
- 271              		.loc 1 319 3 is_stmt 1 view .LVU81
- 272              		.loc 1 319 38 is_stmt 0 view .LVU82
- 273 0006 8360     		str	r3, [r0, #8]
+ 275              		.loc 1 319 3 is_stmt 1 view .LVU81
+ 276              		.loc 1 319 38 is_stmt 0 view .LVU82
+ 277 0006 8360     		str	r3, [r0, #8]
  320:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_KeyInitStruct->CRYP_Key1Right = 0;
- 274              		.loc 1 320 3 is_stmt 1 view .LVU83
- 275              		.loc 1 320 38 is_stmt 0 view .LVU84
- 276 0008 C360     		str	r3, [r0, #12]
+ 278              		.loc 1 320 3 is_stmt 1 view .LVU83
+ 279              		.loc 1 320 38 is_stmt 0 view .LVU84
+ 280 0008 C360     		str	r3, [r0, #12]
  321:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_KeyInitStruct->CRYP_Key2Left  = 0;
- 277              		.loc 1 321 3 is_stmt 1 view .LVU85
- 278              		.loc 1 321 38 is_stmt 0 view .LVU86
- 279 000a 0361     		str	r3, [r0, #16]
+ 281              		.loc 1 321 3 is_stmt 1 view .LVU85
+ 282              		.loc 1 321 38 is_stmt 0 view .LVU86
+ 283 000a 0361     		str	r3, [r0, #16]
  322:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_KeyInitStruct->CRYP_Key2Right = 0;
- 280              		.loc 1 322 3 is_stmt 1 view .LVU87
- 281              		.loc 1 322 38 is_stmt 0 view .LVU88
- 282 000c 4361     		str	r3, [r0, #20]
+ 284              		.loc 1 322 3 is_stmt 1 view .LVU87
+ 285              		.loc 1 322 38 is_stmt 0 view .LVU88
+ 286 000c 4361     		str	r3, [r0, #20]
  323:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_KeyInitStruct->CRYP_Key3Left  = 0;
- 283              		.loc 1 323 3 is_stmt 1 view .LVU89
- 284              		.loc 1 323 38 is_stmt 0 view .LVU90
- 285 000e 8361     		str	r3, [r0, #24]
+ 287              		.loc 1 323 3 is_stmt 1 view .LVU89
+ 288              		.loc 1 323 38 is_stmt 0 view .LVU90
+ 289 000e 8361     		str	r3, [r0, #24]
  324:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_KeyInitStruct->CRYP_Key3Right = 0;
- 286              		.loc 1 324 3 is_stmt 1 view .LVU91
- 287              		.loc 1 324 38 is_stmt 0 view .LVU92
- 288 0010 C361     		str	r3, [r0, #28]
+ 290              		.loc 1 324 3 is_stmt 1 view .LVU91
+ 291              		.loc 1 324 38 is_stmt 0 view .LVU92
+ 292 0010 C361     		str	r3, [r0, #28]
  325:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 289              		.loc 1 325 1 view .LVU93
- 290 0012 7047     		bx	lr
- 291              		.cfi_endproc
- 292              	.LFE127:
- 294              		.section	.text.CRYP_IVInit,"ax",%progbits
- 295              		.align	1
- 296              		.global	CRYP_IVInit
- 297              		.syntax unified
- 298              		.thumb
- 299              		.thumb_func
- 301              	CRYP_IVInit:
- 302              	.LVL6:
- 303              	.LFB128:
+ 293              		.loc 1 325 1 view .LVU93
+ 294 0012 7047     		bx	lr
+ 295              		.cfi_endproc
+ 296              	.LFE127:
+ 298              		.section	.text.CRYP_IVInit,"ax",%progbits
+ 299              		.align	1
+ 300              		.global	CRYP_IVInit
+ 301              		.syntax unified
+ 302              		.thumb
+ 303              		.thumb_func
+ 304              		.fpu fpv4-sp-d16
+ 306              	CRYP_IVInit:
+ 307              	.LVL6:
+ 308              	.LFB128:
  326:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  327:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Initializes the CRYP Initialization Vectors(IV) according to the
  328:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         specified parameters in the CRYP_IVInitStruct.
  329:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @param  CRYP_IVInitStruct: pointer to a CRYP_IVInitTypeDef structure that contains
  330:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         the configuration information for the CRYP Initialization Vectors(IV).
+ARM GAS  /tmp/cc2WnIAQ.s 			page 12
+
+
  331:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @retval None
  332:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  333:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_IVInit(CRYP_IVInitTypeDef* CRYP_IVInitStruct)
  334:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 304              		.loc 1 334 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccNphSW8.s 			page 12
-
-
- 305              		.cfi_startproc
- 306              		@ args = 0, pretend = 0, frame = 0
- 307              		@ frame_needed = 0, uses_anonymous_args = 0
- 308              		@ link register save eliminated.
+ 309              		.loc 1 334 1 is_stmt 1 view -0
+ 310              		.cfi_startproc
+ 311              		@ args = 0, pretend = 0, frame = 0
+ 312              		@ frame_needed = 0, uses_anonymous_args = 0
+ 313              		@ link register save eliminated.
  335:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->IV0LR = CRYP_IVInitStruct->CRYP_IV0Left;
- 309              		.loc 1 335 3 view .LVU95
- 310              		.loc 1 335 34 is_stmt 0 view .LVU96
- 311 0000 0268     		ldr	r2, [r0]
- 312              		.loc 1 335 15 view .LVU97
- 313 0002 044B     		ldr	r3, .L13
- 314 0004 1A64     		str	r2, [r3, #64]
+ 314              		.loc 1 335 3 view .LVU95
+ 315              		.loc 1 335 34 is_stmt 0 view .LVU96
+ 316 0000 0268     		ldr	r2, [r0]
+ 317              		.loc 1 335 15 view .LVU97
+ 318 0002 044B     		ldr	r3, .L13
+ 319 0004 1A64     		str	r2, [r3, #64]
  336:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->IV0RR = CRYP_IVInitStruct->CRYP_IV0Right;
- 315              		.loc 1 336 3 is_stmt 1 view .LVU98
- 316              		.loc 1 336 34 is_stmt 0 view .LVU99
- 317 0006 4268     		ldr	r2, [r0, #4]
- 318              		.loc 1 336 15 view .LVU100
- 319 0008 5A64     		str	r2, [r3, #68]
+ 320              		.loc 1 336 3 is_stmt 1 view .LVU98
+ 321              		.loc 1 336 34 is_stmt 0 view .LVU99
+ 322 0006 4268     		ldr	r2, [r0, #4]
+ 323              		.loc 1 336 15 view .LVU100
+ 324 0008 5A64     		str	r2, [r3, #68]
  337:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->IV1LR = CRYP_IVInitStruct->CRYP_IV1Left;
- 320              		.loc 1 337 3 is_stmt 1 view .LVU101
- 321              		.loc 1 337 34 is_stmt 0 view .LVU102
- 322 000a 8268     		ldr	r2, [r0, #8]
- 323              		.loc 1 337 15 view .LVU103
- 324 000c 9A64     		str	r2, [r3, #72]
+ 325              		.loc 1 337 3 is_stmt 1 view .LVU101
+ 326              		.loc 1 337 34 is_stmt 0 view .LVU102
+ 327 000a 8268     		ldr	r2, [r0, #8]
+ 328              		.loc 1 337 15 view .LVU103
+ 329 000c 9A64     		str	r2, [r3, #72]
  338:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->IV1RR = CRYP_IVInitStruct->CRYP_IV1Right;
- 325              		.loc 1 338 3 is_stmt 1 view .LVU104
- 326              		.loc 1 338 34 is_stmt 0 view .LVU105
- 327 000e C268     		ldr	r2, [r0, #12]
- 328              		.loc 1 338 15 view .LVU106
- 329 0010 DA64     		str	r2, [r3, #76]
+ 330              		.loc 1 338 3 is_stmt 1 view .LVU104
+ 331              		.loc 1 338 34 is_stmt 0 view .LVU105
+ 332 000e C268     		ldr	r2, [r0, #12]
+ 333              		.loc 1 338 15 view .LVU106
+ 334 0010 DA64     		str	r2, [r3, #76]
  339:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 330              		.loc 1 339 1 view .LVU107
- 331 0012 7047     		bx	lr
- 332              	.L14:
- 333              		.align	2
- 334              	.L13:
- 335 0014 00000650 		.word	1342570496
- 336              		.cfi_endproc
- 337              	.LFE128:
- 339              		.section	.text.CRYP_IVStructInit,"ax",%progbits
- 340              		.align	1
- 341              		.global	CRYP_IVStructInit
- 342              		.syntax unified
- 343              		.thumb
- 344              		.thumb_func
- 346              	CRYP_IVStructInit:
- 347              	.LVL7:
- 348              	.LFB129:
+ 335              		.loc 1 339 1 view .LVU107
+ 336 0012 7047     		bx	lr
+ 337              	.L14:
+ 338              		.align	2
+ 339              	.L13:
+ 340 0014 00000650 		.word	1342570496
+ 341              		.cfi_endproc
+ 342              	.LFE128:
+ 344              		.section	.text.CRYP_IVStructInit,"ax",%progbits
+ 345              		.align	1
+ 346              		.global	CRYP_IVStructInit
+ 347              		.syntax unified
+ 348              		.thumb
+ 349              		.thumb_func
+ 350              		.fpu fpv4-sp-d16
+ 352              	CRYP_IVStructInit:
+ 353              	.LVL7:
+ 354              	.LFB129:
  340:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  341:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  342:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Fills each CRYP_IVInitStruct member with its default value.
  343:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @param  CRYP_IVInitStruct: pointer to a CRYP_IVInitTypeDef Initialization 
+ARM GAS  /tmp/cc2WnIAQ.s 			page 13
+
+
  344:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         Vectors(IV) structure which will be initialized.
  345:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @retval None
  346:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  347:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_IVStructInit(CRYP_IVInitTypeDef* CRYP_IVInitStruct)
  348:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 349              		.loc 1 348 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccNphSW8.s 			page 13
-
-
- 350              		.cfi_startproc
- 351              		@ args = 0, pretend = 0, frame = 0
- 352              		@ frame_needed = 0, uses_anonymous_args = 0
- 353              		@ link register save eliminated.
+ 355              		.loc 1 348 1 is_stmt 1 view -0
+ 356              		.cfi_startproc
+ 357              		@ args = 0, pretend = 0, frame = 0
+ 358              		@ frame_needed = 0, uses_anonymous_args = 0
+ 359              		@ link register save eliminated.
  349:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_IVInitStruct->CRYP_IV0Left  = 0;
- 354              		.loc 1 349 3 view .LVU109
- 355              		.loc 1 349 36 is_stmt 0 view .LVU110
- 356 0000 0023     		movs	r3, #0
- 357 0002 0360     		str	r3, [r0]
+ 360              		.loc 1 349 3 view .LVU109
+ 361              		.loc 1 349 36 is_stmt 0 view .LVU110
+ 362 0000 0023     		movs	r3, #0
+ 363 0002 0360     		str	r3, [r0]
  350:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_IVInitStruct->CRYP_IV0Right = 0;
- 358              		.loc 1 350 3 is_stmt 1 view .LVU111
- 359              		.loc 1 350 36 is_stmt 0 view .LVU112
- 360 0004 4360     		str	r3, [r0, #4]
+ 364              		.loc 1 350 3 is_stmt 1 view .LVU111
+ 365              		.loc 1 350 36 is_stmt 0 view .LVU112
+ 366 0004 4360     		str	r3, [r0, #4]
  351:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_IVInitStruct->CRYP_IV1Left  = 0;
- 361              		.loc 1 351 3 is_stmt 1 view .LVU113
- 362              		.loc 1 351 36 is_stmt 0 view .LVU114
- 363 0006 8360     		str	r3, [r0, #8]
+ 367              		.loc 1 351 3 is_stmt 1 view .LVU113
+ 368              		.loc 1 351 36 is_stmt 0 view .LVU114
+ 369 0006 8360     		str	r3, [r0, #8]
  352:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP_IVInitStruct->CRYP_IV1Right = 0;
- 364              		.loc 1 352 3 is_stmt 1 view .LVU115
- 365              		.loc 1 352 36 is_stmt 0 view .LVU116
- 366 0008 C360     		str	r3, [r0, #12]
+ 370              		.loc 1 352 3 is_stmt 1 view .LVU115
+ 371              		.loc 1 352 36 is_stmt 0 view .LVU116
+ 372 0008 C360     		str	r3, [r0, #12]
  353:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 367              		.loc 1 353 1 view .LVU117
- 368 000a 7047     		bx	lr
- 369              		.cfi_endproc
- 370              	.LFE129:
- 372              		.section	.text.CRYP_PhaseConfig,"ax",%progbits
- 373              		.align	1
- 374              		.global	CRYP_PhaseConfig
- 375              		.syntax unified
- 376              		.thumb
- 377              		.thumb_func
- 379              	CRYP_PhaseConfig:
- 380              	.LVL8:
- 381              	.LFB130:
+ 373              		.loc 1 353 1 view .LVU117
+ 374 000a 7047     		bx	lr
+ 375              		.cfi_endproc
+ 376              	.LFE129:
+ 378              		.section	.text.CRYP_PhaseConfig,"ax",%progbits
+ 379              		.align	1
+ 380              		.global	CRYP_PhaseConfig
+ 381              		.syntax unified
+ 382              		.thumb
+ 383              		.thumb_func
+ 384              		.fpu fpv4-sp-d16
+ 386              	CRYP_PhaseConfig:
+ 387              	.LVL8:
+ 388              	.LFB130:
  354:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  355:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  356:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Configures the AES-CCM and AES-GCM phases
@@ -770,66 +777,70 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  365:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  366:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_PhaseConfig(uint32_t CRYP_Phase)
  367:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** { uint32_t tempcr = 0;
- 382              		.loc 1 367 1 is_stmt 1 view -0
- 383              		.cfi_startproc
- 384              		@ args = 0, pretend = 0, frame = 0
- 385              		@ frame_needed = 0, uses_anonymous_args = 0
- 386              		@ link register save eliminated.
- 387              		.loc 1 367 3 view .LVU119
+ 389              		.loc 1 367 1 is_stmt 1 view -0
+ARM GAS  /tmp/cc2WnIAQ.s 			page 14
+
+
+ 390              		.cfi_startproc
+ 391              		@ args = 0, pretend = 0, frame = 0
+ 392              		@ frame_needed = 0, uses_anonymous_args = 0
+ 393              		@ link register save eliminated.
+ 394              		.loc 1 367 3 view .LVU119
  368:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  369:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the parameter */
-ARM GAS  /tmp/ccNphSW8.s 			page 14
-
-
  370:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_CRYP_PHASE(CRYP_Phase));
- 388              		.loc 1 370 3 view .LVU120
+ 395              		.loc 1 370 3 view .LVU120
  371:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  372:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Get the CR register */
  373:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   tempcr = CRYP->CR;
- 389              		.loc 1 373 3 view .LVU121
- 390              		.loc 1 373 10 is_stmt 0 view .LVU122
- 391 0000 034A     		ldr	r2, .L17
- 392 0002 1368     		ldr	r3, [r2]
- 393              	.LVL9:
+ 396              		.loc 1 373 3 view .LVU121
+ 397              		.loc 1 373 10 is_stmt 0 view .LVU122
+ 398 0000 034A     		ldr	r2, .L17
+ 399 0002 1368     		ldr	r3, [r2]
+ 400              	.LVL9:
  374:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   
  375:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Reset the phase configuration bits: GCMP_CCMPH */
  376:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   tempcr &= (uint32_t)(~CRYP_CR_GCM_CCMPH);
- 394              		.loc 1 376 3 is_stmt 1 view .LVU123
- 395              		.loc 1 376 10 is_stmt 0 view .LVU124
- 396 0004 23F44033 		bic	r3, r3, #196608
- 397              	.LVL10:
+ 401              		.loc 1 376 3 is_stmt 1 view .LVU123
+ 402              		.loc 1 376 10 is_stmt 0 view .LVU124
+ 403 0004 23F44033 		bic	r3, r3, #196608
+ 404              	.LVL10:
  377:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Set the selected phase */
  378:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   tempcr |= (uint32_t)CRYP_Phase;
- 398              		.loc 1 378 3 is_stmt 1 view .LVU125
- 399              		.loc 1 378 10 is_stmt 0 view .LVU126
- 400 0008 0343     		orrs	r3, r3, r0
- 401              	.LVL11:
+ 405              		.loc 1 378 3 is_stmt 1 view .LVU125
+ 406              		.loc 1 378 10 is_stmt 0 view .LVU126
+ 407 0008 0343     		orrs	r3, r3, r0
+ 408              	.LVL11:
  379:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  380:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Set the CR register */ 
  381:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR = tempcr;    
- 402              		.loc 1 381 3 is_stmt 1 view .LVU127
- 403              		.loc 1 381 12 is_stmt 0 view .LVU128
- 404 000a 1360     		str	r3, [r2]
+ 409              		.loc 1 381 3 is_stmt 1 view .LVU127
+ 410              		.loc 1 381 12 is_stmt 0 view .LVU128
+ 411 000a 1360     		str	r3, [r2]
  382:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 405              		.loc 1 382 1 view .LVU129
- 406 000c 7047     		bx	lr
- 407              	.L18:
- 408 000e 00BF     		.align	2
- 409              	.L17:
- 410 0010 00000650 		.word	1342570496
- 411              		.cfi_endproc
- 412              	.LFE130:
- 414              		.section	.text.CRYP_FIFOFlush,"ax",%progbits
- 415              		.align	1
- 416              		.global	CRYP_FIFOFlush
- 417              		.syntax unified
- 418              		.thumb
- 419              		.thumb_func
- 421              	CRYP_FIFOFlush:
- 422              	.LFB131:
+ 412              		.loc 1 382 1 view .LVU129
+ 413 000c 7047     		bx	lr
+ 414              	.L18:
+ 415 000e 00BF     		.align	2
+ 416              	.L17:
+ 417 0010 00000650 		.word	1342570496
+ 418              		.cfi_endproc
+ 419              	.LFE130:
+ 421              		.section	.text.CRYP_FIFOFlush,"ax",%progbits
+ 422              		.align	1
+ 423              		.global	CRYP_FIFOFlush
+ 424              		.syntax unified
+ 425              		.thumb
+ 426              		.thumb_func
+ 427              		.fpu fpv4-sp-d16
+ 429              	CRYP_FIFOFlush:
+ 430              	.LFB131:
  383:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  384:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  385:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Flushes the IN and OUT FIFOs (that is read and write pointers of the 
+ARM GAS  /tmp/cc2WnIAQ.s 			page 15
+
+
  386:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         FIFOs are reset)
  387:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @note   The FIFOs must be flushed only when BUSY flag is reset.  
  388:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @param  None
@@ -837,40 +848,38 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  390:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  391:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_FIFOFlush(void)
  392:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 423              		.loc 1 392 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccNphSW8.s 			page 15
-
-
- 424              		.cfi_startproc
- 425              		@ args = 0, pretend = 0, frame = 0
- 426              		@ frame_needed = 0, uses_anonymous_args = 0
- 427              		@ link register save eliminated.
+ 431              		.loc 1 392 1 is_stmt 1 view -0
+ 432              		.cfi_startproc
+ 433              		@ args = 0, pretend = 0, frame = 0
+ 434              		@ frame_needed = 0, uses_anonymous_args = 0
+ 435              		@ link register save eliminated.
  393:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Reset the read and write pointers of the FIFOs */
  394:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR |= CRYP_CR_FFLUSH;
- 428              		.loc 1 394 3 view .LVU131
- 429              		.loc 1 394 12 is_stmt 0 view .LVU132
- 430 0000 024A     		ldr	r2, .L20
- 431 0002 1368     		ldr	r3, [r2]
- 432 0004 43F48043 		orr	r3, r3, #16384
- 433 0008 1360     		str	r3, [r2]
+ 436              		.loc 1 394 3 view .LVU131
+ 437              		.loc 1 394 12 is_stmt 0 view .LVU132
+ 438 0000 024A     		ldr	r2, .L20
+ 439 0002 1368     		ldr	r3, [r2]
+ 440 0004 43F48043 		orr	r3, r3, #16384
+ 441 0008 1360     		str	r3, [r2]
  395:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 434              		.loc 1 395 1 view .LVU133
- 435 000a 7047     		bx	lr
- 436              	.L21:
- 437              		.align	2
- 438              	.L20:
- 439 000c 00000650 		.word	1342570496
- 440              		.cfi_endproc
- 441              	.LFE131:
- 443              		.section	.text.CRYP_Cmd,"ax",%progbits
- 444              		.align	1
- 445              		.global	CRYP_Cmd
- 446              		.syntax unified
- 447              		.thumb
- 448              		.thumb_func
- 450              	CRYP_Cmd:
- 451              	.LVL12:
- 452              	.LFB132:
+ 442              		.loc 1 395 1 view .LVU133
+ 443 000a 7047     		bx	lr
+ 444              	.L21:
+ 445              		.align	2
+ 446              	.L20:
+ 447 000c 00000650 		.word	1342570496
+ 448              		.cfi_endproc
+ 449              	.LFE131:
+ 451              		.section	.text.CRYP_Cmd,"ax",%progbits
+ 452              		.align	1
+ 453              		.global	CRYP_Cmd
+ 454              		.syntax unified
+ 455              		.thumb
+ 456              		.thumb_func
+ 457              		.fpu fpv4-sp-d16
+ 459              	CRYP_Cmd:
+ 460              	.LVL12:
+ 461              	.LFB132:
  396:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  397:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  398:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Enables or disables the CRYP peripheral.
@@ -880,63 +889,64 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  402:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  403:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_Cmd(FunctionalState NewState)
  404:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 453              		.loc 1 404 1 is_stmt 1 view -0
- 454              		.cfi_startproc
- 455              		@ args = 0, pretend = 0, frame = 0
- 456              		@ frame_needed = 0, uses_anonymous_args = 0
- 457              		@ link register save eliminated.
+ 462              		.loc 1 404 1 is_stmt 1 view -0
+ 463              		.cfi_startproc
+ 464              		@ args = 0, pretend = 0, frame = 0
+ 465              		@ frame_needed = 0, uses_anonymous_args = 0
+ 466              		@ link register save eliminated.
  405:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the parameters */
  406:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 458              		.loc 1 406 3 view .LVU135
+ 467              		.loc 1 406 3 view .LVU135
  407:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
+ARM GAS  /tmp/cc2WnIAQ.s 			page 16
+
+
  408:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if (NewState != DISABLE)
- 459              		.loc 1 408 3 view .LVU136
- 460              		.loc 1 408 6 is_stmt 0 view .LVU137
- 461 0000 28B1     		cbz	r0, .L23
+ 468              		.loc 1 408 3 view .LVU136
+ 469              		.loc 1 408 6 is_stmt 0 view .LVU137
+ 470 0000 28B1     		cbz	r0, .L23
  409:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  410:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* Enable the Cryptographic processor */
  411:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->CR |= CRYP_CR_CRYPEN;
- 462              		.loc 1 411 5 is_stmt 1 view .LVU138
- 463              		.loc 1 411 14 is_stmt 0 view .LVU139
-ARM GAS  /tmp/ccNphSW8.s 			page 16
-
-
- 464 0002 064A     		ldr	r2, .L25
- 465 0004 1368     		ldr	r3, [r2]
- 466 0006 43F40043 		orr	r3, r3, #32768
- 467 000a 1360     		str	r3, [r2]
- 468 000c 7047     		bx	lr
- 469              	.L23:
+ 471              		.loc 1 411 5 is_stmt 1 view .LVU138
+ 472              		.loc 1 411 14 is_stmt 0 view .LVU139
+ 473 0002 064A     		ldr	r2, .L25
+ 474 0004 1368     		ldr	r3, [r2]
+ 475 0006 43F40043 		orr	r3, r3, #32768
+ 476 000a 1360     		str	r3, [r2]
+ 477 000c 7047     		bx	lr
+ 478              	.L23:
  412:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  413:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else
  414:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  415:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* Disable the Cryptographic processor */
  416:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->CR &= ~CRYP_CR_CRYPEN;
- 470              		.loc 1 416 5 is_stmt 1 view .LVU140
- 471              		.loc 1 416 14 is_stmt 0 view .LVU141
- 472 000e 034A     		ldr	r2, .L25
- 473 0010 1368     		ldr	r3, [r2]
- 474 0012 23F40043 		bic	r3, r3, #32768
- 475 0016 1360     		str	r3, [r2]
+ 479              		.loc 1 416 5 is_stmt 1 view .LVU140
+ 480              		.loc 1 416 14 is_stmt 0 view .LVU141
+ 481 000e 034A     		ldr	r2, .L25
+ 482 0010 1368     		ldr	r3, [r2]
+ 483 0012 23F40043 		bic	r3, r3, #32768
+ 484 0016 1360     		str	r3, [r2]
  417:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  418:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 476              		.loc 1 418 1 view .LVU142
- 477 0018 7047     		bx	lr
- 478              	.L26:
- 479 001a 00BF     		.align	2
- 480              	.L25:
- 481 001c 00000650 		.word	1342570496
- 482              		.cfi_endproc
- 483              	.LFE132:
- 485              		.section	.text.CRYP_DataIn,"ax",%progbits
- 486              		.align	1
- 487              		.global	CRYP_DataIn
- 488              		.syntax unified
- 489              		.thumb
- 490              		.thumb_func
- 492              	CRYP_DataIn:
- 493              	.LVL13:
- 494              	.LFB133:
+ 485              		.loc 1 418 1 view .LVU142
+ 486 0018 7047     		bx	lr
+ 487              	.L26:
+ 488 001a 00BF     		.align	2
+ 489              	.L25:
+ 490 001c 00000650 		.word	1342570496
+ 491              		.cfi_endproc
+ 492              	.LFE132:
+ 494              		.section	.text.CRYP_DataIn,"ax",%progbits
+ 495              		.align	1
+ 496              		.global	CRYP_DataIn
+ 497              		.syntax unified
+ 498              		.thumb
+ 499              		.thumb_func
+ 500              		.fpu fpv4-sp-d16
+ 502              	CRYP_DataIn:
+ 503              	.LVL13:
+ 504              	.LFB133:
  419:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  420:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @}
  421:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
@@ -948,6 +958,9 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  427:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****  ===============================================================================
  428:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                     ##### CRYP Data processing functions #####
  429:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****  ===============================================================================  
+ARM GAS  /tmp/cc2WnIAQ.s 			page 17
+
+
  430:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****  [..] This section provides functions allowing the encryption and decryption 
  431:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****       operations: 
  432:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****    (+) Enter data to be treated in the IN FIFO : using CRYP_DataIn() function.
@@ -958,9 +971,6 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  437:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  438:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  439:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
-ARM GAS  /tmp/ccNphSW8.s 			page 17
-
-
  440:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Writes data in the Data Input register (DIN).
  441:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @note   After the DIN register has been read once or several times, 
  442:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         the FIFO must be flushed (using CRYP_FIFOFlush() function).  
@@ -969,33 +979,34 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  445:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  446:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_DataIn(uint32_t Data)
  447:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 495              		.loc 1 447 1 is_stmt 1 view -0
- 496              		.cfi_startproc
- 497              		@ args = 0, pretend = 0, frame = 0
- 498              		@ frame_needed = 0, uses_anonymous_args = 0
- 499              		@ link register save eliminated.
+ 505              		.loc 1 447 1 is_stmt 1 view -0
+ 506              		.cfi_startproc
+ 507              		@ args = 0, pretend = 0, frame = 0
+ 508              		@ frame_needed = 0, uses_anonymous_args = 0
+ 509              		@ link register save eliminated.
  448:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->DR = Data;
- 500              		.loc 1 448 3 view .LVU144
- 501              		.loc 1 448 12 is_stmt 0 view .LVU145
- 502 0000 014B     		ldr	r3, .L28
- 503 0002 9860     		str	r0, [r3, #8]
+ 510              		.loc 1 448 3 view .LVU144
+ 511              		.loc 1 448 12 is_stmt 0 view .LVU145
+ 512 0000 014B     		ldr	r3, .L28
+ 513 0002 9860     		str	r0, [r3, #8]
  449:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 504              		.loc 1 449 1 view .LVU146
- 505 0004 7047     		bx	lr
- 506              	.L29:
- 507 0006 00BF     		.align	2
- 508              	.L28:
- 509 0008 00000650 		.word	1342570496
- 510              		.cfi_endproc
- 511              	.LFE133:
- 513              		.section	.text.CRYP_DataOut,"ax",%progbits
- 514              		.align	1
- 515              		.global	CRYP_DataOut
- 516              		.syntax unified
- 517              		.thumb
- 518              		.thumb_func
- 520              	CRYP_DataOut:
- 521              	.LFB134:
+ 514              		.loc 1 449 1 view .LVU146
+ 515 0004 7047     		bx	lr
+ 516              	.L29:
+ 517 0006 00BF     		.align	2
+ 518              	.L28:
+ 519 0008 00000650 		.word	1342570496
+ 520              		.cfi_endproc
+ 521              	.LFE133:
+ 523              		.section	.text.CRYP_DataOut,"ax",%progbits
+ 524              		.align	1
+ 525              		.global	CRYP_DataOut
+ 526              		.syntax unified
+ 527              		.thumb
+ 528              		.thumb_func
+ 529              		.fpu fpv4-sp-d16
+ 531              	CRYP_DataOut:
+ 532              	.LFB134:
  450:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  451:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  452:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Returns the last data entered into the output FIFO.
@@ -1004,37 +1015,38 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  455:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  456:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** uint32_t CRYP_DataOut(void)
  457:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 522              		.loc 1 457 1 is_stmt 1 view -0
- 523              		.cfi_startproc
- 524              		@ args = 0, pretend = 0, frame = 0
- 525              		@ frame_needed = 0, uses_anonymous_args = 0
- 526              		@ link register save eliminated.
+ 533              		.loc 1 457 1 is_stmt 1 view -0
+ 534              		.cfi_startproc
+ 535              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc2WnIAQ.s 			page 18
+
+
+ 536              		@ frame_needed = 0, uses_anonymous_args = 0
+ 537              		@ link register save eliminated.
  458:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   return CRYP->DOUT;
- 527              		.loc 1 458 3 view .LVU148
- 528              		.loc 1 458 14 is_stmt 0 view .LVU149
- 529 0000 014B     		ldr	r3, .L31
- 530 0002 D868     		ldr	r0, [r3, #12]
+ 538              		.loc 1 458 3 view .LVU148
+ 539              		.loc 1 458 14 is_stmt 0 view .LVU149
+ 540 0000 014B     		ldr	r3, .L31
+ 541 0002 D868     		ldr	r0, [r3, #12]
  459:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 531              		.loc 1 459 1 view .LVU150
- 532 0004 7047     		bx	lr
- 533              	.L32:
-ARM GAS  /tmp/ccNphSW8.s 			page 18
-
-
- 534 0006 00BF     		.align	2
- 535              	.L31:
- 536 0008 00000650 		.word	1342570496
- 537              		.cfi_endproc
- 538              	.LFE134:
- 540              		.section	.text.CRYP_SaveContext,"ax",%progbits
- 541              		.align	1
- 542              		.global	CRYP_SaveContext
- 543              		.syntax unified
- 544              		.thumb
- 545              		.thumb_func
- 547              	CRYP_SaveContext:
- 548              	.LVL14:
- 549              	.LFB135:
+ 542              		.loc 1 459 1 view .LVU150
+ 543 0004 7047     		bx	lr
+ 544              	.L32:
+ 545 0006 00BF     		.align	2
+ 546              	.L31:
+ 547 0008 00000650 		.word	1342570496
+ 548              		.cfi_endproc
+ 549              	.LFE134:
+ 551              		.section	.text.CRYP_SaveContext,"ax",%progbits
+ 552              		.align	1
+ 553              		.global	CRYP_SaveContext
+ 554              		.syntax unified
+ 555              		.thumb
+ 556              		.thumb_func
+ 557              		.fpu fpv4-sp-d16
+ 559              	CRYP_SaveContext:
+ 560              	.LVL14:
+ 561              	.LFB135:
  460:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  461:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @}
  462:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
@@ -1066,6 +1078,9 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  488:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @note   This function stops DMA transfer before to save the context. After 
  489:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         restoring the context, you have to enable the DMA again (if the DMA
  490:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         was previously used).
+ARM GAS  /tmp/cc2WnIAQ.s 			page 19
+
+
  491:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @param  CRYP_ContextSave: pointer to a CRYP_Context structure that contains
  492:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *         the repository for current context.
  493:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @param  CRYP_KeyInitStruct: pointer to a CRYP_KeyInitTypeDef structure that 
@@ -1075,57 +1090,57 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  497:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** ErrorStatus CRYP_SaveContext(CRYP_Context* CRYP_ContextSave,
  498:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                              CRYP_KeyInitTypeDef* CRYP_KeyInitStruct)
  499:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 550              		.loc 1 499 1 is_stmt 1 view -0
- 551              		.cfi_startproc
- 552              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  /tmp/ccNphSW8.s 			page 19
-
-
- 553              		@ frame_needed = 0, uses_anonymous_args = 0
- 554              		@ link register save eliminated.
- 555              		.loc 1 499 1 is_stmt 0 view .LVU152
- 556 0000 10B4     		push	{r4}
- 557              		.cfi_def_cfa_offset 4
- 558              		.cfi_offset 4, -4
- 559 0002 83B0     		sub	sp, sp, #12
- 560              		.cfi_def_cfa_offset 16
+ 562              		.loc 1 499 1 is_stmt 1 view -0
+ 563              		.cfi_startproc
+ 564              		@ args = 0, pretend = 0, frame = 8
+ 565              		@ frame_needed = 0, uses_anonymous_args = 0
+ 566              		@ link register save eliminated.
+ 567              		.loc 1 499 1 is_stmt 0 view .LVU152
+ 568 0000 10B4     		push	{r4}
+ 569              		.cfi_def_cfa_offset 4
+ 570              		.cfi_offset 4, -4
+ 571 0002 83B0     		sub	sp, sp, #12
+ 572              		.cfi_def_cfa_offset 16
  500:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   __IO uint32_t timeout = 0;
- 561              		.loc 1 500 3 is_stmt 1 view .LVU153
- 562              		.loc 1 500 17 is_stmt 0 view .LVU154
- 563 0004 0023     		movs	r3, #0
- 564 0006 0193     		str	r3, [sp, #4]
+ 573              		.loc 1 500 3 is_stmt 1 view .LVU153
+ 574              		.loc 1 500 17 is_stmt 0 view .LVU154
+ 575 0004 0023     		movs	r3, #0
+ 576 0006 0193     		str	r3, [sp, #4]
  501:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   uint32_t ckeckmask = 0, bitstatus;    
- 565              		.loc 1 501 3 is_stmt 1 view .LVU155
- 566              	.LVL15:
+ 577              		.loc 1 501 3 is_stmt 1 view .LVU155
+ 578              	.LVL15:
  502:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   ErrorStatus status = ERROR;
- 567              		.loc 1 502 3 view .LVU156
+ 579              		.loc 1 502 3 view .LVU156
  503:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  504:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Stop DMA transfers on the IN FIFO by clearing the DIEN bit in the CRYP_DMACR */
  505:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->DMACR &= ~(uint32_t)CRYP_DMACR_DIEN;
- 568              		.loc 1 505 3 view .LVU157
- 569              		.loc 1 505 15 is_stmt 0 view .LVU158
- 570 0008 3C4B     		ldr	r3, .L42
- 571 000a 1A69     		ldr	r2, [r3, #16]
- 572 000c 22F00102 		bic	r2, r2, #1
- 573 0010 1A61     		str	r2, [r3, #16]
+ 580              		.loc 1 505 3 view .LVU157
+ 581              		.loc 1 505 15 is_stmt 0 view .LVU158
+ 582 0008 3C4B     		ldr	r3, .L42
+ 583 000a 1A69     		ldr	r2, [r3, #16]
+ 584 000c 22F00102 		bic	r2, r2, #1
+ 585 0010 1A61     		str	r2, [r3, #16]
  506:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     
  507:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Wait until both the IN and OUT FIFOs are empty  
  508:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     (IFEM=1 and OFNE=0 in the CRYP_SR register) and the 
  509:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****      BUSY bit is cleared. */
  510:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  511:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if ((CRYP->CR & (uint32_t)(CRYP_CR_ALGOMODE_TDES_ECB | CRYP_CR_ALGOMODE_TDES_CBC)) != (uint32_t)0
- 574              		.loc 1 511 3 is_stmt 1 view .LVU159
- 575              		.loc 1 511 12 is_stmt 0 view .LVU160
- 576 0012 1B68     		ldr	r3, [r3]
- 577              		.loc 1 511 6 view .LVU161
- 578 0014 13F0080F 		tst	r3, #8
- 579 0018 1BD0     		beq	.L38
+ 586              		.loc 1 511 3 is_stmt 1 view .LVU159
+ 587              		.loc 1 511 12 is_stmt 0 view .LVU160
+ 588 0012 1B68     		ldr	r3, [r3]
+ 589              		.loc 1 511 6 view .LVU161
+ 590 0014 13F0080F 		tst	r3, #8
+ 591 0018 1BD0     		beq	.L38
  512:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   { 
  513:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     ckeckmask =  CRYP_SR_IFEM | CRYP_SR_BUSY ;
- 580              		.loc 1 513 15 view .LVU162
- 581 001a 4FF0110C 		mov	ip, #17
- 582              	.LVL16:
- 583              	.L36:
+ 592              		.loc 1 513 15 view .LVU162
+ 593 001a 4FF0110C 		mov	ip, #17
+ 594              	.LVL16:
+ 595              	.L36:
+ARM GAS  /tmp/cc2WnIAQ.s 			page 20
+
+
  514:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  515:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else /* AES or DES */
  516:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
@@ -1133,59 +1148,59 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  518:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }           
  519:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****    
  520:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   do 
- 584              		.loc 1 520 3 is_stmt 1 discriminator 2 view .LVU163
+ 596              		.loc 1 520 3 is_stmt 1 discriminator 2 view .LVU163
  521:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  522:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     bitstatus = CRYP->SR & ckeckmask;
- 585              		.loc 1 522 5 discriminator 2 view .LVU164
- 586              		.loc 1 522 21 is_stmt 0 discriminator 2 view .LVU165
-ARM GAS  /tmp/ccNphSW8.s 			page 20
-
-
- 587 001e 374B     		ldr	r3, .L42
- 588 0020 5A68     		ldr	r2, [r3, #4]
- 589              		.loc 1 522 15 discriminator 2 view .LVU166
- 590 0022 02EA0C02 		and	r2, r2, ip
- 591              	.LVL17:
+ 597              		.loc 1 522 5 discriminator 2 view .LVU164
+ 598              		.loc 1 522 21 is_stmt 0 discriminator 2 view .LVU165
+ 599 001e 374B     		ldr	r3, .L42
+ 600 0020 5A68     		ldr	r2, [r3, #4]
+ 601              		.loc 1 522 15 discriminator 2 view .LVU166
+ 602 0022 02EA0C02 		and	r2, r2, ip
+ 603              	.LVL17:
  523:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     timeout++;
- 592              		.loc 1 523 5 is_stmt 1 discriminator 2 view .LVU167
- 593              		.loc 1 523 12 is_stmt 0 discriminator 2 view .LVU168
- 594 0026 019B     		ldr	r3, [sp, #4]
- 595 0028 0133     		adds	r3, r3, #1
- 596 002a 0193     		str	r3, [sp, #4]
+ 604              		.loc 1 523 5 is_stmt 1 discriminator 2 view .LVU167
+ 605              		.loc 1 523 12 is_stmt 0 discriminator 2 view .LVU168
+ 606 0026 019B     		ldr	r3, [sp, #4]
+ 607 0028 0133     		adds	r3, r3, #1
+ 608 002a 0193     		str	r3, [sp, #4]
  524:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  525:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   while ((timeout != MAX_TIMEOUT) && (bitstatus != CRYP_SR_IFEM));
- 597              		.loc 1 525 9 is_stmt 1 discriminator 2 view .LVU169
- 598              		.loc 1 525 19 is_stmt 0 discriminator 2 view .LVU170
- 599 002c 019C     		ldr	r4, [sp, #4]
- 600              		.loc 1 525 3 discriminator 2 view .LVU171
- 601 002e 4FF6FF73 		movw	r3, #65535
- 602 0032 9C42     		cmp	r4, r3
- 603 0034 01D0     		beq	.L35
- 604              		.loc 1 525 35 discriminator 1 view .LVU172
- 605 0036 012A     		cmp	r2, #1
- 606 0038 F1D1     		bne	.L36
- 607              	.L35:
+ 609              		.loc 1 525 9 is_stmt 1 discriminator 2 view .LVU169
+ 610              		.loc 1 525 19 is_stmt 0 discriminator 2 view .LVU170
+ 611 002c 019C     		ldr	r4, [sp, #4]
+ 612              		.loc 1 525 3 discriminator 2 view .LVU171
+ 613 002e 4FF6FF73 		movw	r3, #65535
+ 614 0032 9C42     		cmp	r4, r3
+ 615 0034 01D0     		beq	.L35
+ 616              		.loc 1 525 35 discriminator 1 view .LVU172
+ 617 0036 012A     		cmp	r2, #1
+ 618 0038 F1D1     		bne	.L36
+ 619              	.L35:
  526:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****      
  527:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if ((CRYP->SR & ckeckmask) != CRYP_SR_IFEM)
- 608              		.loc 1 527 3 is_stmt 1 view .LVU173
- 609              		.loc 1 527 12 is_stmt 0 view .LVU174
- 610 003a 304B     		ldr	r3, .L42
- 611 003c 5B68     		ldr	r3, [r3, #4]
- 612              		.loc 1 527 17 view .LVU175
- 613 003e 03EA0C0C 		and	ip, r3, ip
- 614              	.LVL18:
- 615              		.loc 1 527 6 view .LVU176
- 616 0042 BCF1010F 		cmp	ip, #1
- 617 0046 07D0     		beq	.L41
+ 620              		.loc 1 527 3 is_stmt 1 view .LVU173
+ 621              		.loc 1 527 12 is_stmt 0 view .LVU174
+ 622 003a 304B     		ldr	r3, .L42
+ 623 003c 5B68     		ldr	r3, [r3, #4]
+ 624              		.loc 1 527 17 view .LVU175
+ 625 003e 03EA0C0C 		and	ip, r3, ip
+ 626              	.LVL18:
+ 627              		.loc 1 527 6 view .LVU176
+ 628 0042 BCF1010F 		cmp	ip, #1
+ 629 0046 07D0     		beq	.L41
  528:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  529:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     status = ERROR;
- 618              		.loc 1 529 12 view .LVU177
- 619 0048 0020     		movs	r0, #0
- 620              	.LVL19:
- 621              	.L37:
+ 630              		.loc 1 529 12 view .LVU177
+ 631 0048 0020     		movs	r0, #0
+ 632              	.LVL19:
+ 633              	.L37:
  530:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  531:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else
  532:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {      
+ARM GAS  /tmp/cc2WnIAQ.s 			page 21
+
+
  533:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* Stop DMA transfers on the OUT FIFO by 
  534:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        - writing the DOEN bit to 0 in the CRYP_DMACR register 
  535:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        - and clear the CRYPEN bit. */
@@ -1198,9 +1213,6 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  542:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                       CRYP_CR_KEYSIZE  |
  543:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                       CRYP_CR_DATATYPE |
  544:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                       CRYP_CR_ALGOMODE |
-ARM GAS  /tmp/ccNphSW8.s 			page 21
-
-
  545:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                       CRYP_CR_ALGODIR);
  546:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  547:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* and, if not in ECB mode, the initialization vectors. */
@@ -1245,328 +1257,329 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  586:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  587:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  588:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****    return status;
- 622              		.loc 1 588 4 is_stmt 1 view .LVU178
+ 634              		.loc 1 588 4 is_stmt 1 view .LVU178
+ARM GAS  /tmp/cc2WnIAQ.s 			page 22
+
+
  589:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 623              		.loc 1 589 1 is_stmt 0 view .LVU179
- 624 004a 03B0     		add	sp, sp, #12
- 625              		.cfi_remember_state
- 626              		.cfi_def_cfa_offset 4
- 627              		@ sp needed
- 628 004c 5DF8044B 		ldr	r4, [sp], #4
- 629              		.cfi_restore 4
- 630              		.cfi_def_cfa_offset 0
- 631 0050 7047     		bx	lr
- 632              	.LVL20:
- 633              	.L38:
-ARM GAS  /tmp/ccNphSW8.s 			page 22
-
-
- 634              		.cfi_restore_state
+ 635              		.loc 1 589 1 is_stmt 0 view .LVU179
+ 636 004a 03B0     		add	sp, sp, #12
+ 637              		.cfi_remember_state
+ 638              		.cfi_def_cfa_offset 4
+ 639              		@ sp needed
+ 640 004c 5DF8044B 		ldr	r4, [sp], #4
+ 641              		.cfi_restore 4
+ 642              		.cfi_def_cfa_offset 0
+ 643 0050 7047     		bx	lr
+ 644              	.LVL20:
+ 645              	.L38:
+ 646              		.cfi_restore_state
  517:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }           
- 635              		.loc 1 517 15 view .LVU180
- 636 0052 4FF0150C 		mov	ip, #21
- 637              	.LVL21:
+ 647              		.loc 1 517 15 view .LVU180
+ 648 0052 4FF0150C 		mov	ip, #21
+ 649              	.LVL21:
  517:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }           
- 638              		.loc 1 517 15 view .LVU181
- 639 0056 E2E7     		b	.L36
- 640              	.LVL22:
- 641              	.L41:
+ 650              		.loc 1 517 15 view .LVU181
+ 651 0056 E2E7     		b	.L36
+ 652              	.LVL22:
+ 653              	.L41:
  537:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->CR &= ~(uint32_t)CRYP_CR_CRYPEN;
- 642              		.loc 1 537 5 is_stmt 1 view .LVU182
+ 654              		.loc 1 537 5 is_stmt 1 view .LVU182
  537:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->CR &= ~(uint32_t)CRYP_CR_CRYPEN;
- 643              		.loc 1 537 17 is_stmt 0 view .LVU183
- 644 0058 284B     		ldr	r3, .L42
- 645 005a 1A69     		ldr	r2, [r3, #16]
- 646              	.LVL23:
+ 655              		.loc 1 537 17 is_stmt 0 view .LVU183
+ 656 0058 284B     		ldr	r3, .L42
+ 657 005a 1A69     		ldr	r2, [r3, #16]
+ 658              	.LVL23:
  537:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->CR &= ~(uint32_t)CRYP_CR_CRYPEN;
- 647              		.loc 1 537 17 view .LVU184
- 648 005c 22F00202 		bic	r2, r2, #2
- 649 0060 1A61     		str	r2, [r3, #16]
+ 659              		.loc 1 537 17 view .LVU184
+ 660 005c 22F00202 		bic	r2, r2, #2
+ 661 0060 1A61     		str	r2, [r3, #16]
  538:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
- 650              		.loc 1 538 5 is_stmt 1 view .LVU185
+ 662              		.loc 1 538 5 is_stmt 1 view .LVU185
  538:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
- 651              		.loc 1 538 14 is_stmt 0 view .LVU186
- 652 0062 1A68     		ldr	r2, [r3]
- 653 0064 22F40042 		bic	r2, r2, #32768
- 654 0068 1A60     		str	r2, [r3]
+ 663              		.loc 1 538 14 is_stmt 0 view .LVU186
+ 664 0062 1A68     		ldr	r2, [r3]
+ 665 0064 22F40042 		bic	r2, r2, #32768
+ 666 0068 1A60     		str	r2, [r3]
  541:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                       CRYP_CR_KEYSIZE  |
- 655              		.loc 1 541 5 is_stmt 1 view .LVU187
+ 667              		.loc 1 541 5 is_stmt 1 view .LVU187
  541:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                       CRYP_CR_KEYSIZE  |
- 656              		.loc 1 541 47 is_stmt 0 view .LVU188
- 657 006a 1A68     		ldr	r2, [r3]
+ 668              		.loc 1 541 47 is_stmt 0 view .LVU188
+ 669 006a 1A68     		ldr	r2, [r3]
  541:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                       CRYP_CR_KEYSIZE  |
- 658              		.loc 1 541 52 view .LVU189
- 659 006c 22F07F42 		bic	r2, r2, #-16777216
- 660 0070 22F47402 		bic	r2, r2, #15990784
- 661 0074 22F47C42 		bic	r2, r2, #64512
- 662 0078 22F00302 		bic	r2, r2, #3
+ 670              		.loc 1 541 52 view .LVU189
+ 671 006c 22F07F42 		bic	r2, r2, #-16777216
+ 672 0070 22F47402 		bic	r2, r2, #15990784
+ 673 0074 22F47C42 		bic	r2, r2, #64512
+ 674 0078 22F00302 		bic	r2, r2, #3
  541:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****                                                       CRYP_CR_KEYSIZE  |
- 663              		.loc 1 541 41 view .LVU190
- 664 007c 0260     		str	r2, [r0]
+ 675              		.loc 1 541 41 view .LVU190
+ 676 007c 0260     		str	r2, [r0]
  548:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV0RR = CRYP->IV0RR;
- 665              		.loc 1 548 5 is_stmt 1 view .LVU191
+ 677              		.loc 1 548 5 is_stmt 1 view .LVU191
  548:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV0RR = CRYP->IV0RR;
- 666              		.loc 1 548 40 is_stmt 0 view .LVU192
- 667 007e 1A6C     		ldr	r2, [r3, #64]
+ARM GAS  /tmp/cc2WnIAQ.s 			page 23
+
+
+ 678              		.loc 1 548 40 is_stmt 0 view .LVU192
+ 679 007e 1A6C     		ldr	r2, [r3, #64]
  548:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV0RR = CRYP->IV0RR;
- 668              		.loc 1 548 34 view .LVU193
- 669 0080 4260     		str	r2, [r0, #4]
+ 680              		.loc 1 548 34 view .LVU193
+ 681 0080 4260     		str	r2, [r0, #4]
  549:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV1LR = CRYP->IV1LR;
- 670              		.loc 1 549 5 is_stmt 1 view .LVU194
+ 682              		.loc 1 549 5 is_stmt 1 view .LVU194
  549:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV1LR = CRYP->IV1LR;
- 671              		.loc 1 549 40 is_stmt 0 view .LVU195
- 672 0082 5A6C     		ldr	r2, [r3, #68]
+ 683              		.loc 1 549 40 is_stmt 0 view .LVU195
+ 684 0082 5A6C     		ldr	r2, [r3, #68]
  549:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV1LR = CRYP->IV1LR;
- 673              		.loc 1 549 34 view .LVU196
-ARM GAS  /tmp/ccNphSW8.s 			page 23
-
-
- 674 0084 8260     		str	r2, [r0, #8]
+ 685              		.loc 1 549 34 view .LVU196
+ 686 0084 8260     		str	r2, [r0, #8]
  550:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV1RR = CRYP->IV1RR;
- 675              		.loc 1 550 5 is_stmt 1 view .LVU197
+ 687              		.loc 1 550 5 is_stmt 1 view .LVU197
  550:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV1RR = CRYP->IV1RR;
- 676              		.loc 1 550 40 is_stmt 0 view .LVU198
- 677 0086 9A6C     		ldr	r2, [r3, #72]
+ 688              		.loc 1 550 40 is_stmt 0 view .LVU198
+ 689 0086 9A6C     		ldr	r2, [r3, #72]
  550:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_IV1RR = CRYP->IV1RR;
- 678              		.loc 1 550 34 view .LVU199
- 679 0088 C260     		str	r2, [r0, #12]
+ 690              		.loc 1 550 34 view .LVU199
+ 691 0088 C260     		str	r2, [r0, #12]
  551:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
- 680              		.loc 1 551 5 is_stmt 1 view .LVU200
+ 692              		.loc 1 551 5 is_stmt 1 view .LVU200
  551:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
- 681              		.loc 1 551 40 is_stmt 0 view .LVU201
- 682 008a DA6C     		ldr	r2, [r3, #76]
+ 693              		.loc 1 551 40 is_stmt 0 view .LVU201
+ 694 008a DA6C     		ldr	r2, [r3, #76]
  551:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
- 683              		.loc 1 551 34 view .LVU202
- 684 008c 0261     		str	r2, [r0, #16]
+ 695              		.loc 1 551 34 view .LVU202
+ 696 008c 0261     		str	r2, [r0, #16]
  554:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K0RR = CRYP_KeyInitStruct->CRYP_Key0Right; 
- 685              		.loc 1 554 5 is_stmt 1 view .LVU203
+ 697              		.loc 1 554 5 is_stmt 1 view .LVU203
  554:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K0RR = CRYP_KeyInitStruct->CRYP_Key0Right; 
- 686              		.loc 1 554 53 is_stmt 0 view .LVU204
- 687 008e 0A68     		ldr	r2, [r1]
+ 698              		.loc 1 554 53 is_stmt 0 view .LVU204
+ 699 008e 0A68     		ldr	r2, [r1]
  554:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K0RR = CRYP_KeyInitStruct->CRYP_Key0Right; 
- 688              		.loc 1 554 33 view .LVU205
- 689 0090 4261     		str	r2, [r0, #20]
+ 700              		.loc 1 554 33 view .LVU205
+ 701 0090 4261     		str	r2, [r0, #20]
  555:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K1LR = CRYP_KeyInitStruct->CRYP_Key1Left; 
- 690              		.loc 1 555 5 is_stmt 1 view .LVU206
+ 702              		.loc 1 555 5 is_stmt 1 view .LVU206
  555:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K1LR = CRYP_KeyInitStruct->CRYP_Key1Left; 
- 691              		.loc 1 555 53 is_stmt 0 view .LVU207
- 692 0092 4A68     		ldr	r2, [r1, #4]
+ 703              		.loc 1 555 53 is_stmt 0 view .LVU207
+ 704 0092 4A68     		ldr	r2, [r1, #4]
  555:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K1LR = CRYP_KeyInitStruct->CRYP_Key1Left; 
- 693              		.loc 1 555 33 view .LVU208
- 694 0094 8261     		str	r2, [r0, #24]
+ 705              		.loc 1 555 33 view .LVU208
+ 706 0094 8261     		str	r2, [r0, #24]
  556:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K1RR = CRYP_KeyInitStruct->CRYP_Key1Right; 
- 695              		.loc 1 556 5 is_stmt 1 view .LVU209
+ 707              		.loc 1 556 5 is_stmt 1 view .LVU209
  556:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K1RR = CRYP_KeyInitStruct->CRYP_Key1Right; 
- 696              		.loc 1 556 53 is_stmt 0 view .LVU210
- 697 0096 8A68     		ldr	r2, [r1, #8]
+ 708              		.loc 1 556 53 is_stmt 0 view .LVU210
+ 709 0096 8A68     		ldr	r2, [r1, #8]
  556:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K1RR = CRYP_KeyInitStruct->CRYP_Key1Right; 
- 698              		.loc 1 556 33 view .LVU211
- 699 0098 C261     		str	r2, [r0, #28]
+ 710              		.loc 1 556 33 view .LVU211
+ 711 0098 C261     		str	r2, [r0, #28]
  557:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K2LR = CRYP_KeyInitStruct->CRYP_Key2Left; 
- 700              		.loc 1 557 5 is_stmt 1 view .LVU212
+ 712              		.loc 1 557 5 is_stmt 1 view .LVU212
  557:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K2LR = CRYP_KeyInitStruct->CRYP_Key2Left; 
- 701              		.loc 1 557 53 is_stmt 0 view .LVU213
- 702 009a CA68     		ldr	r2, [r1, #12]
+ 713              		.loc 1 557 53 is_stmt 0 view .LVU213
+ARM GAS  /tmp/cc2WnIAQ.s 			page 24
+
+
+ 714 009a CA68     		ldr	r2, [r1, #12]
  557:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K2LR = CRYP_KeyInitStruct->CRYP_Key2Left; 
- 703              		.loc 1 557 33 view .LVU214
- 704 009c 0262     		str	r2, [r0, #32]
+ 715              		.loc 1 557 33 view .LVU214
+ 716 009c 0262     		str	r2, [r0, #32]
  558:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K2RR = CRYP_KeyInitStruct->CRYP_Key2Right; 
- 705              		.loc 1 558 5 is_stmt 1 view .LVU215
+ 717              		.loc 1 558 5 is_stmt 1 view .LVU215
  558:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K2RR = CRYP_KeyInitStruct->CRYP_Key2Right; 
- 706              		.loc 1 558 53 is_stmt 0 view .LVU216
- 707 009e 0A69     		ldr	r2, [r1, #16]
+ 718              		.loc 1 558 53 is_stmt 0 view .LVU216
+ 719 009e 0A69     		ldr	r2, [r1, #16]
  558:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K2RR = CRYP_KeyInitStruct->CRYP_Key2Right; 
- 708              		.loc 1 558 33 view .LVU217
- 709 00a0 4262     		str	r2, [r0, #36]
-ARM GAS  /tmp/ccNphSW8.s 			page 24
-
-
+ 720              		.loc 1 558 33 view .LVU217
+ 721 00a0 4262     		str	r2, [r0, #36]
  559:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K3LR = CRYP_KeyInitStruct->CRYP_Key3Left; 
- 710              		.loc 1 559 5 is_stmt 1 view .LVU218
+ 722              		.loc 1 559 5 is_stmt 1 view .LVU218
  559:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K3LR = CRYP_KeyInitStruct->CRYP_Key3Left; 
- 711              		.loc 1 559 53 is_stmt 0 view .LVU219
- 712 00a2 4A69     		ldr	r2, [r1, #20]
+ 723              		.loc 1 559 53 is_stmt 0 view .LVU219
+ 724 00a2 4A69     		ldr	r2, [r1, #20]
  559:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K3LR = CRYP_KeyInitStruct->CRYP_Key3Left; 
- 713              		.loc 1 559 33 view .LVU220
- 714 00a4 8262     		str	r2, [r0, #40]
+ 725              		.loc 1 559 33 view .LVU220
+ 726 00a4 8262     		str	r2, [r0, #40]
  560:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K3RR = CRYP_KeyInitStruct->CRYP_Key3Right; 
- 715              		.loc 1 560 5 is_stmt 1 view .LVU221
+ 727              		.loc 1 560 5 is_stmt 1 view .LVU221
  560:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K3RR = CRYP_KeyInitStruct->CRYP_Key3Right; 
- 716              		.loc 1 560 53 is_stmt 0 view .LVU222
- 717 00a6 8A69     		ldr	r2, [r1, #24]
+ 728              		.loc 1 560 53 is_stmt 0 view .LVU222
+ 729 00a6 8A69     		ldr	r2, [r1, #24]
  560:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_K3RR = CRYP_KeyInitStruct->CRYP_Key3Right; 
- 718              		.loc 1 560 33 view .LVU223
- 719 00a8 C262     		str	r2, [r0, #44]
+ 730              		.loc 1 560 33 view .LVU223
+ 731 00a8 C262     		str	r2, [r0, #44]
  561:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
- 720              		.loc 1 561 5 is_stmt 1 view .LVU224
+ 732              		.loc 1 561 5 is_stmt 1 view .LVU224
  561:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
- 721              		.loc 1 561 53 is_stmt 0 view .LVU225
- 722 00aa CA69     		ldr	r2, [r1, #28]
+ 733              		.loc 1 561 53 is_stmt 0 view .LVU225
+ 734 00aa CA69     		ldr	r2, [r1, #28]
  561:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
- 723              		.loc 1 561 33 view .LVU226
- 724 00ac 0263     		str	r2, [r0, #48]
+ 735              		.loc 1 561 33 view .LVU226
+ 736 00ac 0263     		str	r2, [r0, #48]
  564:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[1] = CRYP->CSGCMCCM1R;
- 725              		.loc 1 564 5 is_stmt 1 view .LVU227
+ 737              		.loc 1 564 5 is_stmt 1 view .LVU227
  564:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[1] = CRYP->CSGCMCCM1R;
- 726              		.loc 1 564 47 is_stmt 0 view .LVU228
- 727 00ae 1A6D     		ldr	r2, [r3, #80]
+ 738              		.loc 1 564 47 is_stmt 0 view .LVU228
+ 739 00ae 1A6D     		ldr	r2, [r3, #80]
  564:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[1] = CRYP->CSGCMCCM1R;
- 728              		.loc 1 564 41 view .LVU229
- 729 00b0 4263     		str	r2, [r0, #52]
+ 740              		.loc 1 564 41 view .LVU229
+ 741 00b0 4263     		str	r2, [r0, #52]
  565:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[2] = CRYP->CSGCMCCM2R;
- 730              		.loc 1 565 5 is_stmt 1 view .LVU230
+ 742              		.loc 1 565 5 is_stmt 1 view .LVU230
  565:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[2] = CRYP->CSGCMCCM2R;
- 731              		.loc 1 565 47 is_stmt 0 view .LVU231
- 732 00b2 5A6D     		ldr	r2, [r3, #84]
+ 743              		.loc 1 565 47 is_stmt 0 view .LVU231
+ 744 00b2 5A6D     		ldr	r2, [r3, #84]
  565:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[2] = CRYP->CSGCMCCM2R;
- 733              		.loc 1 565 41 view .LVU232
- 734 00b4 8263     		str	r2, [r0, #56]
+ 745              		.loc 1 565 41 view .LVU232
+ 746 00b4 8263     		str	r2, [r0, #56]
  566:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[3] = CRYP->CSGCMCCM3R;
- 735              		.loc 1 566 5 is_stmt 1 view .LVU233
+ 747              		.loc 1 566 5 is_stmt 1 view .LVU233
  566:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[3] = CRYP->CSGCMCCM3R;
- 736              		.loc 1 566 47 is_stmt 0 view .LVU234
- 737 00b6 9A6D     		ldr	r2, [r3, #88]
+ 748              		.loc 1 566 47 is_stmt 0 view .LVU234
+ 749 00b6 9A6D     		ldr	r2, [r3, #88]
+ARM GAS  /tmp/cc2WnIAQ.s 			page 25
+
+
  566:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[3] = CRYP->CSGCMCCM3R;
- 738              		.loc 1 566 41 view .LVU235
- 739 00b8 C263     		str	r2, [r0, #60]
+ 750              		.loc 1 566 41 view .LVU235
+ 751 00b8 C263     		str	r2, [r0, #60]
  567:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[4] = CRYP->CSGCMCCM4R;
- 740              		.loc 1 567 5 is_stmt 1 view .LVU236
+ 752              		.loc 1 567 5 is_stmt 1 view .LVU236
  567:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[4] = CRYP->CSGCMCCM4R;
- 741              		.loc 1 567 47 is_stmt 0 view .LVU237
- 742 00ba DA6D     		ldr	r2, [r3, #92]
+ 753              		.loc 1 567 47 is_stmt 0 view .LVU237
+ 754 00ba DA6D     		ldr	r2, [r3, #92]
  567:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[4] = CRYP->CSGCMCCM4R;
- 743              		.loc 1 567 41 view .LVU238
- 744 00bc 0264     		str	r2, [r0, #64]
+ 755              		.loc 1 567 41 view .LVU238
+ 756 00bc 0264     		str	r2, [r0, #64]
  568:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[5] = CRYP->CSGCMCCM5R;
-ARM GAS  /tmp/ccNphSW8.s 			page 25
-
-
- 745              		.loc 1 568 5 is_stmt 1 view .LVU239
+ 757              		.loc 1 568 5 is_stmt 1 view .LVU239
  568:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[5] = CRYP->CSGCMCCM5R;
- 746              		.loc 1 568 47 is_stmt 0 view .LVU240
- 747 00be 1A6E     		ldr	r2, [r3, #96]
+ 758              		.loc 1 568 47 is_stmt 0 view .LVU240
+ 759 00be 1A6E     		ldr	r2, [r3, #96]
  568:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[5] = CRYP->CSGCMCCM5R;
- 748              		.loc 1 568 41 view .LVU241
- 749 00c0 4264     		str	r2, [r0, #68]
+ 760              		.loc 1 568 41 view .LVU241
+ 761 00c0 4264     		str	r2, [r0, #68]
  569:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[6] = CRYP->CSGCMCCM6R;
- 750              		.loc 1 569 5 is_stmt 1 view .LVU242
+ 762              		.loc 1 569 5 is_stmt 1 view .LVU242
  569:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[6] = CRYP->CSGCMCCM6R;
- 751              		.loc 1 569 47 is_stmt 0 view .LVU243
- 752 00c2 5A6E     		ldr	r2, [r3, #100]
+ 763              		.loc 1 569 47 is_stmt 0 view .LVU243
+ 764 00c2 5A6E     		ldr	r2, [r3, #100]
  569:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[6] = CRYP->CSGCMCCM6R;
- 753              		.loc 1 569 41 view .LVU244
- 754 00c4 8264     		str	r2, [r0, #72]
+ 765              		.loc 1 569 41 view .LVU244
+ 766 00c4 8264     		str	r2, [r0, #72]
  570:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[7] = CRYP->CSGCMCCM7R;
- 755              		.loc 1 570 5 is_stmt 1 view .LVU245
+ 767              		.loc 1 570 5 is_stmt 1 view .LVU245
  570:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[7] = CRYP->CSGCMCCM7R;
- 756              		.loc 1 570 47 is_stmt 0 view .LVU246
- 757 00c6 9A6E     		ldr	r2, [r3, #104]
+ 768              		.loc 1 570 47 is_stmt 0 view .LVU246
+ 769 00c6 9A6E     		ldr	r2, [r3, #104]
  570:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMCCMR[7] = CRYP->CSGCMCCM7R;
- 758              		.loc 1 570 41 view .LVU247
- 759 00c8 C264     		str	r2, [r0, #76]
+ 770              		.loc 1 570 41 view .LVU247
+ 771 00c8 C264     		str	r2, [r0, #76]
  571:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     
- 760              		.loc 1 571 5 is_stmt 1 view .LVU248
+ 772              		.loc 1 571 5 is_stmt 1 view .LVU248
  571:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     
- 761              		.loc 1 571 47 is_stmt 0 view .LVU249
- 762 00ca DA6E     		ldr	r2, [r3, #108]
+ 773              		.loc 1 571 47 is_stmt 0 view .LVU249
+ 774 00ca DA6E     		ldr	r2, [r3, #108]
  571:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     
- 763              		.loc 1 571 41 view .LVU250
- 764 00cc 0265     		str	r2, [r0, #80]
+ 775              		.loc 1 571 41 view .LVU250
+ 776 00cc 0265     		str	r2, [r0, #80]
  573:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[1] = CRYP->CSGCM1R;
- 765              		.loc 1 573 5 is_stmt 1 view .LVU251
+ 777              		.loc 1 573 5 is_stmt 1 view .LVU251
  573:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[1] = CRYP->CSGCM1R;
- 766              		.loc 1 573 44 is_stmt 0 view .LVU252
- 767 00ce 1A6F     		ldr	r2, [r3, #112]
+ 778              		.loc 1 573 44 is_stmt 0 view .LVU252
+ 779 00ce 1A6F     		ldr	r2, [r3, #112]
  573:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[1] = CRYP->CSGCM1R;
- 768              		.loc 1 573 38 view .LVU253
- 769 00d0 4265     		str	r2, [r0, #84]
+ 780              		.loc 1 573 38 view .LVU253
+ 781 00d0 4265     		str	r2, [r0, #84]
  574:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[2] = CRYP->CSGCM2R;
- 770              		.loc 1 574 5 is_stmt 1 view .LVU254
+ 782              		.loc 1 574 5 is_stmt 1 view .LVU254
  574:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[2] = CRYP->CSGCM2R;
- 771              		.loc 1 574 44 is_stmt 0 view .LVU255
- 772 00d2 5A6F     		ldr	r2, [r3, #116]
+ 783              		.loc 1 574 44 is_stmt 0 view .LVU255
+ 784 00d2 5A6F     		ldr	r2, [r3, #116]
  574:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[2] = CRYP->CSGCM2R;
- 773              		.loc 1 574 38 view .LVU256
- 774 00d4 8265     		str	r2, [r0, #88]
+ARM GAS  /tmp/cc2WnIAQ.s 			page 26
+
+
+ 785              		.loc 1 574 38 view .LVU256
+ 786 00d4 8265     		str	r2, [r0, #88]
  575:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[3] = CRYP->CSGCM3R;
- 775              		.loc 1 575 5 is_stmt 1 view .LVU257
+ 787              		.loc 1 575 5 is_stmt 1 view .LVU257
  575:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[3] = CRYP->CSGCM3R;
- 776              		.loc 1 575 44 is_stmt 0 view .LVU258
- 777 00d6 9A6F     		ldr	r2, [r3, #120]
+ 788              		.loc 1 575 44 is_stmt 0 view .LVU258
+ 789 00d6 9A6F     		ldr	r2, [r3, #120]
  575:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[3] = CRYP->CSGCM3R;
- 778              		.loc 1 575 38 view .LVU259
- 779 00d8 C265     		str	r2, [r0, #92]
+ 790              		.loc 1 575 38 view .LVU259
+ 791 00d8 C265     		str	r2, [r0, #92]
  576:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[4] = CRYP->CSGCM4R;
- 780              		.loc 1 576 5 is_stmt 1 view .LVU260
-ARM GAS  /tmp/ccNphSW8.s 			page 26
-
-
+ 792              		.loc 1 576 5 is_stmt 1 view .LVU260
  576:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[4] = CRYP->CSGCM4R;
- 781              		.loc 1 576 44 is_stmt 0 view .LVU261
- 782 00da DA6F     		ldr	r2, [r3, #124]
+ 793              		.loc 1 576 44 is_stmt 0 view .LVU261
+ 794 00da DA6F     		ldr	r2, [r3, #124]
  576:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[4] = CRYP->CSGCM4R;
- 783              		.loc 1 576 38 view .LVU262
- 784 00dc 0266     		str	r2, [r0, #96]
+ 795              		.loc 1 576 38 view .LVU262
+ 796 00dc 0266     		str	r2, [r0, #96]
  577:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[5] = CRYP->CSGCM5R;
- 785              		.loc 1 577 5 is_stmt 1 view .LVU263
+ 797              		.loc 1 577 5 is_stmt 1 view .LVU263
  577:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[5] = CRYP->CSGCM5R;
- 786              		.loc 1 577 44 is_stmt 0 view .LVU264
- 787 00de D3F88020 		ldr	r2, [r3, #128]
+ 798              		.loc 1 577 44 is_stmt 0 view .LVU264
+ 799 00de D3F88020 		ldr	r2, [r3, #128]
  577:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[5] = CRYP->CSGCM5R;
- 788              		.loc 1 577 38 view .LVU265
- 789 00e2 4266     		str	r2, [r0, #100]
+ 800              		.loc 1 577 38 view .LVU265
+ 801 00e2 4266     		str	r2, [r0, #100]
  578:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[6] = CRYP->CSGCM6R;
- 790              		.loc 1 578 5 is_stmt 1 view .LVU266
+ 802              		.loc 1 578 5 is_stmt 1 view .LVU266
  578:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[6] = CRYP->CSGCM6R;
- 791              		.loc 1 578 44 is_stmt 0 view .LVU267
- 792 00e4 D3F88420 		ldr	r2, [r3, #132]
+ 803              		.loc 1 578 44 is_stmt 0 view .LVU267
+ 804 00e4 D3F88420 		ldr	r2, [r3, #132]
  578:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[6] = CRYP->CSGCM6R;
- 793              		.loc 1 578 38 view .LVU268
- 794 00e8 8266     		str	r2, [r0, #104]
+ 805              		.loc 1 578 38 view .LVU268
+ 806 00e8 8266     		str	r2, [r0, #104]
  579:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[7] = CRYP->CSGCM7R;
- 795              		.loc 1 579 5 is_stmt 1 view .LVU269
+ 807              		.loc 1 579 5 is_stmt 1 view .LVU269
  579:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[7] = CRYP->CSGCM7R;
- 796              		.loc 1 579 44 is_stmt 0 view .LVU270
- 797 00ea D3F88820 		ldr	r2, [r3, #136]
+ 808              		.loc 1 579 44 is_stmt 0 view .LVU270
+ 809 00ea D3F88820 		ldr	r2, [r3, #136]
  579:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP_ContextSave->CRYP_CSGCMR[7] = CRYP->CSGCM7R;
- 798              		.loc 1 579 38 view .LVU271
- 799 00ee C266     		str	r2, [r0, #108]
+ 810              		.loc 1 579 38 view .LVU271
+ 811 00ee C266     		str	r2, [r0, #108]
  580:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     
- 800              		.loc 1 580 5 is_stmt 1 view .LVU272
+ 812              		.loc 1 580 5 is_stmt 1 view .LVU272
  580:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     
- 801              		.loc 1 580 44 is_stmt 0 view .LVU273
- 802 00f0 D3F88C30 		ldr	r3, [r3, #140]
+ 813              		.loc 1 580 44 is_stmt 0 view .LVU273
+ 814 00f0 D3F88C30 		ldr	r3, [r3, #140]
  580:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     
- 803              		.loc 1 580 38 view .LVU274
- 804 00f4 0367     		str	r3, [r0, #112]
+ 815              		.loc 1 580 38 view .LVU274
+ 816 00f4 0367     		str	r3, [r0, #112]
  585:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
- 805              		.loc 1 585 5 is_stmt 1 view .LVU275
- 806              	.LVL24:
+ 817              		.loc 1 585 5 is_stmt 1 view .LVU275
+ 818              	.LVL24:
  585:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
- 807              		.loc 1 585 12 is_stmt 0 view .LVU276
- 808 00f6 0120     		movs	r0, #1
- 809              	.LVL25:
- 585:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
- 810              		.loc 1 585 12 view .LVU277
- 811 00f8 A7E7     		b	.L37
- 812              	.L43:
- 813 00fa 00BF     		.align	2
- 814              	.L42:
- 815 00fc 00000650 		.word	1342570496
- 816              		.cfi_endproc
- 817              	.LFE135:
- 819              		.section	.text.CRYP_RestoreContext,"ax",%progbits
- 820              		.align	1
- 821              		.global	CRYP_RestoreContext
-ARM GAS  /tmp/ccNphSW8.s 			page 27
+ 819              		.loc 1 585 12 is_stmt 0 view .LVU276
+ 820 00f6 0120     		movs	r0, #1
+ 821              	.LVL25:
+ARM GAS  /tmp/cc2WnIAQ.s 			page 27
 
 
- 822              		.syntax unified
- 823              		.thumb
- 824              		.thumb_func
- 826              	CRYP_RestoreContext:
- 827              	.LVL26:
- 828              	.LFB136:
+ 585:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
+ 822              		.loc 1 585 12 view .LVU277
+ 823 00f8 A7E7     		b	.L37
+ 824              	.L43:
+ 825 00fa 00BF     		.align	2
+ 826              	.L42:
+ 827 00fc 00000650 		.word	1342570496
+ 828              		.cfi_endproc
+ 829              	.LFE135:
+ 831              		.section	.text.CRYP_RestoreContext,"ax",%progbits
+ 832              		.align	1
+ 833              		.global	CRYP_RestoreContext
+ 834              		.syntax unified
+ 835              		.thumb
+ 836              		.thumb_func
+ 837              		.fpu fpv4-sp-d16
+ 839              	CRYP_RestoreContext:
+ 840              	.LVL26:
+ 841              	.LFB136:
  590:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  591:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  592:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Restores the CRYP peripheral Context.
@@ -1581,233 +1594,234 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  601:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  602:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_RestoreContext(CRYP_Context* CRYP_ContextRestore)  
  603:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 829              		.loc 1 603 1 is_stmt 1 view -0
- 830              		.cfi_startproc
- 831              		@ args = 0, pretend = 0, frame = 0
- 832              		@ frame_needed = 0, uses_anonymous_args = 0
- 833              		@ link register save eliminated.
+ 842              		.loc 1 603 1 is_stmt 1 view -0
+ 843              		.cfi_startproc
+ 844              		@ args = 0, pretend = 0, frame = 0
+ 845              		@ frame_needed = 0, uses_anonymous_args = 0
+ 846              		@ link register save eliminated.
  604:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  605:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Configure the processor with the saved configuration */
  606:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR = CRYP_ContextRestore->CR_CurrentConfig;
- 834              		.loc 1 606 3 view .LVU279
- 835              		.loc 1 606 33 is_stmt 0 view .LVU280
- 836 0000 0268     		ldr	r2, [r0]
- 837              		.loc 1 606 12 view .LVU281
- 838 0002 214B     		ldr	r3, .L45
- 839 0004 1A60     		str	r2, [r3]
+ 847              		.loc 1 606 3 view .LVU279
+ 848              		.loc 1 606 33 is_stmt 0 view .LVU280
+ 849 0000 0268     		ldr	r2, [r0]
+ 850              		.loc 1 606 12 view .LVU281
+ 851 0002 214B     		ldr	r3, .L45
+ 852 0004 1A60     		str	r2, [r3]
  607:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  608:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* restore The key value */
  609:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K0LR = CRYP_ContextRestore->CRYP_K0LR; 
- 840              		.loc 1 609 3 is_stmt 1 view .LVU282
- 841              		.loc 1 609 35 is_stmt 0 view .LVU283
- 842 0006 4269     		ldr	r2, [r0, #20]
- 843              		.loc 1 609 14 view .LVU284
- 844 0008 1A62     		str	r2, [r3, #32]
+ 853              		.loc 1 609 3 is_stmt 1 view .LVU282
+ 854              		.loc 1 609 35 is_stmt 0 view .LVU283
+ 855 0006 4269     		ldr	r2, [r0, #20]
+ 856              		.loc 1 609 14 view .LVU284
+ 857 0008 1A62     		str	r2, [r3, #32]
  610:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K0RR = CRYP_ContextRestore->CRYP_K0RR;
- 845              		.loc 1 610 3 is_stmt 1 view .LVU285
- 846              		.loc 1 610 35 is_stmt 0 view .LVU286
- 847 000a 8269     		ldr	r2, [r0, #24]
- 848              		.loc 1 610 14 view .LVU287
- 849 000c 5A62     		str	r2, [r3, #36]
+ 858              		.loc 1 610 3 is_stmt 1 view .LVU285
+ARM GAS  /tmp/cc2WnIAQ.s 			page 28
+
+
+ 859              		.loc 1 610 35 is_stmt 0 view .LVU286
+ 860 000a 8269     		ldr	r2, [r0, #24]
+ 861              		.loc 1 610 14 view .LVU287
+ 862 000c 5A62     		str	r2, [r3, #36]
  611:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K1LR = CRYP_ContextRestore->CRYP_K1LR;
- 850              		.loc 1 611 3 is_stmt 1 view .LVU288
- 851              		.loc 1 611 35 is_stmt 0 view .LVU289
- 852 000e C269     		ldr	r2, [r0, #28]
- 853              		.loc 1 611 14 view .LVU290
- 854 0010 9A62     		str	r2, [r3, #40]
+ 863              		.loc 1 611 3 is_stmt 1 view .LVU288
+ 864              		.loc 1 611 35 is_stmt 0 view .LVU289
+ 865 000e C269     		ldr	r2, [r0, #28]
+ 866              		.loc 1 611 14 view .LVU290
+ 867 0010 9A62     		str	r2, [r3, #40]
  612:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K1RR = CRYP_ContextRestore->CRYP_K1RR;
- 855              		.loc 1 612 3 is_stmt 1 view .LVU291
- 856              		.loc 1 612 35 is_stmt 0 view .LVU292
-ARM GAS  /tmp/ccNphSW8.s 			page 28
-
-
- 857 0012 026A     		ldr	r2, [r0, #32]
- 858              		.loc 1 612 14 view .LVU293
- 859 0014 DA62     		str	r2, [r3, #44]
+ 868              		.loc 1 612 3 is_stmt 1 view .LVU291
+ 869              		.loc 1 612 35 is_stmt 0 view .LVU292
+ 870 0012 026A     		ldr	r2, [r0, #32]
+ 871              		.loc 1 612 14 view .LVU293
+ 872 0014 DA62     		str	r2, [r3, #44]
  613:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K2LR = CRYP_ContextRestore->CRYP_K2LR;
- 860              		.loc 1 613 3 is_stmt 1 view .LVU294
- 861              		.loc 1 613 35 is_stmt 0 view .LVU295
- 862 0016 426A     		ldr	r2, [r0, #36]
- 863              		.loc 1 613 14 view .LVU296
- 864 0018 1A63     		str	r2, [r3, #48]
+ 873              		.loc 1 613 3 is_stmt 1 view .LVU294
+ 874              		.loc 1 613 35 is_stmt 0 view .LVU295
+ 875 0016 426A     		ldr	r2, [r0, #36]
+ 876              		.loc 1 613 14 view .LVU296
+ 877 0018 1A63     		str	r2, [r3, #48]
  614:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K2RR = CRYP_ContextRestore->CRYP_K2RR;
- 865              		.loc 1 614 3 is_stmt 1 view .LVU297
- 866              		.loc 1 614 35 is_stmt 0 view .LVU298
- 867 001a 826A     		ldr	r2, [r0, #40]
- 868              		.loc 1 614 14 view .LVU299
- 869 001c 5A63     		str	r2, [r3, #52]
+ 878              		.loc 1 614 3 is_stmt 1 view .LVU297
+ 879              		.loc 1 614 35 is_stmt 0 view .LVU298
+ 880 001a 826A     		ldr	r2, [r0, #40]
+ 881              		.loc 1 614 14 view .LVU299
+ 882 001c 5A63     		str	r2, [r3, #52]
  615:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K3LR = CRYP_ContextRestore->CRYP_K3LR;
- 870              		.loc 1 615 3 is_stmt 1 view .LVU300
- 871              		.loc 1 615 35 is_stmt 0 view .LVU301
- 872 001e C26A     		ldr	r2, [r0, #44]
- 873              		.loc 1 615 14 view .LVU302
- 874 0020 9A63     		str	r2, [r3, #56]
+ 883              		.loc 1 615 3 is_stmt 1 view .LVU300
+ 884              		.loc 1 615 35 is_stmt 0 view .LVU301
+ 885 001e C26A     		ldr	r2, [r0, #44]
+ 886              		.loc 1 615 14 view .LVU302
+ 887 0020 9A63     		str	r2, [r3, #56]
  616:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->K3RR = CRYP_ContextRestore->CRYP_K3RR;
- 875              		.loc 1 616 3 is_stmt 1 view .LVU303
- 876              		.loc 1 616 35 is_stmt 0 view .LVU304
- 877 0022 026B     		ldr	r2, [r0, #48]
- 878              		.loc 1 616 14 view .LVU305
- 879 0024 DA63     		str	r2, [r3, #60]
+ 888              		.loc 1 616 3 is_stmt 1 view .LVU303
+ 889              		.loc 1 616 35 is_stmt 0 view .LVU304
+ 890 0022 026B     		ldr	r2, [r0, #48]
+ 891              		.loc 1 616 14 view .LVU305
+ 892 0024 DA63     		str	r2, [r3, #60]
  617:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  618:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* and the initialization vectors. */
  619:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->IV0LR = CRYP_ContextRestore->CRYP_IV0LR;
- 880              		.loc 1 619 3 is_stmt 1 view .LVU306
- 881              		.loc 1 619 36 is_stmt 0 view .LVU307
- 882 0026 4268     		ldr	r2, [r0, #4]
- 883              		.loc 1 619 15 view .LVU308
- 884 0028 1A64     		str	r2, [r3, #64]
+ 893              		.loc 1 619 3 is_stmt 1 view .LVU306
+ 894              		.loc 1 619 36 is_stmt 0 view .LVU307
+ 895 0026 4268     		ldr	r2, [r0, #4]
+ 896              		.loc 1 619 15 view .LVU308
+ 897 0028 1A64     		str	r2, [r3, #64]
  620:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->IV0RR = CRYP_ContextRestore->CRYP_IV0RR;
- 885              		.loc 1 620 3 is_stmt 1 view .LVU309
- 886              		.loc 1 620 36 is_stmt 0 view .LVU310
- 887 002a 8268     		ldr	r2, [r0, #8]
- 888              		.loc 1 620 15 view .LVU311
- 889 002c 5A64     		str	r2, [r3, #68]
+ 898              		.loc 1 620 3 is_stmt 1 view .LVU309
+ 899              		.loc 1 620 36 is_stmt 0 view .LVU310
+ 900 002a 8268     		ldr	r2, [r0, #8]
+ 901              		.loc 1 620 15 view .LVU311
+ 902 002c 5A64     		str	r2, [r3, #68]
  621:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->IV1LR = CRYP_ContextRestore->CRYP_IV1LR;
- 890              		.loc 1 621 3 is_stmt 1 view .LVU312
- 891              		.loc 1 621 36 is_stmt 0 view .LVU313
- 892 002e C268     		ldr	r2, [r0, #12]
- 893              		.loc 1 621 15 view .LVU314
- 894 0030 9A64     		str	r2, [r3, #72]
+ 903              		.loc 1 621 3 is_stmt 1 view .LVU312
+ 904              		.loc 1 621 36 is_stmt 0 view .LVU313
+ARM GAS  /tmp/cc2WnIAQ.s 			page 29
+
+
+ 905 002e C268     		ldr	r2, [r0, #12]
+ 906              		.loc 1 621 15 view .LVU314
+ 907 0030 9A64     		str	r2, [r3, #72]
  622:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->IV1RR = CRYP_ContextRestore->CRYP_IV1RR;
- 895              		.loc 1 622 3 is_stmt 1 view .LVU315
- 896              		.loc 1 622 36 is_stmt 0 view .LVU316
- 897 0032 0269     		ldr	r2, [r0, #16]
- 898              		.loc 1 622 15 view .LVU317
- 899 0034 DA64     		str	r2, [r3, #76]
+ 908              		.loc 1 622 3 is_stmt 1 view .LVU315
+ 909              		.loc 1 622 36 is_stmt 0 view .LVU316
+ 910 0032 0269     		ldr	r2, [r0, #16]
+ 911              		.loc 1 622 15 view .LVU317
+ 912 0034 DA64     		str	r2, [r3, #76]
  623:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  624:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Restore the content of context swap registers */
  625:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCMCCM0R = CRYP_ContextRestore->CRYP_CSGCMCCMR[0];
- 900              		.loc 1 625 3 is_stmt 1 view .LVU318
-ARM GAS  /tmp/ccNphSW8.s 			page 29
-
-
- 901              		.loc 1 625 57 is_stmt 0 view .LVU319
- 902 0036 426B     		ldr	r2, [r0, #52]
- 903              		.loc 1 625 20 view .LVU320
- 904 0038 1A65     		str	r2, [r3, #80]
+ 913              		.loc 1 625 3 is_stmt 1 view .LVU318
+ 914              		.loc 1 625 57 is_stmt 0 view .LVU319
+ 915 0036 426B     		ldr	r2, [r0, #52]
+ 916              		.loc 1 625 20 view .LVU320
+ 917 0038 1A65     		str	r2, [r3, #80]
  626:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCMCCM1R = CRYP_ContextRestore->CRYP_CSGCMCCMR[1];
- 905              		.loc 1 626 3 is_stmt 1 view .LVU321
- 906              		.loc 1 626 57 is_stmt 0 view .LVU322
- 907 003a 826B     		ldr	r2, [r0, #56]
- 908              		.loc 1 626 20 view .LVU323
- 909 003c 5A65     		str	r2, [r3, #84]
+ 918              		.loc 1 626 3 is_stmt 1 view .LVU321
+ 919              		.loc 1 626 57 is_stmt 0 view .LVU322
+ 920 003a 826B     		ldr	r2, [r0, #56]
+ 921              		.loc 1 626 20 view .LVU323
+ 922 003c 5A65     		str	r2, [r3, #84]
  627:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCMCCM2R = CRYP_ContextRestore->CRYP_CSGCMCCMR[2];
- 910              		.loc 1 627 3 is_stmt 1 view .LVU324
- 911              		.loc 1 627 57 is_stmt 0 view .LVU325
- 912 003e C26B     		ldr	r2, [r0, #60]
- 913              		.loc 1 627 20 view .LVU326
- 914 0040 9A65     		str	r2, [r3, #88]
+ 923              		.loc 1 627 3 is_stmt 1 view .LVU324
+ 924              		.loc 1 627 57 is_stmt 0 view .LVU325
+ 925 003e C26B     		ldr	r2, [r0, #60]
+ 926              		.loc 1 627 20 view .LVU326
+ 927 0040 9A65     		str	r2, [r3, #88]
  628:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCMCCM3R = CRYP_ContextRestore->CRYP_CSGCMCCMR[3];
- 915              		.loc 1 628 3 is_stmt 1 view .LVU327
- 916              		.loc 1 628 57 is_stmt 0 view .LVU328
- 917 0042 026C     		ldr	r2, [r0, #64]
- 918              		.loc 1 628 20 view .LVU329
- 919 0044 DA65     		str	r2, [r3, #92]
+ 928              		.loc 1 628 3 is_stmt 1 view .LVU327
+ 929              		.loc 1 628 57 is_stmt 0 view .LVU328
+ 930 0042 026C     		ldr	r2, [r0, #64]
+ 931              		.loc 1 628 20 view .LVU329
+ 932 0044 DA65     		str	r2, [r3, #92]
  629:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCMCCM4R = CRYP_ContextRestore->CRYP_CSGCMCCMR[4];
- 920              		.loc 1 629 3 is_stmt 1 view .LVU330
- 921              		.loc 1 629 57 is_stmt 0 view .LVU331
- 922 0046 426C     		ldr	r2, [r0, #68]
- 923              		.loc 1 629 20 view .LVU332
- 924 0048 1A66     		str	r2, [r3, #96]
+ 933              		.loc 1 629 3 is_stmt 1 view .LVU330
+ 934              		.loc 1 629 57 is_stmt 0 view .LVU331
+ 935 0046 426C     		ldr	r2, [r0, #68]
+ 936              		.loc 1 629 20 view .LVU332
+ 937 0048 1A66     		str	r2, [r3, #96]
  630:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCMCCM5R = CRYP_ContextRestore->CRYP_CSGCMCCMR[5];
- 925              		.loc 1 630 3 is_stmt 1 view .LVU333
- 926              		.loc 1 630 57 is_stmt 0 view .LVU334
- 927 004a 826C     		ldr	r2, [r0, #72]
- 928              		.loc 1 630 20 view .LVU335
- 929 004c 5A66     		str	r2, [r3, #100]
+ 938              		.loc 1 630 3 is_stmt 1 view .LVU333
+ 939              		.loc 1 630 57 is_stmt 0 view .LVU334
+ 940 004a 826C     		ldr	r2, [r0, #72]
+ 941              		.loc 1 630 20 view .LVU335
+ 942 004c 5A66     		str	r2, [r3, #100]
  631:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCMCCM6R = CRYP_ContextRestore->CRYP_CSGCMCCMR[6];
- 930              		.loc 1 631 3 is_stmt 1 view .LVU336
- 931              		.loc 1 631 57 is_stmt 0 view .LVU337
- 932 004e C26C     		ldr	r2, [r0, #76]
- 933              		.loc 1 631 20 view .LVU338
- 934 0050 9A66     		str	r2, [r3, #104]
+ 943              		.loc 1 631 3 is_stmt 1 view .LVU336
+ 944              		.loc 1 631 57 is_stmt 0 view .LVU337
+ 945 004e C26C     		ldr	r2, [r0, #76]
+ 946              		.loc 1 631 20 view .LVU338
+ 947 0050 9A66     		str	r2, [r3, #104]
  632:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCMCCM7R = CRYP_ContextRestore->CRYP_CSGCMCCMR[7];
- 935              		.loc 1 632 3 is_stmt 1 view .LVU339
- 936              		.loc 1 632 57 is_stmt 0 view .LVU340
- 937 0052 026D     		ldr	r2, [r0, #80]
- 938              		.loc 1 632 20 view .LVU341
- 939 0054 DA66     		str	r2, [r3, #108]
+ 948              		.loc 1 632 3 is_stmt 1 view .LVU339
+ 949              		.loc 1 632 57 is_stmt 0 view .LVU340
+ 950 0052 026D     		ldr	r2, [r0, #80]
+ARM GAS  /tmp/cc2WnIAQ.s 			page 30
+
+
+ 951              		.loc 1 632 20 view .LVU341
+ 952 0054 DA66     		str	r2, [r3, #108]
  633:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   
  634:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCM0R = CRYP_ContextRestore->CRYP_CSGCMR[0];
- 940              		.loc 1 634 3 is_stmt 1 view .LVU342
- 941              		.loc 1 634 51 is_stmt 0 view .LVU343
- 942 0056 426D     		ldr	r2, [r0, #84]
- 943              		.loc 1 634 17 view .LVU344
- 944 0058 1A67     		str	r2, [r3, #112]
+ 953              		.loc 1 634 3 is_stmt 1 view .LVU342
+ 954              		.loc 1 634 51 is_stmt 0 view .LVU343
+ 955 0056 426D     		ldr	r2, [r0, #84]
+ 956              		.loc 1 634 17 view .LVU344
+ 957 0058 1A67     		str	r2, [r3, #112]
  635:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCM1R = CRYP_ContextRestore->CRYP_CSGCMR[1];
- 945              		.loc 1 635 3 is_stmt 1 view .LVU345
- 946              		.loc 1 635 51 is_stmt 0 view .LVU346
- 947 005a 826D     		ldr	r2, [r0, #88]
-ARM GAS  /tmp/ccNphSW8.s 			page 30
-
-
- 948              		.loc 1 635 17 view .LVU347
- 949 005c 5A67     		str	r2, [r3, #116]
+ 958              		.loc 1 635 3 is_stmt 1 view .LVU345
+ 959              		.loc 1 635 51 is_stmt 0 view .LVU346
+ 960 005a 826D     		ldr	r2, [r0, #88]
+ 961              		.loc 1 635 17 view .LVU347
+ 962 005c 5A67     		str	r2, [r3, #116]
  636:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCM2R = CRYP_ContextRestore->CRYP_CSGCMR[2];
- 950              		.loc 1 636 3 is_stmt 1 view .LVU348
- 951              		.loc 1 636 51 is_stmt 0 view .LVU349
- 952 005e C26D     		ldr	r2, [r0, #92]
- 953              		.loc 1 636 17 view .LVU350
- 954 0060 9A67     		str	r2, [r3, #120]
+ 963              		.loc 1 636 3 is_stmt 1 view .LVU348
+ 964              		.loc 1 636 51 is_stmt 0 view .LVU349
+ 965 005e C26D     		ldr	r2, [r0, #92]
+ 966              		.loc 1 636 17 view .LVU350
+ 967 0060 9A67     		str	r2, [r3, #120]
  637:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCM3R = CRYP_ContextRestore->CRYP_CSGCMR[3];
- 955              		.loc 1 637 3 is_stmt 1 view .LVU351
- 956              		.loc 1 637 51 is_stmt 0 view .LVU352
- 957 0062 026E     		ldr	r2, [r0, #96]
- 958              		.loc 1 637 17 view .LVU353
- 959 0064 DA67     		str	r2, [r3, #124]
+ 968              		.loc 1 637 3 is_stmt 1 view .LVU351
+ 969              		.loc 1 637 51 is_stmt 0 view .LVU352
+ 970 0062 026E     		ldr	r2, [r0, #96]
+ 971              		.loc 1 637 17 view .LVU353
+ 972 0064 DA67     		str	r2, [r3, #124]
  638:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCM4R = CRYP_ContextRestore->CRYP_CSGCMR[4];
- 960              		.loc 1 638 3 is_stmt 1 view .LVU354
- 961              		.loc 1 638 51 is_stmt 0 view .LVU355
- 962 0066 426E     		ldr	r2, [r0, #100]
- 963              		.loc 1 638 17 view .LVU356
- 964 0068 C3F88020 		str	r2, [r3, #128]
+ 973              		.loc 1 638 3 is_stmt 1 view .LVU354
+ 974              		.loc 1 638 51 is_stmt 0 view .LVU355
+ 975 0066 426E     		ldr	r2, [r0, #100]
+ 976              		.loc 1 638 17 view .LVU356
+ 977 0068 C3F88020 		str	r2, [r3, #128]
  639:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCM5R = CRYP_ContextRestore->CRYP_CSGCMR[5];
- 965              		.loc 1 639 3 is_stmt 1 view .LVU357
- 966              		.loc 1 639 51 is_stmt 0 view .LVU358
- 967 006c 826E     		ldr	r2, [r0, #104]
- 968              		.loc 1 639 17 view .LVU359
- 969 006e C3F88420 		str	r2, [r3, #132]
+ 978              		.loc 1 639 3 is_stmt 1 view .LVU357
+ 979              		.loc 1 639 51 is_stmt 0 view .LVU358
+ 980 006c 826E     		ldr	r2, [r0, #104]
+ 981              		.loc 1 639 17 view .LVU359
+ 982 006e C3F88420 		str	r2, [r3, #132]
  640:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCM6R = CRYP_ContextRestore->CRYP_CSGCMR[6];
- 970              		.loc 1 640 3 is_stmt 1 view .LVU360
- 971              		.loc 1 640 51 is_stmt 0 view .LVU361
- 972 0072 C26E     		ldr	r2, [r0, #108]
- 973              		.loc 1 640 17 view .LVU362
- 974 0074 C3F88820 		str	r2, [r3, #136]
+ 983              		.loc 1 640 3 is_stmt 1 view .LVU360
+ 984              		.loc 1 640 51 is_stmt 0 view .LVU361
+ 985 0072 C26E     		ldr	r2, [r0, #108]
+ 986              		.loc 1 640 17 view .LVU362
+ 987 0074 C3F88820 		str	r2, [r3, #136]
  641:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CSGCM7R = CRYP_ContextRestore->CRYP_CSGCMR[7];
- 975              		.loc 1 641 3 is_stmt 1 view .LVU363
- 976              		.loc 1 641 51 is_stmt 0 view .LVU364
- 977 0078 026F     		ldr	r2, [r0, #112]
- 978              		.loc 1 641 17 view .LVU365
- 979 007a C3F88C20 		str	r2, [r3, #140]
+ 988              		.loc 1 641 3 is_stmt 1 view .LVU363
+ 989              		.loc 1 641 51 is_stmt 0 view .LVU364
+ 990 0078 026F     		ldr	r2, [r0, #112]
+ 991              		.loc 1 641 17 view .LVU365
+ 992 007a C3F88C20 		str	r2, [r3, #140]
  642:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   
  643:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Enable the cryptographic processor */
  644:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   CRYP->CR |= CRYP_CR_CRYPEN;
- 980              		.loc 1 644 3 is_stmt 1 view .LVU366
- 981              		.loc 1 644 12 is_stmt 0 view .LVU367
- 982 007e 1A68     		ldr	r2, [r3]
- 983 0080 42F40042 		orr	r2, r2, #32768
- 984 0084 1A60     		str	r2, [r3]
+ 993              		.loc 1 644 3 is_stmt 1 view .LVU366
+ 994              		.loc 1 644 12 is_stmt 0 view .LVU367
+ 995 007e 1A68     		ldr	r2, [r3]
+ARM GAS  /tmp/cc2WnIAQ.s 			page 31
+
+
+ 996 0080 42F40042 		orr	r2, r2, #32768
+ 997 0084 1A60     		str	r2, [r3]
  645:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 985              		.loc 1 645 1 view .LVU368
- 986 0086 7047     		bx	lr
- 987              	.L46:
- 988              		.align	2
- 989              	.L45:
- 990 0088 00000650 		.word	1342570496
- 991              		.cfi_endproc
- 992              	.LFE136:
- 994              		.section	.text.CRYP_DMACmd,"ax",%progbits
- 995              		.align	1
-ARM GAS  /tmp/ccNphSW8.s 			page 31
-
-
- 996              		.global	CRYP_DMACmd
- 997              		.syntax unified
- 998              		.thumb
- 999              		.thumb_func
- 1001              	CRYP_DMACmd:
- 1002              	.LVL27:
- 1003              	.LFB137:
+ 998              		.loc 1 645 1 view .LVU368
+ 999 0086 7047     		bx	lr
+ 1000              	.L46:
+ 1001              		.align	2
+ 1002              	.L45:
+ 1003 0088 00000650 		.word	1342570496
+ 1004              		.cfi_endproc
+ 1005              	.LFE136:
+ 1007              		.section	.text.CRYP_DMACmd,"ax",%progbits
+ 1008              		.align	1
+ 1009              		.global	CRYP_DMACmd
+ 1010              		.syntax unified
+ 1011              		.thumb
+ 1012              		.thumb_func
+ 1013              		.fpu fpv4-sp-d16
+ 1015              	CRYP_DMACmd:
+ 1016              	.LVL27:
+ 1017              	.LFB137:
  646:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  647:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @}
  648:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
@@ -1844,83 +1858,84 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  679:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @retval None
  680:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  681:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_DMACmd(uint8_t CRYP_DMAReq, FunctionalState NewState)
+ARM GAS  /tmp/cc2WnIAQ.s 			page 32
+
+
  682:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 1004              		.loc 1 682 1 is_stmt 1 view -0
- 1005              		.cfi_startproc
- 1006              		@ args = 0, pretend = 0, frame = 0
- 1007              		@ frame_needed = 0, uses_anonymous_args = 0
- 1008              		@ link register save eliminated.
+ 1018              		.loc 1 682 1 is_stmt 1 view -0
+ 1019              		.cfi_startproc
+ 1020              		@ args = 0, pretend = 0, frame = 0
+ 1021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1022              		@ link register save eliminated.
  683:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the parameters */
  684:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_CRYP_DMAREQ(CRYP_DMAReq));
- 1009              		.loc 1 684 3 view .LVU370
+ 1023              		.loc 1 684 3 view .LVU370
  685:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 1010              		.loc 1 685 3 view .LVU371
+ 1024              		.loc 1 685 3 view .LVU371
  686:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  687:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if (NewState != DISABLE)
- 1011              		.loc 1 687 3 view .LVU372
-ARM GAS  /tmp/ccNphSW8.s 			page 32
-
-
- 1012              		.loc 1 687 6 is_stmt 0 view .LVU373
- 1013 0000 21B1     		cbz	r1, .L48
+ 1025              		.loc 1 687 3 view .LVU372
+ 1026              		.loc 1 687 6 is_stmt 0 view .LVU373
+ 1027 0000 21B1     		cbz	r1, .L48
  688:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  689:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* Enable the selected CRYP DMA request */
  690:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->DMACR |= CRYP_DMAReq;
- 1014              		.loc 1 690 5 is_stmt 1 view .LVU374
- 1015              		.loc 1 690 17 is_stmt 0 view .LVU375
- 1016 0002 064B     		ldr	r3, .L50
- 1017 0004 1A69     		ldr	r2, [r3, #16]
- 1018 0006 1043     		orrs	r0, r0, r2
- 1019              	.LVL28:
- 1020              		.loc 1 690 17 view .LVU376
- 1021 0008 1861     		str	r0, [r3, #16]
- 1022 000a 7047     		bx	lr
- 1023              	.LVL29:
- 1024              	.L48:
+ 1028              		.loc 1 690 5 is_stmt 1 view .LVU374
+ 1029              		.loc 1 690 17 is_stmt 0 view .LVU375
+ 1030 0002 064B     		ldr	r3, .L50
+ 1031 0004 1A69     		ldr	r2, [r3, #16]
+ 1032 0006 1043     		orrs	r0, r0, r2
+ 1033              	.LVL28:
+ 1034              		.loc 1 690 17 view .LVU376
+ 1035 0008 1861     		str	r0, [r3, #16]
+ 1036 000a 7047     		bx	lr
+ 1037              	.LVL29:
+ 1038              	.L48:
  691:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  692:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else
  693:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  694:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* Disable the selected CRYP DMA request */
  695:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->DMACR &= (uint8_t)~CRYP_DMAReq;
- 1025              		.loc 1 695 5 is_stmt 1 view .LVU377
- 1026              		.loc 1 695 17 is_stmt 0 view .LVU378
- 1027 000c 034A     		ldr	r2, .L50
- 1028 000e 1369     		ldr	r3, [r2, #16]
- 1029              		.loc 1 695 20 view .LVU379
- 1030 0010 C043     		mvns	r0, r0
- 1031              	.LVL30:
- 1032              		.loc 1 695 20 view .LVU380
- 1033 0012 C0B2     		uxtb	r0, r0
- 1034              		.loc 1 695 17 view .LVU381
- 1035 0014 1840     		ands	r0, r0, r3
- 1036 0016 1061     		str	r0, [r2, #16]
+ 1039              		.loc 1 695 5 is_stmt 1 view .LVU377
+ 1040              		.loc 1 695 17 is_stmt 0 view .LVU378
+ 1041 000c 034A     		ldr	r2, .L50
+ 1042 000e 1369     		ldr	r3, [r2, #16]
+ 1043              		.loc 1 695 20 view .LVU379
+ 1044 0010 C043     		mvns	r0, r0
+ 1045              	.LVL30:
+ 1046              		.loc 1 695 20 view .LVU380
+ 1047 0012 C0B2     		uxtb	r0, r0
+ 1048              		.loc 1 695 17 view .LVU381
+ 1049 0014 1840     		ands	r0, r0, r3
+ 1050 0016 1061     		str	r0, [r2, #16]
  696:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  697:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 1037              		.loc 1 697 1 view .LVU382
- 1038 0018 7047     		bx	lr
- 1039              	.L51:
- 1040 001a 00BF     		.align	2
- 1041              	.L50:
- 1042 001c 00000650 		.word	1342570496
- 1043              		.cfi_endproc
- 1044              	.LFE137:
- 1046              		.section	.text.CRYP_ITConfig,"ax",%progbits
- 1047              		.align	1
- 1048              		.global	CRYP_ITConfig
- 1049              		.syntax unified
- 1050              		.thumb
- 1051              		.thumb_func
- 1053              	CRYP_ITConfig:
- 1054              	.LVL31:
- 1055              	.LFB138:
+ 1051              		.loc 1 697 1 view .LVU382
+ 1052 0018 7047     		bx	lr
+ 1053              	.L51:
+ 1054 001a 00BF     		.align	2
+ 1055              	.L50:
+ 1056 001c 00000650 		.word	1342570496
+ 1057              		.cfi_endproc
+ 1058              	.LFE137:
+ARM GAS  /tmp/cc2WnIAQ.s 			page 33
+
+
+ 1060              		.section	.text.CRYP_ITConfig,"ax",%progbits
+ 1061              		.align	1
+ 1062              		.global	CRYP_ITConfig
+ 1063              		.syntax unified
+ 1064              		.thumb
+ 1065              		.thumb_func
+ 1066              		.fpu fpv4-sp-d16
+ 1068              	CRYP_ITConfig:
+ 1069              	.LVL31:
+ 1070              	.LFB138:
  698:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  699:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @}
  700:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  701:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  702:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /** @defgroup CRYP_Group5 Interrupts and flags management functions
-ARM GAS  /tmp/ccNphSW8.s 			page 33
-
-
  703:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****  *  @brief   Interrupts and flags management functions
  704:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****  *
  705:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** @verbatim   
@@ -1963,6 +1978,9 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  742:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        processing has completed. 
  743:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  744:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****  *** Interrupts : ***
+ARM GAS  /tmp/cc2WnIAQ.s 			page 34
+
+
  745:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****  ====================
  746:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****  [..]
  747:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****    (#) CRYP_IT_INI   : The input FIFO service interrupt is asserted when there 
@@ -1978,9 +1996,6 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  757:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  758:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****    (#) CRYP_IT_OUTI  : The output FIFO service interrupt is asserted when there 
  759:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        is one or more (32-bit word) data items in the output FIFO. This interrupt 
-ARM GAS  /tmp/ccNphSW8.s 			page 34
-
-
  760:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        is associated to CRYP_FLAG_OUTRIS flag.
  761:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  762:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****        -@- This interrupt is cleared by reading data from the output FIFO until there 
@@ -2022,74 +2037,78 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  798:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  799:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** void CRYP_ITConfig(uint8_t CRYP_IT, FunctionalState NewState)
  800:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 1056              		.loc 1 800 1 is_stmt 1 view -0
- 1057              		.cfi_startproc
- 1058              		@ args = 0, pretend = 0, frame = 0
- 1059              		@ frame_needed = 0, uses_anonymous_args = 0
- 1060              		@ link register save eliminated.
+ 1071              		.loc 1 800 1 is_stmt 1 view -0
+ARM GAS  /tmp/cc2WnIAQ.s 			page 35
+
+
+ 1072              		.cfi_startproc
+ 1073              		@ args = 0, pretend = 0, frame = 0
+ 1074              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1075              		@ link register save eliminated.
  801:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the parameters */
  802:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_CRYP_CONFIG_IT(CRYP_IT));
- 1061              		.loc 1 802 3 view .LVU384
+ 1076              		.loc 1 802 3 view .LVU384
  803:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
- 1062              		.loc 1 803 3 view .LVU385
+ 1077              		.loc 1 803 3 view .LVU385
  804:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  805:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if (NewState != DISABLE)
- 1063              		.loc 1 805 3 view .LVU386
- 1064              		.loc 1 805 6 is_stmt 0 view .LVU387
- 1065 0000 21B1     		cbz	r1, .L53
+ 1078              		.loc 1 805 3 view .LVU386
+ 1079              		.loc 1 805 6 is_stmt 0 view .LVU387
+ 1080 0000 21B1     		cbz	r1, .L53
  806:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
-ARM GAS  /tmp/ccNphSW8.s 			page 35
-
-
  807:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* Enable the selected CRYP interrupt */
  808:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->IMSCR |= CRYP_IT;
- 1066              		.loc 1 808 5 is_stmt 1 view .LVU388
- 1067              		.loc 1 808 17 is_stmt 0 view .LVU389
- 1068 0002 064B     		ldr	r3, .L55
- 1069 0004 5A69     		ldr	r2, [r3, #20]
- 1070 0006 1043     		orrs	r0, r0, r2
- 1071              	.LVL32:
- 1072              		.loc 1 808 17 view .LVU390
- 1073 0008 5861     		str	r0, [r3, #20]
- 1074 000a 7047     		bx	lr
- 1075              	.LVL33:
- 1076              	.L53:
+ 1081              		.loc 1 808 5 is_stmt 1 view .LVU388
+ 1082              		.loc 1 808 17 is_stmt 0 view .LVU389
+ 1083 0002 064B     		ldr	r3, .L55
+ 1084 0004 5A69     		ldr	r2, [r3, #20]
+ 1085 0006 1043     		orrs	r0, r0, r2
+ 1086              	.LVL32:
+ 1087              		.loc 1 808 17 view .LVU390
+ 1088 0008 5861     		str	r0, [r3, #20]
+ 1089 000a 7047     		bx	lr
+ 1090              	.LVL33:
+ 1091              	.L53:
  809:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  810:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else
  811:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  812:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* Disable the selected CRYP interrupt */
  813:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     CRYP->IMSCR &= (uint8_t)~CRYP_IT;
- 1077              		.loc 1 813 5 is_stmt 1 view .LVU391
- 1078              		.loc 1 813 17 is_stmt 0 view .LVU392
- 1079 000c 034A     		ldr	r2, .L55
- 1080 000e 5369     		ldr	r3, [r2, #20]
- 1081              		.loc 1 813 20 view .LVU393
- 1082 0010 C043     		mvns	r0, r0
- 1083              	.LVL34:
- 1084              		.loc 1 813 20 view .LVU394
- 1085 0012 C0B2     		uxtb	r0, r0
- 1086              		.loc 1 813 17 view .LVU395
- 1087 0014 1840     		ands	r0, r0, r3
- 1088 0016 5061     		str	r0, [r2, #20]
+ 1092              		.loc 1 813 5 is_stmt 1 view .LVU391
+ 1093              		.loc 1 813 17 is_stmt 0 view .LVU392
+ 1094 000c 034A     		ldr	r2, .L55
+ 1095 000e 5369     		ldr	r3, [r2, #20]
+ 1096              		.loc 1 813 20 view .LVU393
+ 1097 0010 C043     		mvns	r0, r0
+ 1098              	.LVL34:
+ 1099              		.loc 1 813 20 view .LVU394
+ 1100 0012 C0B2     		uxtb	r0, r0
+ 1101              		.loc 1 813 17 view .LVU395
+ 1102 0014 1840     		ands	r0, r0, r3
+ 1103 0016 5061     		str	r0, [r2, #20]
  814:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  815:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 1089              		.loc 1 815 1 view .LVU396
- 1090 0018 7047     		bx	lr
- 1091              	.L56:
- 1092 001a 00BF     		.align	2
- 1093              	.L55:
- 1094 001c 00000650 		.word	1342570496
- 1095              		.cfi_endproc
- 1096              	.LFE138:
- 1098              		.section	.text.CRYP_GetITStatus,"ax",%progbits
- 1099              		.align	1
- 1100              		.global	CRYP_GetITStatus
- 1101              		.syntax unified
- 1102              		.thumb
- 1103              		.thumb_func
- 1105              	CRYP_GetITStatus:
- 1106              	.LVL35:
- 1107              	.LFB139:
+ 1104              		.loc 1 815 1 view .LVU396
+ 1105 0018 7047     		bx	lr
+ 1106              	.L56:
+ 1107 001a 00BF     		.align	2
+ 1108              	.L55:
+ 1109 001c 00000650 		.word	1342570496
+ 1110              		.cfi_endproc
+ 1111              	.LFE138:
+ 1113              		.section	.text.CRYP_GetITStatus,"ax",%progbits
+ 1114              		.align	1
+ARM GAS  /tmp/cc2WnIAQ.s 			page 36
+
+
+ 1115              		.global	CRYP_GetITStatus
+ 1116              		.syntax unified
+ 1117              		.thumb
+ 1118              		.thumb_func
+ 1119              		.fpu fpv4-sp-d16
+ 1121              	CRYP_GetITStatus:
+ 1122              	.LVL35:
+ 1123              	.LFB139:
  816:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  817:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  818:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Checks whether the specified CRYP interrupt has occurred or not.
@@ -2098,76 +2117,74 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  821:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @param  CRYP_IT: specifies the CRYP (masked) interrupt source to check.
  822:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *           This parameter can be one of the following values:
  823:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *            @arg CRYP_IT_INI: Input FIFO interrupt
-ARM GAS  /tmp/ccNphSW8.s 			page 36
-
-
  824:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   *            @arg CRYP_IT_OUTI: Output FIFO interrupt
  825:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @retval The new state of CRYP_IT (SET or RESET).
  826:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  827:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** ITStatus CRYP_GetITStatus(uint8_t CRYP_IT)
  828:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 1108              		.loc 1 828 1 is_stmt 1 view -0
- 1109              		.cfi_startproc
- 1110              		@ args = 0, pretend = 0, frame = 0
- 1111              		@ frame_needed = 0, uses_anonymous_args = 0
- 1112              		@ link register save eliminated.
+ 1124              		.loc 1 828 1 is_stmt 1 view -0
+ 1125              		.cfi_startproc
+ 1126              		@ args = 0, pretend = 0, frame = 0
+ 1127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1128              		@ link register save eliminated.
  829:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   ITStatus bitstatus = RESET;
- 1113              		.loc 1 829 3 view .LVU398
+ 1129              		.loc 1 829 3 view .LVU398
  830:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the parameters */
  831:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_CRYP_GET_IT(CRYP_IT));
- 1114              		.loc 1 831 3 view .LVU399
+ 1130              		.loc 1 831 3 view .LVU399
  832:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  833:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the status of the specified CRYP interrupt */
  834:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if ((CRYP->MISR &  CRYP_IT) != (uint8_t)RESET)
- 1115              		.loc 1 834 3 view .LVU400
- 1116              		.loc 1 834 12 is_stmt 0 view .LVU401
- 1117 0000 034B     		ldr	r3, .L60
- 1118 0002 DB69     		ldr	r3, [r3, #28]
- 1119              		.loc 1 834 6 view .LVU402
- 1120 0004 1842     		tst	r0, r3
- 1121 0006 01D0     		beq	.L59
+ 1131              		.loc 1 834 3 view .LVU400
+ 1132              		.loc 1 834 12 is_stmt 0 view .LVU401
+ 1133 0000 034B     		ldr	r3, .L60
+ 1134 0002 DB69     		ldr	r3, [r3, #28]
+ 1135              		.loc 1 834 6 view .LVU402
+ 1136 0004 1842     		tst	r0, r3
+ 1137 0006 01D0     		beq	.L59
  835:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  836:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* CRYP_IT is set */
  837:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     bitstatus = SET;
- 1122              		.loc 1 837 15 view .LVU403
- 1123 0008 0120     		movs	r0, #1
- 1124              	.LVL36:
- 1125              		.loc 1 837 15 view .LVU404
- 1126 000a 7047     		bx	lr
- 1127              	.LVL37:
- 1128              	.L59:
+ 1138              		.loc 1 837 15 view .LVU403
+ 1139 0008 0120     		movs	r0, #1
+ 1140              	.LVL36:
+ 1141              		.loc 1 837 15 view .LVU404
+ 1142 000a 7047     		bx	lr
+ 1143              	.LVL37:
+ 1144              	.L59:
  838:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  839:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else
  840:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  841:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* CRYP_IT is reset */
  842:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     bitstatus = RESET;
- 1129              		.loc 1 842 15 view .LVU405
- 1130 000c 0020     		movs	r0, #0
- 1131              	.LVL38:
+ 1145              		.loc 1 842 15 view .LVU405
+ARM GAS  /tmp/cc2WnIAQ.s 			page 37
+
+
+ 1146 000c 0020     		movs	r0, #0
+ 1147              	.LVL38:
  843:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  844:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Return the CRYP_IT status */
  845:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   return bitstatus;
- 1132              		.loc 1 845 3 is_stmt 1 view .LVU406
+ 1148              		.loc 1 845 3 is_stmt 1 view .LVU406
  846:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 1133              		.loc 1 846 1 is_stmt 0 view .LVU407
- 1134 000e 7047     		bx	lr
- 1135              	.L61:
- 1136              		.align	2
- 1137              	.L60:
- 1138 0010 00000650 		.word	1342570496
- 1139              		.cfi_endproc
- 1140              	.LFE139:
- 1142              		.section	.text.CRYP_GetCmdStatus,"ax",%progbits
-ARM GAS  /tmp/ccNphSW8.s 			page 37
-
-
- 1143              		.align	1
- 1144              		.global	CRYP_GetCmdStatus
- 1145              		.syntax unified
- 1146              		.thumb
- 1147              		.thumb_func
- 1149              	CRYP_GetCmdStatus:
- 1150              	.LFB140:
+ 1149              		.loc 1 846 1 is_stmt 0 view .LVU407
+ 1150 000e 7047     		bx	lr
+ 1151              	.L61:
+ 1152              		.align	2
+ 1153              	.L60:
+ 1154 0010 00000650 		.word	1342570496
+ 1155              		.cfi_endproc
+ 1156              	.LFE139:
+ 1158              		.section	.text.CRYP_GetCmdStatus,"ax",%progbits
+ 1159              		.align	1
+ 1160              		.global	CRYP_GetCmdStatus
+ 1161              		.syntax unified
+ 1162              		.thumb
+ 1163              		.thumb_func
+ 1164              		.fpu fpv4-sp-d16
+ 1166              	CRYP_GetCmdStatus:
+ 1167              	.LFB140:
  847:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  848:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  849:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Returns whether CRYP peripheral is enabled or disabled.
@@ -2176,62 +2193,63 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  852:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  853:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** FunctionalState CRYP_GetCmdStatus(void)
  854:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 1151              		.loc 1 854 1 is_stmt 1 view -0
- 1152              		.cfi_startproc
- 1153              		@ args = 0, pretend = 0, frame = 0
- 1154              		@ frame_needed = 0, uses_anonymous_args = 0
- 1155              		@ link register save eliminated.
+ 1168              		.loc 1 854 1 is_stmt 1 view -0
+ 1169              		.cfi_startproc
+ 1170              		@ args = 0, pretend = 0, frame = 0
+ 1171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1172              		@ link register save eliminated.
  855:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   FunctionalState state = DISABLE;
- 1156              		.loc 1 855 3 view .LVU409
- 1157              	.LVL39:
+ 1173              		.loc 1 855 3 view .LVU409
+ 1174              	.LVL39:
  856:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  857:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if ((CRYP->CR & CRYP_CR_CRYPEN) != 0)
- 1158              		.loc 1 857 3 view .LVU410
- 1159              		.loc 1 857 12 is_stmt 0 view .LVU411
- 1160 0000 044B     		ldr	r3, .L65
- 1161 0002 1B68     		ldr	r3, [r3]
- 1162              		.loc 1 857 6 view .LVU412
- 1163 0004 13F4004F 		tst	r3, #32768
- 1164 0008 01D0     		beq	.L64
+ 1175              		.loc 1 857 3 view .LVU410
+ 1176              		.loc 1 857 12 is_stmt 0 view .LVU411
+ 1177 0000 044B     		ldr	r3, .L65
+ 1178 0002 1B68     		ldr	r3, [r3]
+ 1179              		.loc 1 857 6 view .LVU412
+ 1180 0004 13F4004F 		tst	r3, #32768
+ 1181 0008 01D0     		beq	.L64
  858:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  859:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* CRYPEN bit is set */
  860:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     state = ENABLE;
- 1165              		.loc 1 860 11 view .LVU413
- 1166 000a 0120     		movs	r0, #1
- 1167 000c 7047     		bx	lr
- 1168              	.L64:
+ 1182              		.loc 1 860 11 view .LVU413
+ 1183 000a 0120     		movs	r0, #1
+ 1184 000c 7047     		bx	lr
+ 1185              	.L64:
  861:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
+ARM GAS  /tmp/cc2WnIAQ.s 			page 38
+
+
  862:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else
  863:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  864:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* CRYPEN bit is reset */
  865:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     state = DISABLE;
- 1169              		.loc 1 865 11 view .LVU414
- 1170 000e 0020     		movs	r0, #0
- 1171              	.LVL40:
+ 1186              		.loc 1 865 11 view .LVU414
+ 1187 000e 0020     		movs	r0, #0
+ 1188              	.LVL40:
  866:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  867:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   return state;
- 1172              		.loc 1 867 3 is_stmt 1 view .LVU415
+ 1189              		.loc 1 867 3 is_stmt 1 view .LVU415
  868:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 1173              		.loc 1 868 1 is_stmt 0 view .LVU416
- 1174 0010 7047     		bx	lr
- 1175              	.L66:
- 1176 0012 00BF     		.align	2
- 1177              	.L65:
- 1178 0014 00000650 		.word	1342570496
-ARM GAS  /tmp/ccNphSW8.s 			page 38
-
-
- 1179              		.cfi_endproc
- 1180              	.LFE140:
- 1182              		.section	.text.CRYP_GetFlagStatus,"ax",%progbits
- 1183              		.align	1
- 1184              		.global	CRYP_GetFlagStatus
- 1185              		.syntax unified
- 1186              		.thumb
- 1187              		.thumb_func
- 1189              	CRYP_GetFlagStatus:
- 1190              	.LVL41:
- 1191              	.LFB141:
+ 1190              		.loc 1 868 1 is_stmt 0 view .LVU416
+ 1191 0010 7047     		bx	lr
+ 1192              	.L66:
+ 1193 0012 00BF     		.align	2
+ 1194              	.L65:
+ 1195 0014 00000650 		.word	1342570496
+ 1196              		.cfi_endproc
+ 1197              	.LFE140:
+ 1199              		.section	.text.CRYP_GetFlagStatus,"ax",%progbits
+ 1200              		.align	1
+ 1201              		.global	CRYP_GetFlagStatus
+ 1202              		.syntax unified
+ 1203              		.thumb
+ 1204              		.thumb_func
+ 1205              		.fpu fpv4-sp-d16
+ 1207              	CRYP_GetFlagStatus:
+ 1208              	.LVL41:
+ 1209              	.LFB141:
  869:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  870:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** /**
  871:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   * @brief  Checks whether the specified CRYP flag is set or not.
@@ -2248,39 +2266,39 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  882:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   */
  883:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** FlagStatus CRYP_GetFlagStatus(uint8_t CRYP_FLAG)
  884:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** {
- 1192              		.loc 1 884 1 is_stmt 1 view -0
- 1193              		.cfi_startproc
- 1194              		@ args = 0, pretend = 0, frame = 0
- 1195              		@ frame_needed = 0, uses_anonymous_args = 0
- 1196              		@ link register save eliminated.
+ 1210              		.loc 1 884 1 is_stmt 1 view -0
+ 1211              		.cfi_startproc
+ 1212              		@ args = 0, pretend = 0, frame = 0
+ 1213              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1214              		@ link register save eliminated.
  885:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   FlagStatus bitstatus = RESET;
- 1197              		.loc 1 885 3 view .LVU418
+ 1215              		.loc 1 885 3 view .LVU418
  886:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   uint32_t tempreg = 0;
- 1198              		.loc 1 886 3 view .LVU419
+ 1216              		.loc 1 886 3 view .LVU419
  887:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  888:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the parameters */
  889:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   assert_param(IS_CRYP_GET_FLAG(CRYP_FLAG));
- 1199              		.loc 1 889 3 view .LVU420
+ARM GAS  /tmp/cc2WnIAQ.s 			page 39
+
+
+ 1217              		.loc 1 889 3 view .LVU420
  890:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  891:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* check if the FLAG is in RISR register */
  892:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if ((CRYP_FLAG & FLAG_MASK) != 0x00) 
- 1200              		.loc 1 892 3 view .LVU421
- 1201              		.loc 1 892 6 is_stmt 0 view .LVU422
- 1202 0000 10F0200F 		tst	r0, #32
- 1203 0004 05D0     		beq	.L68
+ 1218              		.loc 1 892 3 view .LVU421
+ 1219              		.loc 1 892 6 is_stmt 0 view .LVU422
+ 1220 0000 10F0200F 		tst	r0, #32
+ 1221 0004 05D0     		beq	.L68
  893:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  894:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     tempreg = CRYP->RISR;
- 1204              		.loc 1 894 5 is_stmt 1 view .LVU423
- 1205              		.loc 1 894 13 is_stmt 0 view .LVU424
- 1206 0006 054B     		ldr	r3, .L72
- 1207 0008 9B69     		ldr	r3, [r3, #24]
- 1208              	.LVL42:
- 1209              	.L69:
+ 1222              		.loc 1 894 5 is_stmt 1 view .LVU423
+ 1223              		.loc 1 894 13 is_stmt 0 view .LVU424
+ 1224 0006 054B     		ldr	r3, .L72
+ 1225 0008 9B69     		ldr	r3, [r3, #24]
+ 1226              	.LVL42:
+ 1227              	.L69:
  895:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  896:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else  /* The FLAG is in SR register */
-ARM GAS  /tmp/ccNphSW8.s 			page 39
-
-
  897:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  898:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     tempreg = CRYP->SR;
  899:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
@@ -2288,124 +2306,123 @@ ARM GAS  /tmp/ccNphSW8.s 			page 1
  901:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  902:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Check the status of the specified CRYP flag */
  903:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   if ((tempreg & CRYP_FLAG ) != (uint8_t)RESET)
- 1210              		.loc 1 903 3 is_stmt 1 view .LVU425
- 1211              		.loc 1 903 6 is_stmt 0 view .LVU426
- 1212 000a 1842     		tst	r0, r3
- 1213 000c 04D0     		beq	.L71
+ 1228              		.loc 1 903 3 is_stmt 1 view .LVU425
+ 1229              		.loc 1 903 6 is_stmt 0 view .LVU426
+ 1230 000a 1842     		tst	r0, r3
+ 1231 000c 04D0     		beq	.L71
  904:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  905:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* CRYP_FLAG is set */
  906:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     bitstatus = SET;
- 1214              		.loc 1 906 15 view .LVU427
- 1215 000e 0120     		movs	r0, #1
- 1216              	.LVL43:
- 1217              		.loc 1 906 15 view .LVU428
- 1218 0010 7047     		bx	lr
- 1219              	.LVL44:
- 1220              	.L68:
+ 1232              		.loc 1 906 15 view .LVU427
+ 1233 000e 0120     		movs	r0, #1
+ 1234              	.LVL43:
+ 1235              		.loc 1 906 15 view .LVU428
+ 1236 0010 7047     		bx	lr
+ 1237              	.LVL44:
+ 1238              	.L68:
  898:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
- 1221              		.loc 1 898 5 is_stmt 1 view .LVU429
+ 1239              		.loc 1 898 5 is_stmt 1 view .LVU429
  898:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
- 1222              		.loc 1 898 13 is_stmt 0 view .LVU430
- 1223 0012 024B     		ldr	r3, .L72
- 1224 0014 5B68     		ldr	r3, [r3, #4]
- 1225              	.LVL45:
+ 1240              		.loc 1 898 13 is_stmt 0 view .LVU430
+ 1241 0012 024B     		ldr	r3, .L72
+ 1242 0014 5B68     		ldr	r3, [r3, #4]
+ 1243              	.LVL45:
  898:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
- 1226              		.loc 1 898 13 view .LVU431
- 1227 0016 F8E7     		b	.L69
- 1228              	.L71:
+ 1244              		.loc 1 898 13 view .LVU431
+ 1245 0016 F8E7     		b	.L69
+ 1246              	.L71:
  907:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  908:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   else
  909:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   {
  910:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     /* CRYP_FLAG is reset */
  911:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****     bitstatus = RESET;
- 1229              		.loc 1 911 15 view .LVU432
- 1230 0018 0020     		movs	r0, #0
- 1231              	.LVL46:
+ 1247              		.loc 1 911 15 view .LVU432
+ 1248 0018 0020     		movs	r0, #0
+ARM GAS  /tmp/cc2WnIAQ.s 			page 40
+
+
+ 1249              	.LVL46:
  912:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   }
  913:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** 
  914:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   /* Return the CRYP_FLAG status */
  915:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c ****   return  bitstatus;
- 1232              		.loc 1 915 3 is_stmt 1 view .LVU433
+ 1250              		.loc 1 915 3 is_stmt 1 view .LVU433
  916:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c **** }
- 1233              		.loc 1 916 1 is_stmt 0 view .LVU434
- 1234 001a 7047     		bx	lr
- 1235              	.L73:
- 1236              		.align	2
- 1237              	.L72:
- 1238 001c 00000650 		.word	1342570496
- 1239              		.cfi_endproc
- 1240              	.LFE141:
- 1242              		.text
- 1243              	.Letext0:
- 1244              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
-ARM GAS  /tmp/ccNphSW8.s 			page 40
-
-
- 1245              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 1246              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 1247              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_cryp.h"
- 1248              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
-ARM GAS  /tmp/ccNphSW8.s 			page 41
+ 1251              		.loc 1 916 1 is_stmt 0 view .LVU434
+ 1252 001a 7047     		bx	lr
+ 1253              	.L73:
+ 1254              		.align	2
+ 1255              	.L72:
+ 1256 001c 00000650 		.word	1342570496
+ 1257              		.cfi_endproc
+ 1258              	.LFE141:
+ 1260              		.text
+ 1261              	.Letext0:
+ 1262              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 1263              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1264              		.file 4 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_cryp.h"
+ 1265              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ARM GAS  /tmp/cc2WnIAQ.s 			page 41
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_cryp.c
-     /tmp/ccNphSW8.s:20     .text.CRYP_DeInit:0000000000000000 $t
-     /tmp/ccNphSW8.s:26     .text.CRYP_DeInit:0000000000000000 CRYP_DeInit
-     /tmp/ccNphSW8.s:53     .text.CRYP_Init:0000000000000000 $t
-     /tmp/ccNphSW8.s:59     .text.CRYP_Init:0000000000000000 CRYP_Init
-     /tmp/ccNphSW8.s:147    .text.CRYP_Init:000000000000005c $d
-     /tmp/ccNphSW8.s:152    .text.CRYP_StructInit:0000000000000000 $t
-     /tmp/ccNphSW8.s:158    .text.CRYP_StructInit:0000000000000000 CRYP_StructInit
-     /tmp/ccNphSW8.s:185    .text.CRYP_KeyInit:0000000000000000 $t
-     /tmp/ccNphSW8.s:191    .text.CRYP_KeyInit:0000000000000000 CRYP_KeyInit
-     /tmp/ccNphSW8.s:245    .text.CRYP_KeyInit:0000000000000024 $d
-     /tmp/ccNphSW8.s:250    .text.CRYP_KeyStructInit:0000000000000000 $t
-     /tmp/ccNphSW8.s:256    .text.CRYP_KeyStructInit:0000000000000000 CRYP_KeyStructInit
-     /tmp/ccNphSW8.s:295    .text.CRYP_IVInit:0000000000000000 $t
-     /tmp/ccNphSW8.s:301    .text.CRYP_IVInit:0000000000000000 CRYP_IVInit
-     /tmp/ccNphSW8.s:335    .text.CRYP_IVInit:0000000000000014 $d
-     /tmp/ccNphSW8.s:340    .text.CRYP_IVStructInit:0000000000000000 $t
-     /tmp/ccNphSW8.s:346    .text.CRYP_IVStructInit:0000000000000000 CRYP_IVStructInit
-     /tmp/ccNphSW8.s:373    .text.CRYP_PhaseConfig:0000000000000000 $t
-     /tmp/ccNphSW8.s:379    .text.CRYP_PhaseConfig:0000000000000000 CRYP_PhaseConfig
-     /tmp/ccNphSW8.s:410    .text.CRYP_PhaseConfig:0000000000000010 $d
-     /tmp/ccNphSW8.s:415    .text.CRYP_FIFOFlush:0000000000000000 $t
-     /tmp/ccNphSW8.s:421    .text.CRYP_FIFOFlush:0000000000000000 CRYP_FIFOFlush
-     /tmp/ccNphSW8.s:439    .text.CRYP_FIFOFlush:000000000000000c $d
-     /tmp/ccNphSW8.s:444    .text.CRYP_Cmd:0000000000000000 $t
-     /tmp/ccNphSW8.s:450    .text.CRYP_Cmd:0000000000000000 CRYP_Cmd
-     /tmp/ccNphSW8.s:481    .text.CRYP_Cmd:000000000000001c $d
-     /tmp/ccNphSW8.s:486    .text.CRYP_DataIn:0000000000000000 $t
-     /tmp/ccNphSW8.s:492    .text.CRYP_DataIn:0000000000000000 CRYP_DataIn
-     /tmp/ccNphSW8.s:509    .text.CRYP_DataIn:0000000000000008 $d
-     /tmp/ccNphSW8.s:514    .text.CRYP_DataOut:0000000000000000 $t
-     /tmp/ccNphSW8.s:520    .text.CRYP_DataOut:0000000000000000 CRYP_DataOut
-     /tmp/ccNphSW8.s:536    .text.CRYP_DataOut:0000000000000008 $d
-     /tmp/ccNphSW8.s:541    .text.CRYP_SaveContext:0000000000000000 $t
-     /tmp/ccNphSW8.s:547    .text.CRYP_SaveContext:0000000000000000 CRYP_SaveContext
-     /tmp/ccNphSW8.s:815    .text.CRYP_SaveContext:00000000000000fc $d
-     /tmp/ccNphSW8.s:820    .text.CRYP_RestoreContext:0000000000000000 $t
-     /tmp/ccNphSW8.s:826    .text.CRYP_RestoreContext:0000000000000000 CRYP_RestoreContext
-     /tmp/ccNphSW8.s:990    .text.CRYP_RestoreContext:0000000000000088 $d
-     /tmp/ccNphSW8.s:995    .text.CRYP_DMACmd:0000000000000000 $t
-     /tmp/ccNphSW8.s:1001   .text.CRYP_DMACmd:0000000000000000 CRYP_DMACmd
-     /tmp/ccNphSW8.s:1042   .text.CRYP_DMACmd:000000000000001c $d
-     /tmp/ccNphSW8.s:1047   .text.CRYP_ITConfig:0000000000000000 $t
-     /tmp/ccNphSW8.s:1053   .text.CRYP_ITConfig:0000000000000000 CRYP_ITConfig
-     /tmp/ccNphSW8.s:1094   .text.CRYP_ITConfig:000000000000001c $d
-     /tmp/ccNphSW8.s:1099   .text.CRYP_GetITStatus:0000000000000000 $t
-     /tmp/ccNphSW8.s:1105   .text.CRYP_GetITStatus:0000000000000000 CRYP_GetITStatus
-     /tmp/ccNphSW8.s:1138   .text.CRYP_GetITStatus:0000000000000010 $d
-     /tmp/ccNphSW8.s:1143   .text.CRYP_GetCmdStatus:0000000000000000 $t
-     /tmp/ccNphSW8.s:1149   .text.CRYP_GetCmdStatus:0000000000000000 CRYP_GetCmdStatus
-     /tmp/ccNphSW8.s:1178   .text.CRYP_GetCmdStatus:0000000000000014 $d
-     /tmp/ccNphSW8.s:1183   .text.CRYP_GetFlagStatus:0000000000000000 $t
-     /tmp/ccNphSW8.s:1189   .text.CRYP_GetFlagStatus:0000000000000000 CRYP_GetFlagStatus
-     /tmp/ccNphSW8.s:1238   .text.CRYP_GetFlagStatus:000000000000001c $d
+     /tmp/cc2WnIAQ.s:18     .text.CRYP_DeInit:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:26     .text.CRYP_DeInit:0000000000000000 CRYP_DeInit
+     /tmp/cc2WnIAQ.s:53     .text.CRYP_Init:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:60     .text.CRYP_Init:0000000000000000 CRYP_Init
+     /tmp/cc2WnIAQ.s:148    .text.CRYP_Init:000000000000005c $d
+     /tmp/cc2WnIAQ.s:153    .text.CRYP_StructInit:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:160    .text.CRYP_StructInit:0000000000000000 CRYP_StructInit
+     /tmp/cc2WnIAQ.s:187    .text.CRYP_KeyInit:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:194    .text.CRYP_KeyInit:0000000000000000 CRYP_KeyInit
+     /tmp/cc2WnIAQ.s:248    .text.CRYP_KeyInit:0000000000000024 $d
+     /tmp/cc2WnIAQ.s:253    .text.CRYP_KeyStructInit:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:260    .text.CRYP_KeyStructInit:0000000000000000 CRYP_KeyStructInit
+     /tmp/cc2WnIAQ.s:299    .text.CRYP_IVInit:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:306    .text.CRYP_IVInit:0000000000000000 CRYP_IVInit
+     /tmp/cc2WnIAQ.s:340    .text.CRYP_IVInit:0000000000000014 $d
+     /tmp/cc2WnIAQ.s:345    .text.CRYP_IVStructInit:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:352    .text.CRYP_IVStructInit:0000000000000000 CRYP_IVStructInit
+     /tmp/cc2WnIAQ.s:379    .text.CRYP_PhaseConfig:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:386    .text.CRYP_PhaseConfig:0000000000000000 CRYP_PhaseConfig
+     /tmp/cc2WnIAQ.s:417    .text.CRYP_PhaseConfig:0000000000000010 $d
+     /tmp/cc2WnIAQ.s:422    .text.CRYP_FIFOFlush:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:429    .text.CRYP_FIFOFlush:0000000000000000 CRYP_FIFOFlush
+     /tmp/cc2WnIAQ.s:447    .text.CRYP_FIFOFlush:000000000000000c $d
+     /tmp/cc2WnIAQ.s:452    .text.CRYP_Cmd:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:459    .text.CRYP_Cmd:0000000000000000 CRYP_Cmd
+     /tmp/cc2WnIAQ.s:490    .text.CRYP_Cmd:000000000000001c $d
+     /tmp/cc2WnIAQ.s:495    .text.CRYP_DataIn:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:502    .text.CRYP_DataIn:0000000000000000 CRYP_DataIn
+     /tmp/cc2WnIAQ.s:519    .text.CRYP_DataIn:0000000000000008 $d
+     /tmp/cc2WnIAQ.s:524    .text.CRYP_DataOut:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:531    .text.CRYP_DataOut:0000000000000000 CRYP_DataOut
+     /tmp/cc2WnIAQ.s:547    .text.CRYP_DataOut:0000000000000008 $d
+     /tmp/cc2WnIAQ.s:552    .text.CRYP_SaveContext:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:559    .text.CRYP_SaveContext:0000000000000000 CRYP_SaveContext
+     /tmp/cc2WnIAQ.s:827    .text.CRYP_SaveContext:00000000000000fc $d
+     /tmp/cc2WnIAQ.s:832    .text.CRYP_RestoreContext:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:839    .text.CRYP_RestoreContext:0000000000000000 CRYP_RestoreContext
+     /tmp/cc2WnIAQ.s:1003   .text.CRYP_RestoreContext:0000000000000088 $d
+     /tmp/cc2WnIAQ.s:1008   .text.CRYP_DMACmd:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:1015   .text.CRYP_DMACmd:0000000000000000 CRYP_DMACmd
+     /tmp/cc2WnIAQ.s:1056   .text.CRYP_DMACmd:000000000000001c $d
+     /tmp/cc2WnIAQ.s:1061   .text.CRYP_ITConfig:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:1068   .text.CRYP_ITConfig:0000000000000000 CRYP_ITConfig
+     /tmp/cc2WnIAQ.s:1109   .text.CRYP_ITConfig:000000000000001c $d
+     /tmp/cc2WnIAQ.s:1114   .text.CRYP_GetITStatus:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:1121   .text.CRYP_GetITStatus:0000000000000000 CRYP_GetITStatus
+     /tmp/cc2WnIAQ.s:1154   .text.CRYP_GetITStatus:0000000000000010 $d
+     /tmp/cc2WnIAQ.s:1159   .text.CRYP_GetCmdStatus:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:1166   .text.CRYP_GetCmdStatus:0000000000000000 CRYP_GetCmdStatus
+     /tmp/cc2WnIAQ.s:1195   .text.CRYP_GetCmdStatus:0000000000000014 $d
+     /tmp/cc2WnIAQ.s:1200   .text.CRYP_GetFlagStatus:0000000000000000 $t
+     /tmp/cc2WnIAQ.s:1207   .text.CRYP_GetFlagStatus:0000000000000000 CRYP_GetFlagStatus
+     /tmp/cc2WnIAQ.s:1256   .text.CRYP_GetFlagStatus:000000000000001c $d
 
 UNDEFINED SYMBOLS
-ARM GAS  /tmp/ccNphSW8.s 			page 42
+ARM GAS  /tmp/cc2WnIAQ.s 			page 42
 
 
 RCC_AHB2PeriphResetCmd

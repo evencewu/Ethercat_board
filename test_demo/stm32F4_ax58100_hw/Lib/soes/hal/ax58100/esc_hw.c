@@ -174,7 +174,7 @@ void ESC_init (const esc_cfg_t * config)
 void ESC_interrupt_enable (uint32_t mask)
 {
    // PDI interrupt
-   EXTILine3_Config();
+   EXTILine5_Config();
 
    if (ESCREG_ALEVENT_DC_SYNC0 & mask)
    {
@@ -199,7 +199,7 @@ void ESC_interrupt_enable (uint32_t mask)
  */
 void ESC_interrupt_disable (uint32_t mask)
 {
-   EXTILine3_Disable();
+   EXTILine5_Disable();
    if (ESCREG_ALEVENT_DC_SYNC0 & mask)
    {
       EXTILine0_Disable();

@@ -1,30 +1,30 @@
-ARM GAS  /tmp/ccwiOFqT.s 			page 1
+ARM GAS  /tmp/cc1grS6n.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.arch armv7e-m
-   3              		.fpu fpv4-sp-d16
-   4              		.eabi_attribute 27, 1
-   5              		.eabi_attribute 28, 1
-   6              		.eabi_attribute 20, 1
-   7              		.eabi_attribute 21, 1
-   8              		.eabi_attribute 23, 3
-   9              		.eabi_attribute 24, 1
-  10              		.eabi_attribute 25, 1
-  11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
-  13              		.eabi_attribute 34, 1
-  14              		.eabi_attribute 18, 4
-  15              		.file	"pdo_override.c"
-  16              		.text
-  17              	.Ltext0:
-  18              		.cfi_sections	.debug_frame
-  19              		.section	.text.spi_dma_prepare_transmission,"ax",%progbits
-  20              		.align	1
-  21              		.global	spi_dma_prepare_transmission
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"pdo_override.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.spi_dma_prepare_transmission,"ax",%progbits
+  18              		.align	1
+  19              		.global	spi_dma_prepare_transmission
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
   26              	spi_dma_prepare_transmission:
   27              	.LVL0:
   28              	.LFB123:
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccwiOFqT.s 			page 1
   27:Core/Src/pdo_override.c **** void spi_dma_prepare_transmission(uint16_t address, uint8_t * tx_buffer, uint8_t cmd)
   28:Core/Src/pdo_override.c **** {
   30              		.loc 1 28 1 view -0
-ARM GAS  /tmp/ccwiOFqT.s 			page 2
+ARM GAS  /tmp/cc1grS6n.s 			page 2
 
 
   31              		.cfi_startproc
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccwiOFqT.s 			page 1
   66              		.loc 1 40 9 is_stmt 1 view .LVU15
   40:Core/Src/pdo_override.c ****     }
   67              		.loc 1 40 36 is_stmt 0 view .LVU16
-ARM GAS  /tmp/ccwiOFqT.s 			page 3
+ARM GAS  /tmp/cc1grS6n.s 			page 3
 
 
   68 001c FF23     		movs	r3, #255
@@ -127,624 +127,633 @@ ARM GAS  /tmp/ccwiOFqT.s 			page 1
   71 0020 F7E7     		b	.L1
   72              		.cfi_endproc
   73              	.LFE123:
-  75              		.section	.text.DMA2_Stream2_IRQHandler,"ax",%progbits
+  75              		.section	.text.DMA1_Stream3_IRQHandler,"ax",%progbits
   76              		.align	1
-  77              		.global	DMA2_Stream2_IRQHandler
+  77              		.global	DMA1_Stream3_IRQHandler
   78              		.syntax unified
   79              		.thumb
   80              		.thumb_func
-  82              	DMA2_Stream2_IRQHandler:
-  83              	.LFB124:
+  81              		.fpu fpv4-sp-d16
+  83              	DMA1_Stream3_IRQHandler:
+  84              	.LFB124:
   43:Core/Src/pdo_override.c **** 
   44:Core/Src/pdo_override.c **** 
-  45:Core/Src/pdo_override.c **** void DMA2_Stream2_IRQHandler(void)
+  45:Core/Src/pdo_override.c **** void DMA1_Stream3_IRQHandler(void)
   46:Core/Src/pdo_override.c **** {
-  84              		.loc 1 46 1 is_stmt 1 view -0
-  85              		.cfi_startproc
-  86              		@ args = 0, pretend = 0, frame = 0
-  87              		@ frame_needed = 0, uses_anonymous_args = 0
-  88 0000 08B5     		push	{r3, lr}
-  89              		.cfi_def_cfa_offset 8
-  90              		.cfi_offset 3, -8
-  91              		.cfi_offset 14, -4
+  85              		.loc 1 46 1 is_stmt 1 view -0
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89 0000 08B5     		push	{r3, lr}
+  90              		.cfi_def_cfa_offset 8
+  91              		.cfi_offset 3, -8
+  92              		.cfi_offset 14, -4
   47:Core/Src/pdo_override.c ****     /* Test on DMA Stream Transfer Complete interrupt */
-  48:Core/Src/pdo_override.c ****     if(DMA_GetITStatus(DMA2_Stream2, DMA_IT_TCIF2))
-  92              		.loc 1 48 5 view .LVU19
-  93              		.loc 1 48 8 is_stmt 0 view .LVU20
-  94 0002 0749     		ldr	r1, .L10
-  95 0004 0748     		ldr	r0, .L10+4
-  96 0006 FFF7FEFF 		bl	DMA_GetITStatus
-  97              	.LVL2:
-  98              		.loc 1 48 7 view .LVU21
-  99 000a 00B9     		cbnz	r0, .L9
- 100              	.L6:
+  48:Core/Src/pdo_override.c ****     if(DMA_GetITStatus(DMA1_Stream3, DMA_IT_TCIF3))
+  93              		.loc 1 48 5 view .LVU19
+  94              		.loc 1 48 8 is_stmt 0 view .LVU20
+  95 0002 0749     		ldr	r1, .L10
+  96 0004 0748     		ldr	r0, .L10+4
+  97 0006 FFF7FEFF 		bl	DMA_GetITStatus
+  98              	.LVL2:
+  99              		.loc 1 48 7 view .LVU21
+ 100 000a 00B9     		cbnz	r0, .L9
+ 101              	.L6:
   49:Core/Src/pdo_override.c ****     {
   50:Core/Src/pdo_override.c ****         /* Clear DMA Stream Transfer Complete interrupt pending bit */
-  51:Core/Src/pdo_override.c ****         DMA_ClearITPendingBit(DMA2_Stream2, DMA_IT_TCIF2);
+  51:Core/Src/pdo_override.c ****         DMA_ClearITPendingBit(DMA1_Stream3, DMA_IT_TCIF3);
   52:Core/Src/pdo_override.c ****         pdi_dma_transmission = NOT_STARTED;
   53:Core/Src/pdo_override.c ****     }
   54:Core/Src/pdo_override.c **** }
- 101              		.loc 1 54 1 view .LVU22
- 102 000c 08BD     		pop	{r3, pc}
- 103              	.L9:
+ 102              		.loc 1 54 1 view .LVU22
+ 103 000c 08BD     		pop	{r3, pc}
+ 104              	.L9:
   51:Core/Src/pdo_override.c ****         pdi_dma_transmission = NOT_STARTED;
- 104              		.loc 1 51 9 is_stmt 1 view .LVU23
- 105 000e 0449     		ldr	r1, .L10
- 106 0010 0448     		ldr	r0, .L10+4
- 107 0012 FFF7FEFF 		bl	DMA_ClearITPendingBit
- 108              	.LVL3:
+ 105              		.loc 1 51 9 is_stmt 1 view .LVU23
+ 106 000e 0449     		ldr	r1, .L10
+ 107 0010 0448     		ldr	r0, .L10+4
+ 108 0012 FFF7FEFF 		bl	DMA_ClearITPendingBit
+ 109              	.LVL3:
   52:Core/Src/pdo_override.c ****     }
- 109              		.loc 1 52 9 view .LVU24
+ 110              		.loc 1 52 9 view .LVU24
   52:Core/Src/pdo_override.c ****     }
- 110              		.loc 1 52 30 is_stmt 0 view .LVU25
- 111 0016 044B     		ldr	r3, .L10+8
-ARM GAS  /tmp/ccwiOFqT.s 			page 4
+ 111              		.loc 1 52 30 is_stmt 0 view .LVU25
+ARM GAS  /tmp/cc1grS6n.s 			page 4
 
 
- 112 0018 0022     		movs	r2, #0
- 113 001a 1A70     		strb	r2, [r3]
- 114              		.loc 1 54 1 view .LVU26
- 115 001c F6E7     		b	.L6
- 116              	.L11:
- 117 001e 00BF     		.align	2
- 118              	.L10:
- 119 0020 00802010 		.word	270565376
- 120 0024 40640240 		.word	1073898560
- 121 0028 00000000 		.word	.LANCHOR0
- 122              		.cfi_endproc
- 123              	.LFE124:
- 125              		.section	.text.spi_dma_setup,"ax",%progbits
- 126              		.align	1
- 127              		.global	spi_dma_setup
- 128              		.syntax unified
- 129              		.thumb
- 130              		.thumb_func
- 132              	spi_dma_setup:
- 133              	.LFB125:
+ 112 0016 044B     		ldr	r3, .L10+8
+ 113 0018 0022     		movs	r2, #0
+ 114 001a 1A70     		strb	r2, [r3]
+ 115              		.loc 1 54 1 view .LVU26
+ 116 001c F6E7     		b	.L6
+ 117              	.L11:
+ 118 001e 00BF     		.align	2
+ 119              	.L10:
+ 120 0020 00800018 		.word	402685952
+ 121 0024 58600240 		.word	1073897560
+ 122 0028 00000000 		.word	.LANCHOR0
+ 123              		.cfi_endproc
+ 124              	.LFE124:
+ 126              		.section	.text.spi_dma_setup,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	spi_dma_setup
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.fpu fpv4-sp-d16
+ 134              	spi_dma_setup:
+ 135              	.LFB125:
   55:Core/Src/pdo_override.c **** 
   56:Core/Src/pdo_override.c **** 
   57:Core/Src/pdo_override.c **** void spi_dma_setup(void)
   58:Core/Src/pdo_override.c **** {
- 134              		.loc 1 58 1 is_stmt 1 view -0
- 135              		.cfi_startproc
- 136              		@ args = 0, pretend = 0, frame = 64
- 137              		@ frame_needed = 0, uses_anonymous_args = 0
- 138 0000 30B5     		push	{r4, r5, lr}
- 139              		.cfi_def_cfa_offset 12
- 140              		.cfi_offset 4, -12
- 141              		.cfi_offset 5, -8
- 142              		.cfi_offset 14, -4
- 143 0002 91B0     		sub	sp, sp, #68
- 144              		.cfi_def_cfa_offset 80
+ 136              		.loc 1 58 1 is_stmt 1 view -0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 64
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140 0000 10B5     		push	{r4, lr}
+ 141              		.cfi_def_cfa_offset 8
+ 142              		.cfi_offset 4, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 90B0     		sub	sp, sp, #64
+ 145              		.cfi_def_cfa_offset 72
   59:Core/Src/pdo_override.c ****     /* Enable DMA clock*/
-  60:Core/Src/pdo_override.c ****     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
- 145              		.loc 1 60 5 view .LVU28
- 146 0004 0121     		movs	r1, #1
- 147 0006 4FF48000 		mov	r0, #4194304
- 148 000a FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
- 149              	.LVL4:
+  60:Core/Src/pdo_override.c ****     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA1, ENABLE);
+ 146              		.loc 1 60 5 view .LVU28
+ 147 0004 0121     		movs	r1, #1
+ 148 0006 4FF40010 		mov	r0, #2097152
+ 149 000a FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+ 150              	.LVL4:
   61:Core/Src/pdo_override.c ****     
   62:Core/Src/pdo_override.c **** 	/* Deinitialize DMA Streams */
-  63:Core/Src/pdo_override.c **** 	DMA_DeInit(DMA2_Stream3);
- 150              		.loc 1 63 2 view .LVU29
- 151 000e 2548     		ldr	r0, .L16
- 152 0010 FFF7FEFF 		bl	DMA_DeInit
- 153              	.LVL5:
-  64:Core/Src/pdo_override.c **** 	DMA_DeInit(DMA2_Stream2);
- 154              		.loc 1 64 2 view .LVU30
- 155 0014 2448     		ldr	r0, .L16+4
- 156 0016 FFF7FEFF 		bl	DMA_DeInit
- 157              	.LVL6:
+  63:Core/Src/pdo_override.c **** 	DMA_DeInit(DMA1_Stream4);
+ 151              		.loc 1 63 2 view .LVU29
+ 152 000e 2448     		ldr	r0, .L16
+ 153 0010 FFF7FEFF 		bl	DMA_DeInit
+ 154              	.LVL5:
+  64:Core/Src/pdo_override.c **** 	DMA_DeInit(DMA1_Stream3);
+ 155              		.loc 1 64 2 view .LVU30
+ 156 0014 2348     		ldr	r0, .L16+4
+ 157 0016 FFF7FEFF 		bl	DMA_DeInit
+ 158              	.LVL6:
   65:Core/Src/pdo_override.c **** 
-  66:Core/Src/pdo_override.c ****     while (DMA_GetCmdStatus(DMA2_Stream3) != DISABLE) { }
- 158              		.loc 1 66 5 view .LVU31
-ARM GAS  /tmp/ccwiOFqT.s 			page 5
+  66:Core/Src/pdo_override.c ****     while (DMA_GetCmdStatus(DMA2_Stream4) != DISABLE) { }
+ARM GAS  /tmp/cc1grS6n.s 			page 5
 
 
- 159              	.L13:
- 160              		.loc 1 66 57 discriminator 1 view .LVU32
- 161              		.loc 1 66 11 discriminator 1 view .LVU33
- 162              		.loc 1 66 12 is_stmt 0 discriminator 1 view .LVU34
- 163 001a 2248     		ldr	r0, .L16
- 164 001c FFF7FEFF 		bl	DMA_GetCmdStatus
- 165              	.LVL7:
- 166              		.loc 1 66 11 discriminator 1 view .LVU35
- 167 0020 0028     		cmp	r0, #0
- 168 0022 FAD1     		bne	.L13
- 169              	.L14:
-  67:Core/Src/pdo_override.c ****     while (DMA_GetCmdStatus(DMA2_Stream2) != DISABLE) { }
- 170              		.loc 1 67 57 is_stmt 1 discriminator 1 view .LVU36
- 171              		.loc 1 67 11 discriminator 1 view .LVU37
- 172              		.loc 1 67 12 is_stmt 0 discriminator 1 view .LVU38
- 173 0024 2048     		ldr	r0, .L16+4
- 174 0026 FFF7FEFF 		bl	DMA_GetCmdStatus
- 175              	.LVL8:
- 176              		.loc 1 67 11 discriminator 1 view .LVU39
- 177 002a 0028     		cmp	r0, #0
- 178 002c FAD1     		bne	.L14
+ 159              		.loc 1 66 5 view .LVU31
+ 160              	.L13:
+ 161              		.loc 1 66 57 discriminator 1 view .LVU32
+ 162              		.loc 1 66 11 discriminator 1 view .LVU33
+ 163              		.loc 1 66 12 is_stmt 0 discriminator 1 view .LVU34
+ 164 001a 2348     		ldr	r0, .L16+8
+ 165 001c FFF7FEFF 		bl	DMA_GetCmdStatus
+ 166              	.LVL7:
+ 167              		.loc 1 66 11 discriminator 1 view .LVU35
+ 168 0020 0028     		cmp	r0, #0
+ 169 0022 FAD1     		bne	.L13
+ 170              	.L14:
+  67:Core/Src/pdo_override.c ****     while (DMA_GetCmdStatus(DMA2_Stream3) != DISABLE) { }
+ 171              		.loc 1 67 57 is_stmt 1 discriminator 1 view .LVU36
+ 172              		.loc 1 67 11 discriminator 1 view .LVU37
+ 173              		.loc 1 67 12 is_stmt 0 discriminator 1 view .LVU38
+ 174 0024 2148     		ldr	r0, .L16+12
+ 175 0026 FFF7FEFF 		bl	DMA_GetCmdStatus
+ 176              	.LVL8:
+ 177              		.loc 1 67 11 discriminator 1 view .LVU39
+ 178 002a 0028     		cmp	r0, #0
+ 179 002c FAD1     		bne	.L14
   68:Core/Src/pdo_override.c **** 
   69:Core/Src/pdo_override.c ****     DMA_InitTypeDef DMA_InitStructure;
- 179              		.loc 1 69 5 is_stmt 1 view .LVU40
+ 180              		.loc 1 69 5 is_stmt 1 view .LVU40
   70:Core/Src/pdo_override.c ****     NVIC_InitTypeDef NVIC_InitStructure;
- 180              		.loc 1 70 5 view .LVU41
+ 181              		.loc 1 70 5 view .LVU41
   71:Core/Src/pdo_override.c ****     DMA_StructInit(&DMA_InitStructure);
- 181              		.loc 1 71 5 view .LVU42
- 182 002e 01A8     		add	r0, sp, #4
- 183 0030 FFF7FEFF 		bl	DMA_StructInit
- 184              	.LVL9:
+ 182              		.loc 1 71 5 view .LVU42
+ 183 002e 01A8     		add	r0, sp, #4
+ 184 0030 FFF7FEFF 		bl	DMA_StructInit
+ 185              	.LVL9:
   72:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_BufferSize = (uint16_t)(PDO_TR_SIZE);
- 185              		.loc 1 72 5 view .LVU43
- 186              		.loc 1 72 38 is_stmt 0 view .LVU44
- 187 0034 0523     		movs	r3, #5
- 188 0036 0593     		str	r3, [sp, #20]
+ 186              		.loc 1 72 5 view .LVU43
+ 187              		.loc 1 72 38 is_stmt 0 view .LVU44
+ 188 0034 0523     		movs	r3, #5
+ 189 0036 0593     		str	r3, [sp, #20]
   73:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable ;
- 189              		.loc 1 73 5 is_stmt 1 view .LVU45
- 190              		.loc 1 73 36 is_stmt 0 view .LVU46
- 191 0038 0024     		movs	r4, #0
- 192 003a 0C94     		str	r4, [sp, #48]
+ 190              		.loc 1 73 5 is_stmt 1 view .LVU45
+ 191              		.loc 1 73 36 is_stmt 0 view .LVU46
+ 192 0038 0024     		movs	r4, #0
+ 193 003a 0C94     		str	r4, [sp, #48]
   74:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull;
- 193              		.loc 1 74 5 is_stmt 1 view .LVU47
- 194              		.loc 1 74 41 is_stmt 0 view .LVU48
- 195 003c 0D94     		str	r4, [sp, #52]
+ 194              		.loc 1 74 5 is_stmt 1 view .LVU47
+ 195              		.loc 1 74 41 is_stmt 0 view .LVU48
+ 196 003c 0D94     		str	r4, [sp, #52]
   75:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single ;
- 196              		.loc 1 75 5 is_stmt 1 view .LVU49
- 197              		.loc 1 75 39 is_stmt 0 view .LVU50
- 198 003e 0E94     		str	r4, [sp, #56]
+ 197              		.loc 1 75 5 is_stmt 1 view .LVU49
+ 198              		.loc 1 75 39 is_stmt 0 view .LVU50
+ 199 003e 0E94     		str	r4, [sp, #56]
   76:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
- 199              		.loc 1 76 5 is_stmt 1 view .LVU51
- 200              		.loc 1 76 42 is_stmt 0 view .LVU52
- 201 0040 0994     		str	r4, [sp, #36]
+ 200              		.loc 1 76 5 is_stmt 1 view .LVU51
+ 201              		.loc 1 76 42 is_stmt 0 view .LVU52
+ 202 0040 0994     		str	r4, [sp, #36]
   77:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
- 202              		.loc 1 77 5 is_stmt 1 view .LVU53
- 203              		.loc 1 77 37 is_stmt 0 view .LVU54
- 204 0042 4FF48063 		mov	r3, #1024
-ARM GAS  /tmp/ccwiOFqT.s 			page 6
+ 203              		.loc 1 77 5 is_stmt 1 view .LVU53
+ 204              		.loc 1 77 37 is_stmt 0 view .LVU54
+ARM GAS  /tmp/cc1grS6n.s 			page 6
 
 
- 205 0046 0793     		str	r3, [sp, #28]
+ 205 0042 4FF48063 		mov	r3, #1024
+ 206 0046 0793     		str	r3, [sp, #28]
   78:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
- 206              		.loc 1 78 5 is_stmt 1 view .LVU55
- 207              		.loc 1 78 32 is_stmt 0 view .LVU56
- 208 0048 0A94     		str	r4, [sp, #40]
+ 207              		.loc 1 78 5 is_stmt 1 view .LVU55
+ 208              		.loc 1 78 32 is_stmt 0 view .LVU56
+ 209 0048 0A94     		str	r4, [sp, #40]
   79:Core/Src/pdo_override.c **** 
-  80:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)(&(SPI1->DR));
- 209              		.loc 1 80 5 is_stmt 1 view .LVU57
- 210              		.loc 1 80 46 is_stmt 0 view .LVU58
- 211 004a 184B     		ldr	r3, .L16+8
- 212 004c 0293     		str	r3, [sp, #8]
+  80:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)(&(SPI2->DR));
+ 210              		.loc 1 80 5 is_stmt 1 view .LVU57
+ 211              		.loc 1 80 46 is_stmt 0 view .LVU58
+ 212 004a 194B     		ldr	r3, .L16+16
+ 213 004c 0293     		str	r3, [sp, #8]
   81:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
- 213              		.loc 1 81 5 is_stmt 1 view .LVU59
- 214              		.loc 1 81 43 is_stmt 0 view .LVU60
- 215 004e 0F94     		str	r4, [sp, #60]
+ 214              		.loc 1 81 5 is_stmt 1 view .LVU59
+ 215              		.loc 1 81 43 is_stmt 0 view .LVU60
+ 216 004e 0F94     		str	r4, [sp, #60]
   82:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
- 216              		.loc 1 82 5 is_stmt 1 view .LVU61
- 217              		.loc 1 82 46 is_stmt 0 view .LVU62
- 218 0050 0894     		str	r4, [sp, #32]
+ 217              		.loc 1 82 5 is_stmt 1 view .LVU61
+ 218              		.loc 1 82 46 is_stmt 0 view .LVU62
+ 219 0050 0894     		str	r4, [sp, #32]
   83:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
- 219              		.loc 1 83 5 is_stmt 1 view .LVU63
- 220              		.loc 1 83 41 is_stmt 0 view .LVU64
- 221 0052 0694     		str	r4, [sp, #24]
+ 220              		.loc 1 83 5 is_stmt 1 view .LVU63
+ 221              		.loc 1 83 41 is_stmt 0 view .LVU64
+ 222 0052 0694     		str	r4, [sp, #24]
   84:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_Priority = DMA_Priority_High;
- 222              		.loc 1 84 5 is_stmt 1 view .LVU65
- 223              		.loc 1 84 36 is_stmt 0 view .LVU66
- 224 0054 4FF40033 		mov	r3, #131072
- 225 0058 0B93     		str	r3, [sp, #44]
+ 223              		.loc 1 84 5 is_stmt 1 view .LVU65
+ 224              		.loc 1 84 36 is_stmt 0 view .LVU66
+ 225 0054 4FF40033 		mov	r3, #131072
+ 226 0058 0B93     		str	r3, [sp, #44]
   85:Core/Src/pdo_override.c **** 
   86:Core/Src/pdo_override.c ****     /* Configure Tx DMA */
-  87:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_Channel = DMA_Channel_3;
- 226              		.loc 1 87 5 is_stmt 1 view .LVU67
- 227              		.loc 1 87 35 is_stmt 0 view .LVU68
- 228 005a 4FF0C065 		mov	r5, #100663296
- 229 005e 0195     		str	r5, [sp, #4]
+  87:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_Channel = DMA_Channel_0;
+ 227              		.loc 1 87 5 is_stmt 1 view .LVU67
+ 228              		.loc 1 87 35 is_stmt 0 view .LVU68
+ 229 005a 0194     		str	r4, [sp, #4]
   88:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;
  230              		.loc 1 88 5 is_stmt 1 view .LVU69
  231              		.loc 1 88 31 is_stmt 0 view .LVU70
- 232 0060 4023     		movs	r3, #64
- 233 0062 0493     		str	r3, [sp, #16]
+ 232 005c 4023     		movs	r3, #64
+ 233 005e 0493     		str	r3, [sp, #16]
   89:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t) pdo_spi_txbuf;
  234              		.loc 1 89 5 is_stmt 1 view .LVU71
  235              		.loc 1 89 45 is_stmt 0 view .LVU72
- 236 0064 124B     		ldr	r3, .L16+12
- 237 0066 1B68     		ldr	r3, [r3]
+ 236 0060 144B     		ldr	r3, .L16+20
+ 237 0062 1B68     		ldr	r3, [r3]
  238              		.loc 1 89 43 view .LVU73
- 239 0068 0393     		str	r3, [sp, #12]
-  90:Core/Src/pdo_override.c ****     DMA_Init(DMA2_Stream3, &DMA_InitStructure);
+ 239 0064 0393     		str	r3, [sp, #12]
+  90:Core/Src/pdo_override.c ****     DMA_Init(DMA1_Stream4, &DMA_InitStructure);
  240              		.loc 1 90 5 is_stmt 1 view .LVU74
- 241 006a 01A9     		add	r1, sp, #4
- 242 006c 0D48     		ldr	r0, .L16
- 243 006e FFF7FEFF 		bl	DMA_Init
+ 241 0066 01A9     		add	r1, sp, #4
+ 242 0068 0D48     		ldr	r0, .L16
+ 243 006a FFF7FEFF 		bl	DMA_Init
  244              	.LVL10:
   91:Core/Src/pdo_override.c **** 
   92:Core/Src/pdo_override.c ****     /* Configure Rx DMA */
-  93:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_Channel = DMA_Channel_3;
+  93:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_Channel = DMA_Channel_0;
  245              		.loc 1 93 5 view .LVU75
-ARM GAS  /tmp/ccwiOFqT.s 			page 7
+ARM GAS  /tmp/cc1grS6n.s 			page 7
 
 
  246              		.loc 1 93 35 is_stmt 0 view .LVU76
- 247 0072 0195     		str	r5, [sp, #4]
+ 247 006e 0194     		str	r4, [sp, #4]
   94:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;
  248              		.loc 1 94 5 is_stmt 1 view .LVU77
  249              		.loc 1 94 31 is_stmt 0 view .LVU78
- 250 0074 0494     		str	r4, [sp, #16]
+ 250 0070 0494     		str	r4, [sp, #16]
   95:Core/Src/pdo_override.c ****     DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t) pdo_spi_rxbuf;
  251              		.loc 1 95 5 is_stmt 1 view .LVU79
  252              		.loc 1 95 45 is_stmt 0 view .LVU80
- 253 0076 0F4B     		ldr	r3, .L16+16
- 254 0078 1B68     		ldr	r3, [r3]
+ 253 0072 114B     		ldr	r3, .L16+24
+ 254 0074 1B68     		ldr	r3, [r3]
  255              		.loc 1 95 43 view .LVU81
- 256 007a 0393     		str	r3, [sp, #12]
-  96:Core/Src/pdo_override.c ****     DMA_Init(DMA2_Stream2, &DMA_InitStructure);
+ 256 0076 0393     		str	r3, [sp, #12]
+  96:Core/Src/pdo_override.c ****     DMA_Init(DMA1_Stream3, &DMA_InitStructure);
  257              		.loc 1 96 5 is_stmt 1 view .LVU82
- 258 007c 01A9     		add	r1, sp, #4
- 259 007e 0A48     		ldr	r0, .L16+4
- 260 0080 FFF7FEFF 		bl	DMA_Init
+ 258 0078 01A9     		add	r1, sp, #4
+ 259 007a 0A48     		ldr	r0, .L16+4
+ 260 007c FFF7FEFF 		bl	DMA_Init
  261              	.LVL11:
   97:Core/Src/pdo_override.c **** 
   98:Core/Src/pdo_override.c ****     /* Enable the DMA Stream IRQ Channel */
-  99:Core/Src/pdo_override.c ****     NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream2_IRQn;
+  99:Core/Src/pdo_override.c ****     NVIC_InitStructure.NVIC_IRQChannel = DMA1_Stream3_IRQn;
  262              		.loc 1 99 5 view .LVU83
  263              		.loc 1 99 40 is_stmt 0 view .LVU84
- 264 0084 3A23     		movs	r3, #58
- 265 0086 8DF80030 		strb	r3, [sp]
+ 264 0080 0E23     		movs	r3, #14
+ 265 0082 8DF80030 		strb	r3, [sp]
  100:Core/Src/pdo_override.c ****     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
  266              		.loc 1 100 5 is_stmt 1 view .LVU85
  267              		.loc 1 100 58 is_stmt 0 view .LVU86
- 268 008a 8DF80140 		strb	r4, [sp, #1]
+ 268 0086 8DF80140 		strb	r4, [sp, #1]
  101:Core/Src/pdo_override.c ****     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
  269              		.loc 1 101 5 is_stmt 1 view .LVU87
  270              		.loc 1 101 51 is_stmt 0 view .LVU88
- 271 008e 8DF80240 		strb	r4, [sp, #2]
+ 271 008a 8DF80240 		strb	r4, [sp, #2]
  102:Core/Src/pdo_override.c ****     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
  272              		.loc 1 102 5 is_stmt 1 view .LVU89
  273              		.loc 1 102 43 is_stmt 0 view .LVU90
- 274 0092 0123     		movs	r3, #1
- 275 0094 8DF80330 		strb	r3, [sp, #3]
+ 274 008e 0123     		movs	r3, #1
+ 275 0090 8DF80330 		strb	r3, [sp, #3]
  103:Core/Src/pdo_override.c ****     NVIC_Init(&NVIC_InitStructure);
  276              		.loc 1 103 5 is_stmt 1 view .LVU91
- 277 0098 6846     		mov	r0, sp
- 278 009a FFF7FEFF 		bl	NVIC_Init
+ 277 0094 6846     		mov	r0, sp
+ 278 0096 FFF7FEFF 		bl	NVIC_Init
  279              	.LVL12:
  104:Core/Src/pdo_override.c **** }
  280              		.loc 1 104 1 is_stmt 0 view .LVU92
- 281 009e 11B0     		add	sp, sp, #68
- 282              		.cfi_def_cfa_offset 12
+ 281 009a 10B0     		add	sp, sp, #64
+ 282              		.cfi_def_cfa_offset 8
  283              		@ sp needed
- 284 00a0 30BD     		pop	{r4, r5, pc}
+ 284 009c 10BD     		pop	{r4, pc}
  285              	.L17:
- 286 00a2 00BF     		.align	2
+ 286 009e 00BF     		.align	2
  287              	.L16:
- 288 00a4 58640240 		.word	1073898584
- 289 00a8 40640240 		.word	1073898560
- 290 00ac 0C300140 		.word	1073819660
- 291 00b0 00000000 		.word	.LANCHOR1
-ARM GAS  /tmp/ccwiOFqT.s 			page 8
+ 288 00a0 70600240 		.word	1073897584
+ 289 00a4 58600240 		.word	1073897560
+ 290 00a8 70640240 		.word	1073898608
+ 291 00ac 58640240 		.word	1073898584
+ARM GAS  /tmp/cc1grS6n.s 			page 8
 
 
- 292 00b4 00000000 		.word	.LANCHOR2
- 293              		.cfi_endproc
- 294              	.LFE125:
- 296              		.section	.text.spi_dma_start,"ax",%progbits
- 297              		.align	1
- 298              		.global	spi_dma_start
- 299              		.syntax unified
- 300              		.thumb
- 301              		.thumb_func
- 303              	spi_dma_start:
- 304              	.LFB126:
+ 292 00b0 0C380040 		.word	1073756172
+ 293 00b4 00000000 		.word	.LANCHOR1
+ 294 00b8 00000000 		.word	.LANCHOR2
+ 295              		.cfi_endproc
+ 296              	.LFE125:
+ 298              		.section	.text.spi_dma_start,"ax",%progbits
+ 299              		.align	1
+ 300              		.global	spi_dma_start
+ 301              		.syntax unified
+ 302              		.thumb
+ 303              		.thumb_func
+ 304              		.fpu fpv4-sp-d16
+ 306              	spi_dma_start:
+ 307              	.LFB126:
  105:Core/Src/pdo_override.c **** 
  106:Core/Src/pdo_override.c **** 
  107:Core/Src/pdo_override.c **** void spi_dma_start(void)
  108:Core/Src/pdo_override.c **** {
- 305              		.loc 1 108 1 is_stmt 1 view -0
- 306              		.cfi_startproc
- 307              		@ args = 0, pretend = 0, frame = 0
- 308              		@ frame_needed = 0, uses_anonymous_args = 0
- 309 0000 38B5     		push	{r3, r4, r5, lr}
- 310              		.cfi_def_cfa_offset 16
- 311              		.cfi_offset 3, -16
- 312              		.cfi_offset 4, -12
- 313              		.cfi_offset 5, -8
- 314              		.cfi_offset 14, -4
+ 308              		.loc 1 108 1 is_stmt 1 view -0
+ 309              		.cfi_startproc
+ 310              		@ args = 0, pretend = 0, frame = 0
+ 311              		@ frame_needed = 0, uses_anonymous_args = 0
+ 312 0000 38B5     		push	{r3, r4, r5, lr}
+ 313              		.cfi_def_cfa_offset 16
+ 314              		.cfi_offset 3, -16
+ 315              		.cfi_offset 4, -12
+ 316              		.cfi_offset 5, -8
+ 317              		.cfi_offset 14, -4
  109:Core/Src/pdo_override.c ****     /* Enable DMA Stream Transfer Complete interrupt */
- 110:Core/Src/pdo_override.c ****     DMA_ITConfig(DMA2_Stream2, DMA_IT_TC, ENABLE);
- 315              		.loc 1 110 5 view .LVU94
- 316 0002 104C     		ldr	r4, .L20
- 317 0004 0122     		movs	r2, #1
- 318 0006 1021     		movs	r1, #16
- 319 0008 2046     		mov	r0, r4
- 320 000a FFF7FEFF 		bl	DMA_ITConfig
- 321              	.LVL13:
+ 110:Core/Src/pdo_override.c ****     DMA_ITConfig(DMA1_Stream3, DMA_IT_TC, ENABLE);
+ 318              		.loc 1 110 5 view .LVU94
+ 319 0002 104C     		ldr	r4, .L20
+ 320 0004 0122     		movs	r2, #1
+ 321 0006 1021     		movs	r1, #16
+ 322 0008 2046     		mov	r0, r4
+ 323 000a FFF7FEFF 		bl	DMA_ITConfig
+ 324              	.LVL13:
  111:Core/Src/pdo_override.c **** 
  112:Core/Src/pdo_override.c ****     /* Enable the SPI Rx DMA request */
- 113:Core/Src/pdo_override.c ****     SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Rx, ENABLE);
- 322              		.loc 1 113 5 view .LVU95
- 323 000e 0E4D     		ldr	r5, .L20+4
- 324 0010 0122     		movs	r2, #1
- 325 0012 1146     		mov	r1, r2
- 326 0014 2846     		mov	r0, r5
- 327 0016 FFF7FEFF 		bl	SPI_I2S_DMACmd
- 328              	.LVL14:
- 114:Core/Src/pdo_override.c ****     SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Tx, ENABLE);
- 329              		.loc 1 114 5 view .LVU96
- 330 001a 0122     		movs	r2, #1
- 331 001c 0221     		movs	r1, #2
- 332 001e 2846     		mov	r0, r5
- 333 0020 FFF7FEFF 		bl	SPI_I2S_DMACmd
- 334              	.LVL15:
+ 113:Core/Src/pdo_override.c ****     SPI_I2S_DMACmd(SPI2, SPI_I2S_DMAReq_Rx, ENABLE);
+ 325              		.loc 1 113 5 view .LVU95
+ 326 000e 0E4D     		ldr	r5, .L20+4
+ 327 0010 0122     		movs	r2, #1
+ 328 0012 1146     		mov	r1, r2
+ 329 0014 2846     		mov	r0, r5
+ 330 0016 FFF7FEFF 		bl	SPI_I2S_DMACmd
+ 331              	.LVL14:
+ 114:Core/Src/pdo_override.c ****     SPI_I2S_DMACmd(SPI2, SPI_I2S_DMAReq_Tx, ENABLE);
+ 332              		.loc 1 114 5 view .LVU96
+ 333 001a 0122     		movs	r2, #1
+ 334 001c 0221     		movs	r1, #2
+ 335 001e 2846     		mov	r0, r5
+ 336 0020 FFF7FEFF 		bl	SPI_I2S_DMACmd
+ 337              	.LVL15:
  115:Core/Src/pdo_override.c **** 
  116:Core/Src/pdo_override.c ****     spi_select (et1100);
- 335              		.loc 1 116 5 view .LVU97
- 336 0024 0120     		movs	r0, #1
- 337 0026 FFF7FEFF 		bl	spi_select
- 338              	.LVL16:
-ARM GAS  /tmp/ccwiOFqT.s 			page 9
+ 338              		.loc 1 116 5 view .LVU97
+ARM GAS  /tmp/cc1grS6n.s 			page 9
 
 
+ 339 0024 0120     		movs	r0, #1
+ 340 0026 FFF7FEFF 		bl	spi_select
+ 341              	.LVL16:
  117:Core/Src/pdo_override.c ****     /* Enable the DMA SPI TX Stream */
- 118:Core/Src/pdo_override.c ****     DMA_Cmd(DMA2_Stream3, ENABLE);
- 339              		.loc 1 118 5 view .LVU98
- 340 002a 0121     		movs	r1, #1
- 341 002c 0748     		ldr	r0, .L20+8
- 342 002e FFF7FEFF 		bl	DMA_Cmd
- 343              	.LVL17:
+ 118:Core/Src/pdo_override.c ****     DMA_Cmd(DMA1_Stream4, ENABLE);
+ 342              		.loc 1 118 5 view .LVU98
+ 343 002a 0121     		movs	r1, #1
+ 344 002c 0748     		ldr	r0, .L20+8
+ 345 002e FFF7FEFF 		bl	DMA_Cmd
+ 346              	.LVL17:
  119:Core/Src/pdo_override.c ****     /* Enable the DMA SPI RX Stream */
- 120:Core/Src/pdo_override.c ****     DMA_Cmd(DMA2_Stream2, ENABLE);
- 344              		.loc 1 120 5 view .LVU99
- 345 0032 0121     		movs	r1, #1
- 346 0034 2046     		mov	r0, r4
- 347 0036 FFF7FEFF 		bl	DMA_Cmd
- 348              	.LVL18:
+ 120:Core/Src/pdo_override.c ****     DMA_Cmd(DMA1_Stream3, ENABLE);
+ 347              		.loc 1 120 5 view .LVU99
+ 348 0032 0121     		movs	r1, #1
+ 349 0034 2046     		mov	r0, r4
+ 350 0036 FFF7FEFF 		bl	DMA_Cmd
+ 351              	.LVL18:
  121:Core/Src/pdo_override.c ****     
  122:Core/Src/pdo_override.c ****     pdi_dma_transmission = IN_PROGRESS;
- 349              		.loc 1 122 5 view .LVU100
- 350              		.loc 1 122 26 is_stmt 0 view .LVU101
- 351 003a 054B     		ldr	r3, .L20+12
- 352 003c 0122     		movs	r2, #1
- 353 003e 1A70     		strb	r2, [r3]
+ 352              		.loc 1 122 5 view .LVU100
+ 353              		.loc 1 122 26 is_stmt 0 view .LVU101
+ 354 003a 054B     		ldr	r3, .L20+12
+ 355 003c 0122     		movs	r2, #1
+ 356 003e 1A70     		strb	r2, [r3]
  123:Core/Src/pdo_override.c **** }
- 354              		.loc 1 123 1 view .LVU102
- 355 0040 38BD     		pop	{r3, r4, r5, pc}
- 356              	.L21:
- 357 0042 00BF     		.align	2
- 358              	.L20:
- 359 0044 40640240 		.word	1073898560
- 360 0048 00300140 		.word	1073819648
- 361 004c 58640240 		.word	1073898584
- 362 0050 00000000 		.word	.LANCHOR0
- 363              		.cfi_endproc
- 364              	.LFE126:
- 366              		.section	.text.spi_dma_stop,"ax",%progbits
- 367              		.align	1
- 368              		.global	spi_dma_stop
- 369              		.syntax unified
- 370              		.thumb
- 371              		.thumb_func
- 373              	spi_dma_stop:
- 374              	.LFB127:
+ 357              		.loc 1 123 1 view .LVU102
+ 358 0040 38BD     		pop	{r3, r4, r5, pc}
+ 359              	.L21:
+ 360 0042 00BF     		.align	2
+ 361              	.L20:
+ 362 0044 58600240 		.word	1073897560
+ 363 0048 00380040 		.word	1073756160
+ 364 004c 70600240 		.word	1073897584
+ 365 0050 00000000 		.word	.LANCHOR0
+ 366              		.cfi_endproc
+ 367              	.LFE126:
+ 369              		.section	.text.spi_dma_stop,"ax",%progbits
+ 370              		.align	1
+ 371              		.global	spi_dma_stop
+ 372              		.syntax unified
+ 373              		.thumb
+ 374              		.thumb_func
+ 375              		.fpu fpv4-sp-d16
+ 377              	spi_dma_stop:
+ 378              	.LFB127:
  124:Core/Src/pdo_override.c **** 
  125:Core/Src/pdo_override.c **** 
  126:Core/Src/pdo_override.c **** void spi_dma_stop(void)
  127:Core/Src/pdo_override.c **** {
- 375              		.loc 1 127 1 is_stmt 1 view -0
- 376              		.cfi_startproc
- 377              		@ args = 0, pretend = 0, frame = 0
- 378              		@ frame_needed = 0, uses_anonymous_args = 0
- 379 0000 38B5     		push	{r3, r4, r5, lr}
- 380              		.cfi_def_cfa_offset 16
- 381              		.cfi_offset 3, -16
- 382              		.cfi_offset 4, -12
- 383              		.cfi_offset 5, -8
- 384              		.cfi_offset 14, -4
+ 379              		.loc 1 127 1 is_stmt 1 view -0
+ 380              		.cfi_startproc
+ 381              		@ args = 0, pretend = 0, frame = 0
+ 382              		@ frame_needed = 0, uses_anonymous_args = 0
+ 383 0000 38B5     		push	{r3, r4, r5, lr}
+ 384              		.cfi_def_cfa_offset 16
+ 385              		.cfi_offset 3, -16
+ 386              		.cfi_offset 4, -12
+ARM GAS  /tmp/cc1grS6n.s 			page 10
+
+
+ 387              		.cfi_offset 5, -8
+ 388              		.cfi_offset 14, -4
  128:Core/Src/pdo_override.c ****     spi_unselect (et1100);
- 385              		.loc 1 128 5 view .LVU104
-ARM GAS  /tmp/ccwiOFqT.s 			page 10
-
-
- 386 0002 0120     		movs	r0, #1
- 387 0004 FFF7FEFF 		bl	spi_unselect
- 388              	.LVL19:
+ 389              		.loc 1 128 5 view .LVU104
+ 390 0002 0120     		movs	r0, #1
+ 391 0004 FFF7FEFF 		bl	spi_unselect
+ 392              	.LVL19:
  129:Core/Src/pdo_override.c **** 
- 130:Core/Src/pdo_override.c **** 	DMA_ClearFlag(DMA2_Stream3, DMA_FLAG_TCIF3);
- 389              		.loc 1 130 2 view .LVU105
- 390 0008 0F4D     		ldr	r5, .L24
- 391 000a 4FF0C051 		mov	r1, #402653184
- 392 000e 2846     		mov	r0, r5
- 393 0010 FFF7FEFF 		bl	DMA_ClearFlag
- 394              	.LVL20:
- 131:Core/Src/pdo_override.c **** 	DMA_ClearFlag(DMA2_Stream2, DMA_FLAG_TCIF2);
- 395              		.loc 1 131 2 view .LVU106
- 396 0014 0D4C     		ldr	r4, .L24+4
- 397 0016 4FF08151 		mov	r1, #270532608
- 398 001a 2046     		mov	r0, r4
- 399 001c FFF7FEFF 		bl	DMA_ClearFlag
- 400              	.LVL21:
+ 130:Core/Src/pdo_override.c **** 	DMA_ClearFlag(DMA1_Stream4, DMA_FLAG_TCIF4);
+ 393              		.loc 1 130 2 view .LVU105
+ 394 0008 0F4D     		ldr	r5, .L24
+ 395 000a 1049     		ldr	r1, .L24+4
+ 396 000c 2846     		mov	r0, r5
+ 397 000e FFF7FEFF 		bl	DMA_ClearFlag
+ 398              	.LVL20:
+ 131:Core/Src/pdo_override.c **** 	DMA_ClearFlag(DMA1_Stream3, DMA_FLAG_TCIF3);
+ 399              		.loc 1 131 2 view .LVU106
+ 400 0012 0F4C     		ldr	r4, .L24+8
+ 401 0014 4FF0C051 		mov	r1, #402653184
+ 402 0018 2046     		mov	r0, r4
+ 403 001a FFF7FEFF 		bl	DMA_ClearFlag
+ 404              	.LVL21:
  132:Core/Src/pdo_override.c **** 
- 133:Core/Src/pdo_override.c **** 	DMA_Cmd(DMA2_Stream3, DISABLE);
- 401              		.loc 1 133 2 view .LVU107
- 402 0020 0021     		movs	r1, #0
- 403 0022 2846     		mov	r0, r5
- 404 0024 FFF7FEFF 		bl	DMA_Cmd
- 405              	.LVL22:
- 134:Core/Src/pdo_override.c **** 	DMA_Cmd(DMA2_Stream2, DISABLE);
- 406              		.loc 1 134 2 view .LVU108
- 407 0028 0021     		movs	r1, #0
- 408 002a 2046     		mov	r0, r4
- 409 002c FFF7FEFF 		bl	DMA_Cmd
- 410              	.LVL23:
+ 133:Core/Src/pdo_override.c **** 	DMA_Cmd(DMA1_Stream4, DISABLE);
+ 405              		.loc 1 133 2 view .LVU107
+ 406 001e 0021     		movs	r1, #0
+ 407 0020 2846     		mov	r0, r5
+ 408 0022 FFF7FEFF 		bl	DMA_Cmd
+ 409              	.LVL22:
+ 134:Core/Src/pdo_override.c **** 	DMA_Cmd(DMA1_Stream3, DISABLE);
+ 410              		.loc 1 134 2 view .LVU108
+ 411 0026 0021     		movs	r1, #0
+ 412 0028 2046     		mov	r0, r4
+ 413 002a FFF7FEFF 		bl	DMA_Cmd
+ 414              	.LVL23:
  135:Core/Src/pdo_override.c **** 
  136:Core/Src/pdo_override.c **** 	SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Rx, DISABLE);
- 411              		.loc 1 136 2 view .LVU109
- 412 0030 074C     		ldr	r4, .L24+8
- 413 0032 0022     		movs	r2, #0
- 414 0034 0121     		movs	r1, #1
- 415 0036 2046     		mov	r0, r4
- 416 0038 FFF7FEFF 		bl	SPI_I2S_DMACmd
- 417              	.LVL24:
+ 415              		.loc 1 136 2 view .LVU109
+ 416 002e 094C     		ldr	r4, .L24+12
+ 417 0030 0022     		movs	r2, #0
+ 418 0032 0121     		movs	r1, #1
+ 419 0034 2046     		mov	r0, r4
+ 420 0036 FFF7FEFF 		bl	SPI_I2S_DMACmd
+ 421              	.LVL24:
  137:Core/Src/pdo_override.c **** 	SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Tx, DISABLE);
- 418              		.loc 1 137 2 view .LVU110
- 419 003c 0022     		movs	r2, #0
- 420 003e 0221     		movs	r1, #2
- 421 0040 2046     		mov	r0, r4
- 422 0042 FFF7FEFF 		bl	SPI_I2S_DMACmd
- 423              	.LVL25:
+ 422              		.loc 1 137 2 view .LVU110
+ 423 003a 0022     		movs	r2, #0
+ 424 003c 0221     		movs	r1, #2
+ 425 003e 2046     		mov	r0, r4
+ 426 0040 FFF7FEFF 		bl	SPI_I2S_DMACmd
+ 427              	.LVL25:
  138:Core/Src/pdo_override.c **** }
- 424              		.loc 1 138 1 is_stmt 0 view .LVU111
- 425 0046 38BD     		pop	{r3, r4, r5, pc}
- 426              	.L25:
- 427              		.align	2
- 428              	.L24:
- 429 0048 58640240 		.word	1073898584
- 430 004c 40640240 		.word	1073898560
- 431 0050 00300140 		.word	1073819648
- 432              		.cfi_endproc
-ARM GAS  /tmp/ccwiOFqT.s 			page 11
+ 428              		.loc 1 138 1 is_stmt 0 view .LVU111
+ 429 0044 38BD     		pop	{r3, r4, r5, pc}
+ 430              	.L25:
+ 431 0046 00BF     		.align	2
+ 432              	.L24:
+ARM GAS  /tmp/cc1grS6n.s 			page 11
 
 
- 433              	.LFE127:
- 435              		.section	.text.spi_dma_rxpdo_start,"ax",%progbits
- 436              		.align	1
- 437              		.global	spi_dma_rxpdo_start
- 438              		.syntax unified
- 439              		.thumb
- 440              		.thumb_func
- 442              	spi_dma_rxpdo_start:
- 443              	.LFB128:
+ 433 0048 70600240 		.word	1073897584
+ 434 004c 20000020 		.word	536870944
+ 435 0050 58600240 		.word	1073897560
+ 436 0054 00300140 		.word	1073819648
+ 437              		.cfi_endproc
+ 438              	.LFE127:
+ 440              		.section	.text.spi_dma_rxpdo_start,"ax",%progbits
+ 441              		.align	1
+ 442              		.global	spi_dma_rxpdo_start
+ 443              		.syntax unified
+ 444              		.thumb
+ 445              		.thumb_func
+ 446              		.fpu fpv4-sp-d16
+ 448              	spi_dma_rxpdo_start:
+ 449              	.LFB128:
  139:Core/Src/pdo_override.c **** 
  140:Core/Src/pdo_override.c **** 
  141:Core/Src/pdo_override.c **** void spi_dma_rxpdo_start(void)
  142:Core/Src/pdo_override.c **** {
- 444              		.loc 1 142 1 is_stmt 1 view -0
- 445              		.cfi_startproc
- 446              		@ args = 0, pretend = 0, frame = 0
- 447              		@ frame_needed = 0, uses_anonymous_args = 0
- 448 0000 08B5     		push	{r3, lr}
- 449              		.cfi_def_cfa_offset 8
- 450              		.cfi_offset 3, -8
- 451              		.cfi_offset 14, -4
+ 450              		.loc 1 142 1 is_stmt 1 view -0
+ 451              		.cfi_startproc
+ 452              		@ args = 0, pretend = 0, frame = 0
+ 453              		@ frame_needed = 0, uses_anonymous_args = 0
+ 454 0000 08B5     		push	{r3, lr}
+ 455              		.cfi_def_cfa_offset 8
+ 456              		.cfi_offset 3, -8
+ 457              		.cfi_offset 14, -4
  143:Core/Src/pdo_override.c ****     memset(pdo_coe_txbuf, 0, PDO_SIZE);  /* make sure TX buffer is filled with 0s, no read end byte
- 452              		.loc 1 143 5 view .LVU113
- 453 0002 074B     		ldr	r3, .L28
- 454 0004 1B68     		ldr	r3, [r3]
- 455 0006 0022     		movs	r2, #0
- 456 0008 1A80     		strh	r2, [r3]	@ unaligned
+ 458              		.loc 1 143 5 view .LVU113
+ 459 0002 074B     		ldr	r3, .L28
+ 460 0004 1B68     		ldr	r3, [r3]
+ 461 0006 0022     		movs	r2, #0
+ 462 0008 1A80     		strh	r2, [r3]	@ unaligned
  144:Core/Src/pdo_override.c ****     spi_dma_prepare_transmission(ESC_SM2_sma, pdo_spi_txbuf, ESC_CMD_READ_WAIT_STATE);
- 457              		.loc 1 144 5 view .LVU114
- 458 000a 0322     		movs	r2, #3
- 459 000c 054B     		ldr	r3, .L28+4
- 460 000e 1968     		ldr	r1, [r3]
- 461 0010 4FF4B050 		mov	r0, #5632
- 462 0014 FFF7FEFF 		bl	spi_dma_prepare_transmission
- 463              	.LVL26:
+ 463              		.loc 1 144 5 view .LVU114
+ 464 000a 0322     		movs	r2, #3
+ 465 000c 054B     		ldr	r3, .L28+4
+ 466 000e 1968     		ldr	r1, [r3]
+ 467 0010 4FF4B050 		mov	r0, #5632
+ 468 0014 FFF7FEFF 		bl	spi_dma_prepare_transmission
+ 469              	.LVL26:
  145:Core/Src/pdo_override.c **** 
  146:Core/Src/pdo_override.c ****     spi_dma_start();
- 464              		.loc 1 146 5 view .LVU115
- 465 0018 FFF7FEFF 		bl	spi_dma_start
- 466              	.LVL27:
+ 470              		.loc 1 146 5 view .LVU115
+ 471 0018 FFF7FEFF 		bl	spi_dma_start
+ 472              	.LVL27:
  147:Core/Src/pdo_override.c **** }
- 467              		.loc 1 147 1 is_stmt 0 view .LVU116
- 468 001c 08BD     		pop	{r3, pc}
- 469              	.L29:
- 470 001e 00BF     		.align	2
- 471              	.L28:
- 472 0020 00000000 		.word	.LANCHOR3
- 473 0024 00000000 		.word	.LANCHOR1
- 474              		.cfi_endproc
- 475              	.LFE128:
- 477              		.section	.text.spi_dma_txpdo_start,"ax",%progbits
- 478              		.align	1
- 479              		.global	spi_dma_txpdo_start
- 480              		.syntax unified
- 481              		.thumb
- 482              		.thumb_func
- 484              	spi_dma_txpdo_start:
-ARM GAS  /tmp/ccwiOFqT.s 			page 12
+ 473              		.loc 1 147 1 is_stmt 0 view .LVU116
+ 474 001c 08BD     		pop	{r3, pc}
+ 475              	.L29:
+ 476 001e 00BF     		.align	2
+ 477              	.L28:
+ 478 0020 00000000 		.word	.LANCHOR3
+ 479 0024 00000000 		.word	.LANCHOR1
+ 480              		.cfi_endproc
+ 481              	.LFE128:
+ 483              		.section	.text.spi_dma_txpdo_start,"ax",%progbits
+ARM GAS  /tmp/cc1grS6n.s 			page 12
 
 
- 485              	.LFB129:
+ 484              		.align	1
+ 485              		.global	spi_dma_txpdo_start
+ 486              		.syntax unified
+ 487              		.thumb
+ 488              		.thumb_func
+ 489              		.fpu fpv4-sp-d16
+ 491              	spi_dma_txpdo_start:
+ 492              	.LFB129:
  148:Core/Src/pdo_override.c **** 
  149:Core/Src/pdo_override.c **** 
  150:Core/Src/pdo_override.c **** void spi_dma_txpdo_start()
  151:Core/Src/pdo_override.c **** {
- 486              		.loc 1 151 1 is_stmt 1 view -0
- 487              		.cfi_startproc
- 488              		@ args = 0, pretend = 0, frame = 0
- 489              		@ frame_needed = 0, uses_anonymous_args = 0
- 490 0000 08B5     		push	{r3, lr}
- 491              		.cfi_def_cfa_offset 8
- 492              		.cfi_offset 3, -8
- 493              		.cfi_offset 14, -4
+ 493              		.loc 1 151 1 is_stmt 1 view -0
+ 494              		.cfi_startproc
+ 495              		@ args = 0, pretend = 0, frame = 0
+ 496              		@ frame_needed = 0, uses_anonymous_args = 0
+ 497 0000 08B5     		push	{r3, lr}
+ 498              		.cfi_def_cfa_offset 8
+ 499              		.cfi_offset 3, -8
+ 500              		.cfi_offset 14, -4
  152:Core/Src/pdo_override.c ****     spi_dma_prepare_transmission(ESC_SM3_sma, pdo_spi_txbuf, ESC_CMD_WRITE);
- 494              		.loc 1 152 5 view .LVU118
- 495 0002 0422     		movs	r2, #4
- 496 0004 044B     		ldr	r3, .L32
- 497 0006 1968     		ldr	r1, [r3]
- 498 0008 4FF4D050 		mov	r0, #6656
- 499 000c FFF7FEFF 		bl	spi_dma_prepare_transmission
- 500              	.LVL28:
+ 501              		.loc 1 152 5 view .LVU118
+ 502 0002 0422     		movs	r2, #4
+ 503 0004 044B     		ldr	r3, .L32
+ 504 0006 1968     		ldr	r1, [r3]
+ 505 0008 4FF4D050 		mov	r0, #6656
+ 506 000c FFF7FEFF 		bl	spi_dma_prepare_transmission
+ 507              	.LVL28:
  153:Core/Src/pdo_override.c **** 
  154:Core/Src/pdo_override.c ****     spi_dma_start();
- 501              		.loc 1 154 5 view .LVU119
- 502 0010 FFF7FEFF 		bl	spi_dma_start
- 503              	.LVL29:
+ 508              		.loc 1 154 5 view .LVU119
+ 509 0010 FFF7FEFF 		bl	spi_dma_start
+ 510              	.LVL29:
  155:Core/Src/pdo_override.c **** }
- 504              		.loc 1 155 1 is_stmt 0 view .LVU120
- 505 0014 08BD     		pop	{r3, pc}
- 506              	.L33:
- 507 0016 00BF     		.align	2
- 508              	.L32:
- 509 0018 00000000 		.word	.LANCHOR1
- 510              		.cfi_endproc
- 511              	.LFE129:
- 513              		.section	.text.init_override,"ax",%progbits
- 514              		.align	1
- 515              		.global	init_override
- 516              		.syntax unified
- 517              		.thumb
- 518              		.thumb_func
- 520              	init_override:
- 521              	.LFB130:
+ 511              		.loc 1 155 1 is_stmt 0 view .LVU120
+ 512 0014 08BD     		pop	{r3, pc}
+ 513              	.L33:
+ 514 0016 00BF     		.align	2
+ 515              	.L32:
+ 516 0018 00000000 		.word	.LANCHOR1
+ 517              		.cfi_endproc
+ 518              	.LFE129:
+ 520              		.section	.text.init_override,"ax",%progbits
+ 521              		.align	1
+ 522              		.global	init_override
+ 523              		.syntax unified
+ 524              		.thumb
+ 525              		.thumb_func
+ 526              		.fpu fpv4-sp-d16
+ 528              	init_override:
+ 529              	.LFB130:
  156:Core/Src/pdo_override.c **** 
  157:Core/Src/pdo_override.c **** 
  158:Core/Src/pdo_override.c **** void init_override(void)
  159:Core/Src/pdo_override.c **** {
- 522              		.loc 1 159 1 is_stmt 1 view -0
- 523              		.cfi_startproc
- 524              		@ args = 0, pretend = 0, frame = 0
- 525              		@ frame_needed = 0, uses_anonymous_args = 0
- 526 0000 08B5     		push	{r3, lr}
- 527              		.cfi_def_cfa_offset 8
- 528              		.cfi_offset 3, -8
- 529              		.cfi_offset 14, -4
+ 530              		.loc 1 159 1 is_stmt 1 view -0
+ 531              		.cfi_startproc
+ARM GAS  /tmp/cc1grS6n.s 			page 13
+
+
+ 532              		@ args = 0, pretend = 0, frame = 0
+ 533              		@ frame_needed = 0, uses_anonymous_args = 0
+ 534 0000 08B5     		push	{r3, lr}
+ 535              		.cfi_def_cfa_offset 8
+ 536              		.cfi_offset 3, -8
+ 537              		.cfi_offset 14, -4
  160:Core/Src/pdo_override.c ****     spi_dma_setup();
- 530              		.loc 1 160 5 view .LVU122
-ARM GAS  /tmp/ccwiOFqT.s 			page 13
-
-
- 531 0002 FFF7FEFF 		bl	spi_dma_setup
- 532              	.LVL30:
+ 538              		.loc 1 160 5 view .LVU122
+ 539 0002 FFF7FEFF 		bl	spi_dma_setup
+ 540              	.LVL30:
  161:Core/Src/pdo_override.c ****     spi_setup();
- 533              		.loc 1 161 5 view .LVU123
- 534 0006 FFF7FEFF 		bl	spi_setup
- 535              	.LVL31:
+ 541              		.loc 1 161 5 view .LVU123
+ 542 0006 FFF7FEFF 		bl	spi_setup
+ 543              	.LVL31:
  162:Core/Src/pdo_override.c ****     
  163:Core/Src/pdo_override.c ****     /* SMx_sml are calculated at runtime on PREOP_TO_SAFEOP, buffer size is needed on compilation
  164:Core/Src/pdo_override.c ****         TODO test if they match, when ESC is OP */
  165:Core/Src/pdo_override.c ****     // CC_ASSERT (ESCvar.ESC_SM2_sml == PDO_SIZE);
  166:Core/Src/pdo_override.c ****     // CC_ASSERT (ESCvar.ESC_SM3_sml == PDO_SIZE);
  167:Core/Src/pdo_override.c **** }
- 536              		.loc 1 167 1 is_stmt 0 view .LVU124
- 537 000a 08BD     		pop	{r3, pc}
- 538              		.cfi_endproc
- 539              	.LFE130:
- 541              		.section	.text.on_rxpdo_transfer_finished,"ax",%progbits
- 542              		.align	1
- 543              		.global	on_rxpdo_transfer_finished
- 544              		.syntax unified
- 545              		.thumb
- 546              		.thumb_func
- 548              	on_rxpdo_transfer_finished:
- 549              	.LFB132:
+ 544              		.loc 1 167 1 is_stmt 0 view .LVU124
+ 545 000a 08BD     		pop	{r3, pc}
+ 546              		.cfi_endproc
+ 547              	.LFE130:
+ 549              		.section	.text.on_rxpdo_transfer_finished,"ax",%progbits
+ 550              		.align	1
+ 551              		.global	on_rxpdo_transfer_finished
+ 552              		.syntax unified
+ 553              		.thumb
+ 554              		.thumb_func
+ 555              		.fpu fpv4-sp-d16
+ 557              	on_rxpdo_transfer_finished:
+ 558              	.LFB132:
  168:Core/Src/pdo_override.c **** 
  169:Core/Src/pdo_override.c **** 
  170:Core/Src/pdo_override.c **** void rxpdo_override(void)
@@ -757,116 +766,118 @@ ARM GAS  /tmp/ccwiOFqT.s 			page 1
  177:Core/Src/pdo_override.c **** 
  178:Core/Src/pdo_override.c **** void on_rxpdo_transfer_finished(void)
  179:Core/Src/pdo_override.c **** {
- 550              		.loc 1 179 1 is_stmt 1 view -0
- 551              		.cfi_startproc
- 552              		@ args = 0, pretend = 0, frame = 0
- 553              		@ frame_needed = 0, uses_anonymous_args = 0
- 554 0000 08B5     		push	{r3, lr}
- 555              		.cfi_def_cfa_offset 8
- 556              		.cfi_offset 3, -8
- 557              		.cfi_offset 14, -4
+ 559              		.loc 1 179 1 is_stmt 1 view -0
+ 560              		.cfi_startproc
+ 561              		@ args = 0, pretend = 0, frame = 0
+ 562              		@ frame_needed = 0, uses_anonymous_args = 0
+ 563 0000 08B5     		push	{r3, lr}
+ 564              		.cfi_def_cfa_offset 8
+ 565              		.cfi_offset 3, -8
+ 566              		.cfi_offset 14, -4
  180:Core/Src/pdo_override.c ****     spi_dma_stop();
- 558              		.loc 1 180 5 view .LVU126
- 559 0002 FFF7FEFF 		bl	spi_dma_stop
- 560              	.LVL32:
+ 567              		.loc 1 180 5 view .LVU126
+ 568 0002 FFF7FEFF 		bl	spi_dma_stop
+ 569              	.LVL32:
+ARM GAS  /tmp/cc1grS6n.s 			page 14
+
+
  181:Core/Src/pdo_override.c ****     ESCvar.ALevent = etohs ((uint16_t)*pdo_spi_rxbuf);
- 561              		.loc 1 181 5 view .LVU127
- 562              		.loc 1 181 22 is_stmt 0 view .LVU128
- 563 0006 074B     		ldr	r3, .L38
- 564 0008 1B68     		ldr	r3, [r3]
- 565 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 566              		.loc 1 181 20 view .LVU129
- 567 000c 064B     		ldr	r3, .L38+4
- 568 000e C3F8E420 		str	r2, [r3, #228]
-ARM GAS  /tmp/ccwiOFqT.s 			page 14
-
-
+ 570              		.loc 1 181 5 view .LVU127
+ 571              		.loc 1 181 22 is_stmt 0 view .LVU128
+ 572 0006 074B     		ldr	r3, .L38
+ 573 0008 1B68     		ldr	r3, [r3]
+ 574 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 575              		.loc 1 181 20 view .LVU129
+ 576 000c 064B     		ldr	r3, .L38+4
+ 577 000e C3F8E420 		str	r2, [r3, #228]
  182:Core/Src/pdo_override.c ****     
  183:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM2 > 0)
- 569              		.loc 1 183 5 is_stmt 1 view .LVU130
+ 578              		.loc 1 183 5 is_stmt 1 view .LVU130
  184:Core/Src/pdo_override.c ****     {
  185:Core/Src/pdo_override.c ****         COE_pdoUnpack (pdo_coe_rxbuf, ESCvar.sm2mappings, SMmap2);
- 570              		.loc 1 185 9 view .LVU131
- 571 0012 064A     		ldr	r2, .L38+8
- 572 0014 D3F8AC10 		ldr	r1, [r3, #172]
- 573 0018 054B     		ldr	r3, .L38+12
- 574 001a 1868     		ldr	r0, [r3]
- 575 001c FFF7FEFF 		bl	COE_pdoUnpack
- 576              	.LVL33:
+ 579              		.loc 1 185 9 view .LVU131
+ 580 0012 064A     		ldr	r2, .L38+8
+ 581 0014 D3F8AC10 		ldr	r1, [r3, #172]
+ 582 0018 054B     		ldr	r3, .L38+12
+ 583 001a 1868     		ldr	r0, [r3]
+ 584 001c FFF7FEFF 		bl	COE_pdoUnpack
+ 585              	.LVL33:
  186:Core/Src/pdo_override.c ****     }
  187:Core/Src/pdo_override.c **** }
- 577              		.loc 1 187 1 is_stmt 0 view .LVU132
- 578 0020 08BD     		pop	{r3, pc}
- 579              	.L39:
- 580 0022 00BF     		.align	2
- 581              	.L38:
- 582 0024 00000000 		.word	.LANCHOR2
- 583 0028 00000000 		.word	ESCvar
- 584 002c 00000000 		.word	SMmap2
- 585 0030 00000000 		.word	.LANCHOR4
- 586              		.cfi_endproc
- 587              	.LFE132:
- 589              		.section	.text.rxpdo_override,"ax",%progbits
- 590              		.align	1
- 591              		.global	rxpdo_override
- 592              		.syntax unified
- 593              		.thumb
- 594              		.thumb_func
- 596              	rxpdo_override:
- 597              	.LFB131:
+ 586              		.loc 1 187 1 is_stmt 0 view .LVU132
+ 587 0020 08BD     		pop	{r3, pc}
+ 588              	.L39:
+ 589 0022 00BF     		.align	2
+ 590              	.L38:
+ 591 0024 00000000 		.word	.LANCHOR2
+ 592 0028 00000000 		.word	ESCvar
+ 593 002c 00000000 		.word	SMmap2
+ 594 0030 00000000 		.word	.LANCHOR4
+ 595              		.cfi_endproc
+ 596              	.LFE132:
+ 598              		.section	.text.rxpdo_override,"ax",%progbits
+ 599              		.align	1
+ 600              		.global	rxpdo_override
+ 601              		.syntax unified
+ 602              		.thumb
+ 603              		.thumb_func
+ 604              		.fpu fpv4-sp-d16
+ 606              	rxpdo_override:
+ 607              	.LFB131:
  171:Core/Src/pdo_override.c ****     spi_dma_rxpdo_start();
- 598              		.loc 1 171 1 is_stmt 1 view -0
- 599              		.cfi_startproc
- 600              		@ args = 0, pretend = 0, frame = 0
- 601              		@ frame_needed = 0, uses_anonymous_args = 0
- 602 0000 08B5     		push	{r3, lr}
- 603              		.cfi_def_cfa_offset 8
- 604              		.cfi_offset 3, -8
- 605              		.cfi_offset 14, -4
+ 608              		.loc 1 171 1 is_stmt 1 view -0
+ 609              		.cfi_startproc
+ 610              		@ args = 0, pretend = 0, frame = 0
+ 611              		@ frame_needed = 0, uses_anonymous_args = 0
+ 612 0000 08B5     		push	{r3, lr}
+ 613              		.cfi_def_cfa_offset 8
+ 614              		.cfi_offset 3, -8
+ 615              		.cfi_offset 14, -4
  172:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS) { } /* polling for "end of transfer" flag */
- 606              		.loc 1 172 5 view .LVU134
- 607 0002 FFF7FEFF 		bl	spi_dma_rxpdo_start
- 608              	.LVL34:
+ 616              		.loc 1 172 5 view .LVU134
+ 617 0002 FFF7FEFF 		bl	spi_dma_rxpdo_start
+ 618              	.LVL34:
  173:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
- 609              		.loc 1 173 5 view .LVU135
- 610              	.L41:
- 173:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
- 611              		.loc 1 173 51 discriminator 1 view .LVU136
- 173:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
- 612              		.loc 1 173 11 discriminator 1 view .LVU137
- 173:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
- 613              		.loc 1 173 33 is_stmt 0 discriminator 1 view .LVU138
- 614 0006 044B     		ldr	r3, .L43
- 615 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  /tmp/ccwiOFqT.s 			page 15
+ARM GAS  /tmp/cc1grS6n.s 			page 15
 
 
- 616 000a DBB2     		uxtb	r3, r3
+ 619              		.loc 1 173 5 view .LVU135
+ 620              	.L41:
  173:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
- 617              		.loc 1 173 11 discriminator 1 view .LVU139
- 618 000c 012B     		cmp	r3, #1
- 619 000e FAD0     		beq	.L41
+ 621              		.loc 1 173 51 discriminator 1 view .LVU136
+ 173:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
+ 622              		.loc 1 173 11 discriminator 1 view .LVU137
+ 173:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
+ 623              		.loc 1 173 33 is_stmt 0 discriminator 1 view .LVU138
+ 624 0006 044B     		ldr	r3, .L43
+ 625 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 626 000a DBB2     		uxtb	r3, r3
+ 173:Core/Src/pdo_override.c ****     on_rxpdo_transfer_finished();
+ 627              		.loc 1 173 11 discriminator 1 view .LVU139
+ 628 000c 012B     		cmp	r3, #1
+ 629 000e FAD0     		beq	.L41
  174:Core/Src/pdo_override.c **** }
- 620              		.loc 1 174 5 is_stmt 1 view .LVU140
- 621 0010 FFF7FEFF 		bl	on_rxpdo_transfer_finished
- 622              	.LVL35:
+ 630              		.loc 1 174 5 is_stmt 1 view .LVU140
+ 631 0010 FFF7FEFF 		bl	on_rxpdo_transfer_finished
+ 632              	.LVL35:
  175:Core/Src/pdo_override.c **** 
- 623              		.loc 1 175 1 is_stmt 0 view .LVU141
- 624 0014 08BD     		pop	{r3, pc}
- 625              	.L44:
- 626 0016 00BF     		.align	2
- 627              	.L43:
- 628 0018 00000000 		.word	.LANCHOR0
- 629              		.cfi_endproc
- 630              	.LFE131:
- 632              		.section	.text.on_txpdo_transfer_finished,"ax",%progbits
- 633              		.align	1
- 634              		.global	on_txpdo_transfer_finished
- 635              		.syntax unified
- 636              		.thumb
- 637              		.thumb_func
- 639              	on_txpdo_transfer_finished:
- 640              	.LFB134:
+ 633              		.loc 1 175 1 is_stmt 0 view .LVU141
+ 634 0014 08BD     		pop	{r3, pc}
+ 635              	.L44:
+ 636 0016 00BF     		.align	2
+ 637              	.L43:
+ 638 0018 00000000 		.word	.LANCHOR0
+ 639              		.cfi_endproc
+ 640              	.LFE131:
+ 642              		.section	.text.on_txpdo_transfer_finished,"ax",%progbits
+ 643              		.align	1
+ 644              		.global	on_txpdo_transfer_finished
+ 645              		.syntax unified
+ 646              		.thumb
+ 647              		.thumb_func
+ 648              		.fpu fpv4-sp-d16
+ 650              	on_txpdo_transfer_finished:
+ 651              	.LFB134:
  188:Core/Src/pdo_override.c **** 
  189:Core/Src/pdo_override.c **** 
  190:Core/Src/pdo_override.c **** void txpdo_override(void)
@@ -884,219 +895,219 @@ ARM GAS  /tmp/ccwiOFqT.s 			page 1
  202:Core/Src/pdo_override.c **** 
  203:Core/Src/pdo_override.c **** void on_txpdo_transfer_finished(void)
  204:Core/Src/pdo_override.c **** {
- 641              		.loc 1 204 1 is_stmt 1 view -0
- 642              		.cfi_startproc
- 643              		@ args = 0, pretend = 0, frame = 0
- 644              		@ frame_needed = 0, uses_anonymous_args = 0
- 645 0000 08B5     		push	{r3, lr}
- 646              		.cfi_def_cfa_offset 8
- 647              		.cfi_offset 3, -8
- 648              		.cfi_offset 14, -4
+ 652              		.loc 1 204 1 is_stmt 1 view -0
+ 653              		.cfi_startproc
+ 654              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc1grS6n.s 			page 16
+
+
+ 655              		@ frame_needed = 0, uses_anonymous_args = 0
+ 656 0000 08B5     		push	{r3, lr}
+ 657              		.cfi_def_cfa_offset 8
+ 658              		.cfi_offset 3, -8
+ 659              		.cfi_offset 14, -4
  205:Core/Src/pdo_override.c ****     spi_dma_stop();
- 649              		.loc 1 205 5 view .LVU143
- 650 0002 FFF7FEFF 		bl	spi_dma_stop
- 651              	.LVL36:
+ 660              		.loc 1 205 5 view .LVU143
+ 661 0002 FFF7FEFF 		bl	spi_dma_stop
+ 662              	.LVL36:
  206:Core/Src/pdo_override.c ****     ESCvar.ALevent = etohs ((uint16_t)*pdo_spi_rxbuf);
- 652              		.loc 1 206 5 view .LVU144
-ARM GAS  /tmp/ccwiOFqT.s 			page 16
-
-
- 653              		.loc 1 206 22 is_stmt 0 view .LVU145
- 654 0006 034B     		ldr	r3, .L47
- 655 0008 1B68     		ldr	r3, [r3]
- 656 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 657              		.loc 1 206 20 view .LVU146
- 658 000c 024B     		ldr	r3, .L47+4
- 659 000e C3F8E420 		str	r2, [r3, #228]
+ 663              		.loc 1 206 5 view .LVU144
+ 664              		.loc 1 206 22 is_stmt 0 view .LVU145
+ 665 0006 034B     		ldr	r3, .L47
+ 666 0008 1B68     		ldr	r3, [r3]
+ 667 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 668              		.loc 1 206 20 view .LVU146
+ 669 000c 024B     		ldr	r3, .L47+4
+ 670 000e C3F8E420 		str	r2, [r3, #228]
  207:Core/Src/pdo_override.c **** }...
- 660              		.loc 1 207 1 view .LVU147
- 661 0012 08BD     		pop	{r3, pc}
- 662              	.L48:
- 663              		.align	2
- 664              	.L47:
- 665 0014 00000000 		.word	.LANCHOR2
- 666 0018 00000000 		.word	ESCvar
- 667              		.cfi_endproc
- 668              	.LFE134:
- 670              		.section	.text.txpdo_override,"ax",%progbits
- 671              		.align	1
- 672              		.global	txpdo_override
- 673              		.syntax unified
- 674              		.thumb
- 675              		.thumb_func
- 677              	txpdo_override:
- 678              	.LFB133:
+ 671              		.loc 1 207 1 view .LVU147
+ 672 0012 08BD     		pop	{r3, pc}
+ 673              	.L48:
+ 674              		.align	2
+ 675              	.L47:
+ 676 0014 00000000 		.word	.LANCHOR2
+ 677 0018 00000000 		.word	ESCvar
+ 678              		.cfi_endproc
+ 679              	.LFE134:
+ 681              		.section	.text.txpdo_override,"ax",%progbits
+ 682              		.align	1
+ 683              		.global	txpdo_override
+ 684              		.syntax unified
+ 685              		.thumb
+ 686              		.thumb_func
+ 687              		.fpu fpv4-sp-d16
+ 689              	txpdo_override:
+ 690              	.LFB133:
  191:Core/Src/pdo_override.c **** {
- 679              		.loc 1 191 1 is_stmt 1 view -0
- 680              		.cfi_startproc
- 681              		@ args = 0, pretend = 0, frame = 0
- 682              		@ frame_needed = 0, uses_anonymous_args = 0
- 683 0000 08B5     		push	{r3, lr}
- 684              		.cfi_def_cfa_offset 8
- 685              		.cfi_offset 3, -8
- 686              		.cfi_offset 14, -4
+ 691              		.loc 1 191 1 is_stmt 1 view -0
+ 692              		.cfi_startproc
+ 693              		@ args = 0, pretend = 0, frame = 0
+ 694              		@ frame_needed = 0, uses_anonymous_args = 0
+ 695 0000 08B5     		push	{r3, lr}
+ 696              		.cfi_def_cfa_offset 8
+ 697              		.cfi_offset 3, -8
+ 698              		.cfi_offset 14, -4
  192:Core/Src/pdo_override.c ****     if (MAX_MAPPINGS_SM3 > 0)
- 687              		.loc 1 192 5 view .LVU149
+ 699              		.loc 1 192 5 view .LVU149
  194:Core/Src/pdo_override.c ****         COE_pdoPack (pdo_coe_txbuf, ESCvar.sm3mappings, SMmap3);
- 688              		.loc 1 194 9 view .LVU150
- 689 0002 094A     		ldr	r2, .L52
- 690 0004 094B     		ldr	r3, .L52+4
- 691 0006 D3F8B010 		ldr	r1, [r3, #176]
- 692 000a 094B     		ldr	r3, .L52+8
- 693 000c 1868     		ldr	r0, [r3]
- 694 000e FFF7FEFF 		bl	COE_pdoPack
- 695              	.LVL37:
+ 700              		.loc 1 194 9 view .LVU150
+ 701 0002 094A     		ldr	r2, .L52
+ 702 0004 094B     		ldr	r3, .L52+4
+ 703 0006 D3F8B010 		ldr	r1, [r3, #176]
+ 704 000a 094B     		ldr	r3, .L52+8
+ 705 000c 1868     		ldr	r0, [r3]
+ 706 000e FFF7FEFF 		bl	COE_pdoPack
+ 707              	.LVL37:
+ARM GAS  /tmp/cc1grS6n.s 			page 17
+
+
  197:Core/Src/pdo_override.c ****     spi_dma_txpdo_start();
- 696              		.loc 1 197 5 view .LVU151
- 697 0012 FFF7FEFF 		bl	spi_dma_txpdo_start
- 698              	.LVL38:
+ 708              		.loc 1 197 5 view .LVU151
+ 709 0012 FFF7FEFF 		bl	spi_dma_txpdo_start
+ 710              	.LVL38:
  198:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS) { } /* polling to end of transfer flag */
- 699              		.loc 1 198 5 view .LVU152
- 700              	.L50:
+ 711              		.loc 1 198 5 view .LVU152
+ 712              	.L50:
  198:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS) { } /* polling to end of transfer flag */
- 701              		.loc 1 198 51 discriminator 1 view .LVU153
+ 713              		.loc 1 198 51 discriminator 1 view .LVU153
  198:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS) { } /* polling to end of transfer flag */
- 702              		.loc 1 198 11 discriminator 1 view .LVU154
+ 714              		.loc 1 198 11 discriminator 1 view .LVU154
  198:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS) { } /* polling to end of transfer flag */
-ARM GAS  /tmp/ccwiOFqT.s 			page 17
-
-
- 703              		.loc 1 198 33 is_stmt 0 discriminator 1 view .LVU155
- 704 0016 074B     		ldr	r3, .L52+12
- 705 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 706 001a DBB2     		uxtb	r3, r3
+ 715              		.loc 1 198 33 is_stmt 0 discriminator 1 view .LVU155
+ 716 0016 074B     		ldr	r3, .L52+12
+ 717 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 718 001a DBB2     		uxtb	r3, r3
  198:Core/Src/pdo_override.c ****     while (pdi_dma_transmission == IN_PROGRESS) { } /* polling to end of transfer flag */
- 707              		.loc 1 198 11 discriminator 1 view .LVU156
- 708 001c 012B     		cmp	r3, #1
- 709 001e FAD0     		beq	.L50
+ 719              		.loc 1 198 11 discriminator 1 view .LVU156
+ 720 001c 012B     		cmp	r3, #1
+ 721 001e FAD0     		beq	.L50
  199:Core/Src/pdo_override.c ****     on_txpdo_transfer_finished();
- 710              		.loc 1 199 5 is_stmt 1 view .LVU157
- 711 0020 FFF7FEFF 		bl	on_txpdo_transfer_finished
- 712              	.LVL39:
+ 722              		.loc 1 199 5 is_stmt 1 view .LVU157
+ 723 0020 FFF7FEFF 		bl	on_txpdo_transfer_finished
+ 724              	.LVL39:
  200:Core/Src/pdo_override.c **** }
- 713              		.loc 1 200 1 is_stmt 0 view .LVU158
- 714 0024 08BD     		pop	{r3, pc}
- 715              	.L53:
- 716 0026 00BF     		.align	2
- 717              	.L52:
- 718 0028 00000000 		.word	SMmap3
- 719 002c 00000000 		.word	ESCvar
- 720 0030 00000000 		.word	.LANCHOR3
- 721 0034 00000000 		.word	.LANCHOR0
- 722              		.cfi_endproc
- 723              	.LFE133:
- 725              		.global	pdo_coe_txbuf
- 726              		.global	pdo_spi_txbuf
- 727              		.global	pdo_txbuf
- 728              		.global	pdo_coe_rxbuf
- 729              		.global	pdo_spi_rxbuf
- 730              		.global	pdo_rxbuf
- 731              		.section	.bss.pdi_dma_transmission,"aw",%nobits
- 732              		.set	.LANCHOR0,. + 0
- 735              	pdi_dma_transmission:
- 736 0000 00       		.space	1
- 737              		.section	.bss.pdo_rxbuf,"aw",%nobits
- 738              		.align	3
- 741              	pdo_rxbuf:
- 742 0000 00000000 		.space	10
- 742      00000000 
- 742      0000
- 743              		.section	.bss.pdo_txbuf,"aw",%nobits
- 744              		.align	3
- 747              	pdo_txbuf:
- 748 0000 00000000 		.space	11
- 748      00000000 
- 748      000000
- 749              		.section	.data.pdo_coe_rxbuf,"aw"
- 750              		.align	2
- 751              		.set	.LANCHOR4,. + 0
- 754              	pdo_coe_rxbuf:
- 755 0000 08000000 		.word	pdo_rxbuf+8
- 756              		.section	.data.pdo_coe_txbuf,"aw"
- 757              		.align	2
- 758              		.set	.LANCHOR3,. + 0
- 761              	pdo_coe_txbuf:
- 762 0000 08000000 		.word	pdo_txbuf+8
- 763              		.section	.data.pdo_spi_rxbuf,"aw"
-ARM GAS  /tmp/ccwiOFqT.s 			page 18
+ 725              		.loc 1 200 1 is_stmt 0 view .LVU158
+ 726 0024 08BD     		pop	{r3, pc}
+ 727              	.L53:
+ 728 0026 00BF     		.align	2
+ 729              	.L52:
+ 730 0028 00000000 		.word	SMmap3
+ 731 002c 00000000 		.word	ESCvar
+ 732 0030 00000000 		.word	.LANCHOR3
+ 733 0034 00000000 		.word	.LANCHOR0
+ 734              		.cfi_endproc
+ 735              	.LFE133:
+ 737              		.global	pdo_coe_txbuf
+ 738              		.global	pdo_spi_txbuf
+ 739              		.global	pdo_txbuf
+ 740              		.global	pdo_coe_rxbuf
+ 741              		.global	pdo_spi_rxbuf
+ 742              		.global	pdo_rxbuf
+ 743              		.section	.bss.pdi_dma_transmission,"aw",%nobits
+ 744              		.set	.LANCHOR0,. + 0
+ 747              	pdi_dma_transmission:
+ 748 0000 00       		.space	1
+ 749              		.section	.bss.pdo_rxbuf,"aw",%nobits
+ 750              		.align	3
+ 753              	pdo_rxbuf:
+ 754 0000 00000000 		.space	10
+ 754      00000000 
+ 754      0000
+ 755              		.section	.bss.pdo_txbuf,"aw",%nobits
+ 756              		.align	3
+ 759              	pdo_txbuf:
+ 760 0000 00000000 		.space	11
+ 760      00000000 
+ARM GAS  /tmp/cc1grS6n.s 			page 18
 
 
- 764              		.align	2
- 765              		.set	.LANCHOR2,. + 0
- 768              	pdo_spi_rxbuf:
- 769 0000 05000000 		.word	pdo_rxbuf+5
- 770              		.section	.data.pdo_spi_txbuf,"aw"
- 771              		.align	2
- 772              		.set	.LANCHOR1,. + 0
- 775              	pdo_spi_txbuf:
- 776 0000 06000000 		.word	pdo_txbuf+6
- 777              		.text
- 778              	.Letext0:
- 779              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 780              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 781              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 782              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 783              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma.h"
- 784              		.file 7 "Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h"
- 785              		.file 8 "Lib/soes/inc/esc_coe.h"
- 786              		.file 9 "Lib/soes/inc/esc.h"
- 787              		.file 10 "Core/Inc/pdo_override.h"
- 788              		.file 11 "Lib/soes_hal_bsp/inc/spi.h"
- 789              		.file 12 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_spi.h"
- 790              		.file 13 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
-ARM GAS  /tmp/ccwiOFqT.s 			page 19
+ 760      000000
+ 761              		.section	.data.pdo_coe_rxbuf,"aw"
+ 762              		.align	2
+ 763              		.set	.LANCHOR4,. + 0
+ 766              	pdo_coe_rxbuf:
+ 767 0000 08000000 		.word	pdo_rxbuf+8
+ 768              		.section	.data.pdo_coe_txbuf,"aw"
+ 769              		.align	2
+ 770              		.set	.LANCHOR3,. + 0
+ 773              	pdo_coe_txbuf:
+ 774 0000 08000000 		.word	pdo_txbuf+8
+ 775              		.section	.data.pdo_spi_rxbuf,"aw"
+ 776              		.align	2
+ 777              		.set	.LANCHOR2,. + 0
+ 780              	pdo_spi_rxbuf:
+ 781 0000 05000000 		.word	pdo_rxbuf+5
+ 782              		.section	.data.pdo_spi_txbuf,"aw"
+ 783              		.align	2
+ 784              		.set	.LANCHOR1,. + 0
+ 787              	pdo_spi_txbuf:
+ 788 0000 06000000 		.word	pdo_txbuf+6
+ 789              		.text
+ 790              	.Letext0:
+ 791              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 792              		.file 3 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 793              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 794              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma.h"
+ 795              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h"
+ 796              		.file 7 "Lib/soes/inc/esc_coe.h"
+ 797              		.file 8 "Lib/soes/inc/esc.h"
+ 798              		.file 9 "Core/Inc/pdo_override.h"
+ 799              		.file 10 "Lib/soes_hal_bsp/inc/spi.h"
+ 800              		.file 11 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_spi.h"
+ 801              		.file 12 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ARM GAS  /tmp/cc1grS6n.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pdo_override.c
-     /tmp/ccwiOFqT.s:20     .text.spi_dma_prepare_transmission:0000000000000000 $t
-     /tmp/ccwiOFqT.s:26     .text.spi_dma_prepare_transmission:0000000000000000 spi_dma_prepare_transmission
-     /tmp/ccwiOFqT.s:76     .text.DMA2_Stream2_IRQHandler:0000000000000000 $t
-     /tmp/ccwiOFqT.s:82     .text.DMA2_Stream2_IRQHandler:0000000000000000 DMA2_Stream2_IRQHandler
-     /tmp/ccwiOFqT.s:119    .text.DMA2_Stream2_IRQHandler:0000000000000020 $d
-     /tmp/ccwiOFqT.s:126    .text.spi_dma_setup:0000000000000000 $t
-     /tmp/ccwiOFqT.s:132    .text.spi_dma_setup:0000000000000000 spi_dma_setup
-     /tmp/ccwiOFqT.s:288    .text.spi_dma_setup:00000000000000a4 $d
-     /tmp/ccwiOFqT.s:297    .text.spi_dma_start:0000000000000000 $t
-     /tmp/ccwiOFqT.s:303    .text.spi_dma_start:0000000000000000 spi_dma_start
-     /tmp/ccwiOFqT.s:359    .text.spi_dma_start:0000000000000044 $d
-     /tmp/ccwiOFqT.s:367    .text.spi_dma_stop:0000000000000000 $t
-     /tmp/ccwiOFqT.s:373    .text.spi_dma_stop:0000000000000000 spi_dma_stop
-     /tmp/ccwiOFqT.s:429    .text.spi_dma_stop:0000000000000048 $d
-     /tmp/ccwiOFqT.s:436    .text.spi_dma_rxpdo_start:0000000000000000 $t
-     /tmp/ccwiOFqT.s:442    .text.spi_dma_rxpdo_start:0000000000000000 spi_dma_rxpdo_start
-     /tmp/ccwiOFqT.s:472    .text.spi_dma_rxpdo_start:0000000000000020 $d
-     /tmp/ccwiOFqT.s:478    .text.spi_dma_txpdo_start:0000000000000000 $t
-     /tmp/ccwiOFqT.s:484    .text.spi_dma_txpdo_start:0000000000000000 spi_dma_txpdo_start
-     /tmp/ccwiOFqT.s:509    .text.spi_dma_txpdo_start:0000000000000018 $d
-     /tmp/ccwiOFqT.s:514    .text.init_override:0000000000000000 $t
-     /tmp/ccwiOFqT.s:520    .text.init_override:0000000000000000 init_override
-     /tmp/ccwiOFqT.s:542    .text.on_rxpdo_transfer_finished:0000000000000000 $t
-     /tmp/ccwiOFqT.s:548    .text.on_rxpdo_transfer_finished:0000000000000000 on_rxpdo_transfer_finished
-     /tmp/ccwiOFqT.s:582    .text.on_rxpdo_transfer_finished:0000000000000024 $d
-     /tmp/ccwiOFqT.s:590    .text.rxpdo_override:0000000000000000 $t
-     /tmp/ccwiOFqT.s:596    .text.rxpdo_override:0000000000000000 rxpdo_override
-     /tmp/ccwiOFqT.s:628    .text.rxpdo_override:0000000000000018 $d
-     /tmp/ccwiOFqT.s:633    .text.on_txpdo_transfer_finished:0000000000000000 $t
-     /tmp/ccwiOFqT.s:639    .text.on_txpdo_transfer_finished:0000000000000000 on_txpdo_transfer_finished
-     /tmp/ccwiOFqT.s:665    .text.on_txpdo_transfer_finished:0000000000000014 $d
-     /tmp/ccwiOFqT.s:671    .text.txpdo_override:0000000000000000 $t
-     /tmp/ccwiOFqT.s:677    .text.txpdo_override:0000000000000000 txpdo_override
-     /tmp/ccwiOFqT.s:718    .text.txpdo_override:0000000000000028 $d
-     /tmp/ccwiOFqT.s:761    .data.pdo_coe_txbuf:0000000000000000 pdo_coe_txbuf
-     /tmp/ccwiOFqT.s:775    .data.pdo_spi_txbuf:0000000000000000 pdo_spi_txbuf
-     /tmp/ccwiOFqT.s:747    .bss.pdo_txbuf:0000000000000000 pdo_txbuf
-     /tmp/ccwiOFqT.s:754    .data.pdo_coe_rxbuf:0000000000000000 pdo_coe_rxbuf
-     /tmp/ccwiOFqT.s:768    .data.pdo_spi_rxbuf:0000000000000000 pdo_spi_rxbuf
-     /tmp/ccwiOFqT.s:741    .bss.pdo_rxbuf:0000000000000000 pdo_rxbuf
-     /tmp/ccwiOFqT.s:735    .bss.pdi_dma_transmission:0000000000000000 pdi_dma_transmission
-     /tmp/ccwiOFqT.s:736    .bss.pdi_dma_transmission:0000000000000000 $d
-     /tmp/ccwiOFqT.s:738    .bss.pdo_rxbuf:0000000000000000 $d
-     /tmp/ccwiOFqT.s:744    .bss.pdo_txbuf:0000000000000000 $d
-     /tmp/ccwiOFqT.s:750    .data.pdo_coe_rxbuf:0000000000000000 $d
-     /tmp/ccwiOFqT.s:757    .data.pdo_coe_txbuf:0000000000000000 $d
-     /tmp/ccwiOFqT.s:764    .data.pdo_spi_rxbuf:0000000000000000 $d
-     /tmp/ccwiOFqT.s:771    .data.pdo_spi_txbuf:0000000000000000 $d
+     /tmp/cc1grS6n.s:18     .text.spi_dma_prepare_transmission:0000000000000000 $t
+     /tmp/cc1grS6n.s:26     .text.spi_dma_prepare_transmission:0000000000000000 spi_dma_prepare_transmission
+     /tmp/cc1grS6n.s:76     .text.DMA1_Stream3_IRQHandler:0000000000000000 $t
+     /tmp/cc1grS6n.s:83     .text.DMA1_Stream3_IRQHandler:0000000000000000 DMA1_Stream3_IRQHandler
+     /tmp/cc1grS6n.s:120    .text.DMA1_Stream3_IRQHandler:0000000000000020 $d
+     /tmp/cc1grS6n.s:127    .text.spi_dma_setup:0000000000000000 $t
+     /tmp/cc1grS6n.s:134    .text.spi_dma_setup:0000000000000000 spi_dma_setup
+     /tmp/cc1grS6n.s:288    .text.spi_dma_setup:00000000000000a0 $d
+     /tmp/cc1grS6n.s:299    .text.spi_dma_start:0000000000000000 $t
+     /tmp/cc1grS6n.s:306    .text.spi_dma_start:0000000000000000 spi_dma_start
+     /tmp/cc1grS6n.s:362    .text.spi_dma_start:0000000000000044 $d
+     /tmp/cc1grS6n.s:370    .text.spi_dma_stop:0000000000000000 $t
+     /tmp/cc1grS6n.s:377    .text.spi_dma_stop:0000000000000000 spi_dma_stop
+     /tmp/cc1grS6n.s:433    .text.spi_dma_stop:0000000000000048 $d
+     /tmp/cc1grS6n.s:441    .text.spi_dma_rxpdo_start:0000000000000000 $t
+     /tmp/cc1grS6n.s:448    .text.spi_dma_rxpdo_start:0000000000000000 spi_dma_rxpdo_start
+     /tmp/cc1grS6n.s:478    .text.spi_dma_rxpdo_start:0000000000000020 $d
+     /tmp/cc1grS6n.s:484    .text.spi_dma_txpdo_start:0000000000000000 $t
+     /tmp/cc1grS6n.s:491    .text.spi_dma_txpdo_start:0000000000000000 spi_dma_txpdo_start
+     /tmp/cc1grS6n.s:516    .text.spi_dma_txpdo_start:0000000000000018 $d
+     /tmp/cc1grS6n.s:521    .text.init_override:0000000000000000 $t
+     /tmp/cc1grS6n.s:528    .text.init_override:0000000000000000 init_override
+     /tmp/cc1grS6n.s:550    .text.on_rxpdo_transfer_finished:0000000000000000 $t
+     /tmp/cc1grS6n.s:557    .text.on_rxpdo_transfer_finished:0000000000000000 on_rxpdo_transfer_finished
+     /tmp/cc1grS6n.s:591    .text.on_rxpdo_transfer_finished:0000000000000024 $d
+     /tmp/cc1grS6n.s:599    .text.rxpdo_override:0000000000000000 $t
+     /tmp/cc1grS6n.s:606    .text.rxpdo_override:0000000000000000 rxpdo_override
+     /tmp/cc1grS6n.s:638    .text.rxpdo_override:0000000000000018 $d
+     /tmp/cc1grS6n.s:643    .text.on_txpdo_transfer_finished:0000000000000000 $t
+     /tmp/cc1grS6n.s:650    .text.on_txpdo_transfer_finished:0000000000000000 on_txpdo_transfer_finished
+     /tmp/cc1grS6n.s:676    .text.on_txpdo_transfer_finished:0000000000000014 $d
+     /tmp/cc1grS6n.s:682    .text.txpdo_override:0000000000000000 $t
+     /tmp/cc1grS6n.s:689    .text.txpdo_override:0000000000000000 txpdo_override
+     /tmp/cc1grS6n.s:730    .text.txpdo_override:0000000000000028 $d
+     /tmp/cc1grS6n.s:773    .data.pdo_coe_txbuf:0000000000000000 pdo_coe_txbuf
+     /tmp/cc1grS6n.s:787    .data.pdo_spi_txbuf:0000000000000000 pdo_spi_txbuf
+     /tmp/cc1grS6n.s:759    .bss.pdo_txbuf:0000000000000000 pdo_txbuf
+     /tmp/cc1grS6n.s:766    .data.pdo_coe_rxbuf:0000000000000000 pdo_coe_rxbuf
+     /tmp/cc1grS6n.s:780    .data.pdo_spi_rxbuf:0000000000000000 pdo_spi_rxbuf
+     /tmp/cc1grS6n.s:753    .bss.pdo_rxbuf:0000000000000000 pdo_rxbuf
+     /tmp/cc1grS6n.s:747    .bss.pdi_dma_transmission:0000000000000000 pdi_dma_transmission
+     /tmp/cc1grS6n.s:748    .bss.pdi_dma_transmission:0000000000000000 $d
+     /tmp/cc1grS6n.s:750    .bss.pdo_rxbuf:0000000000000000 $d
+     /tmp/cc1grS6n.s:756    .bss.pdo_txbuf:0000000000000000 $d
+     /tmp/cc1grS6n.s:762    .data.pdo_coe_rxbuf:0000000000000000 $d
+     /tmp/cc1grS6n.s:769    .data.pdo_coe_txbuf:0000000000000000 $d
+     /tmp/cc1grS6n.s:776    .data.pdo_spi_rxbuf:0000000000000000 $d
+     /tmp/cc1grS6n.s:783    .data.pdo_spi_txbuf:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 DMA_GetITStatus
@@ -1104,7 +1115,7 @@ DMA_ClearITPendingBit
 RCC_AHB1PeriphClockCmd
 DMA_DeInit
 DMA_GetCmdStatus
-ARM GAS  /tmp/ccwiOFqT.s 			page 20
+ARM GAS  /tmp/cc1grS6n.s 			page 20
 
 
 DMA_StructInit

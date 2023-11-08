@@ -62,7 +62,7 @@ void EXTI9_5_IRQHandler(void)
 {
     if(EXTI_GetITStatus(EXTI_Line5) != RESET)
     {
-        EXTI_ClearITPendingBit(EXTI_Line6);
+        EXTI_ClearITPendingBit(EXTI_Line5);
         pdi_irq_flag = 1;
     }
 }

@@ -10,25 +10,28 @@
 
 #if defined (STM32F4)
 
-  #define SPIX_ESC                        SPI1 
-  #define ESC_RCC_APB2PERIPH_SPIX         RCC_APB2Periph_SPI1
-  #define ESC_GPIOX_AF_SPIx               GPIO_AF_SPI1
+  #define SPIX_ESC                        SPI2 
+  #define ESC_RCC_APB1PERIPH_SPIX         RCC_APB1Periph_SPI2
+  #define ESC_GPIOX_AF_SPIx               GPIO_AF_SPI2
 
   #define ESC_RCC_APB1PERIPH_GPIOX_CTRL   RCC_AHB1Periph_GPIOA
   #define ESC_GPIOX_CTRL                  GPIOA
   
-  #define ESC_GPIO_Pin_SCK                GPIO_Pin_5
-  #define ESC_GPIO_PinSourceSCK           GPIO_PinSource5
+  #define ESC_GPIO_Pin_SCK                GPIO_Pin_10
+  #define ESC_GPIOX_SCK                   GPIOB
+  #define ESC_GPIO_PinSourceSCK           GPIO_PinSource10
 
-  #define ESC_GPIO_Pin_MISO               GPIO_Pin_6
-  #define ESC_GPIO_PinSource_MISO         GPIO_PinSource6
+  #define ESC_GPIO_Pin_MISO               GPIO_Pin_2
+  #define ESC_GPIOX_MISO                  GPIOC
+  #define ESC_GPIO_PinSource_MISO         GPIO_PinSource2
 
-  #define ESC_GPIO_Pin_MOSI               GPIO_Pin_7
-  #define ESC_GPIO_PinSource_MOSI         GPIO_PinSource7
+  #define ESC_GPIO_Pin_MOSI               GPIO_Pin_3
+  #define ESC_GPIOX_MOSI                  GPIOC
+  #define ESC_GPIO_PinSource_MOSI         GPIO_PinSource3
 
-  #define ESC_RCC_APB1PERIPH_GPIOX_CS     RCC_AHB1Periph_GPIOA
-  #define ESC_GPIOX_CS                    GPIOA
-  #define ESC_GPIO_Pin_CS                 GPIO_Pin_4
+  #define ESC_RCC_APB1PERIPH_GPIOX_CS     RCC_AHB1Periph_GPIOB
+  #define ESC_GPIOX_CS                    GPIOB
+  #define ESC_GPIO_Pin_CS                 GPIO_Pin_8
 
 #else
   #error "Platform not supported"
@@ -44,8 +47,8 @@
   #define SPIX_ESC_SCS                    SPI_NSS_Soft
   #define SCS_ACTIVE_POLARITY             SCS_LOW
   // Mode 0 per SDK settings
-  #define SPIX_ESC_CPOL                   SPI_CPOL_Low
-  #define SPIX_ESC_CPHA                   SPI_CPHA_1Edge
+  #define SPIX_ESC_CPOL                   SPI_CPOL_High
+  #define SPIX_ESC_CPHA                   SPI_CPHA_2Edge
 #else
   #error "No supported ESC specified"
 #endif
