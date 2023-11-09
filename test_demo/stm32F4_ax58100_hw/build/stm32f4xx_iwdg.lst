@@ -1,30 +1,30 @@
-ARM GAS  /tmp/ccV5S8tA.s 			page 1
+ARM GAS  /tmp/ccIRzq5t.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.eabi_attribute 27, 1
-   3              		.eabi_attribute 28, 1
-   4              		.eabi_attribute 20, 1
-   5              		.eabi_attribute 21, 1
-   6              		.eabi_attribute 23, 3
-   7              		.eabi_attribute 24, 1
-   8              		.eabi_attribute 25, 1
-   9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
-  11              		.eabi_attribute 34, 1
-  12              		.eabi_attribute 18, 4
-  13              		.file	"stm32f4xx_iwdg.c"
-  14              		.text
-  15              	.Ltext0:
-  16              		.cfi_sections	.debug_frame
-  17              		.section	.text.IWDG_WriteAccessCmd,"ax",%progbits
-  18              		.align	1
-  19              		.global	IWDG_WriteAccessCmd
-  20              		.arch armv7e-m
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  24              		.fpu fpv4-sp-d16
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_iwdg.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.IWDG_WriteAccessCmd,"ax",%progbits
+  20              		.align	1
+  21              		.global	IWDG_WriteAccessCmd
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
   26              	IWDG_WriteAccessCmd:
   27              	.LVL0:
   28              	.LFB123:
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccV5S8tA.s 			page 1
   27:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****       The IWDG counter should be reloaded at regular intervals to prevent
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****       an MCU reset.
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****                              
-ARM GAS  /tmp/ccV5S8tA.s 			page 2
+ARM GAS  /tmp/ccIRzq5t.s 			page 2
 
 
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****       The IWDG is implemented in the VDD voltage domain that is still functional
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccV5S8tA.s 			page 1
   84:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** /* Includes ------------------------------------------------------------------*/
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** #include "stm32f4xx_iwdg.h"
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** 
-ARM GAS  /tmp/ccV5S8tA.s 			page 3
+ARM GAS  /tmp/ccIRzq5t.s 			page 3
 
 
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccV5S8tA.s 			page 1
   35              		.loc 1 135 3 view .LVU1
  136:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   IWDG->KR = IWDG_WriteAccess;
   36              		.loc 1 136 3 view .LVU2
-ARM GAS  /tmp/ccV5S8tA.s 			page 4
+ARM GAS  /tmp/ccIRzq5t.s 			page 4
 
 
   37              		.loc 1 136 12 is_stmt 0 view .LVU3
@@ -199,10 +199,9 @@ ARM GAS  /tmp/ccV5S8tA.s 			page 1
   52              		.syntax unified
   53              		.thumb
   54              		.thumb_func
-  55              		.fpu fpv4-sp-d16
-  57              	IWDG_SetPrescaler:
-  58              	.LVL1:
-  59              	.LFB124:
+  56              	IWDG_SetPrescaler:
+  57              	.LVL1:
+  58              	.LFB124:
  138:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** 
  139:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** /**
  140:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @brief  Sets IWDG Prescaler value.
@@ -219,41 +218,40 @@ ARM GAS  /tmp/ccV5S8tA.s 			page 1
  151:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   */
  152:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** void IWDG_SetPrescaler(uint8_t IWDG_Prescaler)
  153:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** {
-  60              		.loc 1 153 1 is_stmt 1 view -0
-  61              		.cfi_startproc
-  62              		@ args = 0, pretend = 0, frame = 0
-  63              		@ frame_needed = 0, uses_anonymous_args = 0
-  64              		@ link register save eliminated.
+  59              		.loc 1 153 1 is_stmt 1 view -0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
  154:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   /* Check the parameters */
  155:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   assert_param(IS_IWDG_PRESCALER(IWDG_Prescaler));
-  65              		.loc 1 155 3 view .LVU6
+  64              		.loc 1 155 3 view .LVU6
  156:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   IWDG->PR = IWDG_Prescaler;
-  66              		.loc 1 156 3 view .LVU7
-  67              		.loc 1 156 12 is_stmt 0 view .LVU8
-  68 0000 014B     		ldr	r3, .L5
-  69 0002 5860     		str	r0, [r3, #4]
+  65              		.loc 1 156 3 view .LVU7
+  66              		.loc 1 156 12 is_stmt 0 view .LVU8
+  67 0000 014B     		ldr	r3, .L5
+  68 0002 5860     		str	r0, [r3, #4]
  157:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** }
-  70              		.loc 1 157 1 view .LVU9
-  71 0004 7047     		bx	lr
-  72              	.L6:
-  73 0006 00BF     		.align	2
-  74              	.L5:
-ARM GAS  /tmp/ccV5S8tA.s 			page 5
+  69              		.loc 1 157 1 view .LVU9
+  70 0004 7047     		bx	lr
+  71              	.L6:
+  72 0006 00BF     		.align	2
+  73              	.L5:
+  74 0008 00300040 		.word	1073754112
+ARM GAS  /tmp/ccIRzq5t.s 			page 5
 
 
-  75 0008 00300040 		.word	1073754112
-  76              		.cfi_endproc
-  77              	.LFE124:
-  79              		.section	.text.IWDG_SetReload,"ax",%progbits
-  80              		.align	1
-  81              		.global	IWDG_SetReload
-  82              		.syntax unified
-  83              		.thumb
-  84              		.thumb_func
-  85              		.fpu fpv4-sp-d16
-  87              	IWDG_SetReload:
-  88              	.LVL2:
-  89              	.LFB125:
+  75              		.cfi_endproc
+  76              	.LFE124:
+  78              		.section	.text.IWDG_SetReload,"ax",%progbits
+  79              		.align	1
+  80              		.global	IWDG_SetReload
+  81              		.syntax unified
+  82              		.thumb
+  83              		.thumb_func
+  85              	IWDG_SetReload:
+  86              	.LVL2:
+  87              	.LFB125:
  158:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** 
  159:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** /**
  160:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @brief  Sets IWDG Reload value.
@@ -263,78 +261,76 @@ ARM GAS  /tmp/ccV5S8tA.s 			page 1
  164:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   */
  165:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** void IWDG_SetReload(uint16_t Reload)
  166:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** {
-  90              		.loc 1 166 1 is_stmt 1 view -0
-  91              		.cfi_startproc
-  92              		@ args = 0, pretend = 0, frame = 0
-  93              		@ frame_needed = 0, uses_anonymous_args = 0
-  94              		@ link register save eliminated.
+  88              		.loc 1 166 1 is_stmt 1 view -0
+  89              		.cfi_startproc
+  90              		@ args = 0, pretend = 0, frame = 0
+  91              		@ frame_needed = 0, uses_anonymous_args = 0
+  92              		@ link register save eliminated.
  167:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   /* Check the parameters */
  168:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   assert_param(IS_IWDG_RELOAD(Reload));
-  95              		.loc 1 168 3 view .LVU11
+  93              		.loc 1 168 3 view .LVU11
  169:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   IWDG->RLR = Reload;
-  96              		.loc 1 169 3 view .LVU12
-  97              		.loc 1 169 13 is_stmt 0 view .LVU13
-  98 0000 014B     		ldr	r3, .L8
-  99 0002 9860     		str	r0, [r3, #8]
+  94              		.loc 1 169 3 view .LVU12
+  95              		.loc 1 169 13 is_stmt 0 view .LVU13
+  96 0000 014B     		ldr	r3, .L8
+  97 0002 9860     		str	r0, [r3, #8]
  170:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** }
- 100              		.loc 1 170 1 view .LVU14
- 101 0004 7047     		bx	lr
- 102              	.L9:
- 103 0006 00BF     		.align	2
- 104              	.L8:
- 105 0008 00300040 		.word	1073754112
- 106              		.cfi_endproc
- 107              	.LFE125:
- 109              		.section	.text.IWDG_ReloadCounter,"ax",%progbits
- 110              		.align	1
- 111              		.global	IWDG_ReloadCounter
- 112              		.syntax unified
- 113              		.thumb
- 114              		.thumb_func
- 115              		.fpu fpv4-sp-d16
- 117              	IWDG_ReloadCounter:
- 118              	.LFB126:
+  98              		.loc 1 170 1 view .LVU14
+  99 0004 7047     		bx	lr
+ 100              	.L9:
+ 101 0006 00BF     		.align	2
+ 102              	.L8:
+ 103 0008 00300040 		.word	1073754112
+ 104              		.cfi_endproc
+ 105              	.LFE125:
+ 107              		.section	.text.IWDG_ReloadCounter,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	IWDG_ReloadCounter
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 114              	IWDG_ReloadCounter:
+ 115              	.LFB126:
  171:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** 
  172:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** /**
  173:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @brief  Reloads IWDG counter with value defined in the reload register
  174:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   *         (write access to IWDG_PR and IWDG_RLR registers disabled).
-ARM GAS  /tmp/ccV5S8tA.s 			page 6
-
-
  175:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @param  None
  176:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @retval None
  177:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   */
+ARM GAS  /tmp/ccIRzq5t.s 			page 6
+
+
  178:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** void IWDG_ReloadCounter(void)
  179:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** {
- 119              		.loc 1 179 1 is_stmt 1 view -0
- 120              		.cfi_startproc
- 121              		@ args = 0, pretend = 0, frame = 0
- 122              		@ frame_needed = 0, uses_anonymous_args = 0
- 123              		@ link register save eliminated.
+ 116              		.loc 1 179 1 is_stmt 1 view -0
+ 117              		.cfi_startproc
+ 118              		@ args = 0, pretend = 0, frame = 0
+ 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 120              		@ link register save eliminated.
  180:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   IWDG->KR = KR_KEY_RELOAD;
- 124              		.loc 1 180 3 view .LVU16
- 125              		.loc 1 180 12 is_stmt 0 view .LVU17
- 126 0000 024B     		ldr	r3, .L11
- 127 0002 4AF6AA22 		movw	r2, #43690
- 128 0006 1A60     		str	r2, [r3]
+ 121              		.loc 1 180 3 view .LVU16
+ 122              		.loc 1 180 12 is_stmt 0 view .LVU17
+ 123 0000 024B     		ldr	r3, .L11
+ 124 0002 4AF6AA22 		movw	r2, #43690
+ 125 0006 1A60     		str	r2, [r3]
  181:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** }
- 129              		.loc 1 181 1 view .LVU18
- 130 0008 7047     		bx	lr
- 131              	.L12:
- 132 000a 00BF     		.align	2
- 133              	.L11:
- 134 000c 00300040 		.word	1073754112
- 135              		.cfi_endproc
- 136              	.LFE126:
- 138              		.section	.text.IWDG_Enable,"ax",%progbits
- 139              		.align	1
- 140              		.global	IWDG_Enable
- 141              		.syntax unified
- 142              		.thumb
- 143              		.thumb_func
- 144              		.fpu fpv4-sp-d16
- 146              	IWDG_Enable:
- 147              	.LFB127:
+ 126              		.loc 1 181 1 view .LVU18
+ 127 0008 7047     		bx	lr
+ 128              	.L12:
+ 129 000a 00BF     		.align	2
+ 130              	.L11:
+ 131 000c 00300040 		.word	1073754112
+ 132              		.cfi_endproc
+ 133              	.LFE126:
+ 135              		.section	.text.IWDG_Enable,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	IWDG_Enable
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 142              	IWDG_Enable:
+ 143              	.LFB127:
  182:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** 
  183:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** /**
  184:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @}
@@ -358,40 +354,39 @@ ARM GAS  /tmp/ccV5S8tA.s 			page 1
  202:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @retval None
  203:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   */
  204:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** void IWDG_Enable(void)
-ARM GAS  /tmp/ccV5S8tA.s 			page 7
-
-
  205:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** {
- 148              		.loc 1 205 1 is_stmt 1 view -0
- 149              		.cfi_startproc
- 150              		@ args = 0, pretend = 0, frame = 0
- 151              		@ frame_needed = 0, uses_anonymous_args = 0
- 152              		@ link register save eliminated.
+ 144              		.loc 1 205 1 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccIRzq5t.s 			page 7
+
+
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
  206:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   IWDG->KR = KR_KEY_ENABLE;
- 153              		.loc 1 206 3 view .LVU20
- 154              		.loc 1 206 12 is_stmt 0 view .LVU21
- 155 0000 024B     		ldr	r3, .L14
- 156 0002 4CF6CC42 		movw	r2, #52428
- 157 0006 1A60     		str	r2, [r3]
+ 149              		.loc 1 206 3 view .LVU20
+ 150              		.loc 1 206 12 is_stmt 0 view .LVU21
+ 151 0000 024B     		ldr	r3, .L14
+ 152 0002 4CF6CC42 		movw	r2, #52428
+ 153 0006 1A60     		str	r2, [r3]
  207:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** }
- 158              		.loc 1 207 1 view .LVU22
- 159 0008 7047     		bx	lr
- 160              	.L15:
- 161 000a 00BF     		.align	2
- 162              	.L14:
- 163 000c 00300040 		.word	1073754112
- 164              		.cfi_endproc
- 165              	.LFE127:
- 167              		.section	.text.IWDG_GetFlagStatus,"ax",%progbits
- 168              		.align	1
- 169              		.global	IWDG_GetFlagStatus
- 170              		.syntax unified
- 171              		.thumb
- 172              		.thumb_func
- 173              		.fpu fpv4-sp-d16
- 175              	IWDG_GetFlagStatus:
- 176              	.LVL3:
- 177              	.LFB128:
+ 154              		.loc 1 207 1 view .LVU22
+ 155 0008 7047     		bx	lr
+ 156              	.L15:
+ 157 000a 00BF     		.align	2
+ 158              	.L14:
+ 159 000c 00300040 		.word	1073754112
+ 160              		.cfi_endproc
+ 161              	.LFE127:
+ 163              		.section	.text.IWDG_GetFlagStatus,"ax",%progbits
+ 164              		.align	1
+ 165              		.global	IWDG_GetFlagStatus
+ 166              		.syntax unified
+ 167              		.thumb
+ 168              		.thumb_func
+ 170              	IWDG_GetFlagStatus:
+ 171              	.LVL3:
+ 172              	.LFB128:
  208:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** 
  209:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** /**
  210:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @}
@@ -418,83 +413,84 @@ ARM GAS  /tmp/ccV5S8tA.s 			page 1
  231:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   * @retval The new state of IWDG_FLAG (SET or RESET).
  232:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   */
  233:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** FlagStatus IWDG_GetFlagStatus(uint16_t IWDG_FLAG)
-ARM GAS  /tmp/ccV5S8tA.s 			page 8
-
-
  234:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** {
- 178              		.loc 1 234 1 is_stmt 1 view -0
- 179              		.cfi_startproc
- 180              		@ args = 0, pretend = 0, frame = 0
- 181              		@ frame_needed = 0, uses_anonymous_args = 0
- 182              		@ link register save eliminated.
+ 173              		.loc 1 234 1 is_stmt 1 view -0
+ 174              		.cfi_startproc
+ 175              		@ args = 0, pretend = 0, frame = 0
+ 176              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccIRzq5t.s 			page 8
+
+
+ 177              		@ link register save eliminated.
  235:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   FlagStatus bitstatus = RESET;
- 183              		.loc 1 235 3 view .LVU24
+ 178              		.loc 1 235 3 view .LVU24
  236:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   /* Check the parameters */
  237:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   assert_param(IS_IWDG_FLAG(IWDG_FLAG));
- 184              		.loc 1 237 3 view .LVU25
+ 179              		.loc 1 237 3 view .LVU25
  238:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   if ((IWDG->SR & IWDG_FLAG) != (uint32_t)RESET)
- 185              		.loc 1 238 3 view .LVU26
- 186              		.loc 1 238 12 is_stmt 0 view .LVU27
- 187 0000 034B     		ldr	r3, .L19
- 188 0002 DB68     		ldr	r3, [r3, #12]
- 189              		.loc 1 238 6 view .LVU28
- 190 0004 1842     		tst	r0, r3
- 191 0006 01D0     		beq	.L18
+ 180              		.loc 1 238 3 view .LVU26
+ 181              		.loc 1 238 12 is_stmt 0 view .LVU27
+ 182 0000 034B     		ldr	r3, .L19
+ 183 0002 DB68     		ldr	r3, [r3, #12]
+ 184              		.loc 1 238 6 view .LVU28
+ 185 0004 1842     		tst	r0, r3
+ 186 0006 01D0     		beq	.L18
  239:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   {
  240:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****     bitstatus = SET;
- 192              		.loc 1 240 15 view .LVU29
- 193 0008 0120     		movs	r0, #1
- 194              	.LVL4:
- 195              		.loc 1 240 15 view .LVU30
- 196 000a 7047     		bx	lr
- 197              	.LVL5:
- 198              	.L18:
+ 187              		.loc 1 240 15 view .LVU29
+ 188 0008 0120     		movs	r0, #1
+ 189              	.LVL4:
+ 190              		.loc 1 240 15 view .LVU30
+ 191 000a 7047     		bx	lr
+ 192              	.LVL5:
+ 193              	.L18:
  241:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   }
  242:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   else
  243:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   {
  244:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****     bitstatus = RESET;
- 199              		.loc 1 244 15 view .LVU31
- 200 000c 0020     		movs	r0, #0
- 201              	.LVL6:
+ 194              		.loc 1 244 15 view .LVU31
+ 195 000c 0020     		movs	r0, #0
+ 196              	.LVL6:
  245:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   }
  246:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   /* Return the flag status */
  247:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c ****   return bitstatus;
- 202              		.loc 1 247 3 is_stmt 1 view .LVU32
+ 197              		.loc 1 247 3 is_stmt 1 view .LVU32
  248:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c **** }
- 203              		.loc 1 248 1 is_stmt 0 view .LVU33
- 204 000e 7047     		bx	lr
- 205              	.L20:
- 206              		.align	2
- 207              	.L19:
- 208 0010 00300040 		.word	1073754112
- 209              		.cfi_endproc
- 210              	.LFE128:
- 212              		.text
- 213              	.Letext0:
- 214              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
- 215              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
-ARM GAS  /tmp/ccV5S8tA.s 			page 9
+ 198              		.loc 1 248 1 is_stmt 0 view .LVU33
+ 199 000e 7047     		bx	lr
+ 200              	.L20:
+ 201              		.align	2
+ 202              	.L19:
+ 203 0010 00300040 		.word	1073754112
+ 204              		.cfi_endproc
+ 205              	.LFE128:
+ 207              		.text
+ 208              	.Letext0:
+ 209              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 210              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 211              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ARM GAS  /tmp/ccIRzq5t.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_iwdg.c
-     /tmp/ccV5S8tA.s:18     .text.IWDG_WriteAccessCmd:0000000000000000 $t
-     /tmp/ccV5S8tA.s:26     .text.IWDG_WriteAccessCmd:0000000000000000 IWDG_WriteAccessCmd
-     /tmp/ccV5S8tA.s:45     .text.IWDG_WriteAccessCmd:0000000000000008 $d
-     /tmp/ccV5S8tA.s:50     .text.IWDG_SetPrescaler:0000000000000000 $t
-     /tmp/ccV5S8tA.s:57     .text.IWDG_SetPrescaler:0000000000000000 IWDG_SetPrescaler
-     /tmp/ccV5S8tA.s:75     .text.IWDG_SetPrescaler:0000000000000008 $d
-     /tmp/ccV5S8tA.s:80     .text.IWDG_SetReload:0000000000000000 $t
-     /tmp/ccV5S8tA.s:87     .text.IWDG_SetReload:0000000000000000 IWDG_SetReload
-     /tmp/ccV5S8tA.s:105    .text.IWDG_SetReload:0000000000000008 $d
-     /tmp/ccV5S8tA.s:110    .text.IWDG_ReloadCounter:0000000000000000 $t
-     /tmp/ccV5S8tA.s:117    .text.IWDG_ReloadCounter:0000000000000000 IWDG_ReloadCounter
-     /tmp/ccV5S8tA.s:134    .text.IWDG_ReloadCounter:000000000000000c $d
-     /tmp/ccV5S8tA.s:139    .text.IWDG_Enable:0000000000000000 $t
-     /tmp/ccV5S8tA.s:146    .text.IWDG_Enable:0000000000000000 IWDG_Enable
-     /tmp/ccV5S8tA.s:163    .text.IWDG_Enable:000000000000000c $d
-     /tmp/ccV5S8tA.s:168    .text.IWDG_GetFlagStatus:0000000000000000 $t
-     /tmp/ccV5S8tA.s:175    .text.IWDG_GetFlagStatus:0000000000000000 IWDG_GetFlagStatus
-     /tmp/ccV5S8tA.s:208    .text.IWDG_GetFlagStatus:0000000000000010 $d
+     /tmp/ccIRzq5t.s:20     .text.IWDG_WriteAccessCmd:0000000000000000 $t
+     /tmp/ccIRzq5t.s:26     .text.IWDG_WriteAccessCmd:0000000000000000 IWDG_WriteAccessCmd
+     /tmp/ccIRzq5t.s:45     .text.IWDG_WriteAccessCmd:0000000000000008 $d
+     /tmp/ccIRzq5t.s:50     .text.IWDG_SetPrescaler:0000000000000000 $t
+     /tmp/ccIRzq5t.s:56     .text.IWDG_SetPrescaler:0000000000000000 IWDG_SetPrescaler
+     /tmp/ccIRzq5t.s:74     .text.IWDG_SetPrescaler:0000000000000008 $d
+     /tmp/ccIRzq5t.s:79     .text.IWDG_SetReload:0000000000000000 $t
+     /tmp/ccIRzq5t.s:85     .text.IWDG_SetReload:0000000000000000 IWDG_SetReload
+     /tmp/ccIRzq5t.s:103    .text.IWDG_SetReload:0000000000000008 $d
+     /tmp/ccIRzq5t.s:108    .text.IWDG_ReloadCounter:0000000000000000 $t
+     /tmp/ccIRzq5t.s:114    .text.IWDG_ReloadCounter:0000000000000000 IWDG_ReloadCounter
+     /tmp/ccIRzq5t.s:131    .text.IWDG_ReloadCounter:000000000000000c $d
+     /tmp/ccIRzq5t.s:136    .text.IWDG_Enable:0000000000000000 $t
+     /tmp/ccIRzq5t.s:142    .text.IWDG_Enable:0000000000000000 IWDG_Enable
+     /tmp/ccIRzq5t.s:159    .text.IWDG_Enable:000000000000000c $d
+     /tmp/ccIRzq5t.s:164    .text.IWDG_GetFlagStatus:0000000000000000 $t
+     /tmp/ccIRzq5t.s:170    .text.IWDG_GetFlagStatus:0000000000000000 IWDG_GetFlagStatus
+     /tmp/ccIRzq5t.s:203    .text.IWDG_GetFlagStatus:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS

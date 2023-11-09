@@ -63,8 +63,8 @@ void spi_dma_setup(void)
 	DMA_DeInit(DMA1_Stream4);
 	DMA_DeInit(DMA1_Stream3);
 
-    while (DMA_GetCmdStatus(DMA2_Stream4) != DISABLE) { }
-    while (DMA_GetCmdStatus(DMA2_Stream3) != DISABLE) { }
+    while (DMA_GetCmdStatus(DMA1_Stream4) != DISABLE) { }
+    while (DMA_GetCmdStatus(DMA1_Stream3) != DISABLE) { }
 
     DMA_InitTypeDef DMA_InitStructure;
     NVIC_InitTypeDef NVIC_InitStructure;

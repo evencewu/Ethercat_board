@@ -5,6 +5,8 @@ void spi_gpio_setup(void)
 {
     GPIO_InitTypeDef gpio;
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
 
     /* SPI GPIO Configuration --------------------------------------------------*/
     GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_SPI2);
@@ -50,7 +52,7 @@ void spi_setup(void)
     
     SPI_InitTypeDef  spi;
 
-    RCC_APB2PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
 
     SPI_I2S_DeInit(SPI2);
     spi.SPI_Direction         = SPI_Direction_2Lines_FullDuplex;
