@@ -25,10 +25,8 @@ int main(void)
 		// GPIO_SetBits(GPIOB, GPIO_Pin_13);
 
 		// ecatapp_benchmark_us();
-		//ecatapp_loop();
+		ecatapp_loop();
 
-		ecat_slv_poll();
-		DIG_process(DIG_PROCESS_OUTPUTS_FLAG | DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
 	}
 }
 
