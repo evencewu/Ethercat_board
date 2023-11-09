@@ -93,7 +93,9 @@ Lib/soes_hal_bsp/src/spi.c \
 Lib/soes-esi/objectlist.c \
 Core/Src/pdo_override.c \
 Core/Src/ecatapp.c \
-Core/Src/main.c 
+Core/Src/main.c \
+Lib/bsp/src/bsp_can.c \
+Lib/bsp/src/bsp_led.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -159,7 +161,8 @@ C_INCLUDES =  \
 -ILib/bsp/Inc \
 -ILib/soes/inc \
 -ILib/soes_hal_bsp/inc \
--ILib/soes-esi 
+-ILib/soes-esi \
+-ILib/bsp/Inc
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

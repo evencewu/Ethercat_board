@@ -21,11 +21,15 @@ static const char acName10F1_02[] = "SyncErrorCounterLimit";
 static const char acName1600[] = "led_rx";
 static const char acName1600_00[] = "Max SubIndex";
 static const char acName1600_01[] = "led2_rx";
-static const char acName1600_02[] = "led1_rx";
+static const char acName1600_02[] = "Padding 3";
+static const char acName1600_03[] = "led1_rx";
+static const char acName1600_04[] = "Padding 4";
 static const char acName1A00[] = "led_tx";
 static const char acName1A00_00[] = "Max SubIndex";
 static const char acName1A00_01[] = "led1_tx";
-static const char acName1A00_02[] = "led2_tx";
+static const char acName1A00_02[] = "Padding 1";
+static const char acName1A00_03[] = "led2_tx";
+static const char acName1A00_04[] = "Padding 2";
 static const char acName1C00[] = "Sync Manager Communication Type";
 static const char acName1C00_00[] = "Max SubIndex";
 static const char acName1C00_01[] = "Communications Type SM0";
@@ -100,15 +104,19 @@ const _objd SDO10F1[] =
 };
 const _objd SDO1600[] =
 {
-  {0x00, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName1600_00, 2, NULL},
-  {0x01, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1600_01, 0x70020108, NULL},
-  {0x02, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1600_02, 0x70020208, NULL},
+  {0x00, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName1600_00, 4, NULL},
+  {0x01, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1600_01, 0x70020101, NULL},
+  {0x02, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1600_02, 0x00000007, NULL},
+  {0x03, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1600_03, 0x70020201, NULL},
+  {0x04, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1600_04, 0x00000007, NULL},
 };
 const _objd SDO1A00[] =
 {
-  {0x00, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName1A00_00, 2, NULL},
-  {0x01, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1A00_01, 0x60020108, NULL},
-  {0x02, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1A00_02, 0x60020208, NULL},
+  {0x00, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName1A00_00, 4, NULL},
+  {0x01, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1A00_01, 0x60020101, NULL},
+  {0x02, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1A00_02, 0x00000007, NULL},
+  {0x03, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1A00_03, 0x60020201, NULL},
+  {0x04, DTYPE_UNSIGNED32, 32, ATYPE_RO, acName1A00_04, 0x00000007, NULL},
 };
 const _objd SDO1C00[] =
 {
@@ -149,8 +157,8 @@ const _objd SDO1C33[] =
 const _objd SDO6002[] =
 {
   {0x00, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName6002_00, 2, NULL},
-  {0x01, DTYPE_INTEGER8, 8, ATYPE_RO, acName6002_01, 0, &Obj.led_tx.led1_tx},
-  {0x02, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName6002_02, 0, &Obj.led_tx.led2_tx},
+  {0x01, DTYPE_BOOLEAN, 1, ATYPE_RO, acName6002_01, 0, &Obj.led_tx.led1_tx},
+  {0x02, DTYPE_BOOLEAN, 1, ATYPE_RO, acName6002_02, 0, &Obj.led_tx.led2_tx},
 };
 const _objd SDO6060[] =
 {
@@ -167,8 +175,8 @@ const _objd SDO6502[] =
 const _objd SDO7002[] =
 {
   {0x00, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName7002_00, 2, NULL},
-  {0x01, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName7002_01, 0, &Obj.led_rx.led2_rx},
-  {0x02, DTYPE_UNSIGNED8, 8, ATYPE_RO, acName7002_02, 0, &Obj.led_rx.led1_rx},
+  {0x01, DTYPE_BOOLEAN, 1, ATYPE_RW, acName7002_01, 0, &Obj.led_rx.led2_rx},
+  {0x02, DTYPE_BOOLEAN, 1, ATYPE_RW, acName7002_02, 0, &Obj.led_rx.led1_rx},
 };
 
 const _objectlist SDOobjects[] =
@@ -180,8 +188,8 @@ const _objectlist SDOobjects[] =
   {0x100A, OTYPE_VAR, 0, 0, acName100A, SDO100A},
   {0x1018, OTYPE_RECORD, 4, 0, acName1018, SDO1018},
   {0x10F1, OTYPE_RECORD, 2, 0, acName10F1, SDO10F1},
-  {0x1600, OTYPE_RECORD, 2, 0, acName1600, SDO1600},
-  {0x1A00, OTYPE_RECORD, 2, 0, acName1A00, SDO1A00},
+  {0x1600, OTYPE_RECORD, 4, 0, acName1600, SDO1600},
+  {0x1A00, OTYPE_RECORD, 4, 0, acName1A00, SDO1A00},
   {0x1C00, OTYPE_ARRAY, 4, 0, acName1C00, SDO1C00},
   {0x1C12, OTYPE_ARRAY, 1, 0, acName1C12, SDO1C12},
   {0x1C13, OTYPE_ARRAY, 1, 0, acName1C13, SDO1C13},

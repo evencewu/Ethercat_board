@@ -1,0 +1,184 @@
+ARM GAS  /tmp/ccuJDWTb.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"bsp_led.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.led_setup,"ax",%progbits
+  20              		.align	1
+  21              		.global	led_setup
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	led_setup:
+  27              	.LFB123:
+  28              		.file 1 "Lib/bsp/src/bsp_led.c"
+   1:Lib/bsp/src/bsp_led.c **** #include "bsp_led.h"
+   2:Lib/bsp/src/bsp_led.c **** 
+   3:Lib/bsp/src/bsp_led.c **** void led_setup(void)
+   4:Lib/bsp/src/bsp_led.c **** {
+  29              		.loc 1 4 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  34              		.cfi_def_cfa_offset 20
+  35              		.cfi_offset 4, -20
+  36              		.cfi_offset 5, -16
+  37              		.cfi_offset 6, -12
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+  40 0002 83B0     		sub	sp, sp, #12
+  41              		.cfi_def_cfa_offset 32
+   5:Lib/bsp/src/bsp_led.c ****     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+  42              		.loc 1 5 5 view .LVU1
+  43 0004 0121     		movs	r1, #1
+  44 0006 0220     		movs	r0, #2
+  45 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+  46              	.LVL0:
+   6:Lib/bsp/src/bsp_led.c **** 
+   7:Lib/bsp/src/bsp_led.c ****     GPIO_InitTypeDef gpio;
+  47              		.loc 1 7 5 view .LVU2
+   8:Lib/bsp/src/bsp_led.c ****     
+   9:Lib/bsp/src/bsp_led.c ****     //LED1
+  10:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Pin = GPIO_Pin_15;
+  48              		.loc 1 10 5 view .LVU3
+ARM GAS  /tmp/ccuJDWTb.s 			page 2
+
+
+  49              		.loc 1 10 19 is_stmt 0 view .LVU4
+  50 000c 4FF40043 		mov	r3, #32768
+  51 0010 0093     		str	r3, [sp]
+  11:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Mode = GPIO_Mode_OUT;
+  52              		.loc 1 11 5 is_stmt 1 view .LVU5
+  53              		.loc 1 11 20 is_stmt 0 view .LVU6
+  54 0012 0127     		movs	r7, #1
+  55 0014 8DF80470 		strb	r7, [sp, #4]
+  12:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Speed = GPIO_Speed_50MHz;
+  56              		.loc 1 12 5 is_stmt 1 view .LVU7
+  57              		.loc 1 12 21 is_stmt 0 view .LVU8
+  58 0018 0224     		movs	r4, #2
+  59 001a 8DF80540 		strb	r4, [sp, #5]
+  13:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_OType = GPIO_OType_PP;
+  60              		.loc 1 13 5 is_stmt 1 view .LVU9
+  61              		.loc 1 13 21 is_stmt 0 view .LVU10
+  62 001e 0026     		movs	r6, #0
+  63 0020 8DF80660 		strb	r6, [sp, #6]
+  14:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_PuPd = GPIO_PuPd_DOWN;
+  64              		.loc 1 14 5 is_stmt 1 view .LVU11
+  65              		.loc 1 14 20 is_stmt 0 view .LVU12
+  66 0024 8DF80740 		strb	r4, [sp, #7]
+  15:Lib/bsp/src/bsp_led.c ****     GPIO_Init(GPIOB, &gpio);
+  67              		.loc 1 15 5 is_stmt 1 view .LVU13
+  68 0028 124D     		ldr	r5, .L3
+  69 002a 6946     		mov	r1, sp
+  70 002c 2846     		mov	r0, r5
+  71 002e FFF7FEFF 		bl	GPIO_Init
+  72              	.LVL1:
+  16:Lib/bsp/src/bsp_led.c **** 
+  17:Lib/bsp/src/bsp_led.c ****     //LED2
+  18:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Pin = GPIO_Pin_14;
+  73              		.loc 1 18 5 view .LVU14
+  74              		.loc 1 18 19 is_stmt 0 view .LVU15
+  75 0032 4FF48043 		mov	r3, #16384
+  76 0036 0093     		str	r3, [sp]
+  19:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Mode = GPIO_Mode_OUT;
+  77              		.loc 1 19 5 is_stmt 1 view .LVU16
+  78              		.loc 1 19 20 is_stmt 0 view .LVU17
+  79 0038 8DF80470 		strb	r7, [sp, #4]
+  20:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Speed = GPIO_Speed_50MHz;
+  80              		.loc 1 20 5 is_stmt 1 view .LVU18
+  81              		.loc 1 20 21 is_stmt 0 view .LVU19
+  82 003c 8DF80540 		strb	r4, [sp, #5]
+  21:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_OType = GPIO_OType_PP;
+  83              		.loc 1 21 5 is_stmt 1 view .LVU20
+  84              		.loc 1 21 21 is_stmt 0 view .LVU21
+  85 0040 8DF80660 		strb	r6, [sp, #6]
+  22:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_PuPd = GPIO_PuPd_DOWN;
+  86              		.loc 1 22 5 is_stmt 1 view .LVU22
+  87              		.loc 1 22 20 is_stmt 0 view .LVU23
+  88 0044 8DF80740 		strb	r4, [sp, #7]
+  23:Lib/bsp/src/bsp_led.c ****     GPIO_Init(GPIOB, &gpio);
+  89              		.loc 1 23 5 is_stmt 1 view .LVU24
+  90 0048 6946     		mov	r1, sp
+  91 004a 2846     		mov	r0, r5
+  92 004c FFF7FEFF 		bl	GPIO_Init
+ARM GAS  /tmp/ccuJDWTb.s 			page 3
+
+
+  93              	.LVL2:
+  24:Lib/bsp/src/bsp_led.c **** 
+  25:Lib/bsp/src/bsp_led.c ****     //LED3
+  26:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Pin = GPIO_Pin_13;
+  94              		.loc 1 26 5 view .LVU25
+  95              		.loc 1 26 19 is_stmt 0 view .LVU26
+  96 0050 4FF40053 		mov	r3, #8192
+  97 0054 0093     		str	r3, [sp]
+  27:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Mode = GPIO_Mode_OUT;
+  98              		.loc 1 27 5 is_stmt 1 view .LVU27
+  99              		.loc 1 27 20 is_stmt 0 view .LVU28
+ 100 0056 8DF80470 		strb	r7, [sp, #4]
+  28:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_Speed = GPIO_Speed_50MHz;
+ 101              		.loc 1 28 5 is_stmt 1 view .LVU29
+ 102              		.loc 1 28 21 is_stmt 0 view .LVU30
+ 103 005a 8DF80540 		strb	r4, [sp, #5]
+  29:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_OType = GPIO_OType_PP;
+ 104              		.loc 1 29 5 is_stmt 1 view .LVU31
+ 105              		.loc 1 29 21 is_stmt 0 view .LVU32
+ 106 005e 8DF80660 		strb	r6, [sp, #6]
+  30:Lib/bsp/src/bsp_led.c ****     gpio.GPIO_PuPd = GPIO_PuPd_DOWN;
+ 107              		.loc 1 30 5 is_stmt 1 view .LVU33
+ 108              		.loc 1 30 20 is_stmt 0 view .LVU34
+ 109 0062 8DF80740 		strb	r4, [sp, #7]
+  31:Lib/bsp/src/bsp_led.c ****     GPIO_Init(GPIOB, &gpio);
+ 110              		.loc 1 31 5 is_stmt 1 view .LVU35
+ 111 0066 6946     		mov	r1, sp
+ 112 0068 2846     		mov	r0, r5
+ 113 006a FFF7FEFF 		bl	GPIO_Init
+ 114              	.LVL3:
+  32:Lib/bsp/src/bsp_led.c **** }...
+ 115              		.loc 1 32 1 is_stmt 0 view .LVU36
+ 116 006e 03B0     		add	sp, sp, #12
+ 117              		.cfi_def_cfa_offset 20
+ 118              		@ sp needed
+ 119 0070 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 120              	.L4:
+ 121 0072 00BF     		.align	2
+ 122              	.L3:
+ 123 0074 00040240 		.word	1073873920
+ 124              		.cfi_endproc
+ 125              	.LFE123:
+ 127              		.text
+ 128              	.Letext0:
+ 129              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 130              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 131              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 132              		.file 5 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h"
+ 133              		.file 6 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ARM GAS  /tmp/ccuJDWTb.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 bsp_led.c
+     /tmp/ccuJDWTb.s:20     .text.led_setup:0000000000000000 $t
+     /tmp/ccuJDWTb.s:26     .text.led_setup:0000000000000000 led_setup
+     /tmp/ccuJDWTb.s:123    .text.led_setup:0000000000000074 $d
+
+UNDEFINED SYMBOLS
+RCC_AHB1PeriphClockCmd
+GPIO_Init

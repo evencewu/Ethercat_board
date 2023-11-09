@@ -70,7 +70,7 @@ Lib/soes_hal_bsp/src/spi.c \
 Lib/soes-esi/objectlist.c \
 Lib/soes/hal/ax58100/esc_hw.c \
 Core/Src/pdo_override.c \
-Core/Src/ecatapp.c
+Core/Src/ecatapp.c 
 
 # ASM sources
 ASM_SOURCES =  \
@@ -134,8 +134,7 @@ C_INCLUDES =  \
 -IDrivers/CMSIS/Include \
 -ILib/soes_hal_bsp/include \
 -ILib/soes/include \
--ILib/soes-esi
-
+-ILib/soes-esi 
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

@@ -2,7 +2,7 @@
 <EtherCATInfo>
   <Vendor>
     <Id>0</Id>
-    <Name LcId="1033">EtherCAT to CAN</Name>
+    <Name LcId="1033">ACME EtherCAT Devices</Name>
   </Vendor>
   <Descriptions>
     <Groups>
@@ -111,7 +111,7 @@
               </DataType>
               <DataType>
                 <Name>DT1600</Name>
-                <BitSize>80</BitSize>
+                <BitSize>144</BitSize>
                 <SubItem>
                   <SubIdx>0</SubIdx>
                   <Name>Max SubIndex</Name>
@@ -134,7 +134,7 @@
                 </SubItem>
                 <SubItem>
                   <SubIdx>2</SubIdx>
-                  <Name>led1_rx</Name>
+                  <Name>Padding 3</Name>
                   <Type>UDINT</Type>
                   <BitSize>32</BitSize>
                   <BitOffs>48</BitOffs>
@@ -142,10 +142,30 @@
                     <Access>ro</Access>
                   </Flags>
                 </SubItem>
+                <SubItem>
+                  <SubIdx>3</SubIdx>
+                  <Name>led1_rx</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>80</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>4</SubIdx>
+                  <Name>Padding 4</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>112</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                  </Flags>
+                </SubItem>
               </DataType>
               <DataType>
                 <Name>DT1A00</Name>
-                <BitSize>80</BitSize>
+                <BitSize>144</BitSize>
                 <SubItem>
                   <SubIdx>0</SubIdx>
                   <Name>Max SubIndex</Name>
@@ -168,10 +188,30 @@
                 </SubItem>
                 <SubItem>
                   <SubIdx>2</SubIdx>
-                  <Name>led2_tx</Name>
+                  <Name>Padding 1</Name>
                   <Type>UDINT</Type>
                   <BitSize>32</BitSize>
                   <BitOffs>48</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>3</SubIdx>
+                  <Name>led2_tx</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>80</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>4</SubIdx>
+                  <Name>Padding 2</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>112</BitOffs>
                   <Flags>
                     <Access>ro</Access>
                   </Flags>
@@ -417,8 +457,8 @@
                 <SubItem>
                   <SubIdx>1</SubIdx>
                   <Name>led1_tx</Name>
-                  <Type>SINT</Type>
-                  <BitSize>8</BitSize>
+                  <Type>BOOL</Type>
+                  <BitSize>1</BitSize>
                   <BitOffs>16</BitOffs>
                   <Flags>
                     <Access WriteRestrictions="PreOP">ro</Access>
@@ -428,9 +468,9 @@
                 <SubItem>
                   <SubIdx>2</SubIdx>
                   <Name>led2_tx</Name>
-                  <Type>USINT</Type>
-                  <BitSize>8</BitSize>
-                  <BitOffs>24</BitOffs>
+                  <Type>BOOL</Type>
+                  <BitSize>1</BitSize>
+                  <BitOffs>17</BitOffs>
                   <Flags>
                     <Access WriteRestrictions="PreOP">ro</Access>
                   <PdoMapping>T</PdoMapping>
@@ -453,22 +493,22 @@
                 <SubItem>
                   <SubIdx>1</SubIdx>
                   <Name>led2_rx</Name>
-                  <Type>USINT</Type>
-                  <BitSize>8</BitSize>
+                  <Type>BOOL</Type>
+                  <BitSize>1</BitSize>
                   <BitOffs>16</BitOffs>
                   <Flags>
-                    <Access WriteRestrictions="PreOP">ro</Access>
+                    <Access WriteRestrictions="PreOP">rw</Access>
                   <PdoMapping>R</PdoMapping>
                   </Flags>
                 </SubItem>
                 <SubItem>
                   <SubIdx>2</SubIdx>
                   <Name>led1_rx</Name>
-                  <Type>USINT</Type>
-                  <BitSize>8</BitSize>
-                  <BitOffs>24</BitOffs>
+                  <Type>BOOL</Type>
+                  <BitSize>1</BitSize>
+                  <BitOffs>17</BitOffs>
                   <Flags>
-                    <Access WriteRestrictions="PreOP">ro</Access>
+                    <Access WriteRestrictions="PreOP">rw</Access>
                   <PdoMapping>R</PdoMapping>
                   </Flags>
                 </SubItem>
@@ -492,6 +532,10 @@
               <DataType>
                 <Name>UINT</Name>
                 <BitSize>16</BitSize>
+              </DataType>
+              <DataType>
+                <Name>BOOL</Name>
+                <BitSize>1</BitSize>
               </DataType>
               <DataType>
                 <Name>SINT</Name>
@@ -635,24 +679,36 @@
                 <Index>#x1600</Index>
                 <Name>led_rx</Name>
                 <Type>DT1600</Type>
-                <BitSize>80</BitSize>
+                <BitSize>144</BitSize>
                 <Info>
                   <SubItem>
                     <Name>Max SubIndex</Name>
                     <Info>
-                      <DefaultValue>2</DefaultValue>
+                      <DefaultValue>4</DefaultValue>
                     </Info>
                   </SubItem>
                   <SubItem>
                     <Name>led2_rx</Name>
                     <Info>
-                      <DefaultValue>#x70020108</DefaultValue>
+                      <DefaultValue>#x70020101</DefaultValue>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Padding 3</Name>
+                    <Info>
+                      <DefaultValue>#x00000007</DefaultValue>
                     </Info>
                   </SubItem>
                   <SubItem>
                     <Name>led1_rx</Name>
                     <Info>
-                      <DefaultValue>#x70020208</DefaultValue>
+                      <DefaultValue>#x70020201</DefaultValue>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Padding 4</Name>
+                    <Info>
+                      <DefaultValue>#x00000007</DefaultValue>
                     </Info>
                   </SubItem>
                 </Info>
@@ -664,24 +720,36 @@
                 <Index>#x1A00</Index>
                 <Name>led_tx</Name>
                 <Type>DT1A00</Type>
-                <BitSize>80</BitSize>
+                <BitSize>144</BitSize>
                 <Info>
                   <SubItem>
                     <Name>Max SubIndex</Name>
                     <Info>
-                      <DefaultValue>2</DefaultValue>
+                      <DefaultValue>4</DefaultValue>
                     </Info>
                   </SubItem>
                   <SubItem>
                     <Name>led1_tx</Name>
                     <Info>
-                      <DefaultValue>#x60020108</DefaultValue>
+                      <DefaultValue>#x60020101</DefaultValue>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Padding 1</Name>
+                    <Info>
+                      <DefaultValue>#x00000007</DefaultValue>
                     </Info>
                   </SubItem>
                   <SubItem>
                     <Name>led2_tx</Name>
                     <Info>
-                      <DefaultValue>#x60020208</DefaultValue>
+                      <DefaultValue>#x60020201</DefaultValue>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Padding 2</Name>
+                    <Info>
+                      <DefaultValue>#x00000007</DefaultValue>
                     </Info>
                   </SubItem>
                 </Info>
@@ -980,16 +1048,26 @@
           <Entry>
             <Index>#x7002</Index>
             <SubIndex>#x1</SubIndex>
-            <BitLen>8</BitLen>
+            <BitLen>1</BitLen>
             <Name>led2_rx</Name>
-            <DataType>USINT</DataType>
+            <DataType>BOOL</DataType>
+          </Entry>
+          <Entry>
+            <Index>0</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>7</BitLen>
           </Entry>
           <Entry>
             <Index>#x7002</Index>
             <SubIndex>#x2</SubIndex>
-            <BitLen>8</BitLen>
+            <BitLen>1</BitLen>
             <Name>led1_rx</Name>
-            <DataType>USINT</DataType>
+            <DataType>BOOL</DataType>
+          </Entry>
+          <Entry>
+            <Index>0</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>7</BitLen>
           </Entry>
         </RxPdo>
         <TxPdo Fixed="true" Mandatory="true" Sm="3">
@@ -998,16 +1076,26 @@
           <Entry>
             <Index>#x6002</Index>
             <SubIndex>#x1</SubIndex>
-            <BitLen>8</BitLen>
+            <BitLen>1</BitLen>
             <Name>led1_tx</Name>
-            <DataType>SINT</DataType>
+            <DataType>BOOL</DataType>
+          </Entry>
+          <Entry>
+            <Index>0</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>7</BitLen>
           </Entry>
           <Entry>
             <Index>#x6002</Index>
             <SubIndex>#x2</SubIndex>
-            <BitLen>8</BitLen>
+            <BitLen>1</BitLen>
             <Name>led2_tx</Name>
-            <DataType>USINT</DataType>
+            <DataType>BOOL</DataType>
+          </Entry>
+          <Entry>
+            <Index>0</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>7</BitLen>
           </Entry>
         </TxPdo>
         <Mailbox DataLinkLayer="true">
@@ -1027,7 +1115,7 @@
         </Dc>
         <Eeprom>
           <ByteSize>2048</ByteSize>
-          <ConfigData>050603446400000000001A000000</ConfigData>
+          <ConfigData>05060344640000</ConfigData>
         </Eeprom>
       </Device>
     </Devices>

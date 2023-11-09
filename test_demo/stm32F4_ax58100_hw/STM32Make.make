@@ -80,6 +80,8 @@ Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c \
 Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c \
 Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c \
 Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_wwdg.c \
+Lib/bsp/src/bsp_can.c \
+Lib/bsp/src/bsp_led.c \
 Lib/bsp/src/delay.c \
 Lib/bsp/src/system_stm32f4xx.c \
 Lib/soes-esi/objectlist.c \

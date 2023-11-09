@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccWdXZXt.s 			page 1
+ARM GAS  /tmp/cc9hBhZE.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
   28:Lib/soes/src/esc.c ****    ESC_write (ESCREG_ALERROR, &dummy, sizeof (dummy));
   29:Lib/soes/src/esc.c **** }
   30:Lib/soes/src/esc.c **** 
-ARM GAS  /tmp/ccWdXZXt.s 			page 2
+ARM GAS  /tmp/cc9hBhZE.s 			page 2
 
 
   31:Lib/soes/src/esc.c **** /** Write AL Status to the ESC.
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
   85:Lib/soes/src/esc.c **** 
   86:Lib/soes/src/esc.c **** /** Write ALeventMask register 0x204.
   87:Lib/soes/src/esc.c ****  *
-ARM GAS  /tmp/ccWdXZXt.s 			page 3
+ARM GAS  /tmp/cc9hBhZE.s 			page 3
 
 
   88:Lib/soes/src/esc.c ****  * @param[in] n   = AL Event Mask
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  142:Lib/soes/src/esc.c **** /** Read SM Status register 0x805(+ offset to SyncManager n) and save the
  143:Lib/soes/src/esc.c ****  * result in global variable ESCvar.SM[n].
  144:Lib/soes/src/esc.c ****  *
-ARM GAS  /tmp/ccWdXZXt.s 			page 4
+ARM GAS  /tmp/cc9hBhZE.s 			page 4
 
 
  145:Lib/soes/src/esc.c ****  * @param[in] n   = Read Sync Manager no. n
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  199:Lib/soes/src/esc.c ****  */
  200:Lib/soes/src/esc.c **** uint8_t ESC_WDstatus (void)
  201:Lib/soes/src/esc.c **** {
-ARM GAS  /tmp/ccWdXZXt.s 			page 5
+ARM GAS  /tmp/cc9hBhZE.s 			page 5
 
 
  202:Lib/soes/src/esc.c ****    uint16_t wdstatus;
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  256:Lib/soes/src/esc.c ****       /* Trigger a by the application given DC check handler, return error if
  257:Lib/soes/src/esc.c ****        *  non is given
  258:Lib/soes/src/esc.c ****        */
-ARM GAS  /tmp/ccWdXZXt.s 			page 6
+ARM GAS  /tmp/cc9hBhZE.s 			page 6
 
 
  259:Lib/soes/src/esc.c ****       ret = ALERR_DCINVALIDSYNCCFG;
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  313:Lib/soes/src/esc.c ****  * @param[in] state   = Current state request read from ALControl 0x0120
  314:Lib/soes/src/esc.c ****  * @return if all Mailbox values is correct we return incoming state, otherwise
  315:Lib/soes/src/esc.c ****  * we return state Init with Error flag set.
-ARM GAS  /tmp/ccWdXZXt.s 			page 7
+ARM GAS  /tmp/cc9hBhZE.s 			page 7
 
 
  316:Lib/soes/src/esc.c ****  */
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  370:Lib/soes/src/esc.c ****       ESCvar.MBXrun = 1;
  371:Lib/soes/src/esc.c ****    }
  372:Lib/soes/src/esc.c ****    return state;
-ARM GAS  /tmp/ccWdXZXt.s 			page 8
+ARM GAS  /tmp/cc9hBhZE.s 			page 8
 
 
  373:Lib/soes/src/esc.c **** }
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  427:Lib/soes/src/esc.c **** /** Write local mailbox buffer ESCvar.MBX[n] to Send mailbox.
  428:Lib/soes/src/esc.c ****  * Combined function for bootstrap and other states. State check decides
  429:Lib/soes/src/esc.c ****  * which one to write.
-ARM GAS  /tmp/ccWdXZXt.s 			page 9
+ARM GAS  /tmp/cc9hBhZE.s 			page 9
 
 
  430:Lib/soes/src/esc.c ****  *
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  484:Lib/soes/src/esc.c ****       {
  485:Lib/soes/src/esc.c ****          ESCvar.mbxcnt = 1;
  486:Lib/soes/src/esc.c ****       }
-ARM GAS  /tmp/ccWdXZXt.s 			page 10
+ARM GAS  /tmp/cc9hBhZE.s 			page 10
 
 
  487:Lib/soes/src/esc.c ****       MBh->address = htoes (0x0000);      // destination is master
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  541:Lib/soes/src/esc.c **** 
  542:Lib/soes/src/esc.c ****    if (ESCvar.MBXrun == 0)
  543:Lib/soes/src/esc.c ****    {
-ARM GAS  /tmp/ccWdXZXt.s 			page 11
+ARM GAS  /tmp/cc9hBhZE.s 			page 11
 
 
  544:Lib/soes/src/esc.c ****       /* nothing to do */
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  598:Lib/soes/src/esc.c ****             /* activate mailbox */
  599:Lib/soes/src/esc.c ****             ESC_SMenable (1);
  600:Lib/soes/src/esc.c ****             /* use backup mbx */
-ARM GAS  /tmp/ccWdXZXt.s 			page 12
+ARM GAS  /tmp/cc9hBhZE.s 			page 12
 
 
  601:Lib/soes/src/esc.c ****             ESC_writembx (ESCvar.mbxbackup);
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  655:Lib/soes/src/esc.c ****  * in Mailbox.
  656:Lib/soes/src/esc.c ****  */
  657:Lib/soes/src/esc.c **** void ESC_xoeprocess (void)
-ARM GAS  /tmp/ccWdXZXt.s 			page 13
+ARM GAS  /tmp/cc9hBhZE.s 			page 13
 
 
  658:Lib/soes/src/esc.c **** {
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  712:Lib/soes/src/esc.c ****       ESCvar.SMtestresult = SMRESULT_ERRSM2;
  713:Lib/soes/src/esc.c ****       /* fail state change */
  714:Lib/soes/src/esc.c ****       return (ESCpreop | ESCerror);
-ARM GAS  /tmp/ccWdXZXt.s 			page 14
+ARM GAS  /tmp/cc9hBhZE.s 			page 14
 
 
  715:Lib/soes/src/esc.c ****    }
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  769:Lib/soes/src/esc.c **** }
  770:Lib/soes/src/esc.c **** 
  771:Lib/soes/src/esc.c **** /** Function trying to enable start updating the process data inputs. It calls the check SM 2 & 3
-ARM GAS  /tmp/ccWdXZXt.s 			page 15
+ARM GAS  /tmp/cc9hBhZE.s 			page 15
 
 
  772:Lib/soes/src/esc.c ****  * routine, based on the result from there if enables or disables the Input SyncManager, in additio
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  826:Lib/soes/src/esc.c ****       else
  827:Lib/soes/src/esc.c ****       {
  828:Lib/soes/src/esc.c ****          if (ESCvar.esc_hw_interrupt_enable != NULL)
-ARM GAS  /tmp/ccWdXZXt.s 			page 16
+ARM GAS  /tmp/cc9hBhZE.s 			page 16
 
 
  829:Lib/soes/src/esc.c ****          {
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  883:Lib/soes/src/esc.c **** 	
  884:Lib/soes/src/esc.c ****    /* If outputs > 0 , enable SM2 */
  885:Lib/soes/src/esc.c ****    if (ESCvar.ESC_SM2_sml > 0)
-ARM GAS  /tmp/ccWdXZXt.s 			page 17
+ARM GAS  /tmp/cc9hBhZE.s 			page 17
 
 
  886:Lib/soes/src/esc.c ****    {
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  940:Lib/soes/src/esc.c ****        * this execution path.
  941:Lib/soes/src/esc.c ****        */
  942:Lib/soes/src/esc.c ****       ax = ESC_checkmbx (as);
-ARM GAS  /tmp/ccWdXZXt.s 			page 18
+ARM GAS  /tmp/cc9hBhZE.s 			page 18
 
 
  943:Lib/soes/src/esc.c ****       ax23 = ESC_checkSM23 (as);
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  997:Lib/soes/src/esc.c **** static bool ESC_check_id_request (uint16_t ALcontrol, uint8_t * an)
  998:Lib/soes/src/esc.c **** {
   29              		.loc 1 998 1 view -0
-ARM GAS  /tmp/ccWdXZXt.s 			page 19
+ARM GAS  /tmp/cc9hBhZE.s 			page 19
 
 
   30              		.cfi_startproc
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
   65              	.LVL3:
   66              	.L3:
  998:Lib/soes/src/esc.c ****    if ((ALcontrol & ESCREG_AL_ID_REQUEST) != 0)
-ARM GAS  /tmp/ccWdXZXt.s 			page 20
+ARM GAS  /tmp/cc9hBhZE.s 			page 20
 
 
   67              		.loc 1 998 1 view .LVU14
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1016:Lib/soes/src/esc.c **** }
  112              		.loc 1 1016 11 view .LVU25
  113 004c 7047     		bx	lr
-ARM GAS  /tmp/ccWdXZXt.s 			page 21
+ARM GAS  /tmp/cc9hBhZE.s 			page 21
 
 
  114              		.cfi_endproc
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  160              	.L12:
  161 0024 00000000 		.word	ESCvar
  162              		.cfi_endproc
-ARM GAS  /tmp/ccWdXZXt.s 			page 22
+ARM GAS  /tmp/cc9hBhZE.s 			page 22
 
 
  163              	.LFE0:
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1036:Lib/soes/src/esc.c **** 
 1037:Lib/soes/src/esc.c ****    if (device_id != 0)
  201              		.loc 1 1037 4 is_stmt 1 view .LVU46
-ARM GAS  /tmp/ccWdXZXt.s 			page 23
+ARM GAS  /tmp/cc9hBhZE.s 			page 23
 
 
  202              		.loc 1 1037 18 is_stmt 0 view .LVU47
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  244              		.thumb_func
  246              	ESC_ALstatus:
  247              	.LVL17:
-ARM GAS  /tmp/ccWdXZXt.s 			page 24
+ARM GAS  /tmp/cc9hBhZE.s 			page 24
 
 
  248              	.LFB1:
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  294              	ESC_ALeventmaskwrite:
  295              	.LVL20:
  296              	.LFB3:
-ARM GAS  /tmp/ccWdXZXt.s 			page 25
+ARM GAS  /tmp/cc9hBhZE.s 			page 25
 
 
   91:Lib/soes/src/esc.c ****    uint32_t aleventmask;
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  344              		.cfi_def_cfa_offset 16
  103:Lib/soes/src/esc.c **** 
  345              		.loc 1 103 4 view .LVU74
-ARM GAS  /tmp/ccWdXZXt.s 			page 26
+ARM GAS  /tmp/cc9hBhZE.s 			page 26
 
 
  105:Lib/soes/src/esc.c ****    return htoel(aleventmask);
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  392 0010 FFF7FEFF 		bl	ESC_write
  393              	.LVL26:
  118:Lib/soes/src/esc.c **** 
-ARM GAS  /tmp/ccWdXZXt.s 			page 27
+ARM GAS  /tmp/cc9hBhZE.s 			page 27
 
 
  394              		.loc 1 118 1 view .LVU85
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  137:Lib/soes/src/esc.c ****    uint8_t dummy;
  447              		.loc 1 137 1 is_stmt 1 view -0
  448              		.cfi_startproc
-ARM GAS  /tmp/ccWdXZXt.s 			page 28
+ARM GAS  /tmp/cc9hBhZE.s 			page 28
 
 
  449              		@ args = 0, pretend = 0, frame = 8
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  150:Lib/soes/src/esc.c ****    ESC_read ((uint16_t)(ESCREG_SM0STATUS + (n << 3)), &(sm->Status), 1);
  496              		.loc 1 150 4 view .LVU101
  150:Lib/soes/src/esc.c ****    ESC_read ((uint16_t)(ESCREG_SM0STATUS + (n << 3)), &(sm->Status), 1);
-ARM GAS  /tmp/ccWdXZXt.s 			page 29
+ARM GAS  /tmp/cc9hBhZE.s 			page 29
 
 
  497              		.loc 1 150 7 is_stmt 0 view .LVU102
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  161:Lib/soes/src/esc.c ****    ESC_write ((uint16_t)(ESCREG_SM0PDI + (n << 3)), &(sm->ActPDI), 1);
  544              		.loc 1 161 7 is_stmt 0 view .LVU112
  545 0002 00F11703 		add	r3, r0, #23
-ARM GAS  /tmp/ccWdXZXt.s 			page 30
+ARM GAS  /tmp/cc9hBhZE.s 			page 30
 
 
  546 0006 0549     		ldr	r1, .L43
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  592 0002 00F11702 		add	r2, r0, #23
  593 0006 054B     		ldr	r3, .L47
  594 0008 03EBC203 		add	r3, r3, r2, lsl #3
-ARM GAS  /tmp/ccWdXZXt.s 			page 31
+ARM GAS  /tmp/cc9hBhZE.s 			page 31
 
 
  595              	.LVL42:
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  640              		.loc 1 184 15 is_stmt 0 view .LVU133
  641 000c DA7A     		ldrb	r2, [r3, #11]	@ zero_extendqisi2
  642 000e 42F00102 		orr	r2, r2, #1
-ARM GAS  /tmp/ccWdXZXt.s 			page 32
+ARM GAS  /tmp/cc9hBhZE.s 			page 32
 
 
  643 0012 DA72     		strb	r2, [r3, #11]
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  694              		.thumb_func
  696              	ESC_WDstatus:
  697              	.LFB13:
-ARM GAS  /tmp/ccWdXZXt.s 			page 33
+ARM GAS  /tmp/cc9hBhZE.s 			page 33
 
 
  201:Lib/soes/src/esc.c ****    uint16_t wdstatus;
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  745 0004 0122     		movs	r2, #1
  746 0006 0DF10701 		add	r1, sp, #7
  747 000a 40F68110 		movw	r0, #2433
-ARM GAS  /tmp/ccWdXZXt.s 			page 34
+ARM GAS  /tmp/cc9hBhZE.s 			page 34
 
 
  748 000e FFF7FEFF 		bl	ESC_read
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  797              		.align	1
  798              		.global	ESC_SYNC1cycletime
  799              		.syntax unified
-ARM GAS  /tmp/ccWdXZXt.s 			page 35
+ARM GAS  /tmp/cc9hBhZE.s 			page 35
 
 
  800              		.thumb
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  849              		.loc 1 250 4 view .LVU164
  850              	.LVL52:
  252:Lib/soes/src/esc.c ****    /* Do we need to check sync settings? */
-ARM GAS  /tmp/ccWdXZXt.s 			page 36
+ARM GAS  /tmp/cc9hBhZE.s 			page 36
 
 
  851              		.loc 1 252 4 view .LVU165
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  888              		.loc 1 272 1 is_stmt 0 view .LVU182
  889 0022 08BD     		pop	{r3, pc}
  890              	.LVL59:
-ARM GAS  /tmp/ccWdXZXt.s 			page 37
+ARM GAS  /tmp/cc9hBhZE.s 			page 37
 
 
  891              	.L68:
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  939 0016 40F60800 		movw	r0, #2056
  940 001a FFF7FEFF 		bl	ESC_read
  941              	.LVL64:
-ARM GAS  /tmp/ccWdXZXt.s 			page 38
+ARM GAS  /tmp/cc9hBhZE.s 			page 38
 
 
  288:Lib/soes/src/esc.c ****    if ((etohs (SM->PSA) != ESC_MBX0_sma) || (etohs (SM->Length) != ESC_MBX0_sml)
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  980 0050 B3F8C410 		ldrh	r1, [r3, #196]
  298:Lib/soes/src/esc.c ****        || (SM->Command != ESC_MBX1_smc) || (ESCvar.SM[1].ECsm == 0))
  981              		.loc 1 298 28 view .LVU207
-ARM GAS  /tmp/ccWdXZXt.s 			page 39
+ARM GAS  /tmp/cc9hBhZE.s 			page 39
 
 
  982 0054 5B6F     		ldr	r3, [r3, #116]
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  294:Lib/soes/src/esc.c ****       return (uint8_t) (ESCinit | ESCerror);      //fail state change
  1023              		.loc 1 294 7 view .LVU221
  1024 0092 2046     		mov	r0, r4
-ARM GAS  /tmp/ccWdXZXt.s 			page 40
+ARM GAS  /tmp/cc9hBhZE.s 			page 40
 
 
  1025 0094 FFF7FEFF 		bl	ESC_SMdisable
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1071              		.loc 1 318 1 is_stmt 1 view -0
  1072              		.cfi_startproc
  1073              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccWdXZXt.s 			page 41
+ARM GAS  /tmp/cc9hBhZE.s 			page 41
 
 
  1074              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1114 002e 2046     		mov	r0, r4
  1115 0030 FFF7FEFF 		bl	ESC_checkmbx
  1116              	.LVL80:
-ARM GAS  /tmp/ccWdXZXt.s 			page 42
+ARM GAS  /tmp/cc9hBhZE.s 			page 42
 
 
  1117 0034 0446     		mov	r4, r0
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1160              		.section	.text.ESC_startmbxboot,"ax",%progbits
  1161              		.align	1
  1162              		.global	ESC_startmbxboot
-ARM GAS  /tmp/ccWdXZXt.s 			page 43
+ARM GAS  /tmp/cc9hBhZE.s 			page 43
 
 
  1163              		.syntax unified
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1206              	.LVL90:
  361:Lib/soes/src/esc.c ****    if ((state = ESC_checkmbx (state)) & ESCerror)
  1207              		.loc 1 361 4 view .LVU270
-ARM GAS  /tmp/ccWdXZXt.s 			page 44
+ARM GAS  /tmp/cc9hBhZE.s 			page 44
 
 
  1208 002a 0120     		movs	r0, #1
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1248 005c 024B     		ldr	r3, .L93
  1249 005e 0022     		movs	r2, #0
  1250 0060 83F86820 		strb	r2, [r3, #104]
-ARM GAS  /tmp/ccWdXZXt.s 			page 45
+ARM GAS  /tmp/cc9hBhZE.s 			page 45
 
 
  1251 0064 F5E7     		b	.L90
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1297              		.loc 1 386 7 is_stmt 1 discriminator 3 view .LVU294
  386:Lib/soes/src/esc.c ****    }
  1298              		.loc 1 386 27 is_stmt 0 discriminator 3 view .LVU295
-ARM GAS  /tmp/ccWdXZXt.s 			page 46
+ARM GAS  /tmp/cc9hBhZE.s 			page 46
 
 
  1299 001a 134B     		ldr	r3, .L99+4
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1335              		.loc 1 394 4 is_stmt 1 view .LVU313
  394:Lib/soes/src/esc.c ****    ESCvar.frags = 0;
  1336              		.loc 1 394 21 is_stmt 0 view .LVU314
-ARM GAS  /tmp/ccWdXZXt.s 			page 47
+ARM GAS  /tmp/cc9hBhZE.s 			page 47
 
 
  1337 0046 83F89120 		strb	r2, [r3, #145]
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1379 0000 30B5     		push	{r4, r5, lr}
  1380              		.cfi_def_cfa_offset 12
  1381              		.cfi_offset 4, -12
-ARM GAS  /tmp/ccWdXZXt.s 			page 48
+ARM GAS  /tmp/cc9hBhZE.s 			page 48
 
 
  1382              		.cfi_offset 5, -8
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1420              		.loc 1 419 25 is_stmt 0 view .LVU344
  1421 002a 1088     		ldrh	r0, [r2]
  419:Lib/soes/src/esc.c ****    if (length + ESC_MBXHSIZE < ESC_MBX0_sml)
-ARM GAS  /tmp/ccWdXZXt.s 			page 49
+ARM GAS  /tmp/cc9hBhZE.s 			page 49
 
 
  1422              		.loc 1 419 4 view .LVU345
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1468              		.cfi_endproc
  1469              	.LFE22:
  1471              		.section	.text.ESC_writembx,"ax",%progbits
-ARM GAS  /tmp/ccWdXZXt.s 			page 50
+ARM GAS  /tmp/cc9hBhZE.s 			page 50
 
 
  1472              		.align	1
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1514 0018 506F     		ldr	r0, [r2, #116]
  1515 001a 4288     		ldrh	r2, [r0, #2]
  440:Lib/soes/src/esc.c ****    {
-ARM GAS  /tmp/ccWdXZXt.s 			page 51
+ARM GAS  /tmp/cc9hBhZE.s 			page 51
 
 
  1516              		.loc 1 440 31 view .LVU367
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1559              	.LVL113:
  1560 0050 F2E7     		b	.L110
  1561              	.L114:
-ARM GAS  /tmp/ccWdXZXt.s 			page 52
+ARM GAS  /tmp/cc9hBhZE.s 			page 52
 
 
  1562 0052 00BF     		.align	2
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1609              		@ sp needed
  1610 0022 10BD     		pop	{r4, pc}
  1611              	.L118:
-ARM GAS  /tmp/ccWdXZXt.s 			page 53
+ARM GAS  /tmp/cc9hBhZE.s 			page 53
 
 
  1612              		.align	2
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1656 000e 002B     		cmp	r3, #0
  1657 0010 F8D1     		bne	.L122
  1658              	.L121:
-ARM GAS  /tmp/ccWdXZXt.s 			page 54
+ARM GAS  /tmp/cc9hBhZE.s 			page 54
 
 
  477:Lib/soes/src/esc.c ****    {
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  487:Lib/soes/src/esc.c ****       MBh->channel = 0;
  1696              		.loc 1 487 7 is_stmt 1 view .LVU417
  487:Lib/soes/src/esc.c ****       MBh->channel = 0;
-ARM GAS  /tmp/ccWdXZXt.s 			page 55
+ARM GAS  /tmp/cc9hBhZE.s 			page 55
 
 
  1697              		.loc 1 487 20 is_stmt 0 view .LVU418
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1740              		.section	.text.ESC_outreqbuffer,"ax",%progbits
  1741              		.align	1
  1742              		.global	ESC_outreqbuffer
-ARM GAS  /tmp/ccWdXZXt.s 			page 56
+ARM GAS  /tmp/cc9hBhZE.s 			page 56
 
 
  1743              		.syntax unified
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1785              	.L131:
  1786 0014 00000000 		.word	MBXcontrol
  1787              		.cfi_endproc
-ARM GAS  /tmp/ccWdXZXt.s 			page 57
+ARM GAS  /tmp/cc9hBhZE.s 			page 57
 
 
  1788              	.LFE26:
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1831              	.LVL129:
  523:Lib/soes/src/esc.c ****       mbxerr->mbxheader.mbxtype = MBXERR;
  1832              		.loc 1 523 7 is_stmt 1 view .LVU457
-ARM GAS  /tmp/ccWdXZXt.s 			page 58
+ARM GAS  /tmp/cc9hBhZE.s 			page 58
 
 
  523:Lib/soes/src/esc.c ****       mbxerr->mbxheader.mbxtype = MBXERR;
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1878              	ESC_mbxprocess:
  1879              	.LFB28:
  538:Lib/soes/src/esc.c ****    uint8_t mbxhandle = 0;
-ARM GAS  /tmp/ccWdXZXt.s 			page 59
+ARM GAS  /tmp/cc9hBhZE.s 			page 59
 
 
  1880              		.loc 1 538 1 is_stmt 1 view -0
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  582:Lib/soes/src/esc.c ****    {
  1919              		.loc 1 582 20 is_stmt 0 view .LVU485
  1920 002a 654A     		ldr	r2, .L163
-ARM GAS  /tmp/ccWdXZXt.s 			page 60
+ARM GAS  /tmp/cc9hBhZE.s 			page 60
 
 
  1921 002c 92F8CA30 		ldrb	r3, [r2, #202]	@ zero_extendqisi2
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  1961              	.L145:
  607:Lib/soes/src/esc.c ****    }
  1962              		.loc 1 607 7 view .LVU500
-ARM GAS  /tmp/ccWdXZXt.s 			page 61
+ARM GAS  /tmp/cc9hBhZE.s 			page 61
 
 
  607:Lib/soes/src/esc.c ****    }
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2003              		.loc 1 565 10 view .LVU514
  2004 00a2 062B     		cmp	r3, #6
  2005 00a4 10D0     		beq	.L159
-ARM GAS  /tmp/ccWdXZXt.s 			page 62
+ARM GAS  /tmp/cc9hBhZE.s 			page 62
 
 
  2006              	.L143:
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  597:Lib/soes/src/esc.c ****             /* activate mailbox */
  2045              		.loc 1 597 49 view .LVU530
  2046 00da 3A4A     		ldr	r2, .L163+4
-ARM GAS  /tmp/ccWdXZXt.s 			page 63
+ARM GAS  /tmp/cc9hBhZE.s 			page 63
 
 
  2047 00dc 0621     		movs	r1, #6
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  632:Lib/soes/src/esc.c ****          && (ESCvar.mbxoutpost == 0) && (ESCvar.xoe == 0))
  2088              		.loc 1 632 4 is_stmt 1 view .LVU544
  632:Lib/soes/src/esc.c ****          && (ESCvar.mbxoutpost == 0) && (ESCvar.xoe == 0))
-ARM GAS  /tmp/ccWdXZXt.s 			page 64
+ARM GAS  /tmp/cc9hBhZE.s 			page 64
 
 
  2089              		.loc 1 632 30 is_stmt 0 view .LVU545
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2129              		.loc 1 643 37 discriminator 1 view .LVU559
  2130 0158 1B4B     		ldr	r3, .L163+8
  2131 015a 5A79     		ldrb	r2, [r3, #5]	@ zero_extendqisi2
-ARM GAS  /tmp/ccWdXZXt.s 			page 65
+ARM GAS  /tmp/cc9hBhZE.s 			page 65
 
 
  643:Lib/soes/src/esc.c ****       {
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2171 0190 93F88F30 		ldrb	r3, [r3, #143]	@ zero_extendqisi2
  624:Lib/soes/src/esc.c ****          {
  2172              		.loc 1 624 13 view .LVU575
-ARM GAS  /tmp/ccWdXZXt.s 			page 66
+ARM GAS  /tmp/cc9hBhZE.s 			page 66
 
 
  2173 0194 002B     		cmp	r3, #0
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2219              		.section	.text.ESC_xoeprocess,"ax",%progbits
  2220              		.align	1
  2221              		.global	ESC_xoeprocess
-ARM GAS  /tmp/ccWdXZXt.s 			page 67
+ARM GAS  /tmp/cc9hBhZE.s 			page 67
 
 
  2222              		.syntax unified
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2263 001c 0B4B     		ldr	r3, .L172+8
  2264 001e 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
  667:Lib/soes/src/esc.c ****       {
-ARM GAS  /tmp/ccWdXZXt.s 			page 68
+ARM GAS  /tmp/cc9hBhZE.s 			page 68
 
 
  2265              		.loc 1 667 10 view .LVU599
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  687:Lib/soes/src/esc.c ****    _ESCsm2 *SM;
  2314              		.loc 1 687 1 is_stmt 0 view .LVU607
  2315 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  /tmp/ccWdXZXt.s 			page 69
+ARM GAS  /tmp/cc9hBhZE.s 			page 69
 
 
  2316              		.cfi_def_cfa_offset 16
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2355              		.loc 1 717 9 view .LVU622
  718:Lib/soes/src/esc.c ****             (ESCvar.ESC_SM2_sml > 0))
  2356              		.loc 1 718 17 is_stmt 0 view .LVU623
-ARM GAS  /tmp/ccWdXZXt.s 			page 70
+ARM GAS  /tmp/cc9hBhZE.s 			page 70
 
 
  2357 0034 2D49     		ldr	r1, .L192+4
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2396 0070 B3F8D620 		ldrh	r2, [r3, #214]
  745:Lib/soes/src/esc.c ****    {
  2397              		.loc 1 745 41 view .LVU639
-ARM GAS  /tmp/ccWdXZXt.s 			page 71
+ARM GAS  /tmp/cc9hBhZE.s 			page 71
 
 
  2398 0074 B3F87A30 		ldrh	r3, [r3, #122]
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2436 00a2 1220     		movs	r0, #18
  2437 00a4 F8E7     		b	.L177
  2438              	.L188:
-ARM GAS  /tmp/ccWdXZXt.s 			page 72
+ARM GAS  /tmp/cc9hBhZE.s 			page 72
 
 
  721:Lib/soes/src/esc.c ****       /* fail state change */
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2477 00d4 E0E7     		b	.L177
  2478              	.L191:
  764:Lib/soes/src/esc.c ****       /* fail state change */
-ARM GAS  /tmp/ccWdXZXt.s 			page 73
+ARM GAS  /tmp/cc9hBhZE.s 			page 73
 
 
  2479              		.loc 1 764 7 is_stmt 1 view .LVU672
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2526              	.LVL163:
  783:Lib/soes/src/esc.c ****    {
  2527              		.loc 1 783 4 is_stmt 1 view .LVU682
-ARM GAS  /tmp/ccWdXZXt.s 			page 74
+ARM GAS  /tmp/cc9hBhZE.s 			page 74
 
 
  783:Lib/soes/src/esc.c ****    {
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2569              	.LVL168:
  2570              	.L195:
  795:Lib/soes/src/esc.c ****       ESC_SMdisable (3);
-ARM GAS  /tmp/ccWdXZXt.s 			page 75
+ARM GAS  /tmp/cc9hBhZE.s 			page 75
 
 
  2571              		.loc 1 795 7 is_stmt 1 view .LVU696
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2611 0066 134B     		ldr	r3, .L208
  2612 0068 5B6D     		ldr	r3, [r3, #84]
  828:Lib/soes/src/esc.c ****          {
-ARM GAS  /tmp/ccWdXZXt.s 			page 76
+ARM GAS  /tmp/cc9hBhZE.s 			page 76
 
 
  2613              		.loc 1 828 13 view .LVU711
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  822:Lib/soes/src/esc.c ****          ESC_SMdisable (3);
  2652              		.loc 1 822 10 view .LVU727
  2653 008e 0220     		movs	r0, #2
-ARM GAS  /tmp/ccWdXZXt.s 			page 77
+ARM GAS  /tmp/cc9hBhZE.s 			page 77
 
 
  2654 0090 FFF7FEFF 		bl	ESC_SMdisable
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  859:Lib/soes/src/esc.c ****    ESC_SMdisable (3);
  2704              		.loc 1 859 4 view .LVU734
  2705 0002 0C4C     		ldr	r4, .L213
-ARM GAS  /tmp/ccWdXZXt.s 			page 78
+ARM GAS  /tmp/cc9hBhZE.s 			page 78
 
 
  2706 0004 BFF35B8F 		dmb	ish
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2752              		.loc 1 882 1 is_stmt 1 view -0
  2753              		.cfi_startproc
  2754              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccWdXZXt.s 			page 79
+ARM GAS  /tmp/cc9hBhZE.s 			page 79
 
 
  2755              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2801              		.section	.text.ESC_stopoutput,"ax",%progbits
  2802              		.align	1
  2803              		.global	ESC_stopoutput
-ARM GAS  /tmp/ccWdXZXt.s 			page 80
+ARM GAS  /tmp/cc9hBhZE.s 			page 80
 
 
  2804              		.syntax unified
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2855              		.cfi_startproc
  2856              		@ args = 0, pretend = 0, frame = 8
  2857              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccWdXZXt.s 			page 81
+ARM GAS  /tmp/cc9hBhZE.s 			page 81
 
 
   54:Lib/soes/src/esc.c **** 
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2895 002c 0DF10701 		add	r1, sp, #7
  2896              	.LVL195:
   69:Lib/soes/src/esc.c ****    }
-ARM GAS  /tmp/ccWdXZXt.s 			page 82
+ARM GAS  /tmp/cc9hBhZE.s 			page 82
 
 
  2897              		.loc 1 69 7 is_stmt 0 view .LVU777
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  2938 0068 03B0     		add	sp, sp, #12
  2939              		.cfi_remember_state
  2940              		.cfi_def_cfa_offset 12
-ARM GAS  /tmp/ccWdXZXt.s 			page 83
+ARM GAS  /tmp/cc9hBhZE.s 			page 83
 
 
  2941              		@ sp needed
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  916:Lib/soes/src/esc.c ****    {
  2991              		.loc 1 916 7 view .LVU797
  2992 0008 13F0100F 		tst	r3, #16
-ARM GAS  /tmp/ccWdXZXt.s 			page 84
+ARM GAS  /tmp/cc9hBhZE.s 			page 84
 
 
  2993 000c 34D0     		beq	.L240
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  935:Lib/soes/src/esc.c ****        ((as == ESCboot) == 0) && ESCvar.MBXrun)
  3030              		.loc 1 935 7 is_stmt 0 view .LVU815
  3031 0036 13F00E0F 		tst	r3, #14
-ARM GAS  /tmp/ccWdXZXt.s 			page 85
+ARM GAS  /tmp/cc9hBhZE.s 			page 85
 
 
  3032 003a 05D0     		beq	.L244
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  995:Lib/soes/src/esc.c **** 
  3075              		.loc 1 995 1 is_stmt 0 view .LVU827
  3076 0078 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
-ARM GAS  /tmp/ccWdXZXt.s 			page 86
+ARM GAS  /tmp/cc9hBhZE.s 			page 86
 
 
  3077              	.LVL215:
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3117              		.loc 1 971 10 is_stmt 1 view .LVU841
  3118 00ae FFF7FEFF 		bl	ESC_stopoutput
  3119              	.LVL220:
-ARM GAS  /tmp/ccWdXZXt.s 			page 87
+ARM GAS  /tmp/cc9hBhZE.s 			page 87
 
 
  972:Lib/soes/src/esc.c ****          if (ESCvar.SMtestresult & SMRESULT_ERRSM3)
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3161 00ec 83F86820 		strb	r2, [r3, #104]
  963:Lib/soes/src/esc.c ****          return;
  3162              		.loc 1 963 10 is_stmt 1 view .LVU855
-ARM GAS  /tmp/ccWdXZXt.s 			page 88
+ARM GAS  /tmp/cc9hBhZE.s 			page 88
 
 
  3163 00f0 3846     		mov	r0, r7
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1063:Lib/soes/src/esc.c **** #endif
 1064:Lib/soes/src/esc.c **** 
 1065:Lib/soes/src/esc.c **** /** The state handler acting on ALControl Bit(0)
-ARM GAS  /tmp/ccWdXZXt.s 			page 89
+ARM GAS  /tmp/cc9hBhZE.s 			page 89
 
 
 1066:Lib/soes/src/esc.c ****  * events in the Al Event Request register 0x220.
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1087:Lib/soes/src/esc.c ****    ac = ESCvar.ALcontrol & ESCREG_AL_STATEMASK;
  3231              		.loc 1 1087 4 is_stmt 1 view .LVU869
  3232              		.loc 1 1087 26 is_stmt 0 view .LVU870
-ARM GAS  /tmp/ccWdXZXt.s 			page 90
+ARM GAS  /tmp/cc9hBhZE.s 			page 90
 
 
  3233 0022 11F88229 		ldrb	r2, [r1], #-130	@ zero_extendqisi2
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1101:Lib/soes/src/esc.c ****    }
 1102:Lib/soes/src/esc.c **** 
 1103:Lib/soes/src/esc.c ****    /* Mask high bits ALcommand, low bits ALstatus */
-ARM GAS  /tmp/ccWdXZXt.s 			page 91
+ARM GAS  /tmp/cc9hBhZE.s 			page 91
 
 
 1104:Lib/soes/src/esc.c ****    as = (uint8_t)((ac << 4) | (as & 0x0f));
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3312 00a2 5B01     		.2byte	(.L263-.L265)/2
  3313 00a4 5B01     		.2byte	(.L263-.L265)/2
  3314 00a6 5B01     		.2byte	(.L263-.L265)/2
-ARM GAS  /tmp/ccWdXZXt.s 			page 92
+ARM GAS  /tmp/cc9hBhZE.s 			page 92
 
 
  3315 00a8 5B01     		.2byte	(.L263-.L265)/2
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3369 0114 5B01     		.2byte	(.L263-.L265)/2
  3370 0116 5B01     		.2byte	(.L263-.L265)/2
  3371 0118 5B01     		.2byte	(.L263-.L265)/2
-ARM GAS  /tmp/ccWdXZXt.s 			page 93
+ARM GAS  /tmp/cc9hBhZE.s 			page 93
 
 
  3372 011a 5B01     		.2byte	(.L263-.L265)/2
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1120:Lib/soes/src/esc.c ****    {
 1121:Lib/soes/src/esc.c ****       case INIT_TO_INIT:
 1122:Lib/soes/src/esc.c ****       case PREOP_TO_PREOP:
-ARM GAS  /tmp/ccWdXZXt.s 			page 94
+ARM GAS  /tmp/cc9hBhZE.s 			page 94
 
 
 1123:Lib/soes/src/esc.c ****       case OP_TO_OP:
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1165:Lib/soes/src/esc.c ****       {
 1166:Lib/soes/src/esc.c ****          ESC_stopmbx ();
 1167:Lib/soes/src/esc.c ****          an = ESCinit;
-ARM GAS  /tmp/ccWdXZXt.s 			page 95
+ARM GAS  /tmp/cc9hBhZE.s 			page 95
 
 
 1168:Lib/soes/src/esc.c ****          break;
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1222:Lib/soes/src/esc.c ****          ESC_stopinput ();
 1223:Lib/soes/src/esc.c ****          an = ESCpreop;
 1224:Lib/soes/src/esc.c ****          break;
-ARM GAS  /tmp/ccWdXZXt.s 			page 96
+ARM GAS  /tmp/cc9hBhZE.s 			page 96
 
 
 1225:Lib/soes/src/esc.c ****       }
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1279:Lib/soes/src/esc.c ****          break;
 1280:Lib/soes/src/esc.c ****       }
 1281:Lib/soes/src/esc.c ****    }
-ARM GAS  /tmp/ccWdXZXt.s 			page 97
+ARM GAS  /tmp/cc9hBhZE.s 			page 97
 
 
 1282:Lib/soes/src/esc.c **** 
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1300:Lib/soes/src/esc.c ****    ESC_ALstatus (an);
  3474              		.loc 1 1300 4 is_stmt 1 view .LVU917
  3475 01ca 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
-ARM GAS  /tmp/ccWdXZXt.s 			page 98
+ARM GAS  /tmp/cc9hBhZE.s 			page 98
 
 
  3476 01ce FFF7FEFF 		bl	ESC_ALstatus
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3514              		.loc 1 1152 10 view .LVU929
  3515 01f6 FFF7FEFF 		bl	ESC_stopinput
  3516              	.LVL244:
-ARM GAS  /tmp/ccWdXZXt.s 			page 99
+ARM GAS  /tmp/cc9hBhZE.s 			page 99
 
 
 1153:Lib/soes/src/esc.c ****          an = ESCinit;
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3555 0226 0123     		movs	r3, #1
  3556 0228 8DF80730 		strb	r3, [sp, #7]
 1174:Lib/soes/src/esc.c ****       }
-ARM GAS  /tmp/ccWdXZXt.s 			page 100
+ARM GAS  /tmp/cc9hBhZE.s 			page 100
 
 
  3557              		.loc 1 1174 10 is_stmt 1 view .LVU946
@@ -5964,7 +5964,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1188:Lib/soes/src/esc.c ****                                          SMmap2, MAX_MAPPINGS_SM2);
  3572              		.loc 1 1188 31 is_stmt 0 view .LVU952
  3573 023c 174D     		ldr	r5, .L303+12
- 3574 023e 0223     		movs	r3, #2
+ 3574 023e 0423     		movs	r3, #4
  3575 0240 174A     		ldr	r2, .L303+16
  3576 0242 2946     		mov	r1, r5
  3577 0244 41F61240 		movw	r0, #7186
@@ -5988,7 +5988,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1197:Lib/soes/src/esc.c ****                                          SMmap3, MAX_MAPPINGS_SM3);
  3590              		.loc 1 1197 31 is_stmt 0 view .LVU958
  3591 025a 124D     		ldr	r5, .L303+20
- 3592 025c 0223     		movs	r3, #2
+ 3592 025c 0423     		movs	r3, #4
  3593 025e 124A     		ldr	r2, .L303+24
  3594 0260 2946     		mov	r1, r5
  3595 0262 41F61340 		movw	r0, #7187
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3598              		.loc 1 1197 29 view .LVU959
  3599 026a 25F8360C 		strh	r0, [r5, #-54]	@ movhi
  3600 026e B03D     		subs	r5, r5, #176
-ARM GAS  /tmp/ccWdXZXt.s 			page 101
+ARM GAS  /tmp/cc9hBhZE.s 			page 101
 
 
 1199:Lib/soes/src/esc.c ****          {
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3642              		.loc 1 1194 13 view .LVU972
  3643 02b8 6AE7     		b	.L264
  3644              	.L299:
-ARM GAS  /tmp/ccWdXZXt.s 			page 102
+ARM GAS  /tmp/cc9hBhZE.s 			page 102
 
 
 1201:Lib/soes/src/esc.c ****             ESC_ALerror (ALERR_INVALIDINPUTSM);
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1229:Lib/soes/src/esc.c ****          break;
  3684              		.loc 1 1229 13 is_stmt 0 view .LVU988
  3685 02ea 0223     		movs	r3, #2
-ARM GAS  /tmp/ccWdXZXt.s 			page 103
+ARM GAS  /tmp/cc9hBhZE.s 			page 103
 
 
  3686 02ec 8DF80730 		strb	r3, [sp, #7]
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3725 031e B3F87830 		ldrh	r3, [r3, #120]
 1249:Lib/soes/src/esc.c ****          {
  3726              		.loc 1 1249 13 view .LVU1004
-ARM GAS  /tmp/ccWdXZXt.s 			page 104
+ARM GAS  /tmp/cc9hBhZE.s 			page 104
 
 
  3727 0322 002B     		cmp	r3, #0
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3766              		.loc 1 1277 13 is_stmt 0 view .LVU1019
  3767 0358 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
  3768 035c 43F01003 		orr	r3, r3, #16
-ARM GAS  /tmp/ccWdXZXt.s 			page 105
+ARM GAS  /tmp/cc9hBhZE.s 			page 105
 
 
  3769 0360 8DF80730 		strb	r3, [sp, #7]
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3810 0396 0020     		movs	r0, #0
  3811 0398 FFF7FEFF 		bl	ESC_ALerror
  3812              	.LVL271:
-ARM GAS  /tmp/ccWdXZXt.s 			page 106
+ARM GAS  /tmp/cc9hBhZE.s 			page 106
 
 
  3813 039c 0BE7     		b	.L288
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1320:Lib/soes/src/esc.c ****    ESCvar.use_interrupt = cfg->use_interrupt;
  3852              		.loc 1 1320 4 view .LVU1042
  3853              		.loc 1 1320 30 is_stmt 0 view .LVU1043
-ARM GAS  /tmp/ccWdXZXt.s 			page 107
+ARM GAS  /tmp/cc9hBhZE.s 			page 107
 
 
  3854 0002 4168     		ldr	r1, [r0, #4]
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
 1330:Lib/soes/src/esc.c ****    ESCvar.pre_state_change_hook = cfg->pre_state_change_hook;
  3899              		.loc 1 1330 4 is_stmt 1 view .LVU1063
  3900              		.loc 1 1330 38 is_stmt 0 view .LVU1064
-ARM GAS  /tmp/ccWdXZXt.s 			page 108
+ARM GAS  /tmp/cc9hBhZE.s 			page 108
 
 
  3901 0048 5169     		ldr	r1, [r2, #20]
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  3946 006c 916B     		ldr	r1, [r2, #56]
  3947              		.loc 1 1339 26 view .LVU1092
  3948 006e 1965     		str	r1, [r3, #80]
-ARM GAS  /tmp/ccWdXZXt.s 			page 109
+ARM GAS  /tmp/cc9hBhZE.s 			page 109
 
 
 1340:Lib/soes/src/esc.c ****    ESCvar.esc_hw_interrupt_enable = cfg->esc_hw_interrupt_enable;
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  4002 0002 0002     		.short	512
  4003 0004 FF11     		.short	4607
  4004 0006 26       		.byte	38
-ARM GAS  /tmp/ccWdXZXt.s 			page 110
+ARM GAS  /tmp/cc9hBhZE.s 			page 110
 
 
  4005 0007 00       		.byte	0
@@ -6576,141 +6576,141 @@ ARM GAS  /tmp/ccWdXZXt.s 			page 1
  4043              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
  4044              		.file 5 "Lib/soes/inc/esc_coe.h"
  4045              		.file 6 "Lib/soes/inc/esc.h"
-ARM GAS  /tmp/ccWdXZXt.s 			page 111
+ARM GAS  /tmp/cc9hBhZE.s 			page 111
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 esc.c
-     /tmp/ccWdXZXt.s:20     .text.ESC_check_id_request:0000000000000000 $t
-     /tmp/ccWdXZXt.s:25     .text.ESC_check_id_request:0000000000000000 ESC_check_id_request
-     /tmp/ccWdXZXt.s:118    .text.ESC_ALerror:0000000000000000 $t
-     /tmp/ccWdXZXt.s:124    .text.ESC_ALerror:0000000000000000 ESC_ALerror
-     /tmp/ccWdXZXt.s:161    .text.ESC_ALerror:0000000000000024 $d
-     /tmp/ccWdXZXt.s:166    .text.ESC_load_device_id:0000000000000000 $t
-     /tmp/ccWdXZXt.s:171    .text.ESC_load_device_id:0000000000000000 ESC_load_device_id
-     /tmp/ccWdXZXt.s:235    .text.ESC_load_device_id:000000000000003c $d
-     /tmp/ccWdXZXt.s:240    .text.ESC_ALstatus:0000000000000000 $t
-     /tmp/ccWdXZXt.s:246    .text.ESC_ALstatus:0000000000000000 ESC_ALstatus
-     /tmp/ccWdXZXt.s:283    .text.ESC_ALstatus:0000000000000024 $d
-     /tmp/ccWdXZXt.s:288    .text.ESC_ALeventmaskwrite:0000000000000000 $t
-     /tmp/ccWdXZXt.s:294    .text.ESC_ALeventmaskwrite:0000000000000000 ESC_ALeventmaskwrite
-     /tmp/ccWdXZXt.s:328    .text.ESC_ALeventmaskread:0000000000000000 $t
-     /tmp/ccWdXZXt.s:334    .text.ESC_ALeventmaskread:0000000000000000 ESC_ALeventmaskread
-     /tmp/ccWdXZXt.s:363    .text.ESC_ALeventwrite:0000000000000000 $t
-     /tmp/ccWdXZXt.s:369    .text.ESC_ALeventwrite:0000000000000000 ESC_ALeventwrite
-     /tmp/ccWdXZXt.s:403    .text.ESC_ALeventread:0000000000000000 $t
-     /tmp/ccWdXZXt.s:409    .text.ESC_ALeventread:0000000000000000 ESC_ALeventread
-     /tmp/ccWdXZXt.s:438    .text.ESC_SMack:0000000000000000 $t
-     /tmp/ccWdXZXt.s:444    .text.ESC_SMack:0000000000000000 ESC_SMack
-     /tmp/ccWdXZXt.s:477    .text.ESC_SMstatus:0000000000000000 $t
-     /tmp/ccWdXZXt.s:483    .text.ESC_SMstatus:0000000000000000 ESC_SMstatus
-     /tmp/ccWdXZXt.s:519    .text.ESC_SMstatus:000000000000001c $d
-     /tmp/ccWdXZXt.s:524    .text.ESC_SMwritepdi:0000000000000000 $t
-     /tmp/ccWdXZXt.s:530    .text.ESC_SMwritepdi:0000000000000000 ESC_SMwritepdi
-     /tmp/ccWdXZXt.s:566    .text.ESC_SMwritepdi:000000000000001c $d
-     /tmp/ccWdXZXt.s:571    .text.ESC_SMenable:0000000000000000 $t
-     /tmp/ccWdXZXt.s:577    .text.ESC_SMenable:0000000000000000 ESC_SMenable
-     /tmp/ccWdXZXt.s:609    .text.ESC_SMenable:000000000000001c $d
-     /tmp/ccWdXZXt.s:614    .text.ESC_SMdisable:0000000000000000 $t
-     /tmp/ccWdXZXt.s:620    .text.ESC_SMdisable:0000000000000000 ESC_SMdisable
-     /tmp/ccWdXZXt.s:652    .text.ESC_SMdisable:000000000000001c $d
-     /tmp/ccWdXZXt.s:657    .text.ESC_address:0000000000000000 $t
-     /tmp/ccWdXZXt.s:663    .text.ESC_address:0000000000000000 ESC_address
-     /tmp/ccWdXZXt.s:685    .text.ESC_address:0000000000000010 $d
-     /tmp/ccWdXZXt.s:690    .text.ESC_WDstatus:0000000000000000 $t
-     /tmp/ccWdXZXt.s:696    .text.ESC_WDstatus:0000000000000000 ESC_WDstatus
-     /tmp/ccWdXZXt.s:726    .text.ESC_SYNCactivation:0000000000000000 $t
-     /tmp/ccWdXZXt.s:732    .text.ESC_SYNCactivation:0000000000000000 ESC_SYNCactivation
-     /tmp/ccWdXZXt.s:761    .text.ESC_SYNC0cycletime:0000000000000000 $t
-     /tmp/ccWdXZXt.s:767    .text.ESC_SYNC0cycletime:0000000000000000 ESC_SYNC0cycletime
-     /tmp/ccWdXZXt.s:797    .text.ESC_SYNC1cycletime:0000000000000000 $t
-     /tmp/ccWdXZXt.s:803    .text.ESC_SYNC1cycletime:0000000000000000 ESC_SYNC1cycletime
-     /tmp/ccWdXZXt.s:833    .text.ESC_checkDC:0000000000000000 $t
-     /tmp/ccWdXZXt.s:839    .text.ESC_checkDC:0000000000000000 ESC_checkDC
-     /tmp/ccWdXZXt.s:900    .text.ESC_checkDC:0000000000000028 $d
-     /tmp/ccWdXZXt.s:905    .text.ESC_checkmbx:0000000000000000 $t
-     /tmp/ccWdXZXt.s:911    .text.ESC_checkmbx:0000000000000000 ESC_checkmbx
-     /tmp/ccWdXZXt.s:1056   .text.ESC_checkmbx:00000000000000b4 $d
-     /tmp/ccWdXZXt.s:1062   .text.ESC_startmbx:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1068   .text.ESC_startmbx:0000000000000000 ESC_startmbx
-     /tmp/ccWdXZXt.s:1156   .text.ESC_startmbx:0000000000000064 $d
-     /tmp/ccWdXZXt.s:1161   .text.ESC_startmbxboot:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1167   .text.ESC_startmbxboot:0000000000000000 ESC_startmbxboot
-ARM GAS  /tmp/ccWdXZXt.s 			page 112
+     /tmp/cc9hBhZE.s:20     .text.ESC_check_id_request:0000000000000000 $t
+     /tmp/cc9hBhZE.s:25     .text.ESC_check_id_request:0000000000000000 ESC_check_id_request
+     /tmp/cc9hBhZE.s:118    .text.ESC_ALerror:0000000000000000 $t
+     /tmp/cc9hBhZE.s:124    .text.ESC_ALerror:0000000000000000 ESC_ALerror
+     /tmp/cc9hBhZE.s:161    .text.ESC_ALerror:0000000000000024 $d
+     /tmp/cc9hBhZE.s:166    .text.ESC_load_device_id:0000000000000000 $t
+     /tmp/cc9hBhZE.s:171    .text.ESC_load_device_id:0000000000000000 ESC_load_device_id
+     /tmp/cc9hBhZE.s:235    .text.ESC_load_device_id:000000000000003c $d
+     /tmp/cc9hBhZE.s:240    .text.ESC_ALstatus:0000000000000000 $t
+     /tmp/cc9hBhZE.s:246    .text.ESC_ALstatus:0000000000000000 ESC_ALstatus
+     /tmp/cc9hBhZE.s:283    .text.ESC_ALstatus:0000000000000024 $d
+     /tmp/cc9hBhZE.s:288    .text.ESC_ALeventmaskwrite:0000000000000000 $t
+     /tmp/cc9hBhZE.s:294    .text.ESC_ALeventmaskwrite:0000000000000000 ESC_ALeventmaskwrite
+     /tmp/cc9hBhZE.s:328    .text.ESC_ALeventmaskread:0000000000000000 $t
+     /tmp/cc9hBhZE.s:334    .text.ESC_ALeventmaskread:0000000000000000 ESC_ALeventmaskread
+     /tmp/cc9hBhZE.s:363    .text.ESC_ALeventwrite:0000000000000000 $t
+     /tmp/cc9hBhZE.s:369    .text.ESC_ALeventwrite:0000000000000000 ESC_ALeventwrite
+     /tmp/cc9hBhZE.s:403    .text.ESC_ALeventread:0000000000000000 $t
+     /tmp/cc9hBhZE.s:409    .text.ESC_ALeventread:0000000000000000 ESC_ALeventread
+     /tmp/cc9hBhZE.s:438    .text.ESC_SMack:0000000000000000 $t
+     /tmp/cc9hBhZE.s:444    .text.ESC_SMack:0000000000000000 ESC_SMack
+     /tmp/cc9hBhZE.s:477    .text.ESC_SMstatus:0000000000000000 $t
+     /tmp/cc9hBhZE.s:483    .text.ESC_SMstatus:0000000000000000 ESC_SMstatus
+     /tmp/cc9hBhZE.s:519    .text.ESC_SMstatus:000000000000001c $d
+     /tmp/cc9hBhZE.s:524    .text.ESC_SMwritepdi:0000000000000000 $t
+     /tmp/cc9hBhZE.s:530    .text.ESC_SMwritepdi:0000000000000000 ESC_SMwritepdi
+     /tmp/cc9hBhZE.s:566    .text.ESC_SMwritepdi:000000000000001c $d
+     /tmp/cc9hBhZE.s:571    .text.ESC_SMenable:0000000000000000 $t
+     /tmp/cc9hBhZE.s:577    .text.ESC_SMenable:0000000000000000 ESC_SMenable
+     /tmp/cc9hBhZE.s:609    .text.ESC_SMenable:000000000000001c $d
+     /tmp/cc9hBhZE.s:614    .text.ESC_SMdisable:0000000000000000 $t
+     /tmp/cc9hBhZE.s:620    .text.ESC_SMdisable:0000000000000000 ESC_SMdisable
+     /tmp/cc9hBhZE.s:652    .text.ESC_SMdisable:000000000000001c $d
+     /tmp/cc9hBhZE.s:657    .text.ESC_address:0000000000000000 $t
+     /tmp/cc9hBhZE.s:663    .text.ESC_address:0000000000000000 ESC_address
+     /tmp/cc9hBhZE.s:685    .text.ESC_address:0000000000000010 $d
+     /tmp/cc9hBhZE.s:690    .text.ESC_WDstatus:0000000000000000 $t
+     /tmp/cc9hBhZE.s:696    .text.ESC_WDstatus:0000000000000000 ESC_WDstatus
+     /tmp/cc9hBhZE.s:726    .text.ESC_SYNCactivation:0000000000000000 $t
+     /tmp/cc9hBhZE.s:732    .text.ESC_SYNCactivation:0000000000000000 ESC_SYNCactivation
+     /tmp/cc9hBhZE.s:761    .text.ESC_SYNC0cycletime:0000000000000000 $t
+     /tmp/cc9hBhZE.s:767    .text.ESC_SYNC0cycletime:0000000000000000 ESC_SYNC0cycletime
+     /tmp/cc9hBhZE.s:797    .text.ESC_SYNC1cycletime:0000000000000000 $t
+     /tmp/cc9hBhZE.s:803    .text.ESC_SYNC1cycletime:0000000000000000 ESC_SYNC1cycletime
+     /tmp/cc9hBhZE.s:833    .text.ESC_checkDC:0000000000000000 $t
+     /tmp/cc9hBhZE.s:839    .text.ESC_checkDC:0000000000000000 ESC_checkDC
+     /tmp/cc9hBhZE.s:900    .text.ESC_checkDC:0000000000000028 $d
+     /tmp/cc9hBhZE.s:905    .text.ESC_checkmbx:0000000000000000 $t
+     /tmp/cc9hBhZE.s:911    .text.ESC_checkmbx:0000000000000000 ESC_checkmbx
+     /tmp/cc9hBhZE.s:1056   .text.ESC_checkmbx:00000000000000b4 $d
+     /tmp/cc9hBhZE.s:1062   .text.ESC_startmbx:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1068   .text.ESC_startmbx:0000000000000000 ESC_startmbx
+     /tmp/cc9hBhZE.s:1156   .text.ESC_startmbx:0000000000000064 $d
+     /tmp/cc9hBhZE.s:1161   .text.ESC_startmbxboot:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1167   .text.ESC_startmbxboot:0000000000000000 ESC_startmbxboot
+ARM GAS  /tmp/cc9hBhZE.s 			page 112
 
 
-     /tmp/ccWdXZXt.s:1255   .text.ESC_startmbxboot:0000000000000068 $d
-     /tmp/ccWdXZXt.s:1260   .text.ESC_stopmbx:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1266   .text.ESC_stopmbx:0000000000000000 ESC_stopmbx
-     /tmp/ccWdXZXt.s:1361   .text.ESC_stopmbx:0000000000000064 $d
-     /tmp/ccWdXZXt.s:1367   .text.ESC_readmbx:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1373   .text.ESC_readmbx:0000000000000000 ESC_readmbx
-     /tmp/ccWdXZXt.s:1464   .text.ESC_readmbx:0000000000000064 $d
-     /tmp/ccWdXZXt.s:1472   .text.ESC_writembx:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1478   .text.ESC_writembx:0000000000000000 ESC_writembx
-     /tmp/ccWdXZXt.s:1564   .text.ESC_writembx:0000000000000054 $d
-     /tmp/ccWdXZXt.s:1570   .text.ESC_ackmbxread:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1576   .text.ESC_ackmbxread:0000000000000000 ESC_ackmbxread
-     /tmp/ccWdXZXt.s:1614   .text.ESC_ackmbxread:0000000000000024 $d
-     /tmp/ccWdXZXt.s:1619   .text.ESC_claimbuffer:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1625   .text.ESC_claimbuffer:0000000000000000 ESC_claimbuffer
-     /tmp/ccWdXZXt.s:1734   .text.ESC_claimbuffer:0000000000000074 $d
-     /tmp/ccWdXZXt.s:1741   .text.ESC_outreqbuffer:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1747   .text.ESC_outreqbuffer:0000000000000000 ESC_outreqbuffer
-     /tmp/ccWdXZXt.s:1786   .text.ESC_outreqbuffer:0000000000000014 $d
-     /tmp/ccWdXZXt.s:1791   .text.MBX_error:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1797   .text.MBX_error:0000000000000000 MBX_error
-     /tmp/ccWdXZXt.s:1865   .text.MBX_error:0000000000000044 $d
-     /tmp/ccWdXZXt.s:1872   .text.ESC_mbxprocess:0000000000000000 $t
-     /tmp/ccWdXZXt.s:1878   .text.ESC_mbxprocess:0000000000000000 ESC_mbxprocess
-     /tmp/ccWdXZXt.s:2213   .text.ESC_mbxprocess:00000000000001c0 $d
-     /tmp/ccWdXZXt.s:2220   .text.ESC_xoeprocess:0000000000000000 $t
-     /tmp/ccWdXZXt.s:2226   .text.ESC_xoeprocess:0000000000000000 ESC_xoeprocess
-     /tmp/ccWdXZXt.s:2294   .text.ESC_xoeprocess:0000000000000044 $d
-     /tmp/ccWdXZXt.s:2301   .text.ESC_checkSM23:0000000000000000 $t
-     /tmp/ccWdXZXt.s:2307   .text.ESC_checkSM23:0000000000000000 ESC_checkSM23
-     /tmp/ccWdXZXt.s:2495   .text.ESC_checkSM23:00000000000000e8 $d
-     /tmp/ccWdXZXt.s:2502   .text.ESC_startinput:0000000000000000 $t
-     /tmp/ccWdXZXt.s:2508   .text.ESC_startinput:0000000000000000 ESC_startinput
-     /tmp/ccWdXZXt.s:2680   .text.ESC_startinput:00000000000000b4 $d
-     /tmp/ccWdXZXt.s:2688   .text.ESC_stopinput:0000000000000000 $t
-     /tmp/ccWdXZXt.s:2694   .text.ESC_stopinput:0000000000000000 ESC_stopinput
-     /tmp/ccWdXZXt.s:2738   .text.ESC_stopinput:0000000000000034 $d
-     /tmp/ccWdXZXt.s:2743   .text.ESC_startoutput:0000000000000000 $t
-     /tmp/ccWdXZXt.s:2749   .text.ESC_startoutput:0000000000000000 ESC_startoutput
-     /tmp/ccWdXZXt.s:2796   .text.ESC_startoutput:0000000000000034 $d
-     /tmp/ccWdXZXt.s:2802   .text.ESC_stopoutput:0000000000000000 $t
-     /tmp/ccWdXZXt.s:2808   .text.ESC_stopoutput:0000000000000000 ESC_stopoutput
-     /tmp/ccWdXZXt.s:2840   .text.ESC_stopoutput:0000000000000028 $d
-     /tmp/ccWdXZXt.s:2845   .text.ESC_ALstatusgotoerror:0000000000000000 $t
-     /tmp/ccWdXZXt.s:2851   .text.ESC_ALstatusgotoerror:0000000000000000 ESC_ALstatusgotoerror
-     /tmp/ccWdXZXt.s:2960   .text.ESC_ALstatusgotoerror:0000000000000074 $d
-     /tmp/ccWdXZXt.s:2966   .text.ESC_sm_act_event:0000000000000000 $t
-     /tmp/ccWdXZXt.s:2972   .text.ESC_sm_act_event:0000000000000000 ESC_sm_act_event
-     /tmp/ccWdXZXt.s:3185   .text.ESC_sm_act_event:000000000000010c $d
-     /tmp/ccWdXZXt.s:3191   .text.ESC_state:0000000000000000 $t
-     /tmp/ccWdXZXt.s:3197   .text.ESC_state:0000000000000000 ESC_state
-     /tmp/ccWdXZXt.s:3304   .text.ESC_state:0000000000000092 $d
-     /tmp/ccWdXZXt.s:3424   .text.ESC_state:0000000000000182 $t
-     /tmp/ccWdXZXt.s:3626   .text.ESC_state:0000000000000290 $d
-     /tmp/ccWdXZXt.s:3636   .text.ESC_state:00000000000002ac $t
-     /tmp/ccWdXZXt.s:3827   .text.ESC_state:00000000000003b0 $d
-     /tmp/ccWdXZXt.s:3832   .text.ESC_config:0000000000000000 $t
-ARM GAS  /tmp/ccWdXZXt.s 			page 113
+     /tmp/cc9hBhZE.s:1255   .text.ESC_startmbxboot:0000000000000068 $d
+     /tmp/cc9hBhZE.s:1260   .text.ESC_stopmbx:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1266   .text.ESC_stopmbx:0000000000000000 ESC_stopmbx
+     /tmp/cc9hBhZE.s:1361   .text.ESC_stopmbx:0000000000000064 $d
+     /tmp/cc9hBhZE.s:1367   .text.ESC_readmbx:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1373   .text.ESC_readmbx:0000000000000000 ESC_readmbx
+     /tmp/cc9hBhZE.s:1464   .text.ESC_readmbx:0000000000000064 $d
+     /tmp/cc9hBhZE.s:1472   .text.ESC_writembx:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1478   .text.ESC_writembx:0000000000000000 ESC_writembx
+     /tmp/cc9hBhZE.s:1564   .text.ESC_writembx:0000000000000054 $d
+     /tmp/cc9hBhZE.s:1570   .text.ESC_ackmbxread:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1576   .text.ESC_ackmbxread:0000000000000000 ESC_ackmbxread
+     /tmp/cc9hBhZE.s:1614   .text.ESC_ackmbxread:0000000000000024 $d
+     /tmp/cc9hBhZE.s:1619   .text.ESC_claimbuffer:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1625   .text.ESC_claimbuffer:0000000000000000 ESC_claimbuffer
+     /tmp/cc9hBhZE.s:1734   .text.ESC_claimbuffer:0000000000000074 $d
+     /tmp/cc9hBhZE.s:1741   .text.ESC_outreqbuffer:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1747   .text.ESC_outreqbuffer:0000000000000000 ESC_outreqbuffer
+     /tmp/cc9hBhZE.s:1786   .text.ESC_outreqbuffer:0000000000000014 $d
+     /tmp/cc9hBhZE.s:1791   .text.MBX_error:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1797   .text.MBX_error:0000000000000000 MBX_error
+     /tmp/cc9hBhZE.s:1865   .text.MBX_error:0000000000000044 $d
+     /tmp/cc9hBhZE.s:1872   .text.ESC_mbxprocess:0000000000000000 $t
+     /tmp/cc9hBhZE.s:1878   .text.ESC_mbxprocess:0000000000000000 ESC_mbxprocess
+     /tmp/cc9hBhZE.s:2213   .text.ESC_mbxprocess:00000000000001c0 $d
+     /tmp/cc9hBhZE.s:2220   .text.ESC_xoeprocess:0000000000000000 $t
+     /tmp/cc9hBhZE.s:2226   .text.ESC_xoeprocess:0000000000000000 ESC_xoeprocess
+     /tmp/cc9hBhZE.s:2294   .text.ESC_xoeprocess:0000000000000044 $d
+     /tmp/cc9hBhZE.s:2301   .text.ESC_checkSM23:0000000000000000 $t
+     /tmp/cc9hBhZE.s:2307   .text.ESC_checkSM23:0000000000000000 ESC_checkSM23
+     /tmp/cc9hBhZE.s:2495   .text.ESC_checkSM23:00000000000000e8 $d
+     /tmp/cc9hBhZE.s:2502   .text.ESC_startinput:0000000000000000 $t
+     /tmp/cc9hBhZE.s:2508   .text.ESC_startinput:0000000000000000 ESC_startinput
+     /tmp/cc9hBhZE.s:2680   .text.ESC_startinput:00000000000000b4 $d
+     /tmp/cc9hBhZE.s:2688   .text.ESC_stopinput:0000000000000000 $t
+     /tmp/cc9hBhZE.s:2694   .text.ESC_stopinput:0000000000000000 ESC_stopinput
+     /tmp/cc9hBhZE.s:2738   .text.ESC_stopinput:0000000000000034 $d
+     /tmp/cc9hBhZE.s:2743   .text.ESC_startoutput:0000000000000000 $t
+     /tmp/cc9hBhZE.s:2749   .text.ESC_startoutput:0000000000000000 ESC_startoutput
+     /tmp/cc9hBhZE.s:2796   .text.ESC_startoutput:0000000000000034 $d
+     /tmp/cc9hBhZE.s:2802   .text.ESC_stopoutput:0000000000000000 $t
+     /tmp/cc9hBhZE.s:2808   .text.ESC_stopoutput:0000000000000000 ESC_stopoutput
+     /tmp/cc9hBhZE.s:2840   .text.ESC_stopoutput:0000000000000028 $d
+     /tmp/cc9hBhZE.s:2845   .text.ESC_ALstatusgotoerror:0000000000000000 $t
+     /tmp/cc9hBhZE.s:2851   .text.ESC_ALstatusgotoerror:0000000000000000 ESC_ALstatusgotoerror
+     /tmp/cc9hBhZE.s:2960   .text.ESC_ALstatusgotoerror:0000000000000074 $d
+     /tmp/cc9hBhZE.s:2966   .text.ESC_sm_act_event:0000000000000000 $t
+     /tmp/cc9hBhZE.s:2972   .text.ESC_sm_act_event:0000000000000000 ESC_sm_act_event
+     /tmp/cc9hBhZE.s:3185   .text.ESC_sm_act_event:000000000000010c $d
+     /tmp/cc9hBhZE.s:3191   .text.ESC_state:0000000000000000 $t
+     /tmp/cc9hBhZE.s:3197   .text.ESC_state:0000000000000000 ESC_state
+     /tmp/cc9hBhZE.s:3304   .text.ESC_state:0000000000000092 $d
+     /tmp/cc9hBhZE.s:3424   .text.ESC_state:0000000000000182 $t
+     /tmp/cc9hBhZE.s:3626   .text.ESC_state:0000000000000290 $d
+     /tmp/cc9hBhZE.s:3636   .text.ESC_state:00000000000002ac $t
+     /tmp/cc9hBhZE.s:3827   .text.ESC_state:00000000000003b0 $d
+     /tmp/cc9hBhZE.s:3832   .text.ESC_config:0000000000000000 $t
+ARM GAS  /tmp/cc9hBhZE.s 			page 113
 
 
-     /tmp/ccWdXZXt.s:3838   .text.ESC_config:0000000000000000 ESC_config
-     /tmp/ccWdXZXt.s:3980   .text.ESC_config:0000000000000088 $d
-     /tmp/ccWdXZXt.s:3993   .bss.as_all:0000000000000000 as_all
-     /tmp/ccWdXZXt.s:3994   .bss.as_all:0000000000000000 $d
-     /tmp/ccWdXZXt.s:3996   .rodata.mb0.3:0000000000000000 $d
-     /tmp/ccWdXZXt.s:4000   .rodata.mb0.3:0000000000000000 mb0.3
-     /tmp/ccWdXZXt.s:4007   .rodata.mb1.2:0000000000000000 $d
-     /tmp/ccWdXZXt.s:4011   .rodata.mb1.2:0000000000000000 mb1.2
-     /tmp/ccWdXZXt.s:4018   .rodata.mbboot0.1:0000000000000000 $d
-     /tmp/ccWdXZXt.s:4022   .rodata.mbboot0.1:0000000000000000 mbboot0.1
-     /tmp/ccWdXZXt.s:4029   .rodata.mbboot1.0:0000000000000000 $d
-     /tmp/ccWdXZXt.s:4033   .rodata.mbboot1.0:0000000000000000 mbboot1.0
+     /tmp/cc9hBhZE.s:3838   .text.ESC_config:0000000000000000 ESC_config
+     /tmp/cc9hBhZE.s:3980   .text.ESC_config:0000000000000088 $d
+     /tmp/cc9hBhZE.s:3993   .bss.as_all:0000000000000000 as_all
+     /tmp/cc9hBhZE.s:3994   .bss.as_all:0000000000000000 $d
+     /tmp/cc9hBhZE.s:3996   .rodata.mb0.3:0000000000000000 $d
+     /tmp/cc9hBhZE.s:4000   .rodata.mb0.3:0000000000000000 mb0.3
+     /tmp/cc9hBhZE.s:4007   .rodata.mb1.2:0000000000000000 $d
+     /tmp/cc9hBhZE.s:4011   .rodata.mb1.2:0000000000000000 mb1.2
+     /tmp/cc9hBhZE.s:4018   .rodata.mbboot0.1:0000000000000000 $d
+     /tmp/cc9hBhZE.s:4022   .rodata.mbboot0.1:0000000000000000 mbboot0.1
+     /tmp/cc9hBhZE.s:4029   .rodata.mbboot1.0:0000000000000000 $d
+     /tmp/cc9hBhZE.s:4033   .rodata.mbboot1.0:0000000000000000 mbboot1.0
 
 UNDEFINED SYMBOLS
 ESC_read

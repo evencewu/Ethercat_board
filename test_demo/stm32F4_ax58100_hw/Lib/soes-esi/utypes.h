@@ -15,7 +15,7 @@ typedef struct
 
    struct
    {
-      int8_t led1_tx;
+      uint8_t led1_tx;
       uint8_t led2_tx;
    } led_tx;
 

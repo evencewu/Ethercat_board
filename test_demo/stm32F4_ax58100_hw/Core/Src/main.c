@@ -5,20 +5,30 @@
 #include "ecat_slv.h"
 #include "ecatapp.h"
 
+#include "bsp_led.h"
 
 // uint32_t ecatapp_benchmark_us(void);
 
-
 int main(void)
 {
-  	SysTick_Config(SystemCoreClock / 1000);
-	delay_init(); 
-    ecatapp_init();
+	SysTick_Config(SystemCoreClock / 1000);
+	delay_init();
+
+	led_setup();
+
+	ecatapp_init();
 
 	while (1)
 	{
-        // ecatapp_benchmark_us();
-        ecatapp_loop();
+		// GPIO_SetBits(GPIOB, GPIO_Pin_15);
+		// GPIO_SetBits(GPIOB, GPIO_Pin_14);
+		// GPIO_SetBits(GPIOB, GPIO_Pin_13);
+
+		// ecatapp_benchmark_us();
+		//ecatapp_loop();
+
+		ecat_slv_poll();
+		DIG_process(DIG_PROCESS_OUTPUTS_FLAG | DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
 	}
 }
 
@@ -27,14 +37,14 @@ int main(void)
 //     // benchmark start
 //     stopwatch_t st;
 //     stopwatch_start(&st);
-    
+
 //     ecatapp_loop();
- 
+
 //     // benchmark stop
 //     volatile uint32_t elapsed_us = stopwatch_now_us(&st);
 //     static volatile uint32_t hiscore = 0;
 
-//     if (elapsed_us > hiscore) 
+//     if (elapsed_us > hiscore)
 //     {
 //         hiscore = elapsed_us;
 //     }
