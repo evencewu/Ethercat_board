@@ -29,9 +29,6 @@ int main(void)
 	CAN_FIFORelease(CAN1,CAN_FIFO0);
 
 	CAN_SetMsg(&TxMessage);
-	
-	while(CAN_Transmit(CANx, &TxMessage) == CAN_TxStatus_NoMailBox);
-
 
 	while (1)
 	{
@@ -40,6 +37,7 @@ int main(void)
 		// GPIO_SetBits(GPIOB, GPIO_Pin_13);
 
 		// ecatapp_benchmark_us();
+		CAN_Transmit(CANx, &TxMessage);
 		ecat_slv();
 		// ecatapp_loop();
 	}
