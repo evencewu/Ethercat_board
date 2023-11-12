@@ -42,9 +42,9 @@ static uint8_t sync0_irq_flag = 0;
 
 void EXTI0_IRQHandler(void)
 {
-    if (EXTI_GetITStatus(EXTI_Line1) != RESET)
+    if (EXTI_GetITStatus(EXTI_Line0) != RESET)
     {
-        EXTI_ClearITPendingBit(EXTI_Line1);
+        EXTI_ClearITPendingBit(EXTI_Line0);
         sync0_irq_flag = 1;
     }
 }

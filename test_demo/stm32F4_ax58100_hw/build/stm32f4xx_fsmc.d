@@ -16,7 +16,8 @@ build/stm32f4xx_fsmc.o: \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h \
- Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h
+ Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h \
+ Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 Drivers/CMSIS/Include/core_cm4.h:
@@ -36,3 +37,4 @@ Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h:
+Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h:

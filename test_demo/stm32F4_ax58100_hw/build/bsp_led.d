@@ -16,6 +16,7 @@ build/bsp_led.o: Lib/bsp/src/bsp_led.c Lib/bsp/Inc/bsp_led.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h \
+ Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h
 Lib/bsp/Inc/bsp_led.h:
 Lib/bsp/Inc/stm32f4xx_conf.h:
@@ -37,4 +38,5 @@ Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h:
+Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h:

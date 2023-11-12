@@ -19,6 +19,7 @@ build/ecatapp.o: Core/Src/ecatapp.c Lib/soes/inc/esc.h Lib/soes/inc/cc.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h \
+ Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h
 Lib/soes/inc/esc.h:
 Lib/soes/inc/cc.h:
@@ -49,4 +50,5 @@ Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h:
+Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h:

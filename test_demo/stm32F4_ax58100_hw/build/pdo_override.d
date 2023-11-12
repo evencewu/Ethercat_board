@@ -15,6 +15,7 @@ build/pdo_override.o: Core/Src/pdo_override.c \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h \
+ Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h \
  Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h \
  Lib/soes_hal_bsp/inc/spi.h Lib/soes/inc/esc.h Lib/soes/inc/cc.h \
  Lib/soes/inc/esc_coe.h Lib/soes/inc/options.h \
@@ -38,6 +39,7 @@ Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/misc.h:
+Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h:
 Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h:
 Lib/soes_hal_bsp/inc/spi.h:
 Lib/soes/inc/esc.h:

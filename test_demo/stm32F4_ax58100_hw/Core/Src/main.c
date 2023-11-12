@@ -5,7 +5,13 @@
 #include "ecat_slv.h"
 #include "ecatapp.h"
 
+#include "bsp_can.h"
 #include "bsp_led.h"
+
+__IO uint32_t flag;
+
+CanTxMsg TxMessage; // 发送缓冲区
+CanRxMsg RxMessage; // 接收缓冲区
 
 // uint32_t ecatapp_benchmark_us(void);
 
@@ -15,8 +21,17 @@ int main(void)
 	delay_init();
 
 	led_setup();
+	CAN_Config();
 
 	ecatapp_init();
+
+ 	//RxReset();
+	CAN_FIFORelease(CAN1,CAN_FIFO0);
+
+	CAN_SetMsg(&TxMessage);
+	
+	while(CAN_Transmit(CANx, &TxMessage) == CAN_TxStatus_NoMailBox);
+
 
 	while (1)
 	{
@@ -25,8 +40,8 @@ int main(void)
 		// GPIO_SetBits(GPIOB, GPIO_Pin_13);
 
 		// ecatapp_benchmark_us();
-		ecatapp_loop();
-
+		ecat_slv();
+		// ecatapp_loop();
 	}
 }
 

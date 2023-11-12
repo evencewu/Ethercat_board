@@ -144,11 +144,11 @@ int main(void)
       payload[7] = 0x00FC;
 
       // 每1000ms执行到这里一次
-      if (HAL_CAN_AddTxMessage(&hcan2, &hcan2_tx_message, payload, (uint32_t *)CAN_TX_MAILBOX0) != HAL_OK) //
+      if (HAL_CAN_AddTxMessage(&hcan1, &hcan2_tx_message, payload, (uint32_t *)CAN_TX_MAILBOX0) != HAL_OK) //
       {
-        if (HAL_CAN_AddTxMessage(&hcan2, &hcan2_tx_message, payload, (uint32_t *)CAN_TX_MAILBOX1) != HAL_OK)
+        if (HAL_CAN_AddTxMessage(&hcan1, &hcan2_tx_message, payload, (uint32_t *)CAN_TX_MAILBOX1) != HAL_OK)
         {
-          HAL_CAN_AddTxMessage(&hcan2, &hcan2_tx_message, payload, (uint32_t *)CAN_TX_MAILBOX2);
+          HAL_CAN_AddTxMessage(&hcan1, &hcan2_tx_message, payload, (uint32_t *)CAN_TX_MAILBOX2);
         }
       }
     }

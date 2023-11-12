@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc0E3Jrd.s 			page 1
+ARM GAS  /tmp/ccKLCQ8A.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
   28:Core/Src/ecatapp.c ****     .post_object_download_hook = NULL,
   29:Core/Src/ecatapp.c ****     .rxpdo_override = rxpdo_override,
   30:Core/Src/ecatapp.c ****     .txpdo_override = txpdo_override,
-ARM GAS  /tmp/cc0E3Jrd.s 			page 2
+ARM GAS  /tmp/ccKLCQ8A.s 			page 2
 
 
   31:Core/Src/ecatapp.c ****     .esc_hw_interrupt_enable = ESC_interrupt_enable,
@@ -75,9 +75,9 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
   42:Core/Src/ecatapp.c **** 
   43:Core/Src/ecatapp.c **** void EXTI0_IRQHandler(void)
   44:Core/Src/ecatapp.c **** {
-  45:Core/Src/ecatapp.c ****     if (EXTI_GetITStatus(EXTI_Line1) != RESET)
+  45:Core/Src/ecatapp.c ****     if (EXTI_GetITStatus(EXTI_Line0) != RESET)
   46:Core/Src/ecatapp.c ****     {
-  47:Core/Src/ecatapp.c ****         EXTI_ClearITPendingBit(EXTI_Line1);
+  47:Core/Src/ecatapp.c ****         EXTI_ClearITPendingBit(EXTI_Line0);
   48:Core/Src/ecatapp.c ****         sync0_irq_flag = 1;
   49:Core/Src/ecatapp.c ****     }
   50:Core/Src/ecatapp.c **** }
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
   85:Core/Src/ecatapp.c ****     if (watchdog_value < MIN_WATCHDOG_VALUE_NS)
   86:Core/Src/ecatapp.c ****     {
   87:Core/Src/ecatapp.c ****         watchdog_value = MIN_WATCHDOG_VALUE_NS;
-ARM GAS  /tmp/cc0E3Jrd.s 			page 3
+ARM GAS  /tmp/ccKLCQ8A.s 			page 3
 
 
   88:Core/Src/ecatapp.c ****     }
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
   68              		.loc 1 80 31 is_stmt 0 view .LVU9
   69 0012 FFF7FEFF 		bl	ESC_enable_DC
   70              	.LVL0:
-ARM GAS  /tmp/cc0E3Jrd.s 			page 4
+ARM GAS  /tmp/ccKLCQ8A.s 			page 4
 
 
   71 0016 0346     		mov	r3, r0
@@ -233,12 +233,12 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  111              		.thumb_func
  113              	EXTI0_IRQHandler:
  114              	.LFB123:
-  44:Core/Src/ecatapp.c ****     if (EXTI_GetITStatus(EXTI_Line1) != RESET)
+  44:Core/Src/ecatapp.c ****     if (EXTI_GetITStatus(EXTI_Line0) != RESET)
  115              		.loc 1 44 1 is_stmt 1 view -0
  116              		.cfi_startproc
  117              		@ args = 0, pretend = 0, frame = 0
  118              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/cc0E3Jrd.s 			page 5
+ARM GAS  /tmp/ccKLCQ8A.s 			page 5
 
 
  119 0000 08B5     		push	{r3, lr}
@@ -249,7 +249,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  123              		.loc 1 45 5 view .LVU21
   45:Core/Src/ecatapp.c ****     {
  124              		.loc 1 45 9 is_stmt 0 view .LVU22
- 125 0002 0220     		movs	r0, #2
+ 125 0002 0120     		movs	r0, #1
  126 0004 FFF7FEFF 		bl	EXTI_GetITStatus
  127              	.LVL5:
   45:Core/Src/ecatapp.c ****     {
@@ -262,7 +262,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  133              	.L11:
   47:Core/Src/ecatapp.c ****         sync0_irq_flag = 1;
  134              		.loc 1 47 9 is_stmt 1 view .LVU25
- 135 000c 0220     		movs	r0, #2
+ 135 000c 0120     		movs	r0, #1
  136 000e FFF7FEFF 		bl	EXTI_ClearITPendingBit
  137              	.LVL6:
   48:Core/Src/ecatapp.c ****     }
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  166              		.cfi_def_cfa_offset 8
  167              		.cfi_offset 3, -8
  168              		.cfi_offset 14, -4
-ARM GAS  /tmp/cc0E3Jrd.s 			page 6
+ARM GAS  /tmp/ccKLCQ8A.s 			page 6
 
 
   56:Core/Src/ecatapp.c ****     {
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  215              		.loc 1 66 5 view .LVU39
  216 0002 0348     		ldr	r0, .L22
  217 0004 FFF7FEFF 		bl	ecat_slv_init
-ARM GAS  /tmp/cc0E3Jrd.s 			page 7
+ARM GAS  /tmp/ccKLCQ8A.s 			page 7
 
 
  218              	.LVL9:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  109:Core/Src/ecatapp.c ****     if (Obj.led_rx.led2_rx != 0)
  260              		.loc 1 109 5 view .LVU47
  261              		.loc 1 109 19 is_stmt 0 view .LVU48
-ARM GAS  /tmp/cc0E3Jrd.s 			page 8
+ARM GAS  /tmp/ccKLCQ8A.s 			page 8
 
 
  262 0012 0A4B     		ldr	r3, .L30
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  120:Core/Src/ecatapp.c **** {
  306              		.loc 1 120 1 is_stmt 1 view -0
  307              		.cfi_startproc
-ARM GAS  /tmp/cc0E3Jrd.s 			page 9
+ARM GAS  /tmp/ccKLCQ8A.s 			page 9
 
 
  308              		@ args = 0, pretend = 0, frame = 0
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  130:Core/Src/ecatapp.c ****         ESC_updateALevent();
  131:Core/Src/ecatapp.c ****         DIG_process(DIG_PROCESS_APP_HOOK_FLAG | DIG_PROCESS_INPUTS_FLAG);
  132:Core/Src/ecatapp.c ****         sync0_irq_flag = 0;
-ARM GAS  /tmp/cc0E3Jrd.s 			page 10
+ARM GAS  /tmp/ccKLCQ8A.s 			page 10
 
 
  133:Core/Src/ecatapp.c ****     }
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  387              	.L42:
  130:Core/Src/ecatapp.c ****         ESC_updateALevent();
  388              		.loc 1 130 9 is_stmt 1 view .LVU79
-ARM GAS  /tmp/cc0E3Jrd.s 			page 11
+ARM GAS  /tmp/ccKLCQ8A.s 			page 11
 
 
  389 0030 0422     		movs	r2, #4
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  436              		.align	2
  437              		.set	.LANCHOR0,. + 0
  440              	Obj:
-ARM GAS  /tmp/cc0E3Jrd.s 			page 12
+ARM GAS  /tmp/ccKLCQ8A.s 			page 12
 
 
  441 0000 00000000 		.space	68
@@ -711,43 +711,43 @@ ARM GAS  /tmp/cc0E3Jrd.s 			page 1
  489              		.file 10 "Lib/soes_hal_bsp/inc/esc_irq.h"
  490              		.file 11 "Core/Inc/pdo_override.h"
  491              		.file 12 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h"
-ARM GAS  /tmp/cc0E3Jrd.s 			page 13
+ARM GAS  /tmp/ccKLCQ8A.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ecatapp.c
-     /tmp/cc0E3Jrd.s:20     .text.ecatapp:0000000000000000 $t
-     /tmp/cc0E3Jrd.s:26     .text.ecatapp:0000000000000000 ecatapp
-     /tmp/cc0E3Jrd.s:40     .text.check_dc_handler:0000000000000000 $t
-     /tmp/cc0E3Jrd.s:46     .text.check_dc_handler:0000000000000000 check_dc_handler
-     /tmp/cc0E3Jrd.s:99     .text.check_dc_handler:0000000000000030 $d
-     /tmp/cc0E3Jrd.s:107    .text.EXTI0_IRQHandler:0000000000000000 $t
-     /tmp/cc0E3Jrd.s:113    .text.EXTI0_IRQHandler:0000000000000000 EXTI0_IRQHandler
-     /tmp/cc0E3Jrd.s:148    .text.EXTI0_IRQHandler:000000000000001c $d
-     /tmp/cc0E3Jrd.s:153    .text.EXTI9_5_IRQHandler:0000000000000000 $t
-     /tmp/cc0E3Jrd.s:159    .text.EXTI9_5_IRQHandler:0000000000000000 EXTI9_5_IRQHandler
-     /tmp/cc0E3Jrd.s:194    .text.EXTI9_5_IRQHandler:000000000000001c $d
-     /tmp/cc0E3Jrd.s:199    .text.ecatapp_init:0000000000000000 $t
-     /tmp/cc0E3Jrd.s:205    .text.ecatapp_init:0000000000000000 ecatapp_init
-     /tmp/cc0E3Jrd.s:227    .text.ecatapp_init:0000000000000010 $d
-     /tmp/cc0E3Jrd.s:232    .text.cb_get_inputs:0000000000000000 $t
-     /tmp/cc0E3Jrd.s:238    .text.cb_get_inputs:0000000000000000 cb_get_inputs
-     /tmp/cc0E3Jrd.s:292    .text.cb_get_inputs:000000000000003c $d
-     /tmp/cc0E3Jrd.s:298    .text.cb_set_outputs:0000000000000000 $t
-     /tmp/cc0E3Jrd.s:304    .text.cb_set_outputs:0000000000000000 cb_set_outputs
-     /tmp/cc0E3Jrd.s:327    .text.cb_set_outputs:000000000000000c $d
-     /tmp/cc0E3Jrd.s:332    .text.ecatapp_loop:0000000000000000 $t
-     /tmp/cc0E3Jrd.s:338    .text.ecatapp_loop:0000000000000000 ecatapp_loop
-     /tmp/cc0E3Jrd.s:424    .text.ecatapp_loop:0000000000000060 $d
-     /tmp/cc0E3Jrd.s:431    .rodata.str1.4:0000000000000000 $d
-     /tmp/cc0E3Jrd.s:440    .bss.Obj:0000000000000000 Obj
-     /tmp/cc0E3Jrd.s:436    .bss.Obj:0000000000000000 $d
-     /tmp/cc0E3Jrd.s:446    .bss.pdi_irq_flag:0000000000000000 pdi_irq_flag
-     /tmp/cc0E3Jrd.s:447    .bss.pdi_irq_flag:0000000000000000 $d
-     /tmp/cc0E3Jrd.s:452    .bss.sync0_irq_flag:0000000000000000 sync0_irq_flag
-     /tmp/cc0E3Jrd.s:453    .bss.sync0_irq_flag:0000000000000000 $d
-     /tmp/cc0E3Jrd.s:455    .data.config:0000000000000000 $d
-     /tmp/cc0E3Jrd.s:459    .data.config:0000000000000000 config
+     /tmp/ccKLCQ8A.s:20     .text.ecatapp:0000000000000000 $t
+     /tmp/ccKLCQ8A.s:26     .text.ecatapp:0000000000000000 ecatapp
+     /tmp/ccKLCQ8A.s:40     .text.check_dc_handler:0000000000000000 $t
+     /tmp/ccKLCQ8A.s:46     .text.check_dc_handler:0000000000000000 check_dc_handler
+     /tmp/ccKLCQ8A.s:99     .text.check_dc_handler:0000000000000030 $d
+     /tmp/ccKLCQ8A.s:107    .text.EXTI0_IRQHandler:0000000000000000 $t
+     /tmp/ccKLCQ8A.s:113    .text.EXTI0_IRQHandler:0000000000000000 EXTI0_IRQHandler
+     /tmp/ccKLCQ8A.s:148    .text.EXTI0_IRQHandler:000000000000001c $d
+     /tmp/ccKLCQ8A.s:153    .text.EXTI9_5_IRQHandler:0000000000000000 $t
+     /tmp/ccKLCQ8A.s:159    .text.EXTI9_5_IRQHandler:0000000000000000 EXTI9_5_IRQHandler
+     /tmp/ccKLCQ8A.s:194    .text.EXTI9_5_IRQHandler:000000000000001c $d
+     /tmp/ccKLCQ8A.s:199    .text.ecatapp_init:0000000000000000 $t
+     /tmp/ccKLCQ8A.s:205    .text.ecatapp_init:0000000000000000 ecatapp_init
+     /tmp/ccKLCQ8A.s:227    .text.ecatapp_init:0000000000000010 $d
+     /tmp/ccKLCQ8A.s:232    .text.cb_get_inputs:0000000000000000 $t
+     /tmp/ccKLCQ8A.s:238    .text.cb_get_inputs:0000000000000000 cb_get_inputs
+     /tmp/ccKLCQ8A.s:292    .text.cb_get_inputs:000000000000003c $d
+     /tmp/ccKLCQ8A.s:298    .text.cb_set_outputs:0000000000000000 $t
+     /tmp/ccKLCQ8A.s:304    .text.cb_set_outputs:0000000000000000 cb_set_outputs
+     /tmp/ccKLCQ8A.s:327    .text.cb_set_outputs:000000000000000c $d
+     /tmp/ccKLCQ8A.s:332    .text.ecatapp_loop:0000000000000000 $t
+     /tmp/ccKLCQ8A.s:338    .text.ecatapp_loop:0000000000000000 ecatapp_loop
+     /tmp/ccKLCQ8A.s:424    .text.ecatapp_loop:0000000000000060 $d
+     /tmp/ccKLCQ8A.s:431    .rodata.str1.4:0000000000000000 $d
+     /tmp/ccKLCQ8A.s:440    .bss.Obj:0000000000000000 Obj
+     /tmp/ccKLCQ8A.s:436    .bss.Obj:0000000000000000 $d
+     /tmp/ccKLCQ8A.s:446    .bss.pdi_irq_flag:0000000000000000 pdi_irq_flag
+     /tmp/ccKLCQ8A.s:447    .bss.pdi_irq_flag:0000000000000000 $d
+     /tmp/ccKLCQ8A.s:452    .bss.sync0_irq_flag:0000000000000000 sync0_irq_flag
+     /tmp/ccKLCQ8A.s:453    .bss.sync0_irq_flag:0000000000000000 $d
+     /tmp/ccKLCQ8A.s:455    .data.config:0000000000000000 $d
+     /tmp/ccKLCQ8A.s:459    .data.config:0000000000000000 config
 
 UNDEFINED SYMBOLS
 ESC_enable_DC

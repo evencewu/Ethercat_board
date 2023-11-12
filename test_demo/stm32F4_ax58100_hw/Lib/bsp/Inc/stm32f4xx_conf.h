@@ -67,7 +67,7 @@
 #if defined (STM32F40_41xxx)
 //#include "stm32f4xx_cryp.h"
 //#include "stm32f4xx_hash.h"
-//#include "stm32f4xx_can.h"
+#include "stm32f4xx_can.h"
 //#include "stm32f4xx_dac.h"
 //#include "stm32f4xx_dcmi.h"
 #include "stm32f4xx_fsmc.h"
